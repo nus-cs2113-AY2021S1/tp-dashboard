@@ -1,0 +1,7075 @@
+[
+  {
+    "path": "data/tasks.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "[T][?] oirefe"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 1
+    }
+  },
+  {
+    "path": "docs/AboutUs.md",
+    "fileType": "docs",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "# About us"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "Display | Name | Github Profile | Portfolio "
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "--------|:----:|:--------------:|:---------:"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Jingming517"
+        },
+        "content": "![](https://via.placeholder.com/100.png?text\u003dPhoto) | Jingming | [Github](https://github.com/Jingming517/) | [Portfolio](docs/team/johndoe.md)"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "![](https://via.placeholder.com/100.png?text\u003dPhoto) | Don Joe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "![](https://via.placeholder.com/100.png?text\u003dPhoto) | Ron John | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "![](https://via.placeholder.com/100.png?text\u003dPhoto) | John Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "![](https://via.placeholder.com/100.png?text\u003dPhoto) | Don Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 8,
+      "Jingming517": 1
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Duke.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Entry point of the Duke application."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Initializes the application and starts the interaction with the user."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private TaskList taskList;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private Ui ui;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Initializes the application and imports the data stored locally to the application."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param filePath Filepath of the storage data."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Duke(String filePath) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        storage \u003d new Storage(filePath);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList \u003d new TaskList();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            storage.importData(taskList);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            Ui.printNoImportDataMessage();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Reads the user command and executes it, until the user issues the exit command."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Greets the user upon start up and exit."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printWelcomeMessage();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        while (!isExit) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                String fullCommand \u003d ui.readCommand();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                Command c \u003d Parser.handleUserInput(fullCommand);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                Ui.printDukeBorder(true);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                c.execute(taskList, storage);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                Ui.printDukeExceptionMessage(e, taskList);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            } finally {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                Ui.printDukeBorder(false);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        new Duke(\"data/tasks.txt\").run();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 50,
+      "-": 11
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/DukeException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Signals an error caused by an invalid command input by the user."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private String exception;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public DukeException(String message) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(message);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        exception \u003d message;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String getException() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return exception;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 18
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.AddCommand;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.DeleteCommand;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.DoneCommand;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.ExitCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.FindCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.command.ListCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Determines the type of command input by the user and calls for the respective command function."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String COMMAND_EXIT \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String COMMAND_LIST \u003d \"list\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String COMMAND_DONE \u003d \"done\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String COMMAND_DELETE \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String COMMAND_FIND \u003d \"find\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static Command handleUserInput(String userInput) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (userInput.equals(COMMAND_EXIT)) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            return new ExitCommand(userInput);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } else if (userInput.equals(COMMAND_LIST)) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            return new ListCommand(userInput);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_DONE)) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            return new DoneCommand(userInput);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_DELETE)) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            return new DeleteCommand(userInput);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_FIND)) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            return new FindCommand(userInput);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            /** An invalid command is catered for in AddCommand */"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            return new AddCommand(userInput);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 39
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Storage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Todo;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents the local file used to store the task list data."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private static String storageFilePath;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String TICK_SYMBOL \u003d \"[/]\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Storage(String filePath) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        storageFilePath \u003d filePath;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Writes to a text file the list of tasks. Creates a new storage file if the file does not exists."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList Contains the list of tasks to be saved."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void saveData(TaskList taskList) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        File output \u003d new File(storageFilePath);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        /** Attempts to create a file to store the data. */"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        createFile(output);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            FileWriter fw \u003d new FileWriter(output);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            for (Task t : taskList.getTaskList()) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                fw.write(t.toString() + \"\\n\");"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            fw.close();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            Ui.printSaveDataErrorMessage(e);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Reads from a storage file and imports the tasks to a task list."
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList Stores the tasks to this task list."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @throws FileNotFoundException if storage file does not exist."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void importData(TaskList taskList) throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        File input \u003d new File(storageFilePath);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Scanner s \u003d new Scanner(input);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        while (s.hasNext()) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            extractCommandFromStorage(s.nextLine(), taskList);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printImportDataSuccessMessage();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Creates a new storage file if the file does not exists."
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param output Storage file."
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private static void createFile(File output) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            if (output.exists()) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                return;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            if (!output.getParentFile().exists()) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                output.getParentFile().mkdirs();"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            output.createNewFile();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            Ui.printFileCreatedMessage();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            Ui.printFileCreateErrorMessage(e);"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Determines the tasks\u0027 type and status, and adds them accordingly to the task list."
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private void extractCommandFromStorage(String command, TaskList taskList) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String task \u003d command.substring(1, 2);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String isDone \u003d command.substring(3, 6);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String taskDetails \u003d command.substring(7); // includes task\u0027s description and date"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String taskDescription;"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String taskDate;"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        switch (task) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"T\":"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDescription \u003d taskDetails;"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskList.addTask(new Todo(taskDescription));"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"D\":"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            int indexEndOfDesc \u003d taskDetails.indexOf(\" (by: \");"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDetails \u003d taskDetails.replace(\"(by: \", \"\");"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDescription \u003d taskDetails.substring(0, indexEndOfDesc);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDate \u003d taskDetails.substring(indexEndOfDesc, taskDetails.length() - 1);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskList.addTask(new Deadline(taskDescription, taskDate));"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"E\":"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            indexEndOfDesc \u003d taskDetails.indexOf(\" (at: \");"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDetails \u003d taskDetails.replace(\"(at: \", \"\");"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDescription \u003d taskDetails.substring(0, indexEndOfDesc);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskDate \u003d taskDetails.substring(indexEndOfDesc, taskDetails.length() - 1);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskList.addTask(new Event(taskDescription, taskDate));"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(task);"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (isDone.equals(TICK_SYMBOL)) {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskList.markTaskAsDone(taskList.getTotalTask());"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 126
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Text UI of the application."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private Scanner in;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Ui() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns the input of the user."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @return user\u0027s input"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String readCommand() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return in.nextLine().trim();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the Duke welcome message."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printWelcomeMessage() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        printDukeBorder(true);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                + \" Hello! I\u0027m Duke\\n\""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                + \" What can I do for you?\");"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        printDukeBorder(false);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the Duke exit message."
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printExitMessage() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Bye. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the border of the chat box."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param top set to true to print the top border. Else, set to false to print the bottom border"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printDukeBorder(boolean top) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (top) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"............. DUKE CHAT BOX ^^ ............\");"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"...........................................\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Shows the task deleted and the number of tasks left in the list."
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskNumberDelete task number of the task to be deleted."
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList         task list of the task to be deleted."
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printDeleteTaskMessage(int taskNumberDelete, TaskList taskList) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        /* - 1 is catered for array list\u0027s index starting from 0. */"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Task deleted:\\n\" + taskList.getTaskList().get(taskNumberDelete - 1));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Your total tasks: \" + (taskList.getTotalTask() - 1));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Shows the user the list of tasks in the task list, formatted as an indexed list starting from 1."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList tasks retrieved from this task list."
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printTaskListView(TaskList taskList) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"This is your list of task(s):\");"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        for (int i \u003d 0; i \u003c taskList.getTotalTask(); i++) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.printf(\"%d.\" + taskList.getTaskList().get(i) + \"\\n\", i + 1);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Shows the user the task (that was indicated by the user) that was marked as done ."
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList            task list that has the task marked as done."
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskNumberCompleted task number indicated by the user as done."
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printCompleteTaskMessage(int taskNumberCompleted, TaskList taskList) {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println("
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                \"Good work! I\u0027ve marked this task as done:\\n\""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                        + taskList.getTaskList().get(taskNumberCompleted - 1));"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Shows the user the task that was added and the total number of tasks in the task list."
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the list of task that the task was added to."
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printAddTaskMessage(TaskList taskList) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        /* - 1 is catered for array list\u0027s index starting from 0. */"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(taskList.getTaskList().get(taskList.getTaskList().size() - 1));"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Your total tasks: \" + taskList.getTotalTask());"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints all tasks that contains the keyword, including the task index in the task list."
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the list of tasks being searched."
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param keyword  keyword indicated by user."
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @throws DukeException if there are no tasks that contains the keyword."
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printFindTaskMessage(TaskList taskList, String keyword) throws DukeException {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        boolean isFound \u003d false;"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        for (int i \u003d 0; i \u003c taskList.getTotalTask(); i++) {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            Task task \u003d taskList.getTaskList().get(i);"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            if (task.getDescription().contains(keyword)) {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                if (!isFound) { // first instance when keyword is found"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    System.out.println(\"Here are the matching tasks in your list:\");"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                isFound \u003d true;"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                System.out.println((i + 1) + \".\" + task);"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (!isFound) {"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"keyword not found\");"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the error message based on the invalid command input by the user."
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param e        type of error."
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the working list of task."
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printDukeExceptionMessage(DukeException e, TaskList taskList) {"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        switch (e.getException()) {"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"todo\":"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Error: The description of todo cannot be empty.\");"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"deadline\":"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Error: Please key in the deadline in this format: deadline ... /by ...\");"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"event\":"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Error: Please key in the event in this format: event ... /at ...\");"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"invalid command\":"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\\n\""
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    + \"Available commands: list, done, todo, deadline, event, find, delete, bye\");"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"invalid task action\":"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Error: Total task(s): \" + taskList.getTotalTask());"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"done\":"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Error: Please key in the command in this format: done \u003ctask number\u003e\");"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"delete\":"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Error: Please key in the command in this format: delete \u003ctask number\u003e\");"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case \"keyword not found\":"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"There are no tasks matching this keyword. Check that you have spelt it correctly.\");"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            System.out.println(\"Unknown Error.\");"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Shows the user the exception that occurred when saving data to storage file."
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param e exception message."
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printSaveDataErrorMessage(IOException e) {"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Unable to save data. Error: \" + e.getMessage());"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the message to inform the user that no data was imported."
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printNoImportDataMessage() {"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"No existing data imported.\");"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the message to inform the user that existing data was imported."
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printImportDataSuccessMessage() {"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Existing data imported.\");"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Shows the user the exception that occurred when creating a storage file."
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param e exception message."
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printFileCreateErrorMessage(IOException e) {"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"Cannot create file; reason: \" + e.getMessage());"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Prints the message to inform the user that an output file is created."
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static void printFileCreatedMessage() {"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        System.out.println(\"New output file created.\");"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 218
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/AddCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Event;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.Todo;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Adds a task to the task list, depending on what kind of task (event, deadline, todo) it is."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class AddCommand extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String TODO \u003d \"todo\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String DEADLINE \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String EVENT \u003d \"event\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public AddCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(userInput);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Creates a task in the task list after determining what type of task (event, deadline, todo)."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Saves the updated task list in the storage after the new task is added."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the task list to add the new task to."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param storage  the storage to be saved to."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @throws DukeException if the add command input is invalid."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void execute(TaskList taskList, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String[] command;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        command \u003d userInput.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String commandType \u003d command[0];"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String taskDescription;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        String taskDate;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        switch (commandType) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case TODO:"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                taskDescription \u003d command[1].trim();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                if (taskDescription.isEmpty()) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    throw new DukeException(\"todo\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    taskList.addTask(new Todo(taskDescription));"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                throw new DukeException(\"todo\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case DEADLINE:"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                command \u003d command[1].split(\"/by\");"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                taskDescription \u003d command[0].trim();"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                taskDate \u003d command[1].trim();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                if (taskDescription.isEmpty() || taskDate.isEmpty()) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    throw new DukeException(\"deadline\");"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    taskList.addTask(new Deadline(taskDescription, taskDate));"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                throw new DukeException(\"deadline\");"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        case EVENT:"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                command \u003d command[1].split(\"/at\");"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                taskDescription \u003d command[0].trim();"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                taskDate \u003d command[1].trim();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                if (taskDescription.isEmpty() || taskDate.isEmpty()) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    throw new DukeException(\"event\");"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                    taskList.addTask(new Event(taskDescription, taskDate));"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "                throw new DukeException(\"event\");"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"invalid command\");"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printAddTaskMessage(taskList);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        storage.saveData(taskList);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 92
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/Command.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents an executable command."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    protected String userInput;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Command(String userInput) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.userInput \u003d userInput;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Executes the command and throws a Duke exception when the command is invalid."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public abstract void execute(TaskList taskList, Storage storage) throws DukeException;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns true if the command is exit."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 29
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/DeleteCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Deletes the task of task number specified by the user."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class DeleteCommand extends Command {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public DeleteCommand(String command) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(command);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Deletes the task of task number specified by the user."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Saves the updated task list in the storage after the task is deleted."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the task list to delete the task from."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param storage  the storage to be saved to."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @throws DukeException if the delete command input is invalid."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void execute(TaskList taskList, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        int taskNumberDelete;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskNumberDelete \u003d Integer.parseInt(userInput.replace(\"delete\", \"\").trim());"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"delete\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (taskNumberDelete \u003e taskList.getTotalTask() || taskNumberDelete \u003c\u003d 0) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"invalid task action\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printDeleteTaskMessage(taskNumberDelete, taskList);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList.deleteTask(taskNumberDelete - 1); // - 1 to cater for index starting from 0"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        storage.saveData(taskList);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 44
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/DoneCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Sets the task of task number specified by the user as done."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class DoneCommand extends Command {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public DoneCommand(String command) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(command);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Sets the task of task number specified by the user as done."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Saves the updated task list in the storage after the task is marked as done."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the task list that contains the task."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param storage  the storage to be saved to."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @throws DukeException if the done command is invalid."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void execute(TaskList taskList, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        int taskNumberCompleted;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            taskNumberCompleted \u003d Integer.parseInt(userInput.replace(\"done\", \"\").trim());"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"done\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (taskNumberCompleted \u003e taskList.getTotalTask() || taskNumberCompleted \u003c\u003d 0) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"invalid task action\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList.markTaskAsDone(taskNumberCompleted);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printCompleteTaskMessage(taskNumberCompleted, taskList);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        storage.saveData(taskList);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 44
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ExitCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Saves the current task list locally before terminating the programme."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class ExitCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public ExitCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(userInput);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Saves the current task list locally."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the task list to be saved."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param storage  the storage to be saved to."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void execute(TaskList taskList, Storage storage) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        storage.saveData(taskList);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printExitMessage();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Sets the isExit flag to true."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 35
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/FindCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Searches the task list for tasks that contains the keyword specified by the user and prints them."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class FindCommand extends Command {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private String keyword;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public FindCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(userInput);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Searches the task list for tasks that contains the keyword specified by the user and prints them."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the task list to search from."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param storage  not required."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @throws DukeException if the keyword is not found."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void execute(TaskList taskList, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        keyword \u003d userInput.replace(\"find\", \"\").trim();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        if (keyword.isEmpty()) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"keyword not found\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            Ui.printFindTaskMessage(taskList, keyword);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "            throw new DukeException(\"keyword not found\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 43
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ListCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Lists all tasks in the task list to the user."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public ListCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(userInput);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Lists all tasks in the task list to the user."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskList the task list to list from."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param storage  not required."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void execute(TaskList taskList, Storage storage) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        Ui.printTaskListView(taskList);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 25
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Deadline.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents a deadline task."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Deadline(String description, String by) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.by \u003d by.trim();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns a [D] icon to indicate task as a deadline task."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 21
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Event.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents an event task."
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Event(String description, String at) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.at \u003d at.trim();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns a [E] icon to indicate task as a event task."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Task.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents a Task in the task list."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public abstract class Task {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String TICK_SYMBOL \u003d \"/\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public static final String CROSS_SYMBOL \u003d \"X\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns the status of the task and the description of the task."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return \"[\" + this.getStatusIcon() + \"] \" + this.description;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns a tick if the task is done. Returns a cross if the task is not done."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String getStatusIcon() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return (isDone ? TICK_SYMBOL : CROSS_SYMBOL); //return tick or X symbols"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return description;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Sets the task as done."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void markAsDone() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 43
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/TaskList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents a task list."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private ArrayList\u003cTask\u003e taskList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    private int totalTask \u003d 0;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public TaskList() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Adds a task to the task list."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param task to be added."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void addTask(Task task) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList.add(task);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        totalTask++;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Deletes the task from the task list."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskNumber of the task to be deleted."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void deleteTask(int taskNumber) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList.remove(taskNumber);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        totalTask--;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Sets the task as done."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * @param taskNumber of the task that is completed."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public void markTaskAsDone(int taskNumber) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        taskList.get(taskNumber - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public int getTotalTask() {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return totalTask;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public ArrayList\u003cTask\u003e getTaskList() {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return taskList;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 54
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Todo.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " * Represents a todo task."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "public class Todo extends Task {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public Todo(String description) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     * Returns a [T] icon to indicate task as a todo task."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 19
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "todo"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "deadline wrongcommand"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "find"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "event"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "done"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "delete"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "wrongcommand"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "done1"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "delete1"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "find no such keyword"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "todo read book"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "event project meeting /at July 6th 2-4pm"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "deadline return book /by June 6th"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "find book"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "done 3"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "delete 2"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 19
+    }
+  },
+  {
+    "path": "text-ui-test/runtest.bat",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "@echo off"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "setlocal enableextensions"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "pushd %~dp0"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cd .."
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "call gradlew clean shadowJar"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cd build\\libs"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "for /f \"tokens\u003d*\" %%a in ("
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    \u0027dir /b *.jar\u0027"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ") do ("
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    set jarloc\u003d%%a"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ")"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "imhm"
+        },
+        "content": "java -Dfile.encoding\u003dUTF-8 -jar %jarloc% \u003c ..\\..\\text-ui-test\\input.txt \u003e ..\\..\\text-ui-test\\ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cd ..\\..\\text-ui-test"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "FC ACTUAL.TXT EXPECTED.TXT \u003eNUL \u0026\u0026 ECHO Test passed! || Echo Test failed!"
+      }
+    ],
+    "authorContributionMap": {
+      "imhm": 1,
+      "-": 18
+    }
+  }
+]
