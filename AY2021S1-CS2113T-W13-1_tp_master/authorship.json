@@ -185,5 +185,5418 @@
       "syncode98": 2,
       "-": 4
     }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Duke.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.parser.Parser;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static String FILENAME \u003d \"data/duke.txt\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private TaskList tasks;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Initialises Duke"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param FileName of the \u003ccode\u003eFile\u003c/code\u003e that stores the text data of the to-do list"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public Duke(String FileName) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        storage \u003d new Storage(FileName);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        tasks \u003d new TaskList(new ArrayList\u003c\u003e());"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        storage.load(tasks);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Runs the Duke program until the user exits the program"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Ui.printStart();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        while (!isExit) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                String fullCommand \u003d Ui.readCommand();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                c.execute(tasks);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                tasks.saveTask(storage.getFileName());"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                Ui.printWritingError();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }catch (NumberFormatException e){"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                Ui.printIndexError();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Ui.printBye();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        new Duke(FILENAME).run();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 10,
+      "jialerk": 43
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/AddDeadlineCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.exception.DukeDeadlineException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Deadline;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class AddDeadlineCommand extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private String fullCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public AddDeadlineCommand(String fullCommand){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.fullCommand \u003d fullCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Adds an instance of the \u003ccode\u003eDeadline\u003c/code\u003e class into a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList An instance of the \u003ccode\u003eTaskList\u003c/code\u003e class for the user to append to"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @throws DukeDeadlineException If there are no parameters written to initialise the creation of a new Deadline class"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList) throws DukeDeadlineException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int startOfMessage \u003d 9;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int endOfMessage \u003d fullCommand.indexOf(\"/by\")-1;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int startOfBy \u003d fullCommand.indexOf(\"/by\") + 4;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int endOfBy \u003d fullCommand.length();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(endOfMessage \u003c\u003d startOfMessage) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            throw new DukeDeadlineException();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String message \u003d fullCommand.substring(startOfMessage, endOfMessage);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String by \u003d fullCommand.substring(startOfBy,endOfBy);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(message.isEmpty() || by.isEmpty()){"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            throw new DukeDeadlineException();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }else {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            Deadline temp \u003d new Deadline(message, false, by);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            taskList.getList().add(temp);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            temp.printDeadline(taskList);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 45
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/AddEventCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.exception.DukeEventException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class AddEventCommand extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private String fullCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public AddEventCommand(String fullCommand){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.fullCommand \u003d fullCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Adds an instance of an \u003ccode\u003eEvent\u003c/code\u003e class into a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList An instance of the \u003ccode\u003eTaskList\u003c/code\u003e class for the user to append to"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @throws DukeEventException If there are no parameters written to initialise the creation of a new Event class"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList) throws DukeEventException {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int startOfMessage \u003d 6;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int endOfMessage \u003d fullCommand.indexOf(\"/at\")-1;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int startOfAt \u003d fullCommand.indexOf(\"/at\") + 4;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int endOfAt \u003d fullCommand.length();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(endOfMessage \u003c\u003d startOfMessage) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            throw new DukeEventException();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String message \u003d fullCommand.substring(startOfMessage, endOfMessage);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String at \u003d fullCommand.substring(startOfAt,endOfAt);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(message.isEmpty() || at.isEmpty()){"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            throw new DukeEventException();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Event temp \u003d new Event(message, false,at);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        taskList.getList().add(temp);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        temp.printEvent(taskList);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 45
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/AddSubjectCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " * Adds an instance of the \u003ccode\u003eDeadline\u003c/code\u003e class into a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class AddSubjectCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private String fullCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public AddSubjectCommand(String fullCommand){"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.fullCommand \u003d fullCommand;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 26
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/AddTodoCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class AddTodoCommand {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/Command.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " * Various commands to use depending on the various inputs given by the user"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public abstract void execute(TaskList taskList) throws DukeException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public abstract boolean isExit();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 12
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/DeleteCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class DeleteCommand extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private String fullCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public DeleteCommand(String fullCommand){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.fullCommand \u003d fullCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Deletes a Task in a \u003ccode\u003etaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList the \u003ccode\u003eTaskList\u003c/code\u003e instance of the TaskList class for the user to delete from"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList) throws NumberFormatException{"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String[] message \u003d this.fullCommand.split(\" \");"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int number \u003d Integer.valueOf(message[1]);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Task task \u003d taskList.getList().get(number-1);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        taskList.getList().remove(number-1);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Ui.printDelete(task,taskList.getList().size());"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 33
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/DoneCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " * Allows marking a \u003ccode\u003eTask\u003c/code\u003e in a \u003ccode\u003eTaskList\u003c/code\u003e as done"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class DoneCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private String fullCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public DoneCommand(String fullCommand) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.fullCommand \u003d fullCommand;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Marks a \u003ccode\u003eTask\u003c/code\u003e in a \u003ccode\u003eTaskList\u003c/code\u003e as done"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList the \u003ccode\u003eTaskList\u003c/code\u003e instance of the TaskList class for the user to obtain the Task in the TaskList specified by the user and set it as done"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList) throws NumberFormatException{"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String[] message \u003d this.fullCommand.split(\" \");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int number \u003d Integer.valueOf(message[1]);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        taskList.getList().get(number-1).markAsDone();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Ui.printDone(taskList.getList().get(number-1));"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 34
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ExitCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class ExitCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList){};"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 16
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ListCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " * A class that allows the user to list down the tasks they input into the \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Prints the list of tasks in the TaskList"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList the TaskList instance to list tasks from"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList){"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Ui.printList(taskList.getList());"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 26
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/SorryCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class SorryCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Prints an error if the user fails to input correctly"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList nil"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void execute(TaskList taskList){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Ui.printError();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether the the user exits the program"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if user exits the program"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/DukeDeadlineException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class DukeDeadlineException extends DukeException {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 5
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/DukeEventException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class DukeEventException extends DukeException {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 5
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/DukeException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 5
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/DukeTodoException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class DukeTodoException extends DukeException {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 7
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.command.*;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " * Allows the parsing of inputs provided by the user"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Parses the inputs provided by the user"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param fullCommand input by the user"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return returns a command instance to execute a command"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static Command parse(String fullCommand){"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(fullCommand.equals(\"bye\")){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            return new ExitCommand();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }else if (fullCommand.startsWith(\"done \")) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            return new DoneCommand(fullCommand);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        } else if (fullCommand.equals(\"list\")) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            return new ListCommand();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        } else if (fullCommand.startsWith(\"add\")) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            return new AddSubjectCommand(fullCommand);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }else if (fullCommand.startsWith(\"delete \")){"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            return new DeleteCommand(fullCommand);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }else{"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            return new SorryCommand();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 30
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/storage/Storage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Deadline;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Todo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.nio.file.Files;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private File file;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private String fileName;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public Storage(String fileName){"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.fileName \u003d fileName;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.file \u003d new File(fileName);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * gets the name of the file"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return the name of the file"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public String getFileName(){"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return this.fileName;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Tries to get the file to write on, if not create a new file"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList Writes contents of the file into a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void load(TaskList taskList) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            getFile(taskList);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }catch(FileNotFoundException e){"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            try{"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                createFile();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                Ui.fileNotFoundError();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }catch(IOException e1){"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                Ui.createFileError();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Reads the file contents and writes in onto a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param taskList"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @throws FileNotFoundException When there are no files found"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private void getFile(TaskList taskList) throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Scanner scan \u003d new Scanner(this.file);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        while(scan.hasNextLine()){"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            String content \u003d scan.nextLine();"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            String[] contents \u003d content.split(\"\\\\s\\\\|\\\\s\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            String legend \u003d contents[0].trim();"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            Boolean done \u003d (Integer.valueOf(contents[1].trim()) \u003d\u003d 1) ? true : false;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            String action \u003d contents[2].trim();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            String action2 \u003d \"\";"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            if(legend.equals(\"D\") || legend.equals(\"E\")){"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                action2 \u003d contents[3].trim();"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            if(legend.equals(\"T\")){"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                taskList.add(new Todo(action,done));"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }else if(legend.equals(\"D\")){"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                taskList.add(new Deadline(action,done,action2));"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }else if(legend.equals(\"E\")){"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                taskList.add(new Event(action,done,action2));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Creates a file"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @throws IOException When there is an error in creating a file"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private void createFile() throws IOException{"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Path path \u003d Paths.get(this.fileName);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        Files.createDirectory(path.getParent());"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 87
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/subject/Subject.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.subject;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Subject {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/subject/SubjectList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.subject;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class SubjectList {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/tasks/Deadline.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public Deadline(String description,boolean isDone, String by) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        super(description,isDone);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void printDeadline(TaskList taskList){"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Got it. I\u0027ve added this task:\\n  \" + this + \"\\n\" +"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Now you have \" + taskList.getList().size() + (taskList.getList().size() \u003d\u003d 1"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                ? \" task in the list.\\n\" : \" tasks in the list.\\n\") +"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/tasks/Event.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public Event(String description,boolean isDone, String at) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        super(description,isDone);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void printEvent(TaskList taskList){"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Got it. I\u0027ve added this task:\\n  \" + this + \"\\n\" +"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Now you have \" + taskList.getList().size() + (taskList.getList().size() \u003d\u003d 1"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                ? \" task in the list.\\n\" : \" tasks in the list.\\n\") +"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/tasks/Task.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public Task(String description, boolean isDone) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.isDone \u003d isDone;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Checks whether a task is done"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return true when a task is done"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public String getStatusIcon() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Marks the task as done"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void markAsDone(){"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Prints the String representation of the class"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return the String representation of the class"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public String toString(){"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return \"[\" + this.getStatusIcon() + \"] \" + this.description;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 36
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/tasks/TaskList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private List\u003cTask\u003e taskList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public TaskList(List\u003cTask\u003e taskList){"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.taskList \u003d taskList;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Adds a \u003ccode\u003eTask\u003c/code\u003e into a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param task The \u003ccode\u003eTask\u003c/code\u003e to add into a \u003ccode\u003eTaskList\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void add(Task task){"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        this.taskList.add(task);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Gets a \u003ccode\u003eArrayList\u003c/code\u003e of Tasks in a \u003ccode\u003eTaskList\u003c/code\u003e instance"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @return the \u003ccode\u003eArrayList\u003c/code\u003e of Tasks"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public List\u003cTask\u003e getList(){"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return this.taskList;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * Saves the Tasks in a \u003ccode\u003eTaskList\u003c/code\u003e into a \u003ccode\u003eFile\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @param filename of the \u003ccode\u003eFile\u003c/code\u003e to write to"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     * @throws IOException if there is an error writing to the file"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void saveTask(String filename) throws IOException {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        FileWriter fileWriter \u003d new FileWriter(filename);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        for(Task task : this.taskList){"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        fileWriter.close();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 46
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/tasks/Todo.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Todo extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public Todo(String description, boolean isDone) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        super(description,isDone);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public void printTodo(TaskList taskList){"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Got it. I\u0027ve added this task:\\n  \" + this + \"\\n\" +"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Now you have \" + taskList.getList().size() + (taskList.getList().size() \u003d\u003d 1"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                ? \" task in the list.\\n\" : \" tasks in the list.\\n\") +"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public String toString(){"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 21
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/ui/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "package seedu.duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import seedu.duke.tasks.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    private static Scanner scan \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static String readCommand(){"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        return scan.nextLine();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printStart(){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" Hello! I\u0027m Duke\\n\" +"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" What can I do for you?\\n\" +"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printList(List\u003cTask\u003e list){"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int num \u003d 1;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"Here are the task(s) in your list:\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        for(Task item : list){"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            System.out.println(num+\".\"+item);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            num++;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printDone(Task task){"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" Nice! I\u0027ve marked this task as done:\\n   \" +"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                task + \"\\n\" +"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printDelete(Task task, int total){"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" Noted. I\u0027ve removed this task:\\n   \" +"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                task + \"\\n\" +"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" Now you have \" + total + (total \u003d\u003d 1 ? \" task in the list.\\n\" : \" tasks in the list.\\n\") +"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printBye(){"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" Bye. Hope to see you again soon!\\n\" +"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printError(){"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" ☹ OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\\n\" +"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printTodoError(){"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" ☹ OOPS!!! The description of a todo cannot be empty.\\n\" +"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printDeadlineError(){"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" ☹ OOPS!!! The description of a deadline cannot be empty.\\n\" +"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printEventError(){"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" ☹ OOPS!!! The description of a event cannot be empty.\\n\" +"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printIndexError(){"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \" ☹ OOPS!!! Invalid index format entered\\n\" +"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                \"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printFind(TaskList taskList, String find){"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        int taskPresent \u003d 0;"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        for (Task task : taskList.getList()){"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            if(task.toString().contains(find)){"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                Ui.printMatch(taskPresent);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                System.out.println(task);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                taskPresent \u003d 1;"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(taskPresent \u003d\u003d 0){"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                    \" Sorry! I could not find any task with \" + find + \" in the list\");"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printMatch(int taskPresent){"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        if(taskPresent \u003d\u003d 0){"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "            System.out.println(\"____________________________________________________________\\n\" +"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "                    \" Here are the matching task(s) in your list:\");"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void fileNotFoundError(){"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"File not found. Creating file...\");"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void createFileError(){"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"Creating file failed.\");"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    public static void printWritingError(){"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "        System.out.println(\"Writing to file failed.\");"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "jialerk"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jialerk": 125
+    }
   }
 ]
