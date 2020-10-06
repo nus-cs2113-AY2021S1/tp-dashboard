@@ -1,5 +1,35 @@
 [
   {
+    "path": "data/data.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "kjwhen | hwlen | www.google.com"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " | wjkehn | www.google.com"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "wke | wee | www.yahoo.com"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 3
+    }
+  },
+  {
     "path": "docs/AboutUs.md",
     "fileType": "docs",
     "lines": [
@@ -104,121 +134,961 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "Speedweener"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import seedu.duke.bookmark.BookmarkList;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": ""
+        "content": "import seedu.duke.command.Command;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "Speedweener"
         },
-        "content": "public class Duke {"
+        "content": "import seedu.duke.exception.DukeException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Main entry-point for the java.duke.Duke application."
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "Speedweener"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "Speedweener"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "Speedweener"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": "    private BookmarkList bookmarks;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": "    private Ui ui;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": "    /**"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "     * Constructs a new Duke instance."
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+        "content": "     * Pass the filepath of the txt file to set up storage."
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "        System.out.println(\"What is your name?\");"
+        "content": "     *"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": ""
+        "content": "     * @param filePath The filepath of the txt file."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": "     */"
       },
       {
         "lineNumber": 19,
         "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public Duke(String filePath) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        storage \u003d new Storage(filePath);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            bookmarks \u003d new BookmarkList(storage.load());"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            ui.showLoadingError();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            bookmarks \u003d new BookmarkList();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //try {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //    load timetable here"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //    if use another text file to save timetable, then pass another filepath to Duke constructor"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //    and create another Storage object"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //} catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //}"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * This method is used run the Duke program."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        ui.showWelcomeScreen();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                String fullCommand \u003d ui.readCommand();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                c.execute(bookmarks, ui, storage);  // pass timetable here"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                ui.showErrorMessage(e);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
           "gitId": "-"
         },
-        "content": "        System.out.println(\"Hello \" + in.nextLine());"
+        "content": "            }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } while (!isExit);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Main entry-point for the java.duke.Duke application."
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param args Unused."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        new Duke(\"./data/data.txt\").run();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 23,
+      "Speedweener": 30,
+      "-": 12
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.command.DeleteBookmarkCommand;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.command.ListCommand;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.command.LaunchBookmarkCommand;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.command.AddBookmarkCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "import seedu.duke.command.ExitCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeExceptionType;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * This class deals with making sense of the user command."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Creates and returns the command based on user input."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param input full user input."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @return command."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @throws DukeException If input command is unknown."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static Command parse(String input) throws DukeException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        Command command \u003d createCommand(input);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        return command;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private static Command createCommand(String input) throws DukeException {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        Command command;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        if (input.compareToIgnoreCase(ExitCommand.BYE_KW) \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            command \u003d new ExitCommand();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } else if (input.compareToIgnoreCase(ListCommand.LIST_KW) \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            command \u003d new ListCommand();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } else if (input.startsWith(DeleteBookmarkCommand.DEL_KW)) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            command \u003d new DeleteBookmarkCommand(input);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } else if (input.startsWith(AddBookmarkCommand.ADD_KW)) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            command \u003d new AddBookmarkCommand(input);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } else if (input.startsWith(LaunchBookmarkCommand.LAUNCH_KW)) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            command \u003d new LaunchBookmarkCommand(input);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.UNKNOWN_INPUT);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        return command;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 34,
+      "Speedweener": 18
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Storage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeExceptionType;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.nio.file.Files;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * Deals with loading tasks from the file and saving tasks in the file."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public class Storage {"
       },
       {
         "lineNumber": 20,
@@ -230,86 +1100,5603 @@
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "Speedweener"
+          "gitId": "xingrong123"
         },
-        "content": "        int check \u003d 1;"
+        "content": "    private String filePath;"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "Speedweener"
+          "gitId": "xingrong123"
         },
-        "content": "        if (check\u003d\u003d1) {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "Speedweener"
+          "gitId": "xingrong123"
         },
-        "content": "           System.out.println(\"Testin for forking workflow\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "xingrong123"
         },
-        "content": "        if (1 \u003d\u003d 1)"
+        "content": "     * Constructs a new Storage instance by storing the given pathname of the file."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "xingrong123"
         },
-        "content": "        {"
+        "content": "     *"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "xingrong123"
         },
-        "content": "            System.out.println(\"true\");"
+        "content": "     * @param filePath The pathname of the file."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public Storage(String filePath) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        this.filePath \u003d filePath.replace(\u0027/\u0027, File.separatorChar);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Returns the tasks found within the file."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @return Tasks found in the file."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @throws DukeException If file is not found."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public ArrayList\u003cString\u003e load() throws DukeException {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        File f \u003d new File(filePath);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        ArrayList\u003cString\u003e data;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            data \u003d getData(f);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.ERROR_LOADING_FILE);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return data;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private ArrayList\u003cString\u003e getData(File f) throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        ArrayList\u003cString\u003e bookmarks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        ArrayList\u003cString\u003e tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        Scanner s \u003d new Scanner(f);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        while (s.hasNextLine()) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            bookmarks.add(s.nextLine());"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return bookmarks;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * This method creates the file if it does not exist and saves tasks data in the file."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param data The string of all the data to be saved in the file."
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @throws DukeException If there is an error writing to the file."
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public void save(String data) throws DukeException {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            createDirectory();"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            writeToFile(data);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.WRITE_FILE_ERROR);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    private void createDirectory() throws IOException {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        String dirPath \u003d getDirectory(filePath);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        Path path \u003d Paths.get(dirPath);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        Files.createDirectories(path);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    private String getDirectory(String path) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        String dirPath;"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        if (path.contains(File.separator)) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            dirPath \u003d path.substring(0, path.lastIndexOf(File.separator));"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            dirPath \u003d path;"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        return dirPath;"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    private void writeToFile(String textToAdd) throws IOException {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(filePath);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        fw.write(textToAdd);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 75,
+      "Speedweener": 21
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * Represents the user interface on the command line and deals with interactions with the user."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    private static final String LINE \u003d \"____________________________________________________________\\n\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    private Scanner scanner;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Constructs a new Ui instance."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public Ui() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        scanner \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Returns a string of the user input in the command line."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @return the string of user input."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public String readCommand() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Speedweener"
         },
-        "content": "        }"
+        "content": "        System.out.print(\"Input: \");"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "    }"
+        "content": "        return scanner.nextLine().trim();"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "xingrong123"
         },
-        "content": "}"
+        "content": "    }"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "jusufnathanael"
+          "gitId": "xingrong123"
         },
         "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "jusufnathanael"
+          "gitId": "xingrong123"
         },
-        "content": "// jusufn"
+        "content": "    private void print(String message) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        System.out.println(LINE"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                + message"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                + LINE);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void printPublic(String message) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        System.out.println(LINE"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                + message"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                + LINE);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Prints a message after starting the program."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public void showWelcomeScreen() {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d \"Hello from\\n\" + logo;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        print(message);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Prints a message before exiting the program."
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public void showExitScreen() {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d \"Bye. Hope to see you again soon!\\n\";"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        print(message);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Prints the error message if data file is not found."
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public void showLoadingError() {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d \"Data file not found\\n\";"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        print(message);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * This method detects the type of dukeException error and prints the corresponding error message."
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param dukeException The dukeException error."
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public void showErrorMessage(DukeException dukeException) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        switch (dukeException.getError()) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case FULL_TASK_LIST:"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //printFullTaskListMessage();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case UNKNOWN_INPUT:"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            printUnknownInputMessage();"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case INVALID_TASK_NUMBER:"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //printUseValidTaskNumberMessage();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case WRITE_FILE_ERROR:"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //printErrorWritingToFile();"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case EMPTY_DESCRIPTION:"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //printEmptyTaskDescriptionMessage(dukeException.getTaskType());"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case INVALID_TASK_FORMAT:"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //printEnterValidTaskFormatMessage(dukeException.getTaskType());"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        case INVALID_DATE_TIME:"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //printInvalidDateTime();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            // unable to get dukeExceptionType"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private void printUnknownInputMessage() {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        print(\"Unknown input\\n\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
       }
     ],
     "authorContributionMap": {
-      "xingrong123": 4,
-      "jusufnathanael": 2,
-      "Speedweener": 4,
-      "-": 21
+      "xingrong123": 83,
+      "Speedweener": 25
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/bookmark/Bookmark.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.bookmark;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.command.AddBookmarkCommand;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeExceptionType;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.lang.reflect.Array;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " * This class represents a bookmark of a URL of a webpage."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " * It stores the URL and a description of the webpage."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " * It also contains a method which can extract the URL and description from a given string in a certain format."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "public class Bookmark {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private String module;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private String description;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private String url;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private final String SEPARATOR \u003d \" | \";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Constructs a bookmark object containing a URL and description of the webpage."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param url The URL of the webpage."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param description The description of the webpage."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public Bookmark(String module, String description, String url) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        this.module \u003d module.trim();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        this.description \u003d description.trim();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        this.url \u003d url.trim();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Constructs a bookmark object containing a URL."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param url The URL of the webpage."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public Bookmark(String url) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        this.url \u003d url.trim();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the URL and description that can be detected from the given input."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param input the string input by the user."
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return a list of strings containing the URL and the description"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//    public static List\u003cString\u003e extractDescriptionAndURL(String input) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//        List\u003cString\u003e urlAndDescription \u003d Arrays.asList(input.split(\" \", 2));"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//        if (urlAndDescription.size() !\u003d 2) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//            throw new DukeException(DukeExceptionType.INVALID_URL_AND_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//        return urlAndDescription;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the topic, URL and description that can be detected from the given input."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param input the string input by the user."
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return a list of strings containing the topic, URL and the description"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static List\u003cString\u003e extractModuleDescriptionAndURL (String input) throws DukeException {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        input \u003d input.substring(AddBookmarkCommand.ADD_KW.length()).trim();"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        System.out.println(input);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        List\u003cString\u003e moduleDescriptionURL \u003d new ArrayList\u003cString\u003e(Arrays.asList(input.split(\" \", 3)));"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (moduleDescriptionURL.size() \u003d\u003d 2) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            moduleDescriptionURL.add(0, \"\");  // No entry for module"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (moduleDescriptionURL.size() !\u003d 3) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.INVALID_URL_AND_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (moduleDescriptionURL.get(1).isBlank() || moduleDescriptionURL.get(2).isBlank()) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "           throw new DukeException(DukeExceptionType.EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (!isURLValid(moduleDescriptionURL.get(2))) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.INVALID_URL_AND_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return moduleDescriptionURL;"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private static Boolean isURLValid(String url) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (url.startsWith(\"www.\") || url.startsWith(\"https://\")) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * This method opens a web browser and open the URL of the bookmark."
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void launch() {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        Runtime rt \u003d Runtime.getRuntime();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            rt.exec(\"rundll32 url.dll,FileProtocolHandler \" + url);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            System.out.println(\"jippai jialat liao\");"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the URL of the bookmark."
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return a string of the URL."
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String getUrl() {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return url;"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the description of the bookmark."
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return a string of the description of the bookmark."
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return description;"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String getModule() {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return module;"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String getBookmarkAsString() {"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return  (\"[\" + module + \"] \" + description + \" \" +  url + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String getExport() {"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return module + SEPARATOR + description + SEPARATOR + url;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static Bookmark initBookmark(String data) throws DukeException {"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        List\u003cString\u003e details \u003d  Arrays.asList(data.split(\"\\\\|\"));"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String module \u003d details.get(0).trim();"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String description \u003d details.get(1).trim();"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String url \u003d details.get(2).trim();"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        Bookmark bookmark \u003d new Bookmark(module, description, url);"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return bookmark;"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 147
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/bookmark/BookmarkList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.bookmark;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "public class BookmarkList {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private ArrayList\u003cBookmark\u003e bookmarks;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public BookmarkList() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        this.bookmarks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public BookmarkList(ArrayList\u003cString\u003e bookmarkString) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        this.bookmarks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        loadBookmarkList(bookmarkString);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private void loadBookmarkList(ArrayList\u003cString\u003e bookmarks) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        for (String line : bookmarks) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            loadBookmarks(line);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void addBookmark(Bookmark bookmark)  {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        bookmarks.add(bookmark);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private void loadBookmarks(String line) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            bookmarks.add(Bookmark.initBookmark(line));"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (IndexOutOfBoundsException | DukeException e) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            // Invalid task data, skips to the next entry"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * This method marks a task in the list as done."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param index The index of the task in the list to be marked as done."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//    public void markTaskDone(int index) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//        Task task \u003d taskList.get(index);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//        task.markDone();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "//    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the the data of all of the tasks in the list to be saved in the file."
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return the data of all the tasks."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String getData() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        StringBuilder data \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        for (Bookmark bookmark : bookmarks) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            data.append(bookmark.getExport()).append(System.lineSeparator());"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return data.toString().trim();"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the number of tasks in the list"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return the size of the taskList."
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public int getSize() {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return bookmarks.size();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns task based on the index."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param index The index of the task in the list."
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return Task The task with the corresponding index in the list."
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public Bookmark getBookmark(int index) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return bookmarks.get(index);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Returns the taskList."
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @return The taskList."
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public ArrayList\u003cBookmark\u003e getBookmarkList() {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return bookmarks;"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * This method deletes the task from the list."
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param bookmark The bookmark to be deleted."
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void deleteBookmark(Bookmark bookmark) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        bookmarks.remove(bookmark);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 100
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/AddBookmarkCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.Bookmark;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.BookmarkList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " * Represents the user command exit the Duke program."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "public class AddBookmarkCommand extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static final String ADD_KW \u003d \"add\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String module;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String description;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public String url;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Constructs a new ExitCommand instance and sets isExitCommand to true."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public AddBookmarkCommand(String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        List\u003cString\u003e descAndAt \u003d Bookmark.extractModuleDescriptionAndURL(command);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        module \u003d descAndAt.get(0);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        description \u003d descAndAt.get(1);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        url \u003d descAndAt.get(2);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        //Commit"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Prints the exit screen before the program exits."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param bookmarks The list of bookmarks."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param ui The user interface."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param storage The storage for saving and loading."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void execute(BookmarkList bookmarks, Ui ui, Storage storage) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        Bookmark bookmark \u003d new Bookmark(module, description, url);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        bookmarks.addBookmark(bookmark);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        ui.printPublic(\"Added bookmark: \" + \"[\" + module + \"] \""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                + description + \" \" +  url + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            storage.save(bookmarks.getData());"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 52
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/Command.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.BookmarkList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    protected boolean isExitCommand \u003d false;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Execution of command depends on which command subclass the command belongs to."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public abstract void execute(BookmarkList bookmarks, Ui ui, Storage storage) throws DukeException;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Returns true if the command is an ExitCommand."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        return isExitCommand;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 20,
+      "Speedweener": 3
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/DeleteBookmarkCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.Bookmark;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.BookmarkList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeExceptionType;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "public class DeleteBookmarkCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static final String DEL_KW \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Constructs a new ExitCommand instance and sets isExitCommand to true."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public DeleteBookmarkCommand(String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String details \u003d command.substring(DEL_KW.length());"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (!details.startsWith(\" \")) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.UNKNOWN_INPUT);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            index \u003d Integer.parseInt(details.trim()) - 1;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (NullPointerException | NumberFormatException | IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.INVALID_TASK_NUMBER);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Prints the exit screen before the program exits."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param bookmarks The list of bookmarks."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param ui The user interface."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param storage The storage for saving and loading."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void execute(BookmarkList bookmarks, Ui ui, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            Bookmark bookmark \u003d bookmarks.getBookmark(index);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            bookmarks.deleteBookmark(bookmarks.getBookmark(index));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            ui.printPublic(getMessage(bookmark));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //storage.save(taskList.getData());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.INVALID_TASK_NUMBER);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private String getMessage(Bookmark bookmark) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d \"\\tNI\u0027ve deleted this bookmark!:\\n\""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                + \"\\t  [\" + bookmark.getModule() + \"] \" + bookmark.getDescription() + \" \" + bookmark.getUrl() + \"\\n\";"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return message;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 56
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ExitCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.BookmarkList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * Represents the user command exit the Duke program."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public class ExitCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public static final String BYE_KW \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Constructs a new ExitCommand instance and sets isExitCommand to true."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public ExitCommand() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        isExitCommand \u003d true;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Prints the exit screen before the program exits."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param bookmarks The list of bookmarks."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param ui The user interface."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param storage The storage for saving and loading."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void execute(BookmarkList bookmarks, Ui ui, Storage storage) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        ui.showExitScreen();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 25,
+      "Speedweener": 6
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/LaunchBookmarkCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.Bookmark;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.BookmarkList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeExceptionType;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "public class LaunchBookmarkCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static final String LAUNCH_KW \u003d \"launch\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Constructs a new ExitCommand instance and sets isExitCommand to true."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public LaunchBookmarkCommand(String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String details \u003d command.substring(LAUNCH_KW.length());"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        if (!details.startsWith(\" \")) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.UNKNOWN_INPUT);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            index \u003d Integer.parseInt(details.trim()) - 1;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (NullPointerException | NumberFormatException | IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.INVALID_TASK_NUMBER);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Prints the exit screen before the program exits."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param bookmarks The list of bookmarks."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param ui The user interface."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param storage The storage for saving and loading."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void execute(BookmarkList bookmarks, Ui ui, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            Bookmark bookmark \u003d bookmarks.getBookmark(index);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            bookmark.launch();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            ui.printPublic(getMessage(bookmark));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            //storage.save(taskList.getData());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            throw new DukeException(DukeExceptionType.INVALID_TASK_NUMBER);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private String getMessage(Bookmark bookmark) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d \"\\tNice! I\u0027ve launched this bookmark!:\\n\""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "                + \"\\t  [\" + bookmark.getModule() + \"] \" + bookmark.getDescription() + \" \" + bookmark.getUrl() + \"\\n\";"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return message;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 56
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ListCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.Bookmark;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.BookmarkList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "public class ListCommand extends Command{"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public static final String LIST_KW \u003d \"list\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Constructs a new ListCommand instance."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public ListCommand() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * Prints all the details of the tasks in the list."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param taskList The list of tasks."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param ui The user interface."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     * @param storage The storage for saving and loading."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    private String getMessage(BookmarkList bookmarks) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d \"\\tHere are the bookmarks in your list:\\n\";"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        for (int i \u003d 0; i \u003c bookmarks.getSize(); i++) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "            message \u003d message + \"\\t\" + (i + 1) + \".\" + bookmarks.getBookmark(i).getBookmarkAsString() + \"\\n\";"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        return message;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    public void execute(BookmarkList bookmarks, Ui ui, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String message \u003d getMessage(bookmarks);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        ui.printPublic(message);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 40
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/DukeException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * The class DukeException is a subclass of Exception."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * It is thrown when an error specific to Duke occurs."
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    private DukeExceptionType dukeExceptionType;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Constructs a new DukeException instance by storing the given DukeExceptionType."
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @param dukeExceptionType The type of dukeException."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public DukeException(DukeExceptionType dukeExceptionType) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        this.dukeExceptionType \u003d dukeExceptionType;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * Returns the dukeExceptionType of the dukeException."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     * @return the dukeExceptionType."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    public DukeExceptionType getError() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        return dukeExceptionType;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 28
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/DukeExceptionType.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " * Enumeration of all the types of DukeException."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "public enum DukeExceptionType {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    EMPTY_DESCRIPTION,"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    INVALID_TASK_FORMAT,"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    FULL_TASK_LIST,"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    UNKNOWN_INPUT,"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    INVALID_TASK_NUMBER,"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    WRITE_FILE_ERROR,"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "    ERROR_LOADING_FILE,"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    INVALID_DATE_TIME,"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    INVALID_URL_AND_DESCRIPTION,"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 14,
+      "Speedweener": 2
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/BookmarkTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import seedu.duke.bookmark.Bookmark;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "class BookmarkTest {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    void extractUrlAndDescription_descriptionWithWhiteSpace_returnsUrlAndDescription() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String input \u003d \"www.google.com google website\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        List\u003cString\u003e expectedUrlAndDescription \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        expectedUrlAndDescription.add(\"www.google.com\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        expectedUrlAndDescription.add(\"google website\");"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "\u003c\u003c\u003c\u003c\u003c\u003c\u003c HEAD"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        assertEquals(expectedUrlAndDescription, Bookmark.extractDescriptionAndURL(input));"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xingrong123"
+        },
+        "content": "        assertEquals(expectedUrlAndDescription, Bookmark.extractUrlAndDescription(input));"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "\u003e\u003e\u003e\u003e\u003e\u003e\u003e cbd4a4f89a0ceb58555b7bcbf0972be73f810bdb"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    void launch_notImplemented() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        // not yet implemented"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        assertEquals(\"test\", \"test\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    void getUrl_validUrlAndDescription_returnsUrl() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String url \u003d \"asdf.com\";"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String description \u003d \"something\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        Bookmark bookmark \u003d new Bookmark(url, description);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        assertEquals(url, bookmark.getUrl());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    void getDescription_validUrlAndDescription_returnsUrl() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String url \u003d \"asdf.com\";"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        String description \u003d \"something\";"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        Bookmark bookmark \u003d new Bookmark(url, description);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "        assertEquals(description, bookmark.getDescription());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xingrong123": 1,
+      "Speedweener": 46
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "hello"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Speedweener"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "Speedweener": 2
     }
   }
 ]

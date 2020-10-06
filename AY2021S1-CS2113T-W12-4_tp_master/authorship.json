@@ -75,5 +75,856 @@
       "-": 4,
       "elizabethcwt": 1
     }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/CommandParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": " * Represents the process of extracting out the commands, parameters and executing them."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "public class CommandParser {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_BYE \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_LIST \u003d \"list\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_ADD_TEST \u003d \"add test\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_ADD_CLASS \u003d \"add class\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_ADD_CCA \u003d \"add cca\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_DELETE \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final String COMMAND_WORD_HELP \u003d \"help\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final int INDEX_AFTER_ADD_CLASS \u003d 10;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final int INDEX_AFTER_ADD_CCA \u003d 8;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final int INDEX_AFTER_ADD_TEST \u003d 9;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static final int INDEX_AFTER_DELETE \u003d 7;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final String userInput;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private CommandType commandType;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private String parameters;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public CommandParser(String userInput) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        this.userInput \u003d userInput;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        commandType \u003d null;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        parameters \u003d null;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public CommandType parseCommand() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            extractCommand();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            extractParameters();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            executeCommand();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            System.out.println(\"Invalid parameters\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return commandType;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    // Todo: connect with the event manager."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private void executeCommand() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        switch (commandType) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case LIST:"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_CLASS:"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_CCA:"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_TEST:"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case DELETE:"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case BYE:"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case HELP:"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            System.out.println(\"No command ran :(\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * Sets the commandType enum for the command based of the string input provided by user."
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private void extractCommand() {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        if (userInput.contentEquals(COMMAND_WORD_BYE)) {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.BYE;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_WORD_LIST)) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.LIST;"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_WORD_ADD_TEST)) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.ADD_TEST;"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_WORD_ADD_CLASS)) {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.ADD_CLASS;"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_WORD_ADD_CCA)) {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.ADD_CCA;"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (userInput.startsWith(COMMAND_WORD_DELETE)) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.DELETE;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (userInput.contentEquals(COMMAND_WORD_HELP)) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.HELP;"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            System.out.println(\"Invalid Command\");"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * Sets the parameters by discarding the command text in the user input."
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * @throws IndexOutOfBoundsException If there are no more string after the command text."
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private void extractParameters() throws IndexOutOfBoundsException {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        switch (commandType) {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_CLASS:"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            parameters \u003d userInput.substring(INDEX_AFTER_ADD_CLASS);"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_CCA:"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            parameters \u003d userInput.substring(INDEX_AFTER_ADD_CCA);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_TEST:"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            parameters \u003d userInput.substring(INDEX_AFTER_ADD_TEST);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case DELETE:"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            parameters \u003d userInput.substring(INDEX_AFTER_DELETE);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case LIST:"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            // List does not take any parameters"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case HELP:"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            // Help does not take any parameters"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case BYE:"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            // Bye does not take any parameters"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            parameters \u003d null;"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AndreWongZH": 114
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/CommandType.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "public enum CommandType {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    ADD_CLASS, ADD_CCA, ADD_TEST, DELETE, LIST, HELP, BYE"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AndreWongZH": 5
+    }
   }
 ]
