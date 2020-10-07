@@ -877,77 +877,77 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "import seedu.duke.data.notebook.Note;"
+        "content": "import seedu.duke.data.exception.SystemException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.data.timetable.Event;"
+        "content": "import seedu.duke.data.notebook.Note;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "import seedu.duke.data.timetable.Event;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": " * Adds a Note into the Notebook or an Event into the Timetable."
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Nazryl"
         },
-        "content": "public class AddCommand extends Command {"
+        "content": "import static java.util.stream.Collectors.toList;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_TITLE;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public static final String COMMAND_WORD_NOTE \u003d \"add-n\";"
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_TAG;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public static final String COMMAND_WORD_EVENT \u003d \"add-e\";"
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_PIN;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
         "content": ""
       },
@@ -956,213 +956,402 @@
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private Note note;"
+        "content": "/**"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private Event event;"
+        "content": " * Adds a Note into the Notebook or an Event into the Timetable."
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private boolean isAddNote;"
+        "content": " */"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "public class AddCommand extends Command {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Constructs an AddCommand to add a Note into the Notebook."
+        "content": "    public static final String COMMAND_WORD_NOTE \u003d \"add-n\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     *"
+        "content": "    public static final String COMMAND_WORD_EVENT \u003d \"add-e\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param note to be added."
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "     */"
+        "content": "    public static final String MESSAGE_USAGE_NOTE \u003d COMMAND_WORD_NOTE + \": Adds a note to notebook. \""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public AddCommand(Note note) {"
+        "content": "            + \"Parameters: \""
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        this.note \u003d note;"
+        "content": "            + \"/\" + PREFIX_TITLE + \" TITLE\" + \" \""
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        this.event \u003d null;"
+        "content": "            + \"/\" + PREFIX_TAG + \" TAGS\" + \" \""
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        this.isAddNote \u003d true;"
+        "content": "            + \"/\" + PREFIX_PIN + \" PIN\";"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "    private Note note;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": "    private Event event;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Constructs an AddCommand to add an Event into the Timetable."
+        "content": "    private boolean isAddNote;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param event to be added."
+        "content": "    /**"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     */"
+        "content": "     * Constructs an AddCommand to add a Note into the Notebook."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public AddCommand(Event event) {"
+        "content": "     *"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        this.note \u003d null;"
+        "content": "     * @param note to be added."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        this.event  \u003d event;"
+        "content": "     */"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        this.isAddNote \u003d false;"
+        "content": "    public AddCommand(Note note) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "        this.note \u003d note;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "        this.event \u003d null;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    @Override"
+        "content": "        this.isAddNote \u003d true;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public String execute() {"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        return null;"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "     * Constructs an AddCommand to add an Event into the Timetable."
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "     * @param event to be added."
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    public AddCommand(Event event) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        this.note \u003d null;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        this.event \u003d event;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        this.isAddNote \u003d false;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    public String execute() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            ArrayList\u003cNote\u003e filteredTaskList \u003d (ArrayList\u003cNote\u003e) notebook.getNotes().stream()"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    .filter((s) -\u003e s.getTitle().equals(note.getTitle()))"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    .collect(toList());"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            if (!filteredTaskList.isEmpty()) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                throw new SystemException(SystemException.ExceptionType.EXCEPTION_DUPLICATE_NOTE);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            notebook.addNote(note);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return \"New note added: \" + note.getTitle();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } catch (SystemException exception) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return exception.getMessage();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
         "author": {
           "gitId": "Nazryl"
         },
@@ -1170,8 +1359,8 @@
       }
     ],
     "authorContributionMap": {
-      "Chongjx": 40,
-      "Nazryl": 4
+      "Chongjx": 38,
+      "Nazryl": 33
     }
   },
   {
@@ -1457,187 +1646,313 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "/**"
+        "content": "import seedu.duke.data.exception.SystemException;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": " * Deletes a Note from the Notebook or an Event from the Timetable."
+        "content": "import seedu.duke.data.notebook.Note;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Nazryl"
         },
-        "content": "public class DeleteCommand extends Command {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
         "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public static final String COMMAND_WORD_NOTE \u003d \"delete-n\";"
+        "content": "import static java.util.stream.Collectors.toList;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public static final String COMMAND_WORD_EVENT \u003d \"delete-e\";"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private int index;"
+        "content": " * Deletes a Note from the Notebook or an Event from the Timetable."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private boolean isDeleteNote;"
+        "content": " */"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "public class DeleteCommand extends Command {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Constructs a DeleteCommand to delete a Note or an Event."
+        "content": "    public static final String COMMAND_WORD_NOTE \u003d \"delete-n\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     *"
+        "content": "    public static final String COMMAND_WORD_EVENT \u003d \"delete-e\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param index of the item to be deleted."
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param isDeleteNote determines to delete a Note or an Event."
+        "content": "    private int index;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     */"
+        "content": "    private boolean isDeleteNote;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public DeleteCommand(int index, boolean isDeleteNote) {"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        this.index \u003d index;"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        this.isDeleteNote \u003d isDeleteNote;"
+        "content": "     * Constructs a DeleteCommand to delete a Note or an Event."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "     * @param index        of the item to be deleted."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    @Override"
+        "content": "     * @param isDeleteNote determines to delete a Note or an Event."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public String execute() {"
+        "content": "     */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        return null;"
+        "content": "    public DeleteCommand(int index, boolean isDeleteNote) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "        this.index \u003d index;"
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        this.isDeleteNote \u003d isDeleteNote;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    public String execute() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        if (isDeleteNote) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                String title \u003d notebook.getNotes().get(index - 1).getTitle();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                notebook.deleteNote(index - 1);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                return \"Note deleted: \" + title;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            } catch (IndexOutOfBoundsException | SystemException exception) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                return \"This note does not exists in the notebook\";"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return \"Event deleted\";"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "Nazryl"
         },
@@ -1645,8 +1960,8 @@
       }
     ],
     "authorContributionMap": {
-      "Chongjx": 25,
-      "Nazryl": 4
+      "Chongjx": 24,
+      "Nazryl": 23
     }
   },
   {
@@ -2443,6 +2758,148 @@
     "authorContributionMap": {
       "Chongjx": 13,
       "Nazryl": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/IncorrectCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": " * Represents an incorrect command. Upon execution, produces a message."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "public class IncorrectCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public final String message;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public IncorrectCommand(String message) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        this.message \u003d message;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public String execute() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return message;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Nazryl": 19
     }
   },
   {
@@ -4266,201 +4723,215 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        EXCEPTION_MISSING_DESCRIPTION(\"Missing description\");"
+        "content": "        EXCEPTION_MISSING_DESCRIPTION(\"Missing description\"),"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "        EXCEPTION_DUPLICATE_NOTE(\"This note already exists in the notebook\"),"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        /** The exception message. */"
+        "content": "        EXCEPTION_MISSING_NOTE(\"This note does not exists in the notebook\");"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        private final String exceptionMessage;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "        /** The exception message. */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        /**"
+        "content": "        private final String exceptionMessage;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         * Constructor of an ExceptionType."
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         *"
+        "content": "        /**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         * @param exceptionMessage The exception message."
+        "content": "         * Constructor of an ExceptionType."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         */"
+        "content": "         *"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        ExceptionType(String exceptionMessage) {"
+        "content": "         * @param exceptionMessage The exception message."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            this.exceptionMessage \u003d exceptionMessage;"
+        "content": "         */"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        }"
+        "content": "        ExceptionType(String exceptionMessage) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "            this.exceptionMessage \u003d exceptionMessage;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        /**"
+        "content": "        }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         * Overrides the parent toString method."
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         *"
+        "content": "        /**"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         * @return The exception message."
+        "content": "         * Overrides the parent toString method."
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "         */"
+        "content": "         *"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        @Override"
+        "content": "         * @return The exception message."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        public String toString() {"
+        "content": "         */"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            return exceptionMessage;"
+        "content": "        @Override"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        }"
+        "content": "        public String toString() {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "            return exceptionMessage;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public SystemException(ExceptionType exceptionType) {"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        super(exceptionType.toString());"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "    public SystemException(ExceptionType exceptionType) {"
       },
       {
         "lineNumber": 37,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        super(exceptionType.toString());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
         "author": {
           "gitId": "Nazryl"
         },
@@ -4468,8 +4939,8 @@
       }
     ],
     "authorContributionMap": {
-      "Chongjx": 33,
-      "Nazryl": 4
+      "Chongjx": 32,
+      "Nazryl": 7
     }
   },
   {
@@ -4556,9 +5027,9 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    private ArrayList\u003cTag\u003e tags;"
+        "content": "    private ArrayList\u003cTag\u003e tagArrayList;"
       },
       {
         "lineNumber": 13,
@@ -4647,9 +5118,9 @@
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        tags \u003d null;"
+        "content": "        tagArrayList \u003d null;"
       },
       {
         "lineNumber": 26,
@@ -4738,14 +5209,14 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        this.tags \u003d tags;"
+        "content": "        this.tagArrayList \u003d tags;"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
         "content": "    }"
       },
@@ -4754,12 +5225,124 @@
         "author": {
           "gitId": "Nazryl"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public String getTitle() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return title;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public String getContent() {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return content;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public String getPinned() {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return (isPinned ? \"Y\" : \"N\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public ArrayList\u003cTag\u003e getTags() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return this.tagArrayList;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Nazryl"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "Chongjx": 36,
-      "Nazryl": 4
+      "Chongjx": 33,
+      "Nazryl": 23
     }
   },
   {
@@ -4783,14 +5366,14 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import seedu.duke.data.exception.SystemException;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
         "content": ""
       },
@@ -4799,42 +5382,42 @@
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "/**"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": " * Represents a Notebook object. Contains all the notes."
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "Nazryl"
+          "gitId": "Chongjx"
         },
-        "content": "public class Notebook {"
+        "content": " * Represents a Notebook object. Contains all the notes."
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    private final ArrayList\u003cNote\u003e notes;"
+        "content": "public class Notebook {"
       },
       {
         "lineNumber": 11,
@@ -4848,234 +5431,276 @@
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": "    private final ArrayList\u003cNote\u003e notes;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Creates a new list of notes."
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public Notebook() {"
+        "content": "     * Creates a new list of notes."
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        notes \u003d new ArrayList\u003c\u003e();"
+        "content": "     */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "    public Notebook() {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "        notes \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Creates a list of notes from existing data."
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param notes of existing data."
+        "content": "     * Creates a list of notes from existing data."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    public Notebook(ArrayList\u003cNote\u003e notes) {"
+        "content": "     * @param notes of existing data."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        this.notes \u003d notes;"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "    public Notebook(ArrayList\u003cNote\u003e notes) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "        this.notes \u003d notes;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Adds a note into the notebook."
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param note to be added."
+        "content": "     * Adds a note into the notebook."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public void addNote(Note note) {"
+        "content": "     * @throws SystemException if an error occurs."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    }"
+        "content": "    public void addNote(Note note) throws SystemException {"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "        notes.add(note);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * Removes a note from the timetable."
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     * @param note to be removed."
+        "content": "     * Removes a note from the timetable."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "    public void deleteNote(Note note) {"
+        "content": "     * @throws SystemException if an error occurs."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public void deleteNote(int note) throws SystemException {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        notes.remove(note);"
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public ArrayList\u003cNote\u003e getNotes() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return this.notes;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
         "author": {
           "gitId": "Nazryl"
         },
@@ -5083,8 +5708,8 @@
       }
     ],
     "authorContributionMap": {
-      "Chongjx": 41,
-      "Nazryl": 4
+      "Chongjx": 35,
+      "Nazryl": 16
     }
   },
   {
@@ -6784,77 +7409,77 @@
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.HelpCommand;"
+        "content": "import seedu.duke.command.AddCommand;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.AddCommand;"
+        "content": "import seedu.duke.command.ListNoteCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.ListNoteCommand;"
+        "content": "import seedu.duke.command.ListEventCommand;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.ListEventCommand;"
+        "content": "import seedu.duke.command.ViewNoteCommand;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.ViewNoteCommand;"
+        "content": "import seedu.duke.command.EditCommand;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.EditCommand;"
+        "content": "import seedu.duke.command.DeleteCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.DeleteCommand;"
+        "content": "import seedu.duke.command.FindCommand;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.FindCommand;"
+        "content": "import seedu.duke.command.PinCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.PinCommand;"
+        "content": "import seedu.duke.command.TagCommand;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.command.TagCommand;"
+        "content": "import seedu.duke.command.RemindCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "import seedu.duke.command.RemindCommand;"
+        "content": "import seedu.duke.command.HelpCommand;"
       },
       {
         "lineNumber": 15,
@@ -6866,135 +7491,135 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "import seedu.duke.command.IncorrectCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "import seedu.duke.data.notebook.Note;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "import seedu.duke.data.timetable.Timetable;"
+        "content": "import seedu.duke.data.exception.SystemException;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "import seedu.duke.data.notebook.Note;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "/**"
+        "content": "import seedu.duke.data.notebook.Tag;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": " * Parses user input."
+        "content": "import seedu.duke.data.timetable.Timetable;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Nazryl"
         },
-        "content": "public class Parser {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": ""
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "    public Command parseCommand(String userInput) {"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "        String[] userCommandAndArguments \u003d userInput.split(\" \", 2);"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "        String commandString \u003d userCommandAndArguments[0];"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "        String userMessage;"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
         "content": ""
       },
       {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_TITLE;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_TAG;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_PIN;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "import static seedu.duke.util.PrefixSyntax.PREFIX_INDEX;"
+      },
+      {
         "lineNumber": 30,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        try {"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            userMessage \u003d userCommandAndArguments[1];"
+        "content": "/**"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        } catch (ArrayIndexOutOfBoundsException exception) {"
+        "content": " * Parses user input."
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            userMessage \u003d null;"
+        "content": " */"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        }"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 35,
@@ -7008,334 +7633,334 @@
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        switch  (commandString.toLowerCase()) {"
+        "content": "    public Command parseCommand(String userInput) {"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "        case AddCommand.COMMAND_WORD_NOTE:"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareAddNote(userMessage);"
+        "content": "        String[] userCommandAndArguments \u003d userInput.split(\" \", 2);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case AddCommand.COMMAND_WORD_EVENT:"
+        "content": "        String commandString \u003d userCommandAndArguments[0];"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareAddEvent(userMessage);"
+        "content": "        String userMessage;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case ListNoteCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareListNote(userMessage);"
+        "content": "        try {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case ListEventCommand.COMMAND_WORD_:"
+        "content": "            userMessage \u003d userCommandAndArguments[1];"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareListEvent(userMessage);"
+        "content": "        } catch (ArrayIndexOutOfBoundsException exception) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case ViewNoteCommand.COMMAND_WORD:"
+        "content": "            userMessage \u003d null;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareViewNote(userMessage);"
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case EditCommand.COMMAND_WORD_NOTE:"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareEditNote(userMessage);"
+        "content": "        switch (commandString.toLowerCase()) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case EditCommand.COMMAND_WORD_EVENT:"
+        "content": "        case AddCommand.COMMAND_WORD_NOTE:"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "            // return prepareEditEvent(userMessage);"
+        "content": "            return prepareAddNote(userMessage);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD_NOTE:"
+        "content": "        case AddCommand.COMMAND_WORD_EVENT:"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareDeleteNote(userMessage);"
+        "content": "            // return prepareAddEvent(userMessage);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD_EVENT:"
+        "content": "        case ListNoteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareDeleteEvent(userMessage);"
+        "content": "            // return prepareListNote(userMessage);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case FindCommand.COMMAND_WORD:"
+        "content": "        case ListEventCommand.COMMAND_WORD_:"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareFind(userMessage);"
+        "content": "            // return prepareListEvent(userMessage);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case PinCommand.COMMAND_WORD:"
+        "content": "        case ViewNoteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return preparePin(userMessage);"
+        "content": "            // return prepareViewNote(userMessage);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case TagCommand.COMMAND_WORD:"
+        "content": "        case EditCommand.COMMAND_WORD_NOTE:"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareTag(userMessage);"
+        "content": "            // return prepareEditNote(userMessage);"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case RemindCommand.COMMAND_WORD:"
+        "content": "        case EditCommand.COMMAND_WORD_EVENT:"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            // return prepareRemind(userMessage);"
+        "content": "            // return prepareEditEvent(userMessage);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": "        case DeleteCommand.COMMAND_WORD_NOTE:"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
-        "content": "            return new ExitCommand();"
+        "content": "            return prepareDeleteNote(userMessage);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": "        case DeleteCommand.COMMAND_WORD_EVENT:"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        default:"
+        "content": "            // return prepareDeleteEvent(userMessage);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        case FindCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        }"
+        "content": "            // return prepareFind(userMessage);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "        case PinCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "            // return preparePin(userMessage);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    /*"
+        "content": "        case TagCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private Command prepareAddNote(String userMessage) {"
+        "content": "            // return prepareTag(userMessage);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        return new AddCommand(note);"
+        "content": "        case RemindCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "            // return prepareRemind(userMessage);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private Command prepareAddEvent(String userMessage) {"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        return new AddCommand(event);"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": "        default:"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": ""
+        "content": "            return new HelpCommand();"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private Command prepareListNote(String userMessage) {"
+        "content": "        }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "        return new ListNoteCommand();"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "Chongjx"
+          "gitId": "Nazryl"
         },
         "content": ""
       },
@@ -7344,283 +7969,1137 @@
         "author": {
           "gitId": "Chongjx"
         },
-        "content": "    private Command prepareListEvent(String userMessage) {"
+        "content": "    private Command prepareAddNote(String userMessage) {"
       },
       {
         "lineNumber": 85,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        Note note;"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        String title \u003d null;"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        String content;"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        Boolean isPinned \u003d false;"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        ArrayList\u003cTag\u003e tags \u003d new ArrayList\u003cTag\u003e();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        ArrayList\u003cString[]\u003e individualInfo \u003d new ArrayList\u003cString[]\u003e();"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        Tag tag;"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        String[] userMessageArray;"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            userMessageArray \u003d userMessage.split(\"/\");"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            for (String type : userMessageArray) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                individualInfo.add(type.split(\" \", 2));"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            individualInfo.remove(0);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            for (String[] stringInfo : individualInfo) {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                switch (stringInfo[0]) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                case PREFIX_TITLE:"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    if (stringInfo[1].isBlank()) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                        throw new SystemException(SystemException.ExceptionType.EXCEPTION_MISSING_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    title \u003d stringInfo[1].trim();"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                case PREFIX_TAG:"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    if (stringInfo[1].isBlank()) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                        throw new SystemException(SystemException.ExceptionType.EXCEPTION_MISSING_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    String[] arrayTags \u003d stringInfo[1].replaceAll(\"\\\\s\", \"\").split(\",\");"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    for (String itemTag : arrayTags) {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                        tag \u003d new Tag(itemTag);"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                        tags.add(tag);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                case PREFIX_PIN:"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    if (stringInfo[1].isBlank()) {"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                        throw new SystemException(SystemException.ExceptionType.EXCEPTION_MISSING_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    isPinned \u003d Boolean.parseBoolean(stringInfo[1].trim());"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            // Get Content"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            System.out.println(\"Enter Note:\");"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            content \u003d inputContent();"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            // Add to note"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            note \u003d tags.isEmpty() ? new Note(title, content, isPinned) : new Note(title, content, isPinned, tags);"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "            return new AddCommand(note);"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } catch (SystemException exception) {"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return new IncorrectCommand(exception.getMessage());"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } catch (ArrayIndexOutOfBoundsException exception) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return new IncorrectCommand(\"Missing description\");"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public String inputContent() {"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        Scanner input \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        StringBuilder commandInput \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        // Type note"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            commandInput.append(input.nextLine());"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            if (!commandInput.equals(\"/end\")) {"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                commandInput.append(\"\\n\");"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            if (commandInput.toString().contains(\"/d\")) {"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                deleteLine(commandInput, \"\\n/d\\n\", 0);"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                deleteLine(commandInput, \"\\n\", 1);"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } while (!commandInput.toString().contains(\"/end\"));"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        deleteLine(commandInput, \"\\n/end\\n\", 0);"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        return commandInput.toString();"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    // Delete the last line when typing"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public void deleteLine(StringBuilder commandInput, String characters, int noOfChar) {"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        int lastChar \u003d commandInput.lastIndexOf(characters) + noOfChar;"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        commandInput.delete(lastChar, commandInput.length());"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    private Command prepareDeleteNote(String userMessage) {"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        String[] userMessageArray;"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        ArrayList\u003cString[]\u003e individualInfo \u003d new ArrayList\u003cString[]\u003e();"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        int index \u003d 0;"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            userMessageArray \u003d userMessage.split(\"/\");"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            for (String type : userMessageArray) {"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                individualInfo.add(type.split(\" \", 2));"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            individualInfo.remove(0);"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            for (String[] stringInfo : individualInfo) {"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                switch (stringInfo[0]) {"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                case PREFIX_INDEX:"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    if (stringInfo[1].isBlank()) {"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                        throw new SystemException(SystemException.ExceptionType.EXCEPTION_MISSING_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    index \u003d Integer.parseInt(stringInfo[1].trim());"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return new DeleteCommand(index, true);"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } catch (SystemException exception) {"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return new IncorrectCommand(exception.getMessage());"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        } catch (NumberFormatException exception) {"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "            return new IncorrectCommand(\"Invalid format\");"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    /*"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    private Command prepareAddEvent(String userMessage) {"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        return new AddCommand(event);"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    private Command prepareListNote(String userMessage) {"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "        return new ListNoteCommand();"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "Chongjx"
+        },
+        "content": "    private Command prepareListEvent(String userMessage) {"
+      },
+      {
+        "lineNumber": 211,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new ListEventCommand();"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 212,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 213,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 214,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareViewNote(String userMessage) {"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 215,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new ViewNoteCommand();"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 216,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 217,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 218,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareEditNote(String userMessage) {"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 219,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new EditCommand(index, note);"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 220,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 221,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 222,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareEditEvent(String userMessage) {"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 223,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new EditCommand(index, event);"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 224,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 225,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "     private Command prepareDeleteNote(String userMessage) {"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "        return new EditCommand(index, true);"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": "     }"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "Chongjx"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 104,
+        "lineNumber": 226,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareDeleteEvent(String userMessage) {"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 227,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new EditCommand(index, false);"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 228,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 229,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 230,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareFind(String userMessage) {"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 231,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new FindCommand(keywords);"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 232,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 233,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 234,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command preparePin(String userMessage) {"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 235,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new PinCommand(index);"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 236,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 237,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 238,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareTag(String userMessage) {"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 239,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new TagCommand();"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 240,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 241,
         "author": {
           "gitId": "Chongjx"
         },
         "content": ""
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 242,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     private Command prepareRemind(String userMessage) {"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 243,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "        return new RemindCommand(index, isToRemind);"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 244,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     }"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 245,
         "author": {
           "gitId": "Chongjx"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 246,
         "author": {
           "gitId": "Nazryl"
         },
@@ -7628,8 +9107,108 @@
       }
     ],
     "authorContributionMap": {
-      "Chongjx": 120,
-      "Nazryl": 4
+      "Chongjx": 112,
+      "Nazryl": 134
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/util/PrefixSyntax.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "package seedu.duke.util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": " * Contains Command Line Interface (CLI) syntax definitions common to multiple commands."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "public class PrefixSyntax {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    /* Prefix definitions */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public static final String PREFIX_TITLE \u003d \"t\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public static final String PREFIX_TAG \u003d \"tag\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public static final String PREFIX_PIN \u003d \"pin\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "    public static final String PREFIX_INDEX \u003d \"i\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Nazryl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Nazryl": 13
     }
   },
   {

@@ -93,131 +93,348 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import seedu.duke.commands.Command;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": ""
+        "content": "import seedu.duke.common.Messages;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "public class Duke {"
+        "content": "import seedu.duke.parser.Parser;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "    /**"
+        "content": "import seedu.duke.storage.Storage;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "     * Main entry-point for the java.duke.Duke application."
+        "content": "import seedu.duke.task.TaskList;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "     */"
+        "content": "import seedu.duke.ui.Ui;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": "/**"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": " * Entry point of the Duke application."
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": " * Initializes the application and starts the interaction with the user."
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"What is your name?\");"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
         "content": ""
       },
       {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private TaskList tasks;"
+      },
+      {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "GuoAi"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        System.out.println(\"Hello \" + in.nextLine() + \" :)\");"
+        "content": "    public Duke(String filePath) {"
       },
       {
         "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        storage \u003d new Storage(filePath);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            tasks \u003d new TaskList(storage.load());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.showError(e);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            tasks \u003d new TaskList();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.MESSAGE_NEW_FILE);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Reads the user command and executes it, until the user issues the bye command."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.showWelcome();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        while (!isExit) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                String fullCommand \u003d Ui.readCommand();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                c.execute(tasks);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                storage.save(tasks);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                Ui.showError(e);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "  "
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        new Duke(Storage.DEFAULT_STORAGE_FILEPATH).run();"
+      },
+      {
+        "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
@@ -225,8 +442,8022 @@
       }
     ],
     "authorContributionMap": {
-      "-": 20,
-      "Cao-Zeyu": 1
+      "GuoAi": 42,
+      "-": 10
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/DukeException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Signals an error caused by Duke commands and operations."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public DukeException(String message) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(message);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return getMessage();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 15
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/ByeCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Terminates the program."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class ByeCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Exits the program.\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.exit();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 25
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/ClearCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Clears all tasks in the task list."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class ClearCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"clear\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d \"Clears all tasks in the task list.\\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.clearTask();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 23
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/Command.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Represents an executable command."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Represents a general command."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return whether to exit Duke application."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public abstract boolean isExit();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Executes the command."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param tasks a TaskList object containing all tasks"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public abstract void execute(TaskList tasks);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/DeadlineCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Adds a Deadline to the TaskList."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class DeadlineCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Adds a deadline task to the task list. \\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Parameters: DESCRIPTION /by DEADLINE\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \" return book /by 2021-06-06 12:00\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String description;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String deadline;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public DeadlineCommand(String description, String deadline) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.deadline \u003d deadline;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.addDeadline(description, deadline);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 33
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/DeleteCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Deletes a Task identified by its index in the task list."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class DeleteCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \": Deletes the task identified by the index number used in the task listing.\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Parameters: INDEX\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD + \" 1\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public DeleteCommand(int index) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.index \u003d index;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.deleteTask(index);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 31
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/DoneCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Marks a Task, identified by its index in the task list, as done."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class DoneCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"done\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \": Marks the task indentified by the index number used in the task listing as done.\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Parameters: INDEX\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD + \" 1\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public DoneCommand(int index) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.index \u003d index;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.markAsDone(index);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 31
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/EventCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Adds an Event to the TaskList."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class EventCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"event\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Adds an event task to the task list.\\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Parameters: DESCRIPTION at/ TIME\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \" project meeting /at 2021-08-06 14:00\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String description;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String time;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public EventCommand(String description, String time) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.time \u003d time;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.addEvent(description, time);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 33
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/FindCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Finds and lists all tasks in the task list whose description contains the argument keywords."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Keyword matching is case-insensitive."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class FindCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all tasks whose descriptions contain any of \""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Parameters: KEYWRODS\\n\""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD + \" book\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String keyword;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public FindCommand(String keyword) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.keyword \u003d keyword;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.findTask(keyword);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 32
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/HelpCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Shows help instructions."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class HelpCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"help\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Shows program usage instructions.\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String message \u003d TodoCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + DeadlineCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + EventCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + DeleteCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + ListCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + FindCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + DoneCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + HelpCommand.MESSAGE_USAGE"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + \"\\n\\n     \" + ByeCommand.MESSAGE_USAGE;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.dukePrint(message);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 33
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/ListCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Lists all tasks in the task list to the user."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \": Displays all tasks in the task list as a list with index numbers.\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.listTask();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/commands/TodoCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Adds a Todo to the TaskList."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class TodoCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"todo\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Adds a todo task to the task list.\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Parameters: DESCRIPTION\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"     Example: \" + COMMAND_WORD"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \" read book\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String description;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public TodoCommand(String description) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.addTodo(description);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 32
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/common/Messages.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.common;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Container for user visible messages."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Messages {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String DIVIDER \u003d \"    ____________________________________________________________\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String LOGO \u003d \"    ____        _        \\n\""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"    |  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"    | | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"    | |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"    |____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_GOODBYE \u003d \"Bye. Hope to see you again soon!\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_ADDTASK \u003d \"Got it. I\u0027ve added this task:\\n       \";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_STATUS_FIRST \u003d \"\\n     Now you have \";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_STATUS_LAST \u003d \" tasks in the list.\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_LIST \u003d \"Here are the tasks in your list:\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_DELETE \u003d \"Noted. I\u0027ve removed this task:\\n       \";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_CLEAR \u003d \"Noted. I\u0027ve cleared all your tasks.\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String WARNING_NO_TASK \u003d \"You do not have this task in the list.\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_DONE \u003d \"Nice! I\u0027ve marked this task as done:\\n       [Y] \";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_INVALID_COMMAND \u003d \":( OOPS!!! I\u0027m sorry, but I don\u0027t know what that means. \""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"Please enter valid commands :-(\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_EMPTY_DESCRIPTION \u003d \":( OOPS!!! The description of a task cannot be empty.\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_EMPTY_DEADLINE \u003d \":( OOPS!!! The deadline of a task cannot be empty.\";"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_EMPTY_TIME \u003d \":( OOPS!!! The time of an event task cannot be empty.\";"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_INVALID_DEADLINE \u003d \"Please enter your deadline in the correct format.\\n     \""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"Example: deadline return book /by Sunday\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_INVALID_EVENT \u003d \"Please enter your event in the correct format.\\n     \""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"Example: event project meeting /at Mon 2-4pm\";"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_INVALID_INDEX \u003d \"Please input a valid task index.\";"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_LOAD_FILE \u003d \"The file cannot be loaded. \""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"Maybe this is your first time using Duke?\";"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_SAVE_FILE \u003d \":( OOPS!!! Cannot save to file.\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_NEW_FILE \u003d \"I have created a new tasks.txt file for you. :) \""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"Type some commands and see it.\";"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String WARNING_DATETIME \u003d \"If you want your DateTime to be formatted, \""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"you can input in this format: yyyy-MM-dd HH:mm\";"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_FIND \u003d \"Here are the matching tasks in your list:\";"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_NOT_FOUND \u003d \"There are no matching tasks in your list.\";"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String EXCEPTION_FIND \u003d \":( OOPS!!! The keyword of a find command cannot be empty.\";"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String MESSAGE_EMPTY_LIST \u003d \"There are no tasks in your list. \""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            + \"Your task list is empty.\";"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 45
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/common/Utils.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.common;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Utility methods."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Utils {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Convert strings (either \"0\" or \"1\") to booleans (false or true respectively)."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param str input string (either \"0\" or \"1\")"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return false if input string is \"0\", true otherwise"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static boolean stringToBoolean(String str) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (str.equals(\"0\")) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 21
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.ByeCommand;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.ClearCommand;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.Command;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.DeadlineCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.DeleteCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.DoneCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.EventCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.FindCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.HelpCommand;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.ListCommand;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.commands.TodoCommand;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Parses use input."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param fullCommand full user input string"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the command based on the user input"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @throws DukeException if user input commands are not in the standard format"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static Command parse(String fullCommand) throws DukeException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String[] words \u003d fullCommand.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String[] wordparts;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        switch (words[0].toLowerCase()) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"todo\":"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                if (words[1].trim().equals(\"\")) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                return new TodoCommand(words[1]);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"deadline\":"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                wordparts \u003d words[1].split(\" /by \");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            if (wordparts[0].trim().equals(\"\")) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                if (wordparts[1].trim().equals(\"\")) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_DEADLINE);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                return new DeadlineCommand(wordparts[0], wordparts[1]);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_DEADLINE);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"event\":"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                wordparts \u003d words[1].split(\" /at \");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            if (wordparts[0].trim().equals(\"\")) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                if (wordparts[1].trim().equals(\"\")) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_TIME);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                return new EventCommand(wordparts[0], wordparts[1]);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_EVENT);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"delete\":"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                return new DeleteCommand(Integer.parseInt(words[1]));"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.WARNING_NO_TASK);"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"list\":"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return new ListCommand();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"clear\":"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return new ClearCommand();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"done\":"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                return new DoneCommand(Integer.parseInt(words[1]));"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.WARNING_NO_TASK);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"find\":"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                return new FindCommand(words[1].trim());"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                throw new DukeException(Messages.EXCEPTION_FIND);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"help\":"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return new HelpCommand();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        case \"bye\":"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return new ByeCommand();"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_COMMAND);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 110
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/storage/Storage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Utils;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.Event;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.Task;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.TaskList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.task.Todo;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Used to load and save task list data."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String filePath;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /** Default file path used. */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static final String DEFAULT_STORAGE_FILEPATH \u003d \"tasks.txt\";"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Storage(String filePath) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.filePath \u003d filePath;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Loads the task list data from the storage, and then returns it."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return ArrayList of {@code Task} from the storage file."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @throws DukeException if the storage file does not exist, or is not a regular file."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public ArrayList\u003cTask\u003e load() throws DukeException {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        File file \u003d new File(filePath);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Scanner sc;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            sc \u003d new Scanner(file);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            throw new DukeException(Messages.EXCEPTION_LOAD_FILE);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        while (sc.hasNextLine()) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            String line \u003d sc.nextLine();"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            String[] taskParts \u003d line.split(\" \\\\| \");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            switch (taskParts[0].trim()) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            case \"T\":"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                tasks.add(new Todo(taskParts[2].trim(), Utils.stringToBoolean(taskParts[1].trim())));"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            case \"E\":"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                tasks.add(new Event(taskParts[2].trim(), Utils.stringToBoolean(taskParts[1].trim()),"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                        taskParts[3].trim()));"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            case \"D\":"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                tasks.add(new Deadline(taskParts[2].trim(), Utils.stringToBoolean(taskParts[1].trim()),"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                        taskParts[3].trim()));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return tasks;"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Saves the {@code TaskList} data to the storage file."
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param tasks the {@code TaskList} to be saved to the storage file"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @throws DukeException if there were errors storing data to file."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void save(TaskList tasks) throws DukeException {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        FileWriter fw;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            fw \u003d new FileWriter(filePath);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            throw new DukeException(Messages.EXCEPTION_SAVE_FILE);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String taskString \u003d \"\";"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            taskString \u003d taskString + tasks.get(i).toFile() + \"\\n\";"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            fw.write(taskString);"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            fw.close();"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            throw new DukeException(Messages.EXCEPTION_SAVE_FILE);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 93
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Deadline.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.time.format.DateTimeParseException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Represents a deadline task in the task list."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String deadline;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Constructor used when adding a new deadline task."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * By default, the deadline task is not done."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the deadline task"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param deadline the deadline of the task"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Deadline(String description, String deadline) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.deadline \u003d deadline;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            this.deadline \u003d Ui.formatDateTime(deadline);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } catch (DateTimeParseException e) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.WARNING_DATETIME);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Convenience constructor used when loading from the storage file."
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the deadline task"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param isDone true if the deadline task is done already, false otherwise"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param deadline the deadline of the task"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Deadline(String description, boolean isDone, String deadline) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(description, isDone);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.deadline \u003d deadline;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toFile() {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (isDone) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"D | 1 | \" + description + \" | \" + deadline;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"D | 0 | \" + description + \" | \" + deadline;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (this.isDone) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"[D][Y] \" + description + \" (by: \" + deadline + \")\";"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"[D][N] \" + description + \" (by: \" + deadline + \")\";"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 60
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Event.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.time.format.DateTimeParseException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Represents an Event task in the task list."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private String time;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Constructor used when adding a new event task."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * By default, the event task is not done."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the event task"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param time the time of the event task to be done"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Event(String description, String time) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.time \u003d time;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            this.time \u003d Ui.formatDateTime(time);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } catch (DateTimeParseException e) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.WARNING_DATETIME);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Convenience constructor used when loading from the storage file."
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the event task"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param isDone true if the event task is done already, false otherwise"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param time the time of the event task to be done"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Event(String description, boolean isDone, String time) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(description, isDone);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.time \u003d time;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toFile() {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (isDone) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"E | 1 | \" + description + \" | \" + time;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"E | 0 | \" + description + \" | \" + time;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (this.isDone) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"[E][Y] \" + this.description + \" (at: \" + this.time + \")\";"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"[E][N] \" + this.description + \" (at: \" + this.time + \")\";"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 60
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Task.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Represents a task in the task list."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public abstract class Task {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Constructor used when adding a new task."
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * By default, the deadline task is not done."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the task"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Convenience constructor used when loading from the storage file."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the task"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param isDone true if the task is done already, false otherwise"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Task(String description, boolean isDone) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.isDone \u003d isDone;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Retrieves the description of a task."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the description string of the task"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return this.description;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Retrieves whether the task in done."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return true if the task is done already, false otherwise"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public boolean getIsDone() {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return this.isDone;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Marks the task as done."
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void markAsDone() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Converts the attributes of the task into a formatted string to be saved into the storage file."
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the formatted string to be saved into the storage file"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public abstract String toFile();"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Converts the attributes of the task into a formatted string to be displayed to the user."
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the formatted string to be displayed to the user"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public abstract String toString();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 70
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/TaskList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Represents a list of tasks."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private ArrayList\u003cTask\u003e tasks;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Constructs a task list with the given tasks."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param tasks an ArrayList of Task objects"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public TaskList(ArrayList\u003cTask\u003e tasks) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        this.tasks \u003d tasks;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Constructs an empty task list."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public TaskList() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Retrieves the list of tasks."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return an ArrayList of {@code Task}"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public ArrayList\u003cTask\u003e getTaskList() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return tasks;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Adds a todo task to the task list."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the todo task"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void addTodo(String description) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Todo newTodo \u003d new Todo(description);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.add(newTodo);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.dukePrint(Messages.MESSAGE_ADDTASK + newTodo.toString() + Messages.MESSAGE_STATUS_FIRST"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + tasks.size() + Messages.MESSAGE_STATUS_LAST);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Adds a deadline task to the task list."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the deadline task"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param deadline the deadline of the task"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void addDeadline(String description, String deadline) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Deadline newDeadline \u003d new Deadline(description, deadline);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.add(newDeadline);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.dukePrint(Messages.MESSAGE_ADDTASK + newDeadline.toString() + Messages.MESSAGE_STATUS_FIRST"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + tasks.size() + Messages.MESSAGE_STATUS_LAST);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Adds an event task to the task list."
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the event task"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param time the time of the task to be done"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void addEvent(String description, String time) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Event newEvent \u003d new Event(description, time);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks.add(newEvent);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.dukePrint(Messages.MESSAGE_ADDTASK + newEvent.toString() + Messages.MESSAGE_STATUS_FIRST"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                + tasks.size() + Messages.MESSAGE_STATUS_LAST);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Deletes a task from the list, identified by the index of the task in the task list."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param index the index of the task in the task list"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void deleteTask(int index) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (index \u003e tasks.size() || index \u003c 1) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.WARNING_NO_TASK);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Task taskRemoved \u003d tasks.get(index - 1);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.MESSAGE_DELETE + taskRemoved.toString() + Messages.MESSAGE_STATUS_FIRST"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                    + (tasks.size() - 1) + Messages.MESSAGE_STATUS_LAST);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            tasks.remove(index - 1);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Lists all the tasks in the task list."
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void listTask() {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String message \u003d \"\";"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (tasks.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.MESSAGE_EMPTY_LIST);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            message \u003d message + \"\\n     \" + (i + 1) + \".\" + tasks.get(i).toString();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.dukePrint(Messages.MESSAGE_LIST + message);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Clears all the tasks in the task list."
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void clearTask() {"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        Ui.dukePrint(Messages.MESSAGE_CLEAR);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Marks the task, identified by the index of the task in the task list, as done."
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param index the index of the task in the task list"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void markAsDone(int index) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (index \u003e tasks.size() || index \u003c 1) {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.WARNING_NO_TASK);"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            tasks.get(index - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.MESSAGE_DONE + tasks.get(index - 1).getDescription());"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Finds and lists all tasks in the task list whose description contains the argument keywords."
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Keyword matching is case-insensitive."
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param keyword the keyword to be searched in the task list"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public void findTask(String keyword) {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        ArrayList\u003cTask\u003e matchingTasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        int count \u003d 0;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String message \u003d \"\";"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            if (tasks.get(i).description.toLowerCase().contains(keyword.toLowerCase())) {"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                matchingTasks.add(tasks.get(i));"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                count++;"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "                message \u003d message + \"\\n     \" + count + \".\" + tasks.get(i).toString();"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (!message.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.MESSAGE_FIND + message);"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            Ui.dukePrint(Messages.MESSAGE_NOT_FOUND);"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Retrieves the size of the task list."
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the size of the task list"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public int size() {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return tasks.size();"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Retrieves a task using the given index."
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param index the index of the task to be retrieved"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the task in the task list at the given index"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Task get(int index) {"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return tasks.get(index);"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 172
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/task/Todo.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Represents a todo task in the task list."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Todo extends Task {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Constructor used when adding a new todo task."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * By default, the todo task is not done."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the todo task"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Todo(String description) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Convenience constructor used when loading from the storage file."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param description the description of the todo task"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param isDone true if the todo task is done already, false otherwise"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public Todo(String description, boolean isDone) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        super(description, isDone);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toFile() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (isDone) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"T | 1 | \" + description;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"T | 0 | \" + description;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (this.isDone) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"[T][Y] \" + this.description;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return \"[T][N] \" + this.description;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 45
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/ui/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "package seedu.duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.time.LocalDateTime;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.time.format.DateTimeFormatter;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.time.format.DateTimeParseException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " * Text UI of the application."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    private static Scanner sc \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Shows the divider line."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static void showLine() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Prints messages to the user in a structured format."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param message the messaged to be printed"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static void dukePrint(String message) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        showLine();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        System.out.println(\"     \" + message);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        showLine();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        System.out.println();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Generates and prints the welcome message upon the start of the application."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static void showWelcome() {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        System.out.println(Messages.LOGO);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        dukePrint(\"Hello! I\u0027m Duke.\\n     What can I do for you?\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Prints the goodbye message after the termination of the application."
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static void exit() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        dukePrint(Messages.MESSAGE_GOODBYE);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Reads user input."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static String readCommand() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return sc.nextLine();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Prints the error message to the user if an error occurs."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param e the {@code DukeException} representing the error occurred"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static void showError(DukeException e) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        dukePrint(e.getMessage());"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Formats the date time from user input."
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param time the date time from user input"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return the formatted date time string"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @throws DateTimeParseException if the user input date time is not in the specified format"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public static String formatDateTime(String time) throws DateTimeParseException {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        DateTimeFormatter inputFormatter \u003d DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm\");"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        DateTimeFormatter outputFormatter \u003d DateTimeFormatter.ofPattern(\"MMM dd yyy HH:mm\");"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        LocalDateTime formattedDateTime \u003d LocalDateTime.parse(time, inputFormatter);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        String returnString \u003d formattedDateTime.format(outputFormatter);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return returnString;"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 81
+    }
+  },
+  {
+    "path": "tasks.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "T | 0 | read book"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 1
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "help"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "todo read book"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "deadline return book /by 2021-06-06 12:00"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "event project meeting /at 2021-08-06 14:00"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "todo join sports club"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "todo borrow book"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "done 1"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "done 4"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "deadline return book /by Sunday"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "event project meeting /at Mon 2-4pm"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "deadline do homework /by no idea :-p"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "delete 10"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "delete 4"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "find book"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "Revengers Assemble!"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "GuoAi": 20
     }
   }
 ]

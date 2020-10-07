@@ -305,6 +305,569 @@
     }
   },
   {
+    "path": "src/main/java/seedu/duke/Duke.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.data.UserData;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.event.EventList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.parser.Parser;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private UserData tasks;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private Ui ui;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private Command com;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private Parser currentParse;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    //Location refers to the \"data\" directory stored in the folder of this application"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private static final String FILELOCATION \u003d \"data\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Constructor for the Schedule components."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @param filePath is a string containing the location of where the data text files are to be stored"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public Duke(String filePath) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        storage \u003d new Storage(filePath);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        tasks \u003d new UserData();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        currentParse \u003d new Parser();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Main run function. Loops until the bye command is entered."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        ui.printWelcomeMessage();"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        while (!isExit) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            String userInput \u003d ui.receiveCommand();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            ui.printDividerLine();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            Command c \u003d currentParse.parse(userInput);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        ui.printByeMessage();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Main function where the program starts."
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @param args No arguments entered so far"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        /*String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"What is your name?\");"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        System.out.println(\"Hello \" + in.nextLine());*/"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        Duke duke \u003d new Duke(FILELOCATION);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        duke.run();"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Colin386": 60,
+      "-": 19
+    }
+  },
+  {
     "path": "src/main/java/seedu/duke/command/AddCommand.java",
     "fileType": "functional-code",
     "lines": [
@@ -539,7 +1102,7 @@
         "author": {
           "gitId": "ninggggx99"
         },
-        "content": "        this.isExit \u003d false;"
+        "content": "        this.isExit \u003d true;"
       },
       {
         "lineNumber": 12,
@@ -1543,6 +2106,3338 @@
     ],
     "authorContributionMap": {
       "ninggggx99": 21
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/data/UserData.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "package seedu.duke.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import seedu.duke.event.Event;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import seedu.duke.event.EventList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "public class UserData {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    private ArrayList\u003cEventList\u003e eventLists \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public UserData() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        eventLists.add(new EventList(\"Personal\"));"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        eventLists.add(new EventList(\"Timetable\"));"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        eventLists.add(new EventList(\"Zoom\"));"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public UserData(ArrayList\u003cEventList\u003e eventLists) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.eventLists \u003d new ArrayList\u003c\u003e(eventLists);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void addToEventList(String name, Event e) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        getEventList(name).add(e);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public EventList getEventList(String name) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        for (EventList e : eventLists) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "            if (e.getName().equals(name)) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "                return e;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        return null; //change this to throw exception, list not found."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Reinbowl": 33
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/event/Event.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "package seedu.duke.event;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalTime;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "public abstract class Event {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected LocalDate date;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected LocalTime time;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected int repeatCount;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * Creates a new event with the given description and default its done status to false."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * @param description of event."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Event(String description) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setDescription(description);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        isDone \u003d false;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * Sets event\u0027s description."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * @param description of event."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void setDescription(String description) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void setDate(LocalDate date) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.date \u003d date;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void setTime(LocalTime time) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.time \u003d time;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void setRepeatCount(int repeatCount) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.repeatCount \u003d repeatCount;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * Sets the event\u0027s done status to true."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void markAsDone() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * Returns a string representation of event\u0027s done status."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     * @return string representation of event\u0027s done status."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public String getStatus() {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        return (isDone) ? \"✓\" : \"✕\";"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Reinbowl": 59
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/event/EventList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "package seedu.duke.event;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "public class EventList {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    private String name;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    private ArrayList\u003cEvent\u003e events;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public EventList(String name) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        events \u003d new ArrayList\u003cEvent\u003e();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public EventList(String name, ArrayList\u003cEvent\u003e events) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.events \u003d new ArrayList\u003cEvent\u003e(events);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void add(Event event) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        events.add(event);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public String getName() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        return name;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Reinbowl": 26
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/event/Personal.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "package seedu.duke.event;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalTime;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "public class Personal extends Event {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Personal(String description, LocalDate date, LocalTime time, int repeatCount) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setDate(date);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setTime(time);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setRepeatCount(repeatCount);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Personal(String description, LocalDate date, LocalTime time) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this(description, date, time, 0);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Personal(String description) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this(description, null, null);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Reinbowl": 21
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/event/Timetable.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "package seedu.duke.event;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalTime;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "public class Timetable extends Event {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected String location;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Timetable(String description, String location, LocalDate date, LocalTime time, int repeatCount) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setLocation(location);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setDate(date);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setTime(time);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setRepeatCount(repeatCount);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Timetable(String description, String location, LocalDate date, LocalTime time) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this(description, location, date, time, 0);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Timetable(String description, LocalDate date, LocalTime time) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this(description, null, date, time);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void setLocation(String location) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.location \u003d location;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Reinbowl": 28
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/event/Zoom.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "package seedu.duke.event;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "import java.time.LocalTime;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "public class Zoom extends Event {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    protected String zoomLink;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Zoom(String description, String zoomLink, LocalDate date, LocalTime time, int repeatCount) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setZoomLink(zoomLink);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setDate(date);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setTime(time);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        setRepeatCount(repeatCount);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Zoom(String description, String zoomLink, LocalDate date, LocalTime time) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this(description, zoomLink, date, time, 0);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public Zoom(String description, String zoomLink) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this(description, zoomLink, null, null);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    public void setZoomLink(String zoomLink) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "        this.zoomLink \u003d zoomLink;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Reinbowl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Reinbowl": 28
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.AddCommand;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.ByeCommand;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.ListCommand;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.CheckCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.RepeatCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.GoalCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import seedu.duke.command.DeadlineCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Default Constructor for parser."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public Parser() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Function takes in user input and then generates the correct command requested from the user input."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @param userInput String containing what is typed by the user on the computer"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @return Command from what is written by user. Return null if incorrect command"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public Command parse(String userInput) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String[] words \u003d userInput.split(\" \");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        if (words.length \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            System.out.println(\"Error, no command entered\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return null;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String commandWord \u003d words[0];"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String[] argumentWords \u003d Arrays.copyOfRange(words, 1, words.length);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String argument \u003d String.join(\" \", argumentWords);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        switch (commandWord) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"add\":"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new AddCommand(argument);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"list\":"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new ListCommand(argument);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"bye\":"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new ByeCommand();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"check\":"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new CheckCommand(argument);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"repeat\":"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new RepeatCommand(argument);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"goal\":"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new GoalCommand(argument);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        case \"deadline\":"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return new DeadlineCommand(argument);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            System.out.println(\"Error! Unrecognised command\");"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "            return null;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Colin386": 73
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/storage/Storage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "package seedu.duke.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import seedu.duke.event.Event;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.nio.file.Files;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": " * Saves and loads the events list to and from an external txt file."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public Path fileNamePath;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public Path fileDirectoryPath;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * Creates a new storage manager that can load and save files to and from a given filepath."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @param initPath is the name of the filepath which files are saved to and loaded from"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public Storage(String initPath) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String locationOfFileName \u003d initPath + \",data.txt\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        //Directory words only contain info on making the folder"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        //File words contain the info on how to make the file itself"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String[] pathDirectoryWords \u003d initPath.split(\",\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String[] pathFileWords \u003d initPath.split(\",\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        fileDirectoryPath \u003d createPath(pathDirectoryWords);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        fileNamePath \u003d createPath(pathFileWords);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * Creates a folder for the events list if it does not exist yet."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    protected void initialiseFolder() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        if (!Files.exists(fileNamePath)) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "                Files.createDirectory(fileDirectoryPath);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "                System.out.println(\"IO exception encountered when creating data directory.\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * Saves events to an external txt file."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * @param fileName is the file to save events to"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * @param eventsList is the events list to be saved to an external txt file"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * @throws IOException if the named file does not exist and cannot be created, or cannot be opened"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    public void saveFile(String fileName, ArrayList\u003cEvent\u003e eventsList) throws IOException {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(fileName);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * Loads events from an external txt file."
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * @param fileName is the file to load events from"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     * @throws FileNotFoundException if no file with the given fileName is found"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    public void loadFile(String fileName) throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "        File f \u003d new File(fileName);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "        Scanner s \u003d new Scanner(f); // create a Scanner using the File as the source"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "        List\u003cString\u003e eventInfo;"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "        ArrayList\u003cEvent\u003e loadedEventsList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Function accepts a string and creates a path object originating from the user directory."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @param pathName is a string array which accepts in the path name words, each word represents a folder"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @return Path object indicating the location of the pathName keyed in initially."
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    private Path createPath(String[] pathName) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        String origin \u003d System.getProperty(\"user.dir\");"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        Path newPath \u003d Paths.get(origin, pathName);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        return newPath;"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Function gives a string containing the Directory location."
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @return String containing directory location"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public String getDirectoryString() {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        return fileDirectoryPath.toString();"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * Function gives a string containng the file full location path name."
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     * @return String containing the file\u0027s location"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    public String getFileLocationString() {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "        return fileNamePath.toString();"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "marcursor"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Colin386": 47,
+      "marcursor": 60
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/ui/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "package seedu.duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    Scanner in;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public Ui() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        this.in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printDividerLine() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"_________________________________\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printWelcomeMessage() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"Welcome to scheduler--;!\");"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"What can I do for you?\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printByeMessage() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"Thank you for using scheduler--;!\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"We hope to see you soon!\");"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public String receiveCommand() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        return in.nextLine();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printEventAddedMessage() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printRepeatEventMessage() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printGoalAddedMessage() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printCheckMessage() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printListMessage() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printDeadlineChangedMessage() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printStorageSavedMessage() {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"The file has successfully been saved!\");"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printStorageLoadingErrorMessage() {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"The file does not exist or has been corrupted!\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printInvalidDateMessage() {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"The date entered is invalid!\");"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printInvalidCommandMessage() {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(\"Sorry, I did not understand your command!\");"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "     * Prints exception message."
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "     * @param exceptionMessage String of warning message from various exceptions."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    public void printExceptionMessage(String exceptionMessage) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        System.out.println(exceptionMessage);"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "matthewgani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "matthewgani": 87
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Colin386"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "Colin386": 1
     }
   }
 ]
