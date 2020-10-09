@@ -610,131 +610,334 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "anqi20"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import seedu.eduke8.storage.Storage;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "anqi20"
         },
-        "content": ""
+        "content": "import seedu.eduke8.topic.TopicList;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "Zhi-You"
+          "gitId": "anqi20"
         },
-        "content": "public class Eduke8 {"
+        "content": "import seedu.eduke8.ui.Ui;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "Zhi-You"
         },
-        "content": "     * Main entry-point for the java.duke.Duke application."
+        "content": "public class Eduke8 {"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "anqi20"
         },
-        "content": "     */"
+        "content": "    private static final String FILE_PATH \u003d \"data\";"
       },
       {
         "lineNumber": 9,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private Parser parser;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private TopicList topicList;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private Ui ui;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private Eduke8(String filePath) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        parser \u003d new Parser();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        storage \u003d new Storage(filePath);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        topicList \u003d new TopicList(storage.load());"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private void run() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        start();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        runCommandLoopUntilExit();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        exit();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private void start() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        ui.printGreetMessage();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private void runCommandLoopUntilExit() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        //boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        //while(!isExit) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        String userInput \u003d ui.getInputFromUser();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        parser.parseCommand(topicList, userInput);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        //isExit \u003d parser.parseCommand(userInput);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        //}"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    private void exit() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "        ui.printExitMessage();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 48,
         "author": {
-          "gitId": "-"
+          "gitId": "anqi20"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": "        new Eduke8(FILE_PATH).run();"
       },
       {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"What is your name?\");"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello \" + in.nextLine());"
-      },
-      {
-        "lineNumber": 20,
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
@@ -743,7 +946,451 @@
     ],
     "authorContributionMap": {
       "Zhi-You": 2,
-      "-": 19
+      "anqi20": 43,
+      "-": 5
+    }
+  },
+  {
+    "path": "src/main/java/seedu/eduke8/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "package seedu.eduke8;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import seedu.eduke8.option.OptionInterface;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import seedu.eduke8.question.QuestionInterface;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import seedu.eduke8.quiz.Quiz;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import seedu.eduke8.topic.TopicListInterface;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import seedu.eduke8.ui.UiInterface;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "public class Parser implements ParserInterface {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    public Parser() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    public void parseCommand(TopicListInterface topicList, String userInput) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        int numOfQuestions \u003d 0;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        String topicName \u003d \"\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        String[] commandArr \u003d userInput.trim().split(\" \", 0);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        if (commandArr.length \u003d\u003d 3 \u0026\u0026 commandArr[0].equals(\"quiz\")) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            numOfQuestions \u003d Integer.parseInt(commandArr[2].substring(2));"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            topicName \u003d commandArr[1].substring(2);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        UiInterface ui \u003d null;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        switch (commandArr[0]) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        case \"about\":"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            ui.printAbout();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        case \"help\":"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            ui.printHelp();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        case \"topics\":"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        case \"textbook\":"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            ui.printTextbook();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        case \"quiz\":"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            Quiz quiz \u003d new Quiz(topicList.findTopic(topicName), numOfQuestions);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            quiz.startQuiz(ui);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        case \"exit\":"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            System.exit(0);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    public void parseChosenOption(UiInterface ui, ArrayList\u003cOptionInterface\u003e options, QuestionInterface question) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        // Should probably use parser for this part to add hints also"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        int chosenOption \u003d Integer.parseInt(ui.getInputFromUser());"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        if (options.get(chosenOption).isCorrectAnswer()) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            ui.printAnswerIsCorrect();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            question.markAsAnsweredCorrectly();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            ui.printAnswerIsWrong();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        question.markAsAttempted();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "josephhhhhhhhh": 62
     }
   },
   {
@@ -767,19 +1414,33 @@
       {
         "lineNumber": 3,
         "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "import seedu.eduke8.topic.TopicListInterface;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
           "gitId": "kstonekuan"
         },
         "content": "public interface ParserInterface {"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 6,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "josephhhhhhhhh"
         },
-        "content": "    CommandInterface parseCommand(String userInput);"
+        "content": "    void parseCommand(TopicListInterface topicList, String userInput);"
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 7,
         "author": {
           "gitId": "kstonekuan"
         },
@@ -788,7 +1449,8 @@
     ],
     "authorContributionMap": {
       "Zhi-You": 1,
-      "kstonekuan": 4
+      "kstonekuan": 3,
+      "josephhhhhhhhh": 3
     }
   },
   {
@@ -2092,7 +2754,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    public void setAsAnsweredCorrectly() {"
+        "content": "    public void markAsAnsweredCorrectly() {"
       },
       {
         "lineNumber": 88,
@@ -2204,7 +2866,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    public void setAsAttempted() {"
+        "content": "    public void markAsAttempted() {"
       },
       {
         "lineNumber": 104,
@@ -2381,7 +3043,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    void setAsAnsweredCorrectly();"
+        "content": "    void markAsAnsweredCorrectly();"
       },
       {
         "lineNumber": 22,
@@ -2409,7 +3071,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    void setAsAttempted();"
+        "content": "    void markAsAttempted();"
       },
       {
         "lineNumber": 26,
@@ -2481,21 +3143,21 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    private ArrayList\u003cQuestionInterface\u003e allQuestions;"
+        "content": "    private ArrayList\u003cQuestionInterface\u003e allQuestions;  // list of questions for the particular topic"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    private ArrayList\u003cQuestionInterface\u003e questionsForQuiz;"
+        "content": "    private ArrayList\u003cQuestionInterface\u003e quizQuestions;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    private int numberOfQuestionsAnswered;"
+        "content": "    private int currentQuestionNumber;"
       },
       {
         "lineNumber": 10,
@@ -2537,14 +3199,14 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        questionsForQuiz \u003d null;"
+        "content": "        quizQuestions \u003d null;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        numberOfQuestionsAnswered \u003d 0;"
+        "content": "        currentQuestionNumber \u003d 0;"
       },
       {
         "lineNumber": 17,
@@ -2691,7 +3353,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "            questionsForQuiz.add(allQuestions.get(randomQuestionIndex));"
+        "content": "            quizQuestions.add(allQuestions.get(randomQuestionIndex));"
       },
       {
         "lineNumber": 38,
@@ -2747,14 +3409,14 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    public int getQuestionCount() {"
+        "content": "    public int getNumberOfQuestionsInQuiz() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        return questionsForQuiz.size();"
+        "content": "        return quizQuestions.size();"
       },
       {
         "lineNumber": 47,
@@ -2775,133 +3437,133 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    // should throw indexOutOfBounds exception as even though we might"
+        "content": "    @Override"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    // do a check in the program that calls this method, we still need the exception"
+        "content": "    public int getNumberOfQuestionsInTopic() {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    // in case anything happens"
+        "content": "        return allQuestions.size();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    public void markQuestionAsAttempted() {"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        // mark the current question as attempted if method is called in the Quiz class"
+        "content": "    @Override"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        questionsForQuiz.get(numberOfQuestionsAnswered).setAsAttempted();"
+        "content": "    public QuestionInterface getNextQuestion() {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        // the last increment will make it be the same as the number of questions there are"
+        "content": "        // Gets current question and increment count for number of questions shown to user"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        // for instance, if there are 5 questions, the last call of this method will set the"
+        "content": "        return quizQuestions.get(currentQuestionNumber++);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        // question at index 4 to be attempted, and will increment the variable questionsAnswered"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        // to 5, while not running again, since no more questions left."
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        numberOfQuestionsAnswered++;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    }"
+        "content": "    public int getCurrentQuestionNumber() {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": ""
+        "content": "        return currentQuestionNumber;"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    public QuestionInterface getNextQuestion() {"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        // will be called after markQuestionAsAttempted(), so naturally the"
+        "content": "    @Override"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "Zhi-You"
+          "gitId": "kstonekuan"
         },
-        "content": "        // questionsAnswered would have incremented"
+        "content": "    public boolean areAllQuestionsAnswered() {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "        return questionsForQuiz.get(numberOfQuestionsAnswered);"
+        "content": "        return currentQuestionNumber \u003d\u003d quizQuestions.size();"
       },
       {
         "lineNumber": 68,
@@ -2915,46 +3577,11 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "Zhi-You"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "    public boolean areAllQuestionsAnswered() {"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "Zhi-You"
-        },
-        "content": "        return numberOfQuestionsAnswered \u003d\u003d questionsForQuiz.size();"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "Zhi-You"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "Zhi-You"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "Zhi-You": 72,
+      "Zhi-You": 67,
       "kstonekuan": 2
     }
   },
@@ -3016,7 +3643,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    // String addQuestion(QuestionInterface question);"
+        "content": "    int getNumberOfQuestionsInQuiz();"
       },
       {
         "lineNumber": 9,
@@ -3030,7 +3657,7 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "    // void deleteQuestion(QuestionInterface question);"
+        "content": "    int getNumberOfQuestionsInTopic();"
       },
       {
         "lineNumber": 11,
@@ -3044,7 +3671,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    int getQuestionCount();"
+        "content": "    QuestionInterface getNextQuestion();"
       },
       {
         "lineNumber": 13,
@@ -3056,9 +3683,9 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "Zhi-You"
         },
-        "content": "    void markQuestionAsAttempted();"
+        "content": "    int getCurrentQuestionNumber();"
       },
       {
         "lineNumber": 15,
@@ -3070,33 +3697,12 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "    QuestionInterface getNextQuestion();"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "kstonekuan"
+          "gitId": "Zhi-You"
         },
         "content": "    boolean areAllQuestionsAnswered();"
       },
       {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 20,
+        "lineNumber": 17,
         "author": {
           "gitId": "kstonekuan"
         },
@@ -3104,8 +3710,8 @@
       }
     ],
     "authorContributionMap": {
-      "Zhi-You": 4,
-      "kstonekuan": 16
+      "Zhi-You": 6,
+      "kstonekuan": 11
     }
   },
   {
@@ -3129,170 +3735,170 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "josephhhhhhhhh"
         },
-        "content": "import seedu.eduke8.topic.TopicInterface;"
+        "content": "import seedu.eduke8.Parser;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.ui.UiInterface;"
+        "content": "import seedu.eduke8.topic.TopicInterface;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.option.OptionInterface;"
+        "content": "import seedu.eduke8.ui.UiInterface;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.question.QuestionInterface;"
+        "content": "import seedu.eduke8.option.OptionInterface;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.question.QuestionListInterface;"
+        "content": "import seedu.eduke8.question.QuestionInterface;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "import seedu.eduke8.question.QuestionListInterface;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "public class Quiz implements QuizInterface {"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private TopicInterface topic;"
+        "content": "public class Quiz implements QuizInterface {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private int numberOfQuestions;"
+        "content": "    private TopicInterface topic;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    private int numberOfQuestions;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "josephhhhhhhhh"
         },
-        "content": "    public Quiz(TopicInterface topic, int numberOfQuestions) {"
+        "content": "    Parser parser \u003d new Parser();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        this.topic \u003d topic;"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        this.numberOfQuestions \u003d numberOfQuestions;"
+        "content": "    public Quiz(TopicInterface topic, int numberOfQuestions) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "        this.topic \u003d topic;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        this.numberOfQuestions \u003d numberOfQuestions;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    public void startQuiz(UiInterface ui) {"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        ui.printStartQuizPage(numberOfQuestions, topic.getTopic());"
+        "content": "    @Override"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        QuestionListInterface questionList \u003d topic.getQuestionList();"
+        "content": "    public void startQuiz(UiInterface ui) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        questionList.setQuizQuestions(numberOfQuestions);"
+        "content": "        ui.printStartQuizPage(numberOfQuestions, topic.getTopic());"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        QuestionListInterface questionList \u003d topic.getQuestionList();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        goThroughQuizQuestions(ui, questionList);"
+        "content": "        questionList.setQuizQuestions(numberOfQuestions);"
       },
       {
         "lineNumber": 27,
@@ -3306,63 +3912,63 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        ui.printEndQuizPage();"
+        "content": "        goThroughQuizQuestions(ui, questionList);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        ui.printEndQuizPage();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private void goThroughQuizQuestions(UiInterface ui, QuestionListInterface questionList) {"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        while (!questionList.areAllQuestionsAnswered()) {"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            QuestionInterface question \u003d questionList.getNextQuestion();"
+        "content": "    private void goThroughQuizQuestions(UiInterface ui, QuestionListInterface questionList) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            ui.printQuestion(question, questionList.getQuestionCount());"
+        "content": "        while (!questionList.areAllQuestionsAnswered()) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "            QuestionInterface question \u003d questionList.getNextQuestion();"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "Zhi-You"
         },
-        "content": "            ArrayList\u003cOptionInterface\u003e options \u003d question.getOptions();"
+        "content": "            ui.printQuestion(question, questionList.getCurrentQuestionNumber());"
       },
       {
         "lineNumber": 37,
@@ -3376,122 +3982,66 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            for (int i \u003d 0; i \u003c options.size(); i++) {"
+        "content": "            ArrayList\u003cOptionInterface\u003e options \u003d question.getOptions();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                ui.printOption(options.get(i), i + 1);"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            }"
+        "content": "            for (int i \u003d 0; i \u003c options.size(); i++) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "                ui.printOption(options.get(i), i + 1);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            parseChosenOption(ui, options);"
+        "content": "            }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "josephhhhhhhhh"
         },
-        "content": "    }"
+        "content": "            parser.parseChosenOption(ui, options, question);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private void parseChosenOption(UiInterface ui, ArrayList\u003cOptionInterface\u003e options) {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "        // Should probably use parser for this part to add hints also"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "        int chosen \u003d Integer.parseInt(ui.getInputFromUser());"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "        if (options.get(chosen).isCorrectAnswer()) {"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "            ui.printAnswerIsCorrect();"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "            ui.printAnswerIsWrong();"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "kstonekuan"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 47,
         "author": {
           "gitId": "kstonekuan"
         },
@@ -3499,7 +4049,9 @@
       }
     ],
     "authorContributionMap": {
-      "kstonekuan": 55
+      "kstonekuan": 43,
+      "Zhi-You": 1,
+      "josephhhhhhhhh": 3
     }
   },
   {
@@ -3616,42 +4168,42 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "Zhi-You"
+          "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.question.QuestionInterface;"
+        "content": "import seedu.eduke8.hint.Hint;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "Zhi-You"
+          "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.question.QuestionListInterface;"
+        "content": "import seedu.eduke8.hint.HintInterface;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "joelngyx"
+          "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.topic.TopicInterface;"
+        "content": "import seedu.eduke8.option.Option;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "Zhi-You"
-        },
-        "content": "import seedu.eduke8.ui.UiInterface;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Zhi-You"
+          "gitId": "kstonekuan"
         },
         "content": "import seedu.eduke8.option.OptionInterface;"
       },
       {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "import seedu.eduke8.option.OptionList;"
+      },
+      {
         "lineNumber": 12,
         "author": {
-          "gitId": "Zhi-You"
+          "gitId": "kstonekuan"
         },
         "content": "import seedu.eduke8.option.OptionListInterface;"
       },
@@ -3660,413 +4212,413 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import java.io.File;"
+        "content": "import seedu.eduke8.question.Question;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "Zhi-You"
         },
-        "content": "import java.io.FileReader;"
+        "content": "import seedu.eduke8.question.QuestionInterface;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import java.io.IOException;"
+        "content": "import seedu.eduke8.question.QuestionList;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "Zhi-You"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import seedu.eduke8.question.QuestionListInterface;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "import seedu.eduke8.topic.Topic;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "joelngyx"
         },
-        "content": "import static java.util.stream.Collectors.toList;"
+        "content": "import seedu.eduke8.topic.TopicInterface;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "import seedu.eduke8.ui.Ui;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "Zhi-You"
         },
-        "content": "public class Storage implements StorageInterface {"
+        "content": "import seedu.eduke8.ui.UiInterface;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private String filePath \u003d new File(\"\").getAbsolutePath();"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private UiInterface ui;"
+        "content": "import java.io.File;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "import java.io.FileReader;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    public Storage(String filePath) {"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // Use relative path for Unix systems"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        String[] filePathSplit \u003d filePath.split(\"/\");"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        for (String path: filePathSplit) {"
+        "content": "import static java.util.stream.Collectors.toList;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            this.filePath +\u003d File.separator + path;"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        }"
+        "content": "public class Storage implements StorageInterface {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "    private String filePath \u003d new File(\"\").getAbsolutePath();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    private static UiInterface ui \u003d new Ui();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    public void save(ArrayList\u003cTopicInterface\u003e topics) {"
+        "content": "    public Storage(String filePath) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        createFileIfNotExists();"
+        "content": "        // Use relative path for Unix systems"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        String[] filePathSplit \u003d filePath.split(\"/\");"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // For adding and removing questions for v2"
+        "content": "        for (String path: filePathSplit) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "            this.filePath +\u003d File.separator + path;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    public ArrayList\u003cTopicInterface\u003e load() {"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        //JSON parser object to parse read file"
+        "content": "    @Override"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        JSONParser jsonParser \u003d new JSONParser();"
+        "content": "    public void save(ArrayList\u003cTopicInterface\u003e topics) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        createFileIfNotExists();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        try {"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            FileReader reader \u003d new FileReader(filePath);"
+        "content": "        // For adding and removing questions for v2"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            //Read JSON file"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            JSONArray topicsArray \u003d (JSONArray) jsonParser.parse(reader);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    public ArrayList\u003cTopicInterface\u003e load() {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            //Iterate over employee array"
+        "content": "        //JSON parser object to parse read file"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            ArrayList\u003cTopicInterface\u003e topicsAsObjects \u003d (ArrayList\u003cTopicInterface\u003e) topicsArray.stream()"
+        "content": "        JSONParser jsonParser \u003d new JSONParser();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                    .map(topic -\u003e parseToTopicObject((JSONObject) topic))"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                    .collect(toList());"
+        "content": "        try {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "            FileReader reader \u003d new FileReader(filePath);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            return topicsAsObjects;"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "            //Read JSON file"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        } catch (IOException | ParseException e) {"
+        "content": "            JSONArray topicsArray \u003d (JSONArray) jsonParser.parse(reader);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            e.printStackTrace();"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            // ui.printError();"
+        "content": "            //Iterate over employee array"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        }"
+        "content": "            ArrayList\u003cTopicInterface\u003e topicsAsObjects \u003d (ArrayList\u003cTopicInterface\u003e) topicsArray.stream()"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "                    .map(topic -\u003e parseToTopicObject((JSONObject) topic))"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        return null;"
+        "content": "                    .collect(toList());"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "            return topicsAsObjects;"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private static TopicInterface parseToTopicObject(JSONObject topic) {"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        String topicTitle \u003d (String) topic.get(\"topic\");"
+        "content": "        } catch (IOException | ParseException e) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "            ui.printError();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        JSONArray questionsArray \u003d (JSONArray) topic.get(\"questions\");"
+        "content": "        }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        ArrayList\u003cQuestionInterface\u003e questionsAsObjects \u003d (ArrayList\u003cQuestionInterface\u003e) questionsArray.stream()"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                .map(question -\u003e parseToQuestionObject((JSONObject) question))"
+        "content": "        return null;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                .collect(toList());"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
@@ -4080,14 +4632,14 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        QuestionListInterface questionList \u003d null;"
+        "content": "    private static TopicInterface parseToTopicObject(JSONObject topic) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // TODO construct questionList object when class is available"
+        "content": "        String topicTitle \u003d (String) topic.get(\"topic\");"
       },
       {
         "lineNumber": 75,
@@ -4101,140 +4653,140 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        TopicInterface topicAsObject \u003d null;"
+        "content": "        JSONArray questionsArray \u003d (JSONArray) topic.get(\"questions\");"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // TODO construct topic object when class is available"
+        "content": "        ArrayList\u003cQuestionInterface\u003e questionsAsObjects \u003d (ArrayList\u003cQuestionInterface\u003e) questionsArray.stream()"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "                .map(question -\u003e parseToQuestionObject((JSONObject) question))"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        return topicAsObject;"
+        "content": "                .collect(toList());"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        QuestionListInterface questionList \u003d new QuestionList(questionsAsObjects);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private static QuestionInterface parseToQuestionObject(JSONObject question) {"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        String questionDescription \u003d (String) question.get(\"description\");"
+        "content": "        TopicInterface topicAsObject \u003d new Topic(topicTitle, questionList);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        JSONArray optionsArray \u003d (JSONArray) question.get(\"options\");"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        ArrayList\u003cOptionInterface\u003e optionsAsObjects \u003d (ArrayList\u003cOptionInterface\u003e) optionsArray.stream()"
+        "content": "        return topicAsObject;"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                .map(option -\u003e parseToOptionObject((JSONObject) option))"
+        "content": "    }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                .collect(toList());"
+        "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    private static QuestionInterface parseToQuestionObject(JSONObject question) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        OptionListInterface optionList \u003d null;"
+        "content": "        String questionDescription \u003d (String) question.get(\"description\");"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // TODO construct optionList object when class is available"
+        "content": "        JSONArray optionsArray \u003d (JSONArray) question.get(\"options\");"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        ArrayList\u003cOptionInterface\u003e optionsAsObjects \u003d (ArrayList\u003cOptionInterface\u003e) optionsArray.stream()"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        String hintDescription \u003d (String) question.get(\"hint\");"
+        "content": "                .map(option -\u003e parseToOptionObject((JSONObject) option))"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "                .collect(toList());"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        QuestionInterface questionAsObject \u003d null;"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // TODO construct question object when class is available"
+        "content": "        OptionListInterface optionList \u003d new OptionList(optionsAsObjects);"
       },
       {
         "lineNumber": 96,
@@ -4248,84 +4800,84 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        return questionAsObject;"
+        "content": "        String hintDescription \u003d (String) question.get(\"hint\");"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        HintInterface hint \u003d new Hint(hintDescription);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private static OptionInterface parseToOptionObject(JSONObject option) {"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        String optionDescription \u003d (String) option.get(\"description\");"
+        "content": "        QuestionInterface questionAsObject \u003d new Question(questionDescription, optionList, hint);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        boolean isCorrectAnswer \u003d (boolean) option.get(\"correct\");"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        return questionAsObject;"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        OptionInterface optionAsObject \u003d null;"
+        "content": "    }"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // TODO construct option object when class is available"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    private static OptionInterface parseToOptionObject(JSONObject option) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        return optionAsObject;"
+        "content": "        String optionDescription \u003d (String) option.get(\"description\");"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "        boolean isCorrectAnswer \u003d (boolean) option.get(\"correct\");"
       },
       {
         "lineNumber": 109,
@@ -4339,80 +4891,143 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    private void createFileIfNotExists() {"
+        "content": "        OptionInterface optionAsObject \u003d new Option(optionDescription);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        File f \u003d new File(filePath);"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        if (!f.exists()) {"
+        "content": "        if (isCorrectAnswer) {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            f.getParentFile().mkdirs();"
+        "content": "            optionAsObject.markAsCorrectAnswer();"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            try {"
+        "content": "        }"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                f.createNewFile();"
+        "content": ""
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            } catch (IOException e) {"
+        "content": "        return optionAsObject;"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "                e.printStackTrace();"
+        "content": "    }"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        }"
+        "content": "    private void createFileIfNotExists() {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "        File f \u003d new File(filePath);"
       },
       {
         "lineNumber": 121,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "        if (!f.exists()) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "            f.getParentFile().mkdirs();"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "                f.createNewFile();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "                ui.printError();"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 130,
         "author": {
           "gitId": "kstonekuan"
         },
@@ -4420,8 +5035,8 @@
       }
     ],
     "authorContributionMap": {
-      "Zhi-You": 6,
-      "kstonekuan": 114,
+      "Zhi-You": 4,
+      "kstonekuan": 125,
       "joelngyx": 1
     }
   },
@@ -4548,9 +5163,9 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "joelngyx"
+          "gitId": "kstonekuan"
         },
-        "content": "class Topic implements TopicInterface {"
+        "content": "public class Topic implements TopicInterface {"
       },
       {
         "lineNumber": 6,
@@ -4680,7 +5295,8 @@
       }
     ],
     "authorContributionMap": {
-      "joelngyx": 23
+      "kstonekuan": 1,
+      "joelngyx": 22
     }
   },
   {
@@ -4792,9 +5408,9 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "joelngyx"
+          "gitId": "kstonekuan"
         },
-        "content": "class TopicList implements TopicListInterface {"
+        "content": "public class TopicList implements TopicListInterface {"
       },
       {
         "lineNumber": 6,
@@ -4967,33 +5583,96 @@
       {
         "lineNumber": 30,
         "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    public TopicInterface findTopic(String topicName) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        for (TopicInterface topic : allTopics) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            if (topicName.equals(topic.getTopic())) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "                return topic;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "josephhhhhhhhh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
           "gitId": "joelngyx"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 40,
         "author": {
           "gitId": "joelngyx"
         },
         "content": "    public int getTopicCount() {"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 41,
         "author": {
           "gitId": "joelngyx"
         },
         "content": "        return allTopics.size();"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 42,
         "author": {
           "gitId": "joelngyx"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 43,
         "author": {
           "gitId": "joelngyx"
         },
@@ -5001,7 +5680,9 @@
       }
     ],
     "authorContributionMap": {
-      "joelngyx": 34
+      "kstonekuan": 1,
+      "joelngyx": 33,
+      "josephhhhhhhhh": 9
     }
   },
   {
@@ -5074,14 +5755,14 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "josephhhhhhhhh"
         },
-        "content": "    int getTopicCount();"
+        "content": "    TopicInterface findTopic(String topicName);"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "josephhhhhhhhh"
         },
         "content": ""
       },
@@ -5090,12 +5771,27 @@
         "author": {
           "gitId": "kstonekuan"
         },
+        "content": "    int getTopicCount();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kstonekuan"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
       "kstonekuan": 10,
-      "joelngyx": 2
+      "joelngyx": 2,
+      "josephhhhhhhhh": 2
     }
   },
   {
@@ -5296,7 +5992,7 @@
         "author": {
           "gitId": "anqi20"
         },
-        "content": "    private static final String MESSAGE_GREETINGS \u003d \"Hello! I\u0027m E-Duke-8\\n What can I do for you?\";"
+        "content": "    private static final String MESSAGE_GREETINGS \u003d \"Hello! I\u0027m E-Duke-8\\nWhat can I do for you?\";"
       },
       {
         "lineNumber": 29,
@@ -6111,70 +6807,70 @@
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": ""
+        "content": "import seedu.eduke8.hint.HintInterface;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "import seedu.eduke8.hint.HintInterface;"
+        "content": "import seedu.eduke8.question.QuestionInterface;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "import seedu.eduke8.question.QuestionInterface;"
+        "content": "import seedu.eduke8.option.OptionInterface;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Zhi-You"
         },
-        "content": "import seedu.eduke8.option.OptionInterface;"
+        "content": ""
       },
       {
         "lineNumber": 7,
-        "author": {
-          "gitId": "Zhi-You"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "anqi20"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "Zhi-You"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "anqi20"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 11,
         "author": {
           "gitId": "kstonekuan"
         },
         "content": "public interface UiInterface {"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 8,
         "author": {
           "gitId": "kstonekuan"
         },
         "content": "    String getInputFromUser();"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "    void printGreetMessage();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "    void printExitMessage();"
       },
       {
         "lineNumber": 13,
@@ -6186,9 +6882,9 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "anqi20"
         },
-        "content": "    void printGreetMessage();"
+        "content": "    void printOption(OptionInterface option, int optionNumber);"
       },
       {
         "lineNumber": 15,
@@ -6200,9 +6896,9 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "anqi20"
         },
-        "content": "    void printExitMessage();"
+        "content": "    void printQuestion(QuestionInterface question, int questionNumber);"
       },
       {
         "lineNumber": 17,
@@ -6214,9 +6910,9 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "anqi20"
+          "gitId": "kstonekuan"
         },
-        "content": "    void printOption(OptionInterface option, int optionNumber);"
+        "content": "    void printHint(HintInterface hint);"
       },
       {
         "lineNumber": 19,
@@ -6230,7 +6926,7 @@
         "author": {
           "gitId": "anqi20"
         },
-        "content": "    void printQuestion(QuestionInterface question, int questionNumber);"
+        "content": "    void printStartQuizPage(int numberOfQuestionsChosen, String topicsChosen);"
       },
       {
         "lineNumber": 21,
@@ -6244,7 +6940,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printHint(HintInterface hint);"
+        "content": "    void printEndQuizPage();"
       },
       {
         "lineNumber": 23,
@@ -6256,9 +6952,9 @@
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "anqi20"
+          "gitId": "kstonekuan"
         },
-        "content": "    void printStartQuizPage(int numberOfQuestionsChosen, String topicsChosen);"
+        "content": "    void printAnswerIsWrong();"
       },
       {
         "lineNumber": 25,
@@ -6272,7 +6968,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printEndQuizPage();"
+        "content": "    void printAnswerIsCorrect();"
       },
       {
         "lineNumber": 27,
@@ -6286,7 +6982,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printAnswerIsWrong();"
+        "content": "    void printHelp();"
       },
       {
         "lineNumber": 29,
@@ -6300,7 +6996,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printAnswerIsCorrect();"
+        "content": "    void printAbout();"
       },
       {
         "lineNumber": 31,
@@ -6314,7 +7010,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printHelp();"
+        "content": "    void printTextbook();"
       },
       {
         "lineNumber": 33,
@@ -6328,7 +7024,7 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printAbout();"
+        "content": "    void printError();"
       },
       {
         "lineNumber": 35,
@@ -6342,41 +7038,13 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    void printTextbook();"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": "    void printError();"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "kstonekuan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "kstonekuan"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "Zhi-You": 8,
+      "Zhi-You": 6,
       "kstonekuan": 27,
-      "anqi20": 5
+      "anqi20": 3
     }
   },
   {
@@ -6501,28 +7169,28 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "Zhi-You"
+          "gitId": "kstonekuan"
         },
-        "content": "import seedu.eduke8.storage.Storage;"
+        "content": "import seedu.eduke8.question.QuestionListInterface;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "joelngyx"
+          "gitId": "Zhi-You"
         },
-        "content": "import seedu.eduke8.topic.TopicInterface;"
+        "content": "import seedu.eduke8.storage.Storage;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "joelngyx"
         },
-        "content": ""
+        "content": "import seedu.eduke8.topic.TopicInterface;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "kstonekuan"
+          "gitId": "joelngyx"
         },
         "content": ""
       },
@@ -6545,136 +7213,171 @@
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertNull;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertNull;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "class StorageTest {"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    @Test"
+        "content": "class StorageTest {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    public void emptyTest() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        Storage storage \u003d new Storage(\"data/test/empty.json\");"
+        "content": "    public void load_emptyJson_returnsNull() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        ArrayList\u003cTopicInterface\u003e topics \u003d storage.load();"
+        "content": "        Storage storage \u003d new Storage(\"data/test/empty.json\");"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        assertNull(topics);"
+        "content": "        ArrayList\u003cTopicInterface\u003e topics \u003d storage.load();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "        assertNull(topics);"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    public void loadTest() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        Storage storage \u003d new Storage(\"data/test/example.json\");"
+        "content": "    public void load_exampleJson_returnsTopicsFromJson() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        ArrayList\u003cTopicInterface\u003e topics \u003d storage.load();"
+        "content": "        Storage storage \u003d new Storage(\"data/test/example.json\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": ""
+        "content": "        ArrayList\u003cTopicInterface\u003e topics \u003d storage.load();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        TopicInterface firstTopic \u003d topics.get(0);"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        assertNull(firstTopic);"
+        "content": "        assertEquals(topics.size(), 2);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "        // TODO check content in firstTopic when classes are made"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "kstonekuan"
         },
-        "content": "    }"
+        "content": "        TopicInterface firstTopic \u003d topics.get(0);"
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "        assertEquals(firstTopic.getTopic(), \"OOP\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "        QuestionListInterface firstQuestionList \u003d firstTopic.getQuestionList();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "        assertEquals(firstQuestionList.getNumberOfQuestionsInTopic(), 2);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kstonekuan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "kstonekuan"
         },
@@ -6683,7 +7386,7 @@
     ],
     "authorContributionMap": {
       "Zhi-You": 2,
-      "kstonekuan": 25,
+      "kstonekuan": 30,
       "joelngyx": 2
     }
   },
@@ -6806,6 +7509,22 @@
     ],
     "authorContributionMap": {
       "Zhi-You": 16
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi20"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi20": 1
     }
   }
 ]

@@ -474,7 +474,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        parser \u003d new Parser();"
+        "content": ""
       },
       {
         "lineNumber": 13,
@@ -579,59 +579,66 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                parser.getCommand();"
+        "content": "                String fullCommand \u003d Ui.getCommand();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                isOngoing \u003d parser.extractType();"
+        "content": "                parser \u003d new Parser(fullCommand);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            } catch (CustomException error) {"
+        "content": "                isOngoing \u003d parser.extractType();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                Ui.showError(error);"
+        "content": "            } catch (CustomException error) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            }"
+        "content": "                Ui.showError(error);"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": ""
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 36,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -640,7 +647,7 @@
     ],
     "authorContributionMap": {
       "-": 10,
-      "wamikamalik": 25
+      "wamikamalik": 26
     }
   },
   {
@@ -1199,7 +1206,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "import java.util.Scanner;"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 9,
@@ -1213,182 +1220,182 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "public class Parser {"
+        "content": "    private String userInput;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    private Command com;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    String userInput;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    Scanner in \u003d new Scanner(System.in);"
+        "content": "    public Parser(String userInput) {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    Command com;"
+        "content": "        this.userInput \u003d userInput;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public void getCommand() {"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        userInput \u003d in.nextLine();"
+        "content": "    /**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "     * Split sentence to derive command and rest of the user input."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    /**"
+        "content": "     * @return String Array with two element: Command and the rest of the user input"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "     * Split sentence to derive command and rest of the user input."
+        "content": "     */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "     *"
+        "content": "    private String[] splitCommands(int length) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "     * @return String Array with two element: Command and the rest of the user input"
+        "content": "        final String[] split \u003d userInput.trim().split(\"\\\\s+\", length);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "     */"
+        "content": "        return split.length \u003d\u003d length ? split : new String[]{split[0], \" \"};"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    private String[] splitCommands() {"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        final String[] split \u003d userInput.trim().split(\"\\\\s+\", 2);"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        return split.length \u003d\u003d 2 ? split : new String[]{split[0], \" \"};"
+        "content": "    public boolean extractType() throws CustomException {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        String command \u003d splitCommands(2)[0];"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public boolean extractType() throws CustomException {"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        switch (command) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        String command \u003d splitCommands()[0];"
+        "content": "        //        case \"/route\":"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        //"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        switch (command) {"
+        "content": "        //            break;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //        case \"/route\":"
+        "content": "        //        case \"/routemap\":"
       },
       {
         "lineNumber": 36,
@@ -1409,7 +1416,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //        case \"/routemap\":"
+        "content": "        //        case \"/bus\":"
       },
       {
         "lineNumber": 39,
@@ -1430,7 +1437,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //        case \"/bus\":"
+        "content": "        //        case \"/allbus\":"
       },
       {
         "lineNumber": 42,
@@ -1451,7 +1458,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //        case \"/allbus\":"
+        "content": "        //        case \"/liststops\":"
       },
       {
         "lineNumber": 45,
@@ -1472,7 +1479,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //        case \"/liststops\":"
+        "content": "        //        case \"/help\":"
       },
       {
         "lineNumber": 48,
@@ -1493,136 +1500,80 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //        case \"/help\":"
+        "content": "        case \"/exit\":"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //"
+        "content": "            com \u003d new ExitCommand();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        //            break;"
+        "content": "            break;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        case \"/exit\":"
+        "content": "        default:"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            com \u003d new ExitCommand();"
+        "content": "            throw new CustomException(ExceptionType.INVALID_COMMAND);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            break;"
+        "content": "        }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        default:"
+        "content": "        com.executeCommand();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            throw new CustomException(ExceptionType.INVALID_COMMAND);"
+        "content": "        return com.isOngoing();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        com.executeCommand();"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        return com.isOngoing();"
+        "content": ""
       },
       {
         "lineNumber": 61,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "    private String[] splitRouteMessage() {"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "        final String[] split \u003d splitCommands()[1].trim().split(\"\\\\s+\", 3);"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "        return split.length \u003d\u003d 3 ? split : new String[]{split[0], \" \"};"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -1630,7 +1581,7 @@
       }
     ],
     "authorContributionMap": {
-      "wamikamalik": 69
+      "wamikamalik": 61
     }
   },
   {
@@ -1693,7 +1644,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "public class Ui {"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 4,
@@ -1707,84 +1658,324 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public static void printWelcomeMessage() {"
+        "content": "public class Ui {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": "    private static Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": "    public static String getCommand() {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "        return in.nextLine();"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+        "content": "    }"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"How can I help?\");"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "    public static void printWelcomeMessage() {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        String logo \u003d \" ____        _        \\n\""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public static void showError(Exception error) {"
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "wamikamalik"
         },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        System.out.println(\"How can I help?\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    public static void showError(Exception error) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wamikamalik"
+        },
         "content": "        System.out.println(error);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    public static void commandList() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    public static void printExitMessage() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        System.out.println(\"So long buddy!\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wamikamalik": 33
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/logic/parser/ParserTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "package seedu.duke.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "import seedu.duke.exceptions.CustomException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "class ParserTest {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    void extractType_unknownCommand_expectException() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        String command \u003d \"Hello\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        Parser p \u003d new Parser(command);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        assertThrows(CustomException.class, () -\u003e p.extractType());"
       },
       {
         "lineNumber": 17,
@@ -1805,45 +1996,52 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public static void commandList() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "    void extractType_exitCommand_returnsFalse() throws CustomException {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        String command \u003d \"/exit\";"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public static void printExitMessage() {"
+        "content": "        Parser p \u003d new Parser(command);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"So long buddy!\");"
+        "content": "        boolean isOngoing \u003d p.extractType();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        assertEquals(isOngoing, false);"
       },
       {
         "lineNumber": 25,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -1851,7 +2049,7 @@
       }
     ],
     "authorContributionMap": {
-      "wamikamalik": 25
+      "wamikamalik": 26
     }
   },
   {

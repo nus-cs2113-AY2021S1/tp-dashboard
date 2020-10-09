@@ -1085,997 +1085,514 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "    private enum CommandPattern {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private String getAction(String userInput) throws InvalidCommandException {"
+        "content": "        HELP(\"^help$\", \"help\"),"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        String action;"
+        "content": "        CLEAR_ALL(\"^clear\\\\s*-all$\", \"clearAll\"),"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        try {"
+        "content": "        CLEAR_INDEX(\"^clear\\\\s*\\\\d+$\", \"clear\"),"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            action \u003d userInput.substring(0, userInput.indexOf(\" \"));"
+        "content": "        ADD(\"^add\\\\s*-d.+-s\\\\s*.\\\\d+(.\\\\d*)$\", \"add\"),"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "        EDIT(\"^edit\\\\s*\\\\d+\\\\s*-d.+\\\\S*-s\\\\s*\\\\d+$\", \"\"),"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            throw new InvalidCommandException();"
+        "content": "        LOGOUT(\"^logout$\", \"logout\"),"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "        CONVERT(\"^convert\\\\s*-d.+\\\\s*-d.+$\", \"convert\"),"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        return action;"
+        "content": "        SUMMARY(\"^summary$\", \"summary\"),"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        SUMMARY_YEAR(\"^summary\\\\s*\\\\d{4}$\", \"summaryYear\"),"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "        SUMMARY_YEAR_MONTH(\"^summary\\\\s*\\\\d{4}\\\\s*[a-zA-Z]{3}$\", \"summaryYearMonth\");"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private Command getAddCommand(String commandParameters) throws InvalidCommandException {"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        commandParameters +\u003d \u0027-\u0027;"
+        "content": "        private final String pattern;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        if (!((commandParameters.contains(\"-d\")) \u0026\u0026 (commandParameters.contains(\"-s\")))) {"
+        "content": "        private final String action;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            throw new InvalidCommandException();"
+        "content": "        CommandPattern(String pattern, String action) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "            this.pattern \u003d pattern;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        int descriptionBeginIndex \u003d commandParameters.indexOf(\"-d\") + \"-d\".length();"
+        "content": "            this.action \u003d action;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        String description \u003d commandParameters.substring(descriptionBeginIndex,"
+        "content": "        }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "                commandParameters.indexOf(\u0027-\u0027, descriptionBeginIndex)).strip();"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        int spendingBeginIndex \u003d commandParameters.indexOf(\"-s\") + \"-s\".length();"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        String spending \u003d commandParameters.substring(spendingBeginIndex,"
+        "content": "    private String getAction(String userInput) throws InvalidCommandException {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "                commandParameters.indexOf(\u0027-\u0027, spendingBeginIndex)).strip();"
+        "content": "        for (CommandPattern command: CommandPattern.values()) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        String symbol;"
+        "content": "            if (userInput.matches(command.pattern)) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        double amount;"
+        "content": "                return command.action;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        try {"
+        "content": "            }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            symbol \u003d spending.substring(0, 1);"
+        "content": "        }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            amount \u003d Double.parseDouble(spending.substring(1));"
+        "content": "        throw new InvalidCommandException();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            throw new InvalidCommandException();"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "    private Command getAddCommand(String commandParameters) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        return new AddCommand(description, symbol, amount);"
+        "content": "        int descriptionBeginIndex \u003d commandParameters.indexOf(\"-d\");"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        int spendingBeginIndex \u003d commandParameters.indexOf(\"-s\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "        String description \u003d commandParameters.substring(descriptionBeginIndex + \"-d\".length(),"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private Command getHelpCommand(String commandParameters) throws InvalidCommandException {"
+        "content": "                spendingBeginIndex).strip();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        if (commandParameters.isEmpty()) {"
+        "content": "        String spending \u003d commandParameters.substring(spendingBeginIndex + \"-s\".length()).strip();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        String symbol \u003d spending.substring(0, 1);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        } else {"
+        "content": "        double amount \u003d Double.parseDouble(spending.substring(1));"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            throw new InvalidCommandException();"
+        "content": "        return new AddCommand(description, symbol, amount);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "    "
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "    private Command getEditCommand(String commandParameters) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private Command getClearCommand(String commandParameters) throws InvalidCommandException {"
+        "content": "        int descriptionBeginIndex \u003d commandParameters.indexOf(\"-d\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        if (commandParameters.toLowerCase().equals(\"all\")) {"
+        "content": "        int spendingBeginIndex \u003d commandParameters.indexOf(\"-s\");"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            return new ClearCommand(true, 0);"
+        "content": "        int number \u003d Integer.parseInt(commandParameters.substring(0, descriptionBeginIndex).strip());"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        } else {"
+        "content": "        String description \u003d commandParameters.substring(descriptionBeginIndex + \"-d\".length(),"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            int clearIndex;"
+        "content": "                spendingBeginIndex).strip();"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            try {"
+        "content": "        String spending \u003d commandParameters.substring(spendingBeginIndex + \"-s\".length()).strip();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "                clearIndex \u003d Integer.parseInt(commandParameters);"
+        "content": "        String symbol \u003d spending.substring(0, 1);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "        double amount \u003d Double.parseDouble(spending.substring(1));"
       },
       {
         "lineNumber": 63,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            return new ClearCommand(false, clearIndex);"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    private Command getConvertCommand(String commandParameters) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        return new ConvertCommand(commandParameters);"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    private Command getLogoutCommand(String commandParameters) throws InvalidCommandException {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        if (commandParameters.isEmpty()) {"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            return new ExitCommand();"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    private boolean isNumeric(String string) {"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        for (int i \u003d 0; i \u003c string.length(); i++) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            if (!Character.isDigit(string.charAt(i))) {"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                return false;"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        return true;"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    private Command getSummaryCommand(String commandParameters) throws InvalidCommandException {"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        if (commandParameters.isEmpty()) {"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            return new SummaryCommand();"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            int dividerIndex \u003d commandParameters.indexOf(\" \");"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            if (dividerIndex \u003d\u003d -1) {"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                String year \u003d commandParameters;"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                if (isNumeric(year)) {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                    return new SummaryCommand(year);"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                    throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                String year \u003d commandParameters.substring(0, dividerIndex);"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                String month \u003d commandParameters.substring(dividerIndex + 1);"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                if (isNumeric(year) \u0026\u0026 isNumeric(month)) {"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                    return new SummaryCommand(year, month);"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                    throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    "
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "    private Command getEditCommand(String commandParameters) throws InvalidCommandException {"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        commandParameters +\u003d \u0027-\u0027;"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        if (!((commandParameters.contains(\"-d\")) \u0026\u0026 (commandParameters.contains(\"-s\")))) {"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "            throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        int numberBeginIndex \u003d commandParameters.indexOf(\"edit\") + \"edit \".length();"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        int numberEndIndex \u003d commandParameters.indexOf(\"-d\") - \" \".length();"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        int number \u003d Integer.parseInt(commandParameters.substring(numberBeginIndex, numberEndIndex));"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        int descriptionBeginIndex \u003d commandParameters.indexOf(\"-d\") + \"-d\".length();"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        String description \u003d commandParameters.substring(descriptionBeginIndex,"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "                commandParameters.indexOf(\u0027-\u0027, descriptionBeginIndex)).strip();"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        int spendingBeginIndex \u003d commandParameters.indexOf(\"-s\") + \"-s\".length();"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        String spending \u003d commandParameters.substring(spendingBeginIndex,"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "                commandParameters.indexOf(\u0027-\u0027, spendingBeginIndex)).strip();"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        String symbol;"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        double amount;"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "            symbol \u003d spending.substring(0, 1);"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "            amount \u003d Double.parseDouble(spending.substring(1));"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "            throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 136,
         "author": {
           "gitId": "killingbear999"
         },
         "content": "        return new EditCommand(number, description, symbol, amount);"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 64,
         "author": {
           "gitId": "killingbear999"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 65,
         "author": {
           "gitId": "killingbear999"
         },
         "content": ""
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 66,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": ""
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 67,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    public Command getCommand(String userInput) throws InvalidCommandException {"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 68,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        userInput \u003d userInput.strip();"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 69,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        String action;"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 70,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        action \u003d getAction(userInput);"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 71,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        String commandParameters \u003d userInput.substring(action.length()).strip();"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 72,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        switch (action) {"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 73,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        case \"add\": return getAddCommand(commandParameters);"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 74,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"help\": return getHelpCommand(commandParameters);"
+        "content": "        case \"help\": return new HelpCommand();"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 75,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"clear\": return getClearCommand(commandParameters);"
+        "content": "        case \"clear\": return new ClearCommand(false, Integer.parseInt(commandParameters));"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 76,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"convert\": return getConvertCommand(commandParameters);"
+        "content": "        case \"clearAll\": return new ClearCommand(true, 0);"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 77,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"summary\": return getSummaryCommand(commandParameters);"
+        "content": "        case \"convert\": return new ConvertCommand(commandParameters);"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 78,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"logout\": return getLogoutCommand(commandParameters);"
+        "content": "        case \"summary\": return new SummaryCommand();"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        case \"summaryYear\": return new SummaryCommand(commandParameters);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        case \"summaryYearMonth\": return new SummaryCommand(commandParameters.substring(0, 4),"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "                commandParameters.substring(4).strip());"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        case \"logout\": return new ExitCommand();"
+      },
+      {
+        "lineNumber": 83,
         "author": {
           "gitId": "killingbear999"
         },
         "content": "        case \"edit\": return getEditCommand(commandParameters);"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 84,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        default: return null;"
+        "content": "        default: throw new InvalidCommandException();"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 85,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 86,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 87,
         "author": {
           "gitId": "Wu-Haitao"
         },
@@ -2083,8 +1600,8 @@
       }
     ],
     "authorContributionMap": {
-      "Wu-Haitao": 129,
-      "killingbear999": 27
+      "Wu-Haitao": 82,
+      "killingbear999": 5
     }
   },
   {
@@ -2632,317 +2149,317 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "import seedu.duke.command.ConvertCommand;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "import java.io.PrintStream;"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 4,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "import java.util.Scanner;"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 5,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": ""
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 6,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "public class Ui {"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 7,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    private Scanner in;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 8,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    private PrintStream out;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 9,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    private static final String SEPARATE_LINE_CHAR \u003d \"-\";"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 10,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    private static final int SEPARATE_LINE_LENGTH \u003d 40;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 11,
         "author": {
           "gitId": "pinfang"
         },
         "content": "    private static final String LOGO \u003d \"  _____         __ _      ___              \\n\""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 12,
         "author": {
           "gitId": "pinfang"
         },
         "content": "            + \" / ___/__ ___  / /| | /| / (_)__ ___       \\n\""
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 13,
         "author": {
           "gitId": "pinfang"
         },
         "content": "            + \"/ /__/ -_) _ \\\\/ __/ |/ |/ / (_-\u003c/ -_)      \\n\""
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 14,
         "author": {
           "gitId": "pinfang"
         },
         "content": "            + \"\\\\___/\\\\__/_//_/\\\\__/|__/|__/_/___/\\\\__/       \\n\""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "pinfang"
         },
         "content": "            + \"  / _ \\\\___  / / /__ ____| | /| / (_)__ ___ \\n\""
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "pinfang"
         },
         "content": "            + \" / // / _ \\\\/ / / _ `/ __/ |/ |/ / (_-\u003c/ -_)\\n\""
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
-          "gitId": "pinfang"
+          "gitId": "Wu-Haitao"
         },
-        "content": "            + \"/____/\\\\___/_/_/\\\\_,_/_/  |__/|__/_/___/\\\\__/ \\n\""
+        "content": "            + \"/____/\\\\___/_/_/\\\\_,_/_/  |__/|__/_/___/\\\\__/ \\n\";"
       },
       {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "pinfang"
-        },
-        "content": "            + \"                                          \";"
-      },
-      {
-        "lineNumber": 21,
+        "lineNumber": 18,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static final String BORDER_CORNER \u003d \"+\";"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 19,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static final String BORDER_HORIZONTAL \u003d \"-\";"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 20,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static final String BORDER_VERTICAL \u003d \"|\";"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 21,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static final int TABLE_SIZE \u003d 104;"
       },
       {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "xieyaoyue"
-        },
-        "content": "    private static final String MESSAGE_HELP \u003d \"Here is a summary of the commands you can use:\\n\";"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "xieyaoyue"
-        },
-        "content": "    private static final String MESSAGE_GOODBYE \u003d \"Goodbye!\";"
-      },
-      {
-        "lineNumber": 27,
+        "lineNumber": 22,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static final String[][] TABLE_OF_COMMANDS \u003d {"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 23,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"ACTION\", \"FORMAT\", \"EXAMPLES (IF ANY)\"},"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 24,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"add\", \"add -d DESCRIPTION -s SPENDING [-f SKIP CONFIRMATION]\", \"add -d chicken rice -s $3.00 -f\"},"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 25,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"clear\", \"clear INDEX\", \"clear 1\"},"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 26,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR clear -all\", \"\"},"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 27,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"convert\", \"convert -d DESCRIPTION -d DESCRIPTION\", \"convert -d SGD -d USD\"},"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 28,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"edit\", \"edit INDEX [-d NEW_DESCRIPTION] [-s NEW_SPENDING]\", \"edit 1 -d buy grocery -s $15\"},"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 29,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"help\", \"help\", \"\"},"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 30,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"list\", \"list\", \"\"},"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 31,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR list YEAR\", \"list 2020\"},"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 32,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR list YEAR MONTH\", \"list 2020 July\"},"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 33,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR list -all\", \"\"},"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 34,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"logout\", \"logout\", \"\"},"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 35,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"summary\", \"summary\", \"\"},"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 36,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR summary [YEAR]\", \"summary 2020\"},"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 37,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR summary [YEAR] [MONTH]\", \"summary 2020 July\"},"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 38,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            {\"\", \"OR list -all\", \"\"}"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 39,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    };"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 40,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": ""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 41,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    public Ui() {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 42,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        this(new Scanner(System.in), System.out);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "    public Ui(Scanner in, PrintStream out) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        this.in \u003d in;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        this.out \u003d out;"
       },
       {
         "lineNumber": 48,
@@ -2963,49 +2480,49 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public Ui(Scanner in, PrintStream out) {"
+        "content": "    public String getUserInput() {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        this.in \u003d in;"
+        "content": "        return in.nextLine();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        this.out \u003d out;"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "    public void printMessage(String message) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public String getUserInput() {"
+        "content": "        out.println(message);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        return in.nextLine();"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 57,
@@ -3026,413 +2543,413 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void printMessage(String message) {"
+        "content": "    public void printWelcomeMessage() {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(message);"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "        out.println(LOGO);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void printWelcomeMessage() {"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "    public void printWelcomeMessage(String filePath) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(LOGO);"
+        "content": "        printWelcomeMessage();"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "        out.println(\"Local file path:\");"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        out.println(filePath);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void printWelcomeMessage(String filePath) {"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        printWelcomeMessage();"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        out.println(\"Local file path:\");"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        out.println(filePath);"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "        drawSeparateLine();"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "Wu-Haitao"
-        },
         "content": ""
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 72,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    public void printGoodbyeMessage() {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 73,
         "author": {
-          "gitId": "xieyaoyue"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(MESSAGE_GOODBYE);"
+        "content": "        out.println(\"Goodbye!\");"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 74,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        drawSeparateLine();"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 75,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 76,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 77,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    private void drawSeparateLine() {"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 78,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        out.println(SEPARATE_LINE_CHAR.repeat(SEPARATE_LINE_LENGTH));"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 79,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 80,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": ""
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 81,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    public void printSpendingList(SpendingList spendingList) {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 82,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        for (int i \u003d 0; i \u003c spendingList.getListSize(); i++) {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 83,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "            out.println(spendingList.getItem(i));"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 84,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 85,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        drawSeparateLine();"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 86,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 87,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": ""
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 88,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static void printTopBottomBorder() {"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 89,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        System.out.println(BORDER_CORNER + BORDER_HORIZONTAL.repeat(TABLE_SIZE - 2) + BORDER_CORNER);"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 90,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 91,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 92,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    private static void printWithinTableBorder() {"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 93,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        System.out.println(BORDER_HORIZONTAL.repeat(TABLE_SIZE));"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 94,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 95,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 96,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    public void printHelp() {"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 97,
         "author": {
-          "gitId": "xieyaoyue"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(MESSAGE_HELP);"
+        "content": "        out.println(\"Here is a summary of the commands you can use:\");"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 98,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        printTopBottomBorder();"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 99,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        for (int i \u003d 0; i \u003c 16; i++) {"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 100,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            System.out.format(\"%1s%-10s%1s%-55s%1s%-35s%1s\\n\", BORDER_VERTICAL, TABLE_OF_COMMANDS[i][0],"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 101,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "                    BORDER_VERTICAL, TABLE_OF_COMMANDS[i][1], BORDER_VERTICAL, TABLE_OF_COMMANDS[i][2],"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 102,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "                    BORDER_VERTICAL);"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 103,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            if (i \u003d\u003d 0 || i \u003d\u003d 1 || i \u003d\u003d 3 || i \u003d\u003d 4 || i \u003d\u003d 5 || i \u003d\u003d 6 || i \u003d\u003d 10 || i \u003d\u003d 11) {"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 104,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "                printWithinTableBorder();"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 105,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 106,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 107,
         "author": {
           "gitId": "xieyaoyue"
         },
         "content": "        printTopBottomBorder();"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 108,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 109,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": ""
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 110,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "    public void printClearIndex(Item item) {"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 111,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        out.println(\"You\u0027ve deleted the record:\");"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 112,
         "author": {
           "gitId": "Wu-Haitao"
         },
         "content": "        out.print(item);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        drawSeparateLine();"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "    public void printClearAll() {"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        out.println(\"You\u0027ve deleted all the records.\");"
       },
       {
         "lineNumber": 118,
@@ -3460,68 +2977,68 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void printClearAll() {"
+        "content": "    public void printAdd(SpendingList spendingList) {"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(\"You\u0027ve deleted all the records.\");"
+        "content": "        out.println(\"You\u0027ve added the record:\");"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "        out.println(spendingList.getItem(spendingList.getListSize() - 1));"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "    public void printAdd(SpendingList spendingList) {"
+        "content": "    "
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "        out.println(\"You\u0027ve added the record:\");"
+        "content": "    public void printConvertCurrency(String outputCurrency) {"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "        out.println(spendingList.getItem(spendingList.getListSize() - 1));"
+        "content": "        out.println(\"The currency has been changed to \" + outputCurrency + \" .\");"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
         "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
         "content": "    }"
       },
@@ -3537,73 +3054,38 @@
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    public void printConvertCurrency(String outputCurrency) {"
+        "content": "    public void printEdit(SpendingList spendingList, int index) {"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        out.println(\"The currency has been changed to \" + outputCurrency + \" .\");"
+        "content": "        out.println(\"You\u0027ve update the record:\");"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        drawSeparateLine();"
+        "content": "        out.println(spendingList.getItem(index));"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    }"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    "
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "    public void printEdit(SpendingList spendingList, int index) {"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        out.println(\"You\u0027ve update the record:\");"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        out.println(spendingList.getItem(index));"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        drawSeparateLine();"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "killingbear999"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 137,
         "author": {
           "gitId": "Wu-Haitao"
         },
@@ -3611,10 +3093,10 @@
       }
     ],
     "authorContributionMap": {
-      "Wu-Haitao": 73,
-      "killingbear999": 13,
-      "xieyaoyue": 48,
-      "pinfang": 8
+      "Wu-Haitao": 76,
+      "killingbear999": 11,
+      "xieyaoyue": 44,
+      "pinfang": 6
     }
   },
   {
