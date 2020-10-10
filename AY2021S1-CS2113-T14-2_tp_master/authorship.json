@@ -494,16 +494,16 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "import seedu.ecardnomics.command.DoneEditCommand;"
+        "content": "import seedu.ecardnomics.command.deck.DoneEditCommand;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "import seedu.ecardnomics.command.deck.EditCommand;"
+        "content": "import seedu.ecardnomics.command.normal.EditCommand;"
       },
       {
         "lineNumber": 6,
@@ -678,280 +678,280 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    /**"
+        "content": "     * Runs Deck Mode to edit a deck."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "     * Runs Deck Mode to edit a deck."
+        "content": "     *"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "     *"
+        "content": "     * @param deck Deck to edit"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "     * @param deck Deck to edit"
+        "content": "     * @return Command used to exit Deck Mode (either \u003ccode\u003edone\u003c/code\u003e or \u003ccode\u003eexit\u003c/code\u003e)"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "     * @return Command used to exit Deck Mode (either \u003ccode\u003edone\u003c/code\u003e or \u003ccode\u003eexit\u003c/code\u003e)"
+        "content": "     */"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "     */"
+        "content": "    public static Command runDeckMode(Deck deck) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    public static Command runDeckMode(Deck deck) {"
+        "content": "        DeckParser deckParser \u003d new DeckParser(deck);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        DeckParser deckParser \u003d new DeckParser(deck);"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        String userInput;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String userInput;"
+        "content": "        Command command;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        Command command;"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        do {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        do {"
+        "content": "            Ui.printDeckPrompt(deck);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            Ui.printDeckPrompt(deck);"
+        "content": "            userInput \u003d Ui.readUserInput();"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            userInput \u003d Ui.readUserInput();"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            command \u003d deckParser.parse(userInput);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            command \u003d deckParser.parse(userInput);"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            executeCommand(command);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            executeCommand(command);"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        } while (!DoneEditCommand.isDoneEdit(command)"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        } while (!DoneEditCommand.isDoneEdit(command)"
+        "content": "                \u0026\u0026 !ExitCommand.isExit(command));"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                \u0026\u0026 !ExitCommand.isExit(command));"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        return command;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        return command;"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "kaijiel24"
-        },
         "content": ""
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "     * Runs Normal Mode in a loop until \u003ccode\u003eexit\u003c/code\u003e in input."
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "     * Enters Deck Mode when \u003ccode\u003eedit\u003c/code\u003e is input."
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "    public static void runNormalMode() {"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        Ui.printGreeting();"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String userInput;"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        Command command;"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        do {"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 67,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            Ui.printNormalPrompt();"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 68,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            userInput \u003d Ui.readUserInput();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
       },
       {
         "lineNumber": 70,
@@ -965,91 +965,91 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            command \u003d normalParser.parse(userInput);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            command \u003d normalParser.parse(userInput);"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            executeCommand(command);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            executeCommand(command);"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            if (EditCommand.isEdit(command)) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            if (EditCommand.isEdit(command)) {"
+        "content": "                EditCommand editCommand \u003d (EditCommand) command;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                EditCommand editCommand \u003d (EditCommand) command;"
+        "content": "                command \u003d runDeckMode(editCommand.getDeck());"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                command \u003d runDeckMode(editCommand.getDeck());"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "                if (command instanceof DoneEditCommand) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                if (command instanceof DoneEditCommand) {"
+        "content": "                    Ui.printNormalWelcome();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                    Ui.printNormalWelcome();"
+        "content": "                }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                }"
+        "content": "            }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 84,
@@ -1063,129 +1063,122 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        } while (!ExitCommand.isExit(command));"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        } while (!ExitCommand.isExit(command));"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        Ui.printExitLine();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        Ui.printExitLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "kaijiel24"
-        },
         "content": ""
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 91,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "     * Main method."
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 92,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 93,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "     * @param args Arrguments from command line when user starts the program"
+        "content": "     * @param args Arguments from command line when user starts the program"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 96,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        // TEMP FOR TESTING"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 97,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        Deck pokemon \u003d new Deck(\"Pokemon\");"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 98,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        deckList.addDeck(pokemon);"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 99,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        runNormalMode();"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 100,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        // runDeckMode(pokemon);"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
@@ -1193,8 +1186,8 @@
       }
     ],
     "authorContributionMap": {
-      "kaijiel24": 83,
-      "zhixiangteoh": 12,
+      "kaijiel24": 80,
+      "zhixiangteoh": 14,
       "-": 8
     }
   },
@@ -3145,156 +3138,6 @@
     }
   },
   {
-    "path": "src/main/java/seedu/ecardnomics/command/DoneEditCommand.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "package seedu.ecardnomics.command;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "import seedu.ecardnomics.deck.Deck;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "public class DoneEditCommand extends DeckCommand {"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    /** Constructor. */"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    public DoneEditCommand(Deck deck) {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        super(deck);"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    public void execute() {"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    /** Returns if command given is an instance of \u003ccode\u003eDoneEditCommand\u003c/code\u003e.  */"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    public static boolean isDoneEdit(Command command) {"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        return command instanceof DoneEditCommand;"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "kaijiel24": 19,
-      "zhixiangteoh": 1
-    }
-  },
-  {
     "path": "src/main/java/seedu/ecardnomics/command/NormalCommand.java",
     "fileType": "functional-code",
     "lines": [
@@ -4075,7 +3918,7 @@
     }
   },
   {
-    "path": "src/main/java/seedu/ecardnomics/command/deck/EditCommand.java",
+    "path": "src/main/java/seedu/ecardnomics/command/deck/DoneEditCommand.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4095,37 +3938,37 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "import seedu.ecardnomics.Ui;"
+        "content": "import seedu.ecardnomics.command.Command;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "import seedu.ecardnomics.command.Command;"
+        "content": "import seedu.ecardnomics.command.DeckCommand;"
       },
       {
         "lineNumber": 5,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "import seedu.ecardnomics.command.NormalCommand;"
-      },
-      {
-        "lineNumber": 6,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "import seedu.ecardnomics.deck.Deck;"
       },
       {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
         "lineNumber": 7,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "import seedu.ecardnomics.deck.DeckList;"
+        "content": "public class DoneEditCommand extends DeckCommand {"
       },
       {
         "lineNumber": 8,
@@ -4139,49 +3982,49 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "public class EditCommand extends NormalCommand {"
+        "content": "    /** Constructor. */"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    Deck deck;"
+        "content": "    public DoneEditCommand(Deck deck) {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        super(deck);"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    /** Constructor. */"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    public EditCommand(DeckList deckList, Deck deck) {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        super(deckList);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        this.deck \u003d deck;"
+        "content": "    public void execute() {"
       },
       {
         "lineNumber": 16,
@@ -4200,23 +4043,23 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    @Override"
+        "content": "    /** Returns if command given is an instance of \u003ccode\u003eDoneEditCommand\u003c/code\u003e.  */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    public void execute() {"
+        "content": "    public static boolean isDoneEdit(Command command) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        Ui.printDeckWelcome(deckList.getIndexOf(deck) + 1, deck);"
+        "content": "        return command instanceof DoneEditCommand;"
       },
       {
         "lineNumber": 21,
@@ -4230,81 +4073,11 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    /** Returns Deck which is to be edited. */"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    public Deck getDeck() {"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        return deck;"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    /** Returns if command given is an instance of \u003ccode\u003eEditCommand\u003c/code\u003e. */"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    public static boolean isEdit(Command command) {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        return command instanceof EditCommand;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "kaijiel24"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "kaijiel24": 28,
+      "kaijiel24": 18,
       "zhixiangteoh": 4
     }
   },
@@ -5392,6 +5165,240 @@
     ],
     "authorContributionMap": {
       "alwaysnacy": 34
+    }
+  },
+  {
+    "path": "src/main/java/seedu/ecardnomics/command/normal/EditCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "package seedu.ecardnomics.command.normal;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "import seedu.ecardnomics.Ui;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "import seedu.ecardnomics.command.Command;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "import seedu.ecardnomics.command.NormalCommand;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "import seedu.ecardnomics.deck.Deck;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "import seedu.ecardnomics.deck.DeckList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "public class EditCommand extends NormalCommand {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    Deck deck;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    /** Constructor. */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    public EditCommand(DeckList deckList, Deck deck) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        super(deckList);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        this.deck \u003d deck;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    public void execute() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        Ui.printDeckWelcome(deckList.getIndexOf(deck) + 1, deck);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    /** Returns Deck which is to be edited. */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    public Deck getDeck() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        return deck;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    /** Returns if command given is an instance of \u003ccode\u003eEditCommand\u003c/code\u003e. */"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    public static boolean isEdit(Command command) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        return command instanceof EditCommand;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kaijiel24": 28,
+      "zhixiangteoh": 4
     }
   },
   {
@@ -6999,9 +7006,9 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "zhixiangteoh"
         },
-        "content": "import seedu.ecardnomics.command.DoneEditCommand;"
+        "content": "import seedu.ecardnomics.command.deck.DoneEditCommand;"
       },
       {
         "lineNumber": 8,
@@ -7132,404 +7139,334 @@
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        // Exit"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (commandWord.equals(Ui.EXIT)) {"
+        "content": "        // Exit"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            return new ExitCommand();"
+        "content": "        case Ui.EXIT:"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        // Done with Edit Mode"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        // Done with Edit Mode"
+        "content": "        case Ui.DONE:"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (commandWord.equals(Ui.DONE)) {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "kaijiel24"
-        },
         "content": "            return new DoneEditCommand(deck);"
       },
       {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
+        "lineNumber": 33,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "        // Add a FlashCard"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 34,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        if (commandWord.equals(Ui.ADD)) {"
+        "content": "        case Ui.ADD:"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 35,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "            return new AddCommand(deck);"
       },
       {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 41,
+        "lineNumber": 36,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "        // List all FlashCards"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 37,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        if (commandWord.equals(Ui.LIST)) {"
+        "content": "        case Ui.LIST:"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 38,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "            return new ListCommand(deck, arguments);"
       },
       {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 46,
+        "lineNumber": 39,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        // Delete a FlashCard"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 40,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        if (commandWord.equals(Ui.DELETE)) {"
+        "content": "        case Ui.DELETE:"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 41,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            return new DeleteCommand(deck, arguments);"
       },
       {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 51,
+        "lineNumber": 42,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        // Help"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 43,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        if (commandWord.equals(Ui.HELP)) {"
+        "content": "        case Ui.HELP:"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 44,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            return new HelpCommand();"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 45,
         "author": {
           "gitId": "zhixiangteoh"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new VoidCommand();"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kaijiel24"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 48,
         "author": {
           "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        return new VoidCommand();"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "kaijiel24"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 49,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
+        "lineNumber": 50,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 51,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    public Command parse(String userInput) {"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 52,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 53,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String commandWord \u003d splitString[0];"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 54,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String arguments \u003d \"\";"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 55,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        boolean argumentsExist \u003d  splitString.length \u003e 1;"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 56,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 57,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        if (argumentsExist) {"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 58,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            arguments \u003d splitString[1];"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 59,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 60,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 61,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 62,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            return parseCommand(commandWord, arguments);"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 63,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 64,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        } catch (Exception e) {"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 65,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            return new VoidCommand(e.getMessage());"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 66,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 67,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 68,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 69,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    public boolean isValidDeckIndex(String arguments) {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 70,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        int index \u003d Integer.parseInt(arguments.trim());"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 71,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        return index \u003e 0 \u0026\u0026 index \u003c\u003d deck.size();"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 72,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 73,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -7537,9 +7474,9 @@
       }
     ],
     "authorContributionMap": {
-      "kaijiel24": 41,
-      "zhixiangteoh": 28,
-      "wangwaynesg": 14
+      "kaijiel24": 35,
+      "zhixiangteoh": 32,
+      "wangwaynesg": 6
     }
   },
   {
@@ -7579,7 +7516,7 @@
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "import seedu.ecardnomics.command.deck.EditCommand;"
+        "content": "import seedu.ecardnomics.command.normal.EditCommand;"
       },
       {
         "lineNumber": 6,
@@ -7969,226 +7906,226 @@
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        // Edit"
+        "content": "        // Exit"
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        case Ui.EDIT:"
+        "content": "        case Ui.EXIT:"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            Deck deck \u003d prepareDeck(arguments);"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            return new EditCommand(deckList, deck);"
+        "content": "        // Edit"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "        case Ui.EDIT:"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
-        "content": "        // Help"
+        "content": "            Deck deck \u003d prepareDeck(arguments);"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "kaijiel24"
         },
-        "content": "        case Ui.HELP:"
+        "content": "            return new EditCommand(deckList, deck);"
       },
       {
         "lineNumber": 68,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "            return new HelpCommand(deckList);"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        // Exit"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        case Ui.EXIT:"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return new ExitCommand();"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        // Create"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 69,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.CREATE:"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 70,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            Deck newDeck \u003d new Deck(arguments);"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 71,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            return new CreateCommand(deckList, newDeck);"
       },
       {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
+        "lineNumber": 72,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        // Decks"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 73,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.DECKS:"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 74,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            return new DecksCommand(deckList);"
       },
       {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 83,
+        "lineNumber": 75,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        // Delete"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 76,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.DELETE:"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 77,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            int deckID \u003d prepareDeletedDeck(arguments);"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 78,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            return new DeleteDeckCommand(deckList, deckID);"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 79,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        // Help"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 80,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.HELP:"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            return new HelpCommand(deckList);"
+      },
+      {
+        "lineNumber": 82,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        default:"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 83,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            return new VoidCommand();"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 84,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 85,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 86,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    public Command parse(String userInput) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        String commandWord \u003d splitString[0];"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        boolean argumentsExist \u003d  splitString.length \u003e 1;"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        String arguments \u003d \"\";"
       },
       {
         "lineNumber": 93,
@@ -8200,44 +8137,44 @@
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "    @Override"
+        "content": "        if (argumentsExist) {"
       },
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "    public Command parse(String userInput) {"
+        "content": "            arguments \u003d splitString[1];"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
+        "content": "        }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String commandWord \u003d splitString[0];"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        boolean argumentsExist \u003d  splitString.length \u003e 1;"
+        "content": "        try {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String arguments \u003d \"\";"
+        "content": "            return parseCommand(commandWord, arguments);"
       },
       {
         "lineNumber": 100,
@@ -8251,14 +8188,14 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (argumentsExist) {"
+        "content": "        } catch (Exception e) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            arguments \u003d splitString[1];"
+        "content": "            return new VoidCommand(e.getMessage());"
       },
       {
         "lineNumber": 103,
@@ -8270,68 +8207,19 @@
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return parseCommand(commandWord, arguments);"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return new VoidCommand(e.getMessage());"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 105,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": ""
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 106,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -8339,10 +8227,10 @@
       }
     ],
     "authorContributionMap": {
-      "alwaysnacy": 41,
-      "kaijiel24": 59,
-      "LiewWS": 4,
-      "zhixiangteoh": 9
+      "alwaysnacy": 36,
+      "kaijiel24": 54,
+      "LiewWS": 1,
+      "zhixiangteoh": 15
     }
   },
   {

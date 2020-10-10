@@ -429,38 +429,346 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "public class AddCommand extends Command{"
+        "content": "public class AddCommand extends Command {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    @Override"
+        "content": "    public AddCommand(String command){"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public void execute(FoodList foodlist, ExericseList exericseList, Storage storage) {"
+        "content": "        this.command \u003d command;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 8,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public void execute(FoodList foodlist,ExerciseList exerciseList, Storage storage) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        String type \u003d command.split(\" \", 2)[0];"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        command \u003d command.split(\" \", 2)[1];"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        if (type.equals(\"food\")) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                String nameOfFood \u003d command.split(\"/\", 2)[0];"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                command \u003d command.split(\"/\", 2)[1];"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                if (command.split(\" \").length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    Calorie amountOfCalories \u003d new Calorie(Integer.parseInt(command.split(\" \")[0]));"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    foodlist.addFood(new Food(nameOfFood, amountOfCalories));"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                } else if (command.split(\" \").length \u003d\u003d 2) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    Calorie amountOfCalories \u003d new Calorie(Integer.parseInt(command.split(\" \")[0]));"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    int amountOfFood \u003d Integer.parseInt(command.split(\" \", 2)[1]);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    foodlist.addFood(new Food(nameOfFood, amountOfCalories, amountOfFood));"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            } catch (NumberFormatException | NullPointerException e) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                System.out.println(\"Sorry calories have to be a number\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            } catch (ArrayIndexOutOfBoundsException e){"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                System.out.print(\"Please key in the correct format\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        } else if (type.equals(\"exercise\")) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                String nameOfExercise \u003d command.split(\"/\", 2)[0];"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                command \u003d command.split(\"/\", 2)[1];"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                if (command.split(\" \").length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    Calorie amountOfCaloriesBurnt \u003d new Calorie(Integer.parseInt(command.split(\" \")[0]));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    foodlist.addFood(new Food(nameOfExercise, amountOfCaloriesBurnt));"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                } else if (command.split(\" \").length \u003d\u003d 2) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    Calorie amountOfCaloriesBurnt \u003d new Calorie(Integer.parseInt(command.split(\" \")[0]));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    int durationOfExercise \u003d Integer.parseInt(command.split(\" \", 2)[1]);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                    exerciseList.addExercise(new Exercise(nameOfExercise, amountOfCaloriesBurnt, durationOfExercise));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            } catch (NumberFormatException | NullPointerException e) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                System.out.println(\"Sorry calories have to be a number\");"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            } catch (ArrayIndexOutOfBoundsException e){"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                System.out.print(\"Please key in the correct format\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
         "author": {
           "gitId": "sixletters"
         },
@@ -468,7 +776,8 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 8
+      "sixletters": 46,
+      "jerichochua": 6
     }
   },
   {
@@ -515,7 +824,7 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public Calorie(int calories){"
+        "content": "    public Calorie(int calories) {"
       },
       {
         "lineNumber": 7,
@@ -536,24 +845,31 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int get(){"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return amountOfCalories;"
+        "content": "    public int get() {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "        return amountOfCalories;"
       },
       {
         "lineNumber": 12,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
         "author": {
           "gitId": "sixletters"
         },
@@ -561,7 +877,7 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 12
+      "sixletters": 13
     }
   },
   {
@@ -606,9 +922,9 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "sixletters"
+          "gitId": "jerichochua"
         },
-        "content": "    public abstract void execute(FoodList foodlist,ExericseList exericseList, Storage storage);"
+        "content": "    public abstract void execute(FoodList foodlist, ExerciseList exerciseList, Storage storage);"
       },
       {
         "lineNumber": 7,
@@ -620,20 +936,21 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "sixletters"
+          "gitId": "jerichochua"
         },
-        "content": "}"
+        "content": "    public abstract boolean isExit();"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "}"
       }
     ],
     "authorContributionMap": {
-      "sixletters": 9
+      "sixletters": 7,
+      "jerichochua": 2
     }
   },
   {
@@ -666,38 +983,199 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "    public DeleteCommand(String command){"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    @Override"
+        "content": "        this.command \u003d command;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public void execute(FoodList foodlist, ExericseList exericseList, Storage storage) {"
+        "content": "    }"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 8,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public void execute(FoodList foodlist,ExerciseList exerciseList, Storage storage) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            command \u003d command.split(\" \", 2)[1];"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            String type \u003d command.split(\" \", 2)[0];"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            if (type.equals(\"food\")) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                int deletionIndex \u003d Integer.parseInt(command.split(\" \", 2)[1]);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                foodlist.deleteFood(deletionIndex - 1);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            } else if (type.equals(\"exercise\")) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                int deletionIndex \u003d Integer.parseInt(command.split(\" \", 2)[1]);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "                exerciseList.deleteExercise(deletionIndex - 1);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            System.out.println(\"Sorry that index does not exist in the list\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            System.out.println(\"Please key in the delete function in the correct format\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            System.out.println(\"Sorry index deletion must be an number\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "sixletters"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
         "author": {
           "gitId": "sixletters"
         },
@@ -705,7 +1183,8 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 9
+      "sixletters": 26,
+      "jerichochua": 6
     }
   },
   {
@@ -757,9 +1236,9 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "sixletters"
+          "gitId": "gohsonghan98"
         },
-        "content": "    protected int caloricBurnRate \u003d caloriesBurnt.get()/durationOfExercise; // Caloric Rate of the food, if amount isnt given we will take it as a whole unit."
+        "content": "    protected int caloricBurnRate; // Caloric Rate of the food, if amount isnt given we will take it as a whole unit."
       },
       {
         "lineNumber": 8,
@@ -801,157 +1280,171 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "        this.caloricBurnRate \u003d this.caloriesBurnt.get() / this.durationOfExercise;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public Exercise(String name,Calorie caloriesBurnt) {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        this.nameOfExercise \u003d name;"
+        "content": "    public Exercise(String name,Calorie caloriesBurnt) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        this.caloriesBurnt \u003d caloriesBurnt;"
+        "content": "        this.nameOfExercise \u003d name;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "        this.caloriesBurnt \u003d caloriesBurnt;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        this.caloricBurnRate \u003d this.caloriesBurnt.get() / this.durationOfExercise;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int getCalories() {"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return caloriesBurnt.get();"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public int getCalories() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        return caloriesBurnt.get();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public String getNameOfExercise() {"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return nameOfExercise;"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public String getNameOfExercise() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        return nameOfExercise;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int getCaloricBurnRate() {"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return caloricBurnRate;"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public int getCaloricBurnRate() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        return caloricBurnRate;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int getDuration() {"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return durationOfExercise;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public int getDuration() {"
       },
       {
         "lineNumber": 35,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        return durationOfExercise;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
         "author": {
           "gitId": "sixletters"
         },
@@ -959,7 +1452,8 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 35
+      "sixletters": 36,
+      "gohsonghan98": 1
     }
   },
   {
@@ -1153,11 +1647,39 @@
         "author": {
           "gitId": "jerichochua"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public int getSize() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return exerciseList.size();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jerichochua"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "jerichochua": 27
+      "jerichochua": 31
     }
   },
   {
@@ -1190,21 +1712,21 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public void execute(FoodList foodlist, ExericseList exericseList, Storage storage) {"
+        "content": "    public ExitCommand(String command){"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        this.command \u003d command;"
       },
       {
         "lineNumber": 7,
@@ -1218,11 +1740,75 @@
         "author": {
           "gitId": "sixletters"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public void execute(FoodList foodlist, ExerciseList exerciseList, Storage storage) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sixletters"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "sixletters": 8
+      "sixletters": 12,
+      "jerichochua": 5
     }
   },
   {
@@ -1246,131 +1832,250 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "sixletters"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "sixletters"
         },
-        "content": ""
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "public class Fitr {"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "sixletters"
         },
-        "content": "    /**"
+        "content": "public class Fitr {"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "     * Main entry-point for the java.duke.Duke application."
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "     */"
+        "content": "    private FoodList foodList;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    private ExerciseList exerciseList;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": "    private User user;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": "    public Fitr(String filePathOfFoodList, String filePathOfExerciseList){"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": "        foodList \u003d new FoodList();"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "        exerciseList \u003d new ExerciseList();"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "sixletters"
         },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+        "content": "        try {"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "sixletters"
         },
-        "content": "        System.out.println(\"What is your name?\");"
+        "content": "            storage \u003d new Storage(filePathOfFoodList, filePathOfExerciseList);"
       },
       {
         "lineNumber": 17,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        }catch (IOException e){"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            System.out.println(\"Theres no file\");"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 23,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": "    public void run() {"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "dmbclub"
         },
-        "content": "        System.out.println(\"Hello \" + in.nextLine());"
+        "content": "        boolean isExit \u003d false;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 25,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        user \u003d new User(foodList, exerciseList, storage);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        while(!isExit) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            String userInput \u003d UI.read();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            Command c \u003d Parser.parse(userInput);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            c.execute(foodList, exerciseList, storage);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        UI.printExitMessage();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        new Fitr(\"data/foodList.txt\", \"data/exerciseList.txt\").run();"
+      },
+      {
+        "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
@@ -1378,8 +2083,46 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 1,
-      "-": 20
+      "sixletters": 12,
+      "dmbclub": 21,
+      "-": 5
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/FitrException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "public class FitrException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sixletters": 4
     }
   },
   {
@@ -1405,7 +2148,7 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "public class Food{"
+        "content": "public class Food {"
       },
       {
         "lineNumber": 4,
@@ -1433,7 +2176,7 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    protected int caloricRate \u003d caloriesInFood.get()/amountOfFood;// Caloric Rate of the food, if amount is not given we will take it as a whole unit."
+        "content": "    protected int caloricRate;// Caloric Rate of the food, if amount is not given we will take it as a whole unit."
       },
       {
         "lineNumber": 8,
@@ -1447,7 +2190,7 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public Food(String nameOfExercise,Calorie calories, int Amount) {"
+        "content": "    public Food(String nameOfExercise,Calorie calories,int amount) {"
       },
       {
         "lineNumber": 10,
@@ -1468,164 +2211,178 @@
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        this.amountOfFood \u003d Amount;"
+        "content": "        this.amountOfFood \u003d amount;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "        this.caloricRate \u003d this.caloriesInFood.get() / this.amountOfFood;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public Food(String name,Calorie caloriesBurnt) {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        this.nameOfFood \u003d name;"
+        "content": "    public Food(String name,Calorie caloriesBurnt) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        this.caloriesInFood \u003d caloriesBurnt;"
+        "content": "        this.nameOfFood \u003d name;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "        this.caloriesInFood \u003d caloriesBurnt;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        this.caloricRate \u003d this.caloriesInFood.get() / this.amountOfFood;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int getCalories(){"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return caloriesInFood.get();"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public int getCalories() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        return caloriesInFood.get();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public String getFoodName(){"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return nameOfFood;"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public String getFoodName() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        return nameOfFood;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int getCaloricRate(){"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return caloricRate;"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public int getCaloricRate() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "sixletters"
         },
-        "content": ""
+        "content": "        return caloricRate;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    public int getAmountOfFood(){"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "        return amountOfFood;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "sixletters"
         },
-        "content": "    }"
+        "content": "    public int getAmountOfFood() {"
       },
       {
         "lineNumber": 35,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        return amountOfFood;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
         "author": {
           "gitId": "sixletters"
         },
@@ -1633,7 +2390,7 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 35
+      "sixletters": 37
     }
   },
   {
@@ -1825,6 +2582,34 @@
       {
         "lineNumber": 27,
         "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public int getSize() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return foodList.size();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
           "gitId": "sixletters"
         },
         "content": "}"
@@ -1832,7 +2617,299 @@
     ],
     "authorContributionMap": {
       "sixletters": 4,
-      "jerichochua": 23
+      "jerichochua": 27
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/InvalidCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "public class InvalidCommand extends Command {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    public InvalidCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        this.command \u003d userInput;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    public void execute(FoodList foodlist, ExerciseList exerciseList, Storage storage) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        UI.printInvalidCommandError();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sixletters": 5,
+      "dmbclub": 13
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    public static Command parse(String userInput) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        String[] fullCommand \u003d userInput.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        switch (fullCommand[0].toLowerCase()) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        case \"food\":"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            return new AddCommand(userInput);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        case \"exercise\":"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            return new AddCommand(userInput);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        case \"view\":"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            return new ViewCommand(userInput);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        case \"delete\":"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            return new DeleteCommand(userInput);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        case \"bye\":"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            return new ExitCommand(userInput);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "            return new InvalidCommand(userInput);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "dmbclub"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "dmbclub": 21
     }
   },
   {
@@ -1856,12 +2933,530 @@
       {
         "lineNumber": 3,
         "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": " * Handles the loading and saving of data to a file."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
           "gitId": "sixletters"
         },
         "content": "public class Storage {"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    private static final String DEFAULT_EXERCISE_LIST_FILEPATH \u003d \"exercises.txt\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    private static final String DEFAULT_FOOD_LIST_FILEPATH \u003d \"food.txt\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    private final String exerciseListPath;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    private final String foodListPath;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     * Creates 2 new files if they do not exist."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     * @throws IOException if an I/O error has occurred"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public Storage(String foodListPath, String exerciseListPath) throws IOException {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        this.foodListPath \u003d foodListPath;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        this.exerciseListPath \u003d exerciseListPath;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        File exerciseListFile \u003d new File(exerciseListPath);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        File foodListFile \u003d new File(foodListPath);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        if (!exerciseListFile.exists()) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "            exerciseListFile.createNewFile();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        } else if (!foodListFile.exists()) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "            foodListFile.createNewFile();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public Storage() throws IOException {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        this(DEFAULT_FOOD_LIST_FILEPATH, DEFAULT_EXERCISE_LIST_FILEPATH);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     * Reads the data from the food list file."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     * @throws FileNotFoundException if the file is not found     */"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public ArrayList\u003cFood\u003e loadFoodList() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        ArrayList\u003cFood\u003e foodList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        String line;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        File foodListFile \u003d new File(foodListPath);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        Scanner readFile \u003d new Scanner(foodListFile);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        while (readFile.hasNext()) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "            line \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "            System.out.println(line);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return foodList;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     * Reads the data from the exercise list file."
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     * @throws FileNotFoundException if the file is not found"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public ArrayList\u003cExercise\u003e loadExerciseList() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        ArrayList\u003cExercise\u003e exerciseList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        String line;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        File exerciseListFile \u003d new File(exerciseListPath);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        Scanner readFile \u003d new Scanner(exerciseListFile);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        while (readFile.hasNext()) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "            line \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "            System.out.println(line);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return exerciseList;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
         "author": {
           "gitId": "sixletters"
         },
@@ -1869,7 +3464,8 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 4
+      "sixletters": 4,
+      "jerichochua": 74
     }
   },
   {
@@ -1935,9 +3531,9 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "hui444"
+          "gitId": "sixletters"
         },
-        "content": " * Prints messages"
+        "content": " * Prints messages."
       },
       {
         "lineNumber": 10,
@@ -1956,9 +3552,9 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public String read() {"
+        "content": "    public static String read() {"
       },
       {
         "lineNumber": 13,
@@ -1991,9 +3587,9 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void printGreetingMessage() {"
+        "content": "    public static void printGreetingMessage() {"
       },
       {
         "lineNumber": 18,
@@ -2019,9 +3615,9 @@
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void printExitMessage() {"
+        "content": "    public static void printExitMessage() {"
       },
       {
         "lineNumber": 22,
@@ -2047,9 +3643,9 @@
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void printHelpMessage() {"
+        "content": "    public static void printHelpMessage() {"
       },
       {
         "lineNumber": 26,
@@ -2110,9 +3706,9 @@
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void printFoodOrExercise() {"
+        "content": "    public static void printFoodOrExercise() {"
       },
       {
         "lineNumber": 35,
@@ -2138,9 +3734,9 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void printDeleteOrBack() {"
+        "content": "    public static void printDeleteOrBack() {"
       },
       {
         "lineNumber": 39,
@@ -2166,9 +3762,9 @@
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void echoEntry(String entryType, String entry) {"
+        "content": "    public static void echoEntry(String entryType, String entry) {"
       },
       {
         "lineNumber": 43,
@@ -2201,9 +3797,9 @@
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "hui444"
+          "gitId": "dmbclub"
         },
-        "content": "    public void printDelete(String entry) {"
+        "content": "    public static void printDelete(String entry) {"
       },
       {
         "lineNumber": 48,
@@ -2224,12 +3820,125 @@
         "author": {
           "gitId": "sixletters"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    public static void printInvalidCommandError() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        System.out.println(\"Sorry this is an invalid Command!\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    public static void printExerciseListNotFoundError() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        System.out.println(\"Exercise List cannot be found\");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    public static void printFoodListNotFoundError() {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        System.out.println(\"Food List cannot be found\");"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    public static void showError(String message) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        System.out.println(\"Error! Error!\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "sixletters"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "hui444": 46,
-      "sixletters": 4
+      "hui444": 37,
+      "sixletters": 21,
+      "dmbclub": 8
     }
   },
   {
@@ -2339,28 +4048,28 @@
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "    private static boolean isConfig \u003d false;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public User() {"
+        "content": "    private FoodList foodList;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        setup();"
+        "content": "    private ExerciseList exerciseList;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 19,
@@ -2374,941 +4083,1193 @@
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    private void setup() {"
+        "content": "    public User(FoodList foodList, ExerciseList exerciseList, Storage storage) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Hi there, before we begin, let me get to know you :)\");"
+        "content": "        while (isConfig \u003d\u003d false) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Please enter your name:\");"
+        "content": "            setup();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        setName();"
+        "content": "            isConfig \u003d true;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Please enter your age:\");"
+        "content": "        }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        setupAge();"
+        "content": "        this.foodList \u003d foodList;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Please enter your height (in m):\");"
+        "content": "        this.exerciseList \u003d exerciseList;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        setupHeight();"
+        "content": "        this.storage \u003d storage;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Please enter your weight (in kg):\");"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        setupWeight();"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Please enter your gender (Enter \u00271\u0027 for Male or \u00272\u0027 for Female):\");"
+        "content": "    private void setup() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        setupGender();"
+        "content": "        System.out.println(\"Hi there, before we begin, let me get to know you :)\");"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Please enter your name:\");"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        setName();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public static String getName() {"
+        "content": "        System.out.println(\"Please enter your age:\");"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        return name;"
+        "content": "        setupAge();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Please enter your height (in m):\");"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        setupHeight();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public static Integer getAge() {"
+        "content": "        System.out.println(\"Please enter your weight (in kg):\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        return age;"
+        "content": "        setupWeight();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Please enter your gender (Enter \u00271\u0027 for Male or \u00272\u0027 for Female):\");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        setupGender();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public static Double getHeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        return height;"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "    public static String getName() {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        return name;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public static Double getWeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        return weight;"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "    public static Integer getAge() {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        return age;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public static String getGender() {"
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        return gender;"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "    public static Double getHeight() {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        return height;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public void setName() {"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        name \u003d in.nextLine();"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "    public static Double getWeight() {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        return weight;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public void setupAge() {"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        Integer ageInput \u003d 0;"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        while (ageInput \u003c\u003d 0) {"
+        "content": "    public static String getGender() {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            try {"
+        "content": "        return gender;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                ageInput \u003d Integer.parseInt(in.nextLine());"
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                if (ageInput \u003c\u003d 0) {"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                    System.out.println(\"oops that is an invalid age input.\\n\""
+        "content": "    public void setName() {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                            + \"Please enter your age:\");"
+        "content": "        name \u003d in.nextLine();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                }"
+        "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                System.out.println(\"Oops that is an invalid age input.\\n\""
+        "content": "    public void setupAge() {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                        + \"Please enter your age:\");"
+        "content": "        Integer ageInput \u003d 0;"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                ageInput \u003d 0;"
+        "content": "        while (ageInput \u003c\u003d 0) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                continue;"
+        "content": "            try {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            }"
+        "content": "                ageInput \u003d Integer.parseInt(in.nextLine());"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        }"
+        "content": "                if (ageInput \u003c\u003d 0) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        age \u003d ageInput;"
+        "content": "                    System.out.println(\"Oops that is an invalid age input.\\n\""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "                            + \"Please enter your age:\");"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public void setupHeight() {"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        Double heightInput \u003d 0.00;"
+        "content": "                System.out.println(\"Oops that is an invalid age input.\\n\""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        // Height (in m)"
+        "content": "                        + \"Please enter your age:\");"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        while (heightInput \u003c\u003d 0.00) {"
+        "content": "                ageInput \u003d 0;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            try {"
+        "content": "                continue;"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                heightInput \u003d Double.parseDouble(in.nextLine());"
+        "content": "            }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                if (heightInput \u003c\u003d 0.00) {"
+        "content": "        }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                    System.out.println(\"oops that is an invalid height input.\\n\""
+        "content": "        age \u003d ageInput;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                            + \"Please enter your weight (in m):\");"
+        "content": "    }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "    public void setupHeight() {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                System.out.println(\"Oops that is an invalid height input.\\n\""
+        "content": "        Double heightInput \u003d 0.00;"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                        + \"Please enter your weight (in m):\");"
+        "content": "        // Height (in m)"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                heightInput \u003d 0.00;"
+        "content": "        while (heightInput \u003c\u003d 0.00) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                continue;"
+        "content": "            try {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            }"
+        "content": "                heightInput \u003d Double.parseDouble(in.nextLine());"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        }"
+        "content": "                if (heightInput \u003c\u003d 0.00) {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        height \u003d heightInput;"
+        "content": "                    System.out.println(\"Oops that is an invalid height input.\\n\""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "                            + \"Please enter your height (in m):\");"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public void setupWeight() {"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        // Weight (in kg)"
+        "content": "                System.out.println(\"Oops that is an invalid height input.\\n\""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        Double weightInput \u003d 0.00;"
+        "content": "                        + \"Please enter your height (in m):\");"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        while (weightInput \u003c\u003d 0.00) {"
+        "content": "                heightInput \u003d 0.00;"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            try {"
+        "content": "                continue;"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                weightInput \u003d Double.parseDouble(in.nextLine());"
+        "content": "            }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                if (weightInput \u003c\u003d 0.00) {"
+        "content": "        }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                    System.out.println(\"Oops that is an invalid weight input\\n\""
+        "content": "        height \u003d heightInput;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                            + \"Please enter your weight (in kg):\");"
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "    public void setupWeight() {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                System.out.println(\"Oops that is an invalid weight input.\\n\""
+        "content": "        // Weight (in kg)"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                        + \"Please enter your weight (in kg):\");"
+        "content": "        Double weightInput \u003d 0.00;"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                weightInput \u003d 0.00;"
+        "content": "        while (weightInput \u003c\u003d 0.00) {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                continue;"
+        "content": "            try {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            }"
+        "content": "                weightInput \u003d Double.parseDouble(in.nextLine());"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        }"
+        "content": "                if (weightInput \u003c\u003d 0.00) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        weight \u003d weightInput;"
+        "content": "                    System.out.println(\"Oops that is an invalid weight input\\n\""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "                            + \"Please enter your weight (in kg):\");"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public void setupGender() {"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        Integer genderInput \u003d 0;"
+        "content": "                System.out.println(\"Oops that is an invalid weight input.\\n\""
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        while (genderInput !\u003d 1 \u0026\u0026 genderInput !\u003d 2) {"
+        "content": "                        + \"Please enter your weight (in kg):\");"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            try {"
+        "content": "                weightInput \u003d 0.00;"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                genderInput \u003d Integer.parseInt(in.nextLine());"
+        "content": "                continue;"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                System.out.println(genderInput);"
+        "content": "            }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                if (genderInput !\u003d 1 \u0026\u0026 genderInput !\u003d 2) {"
+        "content": "        }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                    System.out.println(\"oops that is an invalid Gender input.\\n\""
+        "content": "        weight \u003d weightInput;"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                            + \"Please enter your gender (Enter \u00271\u0027 for Male or \u00272\u0027 for Female):\");"
+        "content": "    }"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "    public void setupGender() {"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                System.out.println(\"Oops that is an invalid gender input.\\n\""
+        "content": "        Integer genderInput \u003d 0;"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                        + \"Please enter your gender (Enter \u00271\u0027 for Male or \u00272\u0027 for Female):\");"
+        "content": "        while (genderInput !\u003d 1 \u0026\u0026 genderInput !\u003d 2) {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                genderInput \u003d 0;"
+        "content": "            try {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "                continue;"
+        "content": "                genderInput \u003d Integer.parseInt(in.nextLine());"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            }"
+        "content": "                System.out.println(genderInput);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        }"
+        "content": "                if (genderInput !\u003d 1 \u0026\u0026 genderInput !\u003d 2) {"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        if (genderInput \u003d\u003d 1) {"
+        "content": "                    System.out.println(\"oops that is an invalid Gender input.\\n\""
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            gender \u003d \"Male\";"
+        "content": "                            + \"Please enter your gender (Enter \u00271\u0027 for Male or \u00272\u0027 for Female):\");"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        } else if (genderInput \u003d\u003d 2) {"
+        "content": "                }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "            gender \u003d \"Female\";"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        }"
+        "content": "                System.out.println(\"Oops that is an invalid gender input.\\n\""
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "                        + \"Please enter your gender (Enter \u00271\u0027 for Male or \u00272\u0027 for Female):\");"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "                genderInput \u003d 0;"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    public void viewProfile() {"
+        "content": "                continue;"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Name:\");"
+        "content": "            }"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(getName());"
+        "content": "        }"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Age:\");"
+        "content": "        if (genderInput \u003d\u003d 1) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(getAge());"
+        "content": "            gender \u003d \"Male\";"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Gender:\");"
+        "content": "        } else if (genderInput \u003d\u003d 2) {"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(getGender());"
+        "content": "            gender \u003d \"Female\";"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Height:\");"
+        "content": "        }"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(getHeight());"
+        "content": "    }"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(\"Weight:\");"
+        "content": ""
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "        System.out.println(getWeight());"
+        "content": "    public void viewProfile() {"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Name:\");"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "        System.out.println(getName());"
       },
       {
         "lineNumber": 154,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Age:\");"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(getAge());"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Gender:\");"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(getGender());"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Height:\");"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(getHeight());"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Weight:\");"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(getWeight());"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public Calorie calculateCalorieBurnt() {"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int index \u003d 0;"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int totalBurnt \u003d 0;"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        while (exerciseList.getExercise(index) !\u003d null) {"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            totalBurnt \u003d exerciseList.getExercise(index).getCalories();"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            index++;"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        return new Calorie(totalBurnt);"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public Calorie calculateCalorieConsumed() {"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int index \u003d 0;"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int totalConsumed \u003d 0;"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        while (foodList.getFood(index) !\u003d null) {"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            totalConsumed \u003d foodList.getFood(index).getCalories();"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        return new Calorie(totalConsumed);"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public Calorie calculateCalorie() {"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int totalCalories;"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        Calorie totalConsumed \u003d calculateCalorieConsumed();"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        Calorie totalBurnt \u003d calculateCalorieBurnt();"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        totalCalories \u003d totalConsumed.get() - totalBurnt.get();"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        return new Calorie(totalCalories);"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 190,
         "author": {
           "gitId": "sixletters"
         },
@@ -3317,7 +5278,7 @@
     ],
     "authorContributionMap": {
       "sixletters": 4,
-      "gohsonghan98": 150
+      "gohsonghan98": 186
     }
   },
   {
@@ -3348,33 +5309,432 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "sixletters"
+          "gitId": "gohsonghan98"
         },
-        "content": "    @Override"
+        "content": "    private User user;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "sixletters"
+          "gitId": "gohsonghan98"
         },
-        "content": "    public void execute(FoodList foodlist, ExericseList exericseList, Storage storage) {"
+        "content": "    private FoodList foodList;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "sixletters"
+          "gitId": "gohsonghan98"
         },
-        "content": ""
+        "content": "    private ExerciseList exerciseList;"
       },
       {
         "lineNumber": 7,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    public ViewCommand(String command){"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "        this.command \u003d command;"
+      },
+      {
+        "lineNumber": 10,
         "author": {
           "gitId": "sixletters"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public void execute(FoodList foodList, ExerciseList exerciseList, Storage storage) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        user \u003d new User(foodList, exerciseList, storage);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        this.foodList \u003d foodList;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        this.exerciseList \u003d exerciseList;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        this.storage \u003d storage;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        if (command.equalsIgnoreCase(\"view food\")) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            viewFood();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        } else if (command.equalsIgnoreCase(\"view exercise\")) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            viewExercise();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        } else if (command.equalsIgnoreCase(\"view summary\")) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            viewSummary();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    //View food"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public void viewFood() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int index \u003d 0;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int printIndex \u003d index + 1;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        //can remove"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Here is the list of food:\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        while (foodList.getFood(index) !\u003d null) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            System.out.println(\"[\" + printIndex + \"] \" + foodList.getFood(index));"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            index++;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    //View exercise"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public void viewExercise() {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int index \u003d 0;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        int printIndex \u003d index + 1;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        //can remove"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Here is the list of your exercises:\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        while (exerciseList.getExercise(index) !\u003d null) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "            System.out.println(\"[\" + printIndex + \"] \" + exerciseList.getExercise(index));"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "            index++;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    //View summary of total amount of calories consumed and burnt."
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "    public void viewSummary() {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Total calorie consumed:\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(user.calculateCalorieConsumed());"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Total calorie burnt:\");"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(user.calculateCalorieBurnt());"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(\"Net calorie:\");"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "gohsonghan98"
+        },
+        "content": "        System.out.println(user.calculateCalorie());"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "sixletters"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "jerichochua"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
         "author": {
           "gitId": "sixletters"
         },
@@ -3382,7 +5742,9 @@
       }
     ],
     "authorContributionMap": {
-      "sixletters": 8
+      "sixletters": 12,
+      "jerichochua": 5,
+      "gohsonghan98": 48
     }
   },
   {
@@ -3413,9 +5775,9 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "hui444"
+          "gitId": "sixletters"
         },
-        "content": " * Container for commands"
+        "content": " * Container for commands."
       },
       {
         "lineNumber": 5,
@@ -3475,7 +5837,8 @@
       }
     ],
     "authorContributionMap": {
-      "hui444": 12
+      "hui444": 11,
+      "sixletters": 1
     }
   },
   {
