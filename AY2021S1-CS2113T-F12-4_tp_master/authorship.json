@@ -491,7 +491,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static void listCommands() {"
+        "content": "    public void listCommands() {"
       },
       {
         "lineNumber": 12,
@@ -695,117 +695,285 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "    private static ModuleList modules;"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "    private static Storage storage;"
+        "content": "    private Ui ui \u003d new Ui();"
       },
       {
         "lineNumber": 9,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    private ModuleList modList \u003d new ModuleList();"
+      },
+      {
+        "lineNumber": 10,
         "author": {
           "gitId": "KennethEer"
         },
         "content": ""
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "        Ui.printWelcomeScreen();"
-      },
-      {
         "lineNumber": 12,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        String name \u003d Ui.printNamePrompt();"
+        "content": "        new ModTracker().run();"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "        storage \u003d new Storage(\"data/modtracker.txt\");"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        run(modules, name);"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "lhydl"
         },
-        "content": ""
+        "content": "     * Runs the program until termination."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static void run(ModuleList modules, String name) {"
+        "content": "     */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        while (!Parser.isExit()) {"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            String input \u003d Ui.readCommand();"
+        "content": "        String name \u003d start();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kerct"
         },
-        "content": "            Parser.parse(input, modules, name, storage);"
+        "content": "        storage \u003d new Storage(\"data/modtracker.txt\");"
       },
       {
         "lineNumber": 21,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "        runCommandLoopUntilExitCommand(name);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "KennethEer"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     * Starts the program, prints the welcome message and name-enter prompt."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     * @return name of user"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    public String start() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "        ui.printWelcomeScreen();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "        return ui.printNamePrompt();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     * Reads the user command until the user enters the exit command and terminates the program."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     * @param name name of user"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    public void runCommandLoopUntilExitCommand(String name) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "        Parser parser \u003d new Parser();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "        while (!parser.isExit()) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "            String input \u003d ui.readCommand();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "            parser.parse(input, modList, name, storage);"
+      },
+      {
+        "lineNumber": 44,
         "author": {
           "gitId": "KennethEer"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 46,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
@@ -813,10 +981,10 @@
       }
     ],
     "authorContributionMap": {
-      "lhydl": 7,
-      "kerct": 6,
+      "lhydl": 34,
+      "kerct": 4,
       "-": 6,
-      "KennethEer": 4
+      "KennethEer": 3
     }
   },
   {
@@ -2293,9 +2461,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "DesmondKJL"
         },
-        "content": "        Arrays.fill(actualTime, -1);"
+        "content": "        Arrays.fill(this.actualTime, -1);"
       },
       {
         "lineNumber": 14,
@@ -2335,7 +2503,7 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "DesmondKJL"
         },
         "content": "        Arrays.fill(actualTime, -1);"
       },
@@ -2496,13 +2664,98 @@
       {
         "lineNumber": 42,
         "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    public void addActualTime(String time, String week) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        double d \u003d Double.parseDouble(time);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        int i \u003d Integer.parseInt(week);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        this.actualTime[i] +\u003d d;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    public void minusActualTime(String time, String week) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        double d \u003d Double.parseDouble(time);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        int i \u003d Integer.parseInt(week);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        this.actualTime[i] -\u003d d;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
           "gitId": "KennethEer"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "limgl1998": 23,
+      "limgl1998": 21,
+      "DesmondKJL": 14,
       "lhydl": 1,
       "kerct": 1,
       "KennethEer": 17
@@ -2571,9 +2824,9 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "    public static void addMod(String input) {"
+        "content": "    public void addMod(String input) {"
       },
       {
         "lineNumber": 10,
@@ -2613,9 +2866,9 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "    public static void addExp(String input) {"
+        "content": "    public void addExp(String input) {"
       },
       {
         "lineNumber": 16,
@@ -2662,33 +2915,145 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "    public static ArrayList\u003cModule\u003e getData() {"
+        "content": "    public void addTime(String input) {"
       },
       {
         "lineNumber": 23,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        String[] commandInfo \u003d input.split(\" \", 4);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        Module currentModule \u003d new Module(commandInfo[1]);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        int index \u003d modList.indexOf(currentModule);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        System.out.println(index + commandInfo[1]);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        modList.get(index).addActualTime(commandInfo[2], commandInfo[3]);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        System.out.println(commandInfo[2] + \" hours are added to\" + commandInfo[1] + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    public void minusTime(String input) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        String[] commandInfo \u003d input.split(\" \", 4);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        int index \u003d modList.indexOf(commandInfo[1]);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        modList.get(index).minusActualTime(commandInfo[2], commandInfo[3]);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        System.out.println(commandInfo[2] + \" hours are removed from\" + commandInfo[1] + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "    public ArrayList\u003cModule\u003e getData() {"
+      },
+      {
+        "lineNumber": 39,
         "author": {
           "gitId": "KennethEer"
         },
         "content": "        return modList;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 40,
         "author": {
           "gitId": "KennethEer"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 41,
         "author": {
           "gitId": "KennethEer"
         },
         "content": "}"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 42,
         "author": {
           "gitId": "KennethEer"
         },
@@ -2696,9 +3061,10 @@
       }
     ],
     "authorContributionMap": {
-      "lhydl": 2,
+      "lhydl": 7,
+      "DesmondKJL": 14,
       "kerct": 1,
-      "KennethEer": 23
+      "KennethEer": 20
     }
   },
   {
@@ -2794,7 +3160,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "     * @param t modlist"
+        "content": "     * @param modList module list"
       },
       {
         "lineNumber": 14,
@@ -2813,240 +3179,240 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "    public static void parse(String input, ModuleList t, String name, Storage storage) {"
+        "content": "    public void parse(String input, ModuleList modList, String name, Storage storage) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        String[] command \u003d input.trim().split(\" \");"
+        "content": "        Ui ui \u003d new Ui();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "lhydl"
         },
-        "content": ""
+        "content": "        String[] command \u003d input.trim().split(\" \");"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        switch (command[0].toLowerCase()) {"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        case \"addmod\":"
+        "content": "        switch (command[0].toLowerCase()) {"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "            t.addMod(input);"
+        "content": "        case \"addmod\":"
       },
       {
         "lineNumber": 22,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "            modList.addMod(input);"
+      },
+      {
+        "lineNumber": 23,
         "author": {
           "gitId": "kerct"
         },
         "content": "            storage.appendToFile(input);"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 24,
         "author": {
           "gitId": "KennethEer"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 25,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        case \"addtime\":"
       },
       {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "KennethEer"
-        },
-        "content": "            //methods"
-      },
-      {
         "lineNumber": 26,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "            //storage.appendToFile(input);"
+        "content": "            modList.addTime(input);"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "            storage.appendToFile(input);"
+      },
+      {
+        "lineNumber": 28,
         "author": {
           "gitId": "KennethEer"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 29,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        case \"addexp\":"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 30,
         "author": {
-          "gitId": "KennethEer"
+          "gitId": "lhydl"
         },
-        "content": "            t.addExp(input);"
+        "content": "            modList.addExp(input);"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 31,
         "author": {
           "gitId": "kerct"
         },
         "content": "            storage.appendToFile(input);"
       },
       {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "            break;"
-      },
-      {
         "lineNumber": 32,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        case \"deletemod\":"
+        "content": "            break;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            //methods"
+        "content": "        case \"deletemod\":"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "            //storage.appendToFile(input);"
+        "content": "            //methods"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "lhydl"
+          "gitId": "kerct"
         },
-        "content": "            break;"
+        "content": "            //storage.appendToFile(input);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        case \"deleteexp\":"
+        "content": "            break;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            //methods"
+        "content": "        case \"deleteexp\":"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "            //storage.appendToFile(input);"
+        "content": "            //methods"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "lhydl"
+          "gitId": "kerct"
         },
-        "content": "            break;"
+        "content": "            //storage.appendToFile(input);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        case \"minus\":"
+        "content": "            break;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            //methods"
+        "content": "        case \"minus\":"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "kerct"
+          "gitId": "lhydl"
         },
-        "content": "            //storage.appendToFile(input);"
+        "content": "            modList.minusTime(input);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            break;"
+        "content": "            storage.appendToFile(input);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        case \"compare\":"
+        "content": "            break;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            //methods"
+        "content": "        case \"compare\":"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            break;"
+        "content": "            //methods"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        case \"list\":"
+        "content": "            break;"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
-        "content": "            //Ui.printList(t.getData());"
+        "content": "        case \"list\":"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
-        "content": "            Ui.printTable(t.getData(), Integer.parseInt(command[1]));"
+        "content": "            ui.printTable(modList.getData(), Integer.parseInt(command[1]));"
       },
       {
         "lineNumber": 50,
@@ -3067,7 +3433,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            Ui.printHelpList();"
+        "content": "            ui.printHelpList();"
       },
       {
         "lineNumber": 53,
@@ -3095,7 +3461,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "                Ui.printInvalidCommand();"
+        "content": "                ui.printInvalidCommand();"
       },
       {
         "lineNumber": 57,
@@ -3109,7 +3475,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "                Ui.printExitScreen(name);"
+        "content": "                ui.printExitScreen(name);"
       },
       {
         "lineNumber": 59,
@@ -3144,7 +3510,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            Ui.printInvalidCommand();"
+        "content": "            ui.printInvalidCommand();"
       },
       {
         "lineNumber": 64,
@@ -3207,7 +3573,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static boolean isExit() {"
+        "content": "    public boolean isExit() {"
       },
       {
         "lineNumber": 73,
@@ -3239,10 +3605,9 @@
       }
     ],
     "authorContributionMap": {
-      "limgl1998": 2,
-      "lhydl": 61,
-      "kerct": 8,
-      "KennethEer": 5
+      "lhydl": 69,
+      "kerct": 5,
+      "KennethEer": 2
     }
   },
   {
@@ -3725,7 +4090,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    private static Scanner in \u003d new Scanner(System.in);"
+        "content": "    private static final Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 11,
@@ -3774,7 +4139,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static String readCommand() {"
+        "content": "    public String readCommand() {"
       },
       {
         "lineNumber": 18,
@@ -3823,7 +4188,7 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static void printInvalidCommand() {"
+        "content": "    public void printInvalidCommand() {"
       },
       {
         "lineNumber": 25,
@@ -3858,486 +4223,409 @@
         "author": {
           "gitId": "lhydl"
         },
-        "content": "     * Prints out the task list."
+        "content": "     * Prints the welcome screen when the program starts."
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "     *"
+        "content": "     */"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "     * @param modList task list"
+        "content": "    public void printWelcomeScreen() {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "     */"
+        "content": "        String logo \u003d \"|\\\\\\\\        /|         |\u003d\u003d\u003d\u003d\u003d\u003d            ||\\n\""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static void printList(ArrayList\u003cModule\u003e modList) {"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "KennethEer"
-        },
-        "content": "        for (int i \u003d 0; i \u003c modList.size(); i++) {"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "KennethEer"
-        },
-        "content": "            System.out.println(modList.get(i));"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "        System.out.println(\"\");"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "     * Prints the welcome screen when the program starts."
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "    public static void printWelcomeScreen() {"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "        String logo \u003d \"|\\\\\\\\        /|         |\u003d\u003d\u003d\u003d\u003d\u003d            ||\\n\""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "lhydl"
-        },
         "content": "                + \"||\\\\\\\\      / |  __   __|  ||  __  ___ ___ ||    ___   ____\\n\""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 34,
         "author": {
           "gitId": "lhydl"
         },
         "content": "                + \"|| \\\\\\\\    /  |//  \\\\//  |  ||//  \\\\/  |/    ||// / _ \\\\ //   \\\\\\n\""
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 35,
         "author": {
           "gitId": "lhydl"
         },
         "content": "                + \"||  \\\\\\\\  /   |||   ||  |  |||   ||  ||    ||\\\\\\\\ | __/ ||\\n\""
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 36,
         "author": {
           "gitId": "lhydl"
         },
         "content": "                + \"||   \\\\\\\\/    |\\\\\\\\__/\\\\\\\\__|  |||   \\\\\\\\__|\\\\___ || \\\\\\\\\\\\___| ||\\n\""
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 37,
         "author": {
           "gitId": "lhydl"
         },
         "content": "                + \"*****************************************************|\\n\";"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 38,
         "author": {
           "gitId": "lhydl"
         },
         "content": ""
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 39,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        System.out.println(\"Hello from\" + System.lineSeparator() + logo);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 40,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        System.out.println(\"Full user guide available at: https://ay2021s1-cs2113t-f12-4.github.io/tp/\");"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 41,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        System.out.println(\"Enter \u003chelp\u003e for a quick view of available commands.\" + System.lineSeparator());"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 42,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 43,
         "author": {
           "gitId": "lhydl"
         },
         "content": ""
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 44,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 45,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     * Prompts the user to enter his/her name."
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 46,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 47,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static String printNamePrompt() {"
+        "content": "    public String printNamePrompt() {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 48,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        System.out.println(\"What is your name?\");"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 49,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        String name \u003d in.nextLine();"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 50,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        if (name.isEmpty()) {"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 51,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "            Ui.printInvalidCommand();"
+        "content": "            printInvalidCommand();"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 52,
         "author": {
           "gitId": "lhydl"
         },
         "content": "            printNamePrompt();"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 53,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 54,
         "author": {
           "gitId": "lhydl"
         },
         "content": "            System.out.println(\"\");"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 55,
         "author": {
           "gitId": "lhydl"
         },
         "content": "            System.out.println(\"Hello \" + name + \"!\");"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 56,
         "author": {
           "gitId": "lhydl"
         },
         "content": "            System.out.println(\"What can I do for you?\" + System.lineSeparator());"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 57,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 58,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        return name;"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 59,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 60,
         "author": {
           "gitId": "lhydl"
         },
         "content": ""
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 61,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 62,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     * Prints the exit line when user entered \"bye\"."
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 63,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 64,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static void printExitScreen(String name) {"
+        "content": "    public void printExitScreen(String name) {"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 65,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        System.out.println(\"All changes saved.\");"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 66,
         "author": {
           "gitId": "lhydl"
         },
         "content": "        System.out.println(\"Bye \" + name + \". Hope to see you again soon!\" + System.lineSeparator());"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 67,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 68,
         "author": {
           "gitId": "limgl1998"
         },
         "content": ""
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 69,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 70,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     * Prints all the module information in a table."
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 71,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 72,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "     * @param modList list of modules."
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 73,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "     * @param week specified week number."
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 74,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 75,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
-        "content": "    public static void printTable(ArrayList\u003cModule\u003e modList, int week) {"
+        "content": "    public void printTable(ArrayList\u003cModule\u003e modList, int week) {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 76,
         "author": {
           "gitId": "kerct"
         },
         "content": "        ModView view \u003d new ModView();"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 77,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "        view.printAllModuleInformation(modList,week);"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 78,
         "author": {
           "gitId": "limgl1998"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 79,
         "author": {
           "gitId": "lhydl"
         },
         "content": ""
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 80,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 81,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     * Prints all available commands."
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 82,
         "author": {
           "gitId": "lhydl"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 83,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "    public static void printHelpList() {"
+        "content": "    public void printHelpList() {"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 84,
         "author": {
           "gitId": "lhydl"
         },
-        "content": "        HelpList.listCommands();"
+        "content": "        HelpList help \u003d new HelpList();"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 85,
+        "author": {
+          "gitId": "lhydl"
+        },
+        "content": "        help.listCommands();"
+      },
+      {
+        "lineNumber": 86,
         "author": {
           "gitId": "lhydl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 87,
         "author": {
           "gitId": "lhydl"
         },
@@ -4345,10 +4633,9 @@
       }
     ],
     "authorContributionMap": {
-      "limgl1998": 9,
-      "lhydl": 85,
-      "kerct": 2,
-      "KennethEer": 2
+      "limgl1998": 8,
+      "lhydl": 77,
+      "kerct": 2
     }
   },
   {
@@ -4443,6 +4730,43 @@
     "authorContributionMap": {
       "kerct": 2,
       "-": 10
+    }
+  },
+  {
+    "path": "text-ui-test/data/modtracker.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "addmod CS1000"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "addmod CS2113t"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "addexp CS3000 6"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "addexp CS3200 8"
+      }
+    ],
+    "authorContributionMap": {
+      "DesmondKJL": 4
     }
   },
   {

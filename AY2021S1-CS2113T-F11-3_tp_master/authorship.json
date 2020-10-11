@@ -3792,6 +3792,295 @@
     }
   },
   {
+    "path": "src/main/java/commands/RemoveCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "package commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "import access.Access;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "import manager.card.Card;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "import manager.chapter.CardList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "import storage.Storage;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "import ui.Ui;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "public class RemoveCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"remove\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            + \": Removes flashcard based on a specified index in the list. \\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            + \"Parameters: INDEX\\n\" + \"Example: \" + COMMAND_WORD + \" 2\\n\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"The following flashcard has been removed:\\n\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public static final String MESSAGE_INVALID_INDEX \u003d \"The flashcard is not found, please try again.\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    private final int removeIndex;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public RemoveCommand(int removeIndex) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        this.removeIndex \u003d removeIndex;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public void execute(CardList cards, Ui ui, Access access, Storage storage) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            Card card \u003d cards.getCard(removeIndex);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            ui.showToUser(MESSAGE_SUCCESS + card.toString());"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            cards.removeCard(removeIndex);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            ui.showToUser(MESSAGE_INVALID_INDEX);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "neojiaern": 40
+    }
+  },
+  {
     "path": "src/main/java/commands/ReviseCommand.java",
     "fileType": "functional-code",
     "lines": [
@@ -5345,28 +5634,28 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "    public int getCardCount() {"
+        "content": "    public void removeCard(int removeIndex) {"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        return cards.size();"
+        "content": "        cards.remove(removeIndex);"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
         "content": ""
       },
@@ -5375,14 +5664,14 @@
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    public Card getCard(int cardIndex) {"
+        "content": "    public int getCardCount() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return cards.get(cardIndex);"
+        "content": "        return cards.size();"
       },
       {
         "lineNumber": 24,
@@ -5403,14 +5692,14 @@
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    public ArrayList\u003cCard\u003e getAllCards() {"
+        "content": "    public Card getCard(int cardIndex) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return cards;"
+        "content": "        return cards.get(cardIndex);"
       },
       {
         "lineNumber": 28,
@@ -5424,10 +5713,39 @@
         "author": {
           "gitId": "Jane-Ng"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    public ArrayList\u003cCard\u003e getAllCards() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        return cards;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
+      "neojiaern": 4,
       "Jane-Ng": 29
     }
   },
@@ -6192,65 +6510,65 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "neojiaern"
         },
-        "content": "import commands.ReviseCommand;"
+        "content": "import commands.RemoveCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "import commands.ExitCommand;"
+        "content": "import commands.ReviseCommand;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "import commands.GoModuleCommand;"
+        "content": "import commands.ExitCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "import commands.BackModuleCommand;"
+        "content": "import commands.GoModuleCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "import commands.BackModuleCommand;"
       },
       {
         "lineNumber": 16,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import exception.InvalidFileFormatException;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 18,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "import exception.InvalidInputException;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 19,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import storage.Storage;"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": ""
       },
       {
         "lineNumber": 20,
@@ -6264,889 +6582,889 @@
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "public class Parser {"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    public static Command parse(String fullCommand) throws InvalidInputException {"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        String[] commandTypeAndArgs \u003d splitCommandTypeAndArgs(fullCommand);"
+        "content": "    public static Command parse(String fullCommand) throws InvalidInputException {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        String commandType \u003d commandTypeAndArgs[0].trim().toLowerCase();"
+        "content": "        String[] commandTypeAndArgs \u003d splitCommandTypeAndArgs(fullCommand);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        String commandArgs \u003d commandTypeAndArgs[1].trim();"
+        "content": "        String commandType \u003d commandTypeAndArgs[0].trim().toLowerCase();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        String commandArgs \u003d commandTypeAndArgs[1].trim();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        switch (commandType) {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        case ListCommand.COMMAND_WORD:"
+        "content": "        switch (commandType) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            return prepareList(commandArgs);"
+        "content": "        case ListCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        case AddCommand.COMMAND_WORD:"
+        "content": "            return prepareList(commandArgs);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            return prepareAdd(commandArgs);"
+        "content": "        case AddCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        case ReviseCommand.COMMAND_WORD:"
+        "content": "            return prepareAdd(commandArgs);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            return prepareRevise(commandArgs);"
+        "content": "        case RemoveCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 34,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            return prepareRemove(commandArgs);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        case ReviseCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            return prepareRevise(commandArgs);"
+      },
+      {
+        "lineNumber": 37,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 38,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            return prepareExit(commandArgs);"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 39,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 40,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            return prepareHelp(commandArgs);"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 41,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        case AddModuleCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 42,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            return prepareAddModule(commandArgs);"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 43,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        case AddChapterCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 44,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            return prepareAddChapter(commandArgs);"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 45,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        case BackModuleCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 46,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            return prepareBackModule(commandArgs);"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 47,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        case BackChapterCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 48,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            return prepareBackChapter(commandArgs);"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 49,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        case GoModuleCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 50,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            return prepareGoModule(commandArgs);"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 51,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        case GoChapterCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 52,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            return prepareGoChapter(commandArgs);"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 53,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        default:"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 54,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            throw new InvalidInputException();"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 55,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 56,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 57,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": "    private static Command prepareGoChapter(String commandArgs) throws InvalidInputException {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": "        if (commandArgs.isEmpty()) {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": "    private static Command prepareGoChapter(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return new GoChapterCommand(commandArgs);"
+        "content": "        if (commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    private static Command prepareGoModule(String commandArgs) throws InvalidInputException {"
+        "content": "        return new GoChapterCommand(commandArgs);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (commandArgs.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": "    private static Command prepareGoModule(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return new GoModuleCommand(commandArgs);"
+        "content": "        if (commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    private static Command prepareBackChapter(String commandArgs) throws InvalidInputException {"
+        "content": "        return new GoModuleCommand(commandArgs);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (!commandArgs.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": "    private static Command prepareBackChapter(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return new BackChapterCommand();"
+        "content": "        if (!commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    private static Command prepareBackModule(String commandArgs) throws InvalidInputException {"
+        "content": "        return new BackChapterCommand();"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (!commandArgs.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": "    private static Command prepareBackModule(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return new BackModuleCommand();"
+        "content": "        if (!commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    private static Command prepareAddChapter(String commandArgs) throws InvalidInputException {"
+        "content": "        return new BackModuleCommand();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (commandArgs.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": "    private static Command prepareAddChapter(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return new AddChapterCommand(commandArgs);"
+        "content": "        if (commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    private static Command prepareAddModule(String commandArgs) throws InvalidInputException {"
+        "content": "        return new AddChapterCommand(commandArgs);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (commandArgs.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": "    private static Command prepareAddModule(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return new AddModuleCommand(commandArgs);"
+        "content": "        if (commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "gua-guargia"
         },
-        "content": "    private static String[] splitCommandTypeAndArgs(String userCommand) {"
+        "content": "        return new AddModuleCommand(commandArgs);"
       },
       {
         "lineNumber": 98,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "gua-guargia"
         },
-        "content": "        String[] commandTypeAndParams \u003d userCommand.trim().split(\" \", 2);"
+        "content": "    }"
       },
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "gua-guargia"
         },
-        "content": "        if (commandTypeAndParams.length !\u003d 2) {"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            commandTypeAndParams \u003d new String[]{commandTypeAndParams[0], \"\"};"
+        "content": "    private static String[] splitCommandTypeAndArgs(String userCommand) {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "        String[] commandTypeAndParams \u003d userCommand.trim().split(\" \", 2);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return commandTypeAndParams;"
+        "content": "        if (commandTypeAndParams.length !\u003d 2) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "            commandTypeAndParams \u003d new String[]{commandTypeAndParams[0], \"\"};"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    private static Command prepareList(String commandArgs) throws InvalidInputException {"
+        "content": "        return commandTypeAndParams;"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        if (!commandArgs.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "    private static Command prepareList(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return new ListCommand();"
+        "content": "        if (!commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    private static Command prepareAdd(String commandArgs) throws InvalidInputException {"
+        "content": "        return new ListCommand();"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            String[] args \u003d commandArgs.split(AddCommand.QUESTION_ANSWER_PREFIX, 2);"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            String question \u003d parseQuestion(args[0]);"
+        "content": "    private static Command prepareAdd(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            String answer \u003d parseAnswer(args[1]);"
+        "content": "        try {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            return new AddCommand(question, answer);"
+        "content": "            String[] args \u003d commandArgs.split(AddCommand.QUESTION_ANSWER_PREFIX, 2);"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        } catch (IndexOutOfBoundsException | InvalidInputException e) {"
+        "content": "            String question \u003d parseQuestion(args[0]);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": "            String answer \u003d parseAnswer(args[1]);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "            return new AddCommand(question, answer);"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "        } catch (IndexOutOfBoundsException | InvalidInputException e) {"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    private static String parseQuestion(String arg) throws InvalidInputException {"
+        "content": "        }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        if (!(arg.trim().toLowerCase().startsWith(AddCommand.QUESTION_PREFIX))) {"
+        "content": "    }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        }"
+        "content": "    private static Command prepareRemove(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "        int removeIndex;"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        String question \u003d arg.substring(2).trim();"
+        "content": "        if (commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        if (question.isEmpty()) {"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            throw new InvalidInputException();"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
         "content": "        }"
       },
       {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        try {"
+      },
+      {
         "lineNumber": 132,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "            removeIndex \u003d Integer.parseInt(commandArgs) - 1;"
       },
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        return question;"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "    private static String parseAnswer(String arg) throws InvalidInputException {"
+        "content": "        return new RemoveCommand(removeIndex);"
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        if (!(arg.trim().toLowerCase().startsWith(AddCommand.ANSWER_PREFIX))) {"
+        "content": "    }"
       },
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "    private static String parseQuestion(String arg) throws InvalidInputException {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        if (!(arg.trim().toLowerCase().startsWith(AddCommand.QUESTION_PREFIX))) {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        String answer \u003d arg.substring(2).trim();"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        if (answer.isEmpty()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": ""
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "        String question \u003d arg.substring(2).trim();"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        if (question.isEmpty()) {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return answer;"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 148,
@@ -7158,327 +7476,439 @@
       {
         "lineNumber": 149,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "    private static Command prepareRevise(String commandArgs) throws InvalidInputException {"
+        "content": "        return question;"
       },
       {
         "lineNumber": 150,
         "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        if (commandArgs.isEmpty()) {"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            throw new InvalidInputException();"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        return new ReviseCommand(commandArgs);"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 151,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    private static String parseAnswer(String arg) throws InvalidInputException {"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        if (!(arg.trim().toLowerCase().startsWith(AddCommand.ANSWER_PREFIX))) {"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            throw new InvalidInputException();"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    private static Command prepareExit(String commandArgs) throws InvalidInputException {"
+        "content": ""
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        if (!commandArgs.isEmpty()) {"
+        "content": "        String answer \u003d arg.substring(2).trim();"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidInputException();"
+        "content": "        if (answer.isEmpty()) {"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return new ExitCommand();"
+        "content": "        }"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 162,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        return answer;"
       },
       {
         "lineNumber": 163,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "    private static Command prepareHelp(String commandArgs) throws InvalidInputException {"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        if (!commandArgs.isEmpty()) {"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "            throw new InvalidInputException();"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        return new HelpCommand();"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 164,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 165,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "neojiaern"
         },
-        "content": "    public static String parseQuestioninFile(String arg) throws InvalidFileFormatException {"
+        "content": "    private static Command prepareRevise(String commandArgs) throws InvalidInputException {"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 166,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "neojiaern"
         },
-        "content": "        if (!(arg.trim().startsWith(Storage.QUESTION_PREFIX))) {"
+        "content": "        if (commandArgs.isEmpty()) {"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 167,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "neojiaern"
         },
-        "content": "            throw new InvalidFileFormatException();"
+        "content": "            throw new InvalidInputException();"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 168,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "neojiaern"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 169,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "neojiaern"
+        },
+        "content": "        return new ReviseCommand(commandArgs);"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "neojiaern"
         },
         "content": ""
       },
       {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    private static Command prepareExit(String commandArgs) throws InvalidInputException {"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        if (!commandArgs.isEmpty()) {"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            throw new InvalidInputException();"
+      },
+      {
         "lineNumber": 175,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
-        "content": "        String question \u003d arg.substring(3).trim();"
+        "content": "        }"
       },
       {
         "lineNumber": 176,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
-        "content": "        if (question.isEmpty()) {"
+        "content": "        return new ExitCommand();"
       },
       {
         "lineNumber": 177,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidFileFormatException();"
+        "content": "    }"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    private static Command prepareHelp(String commandArgs) throws InvalidInputException {"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        return question;"
+        "content": "        if (!commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": "            throw new InvalidInputException();"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public static String parseAnswerinFile(String arg) throws InvalidFileFormatException {"
+        "content": "        return new HelpCommand();"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        if (!(arg.trim().startsWith(Storage.ANSWER_PREFIX))) {"
+        "content": "    }"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            throw new InvalidFileFormatException();"
+        "content": ""
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "    public static String parseQuestioninFile(String arg) throws InvalidFileFormatException {"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "        if (!(arg.trim().startsWith(Storage.QUESTION_PREFIX))) {"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        String answer \u003d arg.substring(3).trim();"
+        "content": "            throw new InvalidFileFormatException();"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        if (answer.isEmpty()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            throw new InvalidFileFormatException();"
+        "content": ""
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "        String question \u003d arg.substring(3).trim();"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "        if (question.isEmpty()) {"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        return answer;"
+        "content": "            throw new InvalidFileFormatException();"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 195,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        return question;"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "    public static String parseAnswerinFile(String arg) throws InvalidFileFormatException {"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        if (!(arg.trim().startsWith(Storage.ANSWER_PREFIX))) {"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "            throw new InvalidFileFormatException();"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        String answer \u003d arg.substring(3).trim();"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        if (answer.isEmpty()) {"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "            throw new InvalidFileFormatException();"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        return answer;"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 211,
         "author": {
           "gitId": "Jane-Ng"
         },
@@ -7488,7 +7918,7 @@
     "authorContributionMap": {
       "Zhu-Ze-Yu": 37,
       "gua-guargia": 67,
-      "neojiaern": 9,
+      "neojiaern": 25,
       "Jane-Ng": 82
     }
   },
@@ -9222,712 +9652,698 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "import manager.chapter.Chapter;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "Darticune"
-        },
-        "content": "import scheduler.Scheduler;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 12,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "import java.io.InputStream;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 13,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "import java.io.PrintStream;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 14,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "import java.util.Scanner;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "import static commands.ReviseCommand.MESSAGE_SHOW_ANSWER_PROMPT;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "import static commands.ReviseCommand.MESSAGE_SHOW_RATING_PROMPT;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "public class Ui {"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    private final Scanner in;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    private final PrintStream out;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    private static final String lineSplit \u003d \"    ____________________________________________________________\";"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 25,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public Ui() {"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        this(System.in, System.out);"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 27,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 28,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 29,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public Ui(InputStream in, PrintStream out) {"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 30,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        this.in \u003d new Scanner(in);"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 31,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        this.out \u003d out;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 32,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 33,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 34,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public String readCommand() {"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 35,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        String userCommand \u003d in.nextLine();"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 36,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        while (userCommand.trim().isEmpty()) {"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 37,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            userCommand \u003d in.nextLine();"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 38,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 39,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        return userCommand;"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 40,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 41,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 42,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public void showWelcome() {"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 43,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        out.println(\"Welcome to Kaji!\\n\");"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 44,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 46,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    public void showLevel(Access access) {"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 47,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        out.println(access.getLevel());"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 48,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 50,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public void printEmptyLine() {"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 51,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        out.println();"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 52,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 53,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 54,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public void showCardAdded(Card card, int cardCount) {"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 55,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        out.println(\"Got it. I\u0027ve added this card:\");"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        out.println(card);"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 57,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        if (cardCount \u003d\u003d 1) {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 58,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            out.println(\"Now you have \" + cardCount + \" card in the list.\");"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 59,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            return;"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 60,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 61,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        out.println(\"Now you have \" + cardCount + \" cards in the list.\");"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 62,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 63,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 64,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public void showCardList(ArrayList\u003cCard\u003e cards, int cardCount) {"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 65,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        if (cardCount \u003d\u003d 0) {"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 66,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            out.println(\"There are no cards in your list.\");"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 67,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            return;"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 68,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 69,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        out.println(\"Here are the cards in your list:\");"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 70,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        for (Card c : cards) {"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 71,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            out.println((cards.indexOf(c) + 1) + \".\" + c);"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 72,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 73,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 74,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 75,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public void showToUser(String message) {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 76,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        out.println(message);"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 77,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 78,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 79,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public void showCard(Card c) {"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 80,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        out.println(c.getQuestion() + MESSAGE_SHOW_ANSWER_PROMPT);"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 81,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        getAnswerInput(c);"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 82,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 83,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 84,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public void getAnswerInput(Card c) {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 85,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        String input \u003d in.nextLine();"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 86,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        while (!input.equalsIgnoreCase(\"s\")) {"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 87,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            out.println(\"You have entered an invalid input, please try again.\");"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 88,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            input \u003d in.nextLine();"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 89,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 90,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        out.println(c.getAnswer());"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 91,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 92,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 93,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public String getRating() {"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 94,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        out.println(MESSAGE_SHOW_RATING_PROMPT);"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 95,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return in.nextLine();"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 96,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 97,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 98,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public void showExit() {"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 99,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        out.println(\"Exiting the program...\");"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 100,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 101,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 102,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    public void showHelpList() {"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 103,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        out.println(\"Here is a list of commands available:\" + \"\\n\");"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 104,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        out.println(\"1. \" + ListCommand.MESSAGE_USAGE);"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 105,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        out.println(\"2. \" + ReviseCommand.MESSAGE_USAGE);"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 106,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        out.println(\"3. \" + HelpCommand.MESSAGE_USAGE);"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 107,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        out.println(\"4. \" + AddCommand.MESSAGE_USAGE);"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 108,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        out.println(\"5. \" + ExitCommand.MESSAGE_USAGE);"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 109,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 110,
         "author": {
           "gitId": "Jane-Ng"
         },
@@ -9937,9 +10353,8 @@
     "authorContributionMap": {
       "Zhu-Ze-Yu": 15,
       "gua-guargia": 6,
-      "neojiaern": 32,
-      "Jane-Ng": 58,
-      "Darticune": 1
+      "neojiaern": 31,
+      "Jane-Ng": 58
     }
   },
   {
@@ -10455,12 +10870,146 @@
       {
         "lineNumber": 41,
         "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public void parse_removeCommandEmptyArgs_exception() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        Parser parser \u003d new Parser();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        final String[] inputs \u003d {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            \"remove\","
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            \"remove \","
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        };"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        for (String input : inputs) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            assertThrows(InvalidInputException.class, () -\u003e parser.parse(input));"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public void parse_removeCommandNonIntegerArgs_exception() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        Parser parser \u003d new Parser();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        String input \u003d \"remove two\";"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        assertThrows(InvalidInputException.class, () -\u003e parser.parse(input));"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
           "gitId": "Jane-Ng"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
+      "neojiaern": 19,
       "Jane-Ng": 41
     }
   },

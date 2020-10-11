@@ -1694,6 +1694,547 @@
     }
   },
   {
+    "path": "src/main/java/seedu/rex/commands/AddCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "package seedu.rex.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import seedu.rex.data.PatientList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import seedu.rex.data.exception.RexException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import seedu.rex.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import seedu.rex.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": " * Adds a patient to the list of patients."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "public class AddCommand extends Command {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"add\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public String trimmedCommand;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public AddCommand(String trimmedCommand) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        this.trimmedCommand \u003d trimmedCommand;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Adds a new patient to the patient list using details inputted by the user."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param patients List of patients."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param ui       Ui object of the program."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param storage  Storage object used for saving data to files."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @throws RexException If there is an error in the NRIC inputted by the user, the data fails"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     *     to save successfully, or the NRIC already exists in the patient list."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public void execute(PatientList patients, Ui ui, Storage storage) throws RexException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        String nric \u003d extractNric();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        if (isExistingPatient(patients, nric)) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            throw new RexException(\"A patient with this NRIC is already registered!\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        patients.addNewPatient(ui.getPatientName(), nric, ui.getPatientDateOfBirth());"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        ui.showLine();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        ui.showPatientAdded(patients.getPatientUsingIndex(patients.getSize() - 1));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        storage.save(patients);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Extracts the NRIC from the \u0027add\u0027 command inputted by the user."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @return Patient\u0027s NRIC as a String."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @throws RexException If the NRIC inputted by the user is invalid."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public String extractNric() throws RexException {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        String nric \u003d trimmedCommand.replaceFirst(\"(?i)\" + COMMAND_WORD, \"\").trim().toUpperCase();"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        if (nric.isBlank()) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            throw new RexException(\"Please enter a valid NRIC after \u0027add\u0027.\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else if (nric.length() !\u003d LEGAL_NRIC_LENGTH) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            throw new RexException(\"Invalid NRIC length!\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else if (!LEGAL_NRIC_STATUSES.contains(nric.charAt(0))) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            throw new RexException(\"Beginning character of NRIC must be \u0027S\u0027, \u0027T\u0027, \u0027F\u0027, or \u0027G\u0027!\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else if (!isNumeric(nric.substring(1, LEGAL_NRIC_LENGTH - 1))) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            throw new RexException(\"Number sequence of NRIC is invalid!\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else if (!Character.isLetter(nric.charAt(nric.length() - 1))) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            throw new RexException(\"Final character of NRIC must be an English alphabet!\");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            return nric;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Checks if the NRIC entered by the user already exists in the patient list."
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param patients The list of patients."
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param nric The NRIC entered by the user."
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if NRIC already exists; \u003ccode\u003efalse\u003c/code\u003e otherwise."
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public boolean isExistingPatient(PatientList patients, String nric) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        for (int i \u003d 0; i \u003c patients.getSize(); i++) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            if (patients.getPatientUsingIndex(i).getNric().equals(nric)) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "ychong032": 76
+    }
+  },
+  {
     "path": "src/main/java/seedu/rex/commands/Command.java",
     "fileType": "functional-code",
     "lines": [
@@ -1749,257 +2290,411 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "/**"
+        "content": "import java.util.Set;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": " * Parent Command class."
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "public abstract class Command {"
+        "content": " * Parent Command class."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public static final String MESSAGE \u003d Ui.LOGO + \"\\n How may i assist you?\""
+        "content": "public abstract class Command {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            .replace(\"\\n\", System.lineSeparator() + \"\\t\");"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "    public static final String COMMAND_ERROR \u003d \"I\u0027m sorry, but I don\u0027t know what that means :-(\";"
+        "content": "    public static final String MESSAGE \u003d Ui.LOGO + \"\\n How may i assist you?\""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "            .replace(\"\\n\", System.lineSeparator() + \"\\t\");"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    boolean isExit;"
+        "content": "    public static final String COMMAND_ERROR \u003d \"I\u0027m sorry, but I don\u0027t know what that means :-(\";"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": ""
+        "content": "    public static final int LEGAL_NRIC_LENGTH \u003d 9;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "    /**"
+        "content": "    public static final Set\u003cCharacter\u003e LEGAL_NRIC_STATUSES \u003d Set.of(\u0027S\u0027, \u0027T\u0027, \u0027F\u0027, \u0027G\u0027);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Initializes command to execute and set exit status to false."
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    boolean isExit;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public Command() {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        isExit \u003d false;"
+        "content": "    /**"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * Initializes command to execute and set exit status to false."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    public Command() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Executes command."
+        "content": "        isExit \u003d false;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param patients PatientList object."
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param ui       Ui object."
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param storage  Storage object."
+        "content": "     * Executes command."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @throws RexException If there is issue executing command."
+        "content": "     *"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "     * @param patients PatientList object."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public abstract void execute(PatientList patients, Ui ui, Storage storage) throws RexException;"
+        "content": "     * @param ui       Ui object."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     * @param storage  Storage object."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "     * @throws RexException If there is issue executing command."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Returns Rex\u0027s exit status."
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "    public abstract void execute(PatientList patients, Ui ui, Storage storage) throws RexException;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @return Exit status."
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public boolean isExit() {"
+        "content": "     * Returns Rex\u0027s exit status."
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        return isExit;"
+        "content": "     *"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * @return Exit status."
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return isExit;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Checks if a given \u003ccode\u003eString\u003c/code\u003e consists of only numeric characters."
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param string The \u003ccode\u003eString\u003c/code\u003e to be checked."
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @return \u003ccode\u003etrue\u003c/code\u003e if the string contains only numeric characters; \u003ccode\u003efalse\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     *     otherwise."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public boolean isNumeric(String string) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        if (string \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            double stringAsDouble \u003d Double.parseDouble(string);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
         "author": {
           "gitId": "TanJunHong"
         },
@@ -2007,7 +2702,8 @@
       }
     ],
     "authorContributionMap": {
-      "TanJunHong": 44
+      "TanJunHong": 43,
+      "ychong032": 23
     }
   },
   {
@@ -2209,7 +2905,7 @@
     }
   },
   {
-    "path": "src/main/java/seedu/rex/data/PatientList.java",
+    "path": "src/main/java/seedu/rex/data/DoctorList.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -2231,7 +2927,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import seedu.rex.data.patient.Patient;"
+        "content": "import seedu.rex.data.hospital.Doctor;"
       },
       {
         "lineNumber": 4,
@@ -2259,7 +2955,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "public class PatientList {"
+        "content": "public class DoctorList {"
       },
       {
         "lineNumber": 8,
@@ -2273,7 +2969,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    private final ArrayList\u003cPatient\u003e patients;"
+        "content": "    private final ArrayList\u003cDoctor\u003e doctors;"
       },
       {
         "lineNumber": 10,
@@ -2294,7 +2990,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Initializes patients ArrayList."
+        "content": "     * Initializes doctors ArrayList."
       },
       {
         "lineNumber": 13,
@@ -2308,14 +3004,14 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public PatientList() {"
+        "content": "    public DoctorList() {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        patients \u003d new ArrayList\u003c\u003e();"
+        "content": "        doctors \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 16,
@@ -2343,7 +3039,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Initializes patients ArrayList using parameter."
+        "content": "     * Initializes doctors ArrayList using parameter."
       },
       {
         "lineNumber": 20,
@@ -2357,7 +3053,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param patients Patients list to use."
+        "content": "     * @param doctors Doctors list to use."
       },
       {
         "lineNumber": 22,
@@ -2371,14 +3067,14 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public PatientList(ArrayList\u003cPatient\u003e patients) {"
+        "content": "    public DoctorList(ArrayList\u003cDoctor\u003e doctors) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        this.patients \u003d patients;"
+        "content": "        this.doctors \u003d doctors;"
       },
       {
         "lineNumber": 25,
@@ -2406,7 +3102,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Returns size of patients."
+        "content": "     * Returns size of doctors."
       },
       {
         "lineNumber": 29,
@@ -2420,7 +3116,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @return Length of patients."
+        "content": "     * @return Length of doctors."
       },
       {
         "lineNumber": 31,
@@ -2441,7 +3137,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        return patients.size();"
+        "content": "        return doctors.size();"
       },
       {
         "lineNumber": 34,
@@ -2469,7 +3165,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Returns patient using index."
+        "content": "     * Returns doctor using index."
       },
       {
         "lineNumber": 38,
@@ -2483,14 +3179,14 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param index Index of patient."
+        "content": "     * @param index Index of doctor."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @return patient at that index."
+        "content": "     * @return doctor at that index."
       },
       {
         "lineNumber": 41,
@@ -2504,14 +3200,14 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public Patient getPatientUsingIndex(int index) {"
+        "content": "    public Doctor getDoctorUsingIndex(int index) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        return patients.get(index);"
+        "content": "        return doctors.get(index);"
       },
       {
         "lineNumber": 44,
@@ -2539,7 +3235,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Adds patient to patients ArrayList."
+        "content": "     * Adds doctor to doctors ArrayList."
       },
       {
         "lineNumber": 48,
@@ -2553,7 +3249,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param patient patient to add."
+        "content": "     * @param doctor doctor to add."
       },
       {
         "lineNumber": 50,
@@ -2567,14 +3263,14 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public void addPatient(Patient patient) {"
+        "content": "    public void addDoctor(Doctor doctor) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        patients.add(patient);"
+        "content": "        doctors.add(doctor);"
       },
       {
         "lineNumber": 53,
@@ -2593,6 +3289,471 @@
     ],
     "authorContributionMap": {
       "TanJunHong": 54
+    }
+  },
+  {
+    "path": "src/main/java/seedu/rex/data/PatientList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "package seedu.rex.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "import seedu.rex.data.hospital.Patient;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "public class PatientList {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private final ArrayList\u003cPatient\u003e patients;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * Initializes patients ArrayList."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public PatientList() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        patients \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * Initializes patients ArrayList using parameter."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * @param patients Patients list to use."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public PatientList(ArrayList\u003cPatient\u003e patients) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.patients \u003d patients;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * Returns size of patients."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * @return Length of patients."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public int getSize() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return patients.size();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * Returns patient using index."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * @param index Index of patient."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * @return patient at that index."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public Patient getPatientUsingIndex(int index) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return patients.get(index);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * Adds patient to patients ArrayList."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * @param patient patient to add."
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void addPatient(Patient patient) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        patients.add(patient);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Adds a new patient with given details to \u003ccode\u003epatients\u003c/code\u003e ArrayList."
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param name Name of the patient."
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param nric NRIC of the patient."
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param dateOfBirth Patient\u0027s date of birth."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public void addNewPatient(String name, String nric, LocalDate dateOfBirth) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        addPatient(new Patient(name, nric, dateOfBirth));"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "TanJunHong": 54,
+      "ychong032": 11
     }
   },
   {
@@ -2731,7 +3892,7 @@
     }
   },
   {
-    "path": "src/main/java/seedu/rex/data/patient/Patient.java",
+    "path": "src/main/java/seedu/rex/data/hospital/Appointment.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -2739,7 +3900,451 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "package seedu.rex.data.patient;"
+        "content": "package seedu.rex.data.hospital;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "public class Appointment {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    private LocalDate date;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String time;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private Patient patient;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private Doctor doctor;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String notes;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private Prescription prescription;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public LocalDate getDate() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return date;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public void setDate(LocalDate date) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.date \u003d date;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getTime() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return time;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setTime(String time) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.time \u003d time;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public Patient getPatient() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return patient;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setPatient(Patient patient) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.patient \u003d patient;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public Doctor getDoctor() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return doctor;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setDoctor(Doctor doctor) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.doctor \u003d doctor;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getNotes() {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return notes;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setNotes(String notes) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.notes \u003d notes;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public Prescription getPrescription() {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return prescription;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setPrescription(Prescription prescription) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.prescription \u003d prescription;"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "TanJunHong": 57,
+      "ychong032": 5
+    }
+  },
+  {
+    "path": "src/main/java/seedu/rex/data/hospital/Doctor.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "package seedu.rex.data.hospital;"
       },
       {
         "lineNumber": 2,
@@ -2753,31 +4358,94 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "/**"
+        "content": "public class Doctor {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": " * Patient class."
+        "content": "    private String name;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "public class Patient {"
+        "content": "    public String getName() {"
       },
       {
         "lineNumber": 7,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return name;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setName(String name) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private enum Departments {}"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
         "author": {
           "gitId": "TanJunHong"
         },
@@ -2785,7 +4453,896 @@
       }
     ],
     "authorContributionMap": {
-      "TanJunHong": 7
+      "TanJunHong": 16
+    }
+  },
+  {
+    "path": "src/main/java/seedu/rex/data/hospital/Hospital.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "package seedu.rex.data.hospital;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "import seedu.rex.data.DoctorList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "import seedu.rex.data.PatientList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "public class Hospital {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String name;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private PatientList patients;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private DoctorList doctors;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getName() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return name;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setName(String name) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public PatientList getPatients() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return patients;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setPatients(PatientList patients) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.patients \u003d patients;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public DoctorList getDoctors() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return doctors;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setDoctors(DoctorList doctors) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.doctors \u003d doctors;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "TanJunHong": 35
+    }
+  },
+  {
+    "path": "src/main/java/seedu/rex/data/hospital/Patient.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "package seedu.rex.data.hospital;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "import java.time.format.DateTimeFormatter;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "import java.util.Vector;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": " * Patient class."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "public class Patient {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String name;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String nric;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    private LocalDate dateOfBirth;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private final Vector\u003cAppointment\u003e appointmentHistory;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public Patient(String name, String nric, LocalDate dateOfBirth) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        setName(name);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        setNric(nric);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        setDateOfBirth(dateOfBirth);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.appointmentHistory \u003d new Vector\u003c\u003e();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        // will create an empty appointment history"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public LocalDate getDateOfBirth() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return dateOfBirth;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public void setDateOfBirth(LocalDate dateOfBirth) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.dateOfBirth \u003d dateOfBirth;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getName() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return name;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setName(String name) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getNric() {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return nric;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setNric(String nric) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.nric \u003d nric;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public Vector\u003cAppointment\u003e getAppointmentHistory() {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return appointmentHistory;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private enum Gender {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        MALE, FEMALE"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Returns the \u003ccode\u003ePatient\u003c/code\u003e object as a String for printing or writing to a file."
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @return Patient\u0027s details as a String in a particular format."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        return name + \", \" + nric + \", \" + dateOfBirth.format(DateTimeFormatter.ISO_DATE);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "TanJunHong": 50,
+      "ychong032": 16
+    }
+  },
+  {
+    "path": "src/main/java/seedu/rex/data/hospital/Prescription.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "package seedu.rex.data.hospital;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "public class Prescription {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String dosage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    private String frequency;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getDosage() {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return dosage;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setDosage(String dosage) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.dosage \u003d dosage;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public String getFrequency() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return frequency;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    public void setFrequency(String frequency) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        this.frequency \u003d frequency;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "TanJunHong": 22
     }
   },
   {
@@ -2809,166 +5366,250 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "import seedu.rex.commands.Command;"
+        "content": "import seedu.rex.commands.AddCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import seedu.rex.commands.ExitCommand;"
+        "content": "import seedu.rex.commands.Command;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import seedu.rex.data.exception.RexException;"
+        "content": "import seedu.rex.commands.ExitCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import seedu.rex.data.patient.Patient;"
+        "content": "import seedu.rex.data.exception.RexException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "import seedu.rex.data.hospital.Patient;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "public class Parser {"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "    public static Patient readPatient(String line) {"
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        // to read patients from file"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        return null;"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "    public static Patient readPatient(String line) {"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": ""
+        "content": "        StringBuilder record \u003d new StringBuilder(line);"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "    public static Command parse(String fullCommand) throws RexException {"
+        "content": "        String name \u003d record.substring(0, record.indexOf(\", \"));"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        String commandWord \u003d fullCommand.trim().toLowerCase();"
+        "content": "        // Deletes first comma separator."
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        Command command;"
+        "content": "        record.delete(0, record.indexOf(\", \") + 2);"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        String nric \u003d record.substring(0, record.indexOf(\", \"));"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": "        // Deletes second comma separator."
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "            command \u003d new ExitCommand();"
+        "content": "        record.delete(0, record.indexOf(\", \") + 2);"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "            break;"
+        "content": "        LocalDate dateOfBirth \u003d LocalDate.parse(record.toString());"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        default:"
+        "content": "        return new Patient(name, nric, dateOfBirth);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            throw new RexException(Command.COMMAND_ERROR);"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        return command;"
+        "content": "    public static Command parse(String fullCommand) throws RexException {"
       },
       {
         "lineNumber": 25,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        String trimmedCommand \u003d fullCommand.trim().toLowerCase();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        Command command;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        if (trimmedCommand.equals(ExitCommand.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "            command \u003d new ExitCommand();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else if (trimmedCommand.contains(AddCommand.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            command \u003d new AddCommand(trimmedCommand);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "            throw new RexException(Command.COMMAND_ERROR);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "        return command;"
+      },
+      {
+        "lineNumber": 35,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 36,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
         "author": {
           "gitId": "TanJunHong"
         },
@@ -2976,7 +5617,8 @@
       }
     ],
     "authorContributionMap": {
-      "TanJunHong": 26
+      "TanJunHong": 19,
+      "ychong032": 19
     }
   },
   {
@@ -3016,7 +5658,7 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import seedu.rex.data.patient.Patient;"
+        "content": "import seedu.rex.data.hospital.Patient;"
       },
       {
         "lineNumber": 6,
@@ -3539,117 +6181,124 @@
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "        }"
+        "content": "            fileContent.append(\u0027\\n\u0027);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        Path folderPath \u003d Paths.get(folder);"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        if (!Files.exists(folderPath) \u0026\u0026 !new File(folder).mkdir()) {"
+        "content": "        Path folderPath \u003d Paths.get(folder);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            throw new RexException(DIRECTORY_ERROR);"
+        "content": "        if (!Files.exists(folderPath) \u0026\u0026 !new File(folder).mkdir()) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        }"
+        "content": "            throw new RexException(DIRECTORY_ERROR);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        Path filePath \u003d Paths.get(folder, file);"
+        "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        try {"
+        "content": "        Path filePath \u003d Paths.get(folder, file);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            BufferedWriter bufferedWriter \u003d Files.newBufferedWriter(filePath);"
+        "content": "        try {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            bufferedWriter.write(fileContent.toString());"
+        "content": "            BufferedWriter bufferedWriter \u003d Files.newBufferedWriter(filePath);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            bufferedWriter.close();"
+        "content": "            bufferedWriter.write(fileContent.toString());"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "            bufferedWriter.close();"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            throw new RexException(WRITE_ERROR);"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        }"
+        "content": "            throw new RexException(WRITE_ERROR);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 96,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 97,
         "author": {
           "gitId": "TanJunHong"
         },
@@ -3657,7 +6306,8 @@
       }
     ],
     "authorContributionMap": {
-      "TanJunHong": 96
+      "TanJunHong": 96,
+      "ychong032": 1
     }
   },
   {
@@ -3702,565 +6352,873 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": ""
+        "content": "import seedu.rex.data.hospital.Patient;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import java.util.Scanner;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": ""
+        "content": "import java.time.format.DateTimeParseException;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "/**"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": " * Interacts with user."
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "public class Ui {"
+        "content": "/**"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": " * Interacts with user."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public static final String LOGO \u003d"
+        "content": " */"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "            \" _    _                 _ _        _                                  _____     __   __\\n\""
+        "content": "public class Ui {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t | |  | |               (_| |      | |                                |  __ \\\\    \\\\ \\\\ / /\\n\""
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t | |__| | ___  ___ _ __  _| |_ __ _| |___  __ _ _   _ _ __ _   _ ___  | |__) |___ \\\\ V / \\n\""
+        "content": "    public static final String LOGO \u003d"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t |  __  |/ _ \\\\/ __| \u0027_ \\\\| | __/ _` | / __|/ _` | | | | \u0027__| | | / __| |  _  // _ \\\\ \u003e \u003c  \\n\""
+        "content": "            \" _    _                 _ _        _                                  _____     __   __\\n\""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t | |  | | (_) \\\\__ | |_) | | || (_| | \\\\__ | (_| | |_| | |  | |_| \\\\__ \\\\ | | \\\\ |  __// . \\\\\""
+        "content": "                    + \"\\t | |  | |               (_| |      | |                                |  __ \\\\    \\\\ \\\\ / /\\n\""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \" \\n\""
+        "content": "                    + \"\\t | |__| | ___  ___ _ __  _| |_ __ _| |___  __ _ _   _ _ __ _   _ ___  | |__) |___ \\\\ V / \\n\""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t |_|  |_|\\\\___/|___| .__/|_|\\\\__\\\\__,_|_|___/\\\\__,_|\\\\__,_|_|   \\\\__,_|___/ |_|  \\\\_\\\\___/_/ \""
+        "content": "                    + \"\\t |  __  |/ _ \\\\/ __| \u0027_ \\\\| | __/ _` | / __|/ _` | | | | \u0027__| | | / __| |  _  // _ \\\\ \u003e \u003c  \\n\""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\\\_\\\\\\n\""
+        "content": "                    + \"\\t | |  | | (_) \\\\__ | |_) | | || (_| | \\\\__ | (_| | |_| | |  | |_| \\\\__ \\\\ | | \\\\ |  __// . \\\\\""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t                  | |                                                                   \\n\""
+        "content": "                    + \" \\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    + \"\\t                  |_|                                                                   \""
+        "content": "                    + \"\\t |_|  |_|\\\\___/|___| .__/|_|\\\\__\\\\__,_|_|___/\\\\__,_|\\\\__,_|_|   \\\\__,_|___/ |_|  \\\\_\\\\___/_/ \""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "                    .replaceAll(\"\\n\", System.lineSeparator());"
+        "content": "                    + \"\\\\_\\\\\\n\""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    private static final String DOTTED_LINE \u003d \"____________________________________________________________\";"
+        "content": "                    + \"\\t                  | |                                                                   \\n\""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    private final Scanner in \u003d new Scanner(System.in);"
+        "content": "                    + \"\\t                  |_|                                                                   \""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "                    .replaceAll(\"\\n\", System.lineSeparator());"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    private static final String DOTTED_LINE \u003d \"____________________________________________________________\";"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "     * Prints string with indent."
+        "content": "    private static final String DATE_ERROR \u003d \"Error in date format.\";"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "    private final Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param string String to print."
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    private void printWithIndent(String string) {"
+        "content": "     * Prints string with indent."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        System.out.println(\"\\t \" + string);"
+        "content": "     *"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * @param string String to print."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    private void printWithIndent(String string) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Prints dotted line."
+        "content": "        System.out.println(\"\\t \" + string);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public void showLine() {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        System.out.println(\"\\t\" + DOTTED_LINE);"
+        "content": "    /**"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * Prints dotted line."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    public void showLine() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Prints error message."
+        "content": "        System.out.println(\"\\t\" + DOTTED_LINE);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param message Error message to print."
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public void showError(String message) {"
+        "content": "     * Prints error message."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        printWithIndent(message);"
+        "content": "     *"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * @param message Error message to print."
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    public void showError(String message) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Prints welcome message."
+        "content": "        printWithIndent(message);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public void showWelcome() {"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        showLine();"
+        "content": "    /**"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        printWithIndent(Command.MESSAGE);"
+        "content": "     * Prints welcome message."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        showLine();"
+        "content": "     */"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "    public void showWelcome() {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "        showLine();"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "        printWithIndent(Command.MESSAGE);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Prints loading error message."
+        "content": "        showLine();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public void showLoadingError() {"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        showError(Storage.LOAD_ERROR);"
+        "content": "    /**"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * Prints loading error message."
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    public void showLoadingError() {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Prints exit message."
+        "content": "        showError(Storage.LOAD_ERROR);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public void showExit() {"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        printWithIndent(ExitCommand.MESSAGE);"
+        "content": "    /**"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    }"
+        "content": "     * Prints exit message."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": "    public void showExit() {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Reads command from user."
+        "content": "        printWithIndent(ExitCommand.MESSAGE);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @return String command from user."
+        "content": ""
       },
       {
         "lineNumber": 81,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public void showDateInputError() {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        showError(DATE_ERROR);"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Prints a message to indicate successful addition of a patient."
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @param patient The newly added \u003ccode\u003ePatient\u003c/code\u003e."
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public void showPatientAdded(Patient patient) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        printWithIndent(\"Patient successfully added: \");"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        printWithIndent(patient.toString());"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * Reads command from user."
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": "     * @return String command from user."
+      },
+      {
+        "lineNumber": 99,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 100,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "    public String readCommand() {"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 101,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "        System.out.println();"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 102,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "        return in.nextLine();"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 103,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 104,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Reads the name of a new patient from the user."
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @return The name of the patient to be added."
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public String getPatientName() {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        printWithIndent(\"Enter patient name: \");"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        return in.nextLine().trim();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * Reads the date of birth of a new patient from the user."
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     * @return The date of birth of the patient."
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    public LocalDate getPatientDateOfBirth() {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        while (true) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "                printWithIndent(\"Enter patient date of birth (YYYY-MM-DD) including the dashes: \");"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "                return LocalDate.parse(in.nextLine().trim());"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            } catch (DateTimeParseException e) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "                showLine();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "                showDateInputError();"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "                showLine();"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "ychong032"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 130,
         "author": {
           "gitId": "TanJunHong"
         },
@@ -4268,7 +7226,8 @@
       }
     ],
     "authorContributionMap": {
-      "TanJunHong": 86
+      "TanJunHong": 86,
+      "ychong032": 44
     }
   },
   {
@@ -4416,14 +7375,14 @@
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 9,
