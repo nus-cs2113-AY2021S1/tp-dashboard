@@ -82,5 +82,2304 @@
       "farice9": 2,
       "-": 4
     }
+  },
+  {
+    "path": "src/main/java/Command.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class Command {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void executeCommand(String command, CommandType commandType) {"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        if (commandType \u003d\u003d CommandType.EXIT_PROGRAM) {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            Ui.printExit();"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandType \u003d\u003d CommandType.EXIT_MODE) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            Ui.exitMode();"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandType \u003d\u003d CommandType.LOCATION) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            Ui.printLocation();"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandType \u003d\u003d CommandType.CHANGE_MODE) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            Ui.changeModeCommand(command);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandType \u003d\u003d CommandType.HELP) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            HelpMessage.printHelpMessage();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (StudyIt.getCurrentMode() !\u003d Mode.MENU) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            handleNonGeneralCommand();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            ErrorMessage.printUnidentifiableCommand();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void handleNonGeneralCommand() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        Mode currentMode \u003d StudyIt.getCurrentMode();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            if (currentMode \u003d\u003d Mode.BOOKMARK) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "                executeBookmarkModeCommand();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            } else if (currentMode \u003d\u003d Mode.TIMETABLE) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "                executeTimetableModeCommand();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            } else if (currentMode \u003d\u003d Mode.ACADEMIC) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "                executeAcademicModeCommand();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            } else if (currentMode \u003d\u003d Mode.FLASHCARD) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "                executeFlashcardCommand();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } catch (InvalidCommandException e) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            // TODO: This part can be changed depending on what exception you guys will have later"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            ErrorMessage.printUnidentifiableCommand();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void executeBookmarkModeCommand() throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void executeTimetableModeCommand() throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void executeAcademicModeCommand() throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void executeFlashcardCommand() throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 53
+    }
+  },
+  {
+    "path": "src/main/java/CommandParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class CommandParser {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static String standardizeCommand(String text) {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        return text.trim().toLowerCase();"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static CommandType getCommandType(String command) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        String commandModified \u003d standardizeCommand(command);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        if ((StudyIt.getCurrentMode() \u003d\u003d Mode.MENU) \u0026\u0026 (commandModified.equals(\"exit\"))) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return CommandType.EXIT_PROGRAM;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandModified.equals(\"exit\")) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return CommandType.EXIT_MODE;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandModified.equals(\"location\")) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return CommandType.LOCATION;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandModified.startsWith(\"cd\")) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return CommandType.CHANGE_MODE;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (commandModified.equals(\"help\")) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return CommandType.HELP;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return CommandType.UNIDENTIFIABLE;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static Mode getDestinationMode(String command) throws InvalidModeException {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        String commandModified \u003d standardizeCommand(command);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        int initialLength \u003d \"cd\".length();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        String destination \u003d commandModified.substring(initialLength).trim();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        if (destination.equals(\"1\") || destination.equals(ModeNames.MENU_NAME)) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return Mode.MENU;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (destination.equals(\"2\") || destination.equals(ModeNames.BOOKMARK_NAME)) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return Mode.BOOKMARK;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (destination.equals(\"3\") || destination.equals(ModeNames.TIMETABLE_NAME)) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return Mode.TIMETABLE;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (destination.equals(\"4\") || destination.equals(ModeNames.ACADEMIC_NAME)) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return Mode.ACADEMIC;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (destination.equals(\"5\") || destination.equals(ModeNames.FLASHCARD_NAME)) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return Mode.FLASHCARD;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            throw new InvalidModeException();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 44
+    }
+  },
+  {
+    "path": "src/main/java/CommandType.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public enum CommandType {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    EXIT_PROGRAM,"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    EXIT_MODE,"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    LOCATION,"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    CHANGE_MODE,"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    UNIDENTIFIABLE,"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    HELP"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 8
+    }
+  },
+  {
+    "path": "src/main/java/ErrorMessage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class ErrorMessage extends Ui {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printUnidentifiableCommand() {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        printLine(\"Sorry that\u0027s not an available command! Please try again\\n\""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "                + \"or you can type \\\"help\\\" for more information\");"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 7
+    }
+  },
+  {
+    "path": "src/main/java/HelpMessage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class HelpMessage extends Ui {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static final String generalCommands \u003d \"Here are the general commands available:\\n\""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"help                 - prints out help message\\n\""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"location             - tells you your current mode\\n\""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"cd \u003cmode index/name\u003e - changes the program to the corresponding mode\\n\""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"exit                 - exit the program/mode you are currently at\\n\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static final String currentModes \u003d \"These are the modes you can go to:\\n\""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"1 menu       - main menu\\n\""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"2 bookmark   - bookmark internet links\\n\""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"3 timetable  - plan your study schedule\\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"4 academic   - track your academic details\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"5 flashcard  - flashcards to revise your study materials\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printHelpMessage() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(LINE_DIVIDER);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(generalCommands);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.lineSeparator();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        Mode currentMode \u003d StudyIt.getCurrentMode();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        if (currentMode \u003d\u003d Mode.BOOKMARK) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printBookmarkHelp();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (currentMode \u003d\u003d Mode.TIMETABLE) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printTimetableHelp();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (currentMode \u003d\u003d Mode.ACADEMIC) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printAcademicHelp();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else if (currentMode \u003d\u003d Mode.FLASHCARD) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printFlashcardHelp();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.lineSeparator();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(currentModes);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(LINE_DIVIDER);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    //TODO: Fill this up after you\u0027re done"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printBookmarkHelp() {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    //TODO: Fill this up after you\u0027re done"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printTimetableHelp() {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    //TODO: Fill this up after you\u0027re done"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printAcademicHelp() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    //TODO: Fill this up after you\u0027re done"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printFlashcardHelp() {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 55
+    }
+  },
+  {
+    "path": "src/main/java/InvalidCommandException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class InvalidCommandException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 2
+    }
+  },
+  {
+    "path": "src/main/java/InvalidModeException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class InvalidModeException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 2
+    }
+  },
+  {
+    "path": "src/main/java/MainMenu.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "import java.time.format.DateTimeFormatter;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "import java.time.LocalDateTime;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class MainMenu extends Ui {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static DateTimeFormatter dateTimeFormat \u003d DateTimeFormatter.ofPattern(\"d MMM yyyy HH:mm\");"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static LocalDateTime now \u003d LocalDateTime.now();"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static String nowFormatted \u003d dateTimeFormat.format(now);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static final String WELCOME_MESSAGE \u003d LINE_DIVIDER + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"Welcome to Study It! Your personal study assistant!\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"\\n\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"Current date \u0026 time : \" + nowFormatted"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"\\n\\n\""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"Let\u0027s get productive! :)\""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + \"\\n\""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            + LINE_DIVIDER;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printWelcome() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(WELCOME_MESSAGE);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 22
+    }
+  },
+  {
+    "path": "src/main/java/Mode.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public enum Mode {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    MENU,"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    BOOKMARK,"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    TIMETABLE,"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    ACADEMIC,"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    FLASHCARD"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 7
+    }
+  },
+  {
+    "path": "src/main/java/ModeNames.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class ModeNames {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static final String BOOKMARK_NAME \u003d \"bookmark\";"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static final String TIMETABLE_NAME \u003d \"timetable\";"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static final String ACADEMIC_NAME \u003d \"academic\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static final String FLASHCARD_NAME \u003d \"flashcard\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static final String MENU_NAME \u003d \"menu\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static String getCurrentModeName() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        Mode currentMode \u003d StudyIt.getCurrentMode();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        switch (currentMode) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        case BOOKMARK:"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return BOOKMARK_NAME;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        case TIMETABLE:"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return TIMETABLE_NAME;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        case ACADEMIC:"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return ACADEMIC_NAME;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        case FLASHCARD:"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return FLASHCARD_NAME;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            return MENU_NAME;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 24
+    }
+  },
+  {
+    "path": "src/main/java/StudyIt.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class StudyIt {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    private static Mode currentMode \u003d Mode.MENU;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void changeMode(Mode destinationMode) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        currentMode \u003d destinationMode;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static Mode getCurrentMode() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        return currentMode;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        MainMenu.printWelcome();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        run();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void run() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        CommandType commandType;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        // Repeatedly receive \u0026 process user command until \"exit\" is given"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            // Collect user\u0027s command \u0026 identify the type"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            String command \u003d Ui.inputCommand();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            commandType \u003d CommandParser.getCommandType(command);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            Command.executeCommand(command, commandType);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } while (commandType !\u003d CommandType.EXIT_PROGRAM);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 30
+    }
+  },
+  {
+    "path": "src/main/java/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static final String LINE_DIVIDER \u003d \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     * Receive command input from the user via terminal."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     * @return the command input as a String"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static String inputCommand() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        String command;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        command \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        return command;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     * Prints text with line divider above and below the text."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     * @param text any String type text"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printLine(String text) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(LINE_DIVIDER + \"\\n\" + text + \"\\n\" + LINE_DIVIDER);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printExit() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(LINE_DIVIDER + \"\\nSee you again soon!!!\\n\" + LINE_DIVIDER);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void printLocation() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        if (StudyIt.getCurrentMode() \u003d\u003d Mode.MENU) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printLine(\"You are currently at the main menu!\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printLine(\"Location not found, there\u0027s issues with the program\"); //TODO: Change this"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void changeModeCommand(String command) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            Mode newMode \u003d CommandParser.getDestinationMode(command);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            StudyIt.changeMode(newMode);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printLine(\"You are now at: \" + ModeNames.getCurrentModeName());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        } catch (InvalidModeException e) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "            printLine(\"Invalid mode name! Please try again.\\n\""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "                    + \"You are still at: \" + ModeNames.getCurrentModeName());"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    public static void exitMode() {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(LINE_DIVIDER);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(\"Exited \" + ModeNames.getCurrentModeName() + \"!\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        StudyIt.changeMode(Mode.MENU); //TODO: Check UI"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(\"You are now back at: \" + ModeNames.getCurrentModeName());"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "        System.out.println(LINE_DIVIDER);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "farice9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "farice9": 59
+    }
   }
 ]

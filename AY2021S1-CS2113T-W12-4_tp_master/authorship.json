@@ -314,9 +314,9 @@
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "untitle4"
+          "gitId": "durianpancakes"
         },
-        "content": "        return \"[CCA] \" + super.description + \"from \" + start"
+        "content": "        return \"[CCA] \" + super.toString() + \"from \" + start"
       },
       {
         "lineNumber": 35,
@@ -335,14 +335,114 @@
       {
         "lineNumber": 37,
         "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public boolean equals(Object obj) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        Cca otherCca \u003d (Cca) obj;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return super.equals(obj)"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.start.equals(otherCca.getStart())"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.end.equals(otherCca.getEnd());"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
           "gitId": "untitle4"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "untitle4": 19,
-      "durianpancakes": 18
+      "untitle4": 18,
+      "durianpancakes": 28
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/CcaEmptyStringException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "public class CcaEmptyStringException extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "untitle4": 4
     }
   },
   {
@@ -487,206 +587,325 @@
         "author": {
           "gitId": "untitle4"
         },
-        "content": "    public void addCca(String userInput) {"
+        "content": "    public void addCca(String userInput) throws CcaEmptyStringException, CcaParamException {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        final String[] ccaDetails \u003d userInput.trim().split(\"\\\\/\");"
+        "content": "        if ((!userInput.contains(\"/n\")) || (!userInput.contains(\"/s\"))"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "                || (!userInput.contains(\"/e\"))) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        String ccaDescription \u003d ccaDetails[1].substring(2);"
+        "content": "            throw new CcaParamException();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        String ccaStartDate \u003d ccaDetails[2].substring(2);"
+        "content": "        }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        String ccaEndDate \u003d ccaDetails[3].substring(2);"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "        final String[] ccaDetails \u003d userInput.trim().split(\"\\\\/\");"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        cca.add(new Cca(ccaDescription, ccaStartDate, ccaEndDate));"
+        "content": "        String ccaDescription \u003d ccaDetails[1].substring(2);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "        String ccaStartDate \u003d ccaDetails[2].substring(2);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this cca: \");"
+        "content": "        String ccaEndDate \u003d ccaDetails[3].substring(2);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        System.out.println(cca.get(getCcaListSize() - 1));"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        getCcaStatement();"
+        "content": "        if (ccaDescription.equals(\"\") || ccaStartDate.equals(\"\")"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "    }"
+        "content": "                || ccaEndDate.equals(\"\")) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "            throw new CcaEmptyStringException();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "    public void deleteCca(String[] userInput) {"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        int ccaIndex \u003d Integer.parseInt(userInput[2]);"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "        cca.add(new Cca(ccaDescription, ccaStartDate, ccaEndDate));"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        System.out.println(\"Noted. I\u0027ve removed this cca: \");"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        System.out.println(cca.get(ccaIndex - 1));"
+        "content": "        System.out.println(\"Got it. I\u0027ve added this cca: \");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "        System.out.println(cca.get(getCcaListSize() - 1));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        cca.remove(ccaIndex - 1);"
+        "content": "        getCcaStatement();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        getCcaStatement();"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "untitle4"
         },
-        "content": ""
+        "content": "    public void deleteCca(String[] userInput) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "    private void getCcaStatement() {"
+        "content": "        int ccaIndex \u003d Integer.parseInt(userInput[2]);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        String ccaStatement \u003d getCcaListSize() \u003d\u003d 1 ? \" cca\" : \" ccas\";"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "        System.out.println(\"Now you have \" + getCcaListSize() + ccaStatement"
+        "content": "        System.out.println(\"Noted. I\u0027ve removed this cca: \");"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "                + \" in the list.\");"
+        "content": "        System.out.println(cca.get(ccaIndex - 1));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "untitle4"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 49,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        cca.remove(ccaIndex - 1);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        getCcaStatement();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    public void setCcaDone(String[] userInput) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        int ccaIndex \u003d Integer.parseInt(userInput[2]) - 1;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        cca.get(ccaIndex).setDone();"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        System.out.println(cca.get(ccaIndex).getDescription());"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    private void getCcaStatement() {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        String ccaStatement \u003d getCcaListSize() \u003d\u003d 1 ? \" cca\" : \" ccas\";"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        System.out.println(\"Now you have \" + getCcaListSize() + ccaStatement"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "                + \" in the list.\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
         "author": {
           "gitId": "untitle4"
         },
@@ -694,8 +913,45 @@
       }
     ],
     "authorContributionMap": {
-      "untitle4": 45,
+      "untitle4": 62,
       "durianpancakes": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/CcaParamException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "public class CcaParamException extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "untitle4": 4
     }
   },
   {
@@ -936,9 +1192,9 @@
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "elizabethcwt"
+          "gitId": "durianpancakes"
         },
-        "content": "        return \"[Class] \" + super.description + \"from \" + start"
+        "content": "        return \"[Class] \" + super.toString() + \"from \" + start"
       },
       {
         "lineNumber": 35,
@@ -957,14 +1213,77 @@
       {
         "lineNumber": 37,
         "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public boolean equals(Object obj) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        Class otherClass \u003d (Class) obj;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return super.equals(obj)"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.start.equals(otherClass.getStart())"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.end.equals(otherClass.getEnd());"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
           "gitId": "elizabethcwt"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "durianpancakes": 18,
-      "elizabethcwt": 19
+      "durianpancakes": 28,
+      "elizabethcwt": 18
     }
   },
   {
@@ -1341,845 +1660,572 @@
       {
         "lineNumber": 3,
         "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.parser.CommandParser;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.parser.CommandType;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
           "gitId": "durianpancakes"
         },
         "content": "import java.io.IOException;"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 7,
         "author": {
           "gitId": "AliciaHo"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
         "content": "import java.util.Scanner;"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
         "content": "public class Duke {"
       },
       {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "    static ArrayList\u003cEvent\u003e classes;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "    static ArrayList\u003cEvent\u003e tests;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "    static ArrayList\u003cEvent\u003e ccas;"
-      },
-      {
         "lineNumber": 11,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static ClassManager classManager;"
+        "content": "    public static final String DATA_STRING \u003d \"data\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static TestManager testManager;"
+        "content": "    public static final String FILE_STRING \u003d \"/events.txt\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static CcaManager ccaManager;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static ListSchedule listSchedule;"
+        "content": "    static ArrayList\u003cEvent\u003e classes;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static StorageManager storageManager;"
+        "content": "    static ArrayList\u003cEvent\u003e tests;"
       },
       {
         "lineNumber": 16,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    static ArrayList\u003cEvent\u003e ccas;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private static ClassManager classManager;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private static TestManager testManager;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private static CcaManager ccaManager;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private static ListSchedule listSchedule;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private static StorageManager storageManager;"
+      },
+      {
+        "lineNumber": 22,
         "author": {
           "gitId": "AndreWongZH"
         },
         "content": ""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
         "content": "     * Main entry-point for the java.duke.Duke application."
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 26,
         "author": {
           "gitId": "AliciaHo"
         },
         "content": ""
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        storageManager \u003d new StorageManager();"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        // Initializing ArrayLists"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        classes \u003d storageManager.getClassList();"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        tests \u003d storageManager.getTestList();"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        ccas \u003d storageManager.getCcaList();"
-      },
-      {
         "lineNumber": 28,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        classManager \u003d new ClassManager(storageManager.getClassList());"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        testManager \u003d new TestManager(storageManager.getTestList());"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        ccaManager \u003d new CcaManager(storageManager.getCcaList());"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        listSchedule \u003d new ListSchedule(classes, ccas, tests);"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"What is your name?\");"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello \" + in.nextLine());"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "        System.out.println(\"What can we do for you?\");"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        String line;"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        Scanner input \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        while (input.hasNextLine()) {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            line \u003d input.nextLine();"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            String[] checkCommand \u003d line.split(\" \");"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            if (checkCommand[0].equals(\"help\")) {"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                try {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    handleHelp(checkCommand);"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                } catch (InvalidHelpCommandException e) {"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    System.out.println(\"Oops! If you\u0027re trying to ask for help, simply enter \u0027help\u0027!\\n\");"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"add\") \u0026\u0026 checkCommand[1].equals(\"class\")) {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                classManager.addClass(line);"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"add\") \u0026\u0026 checkCommand[1].equals(\"test\")) {"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "                testManager.addTest(line);"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "untitle4"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"add\") \u0026\u0026 checkCommand[1].equals(\"cca\")) {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "untitle4"
-        },
-        "content": "                ccaManager.addCca(line);"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"delete\") \u0026\u0026 checkCommand[1].equals(\"class\")) {"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                classManager.deleteClass(checkCommand);"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "untitle4"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"delete\") \u0026\u0026 checkCommand[1].equals(\"test\")) {"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "                testManager.deleteTest(checkCommand);"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "untitle4"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"delete\") \u0026\u0026 checkCommand[1].equals(\"cca\")) {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "untitle4"
-        },
-        "content": "                ccaManager.deleteCca(checkCommand);"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"list\")) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "                ArrayList\u003cString\u003e printedEvents \u003d listSchedule.getAllEventsPrinted();"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "                printArray(printedEvents);"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "            } else if (checkCommand[0].equals(\"bye\")) {"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "            refreshEvents();"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "untitle4"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "        //Exit Message"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "AliciaHo"
-        },
-        "content": "        System.out.println(\"BYE BYE! SEE YOU NEXT TIME! :3\");"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "    private static void printArray(ArrayList\u003cString\u003e printedEvents) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "        for (String line : printedEvents) {"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "            System.out.println(line);"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "AndreWongZH"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "    public static void handleHelp(String[] checkCommand) throws InvalidHelpCommandException {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        if (checkCommand.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            System.out.println(\"Hello! Here is a list of commands you can try:\\n\\n\""
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t1. Add class: add class /n [name of class] /s [start date-time of class] /e\""
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \" [end date-time of class]\\n\""
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t2. Delete class: delete class /n [class number]\\n\""
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t3. Add cca: add cca /n [name of cca] /s [start date-time of cca] /e [end date-time of cca]\\n\""
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t4. Delete cca: type delete cca /n [cca number]\\n\""
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t5. Add test: type add test /n [name of test] /s [start date-time of test] /e \""
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"[end date-time of test]\\n\""
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t6. Delete test: type delete test /n [test number]\\n\""
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "                    + \"\\t7. Delete all: delete all\\n\");"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        // \"\\n\\tPlease enter the date-time in the following format: YYYY-MM-DD [time in 24hr format]\\n\" +"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        // \"\\te.g. 2020-08-19 1300\\n\\n);"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "            throw new InvalidHelpCommandException();"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "    public static class InvalidHelpCommandException extends Exception {"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "elizabethcwt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "    private static void refreshEvents() {"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        ArrayList\u003cEvent\u003e events \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        events.addAll(ccaManager.getCcaList());"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        events.addAll(testManager.getTestList());"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": "        events.addAll(classManager.getClasses());"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "durianpancakes"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 117,
         "author": {
           "gitId": "durianpancakes"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 29,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            storageManager.save(events);"
+        "content": "            storageManager \u003d new StorageManager(DATA_STRING, FILE_STRING);"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 30,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "        } catch (InvalidValueException e) {"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 31,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            System.out.println(\"STORAGE: There was an error\");"
+        "content": "            e.printStackTrace();"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 32,
         "author": {
           "gitId": "durianpancakes"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 33,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        // Initializing ArrayLists"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        classes \u003d storageManager.getClassList();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        tests \u003d storageManager.getTestList();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        ccas \u003d storageManager.getCcaList();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        classManager \u003d new ClassManager(storageManager.getClassList());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        testManager \u003d new TestManager(storageManager.getTestList());"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        ccaManager \u003d new CcaManager(storageManager.getCcaList());"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        listSchedule \u003d new ListSchedule(classes, ccas, tests);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"What is your name?\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"Hello \" + in.nextLine());"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        System.out.println(\"What can we do for you?\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": "        String line;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        CommandType commandType \u003d null;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": "        Scanner input \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        while (input.hasNextLine() \u0026\u0026 commandType !\u003d CommandType.BYE) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": "            line \u003d input.nextLine();"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d new CommandParser(line, testManager, ccaManager, classManager, listSchedule)"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    .parseCommand();"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "            refreshEvents();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        //Exit Message"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        System.out.println(\"BYE BYE! SEE YOU NEXT TIME! :3\");"
+      },
+      {
+        "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 67,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": "    public static class InvalidHelpCommandException extends Exception {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "elizabethcwt"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private static void refreshEvents() {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        ArrayList\u003cEvent\u003e events \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        events.addAll(ccaManager.getCcaList());"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        events.addAll(testManager.getTestList());"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        events.addAll(classManager.getClasses());"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "            storageManager.save(events, FILE_STRING);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "            System.out.println(\"STORAGE: There was an error\");"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
@@ -2187,12 +2233,12 @@
       }
     ],
     "authorContributionMap": {
-      "AliciaHo": 10,
-      "untitle4": 6,
-      "AndreWongZH": 10,
-      "durianpancakes": 34,
+      "AliciaHo": 5,
+      "untitle4": 1,
+      "AndreWongZH": 8,
+      "durianpancakes": 40,
       "-": 22,
-      "elizabethcwt": 41
+      "elizabethcwt": 8
     }
   },
   {
@@ -2314,54 +2360,201 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
-        "content": "    public boolean isDone() {"
+        "content": "    public void setDone() {"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
-        "content": "        return isDone;"
+        "content": "        this.isDone \u003d true;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
         "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
         "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    public String getStatus() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "        return (isDone ? \"[DONE]\" : \"[NOT DONE]\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public boolean isDone() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return isDone;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
           "gitId": "durianpancakes"
         },
         "content": "    public String getDescription() {"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 30,
         "author": {
           "gitId": "durianpancakes"
         },
         "content": "        return description;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 31,
         "author": {
           "gitId": "AliciaHo"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 32,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return getStatus() + \" \" + description;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public boolean equals(Object obj) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        Event otherEvent \u003d (Event) obj;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return this.description.equals(otherEvent.description)"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.isDone \u003d\u003d otherEvent.isDone();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "AliciaHo"
         },
@@ -2370,7 +2563,8 @@
     ],
     "authorContributionMap": {
       "AliciaHo": 9,
-      "durianpancakes": 15
+      "untitle4": 8,
+      "durianpancakes": 28
     }
   },
   {
@@ -3047,9 +3241,9 @@
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
-        "content": "                    + cca.getDescription() + \"|\""
+        "content": "                    + cca.description + \"|\""
       },
       {
         "lineNumber": 27,
@@ -3096,9 +3290,9 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
-        "content": "                    + test.getDescription() + \"|\""
+        "content": "                    + test.description + \"|\""
       },
       {
         "lineNumber": 34,
@@ -3145,9 +3339,9 @@
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "durianpancakes"
+          "gitId": "untitle4"
         },
-        "content": "                    + newClass.getDescription() + \"|\""
+        "content": "                    + newClass.description + \"|\""
       },
       {
         "lineNumber": 41,
@@ -3200,7 +3394,45 @@
       }
     ],
     "authorContributionMap": {
-      "durianpancakes": 47
+      "untitle4": 3,
+      "durianpancakes": 44
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/InvalidValueException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "public class InvalidValueException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "durianpancakes": 4
     }
   },
   {
@@ -3226,7 +3458,7 @@
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import seedu.duke.exception.EmptyListException;"
       },
       {
         "lineNumber": 4,
@@ -3240,199 +3472,577 @@
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "public class ListSchedule {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    private final ArrayList\u003cEvent\u003e classes;"
+        "content": "import java.util.logging.Level;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    private final ArrayList\u003cEvent\u003e ccas;"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    private final ArrayList\u003cEvent\u003e tests;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "public class ListSchedule {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    public ListSchedule(ArrayList\u003cEvent\u003e classes, ArrayList\u003cEvent\u003e ccas, ArrayList\u003cEvent\u003e tests) {"
+        "content": "    private final ArrayList\u003cEvent\u003e classes;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        this.classes \u003d classes;"
+        "content": "    private final ArrayList\u003cEvent\u003e ccas;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        this.ccas \u003d ccas;"
+        "content": "    private final ArrayList\u003cEvent\u003e tests;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        this.tests \u003d tests;"
+        "content": "    private static final Logger logger \u003d Logger.getLogger(\"List\");"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "    public ListSchedule(ArrayList\u003cEvent\u003e classes, ArrayList\u003cEvent\u003e ccas, ArrayList\u003cEvent\u003e tests) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    public ArrayList\u003cString\u003e getAllEventsPrinted() {"
+        "content": "        this.classes \u003d classes;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        ArrayList\u003cString\u003e printedEvents \u003d new ArrayList\u003c\u003e();"
+        "content": "        this.ccas \u003d ccas;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        printedEvents.add(\"Classes:\");"
+        "content": "        this.tests \u003d tests;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        printArrayPaddedNumbers(printedEvents, classes);"
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        printedEvents.add(\"CCAs:\");"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        printArrayPaddedNumbers(printedEvents, ccas);"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        printedEvents.add(\"Tests:\");"
+        "content": "     * Returns an array list of strings of all the classes, ccas and tests."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        printArrayPaddedNumbers(printedEvents, tests);"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "     * @return Array list of strings to be printed out."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        return printedEvents;"
+        "content": "     * @throws EmptyListException If there are no schedule at all."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "    public ArrayList\u003cString\u003e getAllEventsPrinted() throws EmptyListException {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    private void printArrayPaddedNumbers(ArrayList\u003cString\u003e printedEvents, ArrayList\u003cEvent\u003e eventArr) {"
+        "content": "        ArrayList\u003cString\u003e printedEvents \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        for (int i \u003d 0; i \u003c eventArr.size(); i++) {"
+        "content": "        logger.log(Level.INFO, \"starting to convert events instance to strings\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "            printedEvents.add(i + 1 + \". \" + eventArr.get(i));"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        }"
+        "content": "        if (hasNoSchedule()) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    }"
+        "content": "            logger.log(Level.WARNING, \"schedule is empty\");"
       },
       {
         "lineNumber": 33,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            throw new EmptyListException();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        if (haveClasses()) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            logger.log(Level.INFO, \"converting class events\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printedEvents.add(\"Classes:\");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printArrayPaddedNumbers(printedEvents, classes);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        if (haveCcas()) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            logger.log(Level.INFO, \"converting CCA events\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printedEvents.add(\"CCAs:\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printArrayPaddedNumbers(printedEvents, ccas);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        if (haveTests()) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            logger.log(Level.INFO, \"converting test events\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printedEvents.add(\"Tests:\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printArrayPaddedNumbers(printedEvents, tests);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return printedEvents;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private boolean haveClasses() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return classes.size() !\u003d 0;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private boolean haveCcas() {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return ccas.size() !\u003d 0;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private boolean haveTests() {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return tests.size() !\u003d 0;"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private boolean hasNoSchedule() {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return (!haveClasses() \u0026\u0026 !haveCcas() \u0026\u0026 !haveTests());"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * Converts event instances into strings representation padded with numbers."
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * PrintedEvents cannot be null."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * EventArr cannot be empty or null."
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * @param printedEvents Array list of strings to be printed."
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     * @param eventArr Array list of event instances to be converted."
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private void printArrayPaddedNumbers(ArrayList\u003cString\u003e printedEvents, ArrayList\u003cEvent\u003e eventArr) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        assert printedEvents !\u003d null;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        assert eventArr !\u003d null;"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        assert eventArr.size() !\u003d 0;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        for (int i \u003d 0; i \u003c eventArr.size(); i++) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            printedEvents.add(i + 1 + \". \" + eventArr.get(i));"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
         "author": {
           "gitId": "AndreWongZH"
         },
@@ -3440,7 +4050,7 @@
       }
     ],
     "authorContributionMap": {
-      "AndreWongZH": 33
+      "AndreWongZH": 87
     }
   },
   {
@@ -3508,147 +4118,147 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "public class StorageManager {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "public class StorageManager {"
+        "content": "    private static String storage_directory_path;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static final String STORAGE_DIRECTORY_PATH \u003d new File(\"data\").getAbsolutePath();"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private static final String STORAGE_EVENT_PATH \u003d STORAGE_DIRECTORY_PATH + \"/events.txt\";"
+        "content": "    private EventListEncoder eventListEncoder;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "    private EventListDecoder eventListDecoder;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private EventListEncoder eventListEncoder;"
+        "content": "    private File eventFile;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private EventListDecoder eventListDecoder;"
+        "content": "    private ArrayList\u003cEvent\u003e eventList;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private File eventFile;"
+        "content": "    private ArrayList\u003cEvent\u003e ccaList;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private ArrayList\u003cEvent\u003e eventList;"
+        "content": "    private ArrayList\u003cEvent\u003e testList;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private ArrayList\u003cEvent\u003e ccaList;"
+        "content": "    private ArrayList\u003cEvent\u003e classList;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private ArrayList\u003cEvent\u003e testList;"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private ArrayList\u003cEvent\u003e classList;"
+        "content": "    public StorageManager(String directoryPath, String filePath) throws InvalidValueException {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "        this.eventListEncoder \u003d new EventListEncoder();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    public StorageManager() {"
+        "content": "        this.eventListDecoder \u003d new EventListDecoder();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        this.eventListEncoder \u003d new EventListEncoder();"
+        "content": "        this.eventList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        this.eventListDecoder \u003d new EventListDecoder();"
+        "content": "        this.ccaList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        this.eventList \u003d new ArrayList\u003c\u003e();"
+        "content": "        this.testList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        this.ccaList \u003d new ArrayList\u003c\u003e();"
+        "content": "        this.classList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        this.testList \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        this.classList \u003d new ArrayList\u003c\u003e();"
+        "content": "        storage_directory_path \u003d new File(directoryPath).getAbsolutePath();"
       },
       {
         "lineNumber": 30,
@@ -3662,35 +4272,35 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        initializeStorageManager();"
+        "content": "        if (!isFilePathValid(filePath)) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    }"
+        "content": "            throw new InvalidValueException();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    public ArrayList\u003cEvent\u003e getEventList() {"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        return eventList;"
+        "content": "        initializeStorageManager(filePath);"
       },
       {
         "lineNumber": 36,
@@ -3711,14 +4321,14 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    public ArrayList\u003cEvent\u003e getCcaList() {"
+        "content": "    public ArrayList\u003cEvent\u003e getEventList() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        return ccaList;"
+        "content": "        return eventList;"
       },
       {
         "lineNumber": 40,
@@ -3739,14 +4349,14 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    public ArrayList\u003cEvent\u003e getTestList() {"
+        "content": "    public ArrayList\u003cEvent\u003e getCcaList() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        return testList;"
+        "content": "        return ccaList;"
       },
       {
         "lineNumber": 44,
@@ -3767,14 +4377,14 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    public ArrayList\u003cEvent\u003e getClassList() {"
+        "content": "    public ArrayList\u003cEvent\u003e getTestList() {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        return classList;"
+        "content": "        return testList;"
       },
       {
         "lineNumber": 48,
@@ -3795,21 +4405,21 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private void initializeStorageManager() {"
+        "content": "    public ArrayList\u003cEvent\u003e getClassList() {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        eventFile \u003d new File(STORAGE_EVENT_PATH);"
+        "content": "        return classList;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        ArrayList\u003cString\u003e data \u003d new ArrayList\u003c\u003e();"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
@@ -3823,290 +4433,374 @@
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        try {"
+        "content": "    private void initializeStorageManager(String filePath) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            boolean fileCreated \u003d createDataFile();"
+        "content": "        eventFile \u003d new File(storage_directory_path + filePath);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            if (!fileCreated) {"
+        "content": "        ArrayList\u003cString\u003e data \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                Scanner sc \u003d new Scanner(eventFile);"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                while (sc.hasNext()) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                    String dataString \u003d sc.nextLine();"
+        "content": "            boolean fileCreated \u003d createDataFile(filePath);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                    data.add(dataString);"
+        "content": "            if (!fileCreated) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                }"
+        "content": "                Scanner sc \u003d new Scanner(eventFile);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                eventList \u003d eventListDecoder.decodeEventList(data);"
+        "content": "                while (sc.hasNext()) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                separateEventsIntoList(eventList);"
+        "content": "                    String dataString \u003d sc.nextLine();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            }"
+        "content": "                    data.add(dataString);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "                }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            System.out.println(\"There was an error loading your files.\");"
+        "content": "                eventList \u003d eventListDecoder.decodeEventList(data);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        }"
+        "content": "                separateEventsIntoList(eventList);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private void separateEventsIntoList(ArrayList\u003cEvent\u003e events) {"
+        "content": "            System.out.println(\"There was an error loading your files.\");"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        for (Event event : events) {"
+        "content": "        }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            if (event instanceof Cca) {"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                ccaList.add(event);"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            } else if (event instanceof Class) {"
+        "content": "    private void separateEventsIntoList(ArrayList\u003cEvent\u003e events) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                classList.add(event);"
+        "content": "        for (Event event : events) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            } else if (event instanceof Test) {"
+        "content": "            if (event instanceof Cca) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "                testList.add(event);"
+        "content": "                ccaList.add(event);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "            }"
+        "content": "            } else if (event instanceof Class) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        }"
+        "content": "                classList.add(event);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    }"
+        "content": "            } else if (event instanceof Test) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "                testList.add(event);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    @SuppressWarnings(\"ResultOfMethodCallIgnored\")"
+        "content": "            }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    private boolean createDataFile() throws IOException {"
+        "content": "        }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        File file \u003d new File(STORAGE_DIRECTORY_PATH);"
+        "content": "    }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        file.mkdir();"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        file \u003d new File(STORAGE_EVENT_PATH);"
+        "content": "    private boolean isFilePathValid(String filePath) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "        int filePathLength \u003d filePath.length();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        return file.createNewFile();"
+        "content": "        if (!filePath.substring(filePathLength - 4).equals(\".txt\")) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    public void save(ArrayList\u003cEvent\u003e eventList) throws IOException {"
+        "content": "        return true;"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        ArrayList\u003cString\u003e encodedEventList \u003d eventListEncoder.encodeEventList(eventList);"
+        "content": "    }"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "        Files.write(Path.of(STORAGE_EVENT_PATH), encodedEventList);"
+        "content": ""
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "durianpancakes"
         },
-        "content": "    }"
+        "content": "    @SuppressWarnings(\"ResultOfMethodCallIgnored\")"
       },
       {
         "lineNumber": 95,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private boolean createDataFile(String filePath) throws IOException {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        File file \u003d new File(storage_directory_path);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        file.mkdir();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        file \u003d new File(storage_directory_path + filePath);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return file.createNewFile();"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public void save(ArrayList\u003cEvent\u003e eventList, String filePath) throws IOException {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        ArrayList\u003cString\u003e encodedEventList \u003d eventListEncoder.encodeEventList(eventList);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        Files.write(Path.of(storage_directory_path + filePath), encodedEventList);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 107,
         "author": {
           "gitId": "durianpancakes"
         },
@@ -4114,7 +4808,7 @@
       }
     ],
     "authorContributionMap": {
-      "durianpancakes": 95
+      "durianpancakes": 107
     }
   },
   {
@@ -4355,26 +5049,89 @@
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "AliciaHo"
+          "gitId": "durianpancakes"
         },
-        "content": "        return \"[TEST] \" + super.description + \"from \" + start"
+        "content": "        return \"[TEST] \" + super.toString() + \"from \" + start"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "AliciaHo"
+          "gitId": "durianpancakes"
         },
-        "content": "                + \"to \" + end + \" has been added.\";"
+        "content": "                + \"to \" + end;"
       },
       {
         "lineNumber": 36,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public boolean equals(Object obj) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        Test otherTest \u003d (Test) obj;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return super.equals(obj)"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.start.equals(otherTest.getStart())"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \u0026\u0026 this.end.equals(otherTest.getEnd());"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "AliciaHo"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 46,
         "author": {
           "gitId": "AliciaHo"
         },
@@ -4382,8 +5139,45 @@
       }
     ],
     "authorContributionMap": {
-      "AliciaHo": 19,
-      "durianpancakes": 18
+      "AliciaHo": 17,
+      "durianpancakes": 29
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/TestEmptyStringException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "public class TestEmptyStringException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AliciaHo": 4
     }
   },
   {
@@ -4430,7 +5224,7 @@
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    private ArrayList\u003cEvent\u003e test \u003d new ArrayList\u003c\u003e();"
+        "content": "    private ArrayList\u003cEvent\u003e test;"
       },
       {
         "lineNumber": 7,
@@ -4500,7 +5294,7 @@
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    private int getTestListSize() {"
+        "content": "    public int getTestListSize() {"
       },
       {
         "lineNumber": 17,
@@ -4528,42 +5322,42 @@
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    public void addTest(String userInput) {"
+        "content": "    public void addTest(String userInput) throws TestEmptyStringException, TestParamException {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        final String[] testDetails \u003d userInput.trim().split(\"\\\\/\");"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": ""
+        "content": "        if ((!userInput.contains(\"/n\")) || (!userInput.contains(\"/s\"))"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        String testDescription \u003d testDetails[1].substring(2);"
+        "content": "                || (!userInput.contains(\"/e\"))) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        String testStartDate \u003d testDetails[2].substring(2);"
+        "content": "            throw new TestParamException();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        String testEndDate \u003d testDetails[3].substring(2);"
+        "content": "        }"
       },
       {
         "lineNumber": 26,
@@ -4577,42 +5371,42 @@
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        test.add(new Test(testDescription, testStartDate, testEndDate));"
+        "content": "        userInput.replaceAll(\"\\\\s+\",\"\");"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": ""
+        "content": "        final String[] testDetails \u003d userInput.trim().split(\"\\\\/\");"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this test:\");"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        System.out.println(\"  \" + test.get(getTestListSize() - 1));"
+        "content": "        String testDescription \u003d testDetails[1].substring(1).trim();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        getTaskStatement();"
+        "content": "        String testStartDate \u003d testDetails[2].substring(1).trim();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    }"
+        "content": "        String testEndDate \u003d testDetails[3].substring(1).trim();"
       },
       {
         "lineNumber": 33,
@@ -4626,129 +5420,283 @@
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    public void deleteTest(String[] userInput) {"
+        "content": "        if (testDescription.equals(\"\") || testStartDate.equals(\"\")"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        int testNumber \u003d Integer.parseInt(userInput[1]);"
+        "content": "                || testEndDate.equals(\"\")) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": ""
+        "content": "            throw new TestEmptyStringException();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        System.out.println(\"Noted. I\u0027ve removed this task:\");"
+        "content": "        }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        System.out.println(\"  \" + test.get(testNumber - 1));"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": ""
+        "content": "        test.add(new Test(testDescription, testStartDate, testEndDate));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        test.remove(testNumber - 1);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": ""
+        "content": "        System.out.println(\"Got it. I\u0027ve added this test:\");"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        getTaskStatement();"
+        "content": "        System.out.println(\"  \" + test.get(getTestListSize() - 1));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    }"
+        "content": "        getTaskStatement();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    private void getTaskStatement() {"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        if ((getTestListSize() - 1 \u003d\u003d 0) || (getTestListSize() \u003d\u003d 0)) {"
+        "content": "    public void deleteTest(String[] userInput) throws IndexOutOfBoundsException {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "            System.out.println(\"Now you have \" + getTestListSize() + \" task in the list.\");"
+        "content": "        int testNumber \u003d 0;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "            System.out.println(\"Now you have \" + getTestListSize() + \" tasks in the list.\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "        }"
+        "content": "            testNumber \u003d Integer.parseInt(userInput[2]);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AliciaHo"
         },
-        "content": "    }"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 52,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        if ((testNumber \u003c\u003d 0) || (testNumber \u003e\u003d getTestListSize())) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            throw new IndexOutOfBoundsException();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        System.out.println(\"Noted. I\u0027ve removed this task:\");"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        System.out.println(\"  \" + test.get(testNumber - 1));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        test.remove(testNumber - 1);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        getTaskStatement();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    public void getTaskStatement() {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        if ((getTestListSize() - 1 \u003d\u003d 0) || (getTestListSize() \u003d\u003d 0)) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            System.out.println(\"Now you have \" + getTestListSize() + \" task in the list.\");"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            System.out.println(\"Now you have \" + getTestListSize() + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
         "author": {
           "gitId": "AliciaHo"
         },
@@ -4756,8 +5704,1779 @@
       }
     ],
     "authorContributionMap": {
-      "AliciaHo": 48,
+      "AliciaHo": 70,
       "durianpancakes": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/TestParamException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "public class TestParamException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AliciaHo": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/exception/EmptyListException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "package seedu.duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "public class EmptyListException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AndreWongZH": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/CommandParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "import seedu.duke.ClassManager;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.CcaManager;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.TestManager;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "import seedu.duke.ListSchedule;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.CcaEmptyStringException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "import seedu.duke.TestEmptyStringException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.CcaParamException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "import seedu.duke.TestParamException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.exception.EmptyListException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import seedu.duke.Duke.InvalidHelpCommandException;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "public class CommandParser {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_ADD \u003d \"add\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_DELETE \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_LIST \u003d \"list\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_BYE \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_SCHEDULE_CLASS \u003d \"class\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_SCHEDULE_TEST \u003d \"test\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final String INPUT_SCHEDULE_CCA \u003d \"cca\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final int MAIN_COMMAND_INDEX \u003d 0;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public static final int SUB_COMMAND_INDEX \u003d 1;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final String[] separatedInputs;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final String userInput;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final TestManager testManager;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final CcaManager ccaManager;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final ClassManager classManager;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private final ListSchedule listSchedule;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private CommandType commandType;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public CommandParser(String userInput, TestManager testManager,"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                         CcaManager ccaManager, ClassManager classManager, ListSchedule listSchedule) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        this.userInput \u003d userInput;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        this.testManager \u003d testManager;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        this.ccaManager \u003d ccaManager;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        this.classManager \u003d classManager;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        this.listSchedule \u003d listSchedule;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        separatedInputs \u003d userInput.split(\" \");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        commandType \u003d null;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    public CommandType parseCommand() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            extractCommand();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            executeCommand();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } catch (InvalidHelpCommandException e) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            System.out.println(\"Oops! If you\u0027re trying to ask for help, simply enter \u0027help\u0027!\\n\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        return commandType;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private void extractCommand() {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        if (separatedInputs[0].equals(\"help\")) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.HELP;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_ADD)"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                \u0026\u0026 separatedInputs[SUB_COMMAND_INDEX].equals(INPUT_SCHEDULE_CLASS)) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.ADD_CLASS;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_ADD)"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                \u0026\u0026 separatedInputs[SUB_COMMAND_INDEX].equals(INPUT_SCHEDULE_TEST)) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.ADD_TEST;"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_ADD)"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                \u0026\u0026 separatedInputs[SUB_COMMAND_INDEX].equals(INPUT_SCHEDULE_CCA)) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.ADD_CCA;"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_DELETE)"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                \u0026\u0026 separatedInputs[SUB_COMMAND_INDEX].equals(INPUT_SCHEDULE_CLASS)) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.DELETE_CLASS;"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_DELETE)"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                \u0026\u0026 separatedInputs[SUB_COMMAND_INDEX].equals(INPUT_SCHEDULE_TEST)) {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.DELETE_TEST;"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_DELETE)"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                \u0026\u0026 separatedInputs[SUB_COMMAND_INDEX].equals(INPUT_SCHEDULE_CCA)) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.DELETE_CCA;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_LIST)) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.LIST;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else if (separatedInputs[MAIN_COMMAND_INDEX].equals(INPUT_BYE)) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            commandType \u003d CommandType.BYE;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private void executeCommand() throws InvalidHelpCommandException {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        switch (commandType) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case HELP:"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            handleHelp(separatedInputs);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_CLASS:"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            classManager.addClass(userInput);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_CCA:"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                ccaManager.addCca(userInput);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "            } catch (CcaEmptyStringException | CcaParamException e) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "                System.out.println(\"OOPS!!! The description of a cca cannot be empty.\");"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "untitle4"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case ADD_TEST:"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                testManager.addTest(userInput);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            } catch (TestEmptyStringException | TestParamException e) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "                e.printStackTrace();"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case DELETE_CLASS:"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            classManager.deleteClass(separatedInputs);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case DELETE_CCA:"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            ccaManager.deleteCca(separatedInputs);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case DELETE_TEST:"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                testManager.deleteTest(separatedInputs);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "                e.printStackTrace();"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case LIST:"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            ArrayList\u003cString\u003e printedEvents \u003d null;"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                printedEvents \u003d listSchedule.getAllEventsPrinted();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                printArray(printedEvents);"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            } catch (EmptyListException e) {"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                System.out.println(\"Schedule is empty. Add some!\");"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        case BYE:"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            // do nothing"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static void handleHelp(String[] userInputs) throws InvalidHelpCommandException {"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        if (userInputs.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            System.out.println(\"Hello! Here is a list of commands you can try:\\n\\n\""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t1. Add class: add class /n [name of class] /s [start date-time of class] /e\""
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \" [end date-time of class]\\n\""
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t2. Delete class: delete class /n [class number]\\n\""
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t3. Add cca: add cca /n [name of cca] /s [start date-time of cca] /e [end date-time of cca]\\n\""
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t4. Delete cca: type delete cca /n [cca number]\\n\""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t5. Add test: type add test /n [name of test] /s [start date-time of test] /e \""
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"[end date-time of test]\\n\""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t6. Delete test: type delete test /n [test number]\\n\""
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "                    + \"\\t7. Delete all: delete all\\n\");"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            // \"\\n\\tPlease enter the date-time in the following format: YYYY-MM-DD [time in 24hr format]\\n\" +"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            // \"\\te.g. 2020-08-19 1300\\n\\n);"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            throw new InvalidHelpCommandException();"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    private static void printArray(ArrayList\u003cString\u003e printedEvents) {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        for (String line : printedEvents) {"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "            System.out.println(line);"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AliciaHo": 7,
+      "untitle4": 8,
+      "AndreWongZH": 146
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/CommandType.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": " * Represents all possible commands available to the user."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "public enum CommandType {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "    ADD_CLASS, ADD_CCA, ADD_TEST, DELETE_CLASS, DELETE_CCA, DELETE_TEST, BYE, LIST, HELP"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AndreWongZH"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AndreWongZH": 8
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/AddTestJUnitTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "class AddTestJUnitTest {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    void addTestToList() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        ArrayList\u003cEvent\u003e test \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        TestManager testManager \u003d new TestManager(test);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            testManager.addTest(\"add test /n Math test \""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "                    + \"/s 26-09-2020 1400 /e 26-09-2020 1500\");"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        } catch (TestEmptyStringException e) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        } catch (TestParamException e) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        int actualOutputs \u003d testManager.getTestListSize();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        int expectedOutputs \u003d 1;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        assertEquals(actualOutputs, expectedOutputs);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AliciaHo": 28
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/DeleteTestJUnitTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "public class DeleteTestJUnitTest {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    void addTestToList() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        ArrayList\u003cEvent\u003e test \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        TestManager testManager \u003d new TestManager(test);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            testManager.addTest(\"add test /n Math test \""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "                    + \"/s 26-09-2020 1400 /e 26-09-2020 1500\");"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            testManager.addTest(\"add test /n Science test \""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "                    + \"/s 23-09-2020 1600 /e 23-09-2020 1800\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        } catch (TestEmptyStringException e) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        } catch (TestParamException e) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        String [] userInput \u003d \"delete test 1\".trim().split(\" \");"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            testManager.deleteTest(userInput);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        int actualOutputs \u003d testManager.getTestListSize();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        int expectedOutputs \u003d 1;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "        assertEquals(actualOutputs, expectedOutputs);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AliciaHo"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AliciaHo": 40
     }
   },
   {
@@ -4790,49 +7509,49 @@
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "import seedu.duke.exception.EmptyListException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "class ListScheduleTest {"
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
       },
       {
         "lineNumber": 11,
@@ -4846,42 +7565,42 @@
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    @Test"
+        "content": "class ListScheduleTest {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    void getAllEventsPrinted_emptySchedule_emptyList() {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        ListSchedule listSchedule \u003d new ListSchedule(new ArrayList\u003c\u003e(), new ArrayList\u003c\u003e(), new ArrayList\u003c\u003e());"
+        "content": "    @Test"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        ArrayList\u003cString\u003e actualOutputs \u003d listSchedule.getAllEventsPrinted();"
+        "content": "    void getAllEventsPrinted_emptySchedule_expectException() throws EmptyListException {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        ArrayList\u003cString\u003e expectedOutputs \u003d new ArrayList\u003c\u003e(List.of(\"Classes:\", \"CCAs:\", \"Tests:\"));"
+        "content": "        ListSchedule listSchedule \u003d new ListSchedule(new ArrayList\u003c\u003e(), new ArrayList\u003c\u003e(), new ArrayList\u003c\u003e());"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "        assertEquals(actualOutputs, expectedOutputs);"
+        "content": "        assertThrows(EmptyListException.class, listSchedule::getAllEventsPrinted);"
       },
       {
         "lineNumber": 18,
@@ -4909,7 +7628,7 @@
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "    void getAllEventsPrinted_classSchedule_classList() {"
+        "content": "    void getAllEventsPrinted_classSchedule_classList() throws EmptyListException {"
       },
       {
         "lineNumber": 22,
@@ -4951,7 +7670,7 @@
         "author": {
           "gitId": "AndreWongZH"
         },
-        "content": "                List.of(\"Classes:\", \"1. [Class] Math from 26/2/2019 to 27/2/2019\",  \"CCAs:\", \"Tests:\"));"
+        "content": "                List.of(\"Classes:\", \"1. [Class] [NOT DONE] Math from 26/2/2019 to 27/2/2019\"));"
       },
       {
         "lineNumber": 28,
@@ -4977,6 +7696,374 @@
     ],
     "authorContributionMap": {
       "AndreWongZH": 30
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/StorageTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "public class StorageTest {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public void constructor_noTxtExtension_exceptionThrown() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        assertThrows(InvalidValueException.class, () -\u003e"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                new StorageManager(\"test\", \"file\"));"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public void constructor_nullFilePath_exceptionThrown() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                new StorageManager(\"test\", null));"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    public void load_validFormat() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "            StorageManager storageManager \u003d new StorageManager(\"test\", \"/ValidData.txt\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "            assertEquals(getEventList(), storageManager.getEventList());"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        } catch (InvalidValueException e) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    private ArrayList\u003cEvent\u003e getEventList() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        ArrayList\u003cEvent\u003e events \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        events.add(new Cca(\"Basketball training \","
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \"2020-09-21 1800 \","
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \"2020-09-21 1900\"));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        events.add(new Class(\"Math tuition \","
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \"2020-09-22 1400 \","
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \"2020-09-22-1600\"));"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        events.add(new seedu.duke.Test(\"CS2113T Finals \","
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \"2020-12-04 1500 \","
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "                \"2020-12-04 1600\"));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "        return events;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "durianpancakes": 47
+    }
+  },
+  {
+    "path": "test/ValidData.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "[CCA]|false|Basketball training |2020-09-21 1800 |2020-09-21 1900"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "[CLASS]|false|Math tuition |2020-09-22 1400 |2020-09-22-1600"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "durianpancakes"
+        },
+        "content": "[TEST]|false|CS2113T Finals |2020-12-04 1500 |2020-12-04 1600"
+      }
+    ],
+    "authorContributionMap": {
+      "durianpancakes": 3
     }
   }
 ]
