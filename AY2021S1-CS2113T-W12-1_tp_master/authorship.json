@@ -535,7 +535,7 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            \"^(?\u003cdescription\u003e(\\\\w+\\\\s*)+\\\\w*)\""
+        "content": "            \"^add (?\u003cdescription\u003e(\\\\w+\\\\s*)+\\\\w*)\""
       },
       {
         "lineNumber": 18,
@@ -549,178 +549,206 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    + \"( t/(?\u003ctime\u003e\\\\d{4}))?\""
+        "content": "                    + \"( st/(?\u003cst\u003e\\\\d{4}))?\""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    + \"( p/(?\u003cpriority\u003e\\\\d))?$\");"
+        "content": "                    + \"( et/(?\u003cet\u003e\\\\d{4}))?\""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final String description;"
+        "content": "                    + \"( p/(?\u003cpriority\u003e\\\\d))?$\");"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final String date;"
+        "content": "    private final String description;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final String time;"
+        "content": "    private final String date;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final String priority;"
+        "content": "    private final String startTime;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    private final String endTime;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public Add(String rawInput) throws InvalidCommandException {"
+        "content": "    private final String priority;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        Matcher matcher \u003d COMMAND_PATTERN.matcher(rawInput);"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (matcher.find()) {"
+        "content": "    public Add(String rawInput) throws InvalidCommandException {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            description \u003d matcher.group(\"description\");"
+        "content": "        Matcher matcher \u003d COMMAND_PATTERN.matcher(rawInput);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            date \u003d matcher.group(\"date\");"
+        "content": "        if (matcher.find()) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            time \u003d matcher.group(\"time\");"
+        "content": "            description \u003d matcher.group(\"description\");"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            priority \u003d matcher.group(\"priority\");"
+        "content": "            date \u003d matcher.group(\"date\");"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else {"
+        "content": "            startTime \u003d matcher.group(\"st\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            throw new InvalidCommandException();"
+        "content": "            endTime \u003d matcher.group(\"et\");"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "            priority \u003d matcher.group(\"priority\");"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "            throw new InvalidCommandException();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public CommandResult execute(TaskList tasks) throws InvalidPriorityException {"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        Task task \u003d new Task(description, date, time, priority);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        tasks.addTask(task);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return new CommandResult(ADD_MESSAGE, tasks, task);"
+        "content": "    public CommandResult execute(TaskList tasks) throws InvalidPriorityException {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        Task task \u003d new Task(description, date, startTime, endTime, priority);"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        tasks.addTask(task);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        // task arg not in used, in case want change display message."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return new CommandResult(ADD_MESSAGE, tasks, task);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -728,7 +756,7 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 44
+      "QX-CHEN": 48
     }
   },
   {
@@ -839,6 +867,120 @@
     }
   },
   {
+    "path": "src/main/java/seedu/commands/Clear.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "package seedu.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.data.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import static seedu.messages.Messages.CLEAR_MESSAGE;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "public class Clear extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"clear\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public CommandResult execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        tasks.clear();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return new CommandResult(CLEAR_MESSAGE);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 15
+    }
+  },
+  {
     "path": "src/main/java/seedu/commands/Command.java",
     "fileType": "functional-code",
     "lines": [
@@ -875,38 +1017,52 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "import seedu.exceptions.InvalidTaskNumberException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "public abstract class Command {"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "public abstract class Command {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public abstract CommandResult execute(TaskList tasks) throws InvalidPriorityException;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public abstract CommandResult execute(TaskList tasks)"
       },
       {
         "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            throws InvalidPriorityException, InvalidTaskNumberException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -914,7 +1070,7 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 10
+      "QX-CHEN": 12
     }
   },
   {
@@ -1179,6 +1335,760 @@
     }
   },
   {
+    "path": "src/main/java/seedu/commands/Delete.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "package seedu.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "import seedu.data.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "import seedu.exceptions.InvalidCommandException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "import seedu.exceptions.InvalidTaskNumberException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "import java.util.regex.Matcher;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "import java.util.regex.Pattern;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "import static seedu.messages.Messages.DELETE_MESSAGE;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "public class Delete extends Command {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    private final int index;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    private static final Pattern COMMAND_PATTERN \u003d Pattern.compile("
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            \"^delete (?\u003cindex\u003e\\\\d+)$\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    public Delete(String rawInput) throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        Matcher matcher \u003d COMMAND_PATTERN.matcher(rawInput);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        if (matcher.find()) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "            index \u003d Integer.parseInt(matcher.group(\"index\"));"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "            throw new InvalidCommandException();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    public CommandResult execute(TaskList tasks) throws InvalidTaskNumberException {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (index \u003c\u003d 0 || index \u003e tasks.size()) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "            throw new InvalidTaskNumberException();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        tasks.delete(index - 1);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        return new CommandResult(DELETE_MESSAGE);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "e0406981": 33,
+      "QX-CHEN": 2
+    }
+  },
+  {
+    "path": "src/main/java/seedu/commands/Edit.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "package seedu.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.data.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.exceptions.InvalidCommandException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.exceptions.InvalidPriorityException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.exceptions.InvalidTaskNumberException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.task.Task;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import java.util.regex.Matcher;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import java.util.regex.Pattern;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import static seedu.messages.Messages.EDIT_MESSAGE;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "public class Edit extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"edit\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private static final Pattern COMMAND_PATTERN \u003d Pattern.compile("
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            \"^edit (?\u003cindex\u003e\\\\d+)\""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                    + \"( des/(?\u003cdescription\u003e(\\\\w+\\\\s*)+\\\\w*))?\""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                    + \"( d/(?\u003cdate\u003e\\\\d{2}-\\\\d{2}-\\\\d{4}))?\""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                    + \"( st/(?\u003cst\u003e\\\\d{4}))?\""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                    + \"( et/(?\u003cet\u003e\\\\d{4}))?\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                    + \"( p/(?\u003cpriority\u003e\\\\d))?$\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final int index;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final String description;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final String date;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final String startTime;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final String endTime;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final String priority;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public Edit(String rawInput) throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        Matcher matcher \u003d COMMAND_PATTERN.matcher(rawInput);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (matcher.find()) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            index \u003d Integer.parseInt(matcher.group(\"index\"));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            description \u003d matcher.group(\"description\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            date \u003d matcher.group(\"date\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            startTime \u003d matcher.group(\"st\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            endTime \u003d matcher.group(\"et\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            priority \u003d matcher.group(\"priority\");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            throw new InvalidCommandException();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public CommandResult execute(TaskList tasks)"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            throws InvalidTaskNumberException, InvalidPriorityException {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        // Check range"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (index \u003c\u003d 0 || index \u003e tasks.size()) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            throw new InvalidTaskNumberException();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        Task task \u003d tasks.get(index - 1);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        // Set field"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (description !\u003d null) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            task.setDescription(description);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (date !\u003d null) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            task.setDate(date);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (startTime !\u003d null) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            task.setStartTime(startTime);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (endTime !\u003d null) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            task.setEndTime(endTime);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (priority !\u003d null) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            task.setPriority(priority);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return new CommandResult(EDIT_MESSAGE, tasks);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 70
+    }
+  },
+  {
     "path": "src/main/java/seedu/commands/Help.java",
     "fileType": "functional-code",
     "lines": [
@@ -1393,6 +2303,281 @@
     }
   },
   {
+    "path": "src/main/java/seedu/commands/Search.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "package seedu.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.data.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.exceptions.InvalidCommandException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import java.util.regex.Matcher;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import java.util.regex.Pattern;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import static seedu.messages.Messages.SEARCH_FOUND_MESSAGE;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import static seedu.messages.Messages.SEARCH_NOT_FOUND_MESSAGE;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "public class Search extends Command {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"search\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    // Search by description, can extend to other attributes"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private static final Pattern COMMAND_PATTERN \u003d Pattern.compile("
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        \"^search (?\u003ctoSearch\u003e(\\\\w+\\\\s*)+\\\\w*)$\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    private final String toSearch;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public Search(String rawInput) throws InvalidCommandException {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        Matcher matcher \u003d COMMAND_PATTERN.matcher(rawInput);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (matcher.find()) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            toSearch \u003d matcher.group(\"toSearch\");"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            throw new InvalidCommandException();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public CommandResult execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        TaskList found \u003d tasks.searchDescription(toSearch);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (found.size() \u003e 0) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            return new CommandResult(SEARCH_FOUND_MESSAGE, found);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            return new CommandResult(SEARCH_NOT_FOUND_MESSAGE);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 38
+    }
+  },
+  {
     "path": "src/main/java/seedu/data/TaskList.java",
     "fileType": "functional-code",
     "lines": [
@@ -1450,367 +2635,479 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Collections;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import java.util.stream.Collectors;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "import java.util.stream.Collectors;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "public class TaskList {"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "public class TaskList {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final ArrayList\u003cTask\u003e tasks;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    private final ArrayList\u003cTask\u003e tasks;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public TaskList() {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        tasks \u003d new ArrayList\u003c\u003e();"
+        "content": "    public TaskList() {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        tasks \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public TaskList(ArrayList\u003cTask\u003e tasks) {"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.tasks \u003d tasks;"
+        "content": "    public TaskList(ArrayList\u003cTask\u003e tasks) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        this.tasks \u003d tasks;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void addTask(Task task) {"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        tasks.add(task);"
+        "content": "    public void addTask(Task task) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        tasks.add(task);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void addTasks(ArrayList\u003cTask\u003e tasks) {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.tasks.addAll(tasks);"
+        "content": "    public void addTasks(ArrayList\u003cTask\u003e tasks) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        this.tasks.addAll(tasks);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public int size() {"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return tasks.size();"
+        "content": "    public int size() {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        return tasks.size();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public Task get(int index) {"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return tasks.get(index);"
+        "content": "    public Task get(int index) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        return tasks.get(index);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public boolean contains(Task task) {"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return tasks.contains(task);"
+        "content": "    public boolean contains(Task task) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        return tasks.contains(task);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public TaskList sortListByDate() {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        // Sort by date"
+        "content": "    public TaskList sortListByDate() {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        List\u003cTask\u003e sorted \u003d tasks.stream()"
+        "content": "        // Sort by date"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                .sorted(new DateSorter())"
+        "content": "        List\u003cTask\u003e sorted \u003d tasks.stream()"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                .collect(Collectors.toList());"
+        "content": "                .sorted(new DateSorter())"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return new TaskList((ArrayList\u003cTask\u003e) sorted);"
+        "content": "                .collect(Collectors.toList());"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        return new TaskList((ArrayList\u003cTask\u003e) sorted);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public TaskList sortListByPriority() {"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        // Sort by priority, same priority then date"
+        "content": "    public TaskList sortListByPriority() {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        List\u003cTask\u003e sorted \u003d tasks.stream()"
+        "content": "        // Sort by priority, same priority then date"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                .sorted(new DateSorter())"
+        "content": "        List\u003cTask\u003e sorted \u003d tasks.stream()"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                .sorted(new PrioritySorter())"
+        "content": "                .sorted(new DateSorter())"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                .collect(Collectors.toList());"
+        "content": "                .sorted(new PrioritySorter())"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return new TaskList((ArrayList\u003cTask\u003e) sorted);"
+        "content": "                .collect(Collectors.toList());"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        return new TaskList((ArrayList\u003cTask\u003e) sorted);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 60,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public TaskList searchDescription(String toSearch) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        List\u003cTask\u003e found \u003d tasks.stream()"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                .filter(task -\u003e task.getDescription().contains(toSearch))"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                .collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return new TaskList((ArrayList\u003cTask\u003e) found);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public void clear() {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        tasks.clear();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    public void delete(int index) {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        tasks.remove(index);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -1818,7 +3115,8 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 60
+      "e0406981": 4,
+      "QX-CHEN": 72
     }
   },
   {
@@ -1980,6 +3278,85 @@
     }
   },
   {
+    "path": "src/main/java/seedu/exceptions/InvalidTaskNumberException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "package seedu.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "import seedu.messages.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "public class InvalidTaskNumberException extends Exception {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return Messages.INVALID_TASK_NUMBER;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 10
+    }
+  },
+  {
     "path": "src/main/java/seedu/exceptions/UnknowCommandException.java",
     "fileType": "functional-code",
     "lines": [
@@ -2059,6 +3436,414 @@
     }
   },
   {
+    "path": "src/main/java/seedu/font/Colors.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "package seedu.font;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "public class Colors {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    // Colors from https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_RESET  \u003d \"\\u001B[0m\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BLACK  \u003d \"\\u001B[30m\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_RED    \u003d \"\\u001B[31m\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_GREEN  \u003d \"\\u001B[32m\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_YELLOW \u003d \"\\u001B[33m\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BLUE   \u003d \"\\u001B[34m\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_PURPLE \u003d \"\\u001B[35m\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_CYAN   \u003d \"\\u001B[36m\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_WHITE  \u003d \"\\u001B[37m\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BLACK  \u003d \"\\u001B[90m\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_RED    \u003d \"\\u001B[91m\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_GREEN  \u003d \"\\u001B[92m\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_YELLOW \u003d \"\\u001B[93m\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BLUE   \u003d \"\\u001B[94m\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_PURPLE \u003d \"\\u001B[95m\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_CYAN   \u003d \"\\u001B[96m\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_WHITE  \u003d \"\\u001B[97m\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String[] FOREGROUNDS \u003d {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BLACK, ANSI_RED, ANSI_GREEN, ANSI_YELLOW,"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BLUE, ANSI_PURPLE, ANSI_CYAN, ANSI_WHITE,"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BRIGHT_BLACK, ANSI_BRIGHT_RED, ANSI_BRIGHT_GREEN, ANSI_BRIGHT_YELLOW,"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BRIGHT_BLUE, ANSI_BRIGHT_PURPLE, ANSI_BRIGHT_CYAN, ANSI_BRIGHT_WHITE"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    };"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_BLACK  \u003d \"\\u001B[40m\";"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_RED    \u003d \"\\u001B[41m\";"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_GREEN  \u003d \"\\u001B[42m\";"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_YELLOW \u003d \"\\u001B[43m\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_BLUE   \u003d \"\\u001B[44m\";"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_PURPLE \u003d \"\\u001B[45m\";"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_CYAN   \u003d \"\\u001B[46m\";"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BG_WHITE  \u003d \"\\u001B[47m\";"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_BLACK  \u003d \"\\u001B[100m\";"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_RED    \u003d \"\\u001B[101m\";"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_GREEN  \u003d \"\\u001B[102m\";"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_YELLOW \u003d \"\\u001B[103m\";"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_BLUE   \u003d \"\\u001B[104m\";"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_PURPLE \u003d \"\\u001B[105m\";"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_CYAN   \u003d \"\\u001B[106m\";"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ANSI_BRIGHT_BG_WHITE  \u003d \"\\u001B[107m\";"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String[] BACKGROUNDS \u003d {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BG_BLACK, ANSI_BG_RED, ANSI_BG_GREEN, ANSI_BG_YELLOW,"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BG_BLUE, ANSI_BG_PURPLE, ANSI_BG_CYAN, ANSI_BG_WHITE,"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BRIGHT_BG_BLACK, ANSI_BRIGHT_BG_RED, ANSI_BRIGHT_BG_GREEN, ANSI_BRIGHT_BG_YELLOW,"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        ANSI_BRIGHT_BG_BLUE, ANSI_BRIGHT_BG_PURPLE, ANSI_BRIGHT_BG_CYAN, ANSI_BRIGHT_BG_WHITE };"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String DEFAULT_STRING_COLOR \u003d ANSI_YELLOW;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 57
+    }
+  },
+  {
     "path": "src/main/java/seedu/messages/Messages.java",
     "fileType": "functional-code",
     "lines": [
@@ -2081,157 +3866,241 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "public class Messages {"
+        "content": "import static seedu.font.Colors.ANSI_CYAN;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String LS \u003d System.lineSeparator();"
+        "content": "import static seedu.font.Colors.ANSI_RESET;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "import static seedu.font.Colors.ANSI_YELLOW;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String INVALID_PRIORITY \u003d \"Invalid priority!\";"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String INVALID_COMMAND \u003d \"Invalid command!\";"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String UNKNOWN_COMMAND \u003d \"Unknown command!\";"
+        "content": "public class Messages {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public static final String LS \u003d System.lineSeparator();"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String WELCOME_MESSAGE \u003d \"Welcome to\" + LS"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"    ____  __      _   ____  _______\" + LS"
+        "content": "    public static final String INVALID_PRIORITY \u003d \"Invalid priority!\" + LS;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"   / __ \\\\/ /___ _/ | / / / / / ___/\" + LS"
+        "content": "    public static final String INVALID_COMMAND \u003d \"Invalid command!\" + LS;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"  / /_/ / / __ `/  |/ / / / /\\\\__ \\\\ \" + LS"
+        "content": "    public static final String UNKNOWN_COMMAND \u003d \"Unknown command!\" + LS;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \" / ____/ / /_/ / /|  / /_/ /___/ / \" + LS"
+        "content": "    public static final String INVALID_TASK_NUMBER \u003d \"Invalid task number!\" + LS;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"/_/   /_/\\\\__,_/_/ |_/\\\\____//____/  \""
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"v1.0\";"
+        "content": "    public static final String WELCOME_MESSAGE \u003d ANSI_YELLOW + \"Welcome to\" + LS + ANSI_CYAN"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String HELP_MESSAGE \u003d \"List of available commands:\" + LS"
+        "content": "            + \"    ____  __      _   ____  _______\" + LS"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"- help: show list of available commands\" + LS"
+        "content": "            + \"   / __ \\\\/ /___ _/ | / / / / / ___/\" + LS"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"- add: add a task\" + LS"
+        "content": "            + \"  / /_/ / / __ `/  |/ / / / /\\\\__ \\\\ \" + LS"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"- list: show list of tasks\" + LS"
+        "content": "            + \" / ____/ / /_/ / /|  / /_/ /___/ / \" + LS"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            + \"- bye: exit the program\";"
+        "content": "            + \"/_/   /_/\\\\__,_/_/ |_/\\\\____//____/  \""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String BYE_MESSAGE \u003d \"Bye! See you again!\";"
+        "content": "            + \"v1.0\" + ANSI_RESET + LS;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String LIST_MESSAGE \u003d \"Here is your list of tasks:\";"
+        "content": "    public static final String HELP_MESSAGE \u003d \"List of available commands:\" + LS"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static final String ADD_MESSAGE \u003d \"Task added:\";"
+        "content": "            + \"- help: show list of available commands\" + LS"
       },
       {
         "lineNumber": 25,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            + \"- add: add a task\" + LS"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            + \"- list: show list of tasks\" + LS"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            + \"- bye: exit the program\" + LS;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String BYE_MESSAGE \u003d \"Bye! See you again!\";"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String LIST_MESSAGE \u003d \"Here is your list of tasks:\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String ADD_MESSAGE \u003d \"Task added.\";"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String EDIT_MESSAGE \u003d \"Task edited.\";"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String CLEAR_MESSAGE \u003d \"All tasks cleared.\" + LS;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "    public static final String DELETE_MESSAGE \u003d \"Task deleted.\" + LS;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String SEARCH_NOT_FOUND_MESSAGE \u003d \"No matched item found.\" + LS;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public static final String SEARCH_FOUND_MESSAGE \u003d \"Here is your list of tasks\""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            + \" which contain the word/letters:\";"
+      },
+      {
+        "lineNumber": 37,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -2239,7 +4108,8 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 25
+      "e0406981": 1,
+      "QX-CHEN": 36
     }
   },
   {
@@ -2263,173 +4133,264 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
         "content": "import seedu.commands.Add;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
         "content": "import seedu.commands.Bye;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": "import seedu.commands.Command;"
+        "content": "import seedu.commands.Clear;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": "import seedu.commands.Help;"
+        "content": "import seedu.commands.Command;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": "import seedu.commands.List;"
+        "content": "import seedu.commands.Delete;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": "import seedu.exceptions.InvalidCommandException;"
+        "content": "import seedu.commands.Edit;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": "import seedu.exceptions.UnknowCommandException;"
+        "content": "import seedu.commands.Help;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": ""
+        "content": "import seedu.commands.List;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "QX-CHEN"
+          "gitId": "e0406981"
         },
-        "content": "public class Parser {"
+        "content": "import seedu.commands.Search;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "import seedu.exceptions.InvalidCommandException;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public Command processRaw(String rawInput) throws"
+        "content": "import seedu.exceptions.UnknowCommandException;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            UnknowCommandException, InvalidCommandException {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (rawInput.startsWith(Help.COMMAND_WORD)) {"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return new Help();"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else if (rawInput.startsWith(Add.COMMAND_WORD)) {"
+        "content": "    public Command processRaw(String rawInput) throws"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return new Add(rawInput);"
+        "content": "            UnknowCommandException, InvalidCommandException {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else if (rawInput.startsWith(List.COMMAND_WORD)) {"
+        "content": "        if (rawInput.startsWith(Help.COMMAND_WORD)) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return new List();"
+        "content": "            return new Help();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else if (rawInput.startsWith(Bye.COMMAND_WORD)) {"
+        "content": "        } else if (rawInput.startsWith(Add.COMMAND_WORD)) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return new Bye();"
+        "content": "            return new Add(rawInput);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else {"
+        "content": "        } else if (rawInput.startsWith(List.COMMAND_WORD)) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            throw new UnknowCommandException();"
+        "content": "            return new List();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        } else if (rawInput.startsWith(Bye.COMMAND_WORD)) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "            return new Bye();"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        } else if (rawInput.startsWith(Edit.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            return new Edit(rawInput);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        } else if (rawInput.startsWith(Clear.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            return new Clear();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        } else if (rawInput.startsWith(Search.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            return new Search(rawInput);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        } else if (rawInput.startsWith(Delete.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "            return new Delete(rawInput);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "e0406981"
+        },
+        "content": "        {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            throw new UnknowCommandException();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -2437,6 +4398,7 @@
       }
     ],
     "authorContributionMap": {
+      "e0406981": 13,
       "QX-CHEN": 27
     }
   },
@@ -2491,339 +4453,318 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import seedu.exceptions.InvalidCommandException;"
+        "content": "import seedu.parser.Parser;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import seedu.exceptions.InvalidPriorityException;"
+        "content": "import seedu.storage.Storage;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import seedu.exceptions.UnknowCommandException;"
+        "content": "import seedu.ui.Ui;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import seedu.parser.Parser;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import seedu.storage.Storage;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "import seedu.ui.Ui;"
+        "content": "public class Planus {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "public class Planus {"
+        "content": "     * Main entry-point for the java.duke.Duke application."
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "     * Main entry-point for the java.duke.Duke application."
+        "content": "    private final TaskList tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "     */"
+        "content": "    private boolean isExit;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final TaskList tasks \u003d new TaskList();"
+        "content": "    private Ui ui;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private boolean isExit;"
+        "content": "    private Parser parser;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private Storage storage;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private Ui ui;"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private Parser parser;"
+        "content": "        new Planus().run();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        new Planus().run();"
+        "content": "    private void run() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        initProgram();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        ui.showWelcomeMessage();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private void run() {"
+        "content": "        while (!isExit) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        initProgram();"
+        "content": "            String userInput \u003d ui.getUserInput();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        ui.showWelcomeMessage();"
+        "content": "            try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        while (!isExit) {"
+        "content": "                Command command \u003d parser.processRaw(userInput);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            String userInput \u003d ui.getUserInput();"
+        "content": "                CommandResult result \u003d command.execute(tasks);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            try {"
+        "content": "                ui.showCommandResult(result);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                Command command \u003d parser.processRaw(userInput);"
+        "content": "                if (command instanceof Bye) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                CommandResult result \u003d command.execute(tasks);"
+        "content": "                    isExit \u003d true;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                ui.showCommandResult(result);"
+        "content": "                    storage.writeTasksToFile(tasks);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                if (command instanceof Bye) {"
+        "content": "                }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    isExit \u003d true;"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    storage.writeTasksToFile(tasks);"
+        "content": "                ui.showException(e);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                }"
+        "content": "            }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            } catch (InvalidCommandException | InvalidPriorityException | UnknowCommandException e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                ui.showException(e);"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "    private void initProgram() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        storage \u003d new Storage();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        storage.loadTasks(tasks);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private void initProgram() {"
+        "content": "        isExit \u003d false;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        storage \u003d new Storage();"
+        "content": "        ui \u003d new Ui();"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        storage.loadTasks(tasks);"
+        "content": "        parser \u003d new Parser();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        isExit \u003d false;"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "QX-CHEN"
-        },
-        "content": "        ui \u003d new Ui();"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "QX-CHEN"
-        },
-        "content": "        parser \u003d new Parser();"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "QX-CHEN"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 52,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -2831,7 +4772,7 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 55
+      "QX-CHEN": 52
     }
   },
   {
@@ -3505,28 +5446,28 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "public enum Priority {"
+        "content": "import static seedu.font.Colors.ANSI_GREEN;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    LOW(0, \"LOW\"),"
+        "content": "import static seedu.font.Colors.ANSI_RED;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    MEDIUM(1, \"MEDIUM\"),"
+        "content": "import static seedu.font.Colors.ANSI_RESET;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    HIGH(2, \"HIGH\");"
+        "content": "import static seedu.font.Colors.ANSI_YELLOW;"
       },
       {
         "lineNumber": 7,
@@ -3540,115 +5481,164 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final int priority;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private final String string;"
+        "content": "public enum Priority {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    LOW(0, \"LOW\", ANSI_GREEN),"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    Priority(int priority, String string) {"
+        "content": "    MEDIUM(1, \"MEDIUM\", ANSI_YELLOW),"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.priority \u003d priority;"
+        "content": "    HIGH(2, \"HIGH\", ANSI_RED);"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.string \u003d string;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    private final int priority;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    private final String string;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    private final String color;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public int getPriority() {"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return priority;"
+        "content": "    Priority(int priority, String string, String color) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        this.priority \u003d priority;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        this.string \u003d string;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public String toString() {"
+        "content": "        this.color \u003d color;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return string;"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 24,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public int getPriority() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return priority;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return color + string + ANSI_RESET;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -3656,7 +5646,7 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 24
+      "QX-CHEN": 31
     }
   },
   {
@@ -3845,759 +5835,955 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private LocalTime time;"
+        "content": "    private LocalTime startTime;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private Priority priority;"
+        "content": "    private LocalTime endTime;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    private Priority priority;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public Task(String description, String dateString,"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                String timeString, String priorityString) throws InvalidPriorityException {"
+        "content": "    public Task(String description, String dateString,"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.description \u003d description;"
+        "content": "                String startTime, String endTime, String priorityString) throws InvalidPriorityException {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        date \u003d dateStringToDate(dateString);"
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        time \u003d timeStringToTime(timeString);"
+        "content": "        date \u003d dateStringToDate(dateString);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        priority \u003d priorityStringToPriority(priorityString);"
+        "content": "        this.startTime \u003d timeStringToTime(startTime);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        this.endTime \u003d timeStringToTime(endTime);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        priority \u003d priorityStringToPriority(priorityString);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private LocalDate dateStringToDate(String dateString) {"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (dateString \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return LocalDate.now();"
+        "content": "    private LocalDate dateStringToDate(String dateString) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        if (dateString \u003d\u003d null) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        String[] dateParts \u003d dateString.split(\"-\");"
+        "content": "            return LocalDate.now();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        int day \u003d Integer.parseInt(dateParts[0]);"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        int month \u003d Integer.parseInt(dateParts[1]);"
+        "content": "        String[] dateParts \u003d dateString.split(\"-\");"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        int year \u003d Integer.parseInt(dateParts[2]);"
+        "content": "        int day \u003d Integer.parseInt(dateParts[0]);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return LocalDate.of(year, month, day);"
+        "content": "        int month \u003d Integer.parseInt(dateParts[1]);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        int year \u003d Integer.parseInt(dateParts[2]);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        return LocalDate.of(year, month, day);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private LocalTime timeStringToTime(String timeString) {"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (timeString \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return null;"
+        "content": "    private LocalTime timeStringToTime(String timeString) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        if (timeString \u003d\u003d null) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        int time \u003d Integer.parseInt(timeString);"
+        "content": "            return null;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        int hour \u003d time / 100;"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        int minute \u003d time % 100;"
+        "content": "        int time \u003d Integer.parseInt(timeString);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return LocalTime.of(hour, minute);"
+        "content": "        int hour \u003d time / 100;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        int minute \u003d time % 100;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        return LocalTime.of(hour, minute);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private Priority priorityStringToPriority(String priorityString) throws InvalidPriorityException {"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (priorityString \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return Priority.LOW;"
+        "content": "    private Priority priorityStringToPriority(String priorityString) throws InvalidPriorityException {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        if (priorityString \u003d\u003d null) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        Priority priority;"
+        "content": "            return Priority.LOW;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        switch (priorityString) {"
+        "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        case \"0\":"
+        "content": "        Priority priority;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            priority \u003d Priority.LOW;"
+        "content": "        switch (priorityString) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            break;"
+        "content": "        case \"0\":"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        case \"1\":"
+        "content": "            priority \u003d Priority.LOW;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            priority \u003d Priority.MEDIUM;"
+        "content": "            break;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            break;"
+        "content": "        case \"1\":"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        case \"2\":"
+        "content": "            priority \u003d Priority.MEDIUM;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            priority \u003d Priority.HIGH;"
+        "content": "            break;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            break;"
+        "content": "        case \"2\":"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        default:"
+        "content": "            priority \u003d Priority.HIGH;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            throw new InvalidPriorityException();"
+        "content": "            break;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        default:"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return priority;"
+        "content": "            throw new InvalidPriorityException();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        return priority;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private String dateToString(LocalDate date) {"
+        "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (date \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return \"\";"
+        "content": "    private String dateToString(LocalDate date) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else {"
+        "content": "        if (date \u003d\u003d null) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return \" \" + date.format(DateTimeFormatter.ofPattern(\"dd-MM-yyyy\"));"
+        "content": "            return \"\";"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "            return \" \" + date.format(DateTimeFormatter.ofPattern(\"dd-MM-yyyy\"));"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private String timeToString(LocalTime time) {"
+        "content": "    }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (time \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return \"\";"
+        "content": "    private String timeToString(LocalTime time) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        } else {"
+        "content": "        if (time \u003d\u003d null) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            return \" \" + time.format(DateTimeFormatter.ofPattern(\"HHmm\"));"
+        "content": "            return \"\";"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "            return \" \" + time.format(DateTimeFormatter.ofPattern(\"HHmm\"));"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private String priorityToString(Priority priority) {"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return \" \" + priority.toString();"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    private String priorityToString(Priority priority) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        return \" \" + priority.toString();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public String getDescription() {"
+        "content": "    }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return description;"
+        "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    public String getDescription() {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        return description;"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void setDescription(String description) {"
+        "content": "    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.description \u003d description;"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    public void setDescription(String description) {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public LocalDate getDate() {"
+        "content": "    }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return date;"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    public LocalDate getDate() {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        return date;"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void setDate(LocalDate date) {"
+        "content": "    }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.date \u003d date;"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public void setDate(String dateString) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public LocalTime getTime() {"
+        "content": "        date \u003d dateStringToDate(dateString);"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return time;"
+        "content": "    }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public void setDate(LocalDate date) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void setTime(LocalTime time) {"
+        "content": "        this.date \u003d date;"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.time \u003d time;"
+        "content": "    }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public LocalTime getStartTime() {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public Priority getPriority() {"
+        "content": "        return startTime;"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return priority;"
+        "content": "    }"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public void setStartTime(LocalTime startTime) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void setPriority(Priority priority) {"
+        "content": "        this.startTime \u003d startTime;"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.priority \u003d priority;"
+        "content": "    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public void setStartTime(String startTime) {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public String toString() {"
+        "content": "        this.startTime \u003d timeStringToTime(startTime);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return description + dateToString(date) + timeToString(time) + priorityToString(priority);"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 121,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public LocalTime getEndTime() {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return endTime;"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public void setEndTime(LocalTime endTime) {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        this.endTime \u003d endTime;"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public void setEndTime(String endTime) {"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        this.endTime \u003d timeStringToTime(endTime);"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public Priority getPriority() {"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return priority;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public void setPriority(Priority priority) {"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        this.priority \u003d priority;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public void setPriority(String priorityString) throws InvalidPriorityException {"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        priority \u003d priorityStringToPriority(priorityString);"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        return description + dateToString(date) + timeToString(startTime)"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "                + timeToString(endTime) + priorityToString(priority);"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 149,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -4605,7 +6791,7 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 121
+      "QX-CHEN": 149
     }
   },
   {
@@ -4764,325 +6950,360 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private Ui(InputStream in, PrintStream out) {"
+        "content": "    public Ui(InputStream in, PrintStream out) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.in \u003d new Scanner(in);"
+        "content": "        this.in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        this.out \u003d out;"
+        "content": "        //        this.out \u003d new PrintStream(System.out, true, StandardCharsets.ISO_8859_1);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        this.out \u003d out;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        // Set default printing color"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public String getUserInput() {"
+        "content": "        //        out.print(DEFAULT_STRING_COLOR);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        return in.nextLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    public String getUserInput() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void displayAll(TaskList tasks) {"
+        "content": "        return in.nextLine();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        // Basic adding sequence"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        displayTasks(tasks);"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    public void displayAll(TaskList tasks) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "        // Basic adding sequence"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    private void displayTasks(TaskList tasks) {"
+        "content": "        displayTasks(tasks);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        // Header"
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        String format \u003d \"%-10s%-15s%-15s%-10s%-10s\" + LS;"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        out.format(format, \"Index\", \"Description\", \"Date\", \"Time\", \"Priority\");"
+        "content": "    private void displayTasks(TaskList tasks) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+        "content": "        // Header"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            out.format(format,"
+        "content": "        String format \u003d \"%-10s%-15s%-15s%-10s%-10s%-10s\" + LS;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    i + 1,"
+        "content": "        out.format(format, \"Index\", \"Description\", \"Date\", \"Start\", \"End\", \"Priority\");"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    tasks.get(i).getDescription(),"
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    tasks.get(i).getDate(),"
+        "content": "            out.format(format,"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    tasks.get(i).getTime() \u003d\u003d null ? \"\" : tasks.get(i).getTime(),"
+        "content": "                    i + 1,"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "                    tasks.get(i).getPriority());"
+        "content": "                    tasks.get(i).getDescription(),"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": "                    tasks.get(i).getDate(),"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "                    tasks.get(i).getStartTime() \u003d\u003d null ? \"\" : tasks.get(i).getStartTime(),"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "                    tasks.get(i).getEndTime() \u003d\u003d null ? \"\" : tasks.get(i).getEndTime(),"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void showWelcomeMessage() {"
+        "content": "                    tasks.get(i).getPriority());"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        showMessage(WELCOME_MESSAGE);"
+        "content": "        }"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        out.println();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void showMessage(String message) {"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        out.println(message);"
+        "content": "    public void showWelcomeMessage() {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        showMessage(WELCOME_MESSAGE);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void showException(Exception e) {"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        out.println(e);"
+        "content": "    public void showMessage(String message) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "        out.println(message);"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    public void showCommandResult(CommandResult result) {"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        showMessage(result.getMessage());"
+        "content": "    public void showException(Exception e) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        if (result.getTasks() !\u003d null) {"
+        "content": "        out.println(e);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "            displayAll(result.getTasks());"
+        "content": "    }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "    }"
+        "content": "    public void showCommandResult(CommandResult result) {"
       },
       {
         "lineNumber": 68,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        showMessage(result.getMessage());"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        if (result.getTasks() !\u003d null) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "            displayAll(result.getTasks());"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
         "author": {
           "gitId": "QX-CHEN"
         },
@@ -5090,7 +7311,7 @@
       }
     ],
     "authorContributionMap": {
-      "QX-CHEN": 68
+      "QX-CHEN": 73
     }
   },
   {
@@ -5256,28 +7477,28 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        meeting \u003d new Task(\"meeting\", \"13-10-2020\", \"2000\", \"2\");"
+        "content": "        meeting \u003d new Task(\"meeting\", \"13-10-2020\", \"2000\", \"2200\", \"2\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        reading \u003d new Task(\"reading\", \"21-10-2020\", null, null);"
+        "content": "        reading \u003d new Task(\"reading\", \"21-10-2020\", null, null, null);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        lecture \u003d new Task(\"lecture\", \"20-10-2020\", \"1800\", null);"
+        "content": "        lecture \u003d new Task(\"lecture\", \"20-10-2020\", \"1800\", null, null);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        tutorial \u003d new Task(\"tutorial\", \"19-10-2020\", null, \"1\");"
+        "content": "        tutorial \u003d new Task(\"tutorial\", \"19-10-2020\", \"1500\", null, \"1\");"
       },
       {
         "lineNumber": 27,
@@ -5658,6 +7879,177 @@
     ],
     "authorContributionMap": {
       "QX-CHEN": 1
+    }
+  },
+  {
+    "path": "text-ui-test/runtest.sh",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "#!/usr/bin/env bash"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "# change to script directory"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cd \"${0%/*}\""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cd .."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "./gradlew clean shadowJar"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cd text-ui-test"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "java -jar $(find ../build/libs/ -mindepth 1 -print -quit) \u003c input.txt \u003e ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "cp EXPECTED.TXT EXPECTED-UNIX.TXT"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "dos2unix EXPECTED-UNIX.TXT ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "diff EXPECTED-UNIX.TXT ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "if [ $? -eq 0 ]"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "then"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    echo \"Test passed!\""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    exit 0"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "else"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    echo \"Test failed!\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    exit 1"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "fi"
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 1,
+      "-": 22
     }
   }
 ]

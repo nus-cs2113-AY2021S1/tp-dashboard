@@ -71,5 +71,2718 @@
       "-": 8,
       "yokemin": 1
     }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Duke.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.api.Api;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.StockList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.exception.DukeException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.parser.Parser;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.util.concurrent.TimeUnit;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public final Ui ui;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    // private final Storage storage;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private StockList stocks;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public Duke() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        ui.greetUser();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        stocks \u003d new StockList();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "     * Runs Duke program."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        boolean isBye \u003d false;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        while (!isBye) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                String userInput \u003d Ui.getUserInput();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                Command command \u003d Parser.parseCommand(userInput);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                command.executeCommand(userInput, stocks);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                isBye \u003d ui.sayBye(userInput);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                TimeUnit.SECONDS.sleep(1);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                System.out.println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            } catch (DukeException | InterruptedException e) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                ui.showErrorMessage(e.getMessage());"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                System.out.println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Main entry-point for the java.duke.Duke application."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        final Api api;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            api \u003d new Api();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        // new Duke().run();"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 11,
+      "yokemin": 53
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/api/Api.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.api;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.UnsupportedEncodingException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.net.HttpURLConnection;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.net.URL;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.net.URLConnection;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.net.URLEncoder;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.util.HashMap;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.util.Map;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class Api {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private static final String API_KEY \u003d \"O8EVQ7YSWDW08BN9\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static final String SYMBOL \u003d \"IBM\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public Api() throws IOException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        StringBuilder request \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        request.append(\"https://www.alphavantage.co/query?\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        Map\u003cString, String\u003e parameters \u003d new HashMap\u003c\u003e();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        parameters.put(\"symbol\", SYMBOL);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        parameters.put(\"function\", \"TIME_SERIES_DAILY_ADJUSTED\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String paramsToAppend \u003d buildParamsString(parameters);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        request \u003d request.append(paramsToAppend);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        // Creating a Request"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        URL url \u003d new URL(request.toString());"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        URLConnection con \u003d url.openConnection();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        HttpURLConnection http \u003d (HttpURLConnection)con;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        http.setRequestMethod(\"GET\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        // Prints response from API call"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String response \u003d FullResponseBuilder.getFullResponse(http);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        // System.out.println(response);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    // Builds a string to append relevant the params to append to URL"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static String buildParamsString(Map\u003cString, String\u003e params)"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            throws UnsupportedEncodingException {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        StringBuilder result \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        for (Map.Entry\u003cString, String\u003e entry : params.entrySet()) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            result.append(URLEncoder.encode(entry.getKey(), \"UTF-8\"));"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            result.append(\"\u003d\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            result.append(URLEncoder.encode(entry.getValue(), \"UTF-8\"));"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            result.append(\"\u0026\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        result.append(\"apikey\u003d\" + API_KEY);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String resultString \u003d result.toString();"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return resultString.length() \u003e 0"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                ? resultString.substring(0, resultString.length() - 1)"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                : resultString;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 64
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/api/FullResponseBuilder.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.api;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.BufferedReader;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.InputStreamReader;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.io.Reader;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.net.HttpURLConnection;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class FullResponseBuilder {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static String getFullResponse(HttpURLConnection con) throws IOException {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        Reader streamReader \u003d null;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        if (con.getResponseCode() \u003e 299) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            streamReader \u003d new InputStreamReader(con.getErrorStream());"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            streamReader \u003d new InputStreamReader(con.getInputStream(), \"utf-8\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        BufferedReader br \u003d new BufferedReader(streamReader);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String responseLine \u003d null;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        StringBuilder content \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        while ((responseLine \u003d br.readLine()) !\u003d null) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            content.append(responseLine);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        br.close();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        StringBuilder fullResponseBuilder \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        fullResponseBuilder.append(\"Response: \")"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                .append(content);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return fullResponseBuilder.toString();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 35
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/ByeCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.StockList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.exception.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class ByeCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void executeCommand(String userInput, StockList stocks) throws DukeException {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 12
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/Command.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.StockList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.exception.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public abstract void executeCommand(String userInput, StockList stocks) throws DukeException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 12
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/SearchCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.api.Api;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.StockList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.exception.DukeException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.parser.Parser;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class SearchCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void executeCommand(String userInput, StockList stocks) throws DukeException {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String symbol \u003d Parser.getSearch(userInput);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 15
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/data/Stock.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.util.Date;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class Stock {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private String symbol;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private double open;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private double high;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private double low;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private double price;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private double volume;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private Date latestTradingDay;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public Stock() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    // Getters"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public String getSymbol() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return symbol;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public double getOpen() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return open;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public double getHigh() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return high;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public double getLow() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return low;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public double getPrice() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return price;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public double getVolume() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return volume;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public Date getLatestTradingDay() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return latestTradingDay;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    // Setters"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setSymbol(String symbol) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.symbol \u003d symbol;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setOpen(double open) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.open \u003d open;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setHigh(double high) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.high \u003d high;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setLow(double low) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.low \u003d low;"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setPrice(double price) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.price \u003d price;"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setVolume(double volume) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.volume \u003d volume;"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void setLatestTradingDay(Date latestTradingDay) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.latestTradingDay \u003d latestTradingDay;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 76
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/data/StockList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class StockList {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    private final ArrayList\u003cStock\u003e stocks;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public StockList() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        this.stocks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 13
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/data/exception/DukeException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.data.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public DukeException(String errorMessage) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        super(errorMessage);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 9
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.command.ByeCommand;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.command.SearchCommand;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import seedu.duke.data.exception.DukeException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static Command parseCommand(String userInput) throws DukeException {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        Command command;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        if (userInput.contains(\"search\")) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            command \u003d new SearchCommand();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        } else if (userInput.contains(\"bye\")) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            command \u003d new ByeCommand();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            throw new DukeException(\"Command does not exist! Try Again.\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return command;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static String getSearch(String userInput) throws DukeException {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String symbol;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            symbol \u003d userInput.substring(\"search\".length() + 1);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            throw new DukeException(\"Search input cannot be empty!\");"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return symbol;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 31
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/storage/Storage.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/ui/Ui.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "package seedu.duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static void greetUser() {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        System.out.println(\"What is your name?\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        System.out.println(\"Hello \" + in.nextLine() + \"!\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public static String getUserInput() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        System.out.println(\"What would you like to do?\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        Scanner scan \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        String userInput \u003d scan.nextLine();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return userInput;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public void showErrorMessage(String message) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        System.out.println(message);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    public boolean sayBye(String userInput) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        if (userInput.contains(\"bye\")) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yokemin": 37
+    }
   }
 ]
