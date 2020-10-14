@@ -678,7 +678,7 @@
     }
   },
   {
-    "path": "src/main/java/profile/ProfileManager.java",
+    "path": "src/main/java/profile/Profile.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -700,161 +700,161 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.commands.Command;"
+        "content": "import static profile.components.Constants.PROFILE_STRING_REPRESENTATION;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.commands.CommandResult;"
+        "content": "import static profile.parser.ProfileParser.checkValidProfile;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.commands.ExitCommand;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.ExceptionHandler;"
+        "content": "/**"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": " * A class that manages user profile."
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.exceptions.SchwarzeneggerException;"
+        "content": " */"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.parser.ProfileParser;"
+        "content": "public class Profile {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.storage.Storage;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.ui.ProfileUi;"
+        "content": "    protected String name;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    protected int age;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "/**"
+        "content": "    protected int height;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": " * A class that is responsible for interacting with user when he/she enters Profile Session."
+        "content": "    protected double weight;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": " */"
+        "content": "    protected double expectedWeight;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "public class ProfileManager {"
+        "content": "    public transient boolean isDeleted;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public boolean hasExit;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private ProfileUi profileUi;"
+        "content": "    /**"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private Storage storage;"
+        "content": "     * Constructs Profile object."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private ProfileParser profileParser;"
+        "content": "     *"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private Profile profile;"
+        "content": "     * @param name User\u0027s name."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private ExceptionHandler exceptionHandler;"
+        "content": "     * @param age User\u0027s age."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "     * @param height User\u0027s height in centimeters."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * @param weight User\u0027s weight in kilograms."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Constructs ProfileManager object."
+        "content": "     * @param expectedWeight User\u0027s expected weight in kilograms."
       },
       {
         "lineNumber": 26,
@@ -868,56 +868,56 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public ProfileManager() {"
+        "content": "    public Profile(String name, int age, int height, double weight, double expectedWeight) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        try {"
+        "content": "        this.name \u003d name;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            hasExit \u003d false;"
+        "content": "        this.age \u003d age;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileUi \u003d new ProfileUi();"
+        "content": "        this.height \u003d height;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            storage \u003d new Storage();"
+        "content": "        this.weight \u003d weight;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileParser \u003d new ProfileParser();"
+        "content": "        this.expectedWeight \u003d expectedWeight;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            exceptionHandler \u003d new ExceptionHandler();"
+        "content": "        isDeleted \u003d false;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profile \u003d storage.loadData(profileUi);"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
@@ -931,63 +931,63 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            if (!storage.getHasExistingProfile()) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profile \u003d profileUi.getProfileConfig();"
+        "content": "     * Overrides toString method of class Object to get string presentation of Profile object."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                storage.saveData(profile);"
+        "content": "     *"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            }"
+        "content": "     * @return String presentation of Profile object."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        } catch (SchwarzeneggerException e) {"
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileUi.showToUser(e.getMessage());"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "        assert checkValidProfile(this) : \"Profile is invalid\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileUi.showToUser(e.toString());"
+        "content": "        return String.format(PROFILE_STRING_REPRESENTATION, getName(), getAge(), getHeight(), getWeight(),"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        }"
+        "content": "                getExpectedWeight(), getBmiClassification());"
       },
       {
         "lineNumber": 45,
@@ -1015,42 +1015,42 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Runs Profile Session."
+        "content": "     * Gets user\u0027s name."
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public void run() {"
+        "content": "     * @return User\u0027s name."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        start();"
+        "content": "     */"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        runCommandLoop();"
+        "content": "    public String getName() {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        exit();"
+        "content": "        return name;"
       },
       {
         "lineNumber": 54,
@@ -1078,168 +1078,168 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Starts up Profile Session with welcome message."
+        "content": "     * Gets user\u0027s age."
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private void start() {"
+        "content": "     * @return User\u0027s age."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        profileUi.greetUser(profile.getName());"
+        "content": "     */"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": "    public int getAge() {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "        return age;"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Gets user\u0027s command and executes repeatedly until user requests to exit Profile Session."
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private void runCommandLoop() {"
+        "content": "     * Gets user\u0027s height."
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        Command command \u003d null;"
+        "content": "     *"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "     * @return User\u0027s height."
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        do {"
+        "content": "     */"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            try {"
+        "content": "    public int getHeight() {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                String userCommand \u003d profileUi.getCommand();"
+        "content": "        return height;"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                command \u003d profileParser.parseCommand(userCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                CommandResult result \u003d command.execute(profile, storage);"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profileUi.showToUser(result.toString());"
+        "content": "    /**"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            } catch (SchwarzeneggerException e) {"
+        "content": "     * Gets user\u0027s weight."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profileUi.showToUser(exceptionHandler.handleCheckedExceptions(e));"
+        "content": "     *"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            } catch (Exception e) {"
+        "content": "     * @return User\u0027s weight."
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profileUi.showToUser(exceptionHandler.handleUncheckedExceptions(e));"
+        "content": "     */"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            }"
+        "content": "    public double getWeight() {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        } while (!ExitCommand.isExit(command));"
+        "content": "        return weight;"
       },
       {
         "lineNumber": 81,
@@ -1267,38 +1267,241 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Sets hasExit to true to indicate user has requested to exit ProfileSession."
+        "content": "     * Gets user\u0027s expected weight."
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private void exit() {"
+        "content": "     * @return User\u0027s expected weight."
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        hasExit \u003d true;"
+        "content": "     */"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": "    public double getExpectedWeight() {"
       },
       {
         "lineNumber": 89,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        return expectedWeight;"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "     * Gets user\u0027s bmi index and classification."
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "     * @return User\u0027s bmi index and classification."
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "    public String getBmiClassification() {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        String classification;"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        double bmiIndex \u003d weight / Math.pow((double) height / 100, 2);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        if (bmiIndex \u003c 18.5) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "            classification \u003d \"Underweight\";"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        } else if (bmiIndex \u003c\u003d 24.9) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "            classification \u003d \"Normal weight\";"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        } else if (bmiIndex \u003c\u003d 29.9) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "            classification \u003d \"Overweight\";"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        } else if (bmiIndex \u003c\u003d 34.9) {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "            classification \u003d \"Obesity Class 1\";"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        } else if (bmiIndex \u003c\u003d 39.9) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "            classification \u003d \"Obesity Class 2\";"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "            classification \u003d \"Extreme Obesity Class 3\";"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "        return String.format(\"%.1f (%s)\", bmiIndex, classification);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "tienkhoa16"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 118,
         "author": {
           "gitId": "tienkhoa16"
         },
@@ -1306,7 +1509,7 @@
       }
     ],
     "authorContributionMap": {
-      "tienkhoa16": 89
+      "tienkhoa16": 118
     }
   },
   {
@@ -1367,717 +1570,710 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.exceptions.SchwarzeneggerException;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.exceptions.SchwarzeneggerException;"
+        "content": "import profile.parser.ProfileParser;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.parser.ProfileParser;"
+        "content": "import profile.storage.Storage;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.storage.Storage;"
+        "content": "import profile.ui.ProfileUi;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.ui.ProfileUi;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "import java.util.logging.Level;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import java.util.logging.Level;"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "/**"
+        "content": " * A class that is responsible for interacting with user when he/she enters Profile Session."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": " * A class that is responsible for interacting with user when he/she enters Profile Session."
+        "content": " */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": " */"
+        "content": "public class ProfileSession {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "public class ProfileSession {"
+        "content": "    public boolean hasExit;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public boolean hasExit;"
+        "content": "    private ProfileUi profileUi;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private ProfileUi profileUi;"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private Storage storage;"
+        "content": "    private ProfileParser profileParser;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private ProfileParser profileParser;"
+        "content": "    private Profile profile;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private Profile profile;"
+        "content": "    private ExceptionHandler exceptionHandler;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private ExceptionHandler exceptionHandler;"
+        "content": "    private static Logger logger \u003d Logger.getLogger(\"java.profile\");"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private Logger logger \u003d Logger.getLogger(\"java.profile\");"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Constructs ProfileManager object."
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Constructs ProfileManager object."
+        "content": "     */"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    public ProfileSession() {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public ProfileSession() {"
+        "content": "        try {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        try {"
+        "content": "            logger.log(Level.INFO, \"initialising ProfileSession object\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            logger.log(Level.INFO, \"initialising ProfileSession object\");"
+        "content": "            hasExit \u003d false;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            hasExit \u003d false;"
+        "content": "            profileUi \u003d new ProfileUi();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileUi \u003d new ProfileUi();"
+        "content": "            storage \u003d new Storage();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            storage \u003d new Storage();"
+        "content": "            profileParser \u003d new ProfileParser();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileParser \u003d new ProfileParser();"
+        "content": "            exceptionHandler \u003d new ExceptionHandler();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            exceptionHandler \u003d new ExceptionHandler();"
+        "content": "            profile \u003d storage.loadData(profileUi);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profile \u003d storage.loadData(profileUi);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "            if (!storage.getHasExistingProfile()) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            if (!storage.getHasExistingProfile()) {"
+        "content": "                logger.log(Level.INFO, \"getting first time configuration for user profile\");"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                logger.log(Level.INFO, \"getting first time configuration for user profile\");"
+        "content": "                profile \u003d profileUi.getProfileConfig();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profile \u003d profileUi.getProfileConfig();"
+        "content": "                storage.saveData(profile);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                storage.saveData(profile);"
+        "content": "            }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            }"
+        "content": "        } catch (SchwarzeneggerException e) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        } catch (SchwarzeneggerException e) {"
+        "content": "            logger.log(Level.WARNING, \"processing SchwarzeneggerException\", e);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            logger.log(Level.WARNING, \"processing SchwarzeneggerException\", e);"
+        "content": "            profileUi.showToUser(e.getMessage());"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileUi.showToUser(e.getMessage());"
+        "content": "        } catch (Exception e) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "            logger.log(Level.WARNING, \"processing uncaught exception\", e);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            logger.log(Level.WARNING, \"processing uncaught exception\", e);"
+        "content": "            profileUi.showToUser(e.toString());"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            profileUi.showToUser(e.toString());"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Runs Profile Session."
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Runs Profile Session."
+        "content": "     */"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public void run() {"
+        "content": "        start();"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        start();"
+        "content": "        runCommandLoop();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        runCommandLoop();"
+        "content": "        exit();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        exit();"
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Starts up Profile Session with welcome message."
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Starts up Profile Session with welcome message."
+        "content": "     */"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    private void start() {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private void start() {"
+        "content": "        logger.log(Level.INFO, \"starting profile session\");"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        logger.log(Level.INFO, \"starting profile session\");"
+        "content": "        profileUi.greetUser(profile.getName());"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        profileUi.greetUser(profile.getName());"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Gets user\u0027s command and executes repeatedly until user requests to exit Profile Session."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Gets user\u0027s command and executes repeatedly until user requests to exit Profile Session."
+        "content": "     */"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    private void runCommandLoop() {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private void runCommandLoop() {"
+        "content": "        Command command \u003d null;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        Command command \u003d null;"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "        logger.log(Level.INFO, \"executing profile session loop\");"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        logger.log(Level.INFO, \"executing profile session loop\");"
+        "content": "        do {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        do {"
+        "content": "            try {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            try {"
+        "content": "                String userCommand \u003d profileUi.getCommand();"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                String userCommand \u003d profileUi.getCommand();"
+        "content": "                command \u003d profileParser.parseCommand(userCommand);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                command \u003d profileParser.parseCommand(userCommand);"
+        "content": "                CommandResult result \u003d command.execute(profile, storage);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                CommandResult result \u003d command.execute(profile, storage);"
+        "content": "                profileUi.showToUser(result.toString());"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profileUi.showToUser(result.toString());"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "                if (profile.isDeleted \u0026\u0026 AddCommand.isAddCommand(command)) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                if (profile.isDeleted \u0026\u0026 AddCommand.isAddCommand(command)) {"
+        "content": "                    profile \u003d profileUi.getProfileConfig();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                    profile \u003d profileUi.getProfileConfig();"
+        "content": "                    storage.saveData(profile);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                    storage.saveData(profile);"
+        "content": "                }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                }"
+        "content": "            } catch (SchwarzeneggerException e) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            } catch (SchwarzeneggerException e) {"
+        "content": "                logger.log(Level.WARNING, \"processing SchwarzeneggerException\", e);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                logger.log(Level.WARNING, \"processing SchwarzeneggerException\", e);"
+        "content": "                profileUi.showToUser(exceptionHandler.handleCheckedExceptions(e));"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profileUi.showToUser(exceptionHandler.handleCheckedExceptions(e));"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            } catch (Exception e) {"
+        "content": "                logger.log(Level.WARNING, \"processing uncaught exception\", e);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                logger.log(Level.WARNING, \"processing uncaught exception\", e);"
+        "content": "                profileUi.showToUser(exceptionHandler.handleUncheckedExceptions(e));"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "                profileUi.showToUser(exceptionHandler.handleUncheckedExceptions(e));"
+        "content": "            }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            }"
+        "content": "        } while (!ExitCommand.isExit(command));"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        } while (!ExitCommand.isExit(command));"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "        logger.log(Level.INFO, \"exiting profile session loop\");"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        logger.log(Level.INFO, \"exiting profile session loop\");"
+        "content": "    }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Sets hasExit to true to indicate user has requested to exit ProfileSession."
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Sets hasExit to true to indicate user has requested to exit ProfileSession."
+        "content": "     */"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    private void exit() {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private void exit() {"
+        "content": "        logger.log(Level.INFO, \"exiting profile session\");"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        logger.log(Level.INFO, \"exiting profile session\");"
+        "content": "        hasExit \u003d true;"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        hasExit \u003d true;"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 109,
         "author": {
           "gitId": "tienkhoa16"
         },
@@ -2085,7 +2281,7 @@
       }
     ],
     "authorContributionMap": {
-      "tienkhoa16": 110
+      "tienkhoa16": 109
     }
   },
   {
@@ -2111,7 +2307,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 4,
@@ -2146,339 +2342,332 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "import static profile.components.Constants.COMMAND_WORD_ADD;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import static profile.components.Constants.COMMAND_WORD_ADD;"
+        "content": "import static profile.components.Constants.MESSAGE_ADD_TITLE;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import static profile.components.Constants.MESSAGE_ADD_TITLE;"
+        "content": "import static profile.components.Constants.MESSAGE_PROFILE_EXIST;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import static profile.components.Constants.MESSAGE_PROFILE_EXIST;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "/**"
+        "content": " * A representation of the command for adding profile."
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": " * A representation of the command for adding profile."
+        "content": " */"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": " */"
+        "content": "public class AddCommand extends Command {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "public class AddCommand extends Command {"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Constructs AddCommand object inheriting abstract class Command."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Constructs AddCommand object inheriting abstract class Command."
+        "content": "     *"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     *"
+        "content": "     * @param commandArgs Command arguments from user\u0027s input."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @param commandArgs Command arguments from user\u0027s input."
+        "content": "     * @throws RedundantParamException If parameters are provided to Add Command."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @throws RedundantParamException If parameters are provided to Add Command."
+        "content": "     */"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    public AddCommand(String commandArgs) throws RedundantParamException {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public AddCommand(String commandArgs) throws RedundantParamException {"
+        "content": "        if (!commandArgs.isEmpty()) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        if (!commandArgs.isEmpty()) {"
+        "content": "            throw new RedundantParamException(COMMAND_WORD_ADD);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            throw new RedundantParamException(COMMAND_WORD_ADD);"
+        "content": "        }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Overrides execute method of class Command to execute the view profile command requested by user\u0027s input."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Overrides execute method of class Command to execute the view profile command requested by user\u0027s input."
+        "content": "     *"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     *"
+        "content": "     * @param profile User\u0027s Profile object."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @param profile User\u0027s Profile object."
+        "content": "     * @param storage Storage to save data when required."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @param storage Storage to save data when required."
+        "content": "     * @return Result of command execution."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @return Result of command execution."
+        "content": "     */"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    @Override"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    @Override"
+        "content": "    public CommandResult execute(Profile profile, Storage storage) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public CommandResult execute(Profile profile, Storage storage) {"
+        "content": "        logger.log(Level.INFO, \"executing AddCommand\");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        logger.log(Level.INFO, \"executing AddCommand\");"
+        "content": "        if (!profile.isDeleted) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        if (!profile.isDeleted) {"
+        "content": "            return new CommandResult(MESSAGE_PROFILE_EXIST);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            return new CommandResult(MESSAGE_PROFILE_EXIST);"
+        "content": "        }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        }"
+        "content": "        return new CommandResult(MESSAGE_ADD_TITLE);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        return new CommandResult(MESSAGE_ADD_TITLE);"
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Checks if user wants to add profile by checking given command."
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Checks if user wants to add profile by checking given command."
+        "content": "     *"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     *"
+        "content": "     * @param command The command to be checked."
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @param command The command to be checked."
+        "content": "     * @return Whether the command is an object of type AddCommand."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @return Whether the command is an object of type AddCommand."
+        "content": "     */"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    public static boolean isAddCommand(Command command) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    public static boolean isAddCommand(Command command) {"
+        "content": "        return command instanceof AddCommand;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        return command instanceof AddCommand;"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "tienkhoa16"
         },
@@ -2486,7 +2675,7 @@
       }
     ],
     "authorContributionMap": {
-      "tienkhoa16": 56
+      "tienkhoa16": 55
     }
   },
   {
@@ -2512,7 +2701,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 4,
@@ -2575,7 +2764,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    protected Logger logger \u003d Logger.getLogger(\"java.profile.commands\");"
+        "content": "    protected static Logger logger \u003d Logger.getLogger(\"java.profile.commands\");"
       },
       {
         "lineNumber": 13,
@@ -2880,7 +3069,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 4,
@@ -3225,7 +3414,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 4,
@@ -3591,7 +3780,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 4,
@@ -4688,841 +4877,6 @@
     }
   },
   {
-    "path": "src/main/java/profile/components/Profile.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "package profile.components;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "import static profile.components.Constants.PROFILE_STRING_REPRESENTATION;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "import static profile.parser.ProfileParser.checkValidProfile;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": " * A class that manages user profile."
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "public class Profile {"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    protected String name;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    protected int age;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    protected int height;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    protected double weight;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    protected double expectedWeight;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public transient boolean isDeleted;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Constructs Profile object."
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @param name User\u0027s name."
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @param age User\u0027s age."
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @param height User\u0027s height in centimeters."
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @param weight User\u0027s weight in kilograms."
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @param expectedWeight User\u0027s expected weight in kilograms."
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public Profile(String name, int age, int height, double weight, double expectedWeight) {"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        this.name \u003d name;"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        this.age \u003d age;"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        this.height \u003d height;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        this.weight \u003d weight;"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        this.expectedWeight \u003d expectedWeight;"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        isDeleted \u003d false;"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Overrides toString method of class Object to get string presentation of Profile object."
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return String presentation of Profile object."
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        assert checkValidProfile(this) : \"Profile is invalid\";"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return String.format(PROFILE_STRING_REPRESENTATION, getName(), getAge(), getHeight(), getWeight(),"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "                getExpectedWeight(), getBmiClassification());"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Gets user\u0027s name."
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return User\u0027s name."
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public String getName() {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return name;"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Gets user\u0027s age."
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return User\u0027s age."
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public int getAge() {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return age;"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Gets user\u0027s height."
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return User\u0027s height."
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public int getHeight() {"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return height;"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Gets user\u0027s weight."
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return User\u0027s weight."
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public double getWeight() {"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return weight;"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Gets user\u0027s expected weight."
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return User\u0027s expected weight."
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public double getExpectedWeight() {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return expectedWeight;"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * Gets user\u0027s bmi index and classification."
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     * @return User\u0027s bmi index and classification."
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    public String getBmiClassification() {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        String classification;"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        double bmiIndex \u003d weight / Math.pow((double) height / 100, 2);"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        if (bmiIndex \u003c 18.5) {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "            classification \u003d \"Underweight\";"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        } else if (bmiIndex \u003c\u003d 24.9) {"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "            classification \u003d \"Normal weight\";"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        } else if (bmiIndex \u003c\u003d 29.9) {"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "            classification \u003d \"Overweight\";"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        } else if (bmiIndex \u003c\u003d 34.9) {"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "            classification \u003d \"Obesity Class 1\";"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        } else if (bmiIndex \u003c\u003d 39.9) {"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "            classification \u003d \"Obesity Class 2\";"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "            classification \u003d \"Extreme Obesity Class 3\";"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "        return String.format(\"%.1f (%s)\", bmiIndex, classification);"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "tienkhoa16": 118
-    }
-  },
-  {
     "path": "src/main/java/profile/exceptions/InvalidCommandWordException.java",
     "fileType": "functional-code",
     "lines": [
@@ -6355,7 +5709,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 9,
@@ -7267,7 +6621,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 9,
@@ -7463,7 +6817,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    private Logger logger \u003d Logger.getLogger(\"java.profile.storage\");"
+        "content": "    private static Logger logger \u003d Logger.getLogger(\"java.profile.storage\");"
       },
       {
         "lineNumber": 37,
@@ -8431,7 +7785,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 4,
@@ -9842,7 +9196,7 @@
     }
   },
   {
-    "path": "src/test/java/profile/ProfileTest.java",
+    "path": "src/test/java/profile/storage/StorageTest.java",
     "fileType": "test-code",
     "lines": [
       {
@@ -9850,7 +9204,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "package profile;"
+        "content": "package profile.storage;"
       },
       {
         "lineNumber": 2,
@@ -9871,7 +9225,7 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.components.Profile;"
+        "content": "import profile.Profile;"
       },
       {
         "lineNumber": 5,
@@ -9892,248 +9246,241 @@
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import profile.storage.Storage;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import java.io.FileNotFoundException;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+        "content": "import static profile.components.Constants.EXAMPLE_PROFILE_STRING;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "import static profile.components.Constants.EXAMPLE_PROFILE_STRING;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "class StorageTest {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "class ProfileTest {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Tests decodeProfile method of class Storage when data from file is valid."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Tests decodeProfile method of class Storage when data from file is valid."
+        "content": "     *"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     *"
+        "content": "     * @throws SchwarzeneggerException If there are exceptions while decoding data."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * @throws SchwarzeneggerException If there are exceptions while decoding data."
+        "content": "     */"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    @Test"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    @Test"
+        "content": "    void testDecodeProfile_exampleProfileData_returnsExampleProfileString() throws SchwarzeneggerException,"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    void testDecodeProfile_exampleProfileData_returnsExampleProfileString() throws SchwarzeneggerException,"
+        "content": "            FileNotFoundException {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            FileNotFoundException {"
+        "content": "        Storage storage \u003d new Storage();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        Storage storage \u003d new Storage();"
+        "content": "        String inputFilePath \u003d System.getProperty(\"user.dir\") + \"/src/test/java/profile/storage/exampleProfileData.txt\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        String inputFilePath \u003d System.getProperty(\"user.dir\") + \"/src/test/java/profile/exampleProfileData.txt\";"
+        "content": "        Profile testProfile \u003d storage.decodeProfile(inputFilePath);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        Profile testProfile \u003d storage.decodeProfile(inputFilePath);"
+        "content": "        assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    /**"
+        "content": "     * Tests decodeProfile method of class Storage when data from file is invalid."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     * Tests decodeProfile method of class Storage when data from file is invalid."
+        "content": "     */"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "     */"
+        "content": "    @Test"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    @Test"
+        "content": "    void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "    void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {"
+        "content": "        Storage storage \u003d new Storage();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        Storage storage \u003d new Storage();"
+        "content": "        String inputFilePath \u003d System.getProperty(\"user.dir\") + \"/src/test/java/profile/storage/invalidProfileData.txt\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        String inputFilePath \u003d System.getProperty(\"user.dir\") + \"/src/test/java/profile/invalidProfileData.txt\";"
+        "content": "        assertThrows(InvalidSaveFormatException.class, () -\u003e {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        assertThrows(InvalidSaveFormatException.class, () -\u003e {"
+        "content": "            storage.decodeProfile(inputFilePath);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "            storage.decodeProfile(inputFilePath);"
+        "content": "        });"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "tienkhoa16"
         },
-        "content": "        });"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "tienkhoa16"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "tienkhoa16"
         },
@@ -10141,11 +9488,11 @@
       }
     ],
     "authorContributionMap": {
-      "tienkhoa16": 42
+      "tienkhoa16": 41
     }
   },
   {
-    "path": "src/test/java/profile/exampleProfileData.txt",
+    "path": "src/test/java/profile/storage/exampleProfileData.txt",
     "fileType": "test-code",
     "lines": [
       {
@@ -10203,7 +9550,7 @@
     }
   },
   {
-    "path": "src/test/java/profile/invalidProfileData.txt",
+    "path": "src/test/java/profile/storage/invalidProfileData.txt",
     "fileType": "test-code",
     "lines": [
       {

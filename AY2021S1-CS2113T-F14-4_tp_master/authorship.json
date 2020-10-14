@@ -78,7 +78,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "1. **Verify the set up**: After the importing is complete, locate the `src/main/java/seedu/NUSchedule/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:"
+        "content": "1. **Verify the set up**: After the importing is complete, locate the `src/main/java/seedu/test/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:"
       },
       {
         "lineNumber": 12,
@@ -295,7 +295,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "* A skeleton JUnit test (`src/test/java/seedu/NUSchedule/DukeTest.java`) is provided with this project template. "
+        "content": "* A skeleton JUnit test (`src/test/java/seedu/test/DukeTest.java`) is provided with this project template. "
       },
       {
         "lineNumber": 43,
@@ -683,7 +683,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    mainClassName \u003d \"NUSchedule.Duke\""
+        "content": "    mainClassName \u003d \"NuSchedule\""
       },
       {
         "lineNumber": 33,
@@ -709,9 +709,9 @@
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "-"
+          "gitId": "Lee-Juntong"
         },
-        "content": "    archiveBaseName \u003d \"duke\""
+        "content": "    archiveBaseName \u003d \"NUSchedule\""
       },
       {
         "lineNumber": 37,
@@ -785,8 +785,8 @@
       }
     ],
     "authorContributionMap": {
-      "-": 45,
-      "Lee-Juntong": 1
+      "-": 44,
+      "Lee-Juntong": 2
     }
   },
   {
@@ -881,7 +881,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "# NUSchedule"
+        "content": "# test"
       },
       {
         "lineNumber": 2,
@@ -939,7 +939,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/NUSchedule.java",
+    "path": "src/main/java/NuSchedule.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -947,402 +947,388 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule;"
+        "content": "import command.Command;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "import eventlist.EventList;"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.command.Command;"
+        "content": "import exception.CreatingFileException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.eventList.EventList;"
+        "content": "import exception.NuScheduleException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.CreatingFileException;"
+        "content": "import parser.Parser;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.NUScheduleException;"
+        "content": "import storage.Storage;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.parser.Parser;"
+        "content": "import ui.UI;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.storage.Storage;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.ui.UI;"
+        "content": "public class NuSchedule {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "public class NUSchedule {"
+        "content": "     * Main entry-point for the NUSchedule application."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Main entry-point for the java.duke.Duke application."
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "    private EventList events;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    private Storage storage;"
+        "content": "    private UI ui;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    private EventList Events;"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    private UI ui;"
+        "content": "    public NuSchedule(String filePath) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        ui \u003d new UI();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public NUSchedule(String filePath) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        ui \u003d new UI();"
+        "content": "            storage \u003d new Storage(filePath);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        try {"
+        "content": "        } catch (CreatingFileException e) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            storage \u003d new Storage(filePath);"
+        "content": "            ui.showError(e.getMessage());"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        } catch (CreatingFileException e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            ui.showError(e.getMessage());"
+        "content": "        try {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            events \u003d new EventList(storage.load());"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        try {todo after implement load, uncomment it"
+        "content": "        } catch (NuScheduleException e) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            Events \u003d new EventList(storage.load());"
+        "content": "            ui.showLoadingError();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        } catch (NUScheduleException e) {"
+        "content": "            events \u003d new EventList();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            ui.showLoadingError();"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            Events \u003d new EventList();"
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "     * Runs the program until termination."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Runs the program until termination."
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "        ui.printGreetingMessage();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void run() {"
+        "content": "        boolean isExit \u003d false;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        ui.printGreetingMessage();"
+        "content": "        while (!isExit) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        boolean isExit \u003d false;"
+        "content": "            try {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        while (!isExit) {"
+        "content": "                String fullCommand \u003d ui.readCommand();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            try {"
+        "content": "                ui.printLine(); // show the divider line (\"_______\")"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                String fullCommand \u003d ui.readCommand();"
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                ui.printLine(); // show the divider line (\"_______\")"
+        "content": "                c.execute(events, ui, storage);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                Command c \u003d Parser.parse(fullCommand);"
+        "content": "                isExit \u003d c.isExit();"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                c.execute(Events, ui, storage);"
+        "content": "            } catch (NuScheduleException e) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                isExit \u003d c.isExit();"
+        "content": "                ui.showError(e.getMessage());"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            } catch (NUScheduleException e) {"
+        "content": "            } finally {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                ui.showError(e.getMessage());"
+        "content": "                ui.printLine();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            } finally {"
+        "content": "            }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                ui.printLine();"
+        "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "    }"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        new NuSchedule(\"data/events.txt\").run();"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "        new NUSchedule(\"data/events.txt\").run();"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -1350,11 +1336,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 58
+      "Lee-Juntong": 56
     }
   },
   {
-    "path": "src/main/java/NUSchedule/command/Command.java",
+    "path": "src/main/java/command/Command.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -1362,7 +1348,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.command;"
+        "content": "package command;"
       },
       {
         "lineNumber": 2,
@@ -1376,28 +1362,28 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.storage.Storage;"
+        "content": "import storage.Storage;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.eventList.EventList;"
+        "content": "import eventlist.EventList;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.ui.UI;"
+        "content": "import ui.UI;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.NUScheduleException;"
+        "content": "import exception.NuScheduleException;"
       },
       {
         "lineNumber": 7,
@@ -1474,7 +1460,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Events   the list of Events."
+        "content": "     * @param events  the list of Events."
       },
       {
         "lineNumber": 18,
@@ -1495,52 +1481,59 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @throws NUScheduleException the exceptions can happen in this program, to be handled based on the specific exception."
+        "content": "     * @throws NuScheduleException the exceptions can happen in this program,"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     *                             to be handled based on the specific exception."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public abstract void execute(EventList Events, UI ui, Storage storage) throws NUScheduleException;"
+        "content": "     */"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    public abstract void execute(EventList events, UI ui, Storage storage) throws NuScheduleException;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public boolean isExit() {"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return isExit;"
+        "content": "    public boolean isExit() {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        return isExit;"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -1548,11 +1541,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 27
+      "Lee-Juntong": 28
     }
   },
   {
-    "path": "src/main/java/NUSchedule/command/ExitCommand.java",
+    "path": "src/main/java/command/ExitCommand.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -1560,7 +1553,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.command;"
+        "content": "package command;"
       },
       {
         "lineNumber": 2,
@@ -1574,21 +1567,21 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.eventList.EventList;"
+        "content": "import eventlist.EventList;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.storage.Storage;"
+        "content": "import storage.Storage;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.ui.UI;"
+        "content": "import ui.UI;"
       },
       {
         "lineNumber": 6,
@@ -1736,7 +1729,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/command/PrintFullListCommand.java",
+    "path": "src/main/java/command/PrintFullListCommand.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -1744,7 +1737,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.command;"
+        "content": "package command;"
       },
       {
         "lineNumber": 2,
@@ -1758,28 +1751,28 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.storage.Storage;"
+        "content": "import exception.NuScheduleException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.eventList.EventList;"
+        "content": "import storage.Storage;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.ui.UI;"
+        "content": "import eventlist.EventList;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.NUScheduleException;"
+        "content": "import ui.UI;"
       },
       {
         "lineNumber": 7,
@@ -1828,7 +1821,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Events   the list of Events."
+        "content": "     * @param events  the list of Events."
       },
       {
         "lineNumber": 14,
@@ -1849,45 +1842,52 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @throws NUScheduleException the exceptions can happen in this function, to be handled based on the specific exception."
+        "content": "     * @throws NuScheduleException the exceptions can happen in this function,"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     *                             to be handled based on the specific exception."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void execute(EventList Events, UI ui, Storage storage) throws NUScheduleException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        ui.printEventList(Events.getEventList());"
+        "content": "    public void execute(EventList events, UI ui, Storage storage) throws NuScheduleException {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        ui.printEventList(events.getEventList());"
       },
       {
         "lineNumber": 22,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -1895,11 +1895,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 22
+      "Lee-Juntong": 23
     }
   },
   {
-    "path": "src/main/java/NUSchedule/event/Assignment.java",
+    "path": "src/main/java/event/Assignment.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -1907,7 +1907,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.event;"
+        "content": "package event;"
       },
       {
         "lineNumber": 2,
@@ -2194,7 +2194,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Example of the format: [C][✘]a  (by: Feb 20 2020 08:00)."
+        "content": "     *         Example of the format: [C][✘]a  (by: Feb 20 2020 08:00)."
       },
       {
         "lineNumber": 43,
@@ -2237,7 +2237,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/event/Class.java",
+    "path": "src/main/java/event/Class.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -2245,7 +2245,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.event;"
+        "content": "package event;"
       },
       {
         "lineNumber": 2,
@@ -2420,7 +2420,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Example of the format: [C][✘]a."
+        "content": "     *         Example of the format: [C][✘]a."
       },
       {
         "lineNumber": 27,
@@ -2463,7 +2463,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/event/Event.java",
+    "path": "src/main/java/event/Event.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -2471,7 +2471,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.event;"
+        "content": "package event;"
       },
       {
         "lineNumber": 2,
@@ -2485,119 +2485,119 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "import location.Location;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.location.Location;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import java.time.LocalDate;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "/**"
+        "content": " * Represents the event objects."
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " * Represents the event objects."
+        "content": " * Contains a String \u003c\\code\u003edescription\u003c\\code\u003e , which is the description of the event,"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " * Contains a String \u003c\\code\u003edescription\u003c/\\code\u003e , which is the description of the event,"
+        "content": " * and a boolean \u003c\\code\u003eisDone\u003c\\code\u003e, which is the status of the Event."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " * and a boolean \u003c\\code\u003eisDone\u003c/\\code\u003e, which is the status of the Event."
+        "content": " * Provides methods to mark an event as done(either during user input or reading from file),"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " * Provides methods to mark an event as done(either during user input or reading from file),"
+        "content": " * get the value of \u003c\\code\u003eisDone\u003c\\code\u003e,"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " * get the value of \u003c\\code\u003eisDone\u003c/\\code\u003e,"
+        "content": " * convert the \u003c\\code\u003eevent\u003c\\code\u003e object to a string to be printed out or write to a file."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " * convert the \u003c\\code\u003eevent\u003c/\\code\u003e object to a string to be printed out or write to a file."
+        "content": " */"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": " */"
+        "content": "public abstract class Event {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "public abstract class Event {"
+        "content": "    protected String description;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    protected String description;"
+        "content": "    protected boolean isDone;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    protected boolean isDone;"
+        "content": "    protected Location location;//to be implemented"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    protected Location location;//to be implemented"
+        "content": ""
       },
       {
         "lineNumber": 20,
@@ -2744,7 +2744,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
+        "content": "        return (isDone ? \"Done\" : \"Not Done\");"
       },
       {
         "lineNumber": 41,
@@ -2983,7 +2983,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/event/PersonalEvent.java",
+    "path": "src/main/java/event/PersonalEvent.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -2991,7 +2991,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.event;"
+        "content": "package event;"
       },
       {
         "lineNumber": 2,
@@ -3285,7 +3285,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Example of the format: [P][✘]a  (at: Feb 20 2020 08:00)"
+        "content": "     *     Example of the format: [P][✘]a  (at: Feb 20 2020 08:00)"
       },
       {
         "lineNumber": 44,
@@ -3328,7 +3328,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/eventList/eventList.java",
+    "path": "src/main/java/eventlist/EventList.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -3336,7 +3336,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.eventList;"
+        "content": "package eventlist;"
       },
       {
         "lineNumber": 2,
@@ -3357,7 +3357,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.event.Event;"
+        "content": "import event.Event;"
       },
       {
         "lineNumber": 5,
@@ -3525,7 +3525,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @see NUSchedule.storage.Storage"
+        "content": "     * @see storage.Storage"
       },
       {
         "lineNumber": 29,
@@ -3658,500 +3658,514 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//     * @throws DoneUndefinedEventException the event is not defined but the user want to mark it as done"
+        "content": "     *                   //     * @throws DoneUndefinedEventException the event is not defined but"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     *                   // the user want to mark it as done"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void doneEvent(int eventIndex) /*throws DoneUndefinedEventException*/ {"
+        "content": "     */"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        try {"
+        "content": "    public void doneEvent(int eventIndex) /*throws DoneUndefinedEventException*/ {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            events.get(eventIndex).markAsDone();"
+        "content": "        try {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        } catch (IndexOutOfBoundsException e) {"
+        "content": "            events.get(eventIndex).markAsDone();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            throw new DoneUndefinedEventException(eventIndex);"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": "            //throw new DoneUndefinedEventException(eventIndex);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Gives the access to the list of events."
+        "content": "    /**"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Gives the access to the list of events."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the \u003ccode\u003eArrayList\u003cevent\u003e\u003c/code\u003e object to be printed"
+        "content": "     *"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @return the list to be printed."
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public ArrayList\u003cEvent\u003e getEventList() {"
+        "content": "     */"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return events;"
+        "content": "    public ArrayList\u003cEvent\u003e getEventList() {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        return events;"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Returns how many events are in the list."
+        "content": "    /**"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Returns how many events are in the list."
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the size of the ArrayList in the EventList object"
+        "content": "     *"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @return the size of the ArrayList in the EventList object."
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public int size() {"
+        "content": "     */"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return events.size();"
+        "content": "    public int size() {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        return events.size();"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Remove the event indicated by the user."
+        "content": "    /**"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * Remove the event indicated by the user."
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void remove(int eventIndex) {"
+        "content": "     */"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        events.remove(eventIndex);"
+        "content": "    public void remove(int eventIndex) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        events.remove(eventIndex);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Returns the element at the specified position in this list."
+        "content": "    /**"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Returns the element at the specified position in this list."
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param eventIndex index of the event to return"
+        "content": "     *"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the event at the specified position in this list"
+        "content": "     * @param eventIndex index of the event to return."
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @return the event at the specified position in this list."
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public Event get(int eventIndex) {"
+        "content": "     */"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return events.get(eventIndex);"
+        "content": "    public Event get(int eventIndex) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        return events.get(eventIndex);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Filter the event list to find the events contain the information looking for by the user."
+        "content": "    /**"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Filter the event list to find the events contain the information looking for by the user."
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param filterString the keyword that the user is looking for"
+        "content": "     *"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the filtered list. this list contains only the events that satisfy the requirement"
+        "content": "     * @param filterString the keyword that the user is looking for."
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @return the filtered list. this list contains only the events that satisfy the requirement."
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public ArrayList\u003cEvent\u003e filterWith(String filterString) {"
+        "content": "     */"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        ArrayList\u003cEvent\u003e filteredEventList \u003d (ArrayList\u003cEvent\u003e) events.stream()"
+        "content": "    public ArrayList\u003cEvent\u003e filterWith(String filterString) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                .filter(s -\u003e s.getDescription().contains(filterString))"
+        "content": "        ArrayList\u003cEvent\u003e filteredEventList \u003d (ArrayList\u003cEvent\u003e) events.stream()"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                .collect(toList());"
+        "content": "                .filter(s -\u003e s.getDescription().contains(filterString))"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "                .collect(toList());"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return filteredEventList;"
+        "content": ""
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        return filteredEventList;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Filter the event list to find the events happen on the date looking for by the user."
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param date the date that the user is looking for"
+        "content": "     * Filter the event list to find the events happen on the date looking for by the user."
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the filtered list. this list contains only the events that satisfy the requirement"
+        "content": "     *"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param date the date that the user is looking for."
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public ArrayList\u003cEvent\u003e filterDateWith(LocalDate date) {"
+        "content": "     * @return the filtered list. this list contains only the events that satisfy the requirement."
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        ArrayList\u003cEvent\u003e filteredEventList \u003d (ArrayList\u003cEvent\u003e) events.stream()"
+        "content": "     */"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                .filter(s -\u003e s.getDate().isEqual(date))"
+        "content": "    public ArrayList\u003cEvent\u003e filterDateWith(LocalDate date) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                .collect(toList());"
+        "content": "        ArrayList\u003cEvent\u003e filteredEventList \u003d (ArrayList\u003cEvent\u003e) events.stream()"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "                .filter(s -\u003e s.getDate().isEqual(date))"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return filteredEventList;"
+        "content": "                .collect(toList());"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 118,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "        return filteredEventList;"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 120,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -4159,11 +4173,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 118
+      "Lee-Juntong": 120
     }
   },
   {
-    "path": "src/main/java/NUSchedule/exception/CreatingFileException.java",
+    "path": "src/main/java/exception/CreatingFileException.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4171,7 +4185,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.exception;"
+        "content": "package exception;"
       },
       {
         "lineNumber": 2,
@@ -4206,7 +4220,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "public class CreatingFileException extends NUScheduleException {"
+        "content": "public class CreatingFileException extends NuScheduleException {"
       },
       {
         "lineNumber": 7,
@@ -4319,7 +4333,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/exception/LoadingException.java",
+    "path": "src/main/java/exception/LoadingException.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4327,7 +4341,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.exception;"
+        "content": "package exception;"
       },
       {
         "lineNumber": 2,
@@ -4362,7 +4376,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "public class LoadingException extends NUScheduleException {"
+        "content": "public class LoadingException extends NuScheduleException {"
       },
       {
         "lineNumber": 7,
@@ -4433,7 +4447,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/exception/NUScheduleException.java",
+    "path": "src/main/java/exception/NuScheduleException.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4441,7 +4455,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.exception;"
+        "content": "package exception;"
       },
       {
         "lineNumber": 2,
@@ -4455,7 +4469,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "public abstract class NUScheduleException extends Exception{"
+        "content": "public abstract class NuScheduleException extends Exception {"
       },
       {
         "lineNumber": 4,
@@ -4477,7 +4491,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/exception/WritingFileException.java",
+    "path": "src/main/java/exception/WritingFileException.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4485,7 +4499,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.exception;"
+        "content": "package exception;"
       },
       {
         "lineNumber": 2,
@@ -4520,7 +4534,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "public class WritingFileException extends NUScheduleException {"
+        "content": "public class WritingFileException extends NuScheduleException {"
       },
       {
         "lineNumber": 7,
@@ -4591,7 +4605,7 @@
     }
   },
   {
-    "path": "src/main/java/NUSchedule/location/Location.java",
+    "path": "src/main/java/location/Location.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4599,7 +4613,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.location;"
+        "content": "package location;"
       },
       {
         "lineNumber": 2,
@@ -4620,31 +4634,38 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    private String location\u003d\"\";"
+        "content": "    private String location \u003d \"\";"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public Location(String location){"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        this.location\u003dlocation;"
+        "content": "    public Location(String location) {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        this.location \u003d location;"
       },
       {
         "lineNumber": 8,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -4652,11 +4673,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 8
+      "Lee-Juntong": 9
     }
   },
   {
-    "path": "src/main/java/NUSchedule/parser/Parser.java",
+    "path": "src/main/java/parser/Parser.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -4664,7 +4685,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.parser;"
+        "content": "package parser;"
       },
       {
         "lineNumber": 2,
@@ -4685,21 +4706,21 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.command.Command;"
+        "content": "import command.Command;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.command.ExitCommand;"
+        "content": "import command.ExitCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.command.PrintFullListCommand;"
+        "content": "import command.PrintFullListCommand;"
       },
       {
         "lineNumber": 7,
@@ -4839,7 +4860,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * This function calls the correct command the user want to perform, by returning a \u003c\\code\u003eCommand\u003c/\\code\u003e object."
+        "content": "     * This function calls the correct command the user want to perform, by returning a \u003c\\code\u003eCommand\u003c\\code\u003e object."
       },
       {
         "lineNumber": 27,
@@ -4860,14 +4881,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the specific \u003c\\code\u003eCommand\u003c/\\code\u003e object to perform what the user want to do"
+        "content": "     * @return the specific \u003c\\code\u003eCommand\u003c\\code\u003e object to perform what the user want to do"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//     * @throws NUScheduleException includes all exceptions may happen during parsing"
+        "content": "     *     //     * @throws NuScheduleException includes all exceptions may happen during parsing"
       },
       {
         "lineNumber": 31,
@@ -4881,7 +4902,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public static Command parse(String fullCommand) /*throws NUScheduleException*/ {"
+        "content": "    public static Command parse(String fullCommand) /*throws NuScheduleException*/ {"
       },
       {
         "lineNumber": 33,
@@ -4951,920 +4972,955 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //this block deals with find command"
+        "content": "        //        //this block deals with find command"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        if (words[0].equals(Event_FIND)) {"
+        "content": "        //        if (words[0].equals(Event_FIND)) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            if (fullCommand.substring(4).isBlank()) {"
+        "content": "        //            if (fullCommand.substring(4).isBlank()) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new EmptyFindException();"
+        "content": "        //                throw new EmptyFindException();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            return new FindCommand(fullCommand.substring(5));"
+        "content": "        //            return new FindCommand(fullCommand.substring(5));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": "        //        }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        //this block deals with find date command"
+        "content": "        //        //this block deals with find date command"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        if (words[0].equals(Event_FIND_DATE)) {"
+        "content": "        //        if (words[0].equals(Event_FIND_DATE)) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            if (fullCommand.substring(4).isBlank()) {"
+        "content": "        //            if (fullCommand.substring(4).isBlank()) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new EmptyFindDateException();"
+        "content": "        //                throw new EmptyFindDateException();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            try {"
+        "content": "        //            try {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                return new FindDateCommand(LocalDate.parse(fullCommand.substring(5)));"
+        "content": "        //                return new FindDateCommand(LocalDate.parse(fullCommand.substring(5)));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            } catch (DateTimeParseException e) {"
+        "content": "        //            } catch (DateTimeParseException e) {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new DateFormatException();"
+        "content": "        //                throw new DateFormatException();"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": "        //        }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        int EventIndex;//to indicate what is the Event we are dealing with. may not be used."
+        "content": "        //        int EventIndex;//to indicate what is the Event we are dealing with. may not be used."
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        //this block deals with done command"
+        "content": "        //        //this block deals with done command"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        if (words[0].equals(Event_DONE)) {"
+        "content": "        //        if (words[0].equals(Event_DONE)) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            if (fullCommand.substring(4).isBlank()) {"
+        "content": "        //            if (fullCommand.substring(4).isBlank()) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new EmptyDoneException();"
+        "content": "        //                throw new EmptyDoneException();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            try {"
+        "content": "        //            try {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                EventIndex \u003d Integer.parseInt(fullCommand.substring(5)) - 1;"
+        "content": "        //                EventIndex \u003d Integer.parseInt(fullCommand.substring(5)) - 1;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            } catch (NumberFormatException e) {"
+        "content": "        //            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new DoneNumberFormatException();"
+        "content": "        //                throw new DoneNumberFormatException();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            return new DoneCommand(EventIndex);"
+        "content": "        //            return new DoneCommand(EventIndex);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": "        //        }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        //this block deals with delete command"
+        "content": "        //        //this block deals with delete command"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        if (words[0].equals(Event_DELETE)) {"
+        "content": "        //        if (words[0].equals(Event_DELETE)) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            if (fullCommand.substring(6).isBlank()) {"
+        "content": "        //            if (fullCommand.substring(6).isBlank()) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new EmptyDeleteException();"
+        "content": "        //                throw new EmptyDeleteException();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            try {"
+        "content": "        //            try {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                EventIndex \u003d Integer.parseInt(fullCommand.substring(7)) - 1;"
+        "content": "        //                EventIndex \u003d Integer.parseInt(fullCommand.substring(7)) - 1;"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            } catch (NumberFormatException e) {"
+        "content": "        //            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new DeleteNumberFormatException();"
+        "content": "        //                throw new DeleteNumberFormatException();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            }"
+        "content": "        //            }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            return new DeleteCommand(EventIndex);"
+        "content": "        //            return new DeleteCommand(EventIndex);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": "        //        }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        //this block deals with add command"
+        "content": "        //        //this block deals with add command"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        //we shall check that the user input is not meant for any other command beforehand"
+        "content": "        //        //we shall check that the user input is not meant for any other command beforehand"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        //because the default block will throw an exception."
+        "content": "        //        //because the default block will throw an exception."
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        // i.e. when enter this block, the parser will not go to any other blocks"
+        "content": "        //        // i.e. when enter this block, the parser will not go to any other blocks"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        int dividerPosition;"
+        "content": "        //        int dividerPosition;"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        int timeDivider;"
+        "content": "        //        int timeDivider;"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        String dateTime;"
+        "content": "        //        String dateTime;"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        switch (words[0]) {"
+        "content": "        //        switch (words[0]) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            case ADD_ASSIGNMENT:"
+        "content": "        //            case ADD_ASSIGNMENT:"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                dividerPosition \u003d fullCommand.indexOf(AT);"
+        "content": "        //                dividerPosition \u003d fullCommand.indexOf(AT);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                if (fullCommand.substring(5).isBlank()) {"
+        "content": "        //                if (fullCommand.substring(5).isBlank()) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new EmptyEventException();"
+        "content": "        //                    throw new EmptyEventException();"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                if (dividerPosition \u003d\u003d -1) {"
+        "content": "        //                if (dividerPosition \u003d\u003d -1) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new NoEventTimeMakerException();"
+        "content": "        //                    throw new NoEventTimeMakerException();"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                if (fullCommand.substring(5, dividerPosition).isBlank()) {"
+        "content": "        //                if (fullCommand.substring(5, dividerPosition).isBlank()) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new EmptyEventException();"
+        "content": "        //                    throw new EmptyEventException();"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                try {"
+        "content": "        //                try {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    fullCommand.substring(dividerPosition + 4);"
+        "content": "        //                    fullCommand.substring(dividerPosition + 4);"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                } catch (StringIndexOutOfBoundsException e) {"
+        "content": "        //                } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new NoEventTimeException();"
+        "content": "        //                    throw new NoEventTimeException();"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                }"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                try {"
+        "content": "        //                try {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    timeDivider \u003d fullCommand.substring(dividerPosition + 4).indexOf(SINGLE_SPACE);"
+        "content": "        //                    timeDivider \u003d fullCommand.substring(dividerPosition + 4).indexOf(SINGLE_SPACE);"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    dateTime \u003d fullCommand.substring(dividerPosition + 4, dividerPosition + 4 + timeDivider)"
+        "content": "        //                    dateTime \u003d fullCommand.substring(dividerPosition + 4, dividerPosition + 4 + timeDivider)"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                            + \"T\""
+        "content": "        //                            + \"T\""
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                            + fullCommand.substring(dividerPosition + 4 + timeDivider + 1);"
+        "content": "        //                            + fullCommand.substring(dividerPosition + 4 + timeDivider + 1);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    return new AddCommand(new NUSchedule.Event.PersonalEvent(fullCommand.substring(6, dividerPosition), LocalDateTime.parse(dateTime)));"
+        "content": "        //                    return new AddCommand(new NuSchedule.Event."
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
+        "content": "        //                    PersonalEvent(fullCommand.substring(6, dividerPosition)"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new TimeFormatException();"
+        "content": "        //                    , LocalDateTime.parse(dateTime)));"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //                    throw new TimeFormatException();"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //                }"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            case ADD_CLASS:"
+        "content": "        //"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                dividerPosition \u003d fullCommand.indexOf(BY);"
+        "content": "        //"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //            case ADD_CLASS:"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                if (fullCommand.substring(8).isBlank()) {"
+        "content": "        //                dividerPosition \u003d fullCommand.indexOf(BY);"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new EmptyDeadlineException();"
+        "content": "        //"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                if (fullCommand.substring(8).isBlank()) {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                if (dividerPosition \u003d\u003d -1) {"
+        "content": "        //                    throw new EmptyDeadlineException();"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new NoDeadlineTimeMarkerException();"
+        "content": "        //                }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                if (dividerPosition \u003d\u003d -1) {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                if (fullCommand.substring(8, dividerPosition).isBlank()) {"
+        "content": "        //                    throw new NoDeadlineTimeMarkerException();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new EmptyDeadlineException();"
+        "content": "        //                }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                if (fullCommand.substring(8, dividerPosition).isBlank()) {"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                try {"
+        "content": "        //                    throw new EmptyDeadlineException();"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    fullCommand.substring(dividerPosition + 4);"
+        "content": "        //                }"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                } catch (StringIndexOutOfBoundsException e) {"
+        "content": "        //                try {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new NoDeadlineTimeException();"
+        "content": "        //                    fullCommand.substring(dividerPosition + 4);"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                try {"
+        "content": "        //                    throw new NoDeadlineTimeException();"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    timeDivider \u003d fullCommand.substring(dividerPosition + 4).indexOf(SINGLE_SPACE);"
+        "content": "        //                }"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    dateTime \u003d fullCommand.substring(dividerPosition + 4, dividerPosition + 4 + timeDivider)"
+        "content": "        //                try {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                            + \"T\""
+        "content": "        //                    timeDivider \u003d fullCommand.substring(dividerPosition + 4).indexOf(SINGLE_SPACE);"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                            + fullCommand.substring(dividerPosition + 4 + timeDivider + 1);"
+        "content": "        //                    dateTime \u003d fullCommand.substring(dividerPosition + 4, dividerPosition + 4 + timeDivider)"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    return new AddCommand(new NUSchedule.Event.Assignment(fullCommand.substring(9, dividerPosition), LocalDateTime.parse(dateTime)));"
+        "content": "        //                            + \"T\""
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
+        "content": "        //                            + fullCommand.substring(dividerPosition + 4 + timeDivider + 1);"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new TimeFormatException();"
+        "content": "        //                    return new AddCommand(new NuSchedule.Event."
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                    Assignment(fullCommand.substring(9, dividerPosition)"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //                    , LocalDateTime.parse(dateTime)));"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            case ADD_PERSONAL_EVENT:"
+        "content": "        //                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //                    throw new TimeFormatException();"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                try {"
+        "content": "        //                }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    if (fullCommand.substring(5).isBlank()) {"
+        "content": "        //"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                        throw new EmptyTodoException();"
+        "content": "        //            case ADD_PERSONAL_EVENT:"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    }"
+        "content": "        //"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    return new AddCommand(new Todo(fullCommand.substring(5)));"
+        "content": "        //                try {"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                } catch (StringIndexOutOfBoundsException e) {"
+        "content": "        //                    if (fullCommand.substring(5).isBlank()) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                    throw new EmptyTodoException();"
+        "content": "        //                        throw new EmptyTodoException();"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                }"
+        "content": "        //                    }"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //                    return new AddCommand(new Todo(fullCommand.substring(5)));"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//            default:"
+        "content": "        //                } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//                throw new WrongCommandException();"
+        "content": "        //                    throw new EmptyTodoException();"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//"
+        "content": "        //                }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//        }"
+        "content": "        //"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        //            default:"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return null;//delete later"
+        "content": "        //                throw new WrongCommandException();"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        //"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        //        }"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "}"
+        "content": ""
       },
       {
         "lineNumber": 173,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "        //delete later"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 178,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -5872,11 +5928,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 173
+      "Lee-Juntong": 178
     }
   },
   {
-    "path": "src/main/java/NUSchedule/storage/Storage.java",
+    "path": "src/main/java/storage/Storage.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -5884,7 +5940,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.storage;"
+        "content": "package storage;"
       },
       {
         "lineNumber": 2,
@@ -5905,28 +5961,28 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.event.Event;"
+        "content": "import event.Event;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.CreatingFileException;"
+        "content": "import exception.CreatingFileException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.LoadingException;"
+        "content": "import exception.LoadingException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.exception.WritingFileException;"
+        "content": "import exception.WritingFileException;"
       },
       {
         "lineNumber": 8,
@@ -6262,7 +6318,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Events the list of Events provided by a variable from a EventList object"
+        "content": "     * @param events the list of Events provided by a variable from a EventList object"
       },
       {
         "lineNumber": 56,
@@ -6283,7 +6339,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void writeFile(ArrayList\u003cEvent\u003e Events) throws WritingFileException {"
+        "content": "    public void writeFile(ArrayList\u003cEvent\u003e events) throws WritingFileException {"
       },
       {
         "lineNumber": 59,
@@ -6304,14 +6360,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            for (Event Event : Events) {"
+        "content": "            for (Event event : events) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                fw.write(Event.fileString());"
+        "content": "                fw.write(event.fileString());"
       },
       {
         "lineNumber": 63,
@@ -6416,24 +6472,31 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//    public ArrayList\u003cEvent\u003e load() throws LoadingException {"
+        "content": "    public ArrayList\u003cEvent\u003e load() throws LoadingException {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//todo to be implement"
+        "content": "        return null;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "//    }"
+        "content": "        //to be implemented"
       },
       {
         "lineNumber": 80,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -6441,11 +6504,11 @@
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 80
+      "Lee-Juntong": 81
     }
   },
   {
-    "path": "src/main/java/NUSchedule/ui/UI.java",
+    "path": "src/main/java/ui/UI.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -6453,7 +6516,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule.ui;"
+        "content": "package ui;"
       },
       {
         "lineNumber": 2,
@@ -6474,7 +6537,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "import NUSchedule.event.Event;"
+        "content": "import event.Event;"
       },
       {
         "lineNumber": 5,
@@ -6551,1134 +6614,1134 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public static final String LOGO \u003d \" _       _ _        _   ____       _                    _        _     \\n\""
+        "content": "    public static final String LOGO \u003d"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"| |     | | |      | | / ___|     | |                  | |      | |   \\n\""
+        "content": "            \" _       _ _        _   ____       _                    _        _     \\n\""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"|  \\\\    | | |      | |/ /         | |                  | |      | |\\n\""
+        "content": "                    + \"| |     | | |      | | / ___|     | |                  | |      | |   \\n\""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"| |\\\\\\\\   | | |      | |\\\\ \\\\         | |        ___       | |      | | ___ \\n\""
+        "content": "                    + \"|  \\\\    | | |      | |/ /         | |                  | |      | |\\n\""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"| | \\\\\\\\  | | |      | | \\\\ \\\\     ___| |______ /___\\\\  ____| |_    _| |/___\\\\       \\n\""
+        "content": "                    + \"| |\\\\\\\\   | | |      | |\\\\ \\\\         | |        ___       | |      | | ___ \\n\""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"| |  \\\\\\\\ | | |      | |  \\\\ \\\\   /___|  ____  ||___|||  __  | |  | | ||___|| \\n\""
+        "content": "                    + \"| | \\\\\\\\  | | |      | | \\\\ \\\\     ___| |______ /___\\\\  ____| |_    _| |/___\\\\       \\n\""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"| |   \\\\\\\\| | |      | |   \\\\ \\\\ //   | |    | | ___/ | |  | | |  | | | ___/    \\n\""
+        "content": "                    + \"| |  \\\\\\\\ | | |      | |  \\\\ \\\\   /___|  ____  ||___|||  __  | |  | | ||___|| \\n\""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"| |    \\\\  | |______| |___/ / \\\\\\\\___| |    | |\\\\____ | |__| | |__| | |\\\\____\\n\""
+        "content": "                    + \"| |   \\\\\\\\| | |      | |   \\\\ \\\\ //   | |    | | ___/ | |  | | |  | | | ___/    \\n\""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                                    + \"|_|     |_|__________|____/   \\\\___|_|    |_|\\\\___/ |______|\\\\___,_|_|\\\\___/           \\n\";"
+        "content": "                    + \"| |    \\\\  | |______| |___/ / \\\\\\\\___| |    | |\\\\____ | |__| | |__| | |\\\\____\\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public static final String LINE_DIVIDER \u003d \"____________________________________________________________\";"
+        "content": "                    + \"|_|     |_|__________|____/   \\\\___|_|    |_|\\\\___/ |______|\\\\___,_|_|\\\\___/           \\n\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public static final String EXIT_MESSAGE \u003d \"Bye. Hope to see you again soon!\";"
+        "content": "    public static final String LINE_DIVIDER \u003d \"____________________________________________________________\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    private final Scanner in;"
+        "content": "    public static final String EXIT_MESSAGE \u003d \"Bye. Hope to see you again soon!\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    private final Scanner in;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public UI() {"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        in \u003d new Scanner(System.in);"
+        "content": "    public UI() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Reads the user input line by line."
+        "content": "    /**"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Reads the user input line by line."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @return the string of the line"
+        "content": "     *"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @return the string of the line"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public String readCommand() {"
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        return in.nextLine();"
+        "content": "    public String readCommand() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        return in.nextLine();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints the logo of DUKE and greet the user."
+        "content": "    /**"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * Prints the logo of DUKE and greet the user."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printGreetingMessage() {"
+        "content": "     */"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        printLine();"
+        "content": "    public void printGreetingMessage() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"Hello from\\n\" + LOGO);"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"What can I do for you?\");"
+        "content": "        System.out.println(\"Hello from\\n\" + LOGO);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"What can I do for you?\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints the separator."
+        "content": "    /**"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * Prints the separator."
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printLine() {"
+        "content": "     */"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(LINE_DIVIDER);"
+        "content": "    public void printLine() {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(LINE_DIVIDER);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints all the events with labels, based on the input list."
+        "content": "    /**"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Prints all the events with labels, based on the input list."
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Events an \u003c\\code\u003eArrayList\u003c/\\code\u003e of events to be printed one by one."
+        "content": "     *"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param events an \u003c\\code\u003eArrayList\u003c\\code\u003e of events to be printed one by one."
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printEventList(ArrayList\u003cEvent\u003e Events) {"
+        "content": "     */"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        int numPrintedEvents \u003d 0;"
+        "content": "    public void printEventList(ArrayList\u003cEvent\u003e events) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        int numPrintedEvents \u003d 0;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\" Here are the Events in your list:\");"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        for (Event Event : Events) {"
+        "content": "        System.out.println(\" Here are the Events in your list:\");"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            numPrintedEvents++;"
+        "content": "        for (Event event : events) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            System.out.println(numPrintedEvents + \". \" + Event.toString());"
+        "content": "            numPrintedEvents++;"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            System.out.println(numPrintedEvents + \". \" + event.toString());"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints all the Events of the filtered list with labels, based on the input list."
+        "content": "    /**"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Prints all the Events of the filtered list with labels, based on the input list."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Events an \u003c\\code\u003eArrayList\u003c/\\code\u003e of Events to be printed one by one"
+        "content": "     *"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param events an \u003c\\code\u003eArrayList\u003c\\code\u003e of Events to be printed one by one."
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printFilteredEventList(ArrayList\u003cEvent\u003e Events) {"
+        "content": "     */"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        int numPrintedEvents \u003d 0;"
+        "content": "    public void printFilteredEventList(ArrayList\u003cEvent\u003e events) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        int numPrintedEvents \u003d 0;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\" Here are the matching Events in your list:\");"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        for (Event Event : Events) {"
+        "content": "        System.out.println(\" Here are the matching Events in your list:\");"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            numPrintedEvents++;"
+        "content": "        for (Event event : events) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            System.out.println(numPrintedEvents + \". \" + Event.toString());"
+        "content": "            numPrintedEvents++;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            System.out.println(numPrintedEvents + \". \" + event.toString());"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Shows the error message when experiencing exceptions."
+        "content": "    /**"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Shows the error message when experiencing exceptions."
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param message the message get from the error"
+        "content": "     *"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param message the message get from the error."
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void showError(String message) {"
+        "content": "     */"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(message);"
+        "content": "    public void showError(String message) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(message);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Shows the error message during loading. Since the general IO exception is"
+        "content": "    /**"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * handled when executing the process, the error leads to this would be the file"
+        "content": "     * Shows the error message during loading. Since the general IO exception is"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * is edited in a wrong way."
+        "content": "     * handled when executing the process, the error leads to this would be the file"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * is edited in a wrong way."
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void showLoadingError() {"
+        "content": "     */"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"You edit the file in a wrong format. Please check.\");"
+        "content": "    public void showLoadingError() {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"You edit the file in a wrong format. Please check.\");"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints the message during executing commands."
+        "content": "    /**"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * This function is used to make all printing being done in UI."
+        "content": "     * Prints the message during executing commands."
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * This function is used to make all printing being done in UI."
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param message determined by the command"
+        "content": "     *"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param message determined by the command"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void print(String message) {"
+        "content": "     */"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.print(message);"
+        "content": "    public void print(String message) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.print(message);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Call when exit the program"
+        "content": "    /**"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * Call when exit the program."
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printExitMessage() {"
+        "content": "     */"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(EXIT_MESSAGE);"
+        "content": "    public void printExitMessage() {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(EXIT_MESSAGE);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Take in a size and prints the total number of Events."
+        "content": "    /**"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Take in a size and prints the total number of Events."
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param size get by calling \u003ccode\u003eArrayList\u003cEvent\u003e::Size()\u003c/code\u003e"
+        "content": "     *"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param size number of events in the list."
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printNumEvent(int size) {"
+        "content": "     */"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"Now you have \" + size + \" Events in the list.\");"
+        "content": "    public void printNumEvent(int size) {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Now you have \" + size + \" Events in the list.\");"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints the message when the user mark some Event as done."
+        "content": "    /**"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Prints the message when the user mark some Event as done."
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Event the Event being done"
+        "content": "     *"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param event the Event being done"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printDoneMessage(Event Event) {"
+        "content": "     */"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"Nice! I\u0027ve marked this Event as done: \");"
+        "content": "    public void printDoneMessage(Event event) {"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(Event.toString());"
+        "content": "        System.out.println(\"Nice! I\u0027ve marked this Event as done: \");"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(event.toString());"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints the message when the user deletes some Event."
+        "content": "    /**"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Prints the message when the user deletes some Event."
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param Event the Event being deleted"
+        "content": "     *"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param event the Event being deleted"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printDeleteMessage(Event Event) {"
+        "content": "     */"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"Noted. I\u0027ve removed this Event: \");"
+        "content": "    public void printDeleteMessage(Event event) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(Event.toString());"
+        "content": "        System.out.println(\"Noted. I\u0027ve removed this Event: \");"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(event.toString());"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints the message when the user adds some Event."
+        "content": "    /**"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "     * Prints the message when the user adds some Event."
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param EventAdded the Event being added"
+        "content": "     *"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * @param eventAdded the Event being added"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printAddEventMessage(Event EventAdded) {"
+        "content": "     */"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this Event: \");"
+        "content": "    public void printAddEventMessage(Event eventAdded) {"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(EventAdded.toString());"
+        "content": "        System.out.println(\"Got it. I\u0027ve added this Event: \");"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "        System.out.println(eventAdded.toString());"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * Prints all the Events of the filtered list with labels, based on the input list."
+        "content": ""
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param filteredEventList an \u003c\\code\u003eArrayList\u003c/\\code\u003e of Events to be printed one by one"
+        "content": "     * Prints all the Events of the filtered list with labels, based on the input list."
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     *"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    public void printFilteredDateEventList(ArrayList\u003cEvent\u003e filteredEventList) {"
+        "content": "     * @param filteredEventList an \u003c\\code\u003eArrayList\u003c\\code\u003e of Events to be printed one by one."
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        int numPrintedEvents \u003d 0;"
+        "content": "     */"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    public void printFilteredDateEventList(ArrayList\u003cEvent\u003e filteredEventList) {"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        System.out.println(\" Here are the Events on the given date in your list:\");"
+        "content": "        int numPrintedEvents \u003d 0;"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        for (Event Event : filteredEventList) {"
+        "content": ""
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            numPrintedEvents++;"
+        "content": "        System.out.println(\" Here are the Events on the given date in your list:\");"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            System.out.println(numPrintedEvents + \". \" + Event.toString());"
+        "content": "        for (Event event : filteredEventList) {"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            numPrintedEvents++;"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "    }"
+        "content": "            System.out.println(numPrintedEvents + \". \" + event.toString());"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 177,
@@ -7699,22 +7762,15 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "Lee-Juntong": 180
+      "Lee-Juntong": 179
     }
   },
   {
-    "path": "src/test/java/seedu/duke/NUScheduleTest.java",
+    "path": "src/test/java/test/NuScheduleTest.java",
     "fileType": "test-code",
     "lines": [
       {
@@ -7722,7 +7778,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "package NUSchedule;"
+        "content": "package test;"
       },
       {
         "lineNumber": 2,
@@ -7736,7 +7792,7 @@
         "author": {
           "gitId": "-"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 4,
@@ -7748,14 +7804,14 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "Lee-Juntong"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "Lee-Juntong"
         },
         "content": ""
       },
@@ -7764,7 +7820,7 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "class NUScheduleTest {"
+        "content": "class NuScheduleTest {"
       },
       {
         "lineNumber": 8,
@@ -7803,8 +7859,24 @@
       }
     ],
     "authorContributionMap": {
-      "-": 10,
-      "Lee-Juntong": 2
+      "-": 8,
+      "Lee-Juntong": 4
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "Lee-Juntong": 1
     }
   }
 ]

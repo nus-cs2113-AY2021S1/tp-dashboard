@@ -1677,12 +1677,894 @@
       {
         "lineNumber": 3,
         "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
           "gitId": "tengkianen"
         },
         "content": "public class Storage {"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 10,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    public void setup(PlaceList placeList, ExpenseList expenseList) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        File file \u003d new File(\"trippie.txt\");"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Scanner readFile \u003d Storage.startFile(file);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        assert readFile !\u003d null;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Storage.loadList(readFile, placeList, expenseList);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    public static Scanner startFile(File file) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            if (file.createNewFile()) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                System.out.println(\"I can\u0027t find a file in your directory :(\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                System.out.println(\"I created a new Trippie.txt file for you!\");"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            } else if (!file.createNewFile()) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                System.out.println(\"I found a file in your directory!\\nSetting up file over here...\");"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            return new Scanner(file);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            System.out.println(\"An error occurred.\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            return null;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    public void saveList(PlaceList placeList, ExpenseList expenseList) throws IOException {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        FileWriter fileWriter \u003d new FileWriter(\"trippie.txt\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileWriter.write(\"This file shows your saved trip under Trippie!\" + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        List\u003cPlace\u003e places \u003d placeList.getPlaceList();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        List\u003cExpense\u003e expenses \u003d expenseList.getExpenseList();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        savePlaceList(fileWriter, places);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        saveExpenseList(expenseList, fileWriter, expenses);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileWriter.close();"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private void saveExpenseList(ExpenseList expenseList, FileWriter fileWriter, List\u003cExpense\u003e expenses)"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            throws IOException {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        if (expenses.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(\"There is currently nothing in your Expense list.\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(\"These are your expenses!\" + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(\"Day | Item | Cost\" + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            for (Expense expense : expenses) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                fileWriter.write(expense.getExpenseDayBought() + \" | \" + expense.getExpenseName()"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                        + \" | $\" + expense.getExpenseCost() + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Float pricing \u003d expenseList.getBudgetValue();"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        if (pricing !\u003d null) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(System.lineSeparator() + \"Total budget: $\" + String.format(\"%.2f\", pricing)"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(System.lineSeparator() + \"Total budget has not been set\" + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private void savePlaceList(FileWriter fileWriter, List\u003cPlace\u003e places) throws IOException {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        if (places.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(\"Please add your itinerary!\");"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(\"Here is your itinerary! Enjoy your trip :)\" + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            fileWriter.write(\"Day | Start Time | End Time | Place\" + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            int maxDay \u003d places.get(places.size() - 1).getPlaceDay();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            for (int i \u003d 1; i \u003c\u003d maxDay; i++) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                for (Place place : places) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    if (place.getPlaceDay() \u003d\u003d i) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                        fileWriter.write(place.getPlaceDay() + \" | \""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                                + String.format(\"%04d\", place.getPlaceStartTime()) + \" | \""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                                + String.format(\"%04d\", place.getPlaceEndTime()) + \" | \""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                                + place.getPlaceName() + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileWriter.write(System.lineSeparator());"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    public static void loadList(Scanner readFile, PlaceList placeList, ExpenseList expenseList) {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        List\u003cPlace\u003e places \u003d placeList.getPlaceList();"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        List\u003cExpense\u003e expenses \u003d expenseList.getExpenseList();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        while (readFile.hasNext()) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            String line \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            if (line.contains(\"Day | Start Time | End Time | Place\")) {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                String input;"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                input \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                do {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    String[] placeParameters \u003d input.split(\" \\\\| \");"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    places.add(new Place(placeParameters[3], Integer.parseInt(placeParameters[0]),"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                            Integer.parseInt(placeParameters[1]), Integer.parseInt(placeParameters[2])));"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    input \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                } while (!input.equals(\"\"));"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            } else if (line.contains(\"Day | Item | Cost\")) {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                String input;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                input \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                do {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    String[] expenseParameters \u003d input.split(\" \\\\| \");"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    expenses.add(new Expense(expenseParameters[1], expenseParameters[2].substring(1),"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                            expenseParameters[0]));"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    input \u003d readFile.nextLine();"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                } while (!input.equals(\"\"));"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            } else if (line.contains(\"Total budget: $\")) {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                expenseList.setBudgetValue(extractBudgetValue(line));"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private static Float extractBudgetValue(String userInput) throws NullPointerException, NumberFormatException {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        String budgetValueString \u003d userInput.replace(\"Total budget: $\",\"\").trim();"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        return Float.parseFloat(budgetValueString);"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 130,
         "author": {
           "gitId": "tengkianen"
         },
@@ -1690,7 +2572,8 @@
       }
     ],
     "authorContributionMap": {
-      "tengkianen": 4
+      "tengkianen": 4,
+      "weishuangtan": 126
     }
   },
   {
@@ -1728,135 +2611,135 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "weishuangtan"
         },
-        "content": "public class Trippie {"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 6,
-        "author": {
-          "gitId": "tengkianen"
-        },
-        "content": "    //private final Storage storage;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "tengkianen"
-        },
-        "content": "    private final Ui ui;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "ShawnTanzc"
-        },
-        "content": "    private final ExpenseList expenseList;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "ShawnTanzc"
-        },
-        "content": "    private final PlaceList placeList;"
-      },
-      {
-        "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Trippie {"
+      },
+      {
+        "lineNumber": 8,
         "author": {
           "gitId": "tengkianen"
         },
-        "content": "    public Trippie(String filePath) {"
+        "content": "    private final Ui ui;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private ExpenseList expenseList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private PlaceList placeList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final Storage storage;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tengkianen"
         },
-        "content": "        ui \u003d new Ui();"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "ShawnTanzc"
+          "gitId": "weishuangtan"
         },
-        "content": "        expenseList \u003d new ExpenseList();"
+        "content": "    public Trippie() {"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "tengkianen"
         },
-        "content": "        placeList \u003d new PlaceList();"
+        "content": "        ui \u003d new Ui();"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //        to be implemented with storage"
+        "content": "        storage \u003d new Storage();"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //        try {"
+        "content": "        try {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ShawnTanzc"
         },
-        "content": "        //             expenseList \u003d new ExpenseList(storage.load());"
+        "content": "            expenseList \u003d new ExpenseList();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "felixhalim"
         },
-        "content": "        //             placeList \u003d new PlaceList(storage.load());"
+        "content": "            placeList \u003d new PlaceList();"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //        } catch (NullPointerException e) {"
+        "content": "        } catch (Exception e) {"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //            System.out.println(\"No file detected\");"
+        "content": "            System.out.println(\"No file detected\");"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //            expenseList \u003d new ExpenseList();"
+        "content": "            expenseList \u003d new ExpenseList();"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //            placeList \u003d new PlaceList();"
+        "content": "            placeList \u003d new PlaceList();"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "weishuangtan"
         },
-        "content": "        //        }"
+        "content": "        }"
       },
       {
         "lineNumber": 24,
@@ -1868,7 +2751,7 @@
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "ShawnTanzc"
         },
         "content": ""
       },
@@ -1882,9 +2765,9 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "ShawnTanzc"
+          "gitId": "weishuangtan"
         },
-        "content": "        new Trippie(\"data/trippie.txt\").run();"
+        "content": "        new Trippie().run();"
       },
       {
         "lineNumber": 28,
@@ -1903,103 +2786,152 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "tengkianen"
+          "gitId": "weishuangtan"
         },
         "content": "    public void run() {"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "tengkianen"
+          "gitId": "weishuangtan"
         },
-        "content": "        ui.greetUser();"
+        "content": "        try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "tengkianen"
         },
-        "content": "        boolean isExit \u003d false;"
+        "content": "            ui.greetUser();"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "ShawnTanzc"
+          "gitId": "tengkianen"
         },
-        "content": "        while (!isExit) {"
+        "content": "            boolean isExit \u003d false;"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "ShawnTanzc"
+          "gitId": "weishuangtan"
         },
-        "content": "            String fullCommand \u003d ui.readCommand();"
+        "content": "            storage.setup(placeList, expenseList);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ShawnTanzc"
         },
-        "content": "            ui.printLine();"
+        "content": "            while (!isExit) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ShawnTanzc"
         },
-        "content": "            Command c \u003d Parser.parse(fullCommand);"
+        "content": "                String fullCommand \u003d ui.readCommand();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ShawnTanzc"
         },
-        "content": "            if (c !\u003d null) {"
+        "content": "                ui.printLine();"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "felixhalim"
+          "gitId": "ShawnTanzc"
         },
-        "content": "                c.execute(ui, placeList, expenseList);"
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ShawnTanzc"
         },
-        "content": "                isExit \u003d c.isExit();"
+        "content": "                if (c !\u003d null) {"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "-"
+          "gitId": "felixhalim"
         },
-        "content": "            }"
+        "content": "                    c.execute(ui, placeList, expenseList);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ShawnTanzc"
         },
-        "content": "            ui.printLine();"
+        "content": "                    isExit \u003d c.isExit();"
       },
       {
         "lineNumber": 42,
+        "author": {
+          "gitId": "ShawnTanzc"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                storage.saveList(placeList, expenseList);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "ShawnTanzc"
+        },
+        "content": "                ui.printLine();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            System.out.println(\"An error occurred.\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
@@ -2007,10 +2939,11 @@
       }
     ],
     "authorContributionMap": {
-      "ShawnTanzc": 13,
-      "felixhalim": 10,
-      "tengkianen": 9,
-      "-": 12
+      "ShawnTanzc": 11,
+      "felixhalim": 2,
+      "tengkianen": 7,
+      "-": 11,
+      "weishuangtan": 20
     }
   },
   {
@@ -5163,145 +6096,117 @@
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "ShawnTanzc"
-        },
-        "content": "            ui.printLine();"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
           "gitId": "ivanderjmw"
         },
         "content": "            System.out.println(\"There is currently nothing in your Expense list.\");"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "            int listIndex \u003d 1;"
       },
       {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "ShawnTanzc"
-        },
-        "content": "            ui.printLine();"
-      },
-      {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "tengkianen"
         },
         "content": "            Float pricing \u003d expenseList.getBudgetValue();"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 27,
         "author": {
           "gitId": "tengkianen"
         },
         "content": "            if (pricing !\u003d null) {"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 28,
         "author": {
           "gitId": "tengkianen"
         },
         "content": "                System.out.println(\"Total budget: $\" + String.format(\"%.2f\", pricing));"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 29,
         "author": {
           "gitId": "tengkianen"
         },
         "content": "            } else {"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 30,
         "author": {
           "gitId": "tengkianen"
         },
         "content": "                System.out.println(\"Total budget has not been set\");"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 31,
         "author": {
           "gitId": "tengkianen"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 32,
         "author": {
           "gitId": "ivanderjmw"
         },
         "content": "            System.out.println(\"Expense List:\");"
       },
       {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "ShawnTanzc"
-        },
-        "content": "            ui.printLine();"
-      },
-      {
-        "lineNumber": 36,
+        "lineNumber": 33,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "            for (Expense expense: expenses) {"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 34,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "                System.out.println(\"[\" + listIndex + \"] \" + expense.getExpense());"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 35,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "                listIndex++;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 36,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 37,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "ShawnTanzc"
-        },
-        "content": "        ui.printLine();"
-      },
-      {
-        "lineNumber": 42,
+        "lineNumber": 38,
         "author": {
           "gitId": "ShawnTanzc"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 39,
         "author": {
           "gitId": "tengkianen"
         },
@@ -5309,7 +6214,7 @@
       }
     ],
     "authorContributionMap": {
-      "ShawnTanzc": 29,
+      "ShawnTanzc": 25,
       "felixhalim": 1,
       "tengkianen": 9,
       "ivanderjmw": 4
@@ -5581,9 +6486,9 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "tengkianen"
+          "gitId": "weishuangtan"
         },
-        "content": "        int maxDay \u003d places.get(places.size() - 1).getPlaceDay();"
+        "content": ""
       },
       {
         "lineNumber": 39,
@@ -5602,16 +6507,16 @@
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "tengkianen"
+          "gitId": "weishuangtan"
         },
-        "content": "        }"
+        "content": "        } else if (specifiedDay \u003d\u003d -1) {"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "tengkianen"
+          "gitId": "weishuangtan"
         },
-        "content": "        if (specifiedDay \u003d\u003d -1) {"
+        "content": "            int maxDay \u003d places.get(places.size() - 1).getPlaceDay();"
       },
       {
         "lineNumber": 43,
@@ -5958,7 +6863,8 @@
       }
     ],
     "authorContributionMap": {
-      "tengkianen": 91
+      "tengkianen": 88,
+      "weishuangtan": 3
     }
   },
   {
@@ -6390,12 +7296,26 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "tengkianen"
+          "gitId": "weishuangtan"
         },
-        "content": "delete /e 1"
+        "content": "buy /i coconut /c 5.00 /d 2"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "buy /i bag /c 50.30 /d 3"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "budget 300"
+      },
+      {
+        "lineNumber": 17,
         "author": {
           "gitId": "ivanderjmw"
         },
@@ -6403,8 +7323,9 @@
       }
     ],
     "authorContributionMap": {
-      "tengkianen": 14,
-      "ivanderjmw": 1
+      "tengkianen": 13,
+      "ivanderjmw": 1,
+      "weishuangtan": 3
     }
   }
 ]

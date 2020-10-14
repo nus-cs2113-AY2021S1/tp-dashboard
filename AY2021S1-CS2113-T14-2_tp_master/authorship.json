@@ -5242,9 +5242,9 @@
       {
         "lineNumber": 257,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        System.out.println(String.format(DELETED_DECK_QUESTION_LINE, deletedDeckName));"
+        "content": "        System.out.print(String.format(DELETED_DECK_QUESTION_LINE, deletedDeckName));"
       },
       {
         "lineNumber": 258,
@@ -5298,9 +5298,9 @@
       {
         "lineNumber": 265,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "    public static void printDeletedDeck(String deletedDeckName) {"
+        "content": "    public static void printDeckDeletedLine(String deletedDeckName) {"
       },
       {
         "lineNumber": 266,
@@ -5374,9 +5374,9 @@
       }
     ],
     "authorContributionMap": {
-      "alwaysnacy": 50,
+      "alwaysnacy": 48,
       "kaijiel24": 108,
-      "LiewWS": 2,
+      "LiewWS": 4,
       "zhixiangteoh": 60,
       "wangwaynesg": 55
     }
@@ -7088,7 +7088,7 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "    private boolean isVerified;"
+        "content": "    private boolean isDeckDeleted;"
       },
       {
         "lineNumber": 10,
@@ -7102,7 +7102,7 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "    public DeleteDeckCommand(DeckList decks, int index, boolean isVerified) {"
+        "content": "    public DeleteDeckCommand(DeckList decks, int index, boolean isDeckDeleted) {"
       },
       {
         "lineNumber": 12,
@@ -7123,7 +7123,7 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        this.isVerified \u003d isVerified;"
+        "content": "        this.isDeckDeleted \u003d isDeckDeleted;"
       },
       {
         "lineNumber": 15,
@@ -7158,14 +7158,14 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        if (!isVerified) {"
+        "content": "        if (isDeckDeleted) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            return;"
+        "content": "            deckList.removeDeck(index);"
       },
       {
         "lineNumber": 21,
@@ -7177,33 +7177,12 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "        String nameDeletedDeck \u003d deckList.getDeck(index).getName();"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "        deckList.removeDeck(index);"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        Ui.printDeletedDeck(nameDeletedDeck);"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 23,
         "author": {
           "gitId": "alwaysnacy"
         },
@@ -7211,8 +7190,8 @@
       }
     ],
     "authorContributionMap": {
-      "alwaysnacy": 15,
-      "LiewWS": 11
+      "alwaysnacy": 14,
+      "LiewWS": 9
     }
   },
   {
@@ -10448,754 +10427,915 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "import seedu.ecardnomics.command.normal.EditCommand;"
+        "content": "import seedu.ecardnomics.command.deck.DeleteCommand;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "import seedu.ecardnomics.command.VoidCommand;"
+        "content": "import seedu.ecardnomics.command.normal.EditCommand;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "import seedu.ecardnomics.command.normal.CreateCommand;"
+        "content": "import seedu.ecardnomics.command.VoidCommand;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "import seedu.ecardnomics.command.normal.DecksCommand;"
+        "content": "import seedu.ecardnomics.command.normal.CreateCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "import seedu.ecardnomics.command.normal.DeleteDeckCommand;"
+        "content": "import seedu.ecardnomics.command.normal.DecksCommand;"
       },
       {
         "lineNumber": 11,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": "import seedu.ecardnomics.command.normal.DeleteDeckCommand;"
+      },
+      {
+        "lineNumber": 12,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "import seedu.ecardnomics.command.normal.HelpCommand;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 13,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "import seedu.ecardnomics.deck.Deck;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 14,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "import seedu.ecardnomics.deck.DeckList;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 15,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "import seedu.ecardnomics.exceptions.DeckRangeException;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 16,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "import seedu.ecardnomics.exceptions.IndexFormatException;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 17,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 18,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "public class NormalParser extends Parser {"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 19,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "    DeckList deckList;"
       },
       {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 20,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    /** Constructor. */"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    public NormalParser(DeckList deckList) {"
+        "content": "    /** Constructor. */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        this.deckList \u003d deckList;"
+        "content": "    public NormalParser(DeckList deckList) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    }"
+        "content": "        this.deckList \u003d deckList;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    protected int getIndex(String arguments)"
+        "content": "    @Override"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            throws IndexFormatException, DeckRangeException {"
+        "content": "    protected int getIndex(String arguments)"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            throws IndexFormatException, DeckRangeException {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (!arguments.matches(Ui.DIGITS_REGEX)) {"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            throw new IndexFormatException();"
+        "content": "        if (!arguments.matches(Ui.DIGITS_REGEX)) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "            throw new IndexFormatException();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 33,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "        int index \u003d Integer.parseInt(arguments) - Ui.INDEX_OFFSET;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 35,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 36,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "        if ((index \u003e\u003d deckList.size()) || (index \u003c 0)) {"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 37,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            throw new DeckRangeException();"
       },
       {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        }"
-      },
-      {
         "lineNumber": 38,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        return index;"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "kaijiel24"
         },
-        "content": "    }"
+        "content": "        return index;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "    private Deck prepareDeck(String arguments)"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "            throws IndexFormatException, DeckRangeException {"
+        "content": "    private Deck prepareDeck(String arguments)"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            throws IndexFormatException, DeckRangeException {"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": ""
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        return deckList.getDeck(getIndex(arguments));"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 47,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "    private boolean verifyDeleteDeck(int index) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        String nameDeletedDeck \u003d deckList.getDeck(index).getName();"
+        "content": "    protected boolean prepareDeletedDeck(int index) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        Ui.printDeletedDeckQuestion(nameDeletedDeck);"
+        "content": "        Deck deck \u003d deckList.getDeck(index);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        String answer \u003d Ui.readUserInput();"
+        "content": "        String response \u003d getDeleteYorNResponse(deck);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": ""
+        "content": "        switch (response) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        switch (answer) {"
+        "content": "        case Ui.Y:"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        case \"y\":"
+        "content": "            Ui.printDeckDeletedLine(deck.getName());"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            return true;"
+        "content": "            Ui.printDashLines();"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        case \"n\":"
+        "content": "            return true;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        default:"
+        "content": "        case Ui.N:"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            return false;"
+        "content": "            //"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        }"
+        "content": "            break;"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "    }"
+        "content": "        default:"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": ""
+        "content": "            //"
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "    @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "    protected Command parseCommand(String commandWord, String arguments)"
+        "content": "        return false;"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "            throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
         "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        switch (commandWord) {"
+        "content": "    private String getDeleteYorNResponse(Deck deck) {"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "        // Exit"
+        "content": "        String response \u003d \"\";"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "        case Ui.EXIT:"
+        "content": "        do {"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "            return new ExitCommand();"
+        "content": "            Ui.printDeletedDeckQuestion(deck.getName());"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "        // Edit"
+        "content": "            response \u003d Ui.readUserInput();"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        case Ui.EDIT:"
+        "content": "            switch (response.trim()) {"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "            Deck deck \u003d prepareDeck(arguments);"
+        "content": "            case Ui.Y:"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "            return new EditCommand(deckList, deck);"
+        "content": "                response \u003d Ui.Y;"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        // Create"
+        "content": "                break;"
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        case Ui.CREATE:"
+        "content": "            case Ui.N:"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "            Deck newDeck \u003d new Deck(arguments);"
+        "content": "                response \u003d Ui.N;"
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "            return new CreateCommand(deckList, newDeck);"
+        "content": "                break;"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        // Decks"
+        "content": "            default:"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        case Ui.DECKS:"
+        "content": "                Ui.printInvalidYorNResponse();"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "            return new DecksCommand(deckList);"
+        "content": "            }"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        // Delete"
+        "content": "        } while (!response.trim().equals(Ui.Y) \u0026\u0026 !response.trim().equals(Ui.N));"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        case Ui.DELETE:"
+        "content": "        return response;"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "alwaysnacy"
         },
-        "content": "            int index \u003d getIndex(arguments);"
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "alwaysnacy"
         },
-        "content": "            boolean isVerified \u003d verifyDeleteDeck(index);"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
-        "content": "            return new DeleteDeckCommand(deckList, index, isVerified);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        // Help"
+        "content": "    protected Command parseCommand(String commandWord, String arguments)"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        case Ui.HELP:"
+        "content": "            throws Exception {"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "            return new HelpCommand(deckList);"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "        default:"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            return new VoidCommand();"
+        "content": "        // Exit"
       },
       {
         "lineNumber": 91,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        }"
+        "content": "        case Ui.EXIT:"
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        // Edit"
       },
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "alwaysnacy"
         },
-        "content": "    @Override"
+        "content": "        case Ui.EDIT:"
       },
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "    public Command parse(String userInput) {"
+        "content": "            Deck deck \u003d prepareDeck(arguments);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
+        "content": "            return new EditCommand(deckList, deck);"
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "        String commandWord \u003d splitString[0];"
+        "content": "        // Create"
       },
       {
         "lineNumber": 98,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "        boolean argumentsExist \u003d  splitString.length \u003e 1;"
+        "content": "        case Ui.CREATE:"
       },
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "        String arguments \u003d \"\";"
+        "content": "            Deck newDeck \u003d new Deck(arguments);"
       },
       {
         "lineNumber": 100,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "            return new CreateCommand(deckList, newDeck);"
       },
       {
         "lineNumber": 101,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "        if (argumentsExist) {"
+        "content": "        // Decks"
       },
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "            arguments \u003d splitString[1];"
+        "content": "        case Ui.DECKS:"
       },
       {
         "lineNumber": 103,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "        }"
+        "content": "            return new DecksCommand(deckList);"
       },
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "        // Delete"
       },
       {
         "lineNumber": 105,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "alwaysnacy"
         },
-        "content": "        try {"
+        "content": "        case Ui.DELETE:"
       },
       {
         "lineNumber": 106,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "            return parseCommand(commandWord, arguments);"
+        "content": "            int deckID \u003d getIndex(arguments);"
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": ""
+        "content": "            boolean isDeckDeleted \u003d prepareDeletedDeck(deckID);"
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "            return new DeleteDeckCommand(deckList, deckID, isDeckDeleted);"
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            return new VoidCommand(e.getMessage());"
+        "content": "        // Help"
       },
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        }"
+        "content": "        case Ui.HELP:"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "            return new HelpCommand(deckList);"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 113,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new VoidCommand();"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    public Command parse(String userInput) {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        String commandWord \u003d splitString[0];"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        boolean argumentsExist \u003d  splitString.length \u003e 1;"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        String arguments \u003d \"\";"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        if (argumentsExist) {"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            arguments \u003d splitString[1];"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return parseCommand(commandWord, arguments);"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new VoidCommand(e.getMessage());"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 136,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -11205,7 +11345,7 @@
     "authorContributionMap": {
       "alwaysnacy": 28,
       "kaijiel24": 54,
-      "LiewWS": 18,
+      "LiewWS": 41,
       "zhixiangteoh": 13
     }
   },
@@ -11586,824 +11726,838 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "import static seedu.ecardnomics.Ui.*;"
+        "content": "import static seedu.ecardnomics.Ui.printNewDeck;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": ""
+        "content": "import static seedu.ecardnomics.Ui.printDeletedDeckQuestion;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "public class UiTest {"
+        "content": "import static seedu.ecardnomics.Ui.printDeckDeletedLine;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    private final ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    private final ByteArrayOutputStream errContent \u003d new ByteArrayOutputStream();"
+        "content": "public class UiTest {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    private final PrintStream originalOut \u003d System.out;"
+        "content": "    private final ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    private final PrintStream originalErr \u003d System.err;"
+        "content": "    private final ByteArrayOutputStream errContent \u003d new ByteArrayOutputStream();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    private final PrintStream originalOut \u003d System.out;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @BeforeEach"
+        "content": "    private final PrintStream originalErr \u003d System.err;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public void setUpStreams() {"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        System.setOut(new PrintStream(outContent));"
+        "content": "    @BeforeEach"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        System.setErr(new PrintStream(errContent));"
+        "content": "    public void setUpStreams() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "        System.setOut(new PrintStream(outContent));"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        System.setErr(new PrintStream(errContent));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @AfterEach"
+        "content": "    }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public void restoreStreams() {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        System.setOut(originalOut);"
+        "content": "    @AfterEach"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        System.setErr(originalErr);"
+        "content": "    public void restoreStreams() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "        System.setOut(originalOut);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        System.setErr(originalErr);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public void printMessage_singleLine_goodFormat() {"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        String singleLine \u003d \"Hello! Welcome to eCardnomics!\\t\\t\\tFlashCards Application.\";"
+        "content": "    @Test"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        String message \u003d Ui.DASH_LINES + System.lineSeparator() + singleLine + System.lineSeparator()"
+        "content": "    public void printMessage_singleLine_goodFormat() {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                + Ui.DASH_LINES + System.lineSeparator();"
+        "content": "        String singleLine \u003d \"Hello! Welcome to eCardnomics!\\t\\t\\tFlashCards Application.\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        Ui.printMessage(singleLine);"
+        "content": "        String message \u003d Ui.DASH_LINES + System.lineSeparator() + singleLine + System.lineSeparator()"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        assertEquals(message, outContent.toString());"
+        "content": "                + Ui.DASH_LINES + System.lineSeparator();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "        Ui.printMessage(singleLine);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        assertEquals(message, outContent.toString());"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printNormalPrompt() {"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printNormalPrompt() {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printDeckPrompt() {"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printDeckPrompt() {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printPrompt() {"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printPrompt() {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printNormalWelcome() {"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printNormalWelcome() {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printDeckWelcome() {"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printDeckWelcome() {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printGreeting() {"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printGreeting() {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printExitLine() {"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printExitLine() {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printNotRecognisedLine() {"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printNotRecognisedLine() {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printAddFlashCardLine() {"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printAddFlashCardLine() {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printEnterQuestionLine() {"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printEnterQuestionLine() {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printEnterAnswerLine() {"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printEnterAnswerLine() {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printFlashCardAddedLine() {"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printFlashCardAddedLine() {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printDeck() {"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printDeck() {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printDeleteFlashCardLine() {"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printDeleteFlashCardLine() {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printFlashCardDeletedLine() {"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printFlashCardDeletedLine() {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printHelp() {"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printHelp() {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    void printNewDeck_newDeckName_deckName() {"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        String expectedOutput \u003d \"New deck created: Pokemon\";"
+        "content": "    @Test"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "        printNewDeck(new Deck(\"Pokemon\"));"
+        "content": "    void printNewDeck_newDeckName_deckName() {"
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "LiewWS"
         },
-        "content": "        assertEquals(expectedOutput, outContent.toString());"
+        "content": "        String expectedOutput \u003d \"New deck created: Pokemon\" + System.lineSeparator();"
       },
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "alwaysnacy"
         },
-        "content": "    }"
+        "content": "        printNewDeck(new Deck(\"Pokemon\"));"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "        assertEquals(expectedOutput, outContent.toString());"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printDeckList() {"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printDeckList() {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "    void printDeletedDeckQuestion_deletedDeckName_questionLine() {"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        String expectedOutput \u003d \"Do you want to delete Pokemon deck? [y/n]\";"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        printDeletedDeckQuestion(\"Pokemon\");"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        assertEquals(expectedOutput, outContent.toString());"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 117,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 118,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 119,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    void printDeletedDeck_deletedDeckName_confirmation() {"
+        "content": "    void printDeletedDeckQuestion_deletedDeckName_questionLine() {"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 120,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "        String expectedOutput \u003d \"Pokemon has been deleted.\";"
+        "content": "        String expectedOutput \u003d \"Do you want to delete Pokemon deck? [y/n]\";"
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 121,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "        printDeletedDeck(\"Pokemon\");"
+        "content": "        printDeletedDeckQuestion(\"Pokemon\");"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 122,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        assertEquals(expectedOutput, outContent.toString());"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 123,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": "    void printDeletedDeck_deletedDeckName_confirmation() {"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String expectedOutput \u003d \"Pokemon has been deleted.\" + System.lineSeparator();"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        printDeckDeletedLine(\"Pokemon\");"
+      },
+      {
         "lineNumber": 129,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": "        assertEquals(expectedOutput, outContent.toString());"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -12411,7 +12565,8 @@
       }
     ],
     "authorContributionMap": {
-      "alwaysnacy": 14,
+      "alwaysnacy": 10,
+      "LiewWS": 6,
       "zhixiangteoh": 115
     }
   },
