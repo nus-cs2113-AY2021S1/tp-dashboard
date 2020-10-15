@@ -237,9 +237,9 @@
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "-"
+          "gitId": "HengFuYuen"
         },
-        "content": "    mainClassName \u003d \"seedu.duke.Duke\""
+        "content": "    mainClassName \u003d \"seedu.duke.DietBook\""
       },
       {
         "lineNumber": 35,
@@ -265,9 +265,9 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "-"
+          "gitId": "HengFuYuen"
         },
-        "content": "    archiveBaseName \u003d \"duke\""
+        "content": "    archiveBaseName \u003d \"dietbook\""
       },
       {
         "lineNumber": 39,
@@ -337,7 +337,7 @@
         "author": {
           "gitId": "HengFuYuen"
         },
-        "content": "    enableAssertions \u003d true"
+        "content": "    enableAssertions \u003d false"
       },
       {
         "lineNumber": 49,
@@ -349,8 +349,8 @@
     ],
     "authorContributionMap": {
       "yuqiaoluolong": 2,
-      "HengFuYuen": 1,
-      "-": 46
+      "HengFuYuen": 3,
+      "-": 44
     }
   },
   {
@@ -934,6 +934,2495 @@
     }
   },
   {
+    "path": "src/main/java/seedu/duke/DietBook.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.database.DataBase;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.list.FoodList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "public class DietBook {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private FoodList foodList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private Ui ui;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private Manager manager;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private DataBase dataBase;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Constructor for new DietBook."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public DietBook() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        foodList \u003d new FoodList();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        dataBase \u003d new DataBase();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        manager \u003d new Manager(foodList, dataBase);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Main method to run the program."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static void main(String[] args) throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        DietBook dietBook \u003d new DietBook();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        dietBook.ui.printWelcomeMessage();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        while (!isExit) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                String userInput \u003d dietBook.manager.readCommand();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                Parser.parse(userInput, dietBook.manager, dietBook.ui);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            } catch (DietException e) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                dietBook.ui.printErrorMessage(e.getMessage());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            } finally {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                System.out.println(\"__________________\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tikimonarch": 43
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/DietException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "public class DietException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public DietException(String message) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        super(message);"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return getMessage();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tikimonarch": 12
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Duke.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Main entry-point for the java.duke.Duke application."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"What is your name?\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"Hello \" + in.nextLine());"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tikimonarch": 1,
+      "-": 20
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Manager.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.list.FoodList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.person.ActivityLevel;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.person.Person;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.calculator.Calculator;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.database.DataBase;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.person.Gender;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "public class Manager {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private Person person;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private FoodList foodList;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private String name;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private DataBase dataBase;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private Calculator calculator;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private static Scanner s \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public Manager(FoodList foodlist, DataBase dataBase) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.name \u003d \"John Doe\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.person \u003d new Person(this.name, Gender.MALE, 0,0,0,0, ActivityLevel.LOW);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.foodList \u003d foodlist;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.dataBase \u003d dataBase;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.calculator \u003d new Calculator(foodList.getFoods());"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public String readCommand() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return s.nextLine();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public FoodList getFoodList() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return this.foodList;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public Person getPerson() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return this.person;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public void setPerson(String name, Gender gender, int age,int height,int orgWeight,"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                          int targWeight, ActivityLevel actLvl) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.person \u003d new Person(name, gender, age, height, orgWeight, targWeight, actLvl);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public Calculator getCalculator() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return this.calculator;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public DataBase getDataBase() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return this.dataBase;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public String getName() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return this.name;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public void setName(String name) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tikimonarch": 63
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/Parser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.calculator.Calculator;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.list.FoodList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.person.Gender;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import seedu.duke.person.ActivityLevel;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_NAME \u003d \"name\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_LIST \u003d \"list\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_INFO \u003d \"info\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_EXIT \u003d \"exit\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_ADD \u003d \"add\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_CLEAR \u003d \"clear\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_DELETE \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_CALCULATE \u003d \"calculate\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_DATA \u003d \"data\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String COMMAND_USERINFO \u003d \"userinfo\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String[] PARAM_CALCULATE \u003d {\"fat\", \"carbohydrate\",\"protein\", \"calorie\", \"all\"};"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String[] PARAM_INFO \u003d {\"g/\",\"a/\",\"h/\",\"l/\",\"o/\",\"t/\"};"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static final String[] PARAM_ADD \u003d {\"n/\",\"x/\",\"k/\",\"f/\",\"p/\",\"c/\"};"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Returns the command of a user input."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param userInput which is user input."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @return First word which is the command of the user input."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private static String getCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return userInput.split(\" \")[0];"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Returns the subsequent parameter after the command from the user input."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param userInput user input."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @return parameter part of the user input."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @throws DietException when the user input is of a wrong format."
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private static String getCommandParam(String userInput) throws DietException {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String command \u003d getCommand(userInput);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String[] input \u003d {userInput};"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        if (userInput.split(command).length \u003c 2"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                || userInput.split(command)[1].equals(\" \")) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            throw new DietException(\"☹ Error! Missing command parameters!\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            switch (command) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            case COMMAND_NAME:"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                return userInput.split(\" \")[1];"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            case COMMAND_CALCULATE:"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                for (String param: PARAM_CALCULATE) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                    if (userInput.contains(param)) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                        return userInput.split(\" \")[1];"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                throw new DietException(\"☹ Incorrect nutrient type\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            case COMMAND_ADD:"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                for (String param: PARAM_ADD) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                    if (!userInput.contains(param)) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                        throw new DietException(\"☹ Missing or incorrect add statement\");"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                return userInput.substring(userInput.indexOf(\u0027 \u0027) + 1);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            case COMMAND_INFO:"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                for (String param: PARAM_INFO) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                    if (!userInput.contains(param)) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                        throw new DietException(\"☹ Missing or incorrect info statement\");"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                return userInput.substring(userInput.indexOf(\u0027 \u0027) + 1);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                return null;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Processes the parameters for \u003ccode\u003eadd\u003c/code\u003e command of user input and adds a \u003ccode\u003eFood\u003c/code\u003e object."
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param userInput user input."
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param foodList the FoodList object."
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @return name of the food that was added."
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @throws DietException when the user input is of a wrong format."
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private static String getProcessedAdd(String userInput, FoodList foodList) throws DietException {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String[] processedParam \u003d getCommandParam(userInput).split(\" \");"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int portionSize \u003d Integer.parseInt(processedParam[0].substring(processedParam[0].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String foodName \u003d processedParam[1].substring(processedParam[1].indexOf(\"/\") + 1);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int calorie \u003d Integer.parseInt(processedParam[2].substring(processedParam[2].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int carb \u003d Integer.parseInt(processedParam[3].substring(processedParam[3].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int protein \u003d Integer.parseInt(processedParam[4].substring(processedParam[4].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int fat \u003d Integer.parseInt(processedParam[5].substring(processedParam[5].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        foodList.addFood(portionSize, foodName, calorie, carb, protein, fat);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        return foodName;"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Processes the parameters for \u003ccode\u003einfo\u003c/code\u003e command of user input and updates the \u003ccode\u003ePerson\u003c/code\u003e object."
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param userInput user input."
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param manager the manager object."
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @throws DietException when the user input is of a wrong format."
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private static void executeProcessedInfo(String userInput, Manager manager) throws DietException {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        Gender gender;"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        ActivityLevel actLvl;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String[] processedParam \u003d getCommandParam(userInput).split(\" \");"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String processGender \u003d processedParam[0].substring(processedParam[0].indexOf(\"/\") + 1);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        if (processGender.equals(\"M\")) {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            gender \u003d Gender.MALE;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            gender \u003d Gender.FEMALE;"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int age \u003d Integer.parseInt(processedParam[1].substring(processedParam[1].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int height \u003d Integer.parseInt(processedParam[2].substring(processedParam[2].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int orgWeight \u003d Integer.parseInt(processedParam[3].substring(processedParam[3].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        int tarWeight \u003d Integer.parseInt(processedParam[4].substring(processedParam[4].indexOf(\"/\") + 1));"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String processActLvl \u003d processedParam[5].substring(processedParam[5].indexOf(\"/\") + 1);"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        if (processActLvl.equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            actLvl \u003d ActivityLevel.NONE;"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } else if (processActLvl.equals(\"2\")) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            actLvl \u003d ActivityLevel.LOW;"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } else if (processActLvl.equals(\"3\")) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            actLvl \u003d ActivityLevel.MEDIUM;"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } else if (processActLvl.equals(\"4\")) {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            actLvl \u003d ActivityLevel.HIGH;"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            actLvl \u003d ActivityLevel.EXTREME;"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        manager.setPerson(manager.getName(), gender, age, height, orgWeight, tarWeight, actLvl);"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Returns the index after the command of a user input, e.g. delete 3."
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param userInput user input."
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @return index part of the user input."
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @throws DietException when the user input is of a wrong format."
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    private static int getCommandIndex(String userInput) throws DietException {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        String command \u003d getCommand(userInput);"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        if (userInput.split(command).length \u003c 2 || userInput.split(command)[1].equals(\" \")) {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            throw new DietException(\"☹ OOPS!!! Missing index of duke.task!\");"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return Integer.parseInt(userInput.split(\" \")[1]);"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            throw new DietException(\"☹ OOPS!!! No integer index detected!\");"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * Makes sense of the user input and carries out the functions according to the command given."
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @param userInput user input."
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     * @throws DietException when the program does not recognize the command given."
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    public static void parse(String userInput, Manager manager, Ui ui) throws DietException, FileNotFoundException {"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        Calculator calculator \u003d manager.getCalculator();"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        switch (getCommand(userInput)) {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_NAME:"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            manager.setName(getCommandParam(userInput));"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printAskForUserInfoMessage(manager.getName());"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_EXIT:"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printExitMessage(manager.getName());"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            DietBook.isExit \u003d true;"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_LIST:"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printFoodList(manager.getFoodList().toString());"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_USERINFO:"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printPersonInfo(manager.getPerson().toString());"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_DATA:"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            manager.getDataBase().init();"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printDatabase(manager.getDataBase().getFoodList());"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_DELETE:"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printDeletedFood(manager.getFoodList().delete(getCommandIndex(userInput)));"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_CLEAR:"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printClearFoodListMessage();"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            manager.getFoodList().clear();"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_CALCULATE:"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            if (getCommandParam(userInput).equals(\"all\")) {"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                ui.printAllNutrientIntake(calculator.calculateCalorie(), calculator.calculateCarb(),"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                        calculator.calculateProtein(), calculator.calculateFat());"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            } else if (getCommandParam(userInput).equals(\"calorie\")) {"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                ui.printCalorieIntake(calculator.calculateCalorie());"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            } else if (getCommandParam(userInput).equals(\"carbohydrate\")) {"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                ui.printCarbohydrateIntake(calculator.calculateCarb());"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            } else if (getCommandParam(userInput).equals(\"protein\")) {"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                ui.printProteinIntake(calculator.calculateProtein());"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "                ui.printFatIntake(calculator.calculateFat());"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_INFO:"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            executeProcessedInfo(userInput, manager);"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printTutorialMessage();"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        case COMMAND_ADD:"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            ui.printNewFood(getProcessedAdd(userInput, manager.getFoodList()));"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "            throw new DietException(\"☹ There\u0027s no such command!\");"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "tikimonarch"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tikimonarch": 210
+    }
+  },
+  {
     "path": "src/main/java/seedu/duke/Ui.java",
     "fileType": "functional-code",
     "lines": [
@@ -1500,9 +3989,9 @@
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "HengFuYuen"
+          "gitId": "tikimonarch"
         },
-        "content": "                + \"To add you own food: add n/FOOD_NAME x/PORTION_SIZE k/CALORIE [c/CARBOHYDRATE] \""
+        "content": "                + \"To add you own food: add x/PORTION_SIZE n/FOOD_NAME k/CALORIE [c/CARBOHYDRATE] \""
       },
       {
         "lineNumber": 82,
@@ -2836,7 +5325,2690 @@
       }
     ],
     "authorContributionMap": {
-      "HengFuYuen": 271
+      "HengFuYuen": 270,
+      "tikimonarch": 1
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/database/Canteen.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "package seedu.duke.database;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "public class Canteen {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private final String name;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private final ArrayList\u003cStore\u003e storeList;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Canteen(String name) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        this.storeList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Name of the canteen is for filtering purposes."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return name of canteen"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public String getName() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return name;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public void addStore(Store store) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        storeList.add(store);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public List\u003cStore\u003e getStoreList() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return storeList;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "snowbanana12345": 31
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/database/DataBase.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "package seedu.duke.database;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import seedu.duke.food.Food;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.NoSuchElementException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.stream.Collectors;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.stream.Stream;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "public class DataBase {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private static final String START_SYMBOL \u003d \"\u0026%START\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private static final String STOP_SYMBOL \u003d \"\u0026%STOP\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private static final String UP_SYMBOL \u003d \"\u0026%UP\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private static final String DATA_FILE_SEPERATOR \u003d \"\\\\|\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private static final String rootDirectory \u003d System.getProperty(\"user.dir\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private static final String dataFileFolder \u003d \"src\" + File.separator + \"main\" + File.separator"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            + \"java\" + File.separator + \"seedu\" + File.separator + \"duke\" + File.separator + \"database\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private final List\u003cCanteen\u003e canteenList;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public DataBase() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        this.canteenList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Reads a file from the data base and puts it into the DataBase object."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public void init() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        String fileFolder \u003d rootDirectory + File.separator + dataFileFolder;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        File dataFile \u003d new File(fileFolder + File.separator + \"data.txt\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        Scanner fileReader \u003d new Scanner(dataFile);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        String fileLine;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        boolean start \u003d false;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        while (fileReader.hasNext()) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            fileLine \u003d fileReader.nextLine();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            // ------ Check if the data base has started scanning ------"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            if (fileLine.equals(START_SYMBOL)) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                start \u003d true;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                continue;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            if (!(start)) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                continue;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            if (fileLine.equals(STOP_SYMBOL)) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            canteenList.add(fillCanteen(fileLine, fileReader));"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * This function is called right after the canteen name is provided"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * The very next line that the file reads is the store name"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * It will turn call fillStore with that name inserted, when the function fillStore"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * finishes executing, fileRead.nextLine() can either provide a new store name or UP_SYMBOL"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * if the UP_SYMBOL is provided, the function ends and the final Canteen object is returned."
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param name name of store"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param fileSegment the file reader with the next line being a food item or UP_SYMBOL"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return Canteen objected with all it\u0027s stores loaded"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private Canteen fillCanteen(String name, Scanner fileSegment) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        Canteen canteen \u003d new Canteen(name);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        String fileLine \u003d fileSegment.nextLine();"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        while (!(fileLine.equals(UP_SYMBOL))) {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            canteen.addStore(fillStore(fileLine,fileSegment));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            fileLine \u003d fileSegment.nextLine();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return canteen;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * This function is called right after the store name is provided."
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * The very next line in the file should be the first food to be added."
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * The function stops when it hits the line of the file that says UP_SYMBOL."
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param name name of the store"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param fileSegment the Scanner object used for the init() function"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return the completed store with all the food loaded"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private Store fillStore(String name, Scanner fileSegment) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        Store store \u003d new Store(name);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        Food food;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        String fileLine \u003d fileSegment.nextLine();"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        String[] fileData \u003d fileLine.split(DATA_FILE_SEPERATOR);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        while (!(fileLine.equals(UP_SYMBOL))) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            food \u003d new Food(fileData[0], Integer.parseInt(fileData[1]),Integer.parseInt(fileData[2]),"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            Integer.parseInt(fileData[3]),Integer.parseInt(fileData[4]));"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            store.addFood(food);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            fileLine \u003d fileSegment.nextLine();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            fileData \u003d fileLine.split(DATA_FILE_SEPERATOR);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return store;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Debugging function prints out all contents."
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public void printAllData() {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\"Printing out all data\");"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        for (Canteen canteen : canteenList) {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Canteeh : \" + canteen.getName());"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            for (Store store : canteen.getStoreList()) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                System.out.println(\"Store : \" + store.getName());"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                for (Food food : store.getFoodList()) {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    System.out.println(food);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\"Finished Printing out all data\");"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    // -------- Search functions --------"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * This method searchs the whole data base and returns the first food item whose name contains the provided string."
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * ( CASE SENSITIVE ! )"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param food part of the name of the food"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return Food"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @throws NoSuchElementException if no food contains the name provided"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Food searchFoodByName(String food) {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return foodStream().filter(x -\u003e x.getName().contains(food)).findFirst().orElseThrow();"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * This method searchs the whole data base and returns all of the food whose name contains the provided string."
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param food part of the name of the food e.g. chicken"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return data stream of all food items"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e searchAllFoodContainingName(String food) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return foodStream().filter(x -\u003e x.getName().contains(food));"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Search for the first food that contains the string provided in the first store which matchs the store"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * string provided."
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param food partial name of the food"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param store partial name of the store"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return Food object"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @throws NoSuchElementException if no food contains the name provided"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Food searchFoodByNameByStore(String food, String store) {"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return searchAllFoodByStore(store)"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .filter(x -\u003e x.getName().contains(food))"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .findFirst()"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .orElseThrow();"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Returns a stream of all the food in the first store that contains the given string."
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param store partial name of the store"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return food stream"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @throws NoSuchElementException if no there is no store"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e searchAllFoodByStore(String store) {"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return canteenList.stream()"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .flatMap(x -\u003e x.getStoreList().stream())"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .filter(x -\u003e x.getName().contains(store))"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .findFirst()"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .orElseThrow()"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .getFoodList()"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .stream();"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Returns a stream of all the food in all stores that contains the given string."
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param store partial name of the store"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return  food stream"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e searchAllFoodOfAllStores(String store) {"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return canteenList.stream()"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .flatMap(x -\u003e x.getStoreList().stream())"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .filter(x -\u003e x.getName().contains(store))"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .flatMap(x -\u003e x.getFoodList().stream());"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Returns the first food that contains the food String provided that is in the first canteen that contains the"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * canteen String provided."
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param food partial name of the food"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param canteen partial name of the canteen"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return Food object"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @throws NoSuchElementException if no food contains the name provided"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Food searchFoodByNameByCanteen(String food, String canteen) {"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return searchAllFoodByNameByCanteen(food, canteen)"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .findFirst()"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .orElseThrow();"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Returns all food that contains the provided food name in the first canteen that matchs the canteen name."
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param food partial name of the food"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param canteen partial name of the canteen"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return Food Stream"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e searchAllFoodByNameByCanteen(String food, String canteen) {"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return canteenList.stream()"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .filter(x -\u003e x.getName().contains(canteen))"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .findFirst()"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .orElseThrow()"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .getStoreList()"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .stream()"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .flatMap(x -\u003e x.getFoodList().stream())"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .filter(x -\u003e x.getName().contains(food));"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Returns a stream of food whose calorie is below the provided amount."
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param calorie the maximum calorie of the food"
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return food stream"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e searchAllFoodBelowCalorie(int calorie) {"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return foodStream().filter(x -\u003e x.getCalorie() \u003c calorie);"
+      },
+      {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Returns all food within the calorie range."
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param minCalorie minimum calories"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @param maxCalorie maxinum calories"
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return food stream"
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e searchAllFoodInCalorieRange(int minCalorie, int maxCalorie) {"
+      },
+      {
+        "lineNumber": 242,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return foodStream().filter(x -\u003e x.getCalorie() \u003c\u003d maxCalorie \u0026\u0026 x.getCalorie() \u003e\u003d minCalorie);"
+      },
+      {
+        "lineNumber": 243,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * Provides a data stream of all the food in the data base."
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return a food stream"
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Stream\u003cFood\u003e foodStream() {"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return canteenList.stream()"
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .flatMap(x -\u003e x.getStoreList().stream())"
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                .flatMap(x -\u003e x.getFoodList().stream());"
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public List\u003cFood\u003e getFoodList() {"
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return foodStream().collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "snowbanana12345": 259
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/database/Store.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "package seedu.duke.database;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import seedu.duke.food.Food;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "public class Store {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private final String name;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    private final ArrayList\u003cFood\u003e foodList;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public Store(String name) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        this.name \u003d name;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        this.foodList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * The name of the store will be used for filtering purposes."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * @return store name"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public String getName() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return name;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     * This function should only be called when we initialize the data base from the text file."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public void addFood(Food food) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        foodList.add(food);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public List\u003cFood\u003e getFoodList() {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        return foodList;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "snowbanana12345": 40
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/database/data.txt",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#####################################################################"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    3 LEVEL DATA BASE                                              #"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    Canteen -----\u003e Store ------\u003e Food                              #"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    Commands :                                                     #"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    \u0026%START : start reading data from the data base                #"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    \u0026%STOP : stop reading data from the data base                  #"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    \u0026%UP    : goes down 1 level e.g. Canteen ---\u003e Store            #"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    \u0026%DOWN    : goes down 1 level e.g. Canteen ---\u003e Store          #"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    \u0026%ADD format : adds the item with the given format             #"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#                                                                   #"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    Comments : any line that starts with # is ignored              #"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#                                                                   #"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    Canteen format : {name}                                        #"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    Store format : {name}                                          #"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#    Food format : {name}|{Calorie}|{Carb}|{Protein}|{Fat}          #"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#####################################################################"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "######################################################################"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#   Version 0.1 :                                                    #"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#   there is only UP, once a store or canteen is                     #"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#  specified we automatically go down 1 level , for this version     #"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#   there is no going out of a store and then coming back to add more#"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "#   Units : Calorie : kcal  : Carbs : g Protein : g : Fats : g       #"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "######################################################################"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "\u0026%START"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Science canteen"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Halal Mini Wok"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Prawn Mee Soup(Dry)(Large)|490|0|0|0"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Prawn Mee Soup(Dry)(Small)|390|0|0|0"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Fried Hokkien Prawn Mee(Large)|470|0|0|0"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Fried Hokkien Prawn Mee(Small)|350|0|0|0"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Clay Pot Chicken|440|0|0|0"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Black Pepper Chicken|490|0|0|0"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "\u0026%UP"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Ayam Penyet"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Ayam Penyet Set|699|0|0|0"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Steamed Chicken Set |475|0|0|0"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Ikan Grouper Penyet Set|669|0|0|0"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "\u0026%UP"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Michelin Star Restaurant"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Bouillabaisse with cock crab and poached lobster|520|45|35|56"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Chicken wings with Reblochon pomme purée|450|25|32|66"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "Sea bass with prawn tortellini, fennel purée and white wine sauce|530|76|25|43"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "\u0026%UP"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "\u0026%UP"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "\u0026%STOP"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "snowbanana12345": 48
     }
   },
   {
@@ -2862,318 +8034,325 @@
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": " * Constructor of the Food class"
+        "content": "/**"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": " * Store information regarding a food item: name, number of calories in kcal, amount of carbohydrate in grams,"
+        "content": " * Constructor of the Food class"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": " * amount of protein in grams, amount of fats in grams."
+        "content": " * Store information regarding a food item: name, number of calories in kcal, amount of carbohydrate in grams,"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": " */"
+        "content": " * amount of protein in grams, amount of fats in grams."
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "public class Food {"
+        "content": " */"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    private final String name;"
+        "content": "public class Food {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    private final int calorie;"
+        "content": "    private final String name;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    private final int carbohydrate;"
+        "content": "    private final int calorie;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    private final int protein;"
+        "content": "    private final int carbohydrate;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    private final int fats;"
+        "content": "    private final int protein;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    private final int fats;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public Food(String name, int calorie, int carbohydrate, int protein, int fats) {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        this.name \u003d name;"
+        "content": "    public Food(String name, int calorie, int carbohydrate, int protein, int fats) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        this.calorie \u003d calorie;"
+        "content": "        this.name \u003d name;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        this.carbohydrate \u003d carbohydrate;"
+        "content": "        this.calorie \u003d calorie;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        this.protein \u003d protein;"
+        "content": "        this.carbohydrate \u003d carbohydrate;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        this.fats \u003d fats;"
+        "content": "        this.protein \u003d protein;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        this.fats \u003d fats;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public int getFats() {"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        return fats;"
+        "content": "    public int getFats() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        return fats;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public String getName() {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        return name;"
+        "content": "    public String getName() {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        return name;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public int getCalorie() {"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        return calorie;"
+        "content": "    public int getCalorie() {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        return calorie;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public int getCarbohydrate() {"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        return carbohydrate;"
+        "content": "    public int getCarbohydrate() {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        return carbohydrate;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public int getProtein() {"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        return protein;"
+        "content": "    public int getProtein() {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        return protein;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public String toString() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        return name + \" | calorie : \" + calorie + \" | protein : \" + protein + \" | carbohydrate : \" + carbohydrate"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "                + \" | fats : \" + fats;"
+        "content": "        return name + \" | calorie : \" + calorie + \" | protein : \" + protein + \" | carbohydrate : \" + carbohydrate"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "                + \" | fats : \" + fats;"
       },
       {
         "lineNumber": 48,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
         "author": {
           "gitId": "snowbanana12345"
         },
@@ -3181,7 +8360,7 @@
       }
     ],
     "authorContributionMap": {
-      "snowbanana12345": 48
+      "snowbanana12345": 49
     }
   },
   {
@@ -6955,6 +12134,680 @@
     }
   },
   {
+    "path": "src/test/java/seedu/duke/database/DataBaseTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "package seedu.duke.database;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "import java.util.NoSuchElementException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "class DataBaseTest {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        DataBase database \u003d new DataBase();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            database.init();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ----- Print everything in the data base -----"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        database.printAllData();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- Using stream version to print -----"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\"------------ printing using food stream ------------\");"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        database.foodStream().forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- Printing out as list -----"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\"---------- printing food using list --------------\");"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        database.getFoodList().forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- search food by name test -----"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- testing the searchFoodByName function -------\");"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Prawn  ## OutPut: \" + database.searchFoodByName(\"Prawn\"));"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Mee ## OutPut: \" + database.searchFoodByName(\"Mee\"));"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: lobster ## OutPut: \" + database.searchFoodByName(\"lobster\"));"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Prawn ## OutPut: \" + database.searchFoodByName(\"koala bears\"));"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        } catch (NoSuchElementException e) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"No such food found! \" + e);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- search food by store name test ----"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\"------- testing the search food by store and by name function --------\");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Fried , Halal Mini Wok ## OutPut: \""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByStore(\"Fried\", \"Halal Mini Wok\"));"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Chicken , Halal Mini Wok ## OutPut: \""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByStore(\"Chicken\", \"Halal Mini Wok\"));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Chicken , Ayam Penyet ## OutPut: \""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByStore(\"Chicken\", \"Ayam Penyet\"));"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: lobster , Michelin ## OutPut: \""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByStore(\"lobster\", \"Michelin\"));"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: fish , Halal Mini Wok ## OutPut: \""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByStore(\"fish\", \"Halal Mini Wok\"));"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        } catch (NoSuchElementException e) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"No such food found! \" + e);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- search all food by store -----"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- testing the search ALL food by store and by name function --------\");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- Input: Halal Mini Wok -------- \");"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            database.searchAllFoodByStore(\"Halal Mini Wok\").forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- Input: Ayam Penyet -------- \");"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            database.searchAllFoodByStore(\"Ayam Penyet\").forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- Input: Michelin -------- \");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            database.searchAllFoodByStore(\"Michelin\").forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- Input: Gordan Ramsey\u0027s restaurant -------- \");"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            database.searchAllFoodByStore(\"Gordon Ramsey\u0027s restaurant\").forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        } catch (NoSuchElementException e) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"There is no such store! \" + e);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- search food by Name by canteen ------"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"------- testing the search food by canteen and by name function --------\");"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Fried , Science ## OutPut: \""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByCanteen(\"Fried\", \"Science\"));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: Chicken , Science ## OutPut: \""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByCanteen(\"Chicken\", \"Science\"));"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: lobster , Science ## OutPut: \""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByCanteen(\"lobster\", \"Science\"));"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"Input: lobster , Raffles Hotel Suite ## OutPut: \""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "                    + database.searchFoodByNameByCanteen(\"lobster\", \"Raffles Hotel Suite\"));"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        } catch (NoSuchElementException e) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "            System.out.println(\"There is either no such canteen or no such food in that canteen!\" + e);"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        // ---- search all food below calorie ------"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\"------- testing the search food below calorie function --------\");"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\" ---- Input : 400\");"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        database.searchAllFoodBelowCalorie(400).forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\" ---- Input : 200\");"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        database.searchAllFoodBelowCalorie(200).forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        System.out.println(\" ---- Input : 3428\");"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "        database.searchAllFoodBelowCalorie(3428).forEach(System.out::println);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "snowbanana12345": 95
+    }
+  },
+  {
     "path": "src/test/java/seedu/duke/food/FoodTest.java",
     "fileType": "test-code",
     "lines": [
@@ -7026,108 +12879,115 @@
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "class FoodTest {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    private Food testFood;"
+        "content": "class FoodTest {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    private Food testFood;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    @BeforeEach"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public void setUp() {"
+        "content": "    @BeforeEach"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        testFood \u003d new Food(\"Kobe Beef\", 480,50,40,30);"
+        "content": "    public void setUp() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        testFood \u003d new Food(\"Kobe Beef\", 480,50,40,30);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    public void footTest() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        assertEquals(480, testFood.getCalorie());"
+        "content": "    public void footTest() {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        assertEquals(50, testFood.getCarbohydrate());"
+        "content": "        assertEquals(480, testFood.getCalorie());"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        assertEquals(40, testFood.getProtein());"
+        "content": "        assertEquals(50, testFood.getCarbohydrate());"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "        assertEquals(30, testFood.getFats());"
+        "content": "        assertEquals(40, testFood.getProtein());"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "snowbanana12345"
         },
-        "content": "    }"
+        "content": "        assertEquals(30, testFood.getFats());"
       },
       {
         "lineNumber": 25,
+        "author": {
+          "gitId": "snowbanana12345"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "snowbanana12345"
         },
@@ -7135,7 +12995,7 @@
       }
     ],
     "authorContributionMap": {
-      "snowbanana12345": 25
+      "snowbanana12345": 26
     }
   },
   {

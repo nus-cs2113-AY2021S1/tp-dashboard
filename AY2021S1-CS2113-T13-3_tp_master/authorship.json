@@ -740,234 +740,493 @@
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "/**"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": " * Adds an event to the task list."
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": " */"
+        "content": "import java.util.logging.FileHandler;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "public class AddCommand extends Command {"
+        "content": "import java.util.logging.Level;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": ""
+        "content": "import java.util.logging.LogManager;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "    public AddCommand(String input) {"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        super(input);"
+        "content": "import java.util.logging.SimpleFormatter;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "    @Override"
+        "content": " * Adds an event to the task list."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "    public void execute(UserList users, Ui ui, User nowUser/*, Storage storage*/) throws DukeException {"
+        "content": " */"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        //Lec /day /time /location"
+        "content": "public class AddCommand extends Command {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        if (nowUser !\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            String[] parsedInputs \u003d input.split(\" /\", 4);"
+        "content": "    public AddCommand(String input) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            String[] timeInputs \u003d parsedInputs[2].split(\"-\", 2);"
+        "content": "        super(input);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "weisiong24"
         },
-        "content": "            String day \u003d parsedInputs[1].toLowerCase();"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "manuelmanuntag96"
         },
-        "content": ""
+        "content": "    private static Logger logger \u003d Logger.getLogger(\"LogLogInCommand\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            for (int i \u003d 0; i \u003c users.getTotalUserCount(); i++) {"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "weisiong24"
         },
-        "content": "                if ((users.getUser(i + 1).getName().equals(nowUser.getName()))) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "                    Event newEvent \u003d new Event(parsedInputs[0], parsedInputs[3], timeInputs[0], timeInputs[1]);"
+        "content": "    public void execute(UserList users, Ui ui, User nowUser/*, Storage storage*/) throws DukeException {"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "yeapcl"
         },
-        "content": "                    ui.printEvent(newEvent, day);"
+        "content": "        /*/Lec /day /time /location*/"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "weisiong24"
         },
-        "content": "                    (users.getUser(i + 1).getTimetable()).getTimetable(day).add(newEvent);"
+        "content": "        setupInputLogger();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "                }"
+        "content": "        if (nowUser !\u003d null) {"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "yeapcl"
         },
-        "content": "            }"
+        "content": "            String[] parsedInputs \u003d input.split(\"/\", 5);"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "yeapcl"
         },
-        "content": "            //((Timetable) currentUser.getTimetable())"
+        "content": "            String[] timeInputs \u003d parsedInputs[3].split(\"-\", 2);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            //tasks.addTask(newTask);"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "yeapcl"
         },
-        "content": "            //ui.printEvent(newEvent, date);"
+        "content": "            String day \u003d parsedInputs[2].toLowerCase().trim();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            //storage.write(tasks);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        } else {"
+        "content": "            assert timeInputs[0].length() \u003d\u003d 4 : \"Wrong Start time format specified\";"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            throw new DukeException(\"Sorry! You are not Logged in to any account :-(\");"
+        "content": "            assert day.length() \u003d\u003d 3 : \"Wrong format of day entered\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "    }"
+        "content": "            logger.log(Level.INFO,\"Timetable name successfully added:  \" + parsedInputs[1]);"
       },
       {
         "lineNumber": 45,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            logger.log(Level.INFO,\"Day successfully add:  \" + parsedInputs[2]);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            logger.log(Level.INFO,\"Time successfully add:  \" + parsedInputs[3]);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            logger.log(Level.INFO,\"Location successfully add:  \" + parsedInputs[4] + \"\\n\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            for (int i \u003d 0; i \u003c users.getTotalUserCount(); i++) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                if ((users.getUser(i + 1).getName().equals(nowUser.getName()))) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                    Event newEvent \u003d new Event(parsedInputs[1].trim(), parsedInputs[4].trim(),"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                            timeInputs[0].trim(), timeInputs[1].trim());"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "                    ui.printEvent(newEvent, day);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                    users.getUser(i + 1).getTimetable().getTimetable(day).add(newEvent);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "                    ArrayList\u003cEvent\u003e timetable \u003d users.getUser(i + 1).getTimetable().getTimetable(day);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "                    logger.log(Level.INFO, day + \" timetable successfully add:  \" + timetable  + \"\\n\");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            //((Timetable) currentUser.getTimetable())"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            //tasks.addTask(newTask);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            //ui.printEvent(newEvent, date);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            //storage.write(tasks);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            logger.log(Level.WARNING,\"Not logged in\" + \"\\n\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            throw new DukeException(\"Sorry! You are not Logged in to any account :-(\");"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    private void setupInputLogger() {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        LogManager.getLogManager().reset();"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        logger.setLevel(Level.ALL);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            FileHandler fh \u003d new FileHandler(\"AddCommand.log\",true);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            fh.setLevel(Level.INFO);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            fh.setFormatter(new SimpleFormatter());"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            logger.addHandler(fh);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "            logger.log(Level.SEVERE,\"File logging not working\");"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 82,
         "author": {
           "gitId": "weisiong24"
         },
@@ -975,9 +1234,10 @@
       }
     ],
     "authorContributionMap": {
-      "yeapcl": 1,
-      "tammykoh": 3,
-      "weisiong24": 41
+      "yeapcl": 8,
+      "tammykoh": 1,
+      "manuelmanuntag96": 1,
+      "weisiong24": 72
     }
   },
   {
@@ -2327,16 +2587,16 @@
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "                int tempX \u003d (Integer.valueOf(Integer.parseInt(event.getTimeStart().substring(0,2))));"
+        "content": "                int tempX \u003d (Integer.parseInt(event.getTimeStart().substring(0, 2)));"
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "                int tempY \u003d (Integer.valueOf(Integer.parseInt(event.getTimeEnd().substring(0,2))));"
+        "content": "                int tempY \u003d (Integer.parseInt(event.getTimeEnd().substring(0, 2)));"
       },
       {
         "lineNumber": 78,
@@ -2390,16 +2650,16 @@
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "                int tempX \u003d (Integer.valueOf(Integer.parseInt(event.getTimeStart().substring(0,2))));"
+        "content": "                int tempX \u003d (Integer.parseInt(event.getTimeStart().substring(0, 2)));"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "                int tempY \u003d (Integer.valueOf(Integer.parseInt(event.getTimeEnd().substring(0,2))));"
+        "content": "                int tempY \u003d (Integer.parseInt(event.getTimeEnd().substring(0, 2)));"
       },
       {
         "lineNumber": 87,
@@ -2411,9 +2671,9 @@
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "                for (int i \u003d tempX; i \u003c\u003d tempY; i++) {"
+        "content": "                for (int i \u003d tempX; i \u003c tempY; i++) {"
       },
       {
         "lineNumber": 89,
@@ -2480,7 +2740,8 @@
       }
     ],
     "authorContributionMap": {
-      "yellow-fellow": 97
+      "yeapcl": 5,
+      "yellow-fellow": 92
     }
   },
   {
@@ -3238,6 +3499,267 @@
     ],
     "authorContributionMap": {
       "manuelmanuntag96": 30
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/command/EditCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import seedu.duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import seedu.duke.user.User;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import seedu.duke.user.UserList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import seedu.duke.task.Event;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "public class EditCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    public EditCommand(String input) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        super(input);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    public void execute(UserList users, Ui ui, User nowUser/*, Storage storage*/) throws DukeException {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        String[] parsedInputs \u003d input.split(\"/\", 4);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        assert parsedInputs.length \u003d\u003d 4 : \"input format is not according to UG\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        String date \u003d parsedInputs[1].trim();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        String[] newTime \u003d parsedInputs[3].split(\"-\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        assert newTime.length \u003d\u003d 2 : \"date format is not according to UG\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        int index \u003d Integer.parseInt(parsedInputs[2].trim());"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        Event originalEvent;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        for (int i \u003d 0; i \u003c users.getTotalUserCount(); i++) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "            if ((users.getUser(i + 1).getName().equals(nowUser.getName()))) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                originalEvent \u003d nowUser.getTimetable().getTimetable(date).get(index - 1);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                Event modifiedEvent \u003d new Event(originalEvent.getDescription(), "
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                        originalEvent.getLocation(), newTime[0], newTime[1]);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                nowUser.getTimetable().getTimetable(date).set(index - 1, modifiedEvent);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "                ui.printEdit(newTime, date, index);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "yeapcl": 36
     }
   },
   {
@@ -4014,269 +4536,500 @@
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "/**"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": " * Adds an event to the task list."
+        "content": "import java.util.logging.FileHandler;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": " */"
+        "content": "import java.util.logging.Level;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "public class LogInCommand extends Command {"
+        "content": "import java.util.logging.LogManager;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": ""
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "    public LogInCommand(String input) {"
+        "content": "import java.util.logging.SimpleFormatter;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        super(input);"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "    }"
+        "content": "/**"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": ""
+        "content": " * Adds an event to the task list."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "    @Override"
+        "content": " */"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "    public void execute(UserList users, Ui ui, User nowUser/*, Storage storage*/) throws DukeException {"
+        "content": "public class LogInCommand extends Command {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        boolean doesExist \u003d false;"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        "
+        "content": "    public LogInCommand(String input) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        String[] parsedInputs \u003d input.split(\" /\", 2);"
+        "content": "        super(input);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        for (int i \u003d 1; i \u003c users.getTotalUserCount(); i++) {"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            if (parsedInputs[0].equals((users.getUser(i)).getName())) {"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "                if (parsedInputs[1].equals((users.getUser(i)).getPassWord())) {"
+        "content": "    private static Logger logger \u003d Logger.getLogger(\"LogAddCommand\");"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "                    currentUser \u003d users.getUser(i);"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "                    //System.out.println(parsedInputs[0] + \" \u003d\u003d \" + (users.getUser(i)).getName());"
+        "content": "    @Override"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "weisiong24"
         },
-        "content": "                    doesExist \u003d true;"
+        "content": "    public void execute(UserList users, Ui ui, User nowUser/*, Storage storage*/) throws DukeException {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "                } else {"
+        "content": "        boolean doesExist \u003d false;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "                    throw new DukeException(\"Wrong Password\");"
+        "content": "        setupInputLogger();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "                }"
+        "content": "        "
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            }"
+        "content": "        String[] parsedInputs \u003d input.split(\" /\", 2);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        } "
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        "
+        "content": "        assert parsedInputs.length \u003d\u003d 2 : \"Username or Password is missing\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        if (doesExist \u003d\u003d false) {"
+        "content": "        "
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            //System.out.println(\"User: \" + parsedInputs[0] + \" does not exist!\");"
+        "content": "        for (int i \u003d 1; i \u003c\u003d users.getTotalUserCount(); i++) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            User newUser \u003d new User(parsedInputs[0], parsedInputs[1]);"
+        "content": "            if (parsedInputs[0].equals((users.getUser(i)).getName())) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            currentUser \u003d newUser;"
+        "content": "                if (parsedInputs[1].equals((users.getUser(i)).getPassWord())) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            users.addUser(newUser);"
+        "content": "                    currentUser \u003d users.getUser(i);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        }"
+        "content": "                    //System.out.println(parsedInputs[0] + \" \u003d\u003d \" + (users.getUser(i)).getName());"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        ui.greetUser(currentUser);"
+        "content": "                    doesExist \u003d true;"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "        isLogIn \u003d true;"
+        "content": "                } else {"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "manuelmanuntag96"
         },
-        "content": ""
+        "content": "                    logger.log(Level.WARNING,\"Wrong Password\" + \"\\n\");"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "manuelmanuntag96"
         },
-        "content": ""
+        "content": "                    throw new DukeException(\"Wrong Password\");"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        //storage.write(tasks);"
+        "content": "                }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 49,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        } "
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        if (doesExist \u003d\u003d false) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            //System.out.println(\"User: \" + parsedInputs[0] + \" does not exist!\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            User newUser \u003d new User(parsedInputs[0], parsedInputs[1]);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            currentUser \u003d newUser;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            users.addUser(newUser);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            logger.log(Level.INFO,\"User Name successfully added:  \" + parsedInputs[0]);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            logger.log(Level.INFO,\"Password successfully added:  \" + parsedInputs[1]  + \"\\n\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        ui.greetUser(currentUser);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        isLogIn \u003d true;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        assert isLogIn() \u003d\u003d true : \"Username or Password is missing\";"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        logger.log(Level.INFO, \"end of processing\"  + \"\\n\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        //storage.write(tasks);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    private void setupInputLogger() {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        LogManager.getLogManager().reset();"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        logger.setLevel(Level.ALL);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            FileHandler fh \u003d new FileHandler(\"LogInCommand.log\",true);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            fh.setLevel(Level.INFO);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            fh.setFormatter(new SimpleFormatter());"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            logger.addHandler(fh);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            logger.log(Level.SEVERE,\"File logging not working\");"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 82,
         "author": {
           "gitId": "manuelmanuntag96"
         },
@@ -4284,7 +5037,7 @@
       }
     ],
     "authorContributionMap": {
-      "manuelmanuntag96": 45,
+      "manuelmanuntag96": 78,
       "weisiong24": 4
     }
   },
@@ -4458,1482 +5211,1517 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "yeapcl"
         },
-        "content": "//import seedu.duke.command.DoneCommand;"
+        "content": "import seedu.duke.command.EditCommand;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "//import seedu.duke.command.EventCommand;"
+        "content": "//import seedu.duke.command.DoneCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "//import seedu.duke.command.FindCommand;"
+        "content": "//import seedu.duke.command.EventCommand;"
       },
       {
         "lineNumber": 13,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "//import seedu.duke.command.FindCommand;"
+      },
+      {
+        "lineNumber": 14,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "import seedu.duke.command.ListCommand;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 15,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "import seedu.duke.command.LogInCommand;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 16,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "import seedu.duke.exception.DukeException;"
       },
       {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 17,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": " * Parses the user\u0027s input."
+        "content": "/**"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": " */"
+        "content": " * Parses the user\u0027s input."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "public class Parser {"
+        "content": " */"
       },
       {
         "lineNumber": 21,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 22,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "    private static final String COMMAND_CLEAR \u003d \"clear\";"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 23,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "    //private static final String COMMAND_DEADLINE \u003d \"deadline\";"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 24,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "    //private static final String COMMAND_EVENT \u003d \"event\";"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 25,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "    private static final String COMMAND_LIST \u003d \"list\";"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 26,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "    //private static final String COMMAND_DONE \u003d \"done\";"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 27,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "    private static final String COMMAND_DELETE \u003d \"delete\";"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 28,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "    //private static final String COMMAND_FIND \u003d \"find\";"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 29,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "    private static final String COMMAND_BYE \u003d \"bye\";"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 30,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "    private static final String COMMAND_LOGIN \u003d \"login\";"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 31,
         "author": {
           "gitId": "weisiong24"
         },
         "content": "    private static final String COMMAND_ADD \u003d \"add\";"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 32,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    private static final String COMMAND_EDIT \u003d \"edit\";"
+      },
+      {
+        "lineNumber": 33,
         "author": {
           "gitId": "yellow-fellow"
         },
         "content": "    private static final String COMMAND_COMPARE \u003d \"compare\";"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 34,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "    /**"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * Returns a Command object based on user\u0027s string input."
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @param input user\u0027s string input."
+        "content": "     * Returns a Command object based on user\u0027s string input."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @return a new Command object based on user\u0027s input."
+        "content": "     *"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @throws DukeException if user\u0027s input does not match any of the command."
+        "content": "     * @param input user\u0027s string input."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "     * @return a new Command object based on user\u0027s input."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    public static Command parse(String input) throws DukeException {"
+        "content": "     * @throws DukeException if user\u0027s input does not match any of the command."
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        String[] parsedInputs \u003d input.split(\" \", 2);"
+        "content": "     */"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        switch (parsedInputs[0]) {"
+        "content": "    public static Command parse(String input) throws DukeException {"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "yeapcl"
         },
-        "content": "        case COMMAND_CLEAR:"
+        "content": "        String[] parsedInputs \u003d input.split(\" \", 2);"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "yeapcl"
         },
-        "content": "            checkClearValidity(parsedInputs);"
+        "content": "        switch (parsedInputs[0]) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            return new ClearCommand(parsedInputs[1]);"
+        "content": "        case COMMAND_CLEAR:"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "tammykoh"
         },
-        "content": "        /*case COMMAND_DEADLINE:"
+        "content": "            checkClearValidity(parsedInputs);"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "tammykoh"
         },
-        "content": "            checkDeadlineValidity(parsedInputs);"
+        "content": "            return new ClearCommand(parsedInputs[1]);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            return new DeadlineCommand(parsedInputs[1]);"
+        "content": "        /*case COMMAND_DEADLINE:"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        case COMMAND_EVENT:"
+        "content": "            checkDeadlineValidity(parsedInputs);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            checkEventValidity(parsedInputs);"
+        "content": "            return new DeadlineCommand(parsedInputs[1]);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            return new EventCommand(parsedInputs[1]);*/"
+        "content": "        case COMMAND_EVENT:"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "        case COMMAND_LIST:"
+        "content": "            checkEventValidity(parsedInputs);"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "            checkListValidity(parsedInputs);"
+        "content": "            return new EventCommand(parsedInputs[1]);*/"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            return new ListCommand(parsedInputs[1]);"
+        "content": "        case COMMAND_LIST:"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "tammykoh"
         },
-        "content": "        /*case COMMAND_DONE:"
+        "content": "            checkListValidity(parsedInputs);"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "tammykoh"
         },
-        "content": "            checkTaskIndexValidity(parsedInputs);"
+        "content": "            return new ListCommand(parsedInputs[1]);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            return new DoneCommand(parsedInputs[1]);*/"
+        "content": "        /*case COMMAND_DONE:"
       },
       {
         "lineNumber": 59,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            checkTaskIndexValidity(parsedInputs);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            return new DoneCommand(parsedInputs[1]);*/"
+      },
+      {
+        "lineNumber": 61,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "        case COMMAND_DELETE:"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 62,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "            checkDeleteValidity(parsedInputs);"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 63,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "            return new DeleteCommand(parsedInputs[1]);"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 64,
         "author": {
           "gitId": "tammykoh"
         },
         "content": "        /*case COMMAND_FIND:"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 65,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "            verifyFind(parsedInputs);"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 66,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "            return new FindCommand(parsedInputs[1]);*/"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 67,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "        case COMMAND_LOGIN:"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 68,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "            checkLogInValidity(parsedInputs);"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 69,
         "author": {
           "gitId": "manuelmanuntag96"
         },
         "content": "            return new LogInCommand(parsedInputs[1]);"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 70,
         "author": {
           "gitId": "weisiong24"
         },
         "content": "        case COMMAND_ADD:"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 71,
         "author": {
           "gitId": "weisiong24"
         },
         "content": "            checkAddValidity(parsedInputs);"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 72,
         "author": {
           "gitId": "weisiong24"
         },
         "content": "            return new AddCommand(parsedInputs[1]);"
       },
       {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "        case COMMAND_BYE:"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "            return new ByeCommand();"
-      },
-      {
         "lineNumber": 73,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "        case COMMAND_COMPARE:"
+        "content": "        case COMMAND_EDIT:"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "            return new CompareCommand(parsedInputs[1]);"
+        "content": "            //checkEditValidity(parsedInputs);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        default:"
+        "content": "            return new EditCommand(parsedInputs[1]);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"Sorry! I don\u0027t know what that means :-(\");"
+        "content": "        case COMMAND_BYE:"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "            return new ByeCommand();"
       },
       {
         "lineNumber": 78,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "        case COMMAND_COMPARE:"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "            return new CompareCommand(parsedInputs[1]);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "            throw new DukeException(\"Sorry! I don\u0027t know what that means :-(\");"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 84,
         "author": {
           "gitId": "yeapcl"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "    private static void checkAddValidity(String[] input) throws DukeException {"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "        if (input.length \u003c 2) {"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "            throw new DukeException(\"There is no description in your add command!\");"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "        } else if (!input[1].contains(\"/\")) {"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "            throw new DukeException(\"An add command needs to be in a \u0027name /day /time /location\u0027 format!\");"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        }"
+        "content": "    private static void checkAddValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        String[] position \u003d input[1].split(\" /\",4);"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        if (position[0].isEmpty()) {"
+        "content": "            throw new DukeException(\"There is no description in your add command!\");"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            throw new DukeException(\"There is no name in your add command!\");"
+        "content": "        } else if (!input[1].contains(\"/\")) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        } else if (position[1].isEmpty()) {"
+        "content": "            throw new DukeException(\"An add command needs to be in a \u0027name /day /time /location\u0027 format!\");"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            throw new DukeException(\"There is no day in your add command!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        } else if (position[2].isEmpty()) {"
+        "content": "        String[] position \u003d input[1].split(\" /\",4);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            throw new DukeException(\"There is no time in your add command!\");"
+        "content": "        if (position[0].isEmpty()) {"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "weisiong24"
         },
-        "content": "        } else if (position[3].isEmpty()) {"
+        "content": "            throw new DukeException(\"There is no name in your add command!\");"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "            throw new DukeException(\"There is no location in your add command!\");"
+        "content": "        } else if (position[1].isEmpty()) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "        }"
+        "content": "            throw new DukeException(\"There is no day in your add command!\");"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "    }"
+        "content": "        } else if (position[2].isEmpty()) {"
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "weisiong24"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"There is no time in your add command!\");"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "    private static void checkListValidity(String[] input) throws DukeException {"
+        "content": "        } else if (position[3].isEmpty()) {"
       },
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "weisiong24"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "            throw new DukeException(\"There is no location in your add command!\");"
       },
       {
         "lineNumber": 100,
         "author": {
-          "gitId": "tammykoh"
-        },
-        "content": "            throw new DukeException(\"There is no description in your list command!\");"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "tammykoh"
+          "gitId": "weisiong24"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 101,
         "author": {
-          "gitId": "tammykoh"
+          "gitId": "weisiong24"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": ""
+        "content": "    private static void checkListValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "    private static void checkClearValidity(String[] input) throws DukeException {"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "            throw new DukeException(\"There is no description in your list command!\");"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            throw new DukeException(\"There is no description in your clear command!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        } else if (!input[1].contains(\"/\")) {"
+        "content": "    }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            throw new DukeException(\"An clear command needs to be in a \u0027clear /day\u0027 format!\");"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        }"
+        "content": "    private static void checkClearValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "    }"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"There is no description in your clear command!\");"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "    private static void checkDeleteValidity(String[] input) throws DukeException {"
+        "content": "        } else if (!input[1].contains(\"/\")) {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "            throw new DukeException(\"An clear command needs to be in a \u0027clear /day\u0027 format!\");"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            throw new DukeException(\"There is no description in your delete command!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        } else if (!input[1].contains(\"/\")) {"
+        "content": "    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            throw new DukeException(\"A delete command needs to be in a \u0027/day /index\u0027 format!\");"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        }"
+        "content": "    private static void checkDeleteValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        String[] position \u003d input[1].split(\"/\",3);"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        if (position[1].isEmpty()) {"
+        "content": "            throw new DukeException(\"There is no description in your delete command!\");"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            throw new DukeException(\"There is no day in your delete command!\");"
+        "content": "        } else if (!input[1].contains(\"/\")) {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        } else if (position[2].isEmpty()) {"
+        "content": "            throw new DukeException(\"A delete command needs to be in a \u0027/day /index\u0027 format!\");"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "            throw new DukeException(\"There is no index in your delete command!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "        }"
+        "content": "        String[] position \u003d input[1].split(\"/\",3);"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": "    }"
+        "content": "        if (position[1].isEmpty()) {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "tammykoh"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"There is no day in your delete command!\");"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "tammykoh"
         },
-        "content": ""
+        "content": "        } else if (position[2].isEmpty()) {"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "tammykoh"
         },
-        "content": "    /**"
+        "content": "            throw new DukeException(\"There is no index in your delete command!\");"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "tammykoh"
         },
-        "content": "     * Checks the index\u0027s validity."
+        "content": "        }"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "tammykoh"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "tammykoh"
         },
-        "content": "     * @param input user\u0027s string input."
+        "content": ""
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "     * @throws DukeException if the index is not a number or within valid range."
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    private static void checkTaskIndexValidity(String[] input) throws DukeException {"
+        "content": "     * Checks the index\u0027s validity."
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        try {"
+        "content": "     *"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            Integer.parseInt(input[1]);"
+        "content": "     * @param input user\u0027s string input."
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "     * @throws DukeException if the index is not a number or within valid range."
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"Please enter the task number you want to mark as done!\");"
+        "content": "     */"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "    private static void checkTaskIndexValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"You\u0027ve entered an invalid task number!\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "            Integer.parseInt(input[1]);"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    }"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"Please enter the task number you want to mark as done!\");"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    /**"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * Checks the validity of the description for todo."
+        "content": "            throw new DukeException(\"You\u0027ve entered an invalid task number!\");"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     *"
+        "content": "        }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @param input user\u0027s string input."
+        "content": "    }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @throws DukeException if the description for todo is an empty field."
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    private static void checkTodoValidity(String[] input) throws DukeException {"
+        "content": "     * Checks the validity of the description for todo."
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "     *"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"There is no description in your todo command!\");"
+        "content": "     * @param input user\u0027s string input."
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "     * @throws DukeException if the description for todo is an empty field."
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": ""
+        "content": "    private static void checkTodoValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    /**"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * Checks the validity of the description for deadline."
+        "content": "            throw new DukeException(\"There is no description in your todo command!\");"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     *"
+        "content": "        }"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @param input user\u0027s string input."
+        "content": "    }"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @throws DukeException if the description for deadline is an empty field."
+        "content": ""
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    private static void checkDeadlineValidity(String[] input) throws DukeException {"
+        "content": "     * Checks the validity of the description for deadline."
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "     *"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"There is no description in your deadline command!\");"
+        "content": "     * @param input user\u0027s string input."
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        } else if (!input[1].contains(\"/by\")) {"
+        "content": "     * @throws DukeException if the description for deadline is an empty field."
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"A deadline task requires a \u0027/by\u0027 to indicate time frame!\");"
+        "content": "     */"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "    private static void checkDeadlineValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        int byPosition \u003d input[1].indexOf(\"/by\");"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 168,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "        if (input[1].substring(0, byPosition).isEmpty()) {"
-      },
-      {
-        "lineNumber": 169,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "            throw new DukeException(\"There is no description in your deadline command!\");"
       },
       {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        } else if (!input[1].contains(\"/by\")) {"
+      },
+      {
         "lineNumber": 170,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "yeapcl"
         },
-        "content": "        } else if (input[1].substring(byPosition + 3).isEmpty()) {"
+        "content": "            throw new DukeException(\"A deadline task requires a \u0027/by\u0027 to indicate time frame!\");"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"Please indicate time frame!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "        int byPosition \u003d input[1].indexOf(\"/by\");"
       },
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "weisiong24"
         },
-        "content": "    }"
+        "content": "        if (input[1].substring(0, byPosition).isEmpty()) {"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"There is no description in your deadline command!\");"
       },
       {
         "lineNumber": 175,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "weisiong24"
         },
-        "content": "    /**"
+        "content": "        } else if (input[1].substring(byPosition + 3).isEmpty()) {"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * Checks the validity of the description for event."
+        "content": "            throw new DukeException(\"Please indicate time frame!\");"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     *"
+        "content": "        }"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @param input user\u0027s string input."
+        "content": "    }"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * @throws DukeException if the description for event is an empty field."
+        "content": ""
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    private static void checkEventValidity(String[] input) throws DukeException {"
+        "content": "     * Checks the validity of the description for event."
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "     *"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"There is no description in your event command!\");"
+        "content": "     * @param input user\u0027s string input."
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        } else if (!input[1].contains(\"/at\")) {"
+        "content": "     * @throws DukeException if the description for event is an empty field."
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"An event task requires an \u0027/at\u0027 to indicate location!\");"
+        "content": "     */"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "    private static void checkEventValidity(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        int atPosition \u003d input[1].indexOf(\"/at\");"
+        "content": "        if (input.length \u003c 2) {"
       },
       {
         "lineNumber": 188,
-        "author": {
-          "gitId": "weisiong24"
-        },
-        "content": "        if (input[1].substring(0, atPosition).isEmpty()) {"
-      },
-      {
-        "lineNumber": 189,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "            throw new DukeException(\"There is no description in your event command!\");"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 189,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "yeapcl"
         },
-        "content": "        } else if (input[1].substring(atPosition + 3).isEmpty()) {"
+        "content": "        } else if (!input[1].contains(\"/at\")) {"
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 190,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "            throw new DukeException(\"An event task requires an \u0027/at\u0027 to indicate location!\");"
       },
       {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        }"
+      },
+      {
         "lineNumber": 192,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "        int atPosition \u003d input[1].indexOf(\"/at\");"
       },
       {
         "lineNumber": 193,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "    private static void checkLogInValidity(String[] input) throws DukeException {"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "        if (input.length \u003c 2) {"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "            throw new DukeException(\"There is no description in your login command!\");"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "        } else if (!input[1].contains(\"/\")) {"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "            throw new DukeException(\"An login requires an \u0027/\u0027 to indicate password!\");"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "        int atPosition \u003d input[1].indexOf(\"/\");"
-      },
-      {
-        "lineNumber": 202,
         "author": {
           "gitId": "weisiong24"
         },
         "content": "        if (input[1].substring(0, atPosition).isEmpty()) {"
       },
       {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "            throw new DukeException(\"There is no description in your event command!\");"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        } else if (input[1].substring(atPosition + 3).isEmpty()) {"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "            throw new DukeException(\"An event task requires an \u0027/at\u0027 to indicate location!\");"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    private static void checkLogInValidity(String[] input) throws DukeException {"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        if (input.length \u003c 2) {"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "            throw new DukeException(\"There is no description in your login command!\");"
+      },
+      {
         "lineNumber": 203,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            throw new DukeException(\"There is no username in your login command!\");"
+        "content": "        } else if (!input[1].contains(\"/\")) {"
       },
       {
         "lineNumber": 204,
         "author": {
-          "gitId": "weisiong24"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "        } else if (input[1].substring(atPosition + 1).isEmpty()) {"
+        "content": "            throw new DukeException(\"An login requires an \u0027/\u0027 to indicate password!\");"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "            throw new DukeException(\"An login requires a password!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": "        }"
+        "content": "        int atPosition \u003d input[1].indexOf(\"/\");"
       },
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "manuelmanuntag96"
+          "gitId": "weisiong24"
         },
-        "content": "    }"
+        "content": "        if (input[1].substring(0, atPosition).isEmpty()) {"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "manuelmanuntag96"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"There is no username in your login command!\");"
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "weisiong24"
         },
-        "content": "    /**"
+        "content": "        } else if (input[1].substring(atPosition + 1).isEmpty()) {"
       },
       {
         "lineNumber": 210,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "     * Checks the validity of the KEYWORD for find."
+        "content": "            throw new DukeException(\"An login requires a password!\");"
       },
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "     *"
+        "content": "        }"
       },
       {
         "lineNumber": 212,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "     * @param input user\u0027s string input."
+        "content": "    }"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "yeapcl"
+          "gitId": "manuelmanuntag96"
         },
-        "content": "     * @throws DukeException if the KEYWORD is an empty field."
+        "content": ""
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    private static void verifyFind(String[] input) throws DukeException {"
+        "content": "     * Checks the validity of the KEYWORD for find."
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        if (input.length \u003c 2) {"
+        "content": "     *"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "            throw new DukeException(\"Search description is empty\");"
+        "content": "     * @param input user\u0027s string input."
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        }"
+        "content": "     * @throws DukeException if the KEYWORD is an empty field."
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": ""
+        "content": "    private static void verifyFind(String[] input) throws DukeException {"
       },
       {
         "lineNumber": 221,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        if (input.length \u003c 2) {"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "            throw new DukeException(\"Search description is empty\");"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 226,
         "author": {
           "gitId": "yeapcl"
         },
@@ -5941,7 +6729,7 @@
       }
     ],
     "authorContributionMap": {
-      "yeapcl": 108,
+      "yeapcl": 113,
       "tammykoh": 44,
       "manuelmanuntag96": 38,
       "yellow-fellow": 4,
@@ -7994,10 +8782,38 @@
         "author": {
           "gitId": "yellow-fellow"
         },
-        "content": ""
+        "content": "    "
       },
       {
         "lineNumber": 96,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    public String getLocation() {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        return this.location;"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
         "author": {
           "gitId": "yeapcl"
         },
@@ -8005,7 +8821,7 @@
       }
     ],
     "authorContributionMap": {
-      "yeapcl": 62,
+      "yeapcl": 66,
       "manuelmanuntag96": 26,
       "yellow-fellow": 8
     }
@@ -9825,185 +10641,220 @@
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    /**"
+        "content": "    public void printEdit(String[] editedField, String date, int index) throws DukeException {"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     * Prints farewell message."
+        "content": "        System.out.println(\"Got it! I have edited \" + date + \"\u0027s #\" + index + \" lesson to \""
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "     */"
+        "content": "                + \"the following timing: \" + editedField[0] + \"-\" + editedField[1]);"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    public void showBye() {"
+        "content": "    }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        System.out.println(\"Thanks for using WhereGotTime. Hope to see you again soon!\");"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": ""
+        "content": "     * Prints farewell message."
       },
       {
         "lineNumber": 170,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "    public void greetUser(User currentUser) {"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "        System.out.println(\"Hello \" + currentUser.getName() + \"!\");"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "manuelmanuntag96"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "     * Prints error message."
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "yeapcl"
-        },
-        "content": "     * @param message the error message to be printed."
-      },
-      {
-        "lineNumber": 178,
         "author": {
           "gitId": "yeapcl"
         },
         "content": "     */"
       },
       {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    public void showBye() {"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        System.out.println(\"Thanks for using WhereGotTime. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    public void greetUser(User currentUser) {"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        System.out.println(\"Hello \" + currentUser.getName() + \"!\");"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
         "lineNumber": 179,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    public void showError(String message) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "        System.out.println(MESSAGE_SAD_FACE + \" OOPS!!! \" + message);"
+        "content": "     * Prints error message."
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "yeapcl"
         },
-        "content": "    }"
+        "content": "     *"
       },
       {
         "lineNumber": 182,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": ""
+        "content": "     * @param message the error message to be printed."
       },
       {
         "lineNumber": 183,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "    public void printCompare(ArrayList\u003cInteger\u003e outputArray) {"
+        "content": "     */"
       },
       {
         "lineNumber": 184,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "        System.out.println(\"Your common timeslots are: \\n\");"
+        "content": "    public void showError(String message) {"
       },
       {
         "lineNumber": 185,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "        for (int availableTime : outputArray) {"
+        "content": "        System.out.println(MESSAGE_SAD_FACE + \" OOPS!!! \" + message);"
       },
       {
         "lineNumber": 186,
         "author": {
-          "gitId": "yellow-fellow"
+          "gitId": "yeapcl"
         },
-        "content": "            System.out.println(availableTime + \"HR \");"
+        "content": "    }"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "yellow-fellow"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "yellow-fellow"
         },
-        "content": "    }"
+        "content": "    public void printCompare(ArrayList\u003cInteger\u003e outputArray) {"
       },
       {
         "lineNumber": 189,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "        System.out.println(\"Your common timeslots are: \\n\");"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "        for (int availableTime : outputArray) {"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "            System.out.println(availableTime + \"HR \");"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "yellow-fellow"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 194,
         "author": {
           "gitId": "yeapcl"
         },
@@ -10011,7 +10862,7 @@
       }
     ],
     "authorContributionMap": {
-      "yeapcl": 114,
+      "yeapcl": 119,
       "tammykoh": 49,
       "manuelmanuntag96": 12,
       "yellow-fellow": 7,
@@ -10665,18 +11516,619 @@
     }
   },
   {
-    "path": "text-ui-test/input.txt",
-    "fileType": "other",
+    "path": "src/test/java/seedu/duke/command/AddCommandTest.java",
+    "fileType": "test-code",
     "lines": [
       {
         "lineNumber": 1,
         "author": {
           "gitId": "weisiong24"
         },
-        "content": "login John Snow /123123"
+        "content": "package seedu.duke.command;"
       },
       {
         "lineNumber": 2,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "import seedu.duke.task.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "class AddCommandTest {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    String name \u003d \"CS2040C\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    String location \u003d \"LT23\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    String timeStart \u003d \"1600\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    String timeEnd \u003d \"1900\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    void testAddCommand() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        Event e \u003d new Event(name, location,timeStart,timeEnd);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "        assertEquals(\"CS2040C LT23 1600-1900\",e.toString());"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "weisiong24"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "weisiong24": 21
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/command/EditCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import seedu.duke.task.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "public class EditCommandTest {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    String module \u003d \"CS2113 Lec\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    String location \u003d \"LT21\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    String timeStart \u003d \"1200\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    String timeEnd \u003d \"1300\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    void testEditCommand() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        Event e \u003d new Event(module, location,timeStart,timeEnd);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "        assertEquals(\"CS2113 Lec LT21 1200-1300\",e.toString());"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "} "
+      }
+    ],
+    "authorContributionMap": {
+      "yeapcl": 21
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/user/UserListTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "package seedu.duke.user;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "class UserListTest {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    void testAddUser() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        UserList users \u003d new UserList();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        User user \u003d new User(\"man\",\"123\");"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        users.addUser(user);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "        assertEquals(1, users.getTotalUserCount());"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "manuelmanuntag96"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "manuelmanuntag96": 18
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "login Alex /123"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CS2113 Lec /mon /1200-1300 /LT21"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CS3243 Lec /mon /1400-1500 /LT22"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CS2040C Tut /mon /0800-1000 /COM1-2"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CG2028 Tut /Thu /0900-1100 /E4-4-1"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CG2023 Lec /Fri /1700-1800 /E7-3-10"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "list /all"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "list /mon"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "edit /mon /3 /1300-1400"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "edit /fri /1 /0900-1100"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "list /all"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "list /mon"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "login Tammy /321"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CS2113 Lec /mon /1200-1300 /LT21"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CS2040C Tut /mon /0800-1000 /COM1-2"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "add /CG2028 Tut /Thu /0900-1100 /E4-4-1"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "compare /Alex /mon"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "list /mon"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "edit /mon /2 /1000-1200"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "compare /Alex /mon"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "login Alex /123"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "delete /mon /2"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "yeapcl"
+        },
+        "content": "clear /fri"
+      },
+      {
+        "lineNumber": 24,
         "author": {
           "gitId": "yeapcl"
         },
@@ -10684,8 +12136,7 @@
       }
     ],
     "authorContributionMap": {
-      "yeapcl": 1,
-      "weisiong24": 1
+      "yeapcl": 24
     }
   },
   {
