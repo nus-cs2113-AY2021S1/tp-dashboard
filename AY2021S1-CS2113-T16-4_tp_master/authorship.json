@@ -5461,6 +5461,365 @@
     }
   },
   {
+    "path": "src/main/java/seedu/rex/commands/ListAppointmentsCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "package seedu.rex.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.data.PatientList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.data.exception.RexException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.data.hospital.Appointment;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.data.hospital.Patient;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.storage.Storage;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.ui.Ui;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "public class ListAppointmentsCommand extends Command {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"appointments\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    private final String trimmedCommand;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    public ListAppointmentsCommand(String trimmedCommand) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        this.trimmedCommand \u003d trimmedCommand;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * Lists appointments of a patient."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param patients     PatientList object."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param appointments ArrayList of appointment."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param ui           Ui object."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param storage      Storage object."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @throws RexException If the input NRIC does not exist in system"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    public void execute(PatientList patients, ArrayList\u003cAppointment\u003e appointments, Ui ui, Storage storage)"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "            throws RexException {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        String nric \u003d extractNric(trimmedCommand, COMMAND_WORD);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        if (!patients.isExistingPatient(nric)) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "            throw new RexException(\"A patient with this NRIC has not been registered!\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        Patient targetPatient \u003d patients.getPatientFromNric(nric);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        ui.showAppointmentsListHeader(nric);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        int counter \u003d 0;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        for (Appointment appointment : appointments) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "            if (appointment.getPatient() \u003d\u003d targetPatient) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "                counter++;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "                ui.showAppointmentLine(appointment, counter);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        if (counter \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "            ui.showNoBookedAppointmentsMessage();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "randynyl": 50
+    }
+  },
+  {
     "path": "src/main/java/seedu/rex/commands/RetrieveCommand.java",
     "fileType": "functional-code",
     "lines": [
@@ -9549,593 +9908,614 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.AddCommand;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.BookCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.Command;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.CreateAppointmentCommand;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.DeleteCommand;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.EditCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.ExitCommand;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "kiathwe97"
+          "gitId": "randynyl"
+        },
+        "content": "import seedu.rex.commands.ListAppointmentsCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "randynyl"
         },
         "content": "import seedu.rex.commands.RetrieveCommand;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 13,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "import seedu.rex.data.exception.RexException;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 14,
         "author": {
           "gitId": "randynyl"
         },
         "content": "import seedu.rex.data.hospital.Appointment;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 15,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "import seedu.rex.data.hospital.Patient;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 16,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "ychong032"
-        },
-        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ychong032"
         },
-        "content": ""
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": " * Makes sense of user command."
+        "content": "/**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": " */"
+        "content": " * Makes sense of user command."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "public class Parser {"
+        "content": " */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Reads inputted patient details and return the patient."
+        "content": "    /**"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "     * Reads inputted patient details and return the patient."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param line Input line to parse to patient details."
+        "content": "     *"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @return Patient object with patient details."
+        "content": "     * @param line Input line to parse to patient details."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "     * @return Patient object with patient details."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public static Patient readPatient(String line) {"
+        "content": "     */"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        assert line !\u003d null \u0026\u0026 !line.equals(\"\") : \"No patients to read!\";"
+        "content": "    public static Patient readPatient(String line) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "        assert line !\u003d null \u0026\u0026 !line.equals(\"\") : \"No patients to read!\";"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "ychong032"
+          "gitId": "TanJunHong"
         },
-        "content": "        StringBuilder record \u003d new StringBuilder(line);"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        String name \u003d record.substring(0, record.indexOf(\", \"));"
+        "content": "        StringBuilder record \u003d new StringBuilder(line);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        // Deletes first comma separator."
+        "content": "        String name \u003d record.substring(0, record.indexOf(\", \"));"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        record.delete(0, record.indexOf(\", \") + 2);"
+        "content": "        // Deletes first comma separator."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        String nric \u003d record.substring(0, record.indexOf(\", \"));"
+        "content": "        record.delete(0, record.indexOf(\", \") + 2);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        // Deletes second comma separator."
+        "content": "        String nric \u003d record.substring(0, record.indexOf(\", \"));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        record.delete(0, record.indexOf(\", \") + 2);"
+        "content": "        // Deletes second comma separator."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        LocalDate dateOfBirth \u003d LocalDate.parse(record.toString());"
+        "content": "        record.delete(0, record.indexOf(\", \") + 2);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ychong032"
         },
-        "content": "        return new Patient(name, nric, dateOfBirth);"
+        "content": "        LocalDate dateOfBirth \u003d LocalDate.parse(record.toString());"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "ychong032"
         },
-        "content": "    }"
+        "content": "        return new Patient(name, nric, dateOfBirth);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "randynyl"
+          "gitId": "TanJunHong"
         },
-        "content": "    public static Appointment readAppointment(String line) {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        String[] appointmentComponents \u003d line.split(\", \");"
+        "content": "    public static Appointment readAppointment(String line) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        LocalDate date \u003d LocalDate.parse(appointmentComponents[0]);"
+        "content": "        String[] appointmentComponents \u003d line.split(\", \");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        String bookedStatus \u003d appointmentComponents[1];"
+        "content": "        LocalDate date \u003d LocalDate.parse(appointmentComponents[0]);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        String nric \u003d appointmentComponents[2];"
+        "content": "        String bookedStatus \u003d appointmentComponents[1];"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        Appointment appointment \u003d new Appointment(date);"
+        "content": "        String nric \u003d appointmentComponents[2];"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        if (bookedStatus.equals(\"booked\")) {"
+        "content": "        Appointment appointment \u003d new Appointment(date);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "            appointment.book(Rex.getPatients().getPatientUsingIndex(Rex.getPatients().getExistingPatient(nric)));"
+        "content": "        if (bookedStatus.equals(\"booked\")) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        }"
+        "content": "            appointment.book(Rex.getPatients().getPatientUsingIndex(Rex.getPatients().getExistingPatient(nric)));"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "        return appointment;"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "randynyl"
         },
-        "content": "    }"
+        "content": "        return appointment;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "randynyl"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "TanJunHong"
+          "gitId": "randynyl"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * Reads and parse command."
+        "content": "    /**"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     *"
+        "content": "     * Reads and parse command."
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @param fullCommand Input string."
+        "content": "     *"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @return Command to be ran."
+        "content": "     * @param fullCommand Input string."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     * @throws RexException if command does not exist."
+        "content": "     * @return Command to be ran."
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "     */"
+        "content": "     * @throws RexException if command does not exist."
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "    public static Command parse(String fullCommand) throws RexException {"
+        "content": "     */"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": "        assert fullCommand !\u003d null \u0026\u0026 !fullCommand.equals(\"\") : \"No command to parse!\";"
+        "content": "    public static Command parse(String fullCommand) throws RexException {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "TanJunHong"
         },
-        "content": ""
+        "content": "        assert fullCommand !\u003d null \u0026\u0026 !fullCommand.equals(\"\") : \"No command to parse!\";"
       },
       {
         "lineNumber": 65,
+        "author": {
+          "gitId": "TanJunHong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
         "author": {
           "gitId": "ychong032"
         },
         "content": "        String trimmedCommand \u003d fullCommand.trim().toLowerCase();"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 67,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "        Command command;"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 68,
         "author": {
           "gitId": "ychong032"
         },
         "content": "        if (trimmedCommand.equals(ExitCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 69,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "            command \u003d new ExitCommand();"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 70,
         "author": {
           "gitId": "ychong032"
         },
         "content": "        } else if (trimmedCommand.contains(AddCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 71,
         "author": {
           "gitId": "ychong032"
         },
         "content": "            command \u003d new AddCommand(trimmedCommand);"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 72,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "        } else if (trimmedCommand.contains(RetrieveCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 73,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "            command \u003d new RetrieveCommand(trimmedCommand);"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 74,
         "author": {
           "gitId": "randynyl"
         },
         "content": "        } else if (trimmedCommand.contains(BookCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 75,
         "author": {
           "gitId": "randynyl"
         },
         "content": "            command \u003d new BookCommand(trimmedCommand);"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 76,
         "author": {
           "gitId": "randynyl"
         },
         "content": "        } else if (trimmedCommand.contains(CreateAppointmentCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 77,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "            command \u003d new CreateAppointmentCommand();"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 78,
         "author": {
           "gitId": "GoldenCorgi"
         },
         "content": "        } else if (trimmedCommand.contains(EditCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 79,
         "author": {
           "gitId": "GoldenCorgi"
         },
         "content": "            command \u003d new EditCommand(trimmedCommand);"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 80,
         "author": {
           "gitId": "kiathwe97"
         },
         "content": "        } else if (trimmedCommand.contains(DeleteCommand.COMMAND_WORD)) {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 81,
         "author": {
           "gitId": "kiathwe97"
         },
         "content": "            command \u003d new DeleteCommand(trimmedCommand);"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 82,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        } else if (trimmedCommand.contains(ListAppointmentsCommand.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "            command \u003d new ListAppointmentsCommand(trimmedCommand);"
+      },
+      {
+        "lineNumber": 84,
         "author": {
           "gitId": "ychong032"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 85,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "            throw new RexException(Command.COMMAND_ERROR);"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 86,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 87,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "        return command;"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 88,
         "author": {
           "gitId": "TanJunHong"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 89,
         "author": {
           "gitId": "ychong032"
         },
         "content": ""
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 90,
         "author": {
           "gitId": "ychong032"
         },
         "content": ""
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 91,
         "author": {
           "gitId": "TanJunHong"
         },
@@ -10144,9 +10524,9 @@
     ],
     "authorContributionMap": {
       "TanJunHong": 41,
-      "kiathwe97": 10,
+      "kiathwe97": 2,
       "ychong032": 18,
-      "randynyl": 17,
+      "randynyl": 28,
       "GoldenCorgi": 2
     }
   },
@@ -12890,6 +13270,174 @@
       {
         "lineNumber": 244,
         "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * Prints patient\u0027s appointment list header."
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param nric Patient\u0027s NRIC"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    public void showAppointmentsListHeader(String nric) {"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        printWithIndent(\"Listing appointments for patient \" + nric + \": \");"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * Prints details of patient\u0027s appointment."
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param appointment appointment to be printed"
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * @param counter appointment counter under patient"
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    public void showAppointmentLine(Appointment appointment, int counter) {"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        printWithIndent(counter + \". \" + appointment.getDate());"
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     * Prints message if patient has no booked appointments."
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    public void showNoBookedAppointmentsMessage() {"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "        printWithIndent(\"No booked appointments found!\");"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "randynyl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
           "gitId": "TanJunHong"
         },
         "content": "}"
@@ -12899,7 +13447,7 @@
       "TanJunHong": 148,
       "kiathwe97": 10,
       "ychong032": 43,
-      "randynyl": 33,
+      "randynyl": 57,
       "GoldenCorgi": 10
     }
   },
