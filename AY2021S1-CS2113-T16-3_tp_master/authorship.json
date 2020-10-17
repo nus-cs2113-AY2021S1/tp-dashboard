@@ -2217,84 +2217,84 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "import java.util.logging.Level;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "public class StockPriceFetcher {"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    private String apiKey;"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    private int timeout \u003d 3000;"
+        "content": "public class StockPriceFetcher {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "    private static Logger logger \u003d Logger.getLogger(\"tp\");"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public StockPriceFetcher() {"
+        "content": "    private String apiKey;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        apiKey \u003d \"O8EVQ7YSWDW08BN9\";"
+        "content": "    private int timeout \u003d 3000;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        timeout \u003d 3000;"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "    public StockPriceFetcher() {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "        apiKey \u003d \"O8EVQ7YSWDW08BN9\";"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public double fetchLatestPrice(String symbol) throws DukeException {"
+        "content": "        timeout \u003d 3000;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        StockData stockData \u003d fetchLatestStockData(symbol);"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
@@ -2308,42 +2308,42 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        return (stockData.getHigh() + stockData.getLow()) / 2;"
+        "content": "    public double fetchLatestPrice(String symbol) throws DukeException {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "        logger.log(Level.INFO, \"fetching latest stock data for \" + symbol);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "        StockData stockData \u003d fetchLatestStockData(symbol);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public StockData fetchLatestStockData(String symbol) throws DukeException {"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        AlphaVantageConnector apiConnector \u003d new AlphaVantageConnector(apiKey, timeout);"
+        "content": "        return (stockData.getHigh() + stockData.getLow()) / 2;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        TimeSeries stockTimeSeries \u003d new TimeSeries(apiConnector);"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
@@ -2357,21 +2357,21 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        try {"
+        "content": "    public StockData fetchLatestStockData(String symbol) throws DukeException {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            IntraDay response \u003d stockTimeSeries.intraDay(symbol, Interval.ONE_MIN, OutputSize.COMPACT);"
+        "content": "        AlphaVantageConnector apiConnector \u003d new AlphaVantageConnector(apiKey, timeout);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            List\u003cStockData\u003e stockData \u003d response.getStockData();"
+        "content": "        TimeSeries stockTimeSeries \u003d new TimeSeries(apiConnector);"
       },
       {
         "lineNumber": 36,
@@ -2385,45 +2385,80 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            return stockData.get(0);"
+        "content": "        try {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        } catch (AlphaVantageException e) {"
+        "content": "            IntraDay response \u003d stockTimeSeries.intraDay(symbol, Interval.ONE_MIN, OutputSize.COMPACT);"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "            throw new DukeException(\"Failed to retrieve price! Please try again.\");"
+        "content": "            List\u003cStockData\u003e stockData \u003d response.getStockData();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "            return stockData.get(0);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "        } catch (AlphaVantageException e) {"
       },
       {
         "lineNumber": 43,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "            logger.log(Level.INFO, \"failed to fetch price from API\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "            throw new DukeException(\"Failed to retrieve price! Please try again.\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
         "author": {
           "gitId": "trolommonm"
         },
@@ -2431,7 +2466,7 @@
       }
     ],
     "authorContributionMap": {
-      "trolommonm": 42,
+      "trolommonm": 47,
       "yokemin": 1
     }
   },
@@ -4335,103 +4370,110 @@
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        Transaction transaction \u003d new Transaction(TransactionType.SELL, quantity, sellPrice, LocalDateTime.now());"
+        "content": "        assert sellPrice \u003e 0 : \"sellPrice should be more than 0\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        Stock stock \u003d stocks.get(symbol);"
+        "content": "        Transaction transaction \u003d new Transaction(TransactionType.SELL, quantity, sellPrice, LocalDateTime.now());"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        stock.addTransaction(transaction);"
+        "content": "        Stock stock \u003d stocks.get(symbol);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "        stock.addTransaction(transaction);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public ArrayList\u003cStock\u003e getAllStocks() {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        ArrayList\u003cStock\u003e stocksArrayList \u003d new ArrayList\u003c\u003e();"
+        "content": "    public ArrayList\u003cStock\u003e getAllStocks() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        for (Stock stock: stocks.values()) {"
+        "content": "        ArrayList\u003cStock\u003e stocksArrayList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            stocksArrayList.add(stock);"
+        "content": "        for (Stock stock: stocks.values()) {"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "        }"
+        "content": "            stocksArrayList.add(stock);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "yokemin"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        return stocksArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "        return stocksArrayList;"
       },
       {
         "lineNumber": 49,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
         "author": {
           "gitId": "shaojingle"
         },
         "content": ""
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 51,
         "author": {
           "gitId": "trolommonm"
         },
@@ -4441,7 +4483,7 @@
     "authorContributionMap": {
       "shaojingle": 1,
       "trolommonm": 40,
-      "yokemin": 9
+      "yokemin": 10
     }
   },
   {
@@ -4814,304 +4856,318 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        switch (transaction.getTransactionType()) {"
+        "content": "        assert transactions !\u003d null : \"ArrayList of transactions not initialised!\";"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        case BUY:"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            totalQuantity +\u003d transaction.getQuantity();"
+        "content": "        switch (transaction.getTransactionType()) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            break;"
+        "content": "        case BUY:"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        case SELL:"
+        "content": "            totalQuantity +\u003d transaction.getQuantity();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            totalQuantity -\u003d transaction.getQuantity();"
+        "content": "            break;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            break;"
+        "content": "        case SELL:"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "        default:"
+        "content": "            totalQuantity -\u003d transaction.getQuantity();"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
         "content": "            break;"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        }"
+        "content": "        default:"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": ""
+        "content": "            break;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        transactions.add(transaction);"
+        "content": "        }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "        transactions.add(transaction);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public ArrayList\u003cTransaction\u003e getTransactions() {"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        return transactions;"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "    public ArrayList\u003cTransaction\u003e getTransactions() {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "        return transactions;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public String getSymbol() {"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        return symbol;"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "    public String getSymbol() {"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "        return symbol;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public int getTotalQuantity() {"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "    public int getTotalQuantity() {"
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "trolommonm"
         },
         "content": "        return totalQuantity;"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 47,
         "author": {
           "gitId": "yokemin"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 48,
         "author": {
           "gitId": "yokemin"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "JunxianAng"
-        },
-        "content": "    public double getLatestPrice() {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "JunxianAng"
-        },
-        "content": "        StockPriceFetcher stockPriceFetcher \u003d new StockPriceFetcher();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "        Ui ui \u003d new Ui();"
+        "content": "    public double getLatestPrice() {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "        try {"
+        "content": "        StockPriceFetcher stockPriceFetcher \u003d new StockPriceFetcher();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "            double price \u003d stockPriceFetcher.fetchLatestPrice(getSymbol());"
+        "content": "        Ui ui \u003d new Ui();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "            return price;"
+        "content": "        try {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "        } catch (DukeException e) {"
+        "content": "            double price \u003d stockPriceFetcher.fetchLatestPrice(getSymbol());"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "            ui.print(e.getMessage());"
+        "content": "            return price;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "            return 0;"
+        "content": "        } catch (DukeException e) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "        }"
+        "content": "            ui.print(e.getMessage());"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": "    }"
+        "content": "            return 0;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 59,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
         "author": {
           "gitId": "trolommonm"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 62,
         "author": {
           "gitId": "trolommonm"
         },
         "content": "    public String toString() {"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 63,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "        return \"Symbol: \" + getSymbol() + \", total quantity: \" + getTotalQuantity() + \", Current Price: \""
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 64,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "                + getLatestPrice();"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 65,
         "author": {
           "gitId": "trolommonm"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 66,
         "author": {
           "gitId": "trolommonm"
         },
@@ -5120,7 +5176,7 @@
     ],
     "authorContributionMap": {
       "JunxianAng": 18,
-      "trolommonm": 35,
+      "trolommonm": 37,
       "yokemin": 11
     }
   },
@@ -5671,16 +5727,16 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": ""
+        "content": "import java.util.logging.Level;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "public class Parser {"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 15,
@@ -5694,26 +5750,26 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    public static Command parseCommand(String userInput) {"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        String[] userInputSplit \u003d userInput.trim().split(\" \");"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        String commandString \u003d userInputSplit[0].toLowerCase();"
+        "content": "    private static Logger logger \u003d Logger.getLogger(\"tp\");"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
         "content": ""
       },
@@ -5722,56 +5778,56 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        switch (commandString) {"
+        "content": "    public static Command parseCommand(String userInput) {"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        case \"search\":"
+        "content": "        logger.log(Level.INFO, \"going to start processing command\");"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            try {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "                return parseSearch(userInputSplit);"
+        "content": "        String[] userInputSplit \u003d userInput.trim().split(\" \");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            } catch (DukeException e) {"
+        "content": "        String commandString \u003d userInputSplit[0].toLowerCase();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "                return new InvalidCommand(e.getMessage());"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            }"
+        "content": "        switch (commandString) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        case \"buy\":"
+        "content": "        case \"search\":"
       },
       {
         "lineNumber": 28,
@@ -5785,7 +5841,7 @@
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "                return parseBuy(userInputSplit);"
+        "content": "                return parseSearch(userInputSplit);"
       },
       {
         "lineNumber": 30,
@@ -5811,488 +5867,537 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "        case \"sell\":"
+        "content": "        case \"buy\":"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
         "content": "            try {"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "                return parseSell(userInputSplit);"
+        "content": "                return parseBuy(userInputSplit);"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
         "content": "            } catch (DukeException e) {"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
         "content": "                return new InvalidCommand(e.getMessage());"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
         "content": "            }"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        case \"bye\":"
+        "content": "        case \"sell\":"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            return new ByeCommand();"
+        "content": "            try {"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        case \"view\":"
+        "content": "                return parseSell(userInputSplit);"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            return new ViewCommand();"
+        "content": "            } catch (DukeException e) {"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "shaojingle"
+          "gitId": "yokemin"
         },
-        "content": "        case \"wallet\":"
+        "content": "                return new InvalidCommand(e.getMessage());"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "shaojingle"
+          "gitId": "yokemin"
         },
-        "content": "            return new WalletCommand();"
+        "content": "            }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        default:"
+        "content": "        case \"bye\":"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            return new InvalidCommand(\"Invalid command! Please try again.\");"
+        "content": "            return new ByeCommand();"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "        }"
+        "content": "        case \"view\":"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "            return new ViewCommand();"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "shaojingle"
         },
-        "content": ""
+        "content": "        case \"wallet\":"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "shaojingle"
         },
-        "content": "    public static Command parseBuy(String[] userInputSplit) throws DukeException {"
+        "content": "            return new WalletCommand();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        try {"
+        "content": "        default:"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            if (!userInputSplit[1].startsWith(\"/\")) {"
+        "content": "            logger.log(Level.WARNING, \"processing error when parsing command\");"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "                throw new DukeException(\"Please enter the ticker symbol of the company that you want to buy!\");"
+        "content": "            return new InvalidCommand(\"Invalid command! Please try again.\");"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            int quantity \u003d Integer.parseInt(userInputSplit[2]);"
+        "content": "    }"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            String symbol \u003d userInputSplit[1].substring(1);"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            BuyCommand buyCommand \u003d new BuyCommand(symbol, quantity);"
+        "content": "    public static Command parseBuy(String[] userInputSplit) throws DukeException {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            return buyCommand;"
+        "content": "        try {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            if (!userInputSplit[1].startsWith(\"/\")) {"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "            throw new DukeException((\"Wrong input format! E.g. buy /MSFT 11\"));"
+        "content": "                throw new DukeException(\"Please enter the ticker symbol of the company that you want to buy!\");"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "            throw new DukeException(\"Please enter a valid integer for the quantity of stocks that you want to buy!\");"
+        "content": "            int quantity \u003d Integer.parseInt(userInputSplit[2]);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        }"
+        "content": "            String symbol \u003d userInputSplit[1].substring(1);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "            BuyCommand buyCommand \u003d new BuyCommand(symbol, quantity);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "            return buyCommand;"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "    public static Command parseSell(String[] userInputSplit) throws DukeException {"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "        try {"
+        "content": "            throw new DukeException((\"Wrong input format! E.g. buy /MSFT 11\"));"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "            if (!userInputSplit[1].startsWith(\"/\")) {"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "                throw new DukeException(\"Please enter the ticker symbol of the company that you want to buy!\");"
+        "content": "            throw new DukeException(\"Please enter a valid integer for the quantity of stocks that you want to buy!\");"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "            int quantity \u003d Integer.parseInt(userInputSplit[2]);"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "            String symbol \u003d userInputSplit[1].substring(1);"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "            SellCommand sellCommand \u003d new SellCommand(symbol, quantity);"
+        "content": "    public static Command parseSell(String[] userInputSplit) throws DukeException {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "            return sellCommand;"
+        "content": "        try {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            if (!userInputSplit[1].startsWith(\"/\")) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "            throw new DukeException(\"Wrong input format! E.g. sell /MSFT 11\");"
+        "content": "                throw new DukeException(\"Please enter the ticker symbol of the company that you want to buy!\");"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "            throw new DukeException(\"Please enter a valid integer for the quantity of stocks that you want to sell!\");"
+        "content": "            int quantity \u003d Integer.parseInt(userInputSplit[2]);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "        }"
+        "content": "            String symbol \u003d userInputSplit[1].substring(1);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "    }"
+        "content": "            SellCommand sellCommand \u003d new SellCommand(symbol, quantity);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "yokemin"
         },
-        "content": ""
+        "content": "            return sellCommand;"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "    public static Command parseSearch(String[] userInputSplit) throws DukeException {"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "        try {"
+        "content": "            throw new DukeException(\"Wrong input format! E.g. sell /MSFT 11\");"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            if (!userInputSplit[1].startsWith(\"/\")) {"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "                throw new DukeException(\"Please enter the ticker symbol of the company!\");"
+        "content": "            throw new DukeException(\"Please enter a valid integer for the quantity of stocks that you want to sell!\");"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "yokemin"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "            throw new DukeException((\"Please enter the ticker symbol of the company you would like to search for!\"));"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "yokemin"
+          "gitId": "trolommonm"
         },
-        "content": "        }"
+        "content": "    public static Command parseSearch(String[] userInputSplit) throws DukeException {"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "        SearchCommand searchCommand \u003d new SearchCommand(userInputSplit[1].substring(1));"
+        "content": "            if (!userInputSplit[1].startsWith(\"/\")) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "                throw new DukeException(\"Please enter the ticker symbol of the company!\");"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "trolommonm"
+          "gitId": "yokemin"
         },
-        "content": "        return searchCommand;"
+        "content": "            }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": "    }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "trolommonm"
         },
-        "content": ""
+        "content": "            throw new DukeException((\"Please enter the ticker symbol of the company you would like to search for!\"));"
       },
       {
         "lineNumber": 96,
+        "author": {
+          "gitId": "yokemin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "        SearchCommand searchCommand \u003d new SearchCommand(userInputSplit[1].substring(1));"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "        return searchCommand;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "trolommonm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "    public static double parsePrice(double price) {"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 104,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "        String strPrice \u003d String.format(\"%.2f\", price);"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 105,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "        double formattedPrice \u003d Double.parseDouble(strPrice);"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 106,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "        return formattedPrice;"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 107,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 108,
         "author": {
           "gitId": "JunxianAng"
         },
         "content": ""
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 109,
         "author": {
           "gitId": "yokemin"
         },
@@ -6303,7 +6408,7 @@
       "shaojingle": 3,
       "JunxianAng": 6,
       "trolommonm": 50,
-      "yokemin": 43
+      "yokemin": 50
     }
   },
   {

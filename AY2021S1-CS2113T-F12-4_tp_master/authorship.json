@@ -8066,6 +8066,281 @@
     }
   },
   {
+    "path": "src/test/java/seedu/modtracker/ModuleListMinusAddTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "package seedu.modtracker;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "import java.io.ByteArrayOutputStream;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "import java.io.PrintStream;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "class ModuleListMinusAddTest {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    private static final String TEST_FILEPATH \u003d \"test/data/modlist.txt\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    Storage storage \u003d new Storage(TEST_FILEPATH);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    ModuleList modulesTest \u003d new ModuleList();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    public void addTime_ModuleWithoutActualWorkload_ModuleWithWorkloadAdded() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        modulesTest.addMod(\"addmod CS3030\", true, storage);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        System.setOut(new PrintStream(outContent));"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        modulesTest.addTime(\"addtime CS3030 4 4\", true, storage);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        String expected \u003d \"4 hours are added to CS3030\" + System.lineSeparator();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        assertEquals(expected + System.lineSeparator(), outContent.toString());"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    public void minusTime_ModuleWithActualWorkload_ModuleWithWorkloadSubtracted() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        System.setOut(new PrintStream(outContent));"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        modulesTest.minusTime(\"minustime CS3030 2 4\", true, storage);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        String expected \u003d \"2 hours are removed from CS3030\" + System.lineSeparator();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "        assertEquals(expected + System.lineSeparator(), outContent.toString());"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "DesmondKJL"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "DesmondKJL": 38
+    }
+  },
+  {
     "path": "src/test/java/seedu/modtracker/ModuleListTest.java",
     "fileType": "test-code",
     "lines": [
@@ -8653,153 +8928,12 @@
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "    public void addTime_ModuleWithoutActualWorkload_ModuleWithWorkloadAdded() {"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        System.setOut(new PrintStream(outContent));"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        modulesTest.addTime(\"addtime CS3030 4 4\", true, storage);"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        String expected \u003d \"4 hours are added to CS3030\" + System.lineSeparator();"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        assertEquals(expected + System.lineSeparator(), outContent.toString());"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "    public void minusTime_ModuleWithActualWorkload_ModuleWithWorkloadSubtracted() {"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        System.setOut(new PrintStream(outContent));"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        modulesTest.minusTime(\"minustime CS3030 2 4\", true, storage);"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        String expected \u003d \"2 hours are removed from CS3030\" + System.lineSeparator();"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "        assertEquals(expected + System.lineSeparator(), outContent.toString());"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "DesmondKJL"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 104,
-        "author": {
           "gitId": "KennethEer"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "DesmondKJL": 20,
       "KennethEer": 84
     }
   },
@@ -9550,86 +9684,86 @@
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "DesmondKJL"
         },
-        "content": "addExp CS3030 4"
+        "content": "addMod CS3040"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "addMod CS5000"
+        "content": "addExp CS3030 4"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "addExp CS3030 4"
+        "content": "addMod CS5000"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "addMod CS5000"
+        "content": "addExp CS3030 4"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "addExp CS3030 4"
+        "content": "addMod CS5000"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "addMod CS5000"
+        "content": "addExp CS3030 4"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "DesmondKJL"
+          "gitId": "limgl1998"
         },
-        "content": "addExp CS3030 4"
+        "content": "addMod CS5000"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "DesmondKJL"
         },
-        "content": ""
+        "content": "addExp CS3030 4"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "DesmondKJL"
         },
-        "content": "addExp CS3030 4"
+        "content": "addmod CS3030"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "deleteExp CS3030"
+        "content": "addtime CS3030 4 4"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "limgl1998"
         },
-        "content": "addMod CS5000"
+        "content": "minustime CS3030 2 4"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "DesmondKJL"
         },
-        "content": "deleteMod CS5000"
+        "content": "addmod CS3030"
       },
       {
         "lineNumber": 13,
@@ -9648,124 +9782,40 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
         "content": "addExp CS3030 4"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
         "content": "deleteExp CS3030"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
         "content": "addMod CS5000"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
         "content": "deleteMod CS5000"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "limgl1998"
+          "gitId": "lhydl"
         },
         "content": "addtime CS3030 4 4"
       },
       {
         "lineNumber": 20,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "minustime CS3030 2 4"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "addExp CS3030 4"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "deleteExp CS3030"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "addMod CS5000"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "deleteMod CS5000"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "addtime CS3030 4 4"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "limgl1998"
-        },
-        "content": "minustime CS3030 2 4"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "addExp CS3030 4"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "deleteExp CS3030"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "addMod CS5000"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "deleteMod CS5000"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "lhydl"
-        },
-        "content": "addtime CS3030 4 4"
-      },
-      {
-        "lineNumber": 32,
         "author": {
           "gitId": "lhydl"
         },
@@ -9773,8 +9823,8 @@
       }
     ],
     "authorContributionMap": {
-      "limgl1998": 24,
-      "DesmondKJL": 2,
+      "limgl1998": 10,
+      "DesmondKJL": 4,
       "lhydl": 6
     }
   },
