@@ -7375,127 +7375,6 @@
     }
   },
   {
-    "path": "src/test/java/seedu/duke/ConvertCommandTest.java",
-    "fileType": "test-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "package seedu.duke;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "import org.junit.jupiter.api.Test;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "import seedu.duke.command.ConvertCommand;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "public class ConvertCommandTest {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "    public void identifyCurrencySgdUsd() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        String expectedCurrency \u003d \"SGD USD\";"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        String description \u003d \"-d SGD -d USD\";"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        ConvertCommand convertCommand \u003d new ConvertCommand(description);"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "        assertEquals(expectedCurrency, convertCommand.identifyCurrency(description));"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "killingbear999"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "killingbear999": 16
-    }
-  },
-  {
     "path": "src/test/java/seedu/duke/ItemTest.java",
     "fileType": "test-code",
     "lines": [
@@ -9808,6 +9687,615 @@
     ],
     "authorContributionMap": {
       "k-walter": 54
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/command/AddCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.SpendingList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.exceptions.InvalidStorageFileExtensionException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.exceptions.InvalidStorageFilePathException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "class AddCommandTest {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    void execute() throws IOException, InvalidStorageFileExtensionException, InvalidStorageFilePathException {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        AddCommand addCommand \u003d new AddCommand(\"buy sushi\", \"$\", 3.0);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        SpendingList spendingList \u003d new SpendingList(storage);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        addCommand.execute(spendingList, ui);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        assertEquals(spendingList.getItem(0).getDescription(), \"buy sushi\");"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        assertEquals(spendingList.getItem(0).getSymbol(), \"$\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        assertEquals(spendingList.getItem(0).getAmount(), 3.0);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xieyaoyue": 27
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/command/ClearCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.SpendingList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.exceptions.InvalidStorageFileExtensionException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import seedu.duke.exceptions.InvalidStorageFilePathException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "class ClearCommandTest {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    void execute_clearIndex() throws InvalidStorageFileExtensionException,"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "            InvalidStorageFilePathException, IOException {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        ClearCommand clearCommand \u003d new ClearCommand(false, 1);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        SpendingList spendingList \u003d new SpendingList(storage);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        spendingList.addItem(\"buy chicken rice\", \"$\", 3.0);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        spendingList.addItem(\"buy sushi\", \"$\", 5.1);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        clearCommand.execute(spendingList, ui);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        assertEquals(spendingList.getListSize(), 1);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    void execute_clearAll() throws InvalidStorageFileExtensionException, InvalidStorageFilePathException, IOException {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        ClearCommand clearCommand \u003d new ClearCommand(true, 0);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        SpendingList spendingList \u003d new SpendingList(storage);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        spendingList.addItem(\"buy chicken rice\", \"$\", 3.0);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        spendingList.addItem(\"buy sushi\", \"$\", 5.1);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        clearCommand.execute(spendingList, ui);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "        assertEquals(spendingList.getListSize(), 0);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "xieyaoyue": 41
+    }
+  },
+  {
+    "path": "src/test/java/seedu/duke/command/ConvertCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "xieyaoyue"
+        },
+        "content": "package seedu.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "public class ConvertCommandTest {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "    public void identifyCurrencySgdUsd() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "        String expectedCurrency \u003d \"SGD USD\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "        String description \u003d \"-d SGD -d USD\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "        ConvertCommand convertCommand \u003d new ConvertCommand(description);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "        assertEquals(expectedCurrency, convertCommand.identifyCurrency(description));"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "killingbear999": 14,
+      "xieyaoyue": 1
     }
   }
 ]
