@@ -1321,14 +1321,14 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        ADD(\"^add\\\\s*-d.+-s\\\\s*.\\\\d+(.\\\\d*)$\", \"add\"),"
+        "content": "        ADD(\"^add\\\\s*-d.+-s\\\\s*.\\\\d+([.]\\\\d*)?$\", \"add\"),"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        EDIT(\"^edit\\\\s*\\\\d+\\\\s*-d.+\\\\s*-s\\\\s*.\\\\d+(.\\\\d*)$\", \"edit\"),"
+        "content": "        EDIT(\"^edit\\\\s*\\\\d+\\\\s*-d.+\\\\s*-s\\\\s*.\\\\d+([.]\\\\d*)?$\", \"edit\"),"
       },
       {
         "lineNumber": 21,
@@ -1741,108 +1741,150 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"add\": return getAddCommand(commandParameters);"
+        "content": "        case \"add\":"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"help\": return new HelpCommand();"
+        "content": "            Command newAddCommand \u003d getAddCommand(commandParameters);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"clear\": return new ClearCommand(false, Integer.parseInt(commandParameters));"
+        "content": "            assert newAddCommand instanceof AddCommand : \"Getting new add command failed.\";"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"clearAll\": return new ClearCommand(true, 0);"
+        "content": "            return newAddCommand;"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"convert\": return new ConvertCommand(commandParameters);"
+        "content": "        case \"help\": return new HelpCommand();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"summary\": return new SummaryCommand();"
+        "content": "        case \"clear\": return new ClearCommand(false, Integer.parseInt(commandParameters));"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"summaryYear\": return new SummaryCommand(commandParameters);"
+        "content": "        case \"clearAll\": return new ClearCommand(true, 0);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"summaryYearMonth\": return new SummaryCommand(commandParameters.substring(0, 4),"
+        "content": "        case \"convert\": return new ConvertCommand(commandParameters);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "                commandParameters.substring(4).strip());"
+        "content": "        case \"summary\": return new SummaryCommand();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        case \"logout\": return new ExitCommand();"
+        "content": "        case \"summaryYear\": return new SummaryCommand(commandParameters);"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        case \"edit\": return getEditCommand(commandParameters);"
+        "content": "        case \"summaryYearMonth\": return new SummaryCommand(commandParameters.substring(0, 4),"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "k-walter"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        case \"list\": return new ListCommand();"
+        "content": "                commandParameters.substring(4).strip());"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        default: throw new InvalidCommandException();"
+        "content": "        case \"logout\": return new ExitCommand();"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "        case \"edit\":"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "            Command newEditCommand \u003d getEditCommand(commandParameters);"
       },
       {
         "lineNumber": 94,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "            assert newEditCommand instanceof EditCommand : \"Getting new edit command failed.\";"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "            return newEditCommand;"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "k-walter"
+        },
+        "content": "        case \"list\": return new ListCommand();"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        default: throw new InvalidCommandException();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 100,
         "author": {
           "gitId": "Wu-Haitao"
         },
@@ -1850,9 +1892,9 @@
       }
     ],
     "authorContributionMap": {
-      "Wu-Haitao": 80,
+      "Wu-Haitao": 87,
       "k-walter": 9,
-      "killingbear999": 5
+      "killingbear999": 4
     }
   },
   {

@@ -2475,75 +2475,75 @@
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import seedu.smarthomebot.exceptions.InvalidPowerNumber;"
+        "content": "import seedu.smarthomebot.exceptions.InvalidAddCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import seedu.smarthomebot.exceptions.PowerValueExceed;"
+        "content": "import seedu.smarthomebot.exceptions.InvalidValue;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import seedu.smarthomebot.ui.TextUi;"
+        "content": "import seedu.smarthomebot.exceptions.PowerValueExceed;"
       },
       {
         "lineNumber": 19,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "import seedu.smarthomebot.ui.TextUi;"
+      },
+      {
+        "lineNumber": 20,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": ""
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 21,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_INVALID_ADD_COMMAND;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 22,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 23,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_INVALID_LIST_COMMAND;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 24,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_POWER_EXCEEDED;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 25,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_POWER_NOT_NUMBER;"
       },
       {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 26,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "fanceso"
         },
         "content": ""
       },
@@ -2552,35 +2552,35 @@
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "public class Parser {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": ""
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "zongxian-ctrl"
         },
-        "content": "    private static final String APPLIANCE_TYPE \u003d \"appliance\";"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "    private static final String LOCATION_TYPE \u003d \"location\";"
+        "content": "    private static final String APPLIANCE_TYPE \u003d \"appliance\";"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "Ang-Cheng-Jun"
         },
-        "content": "    private static TextUi ui \u003d new TextUi();"
+        "content": "    private static final String LOCATION_TYPE \u003d \"location\";"
       },
       {
         "lineNumber": 32,
@@ -2592,30 +2592,30 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "    public Command parseCommand(String userInput) {"
+        "content": "    private static Command prepareOnCommand(String arguments) {"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        String[] words \u003d userInput.trim().split(\" \", 2);"
+        "content": "        int indexParameter \u003d arguments.indexOf(\"p/\");"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        final String commandWord \u003d words[0];"
+        "content": "        String name;"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        final String arguments \u003d userInput.replaceFirst(commandWord, \"\").trim();"
+        "content": "        String parameter;"
       },
       {
         "lineNumber": 37,
@@ -2627,600 +2627,992 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "            switch (commandWord) {"
+        "content": "            if (indexParameter \u003c 1) {"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "            case HelpCommand.COMMAND_WORD:"
+        "content": "                name \u003d arguments;"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "                return new HelpCommand();"
+        "content": "                if (checkForEmptyInput(name)) {"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "            case CreateCommand.COMMAND_WORD:"
+        "content": "                    throw new EmptyParameterException();"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "                return new CreateCommand(arguments);"
+        "content": "                }"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "            case RemoveCommand.COMMAND_WORD:"
+        "content": "                parameter \u003d \"\";"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "                assert !arguments.isEmpty() : \"usersEnteredLocation cannot be empty\";"
+        "content": "            } else {"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "                return new RemoveCommand(arguments);"
+        "content": "                name \u003d arguments.substring(0, indexParameter).trim();"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "            case AddCommand.COMMAND_WORD:"
+        "content": "                parameter \u003d arguments.substring(indexParameter + 2).toLowerCase().trim();"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "                return prepareAddCommand(arguments);"
+        "content": "                if (checkForEmptyInput(name)"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "            case DeleteCommand.COMMAND_WORD:"
+        "content": "                        || checkForEmptyInput(parameter)) {"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "                assert !arguments.isEmpty() : \"usersEnteredLocation cannot be empty\";"
+        "content": "                    throw new EmptyParameterException();"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "                return new DeleteCommand(arguments);"
+        "content": "                }"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "            case OnCommand.COMMAND_WORD:"
+        "content": "                convertParameterToInt(parameter);"
       },
       {
         "lineNumber": 52,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "                return new OnCommand(arguments);"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "            case OffCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "                return new OffCommand(arguments);"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "            case ListCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "                return prepareListCommand(arguments);"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            case UsageCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "                return new UsageCommand();"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "            case ExitCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "                return new ExitCommand();"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "                return new InvalidCommand(MESSAGE_INVALID_COMMAND_FORMAT);"
-      },
-      {
-        "lineNumber": 63,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 53,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new OnCommand(name, parameter);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "        } catch (EmptyParameterException e) {"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 56,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "            return new InvalidCommand(\"The parameter of \" + commandWord + \" cannot be empty.\");"
+        "content": "            return new InvalidCommand(\"Empty Appliance Name\");"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 57,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } catch (InvalidValue e) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new InvalidCommand(MESSAGE_POWER_NOT_NUMBER);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "leonlowzd"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 61,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 63,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
         "content": ""
       },
       {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private static void convertParameterToInt(String parameter) throws InvalidValue {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            Integer.parseInt(parameter);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            throw new InvalidValue();"
+      },
+      {
         "lineNumber": 69,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "    private static Command prepareAddCommand(String arguments) {"
+        "content": "        }"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        int indexLocation \u003d arguments.indexOf(\"l/\");"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        int indexPower \u003d arguments.indexOf(\"w/\");"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        int indexType \u003d arguments.indexOf(\"t/\");"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        String name;"
+        "content": "    private static Command prepareAddCommand(String arguments) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        String location;"
+        "content": "        int indexLocation \u003d arguments.indexOf(\"l/\");"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        String power;"
+        "content": "        int indexPower \u003d arguments.indexOf(\"w/\");"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        String type;"
+        "content": "        int indexType \u003d arguments.indexOf(\"t/\");"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": ""
+        "content": "        String name;"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "zongxian-ctrl"
         },
-        "content": ""
+        "content": "        String location;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        if (indexLocation \u003c indexPower \u0026\u0026 indexPower \u003c indexType) {"
+        "content": "        String power;"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "            name \u003d arguments.substring(0, indexLocation).trim();"
+        "content": "        String type;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "            location \u003d arguments.substring(indexLocation + 2, indexPower).trim();"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "            power \u003d arguments.substring(indexPower + 2, indexType).trim();"
+        "content": "        try {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "            type \u003d arguments.substring(indexType + 2).toLowerCase().trim();"
+        "content": "            if (indexLocation \u003c indexPower \u0026\u0026 indexPower \u003c indexType) {"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        } else {"
+        "content": "                name \u003d arguments.substring(0, indexLocation).trim();"
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "zongxian-ctrl"
         },
-        "content": "            return new InvalidCommand(MESSAGE_INVALID_ADD_COMMAND);"
+        "content": "                location \u003d arguments.substring(indexLocation + 2, indexPower).trim();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        }"
+        "content": "                power \u003d arguments.substring(indexPower + 2, indexType).trim();"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": ""
+        "content": "                type \u003d arguments.substring(indexType + 2).toLowerCase().trim();"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "        try {"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "            testPowerValidity(power);"
+        "content": "                if (checkForEmptyInput(name) | checkForEmptyInput(location)"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "            return new AddCommand(name, location, power, type);"
+        "content": "                        | checkForEmptyInput(power) | checkForEmptyInput(type)) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "                    throw new InvalidAddCommand();"
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "        } catch (InvalidPowerNumber e) {"
+        "content": "                }"
       },
       {
         "lineNumber": 93,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            return new InvalidCommand(MESSAGE_POWER_NOT_NUMBER);"
-      },
-      {
-        "lineNumber": 94,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": ""
       },
       {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "zongxian-ctrl"
+        },
+        "content": "            } else {"
+      },
+      {
         "lineNumber": 95,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                throw new InvalidAddCommand();"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "zongxian-ctrl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "zongxian-ctrl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            testPowerValidity(power);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Ang-Cheng-Jun"
+        },
+        "content": "            return new AddCommand(name, location, power, type);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } catch (InvalidAddCommand e) {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new InvalidCommand(MESSAGE_INVALID_ADD_COMMAND);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } catch (InvalidValue e) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            return new InvalidCommand(MESSAGE_POWER_NOT_NUMBER);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
         "author": {
           "gitId": "fanceso"
         },
         "content": "        } catch (PowerValueExceed e) {"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 108,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            return new InvalidCommand(MESSAGE_POWER_EXCEEDED);"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 109,
         "author": {
           "gitId": "fanceso"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 110,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": ""
       },
       {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 100,
+        "lineNumber": 111,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 112,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": ""
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 113,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    private static Command prepareListCommand(String arguments) {"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 114,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "        if (arguments.equals(APPLIANCE_TYPE) || arguments.equals(LOCATION_TYPE)) {"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 115,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "            return new ListCommand(arguments);"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 116,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 117,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            return new InvalidCommand(MESSAGE_INVALID_LIST_COMMAND);"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 118,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "        }"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "    private static void testPowerValidity(String power) throws PowerValueExceed, InvalidPowerNumber {"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            int powerValue \u003d Integer.parseInt(power);"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            // Common appliance should not exceed 9999 watts"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            if ((powerValue \u003c 1) || (powerValue \u003e 9999)) {"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "                throw new PowerValueExceed();"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "        } catch (NumberFormatException e) {"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "            throw new InvalidPowerNumber();"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "fanceso"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private Command prepareCreateCommand(String arguments) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        if (!checkForEmptyInput(arguments)) {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new CreateCommand(arguments);"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            // Might need to print out a better message"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new InvalidCommand(MESSAGE_INVALID_COMMAND_FORMAT);"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private static void testPowerValidity(String power) throws PowerValueExceed, InvalidValue {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            int powerValue \u003d Integer.parseInt(power);"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            // Common appliance should not exceed 9999 watts"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            if ((powerValue \u003c 1) || (powerValue \u003e 9999)) {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "                throw new PowerValueExceed();"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            throw new InvalidValue();"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private static boolean checkForEmptyInput(String input) {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return (input.isEmpty());"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public Command parseCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        String[] words \u003d userInput.trim().split(\" \", 2);"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        final String commandWord \u003d words[0];"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        final String arguments \u003d userInput.replaceFirst(commandWord, \"\").trim();"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        switch (commandWord) {"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case HelpCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new HelpCommand();"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case CreateCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return prepareCreateCommand(arguments);"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case RemoveCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new RemoveCommand(arguments);"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case AddCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return prepareAddCommand(arguments);"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case DeleteCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new DeleteCommand(arguments);"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case OnCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return prepareOnCommand(arguments);"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case OffCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new OffCommand(arguments);"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case ListCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return prepareListCommand(arguments);"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case UsageCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new UsageCommand();"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case ExitCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new ExitCommand();"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new InvalidCommand(MESSAGE_INVALID_COMMAND_FORMAT);"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 176,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 177,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": ""
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 178,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "}"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 179,
         "author": {
           "gitId": "fanceso"
         },
@@ -3228,10 +3620,10 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 24,
-      "Ang-Cheng-Jun": 20,
-      "zongxian-ctrl": 50,
-      "fanceso": 29
+      "leonlowzd": 119,
+      "Ang-Cheng-Jun": 7,
+      "zongxian-ctrl": 35,
+      "fanceso": 18
     }
   },
   {
@@ -4687,117 +5079,96 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "    public CreateCommand(String location) throws EmptyParameterException {"
+        "content": "    public CreateCommand(String location) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        if (location.isEmpty()) {"
+        "content": "        this.usersEnteredLocation \u003d location;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "            throw new EmptyParameterException();"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "zongxian-ctrl"
         },
-        "content": "        this.usersEnteredLocation \u003d location;"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 23,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    public CommandResult execute() {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 24,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 25,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "            locationList.addLocation(usersEnteredLocation);"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 26,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "            return new CommandResult(\"Creating Location \\\"\" + usersEnteredLocation + \"\\\".....CREATED!\");"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 27,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "        } catch (InvalidAddtionOfLocation e) {"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 28,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "            return new CommandResult(MESSAGE_LOCATION_EXIST);"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 29,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 30,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 31,
         "author": {
           "gitId": "zongxian-ctrl"
         },
@@ -4805,9 +5176,9 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 6,
-      "Ang-Cheng-Jun": 11,
-      "zongxian-ctrl": 17
+      "leonlowzd": 7,
+      "Ang-Cheng-Jun": 10,
+      "zongxian-ctrl": 14
     }
   },
   {
@@ -5980,269 +6351,311 @@
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import seedu.smarthomebot.exceptions.EmptyParameterException;"
+        "content": "import seedu.smarthomebot.data.framework.Appliance;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "leonlowzd"
+          "gitId": "Ang-Cheng-Jun"
         },
-        "content": "import seedu.smarthomebot.data.framework.Appliance;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_APPLIANCE_NOT_EXIST;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import static seedu.smarthomebot.common.Messages.LINE;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "leonlowzd"
-        },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_APPLIANCE_PREVIOUSLY_OFF;"
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 7,
         "author": {
           "gitId": "fanceso"
         },
         "content": ""
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 8,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "public class OffCommand extends Command {"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 9,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": ""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    public static final String COMMAND_WORD \u003d \"off\";"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "fanceso"
         },
         "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            + \": Turns off specified appliance by its indicated NAME \\n\""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            + \"Parameters: NAME\\n\""
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            + \"Example: \" + COMMAND_WORD + \" Fan 1\";"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    private final String name;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": ""
       },
       {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public OffCommand(String name) {"
+      },
+      {
         "lineNumber": 18,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "    public OffCommand(String name) throws EmptyParameterException {"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "        if (name.isEmpty()) {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "            throw new EmptyParameterException();"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 22,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "        this.name \u003d name;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 19,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 20,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 21,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "    @Override"
+        "content": "    private int getApplianceToOffIndex() {"
       },
       {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "    public CommandResult execute() {"
-      },
-      {
-        "lineNumber": 27,
+        "lineNumber": 22,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "        for (Appliance appliance : applianceList.getAllAppliance()) {"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 23,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "            if (appliance.getName().equals((this.name))) {"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 24,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "                if (appliance.switchOff()) {"
+        "content": "                return applianceList.getAllAppliance().indexOf(appliance);"
       },
       {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "leonlowzd"
-        },
-        "content": "                    assert !appliance.switchOff() : \"Appliance should be already OFF\";"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "leonlowzd"
-        },
-        "content": "                    String location \u003d appliance.getLocation();"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "leonlowzd"
-        },
-        "content": "                    String result \u003d String.format(\"Switching off %s in %s ......OFF!\", name, location);"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "                    return new CommandResult(LINE + result);"
-      },
-      {
-        "lineNumber": 34,
+        "lineNumber": 25,
         "author": {
           "gitId": "fanceso"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": "                    return new CommandResult(LINE + MESSAGE_APPLIANCE_PREVIOUSLY_OFF);"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 26,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 27,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "        return new CommandResult(name + \" does not exist.\");"
+        "content": "        return -1;"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 28,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        int toOffApplianceIndex \u003d getApplianceToOffIndex();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        if (toOffApplianceIndex \u003c 0) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new CommandResult(MESSAGE_APPLIANCE_NOT_EXIST);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            Appliance toOffAppliance \u003d applianceList.getAppliance(toOffApplianceIndex);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            if (toOffAppliance.switchOff()) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                assert toOffAppliance.getStatus().equals(\"OFF\") : \"Appliance should be already OFF\";"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                return new CommandResult(MESSAGE_APPLIANCE_PREVIOUSLY_OFF);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            } else {"
+      },
+      {
         "lineNumber": 41,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                assert toOffAppliance.getStatus().equals(\"OFF\")  : \"Appliance should be already OFF\";"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                return new CommandResult(\"Switching: \" + toOffAppliance + \"......OFF\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Ang-Cheng-Jun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
@@ -6250,10 +6663,9 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 11,
-      "Ang-Cheng-Jun": 19,
-      "zongxian-ctrl": 4,
-      "fanceso": 7
+      "leonlowzd": 27,
+      "Ang-Cheng-Jun": 14,
+      "fanceso": 6
     }
   },
   {
@@ -6279,238 +6691,238 @@
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import seedu.smarthomebot.exceptions.EmptyParameterException;"
+        "content": "import seedu.smarthomebot.data.AirConditioner;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import seedu.smarthomebot.data.framework.Appliance;"
+        "content": "import seedu.smarthomebot.data.Fan;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "import seedu.smarthomebot.data.framework.Appliance;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "import static seedu.smarthomebot.common.Messages.LINE;"
+        "content": "import seedu.smarthomebot.exceptions.InvalidValue;"
       },
       {
         "lineNumber": 7,
+        "author": {
+          "gitId": "Ang-Cheng-Jun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_INVALID_TEMPERATURE_AC;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_INVALID_FAN_SPEED;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_APPLIANCE_NOT_EXIST;"
+      },
+      {
+        "lineNumber": 11,
         "author": {
           "gitId": "leonlowzd"
         },
         "content": "import static seedu.smarthomebot.common.Messages.MESSAGE_APPLIANCE_PREVIOUSLY_ON;"
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 12,
         "author": {
           "gitId": "fanceso"
         },
         "content": ""
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 13,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "public class OnCommand extends Command {"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 14,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": ""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 15,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    public static final String COMMAND_WORD \u003d \"on\";"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 16,
         "author": {
           "gitId": "fanceso"
         },
         "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 17,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            + \": Turns on specified appliance by its indicated NAME \\n\""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 18,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            + \"Parameters: NAME \\n\""
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 19,
         "author": {
           "gitId": "fanceso"
         },
         "content": "            + \"Example: \" + COMMAND_WORD + \" Aircon 1 \";"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 20,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    private final String name;"
       },
       {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "Ang-Cheng-Jun"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "    public OnCommand(String name) throws EmptyParameterException {"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "        if (name.isEmpty()) {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "zongxian-ctrl"
-        },
-        "content": "            throw new EmptyParameterException();"
-      },
-      {
         "lineNumber": 21,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        }"
+        "content": "    private final String parameter;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "        this.name \u003d name;"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "    }"
+        "content": "    public OnCommand(String name, String parameter) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": ""
+        "content": "        this.name \u003d name;"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "    @Override"
+        "content": "        this.parameter \u003d parameter;"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "    public CommandResult execute() {"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "        for (Appliance appliance : applianceList.getAllAppliance()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "leonlowzd"
+          "gitId": "Ang-Cheng-Jun"
         },
-        "content": "            if (appliance.getName().equals((this.name))) {"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "                if (appliance.switchOn()) {"
+        "content": "    private static int convertParameterToInt(String parameter) throws InvalidValue {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "                    assert !appliance.switchOn() : \"Appliance should be already ON\";"
+        "content": "        try {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "                    String location \u003d appliance.getLocation();"
+        "content": "            return Integer.parseInt(parameter);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "                    String result \u003d String.format(\"Switching on %s in %s ......ON!\", name, location);"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "                    return new CommandResult(LINE + result);"
+        "content": "            throw new InvalidValue();"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "                } else {"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "                    return new CommandResult(LINE + MESSAGE_APPLIANCE_PREVIOUSLY_ON);"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "                }"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
@@ -6522,33 +6934,474 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "            }"
+        "content": "    private int getApplianceToOnIndex() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "        }"
+        "content": "        for (Appliance appliance : applianceList.getAllAppliance()) {"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "Ang-Cheng-Jun"
+          "gitId": "leonlowzd"
         },
-        "content": "        return new CommandResult(LINE + name + \" does not exist.\");"
+        "content": "            if (appliance.getName().equals((this.name))) {"
       },
       {
         "lineNumber": 41,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                return applianceList.getAllAppliance().indexOf(appliance);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return -1;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private String setParameter(String parameter, Appliance appliance) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        String toPrint \u003d \" \";"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        switch (appliance.getType().toLowerCase()) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case AirConditioner.TYPE_WORD:"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            AirConditioner ac \u003d (AirConditioner) appliance;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            if (isParameterValid(parameter, 15, 30)) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                ac.setTemperature(parameter);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                toPrint \u003d ac.toString();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                toPrint \u003d MESSAGE_INVALID_TEMPERATURE_AC;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        case Fan.TYPE_WORD:"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            Fan fan \u003d (Fan) appliance;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            if (isParameterValid(parameter, 0, 4)) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                fan.setSpeed(parameter);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                toPrint \u003d fan.toString();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                toPrint \u003d MESSAGE_INVALID_FAN_SPEED;"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return toPrint;"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private boolean isParameterValid(String parameter, int lowerBound, int upperBound) {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            int acTemperature \u003d convertParameterToInt(parameter);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            if ((acTemperature \u003c upperBound) \u0026\u0026 (acTemperature \u003e lowerBound)) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } catch (InvalidValue e) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        int toOnApplianceIndex \u003d getApplianceToOnIndex();"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        if (toOnApplianceIndex \u003c 0) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            return new CommandResult(MESSAGE_APPLIANCE_NOT_EXIST);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            Appliance toOnAppliance \u003d applianceList.getAppliance(toOnApplianceIndex);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            if (toOnAppliance.switchOn()) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                assert toOnAppliance.getStatus().equals(\"ON\") : \"Appliance should be already ON\";"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                String setParameterStatement \u003d setParameter(parameter, toOnAppliance);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                return new CommandResult(MESSAGE_APPLIANCE_PREVIOUSLY_ON + setParameterStatement);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                assert toOnAppliance.getStatus().equals(\"ON\") : \"Appliance should be already ON\";"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                setParameter(parameter, toOnAppliance);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                return new CommandResult(\"Switching: \" + toOnAppliance + \"......ON \");"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Ang-Cheng-Jun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Ang-Cheng-Jun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 103,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 104,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
@@ -6556,9 +7409,8 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 11,
-      "Ang-Cheng-Jun": 20,
-      "zongxian-ctrl": 4,
+      "leonlowzd": 83,
+      "Ang-Cheng-Jun": 15,
       "fanceso": 7
     }
   },
@@ -7321,21 +8173,21 @@
         "author": {
           "gitId": "fanceso"
         },
-        "content": "    public static final String MESSAGE_LIST_NO_APPLIANCES \u003d \"There is currently no appliances in on lithe list.\";"
+        "content": "    public static final String MESSAGE_LIST_NO_APPLIANCES \u003d \"There is currently no appliances in the list.\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "    public static final String MESSAGE_INVALID_COMMAND_FORMAT \u003d  \"Invalid Command Format\";"
+        "content": "    public static final String MESSAGE_INVALID_COMMAND_FORMAT \u003d \"Invalid Command Format\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "    public static final String MESSAGE_INVALID_ADD_COMMAND \u003d  \"Please follow order of AddCommand\";"
+        "content": "    public static final String MESSAGE_INVALID_ADD_COMMAND \u003d \"Please follow order of AddCommand\";"
       },
       {
         "lineNumber": 27,
@@ -7356,7 +8208,7 @@
         "author": {
           "gitId": "fanceso"
         },
-        "content": "    public static final String MESSAGE_POWER_NOT_NUMBER \u003d  \"Please enter a valid numerical value for power.\";"
+        "content": "    public static final String MESSAGE_POWER_NOT_NUMBER \u003d \"Please enter a valid numerical value for power.\";"
       },
       {
         "lineNumber": 30,
@@ -7384,14 +8236,14 @@
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "    public static final String MESSAGE_APPLIANCE_PREVIOUSLY_ON \u003d \"The appliance is already ON previously.\";"
+        "content": "    public static final String MESSAGE_APPLIANCE_PREVIOUSLY_ON \u003d \"The appliance is already ON previously. \";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Ang-Cheng-Jun"
         },
-        "content": "    public static final String MESSAGE_APPLIANCE_PREVIOUSLY_OFF \u003d \"The appliance is already OFF previously.\";"
+        "content": "    public static final String MESSAGE_APPLIANCE_PREVIOUSLY_OFF \u003d \"The appliance is already OFF previously. \";"
       },
       {
         "lineNumber": 35,
@@ -7417,13 +8269,62 @@
       {
         "lineNumber": 38,
         "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public static final String MESSAGE_INVALID_TEMPERATURE_AC \u003d"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            \"Invalid Temperature is set, ensure that it is within 16-30 degrees. \\n\""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                    + \"Previous set temperature will be set.\";"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public static final String MESSAGE_INVALID_FAN_SPEED \u003d"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            \"Invalid speed is set, ensure that it is within 1-3 speed. \\n \""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "                    + \"Previous set speed will be set.\";"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
           "gitId": "fanceso"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 5,
+      "leonlowzd": 12,
       "Ang-Cheng-Jun": 18,
       "fanceso": 15
     }
@@ -7570,115 +8471,185 @@
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "        this.temperature \u003d temperature;"
+        "content": "        if (temperature.isEmpty()) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    }"
+        "content": "            temperature \u003d this.temperature;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    public String getType() {"
+        "content": "        this.temperature \u003d temperature;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "        return \"AirConditioner\";"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "    public String getType() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    public String toString() {"
+        "content": "        return \"AirConditioner\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "        return super.toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 31,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        String temperatureStatement;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        if (appliancePower.getStatus()) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            temperatureStatement \u003d \" set at: \" + getTemperature() + \" degrees\";"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            temperatureStatement \u003d \"\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return super.toString() + temperatureStatement;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 42,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    public String writeFileFormat() {"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 43,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "        return super.writeFileFormat();"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 44,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 45,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": ""
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 46,
         "author": {
           "gitId": "leonlowzd"
         },
@@ -7686,7 +8657,7 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 28,
+      "leonlowzd": 38,
       "zongxian-ctrl": 6,
       "fanceso": 2
     }
@@ -8263,7 +9234,7 @@
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "        speed \u003d \"1\";"
+        "content": "        this.speed \u003d \"1\";"
       },
       {
         "lineNumber": 13,
@@ -8312,59 +9283,185 @@
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    private void setSpeed(String speed) {"
+        "content": "    public void setSpeed(String speed) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "        Fan.speed \u003d speed;"
+        "content": "        if (speed.isEmpty()) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": "    }"
+        "content": "            speed \u003d this.speed;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "leonlowzd"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 23,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        this.speed \u003d speed;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    private String getSpeed() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return this.speed;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 31,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    public String writeFileFormat() {"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 32,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "        return super.writeFileFormat();"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 33,
         "author": {
           "gitId": "zongxian-ctrl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 34,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        String speedStatement;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        if (appliancePower.getStatus()) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            speedStatement \u003d \" set at: \" + getSpeed() + \" speed\";"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "            speedStatement \u003d \"\";"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "        return super.toString() + speedStatement;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "leonlowzd"
         },
@@ -8372,7 +9469,7 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 20,
+      "leonlowzd": 38,
       "zongxian-ctrl": 5,
       "fanceso": 2
     }
@@ -9799,16 +10896,16 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "    private static final String ON \u003d \"On\";"
+        "content": "    private static final String ON \u003d \"ON\";"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "    private static final String OFF \u003d \"Off\";"
+        "content": "    private static final String OFF \u003d \"OFF\";"
       },
       {
         "lineNumber": 9,
@@ -9848,9 +10945,9 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "    private Power appliancePower;"
+        "content": "    protected Power appliancePower;"
       },
       {
         "lineNumber": 15,
@@ -10757,11 +11854,11 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 83,
+      "leonlowzd": 86,
       "Ang-Cheng-Jun": 2,
       "TanLeeWei": 8,
       "zongxian-ctrl": 5,
-      "fanceso": 45
+      "fanceso": 42
     }
   },
   {
@@ -11165,21 +12262,21 @@
         "author": {
           "gitId": "fanceso"
         },
-        "content": "            return true;"
+        "content": "            return false;"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
         "content": "        } else {"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "            return false;"
+        "content": "            return true;"
       },
       {
         "lineNumber": 60,
@@ -11312,21 +12409,21 @@
         "author": {
           "gitId": "fanceso"
         },
-        "content": "            return true;"
+        "content": "            return false;"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
         "content": "        } else {"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "            return false;"
+        "content": "            return true;"
       },
       {
         "lineNumber": 81,
@@ -11869,10 +12966,10 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 50,
+      "leonlowzd": 54,
       "Ang-Cheng-Jun": 7,
       "TanLeeWei": 1,
-      "fanceso": 99
+      "fanceso": 95
     }
   },
   {
@@ -11988,6 +13085,43 @@
     }
   },
   {
+    "path": "src/main/java/seedu/smarthomebot/exceptions/InvalidAddCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "package seedu.smarthomebot.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "public class InvalidAddCommand extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "leonlowzd": 4
+    }
+  },
+  {
     "path": "src/main/java/seedu/smarthomebot/exceptions/InvalidAdditionOfAppliance.java",
     "fileType": "functional-code",
     "lines": [
@@ -12062,44 +13196,6 @@
     }
   },
   {
-    "path": "src/main/java/seedu/smarthomebot/exceptions/InvalidPowerNumber.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "leonlowzd"
-        },
-        "content": "package seedu.smarthomebot.exceptions;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "public class InvalidPowerNumber extends Exception{"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "fanceso"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "leonlowzd": 1,
-      "fanceso": 3
-    }
-  },
-  {
     "path": "src/main/java/seedu/smarthomebot/exceptions/InvalidRemovalLocationException.java",
     "fileType": "functional-code",
     "lines": [
@@ -12134,6 +13230,44 @@
     ],
     "authorContributionMap": {
       "Ang-Cheng-Jun": 4
+    }
+  },
+  {
+    "path": "src/main/java/seedu/smarthomebot/exceptions/InvalidValue.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "package seedu.smarthomebot.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "leonlowzd"
+        },
+        "content": "public class InvalidValue extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "fanceso"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "leonlowzd": 2,
+      "fanceso": 2
     }
   },
   {
@@ -16049,9 +17183,9 @@
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "fanceso"
+          "gitId": "leonlowzd"
         },
-        "content": "        assertEquals(\"Off\", new Lights(\"Xiao Mi Light\", \"BedRoom 1\", \"45\").getStatus());"
+        "content": "        assertEquals(\"OFF\", new Lights(\"Xiao Mi Light\", \"BedRoom 1\", \"45\").getStatus());"
       },
       {
         "lineNumber": 27,
@@ -16077,9 +17211,9 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "    public void addLocationTest() throws InvalidAddtionOfLocation {"
+        "content": "    public void locationList_AddLocation_test() throws InvalidAddtionOfLocation {"
       },
       {
         "lineNumber": 31,
@@ -16154,9 +17288,9 @@
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "    public void addApplianceTest() throws InvalidAdditionOfAppliance {"
+        "content": "    public void applianceList_addAppliance_Test() throws InvalidAdditionOfAppliance {"
       },
       {
         "lineNumber": 42,
@@ -16280,9 +17414,9 @@
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "zongxian-ctrl"
+          "gitId": "leonlowzd"
         },
-        "content": "        if (aircon.getStatus().equals(\"On\")) {"
+        "content": "        if (aircon.getStatus().equals(\"ON\")) {"
       },
       {
         "lineNumber": 60,
@@ -16335,10 +17469,10 @@
       }
     ],
     "authorContributionMap": {
-      "leonlowzd": 3,
+      "leonlowzd": 7,
       "Ang-Cheng-Jun": 7,
-      "zongxian-ctrl": 39,
-      "fanceso": 17
+      "zongxian-ctrl": 36,
+      "fanceso": 16
     }
   },
   {

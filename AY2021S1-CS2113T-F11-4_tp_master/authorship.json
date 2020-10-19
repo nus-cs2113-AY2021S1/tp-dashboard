@@ -4101,61 +4101,54 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "homingjun"
-        },
-        "content": "    public static final String DEADLINE \u003d \"end\";"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
           "gitId": "gmit22"
         },
         "content": "    public static final String SPRINT_DURATION \u003d \"sd\";"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    public static final String TASK_ID \u003d \"id\";"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "homingjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    /*"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    Bye"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "homingjun"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    public static final String BYE \u003d \"bye\";"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "homingjun"
         },
@@ -4163,7 +4156,7 @@
       }
     ],
     "authorContributionMap": {
-      "homingjun": 33,
+      "homingjun": 32,
       "gmit22": 2,
       "e0426051": 1,
       "chocomango": 2
@@ -4190,397 +4183,243 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "import seedu.duke.sprint.Member;"
+        "content": "import seedu.duke.exception.DukeException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import seedu.duke.project.Project;"
+        "content": "import seedu.duke.sprint.Member;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import seedu.duke.ui.Ui;"
+        "content": "import seedu.duke.project.Project;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "gmit22"
         },
-        "content": ""
+        "content": "import seedu.duke.ui.Ui;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "gmit22"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "homingjun"
         },
-        "content": ""
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "public class MemberCommand {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "    public void addMemberCommand(ArrayList\u003cString\u003e userId, ArrayList\u003cProject\u003e projectList) {"
+        "content": "public class MemberCommand {"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "        Member m;"
+        "content": "    public void addMemberCommand(ArrayList\u003cString\u003e userId, ArrayList\u003cProject\u003e projectList) {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "        try {"
+        "content": "        Member m;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "            if (projectList.isEmpty()) {"
+        "content": "        Project proj \u003d projectList.get(0);"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "                Ui.showError(\"Please create a project first.\");"
+        "content": "        for (String s : userId) {"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "                return;"
+        "content": "            if (proj.getProjectMember().containMember(new Member(s))) {"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "            }"
+        "content": "                Ui.showToUserLn(s + \" is already associated to the project.\");"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "            if (userId.isEmpty()) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "                Ui.showError(\"Missing parameters.\");"
+        "content": "                m \u003d new Member(s);"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "            }"
+        "content": "                proj.getProjectMember().addMember(m);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "            Project proj \u003d projectList.get(0);"
+        "content": "                Ui.showToUserLn(s + \" has been added to the project.\");"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "            for (String s : userId) {"
+        "content": "            }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "                if (proj.getProjectMember().containMember(new Member(s))) {"
+        "content": "        }"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "                    Ui.showToUserLn(s + \" is already associated to the project.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "                } else {"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "                    m \u003d new Member(s);"
+        "content": "    public void deleteMemberCommand(ArrayList\u003cString\u003e userId, ArrayList\u003cProject\u003e projectList) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "                    proj.getProjectMember().addMember(m);"
+        "content": "        Project proj;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "                    Ui.showToUserLn(s + \" has been added to the project.\");"
+        "content": "        proj \u003d projectList.get(0);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "                }"
+        "content": "        for (String s : userId) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "            }"
+        "content": "            if (proj.getProjectMember().containMember(new Member(s))) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "                proj.getProjectMember().removeMember(new Member(s));"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "            Ui.showError(\"Required index of project not found. Please create before proceeding.\");"
+        "content": "                Ui.showToUserLn(s + \" has been removed from the project.\");"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "        }"
+        "content": "            } else {"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "gmit22"
         },
-        "content": "    }"
+        "content": "                Ui.showToUserLn(s + \" is not associated with the project.\");"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "gmit22"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "chocomango"
-        },
-        "content": "    public void deleteMemberCommand(ArrayList\u003cString\u003e userId, ArrayList\u003cProject\u003e projectList) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
           "gitId": "gmit22"
-        },
-        "content": "        Project proj;"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "            if (projectList.isEmpty()) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                Ui.showError(\"Please create a project first.\");"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                return;"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "            if (userId.isEmpty()) {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                Ui.showError(\"Missing parameters.\");"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            proj \u003d projectList.get(0);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            for (String s : userId) {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                if (proj.getProjectMember().containMember(new Member(s))) {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                    proj.getProjectMember().removeMember(new Member(s));"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                    Ui.showToUserLn(s + \" has been removed from the project.\");"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                    Ui.showToUserLn(s + \" is not associated with the project.\");"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            Ui.showError(\"Required index of project not found. Please create before proceeding.\");"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "homingjun"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 36,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 59,
+        "lineNumber": 37,
         "author": {
           "gitId": "gmit22"
         },
@@ -4588,9 +4427,9 @@
       }
     ],
     "authorContributionMap": {
-      "homingjun": 8,
-      "gmit22": 34,
-      "chocomango": 17
+      "homingjun": 10,
+      "gmit22": 26,
+      "chocomango": 1
     }
   },
   {
@@ -4621,100 +4460,100 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "import seedu.duke.project.Project;"
+        "content": "import seedu.duke.parser.Parser;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import seedu.duke.ui.Ui;"
+        "content": "import seedu.duke.project.Project;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "gmit22"
         },
-        "content": ""
+        "content": "import seedu.duke.ui.Ui;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "gmit22"
         },
-        "content": "import java.util.Hashtable;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "homingjun"
         },
-        "content": ""
+        "content": "import java.util.Hashtable;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "import static seedu.duke.command.CommandSummary.TITLE;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import static seedu.duke.command.CommandSummary.DESCRIPTION;"
+        "content": "import static seedu.duke.command.CommandSummary.TITLE;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import static seedu.duke.command.CommandSummary.SPRINT_DURATION;"
+        "content": "import static seedu.duke.command.CommandSummary.DESCRIPTION;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "import static seedu.duke.command.CommandSummary.DURATION;"
+        "content": "import static seedu.duke.command.CommandSummary.SPRINT_DURATION;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "gmit22"
         },
-        "content": ""
+        "content": "import static seedu.duke.command.CommandSummary.DURATION;"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "gmit22"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
         "author": {
           "gitId": "homingjun"
         },
         "content": "public class ProjectCommand {"
       },
       {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "    public void createProjectCommand(Hashtable\u003cString, String\u003e parameters, ArrayList\u003cProject\u003e projectList)"
-      },
-      {
         "lineNumber": 17,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "            throws DukeException {"
+        "content": "    public void createProjectCommand(Hashtable\u003cString, String\u003e parameters, ArrayList\u003cProject\u003e projectList) {"
       },
       {
         "lineNumber": 18,
@@ -4735,318 +4574,199 @@
         "author": {
           "gitId": "gmit22"
         },
-        "content": "        String description;"
+        "content": "        title \u003d parameters.get(TITLE);"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "        String deadline;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "        String sd;"
+        "content": "        String description;"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "        if (!parameters.containsKey(TITLE) || !parameters.containsKey(DESCRIPTION)"
+        "content": "        description \u003d parameters.get(DESCRIPTION);"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                || !parameters.containsKey(DURATION) || !parameters.containsKey(SPRINT_DURATION)) {"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "            throw new DukeException(\"Missing parameters.\");"
+        "content": "        String deadline;"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "        }"
+        "content": "        deadline \u003d parameters.get(DURATION);"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
         "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "        if (parameters.get(TITLE) !\u003d null) {"
+        "content": "        String sd;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "            title \u003d parameters.get(TITLE);"
+        "content": "        sd \u003d parameters.get(SPRINT_DURATION);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "            throw new DukeException(\"no title\");"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (parameters.get(DESCRIPTION) !\u003d null) {"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            description \u003d parameters.get(DESCRIPTION);"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "            throw new DukeException(\"no description\");"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (parameters.get(DURATION) !\u003d null) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            deadline \u003d parameters.get(DURATION);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            throw new DukeException(\"no duration\");"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (parameters.get(SPRINT_DURATION) !\u003d null) {"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            sd \u003d parameters.get(SPRINT_DURATION);"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "            throw new DukeException(\"no sprint interval\");"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "homingjun"
-        },
         "content": ""
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 32,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        Project proj \u003d new Project(title, description, deadline, sd);"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 33,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        Ui.showToUserLn(\"Project successfully created.\");"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 34,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        projectList.add(proj);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 35,
         "author": {
           "gitId": "chocomango"
         },
         "content": "        Ui.showToUserLn(projectList.get(0).toString());"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 36,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 37,
         "author": {
           "gitId": "chocomango"
         },
         "content": ""
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 38,
         "author": {
           "gitId": "chocomango"
         },
         "content": "    public void viewProjectCommand(ArrayList\u003cProject\u003e projectList) {"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 39,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        assert projectList.size() !\u003d 0 : \"No projects created \\n.\";"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 40,
         "author": {
           "gitId": "gmit22"
         },
         "content": ""
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 41,
         "author": {
           "gitId": "chocomango"
         },
         "content": "        if (projectList.isEmpty()) {"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 42,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            Ui.showError(\"No projects are created.\");"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 43,
         "author": {
           "gitId": "chocomango"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 44,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            Ui.showToUserLn(projectList.get(0).toString());"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 45,
         "author": {
           "gitId": "chocomango"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 46,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 47,
         "author": {
           "gitId": "gmit22"
         },
         "content": ""
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 48,
         "author": {
           "gitId": "chocomango"
         },
@@ -5054,9 +4774,9 @@
       }
     ],
     "authorContributionMap": {
-      "homingjun": 20,
-      "gmit22": 30,
-      "chocomango": 15
+      "homingjun": 18,
+      "gmit22": 20,
+      "chocomango": 10
     }
   },
   {
@@ -6596,72 +6316,72 @@
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                createFirstSprint(proj);"
+        "content": "                try {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            } else {"
+        "content": "                    createFirstSprint(proj);"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                createSubsequentSprint(proj);"
+        "content": "                } catch (DukeException e) {"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "            }"
+        "content": "                    e.printExceptionMessage();"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        } else {"
+        "content": "                }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            Ui.showError(\"Missing goal for this sprint.\");"
+        "content": "            } else {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        }"
+        "content": "                createSubsequentSprint(proj);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    private void createFirstSprint(Project proj) {"
+        "content": "    }"
       },
       {
         "lineNumber": 51,
@@ -6673,51 +6393,51 @@
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        LocalDate sprintStart \u003d LocalDate.now();"
+        "content": "    private void createFirstSprint(Project proj) throws DukeException {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        if (!this.parametersInHT.get(\"start\").isEmpty()) {"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            try {"
+        "content": "        LocalDate sprintStart \u003d LocalDate.now();"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                sprintStart \u003d DateTimeParser.parseDate(this.parametersInHT.get(\"start\"));"
+        "content": "        if (!(this.parametersInHT.get(\"start\") \u003d\u003d null)) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            } catch (DukeException e) {"
+        "content": "            sprintStart \u003d DateTimeParser.parseDate(this.parametersInHT.get(\"start\"));"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                e.printExceptionMessage();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "            }"
+        "content": "            throw new DukeException(\"no start date\");"
       },
       {
         "lineNumber": 59,
@@ -6736,184 +6456,184 @@
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        String sprintGoal \u003d this.parametersInHT.get(\"goal\");"
+        "content": "        String sprintGoal;"
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        allSprint.addSprint(proj, sprintGoal, sprintStart, sprintEnd);"
+        "content": "        if (!(this.parametersInHT.get(\"goal\").isBlank())) {"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": ""
+        "content": "            sprintGoal \u003d this.parametersInHT.get(\"goal\");"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        LocalDate projEndDate \u003d sprintStart.plusDays(proj.getProjectDuration() - 1);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        proj.setStartDate(sprintStart);"
+        "content": "            throw new DukeException(\"no goal\");"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        proj.setEndDate(projEndDate);"
+        "content": "        }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "        allSprint.addSprint(proj, sprintGoal, sprintStart, sprintEnd);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        Ui.showToUserLn(\"Project will start along with the newly created sprint\");"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        Ui.showToUserLn(\"Project period: \" + sprintStart + \" to \" + projEndDate);"
+        "content": "        LocalDate projEndDate \u003d sprintStart.plusDays(proj.getProjectDuration() - 1);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        printCreatedSprint();"
+        "content": "        proj.setStartDate(sprintStart);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "        proj.setEndDate(projEndDate);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "        Ui.showToUserLn(\"Project will start along with the newly created sprint\");"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    private void createSubsequentSprint(Project proj) {"
+        "content": "        Ui.showToUserLn(\"Project period: \" + sprintStart + \" to \" + projEndDate);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "        printCreatedSprint();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        String sprintGoal \u003d this.parametersInHT.get(\"goal\");"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        Sprint prevSprint \u003d allSprint.getSprint(allSprint.size() - 1);"
+        "content": "    }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        LocalDate sprintStart \u003d prevSprint.getEndDate().plusDays(1);"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        if (DateTimeParser.diff(proj.getEndDate(), sprintStart) \u003e\u003d 0) {"
+        "content": "    private void createSubsequentSprint(Project proj) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            Ui.showToUserLn(\"\\nAll sprints are already created.\");"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            return;"
+        "content": "        String sprintGoal \u003d this.parametersInHT.get(\"goal\");"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        }"
+        "content": "        Sprint prevSprint \u003d allSprint.getSprint(allSprint.size() - 1);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        LocalDate sprintEnd \u003d sprintStart.plusDays(proj.getSprintLength() - 1);"
+        "content": "        LocalDate sprintStart \u003d prevSprint.getEndDate().plusDays(1);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        allSprint.addSprint(proj, sprintGoal, sprintStart, sprintEnd);"
+        "content": "        if (DateTimeParser.diff(proj.getEndDate(), sprintStart) \u003e\u003d 0) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        if (!this.parametersInHT.containsKey(\"start\")) {"
+        "content": "            Ui.showToUserLn(\"\\nAll sprints are already created.\");"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "            Ui.showToUserLn(Messages.MESSAGE_CREATE_SUB_SPRINT);"
+        "content": "            return;"
       },
       {
         "lineNumber": 87,
@@ -6927,70 +6647,70 @@
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        printCreatedSprint();"
+        "content": "        LocalDate sprintEnd \u003d sprintStart.plusDays(proj.getSprintLength() - 1);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    }"
+        "content": "        allSprint.addSprint(proj, sprintGoal, sprintStart, sprintEnd);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "        if (!this.parametersInHT.containsKey(\"start\")) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    private boolean validateParams() {"
+        "content": "            Ui.showToUserLn(Messages.MESSAGE_CREATE_SUB_SPRINT);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        return this.parametersInHT.containsKey(\"goal\");"
+        "content": "        }"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    }"
+        "content": "        printCreatedSprint();"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "chocomango"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "    private void printCreatedSprint() {"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        Sprint createdSprint \u003d allSprint.getSprint(allSprint.size() - 1);"
+        "content": "    private boolean validateParams() {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "        Ui.showToUserLn(createdSprint.toString());"
+        "content": "        return this.parametersInHT.containsKey(\"goal\");"
       },
       {
         "lineNumber": 98,
@@ -7004,11 +6724,47 @@
         "author": {
           "gitId": "chocomango"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "    private void printCreatedSprint() {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "        Sprint createdSprint \u003d allSprint.getSprint(allSprint.size() - 1);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "        Ui.showToUserLn(createdSprint.toString());"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "chocomango"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "chocomango": 99
+      "homingjun": 14,
+      "chocomango": 90
     }
   },
   {
@@ -8431,1153 +8187,964 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "        if (!tasks.containsKey(TITLE) || !tasks.containsKey(DESCRIPTION)"
+        "content": "        title \u003d tasks.get(TITLE);"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "                || !tasks.containsKey(PRIORITY)) {"
+        "content": "        description \u003d tasks.get(DESCRIPTION);"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "            throw new DukeException(\"Missing parameters.\");"
+        "content": "        priority \u003d tasks.get(PRIORITY);"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "e0426051"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "gmit22"
         },
-        "content": "        if (tasks.get(TITLE) !\u003d null) {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            title \u003d tasks.get(TITLE);"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            throw new DukeException(\"Please enter a title!\");"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (tasks.get(DESCRIPTION) !\u003d null) {"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            description \u003d tasks.get(DESCRIPTION);"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            throw new DukeException(\"Please enter a description!\");"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (tasks.get(PRIORITY) !\u003d null) {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "            priority \u003d tasks.get(PRIORITY);"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            throw new DukeException(\"Please enter a priority!\");"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "gmit22"
-        },
         "content": "            Project proj \u003d projectList.get(0);"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 33,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            if (!proj.getProjectBacklog().checkValidPriority(priority)) {"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 34,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                throw new DukeException(\"Invalid priority\");"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 35,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 36,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            proj.getProjectBacklog().addTask(title, description, priority);"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 37,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            Task addedTask \u003d proj.getProjectBacklog().getTask(proj.getProjectBacklog().getNextId() - 1);"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 38,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            Ui.showToUserLn(\"Task successfully created.\");"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 39,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            Ui.showToUserLn(addedTask.toString());"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 40,
         "author": {
           "gitId": "e0426051"
         },
         "content": ""
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 41,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 42,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Ui.showError(\"There are no projects! Please create a project first.\");"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 43,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 44,
         "author": {
           "gitId": "e0426051"
         },
         "content": ""
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 45,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 46,
         "author": {
           "gitId": "homingjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 47,
         "author": {
           "gitId": "chocomango"
         },
         "content": "    public void deleteTaskCommand(ArrayList\u003cString\u003e taskIdString, ArrayList\u003cProject\u003e projectList) {"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 48,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 49,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Project proj \u003d projectList.get(0);"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 50,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            if (taskIdString.isEmpty()) {"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 51,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                Ui.showError(\"Missing parameters.\");"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 52,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 53,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            for (String id : taskIdString) {"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 54,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                try {"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 55,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                    int taskId \u003d Integer.parseInt(id);"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 56,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                    if (proj.getProjectBacklog().checkTaskExist(taskId)) {"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 57,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        Task task \u003d proj.getProjectBacklog().getTask(taskId);"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 58,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        Ui.showToUserLn(\"The corresponding task \""
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 59,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                                + task.getTitle()"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 60,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                                + \"has been removed from project.\");"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 61,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        proj.getProjectBacklog().removeTask(taskId);"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 62,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        ArrayList\u003cSprint\u003e allSprints \u003d proj.getAllSprints().getSprintList();"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 63,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        for (Sprint sprint : allSprints) {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 64,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                            if (sprint.checkTaskExist(taskId)) {"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 65,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                                sprint.removeSprintTask(taskId);"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 66,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                            }"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 67,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        }"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 68,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    } else {"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 69,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        Ui.showError(Messages.MESSAGE_INVALID_ID);"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 70,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    }"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 71,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                } catch (NumberFormatException e) {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 72,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    Ui.showError(Messages.MESSAGE_INVALID_IDTYPE);"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 73,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 74,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 75,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 76,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Ui.showError(\"There are no projects! Please create a project first.\");"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 77,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 78,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 79,
         "author": {
           "gitId": "homingjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 80,
         "author": {
           "gitId": "chocomango"
         },
         "content": "    public void viewTaskCommand(ArrayList\u003cString\u003e taskId, ArrayList\u003cProject\u003e projectList) {"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 81,
         "author": {
           "gitId": "gmit22"
         },
         "content": ""
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 82,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 83,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Project proj \u003d projectList.get(0);"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 84,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            if (taskId.isEmpty()) {"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 85,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                Ui.showError(\"Missing parameters.\");"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 86,
         "author": {
           "gitId": "chocomango"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 87,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Ui.showToUserLn(\"The details of the tasks are as follows: \");"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 88,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            for (String id : taskId) {"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 89,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                Task task;"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 90,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                try {"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 91,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                    int backlogId \u003d Integer.parseInt(id);"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 92,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    if (backlogId \u003c proj.getProjectBacklog().backlogTasks.size()) {"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 93,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        task \u003d proj.getProjectBacklog().getTask(backlogId);"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 94,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        Ui.showToUserLn(task.toString());"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 95,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                        //Ui.showToUserLn(\"\\t Title: \" + task.getTitle());"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 96,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    } else {"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 97,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        Ui.showError(Messages.MESSAGE_INVALID_ID);"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 98,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    }"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 99,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                } catch (NumberFormatException e) {"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 100,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    Ui.showError(Messages.MESSAGE_INVALID_IDTYPE);"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 101,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 102,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 103,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 104,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Ui.showError(\"There are no projects! Please create a project first.\");"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 105,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 106,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 107,
         "author": {
           "gitId": "homingjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 108,
         "author": {
           "gitId": "chocomango"
         },
         "content": "    public void changeTaskPriorityCommand(Hashtable\u003cString, String\u003e tasks, ArrayList\u003cProject\u003e projectList)"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 109,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            throws DukeException {"
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 110,
         "author": {
           "gitId": "e0426051"
         },
         "content": ""
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 111,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        Task task;"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 112,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        int id;"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 113,
         "author": {
           "gitId": "gmit22"
         },
         "content": "        String priority;"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 114,
         "author": {
           "gitId": "chocomango"
         },
         "content": ""
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 115,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "e0426051"
         },
-        "content": "        if (!tasks.containsKey(TASK_ID) || !tasks.containsKey(PRIORITY)) {"
+        "content": "        id \u003d Integer.parseInt(tasks.get(TASK_ID));"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 116,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "e0426051"
         },
-        "content": "            throw new DukeException(\"Missing parameters.\");"
+        "content": "        priority \u003d tasks.get(PRIORITY).trim();"
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 117,
         "author": {
-          "gitId": "chocomango"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (tasks.get(TASK_ID) !\u003d null) {"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            id \u003d Integer.parseInt(tasks.get(TASK_ID));"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            throw new DukeException(\"Task ID entered is invalid!\");"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "        if (tasks.get(PRIORITY) !\u003d null) {"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            priority \u003d tasks.get(PRIORITY).trim();"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "            throw new DukeException(\"Please enter a priority!\");"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 145,
+        "lineNumber": 118,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 119,
         "author": {
           "gitId": "e0426051"
         },
         "content": "            Project proj \u003d projectList.get(0);"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 120,
         "author": {
           "gitId": "e0426051"
         },
         "content": "            try {"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 121,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                task \u003d proj.getProjectBacklog().getTask(id);"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 122,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                if (!proj.getProjectBacklog().checkValidPriority(priority)) {"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 123,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                    throw new DukeException(\"Invalid priority\");"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 124,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 125,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                task.setPriority(priority);"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 126,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                Ui.showToUserLn(\"The task \" + task.getTitle() + \"has its priority changed to:\");"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 127,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                Ui.showToUserLn(\"\\t\" + task.getPriority());"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 128,
         "author": {
           "gitId": "e0426051"
         },
         "content": "            } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 129,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                throw new DukeException(\"Task ID entered is out of bounds!\");"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 130,
         "author": {
           "gitId": "e0426051"
         },
         "content": "            } catch (IllegalArgumentException e) {"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 131,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                throw new DukeException(\"Priority entered is invalid!\");"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 132,
         "author": {
           "gitId": "e0426051"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 133,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 134,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Ui.showError(\"There are no projects! Please create a project first.\");"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 135,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 136,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 137,
         "author": {
           "gitId": "homingjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 138,
         "author": {
           "gitId": "gmit22"
         },
         "content": "    public void doneTaskCommand(ArrayList\u003cString\u003e taskId, ArrayList\u003cProject\u003e projectList) {"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 139,
         "author": {
           "gitId": "e0426051"
         },
         "content": ""
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 140,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 141,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Project proj \u003d projectList.get(0);"
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 142,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            for (String id : taskId) {"
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 143,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                Task task;"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 144,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                try {"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 145,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                    int backlogId \u003d Integer.parseInt(id);"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 146,
         "author": {
           "gitId": "chocomango"
         },
         "content": "                    if (backlogId \u003c\u003d proj.getProjectBacklog().backlogTasks.size()) {"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 147,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        task \u003d proj.getProjectBacklog().getTask(backlogId);"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 148,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        task.setAsDone();"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 149,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        Ui.showToUserLn(task.getTitle() + \"has been marked as done.\");"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 150,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    } else {"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 151,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                        Ui.showError(Messages.MESSAGE_INVALID_ID);"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 152,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    }"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 153,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                } catch (NumberFormatException e) {"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 154,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    Ui.showError(Messages.MESSAGE_INVALID_IDTYPE);"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 155,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 156,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                    Ui.showError(\"There are no projects! Please create a project first.\");"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 157,
         "author": {
           "gitId": "gmit22"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 158,
         "author": {
           "gitId": "homingjun"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 159,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 160,
         "author": {
           "gitId": "gmit22"
         },
         "content": "            Ui.showError(\"There are no projects! Please create a project first.\");"
       },
       {
-        "lineNumber": 188,
+        "lineNumber": 161,
         "author": {
           "gitId": "e0426051"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 162,
         "author": {
           "gitId": "homingjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 163,
         "author": {
           "gitId": "homingjun"
         },
         "content": "}"
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 164,
         "author": {
           "gitId": "gmit22"
         },
@@ -9585,10 +9152,10 @@
       }
     ],
     "authorContributionMap": {
-      "homingjun": 28,
-      "gmit22": 73,
-      "e0426051": 37,
-      "chocomango": 53
+      "homingjun": 20,
+      "gmit22": 68,
+      "e0426051": 32,
+      "chocomango": 44
     }
   },
   {
@@ -9999,6 +9566,241 @@
     ],
     "authorContributionMap": {
       "chocomango": 45
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/ExceptionsParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import java.util.Hashtable;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "public interface ExceptionsParser {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseSingleCommandsExceptions(Hashtable\u003cString, String\u003e parameters) throws DukeException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseMultipleCommandsExceptions(Hashtable\u003cString, String\u003e parameters, String action)"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throws DukeException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "homingjun": 13
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/MemberParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import java.util.Hashtable;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "public class MemberParser implements ExceptionsParser {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseSingleCommandsExceptions(Hashtable\u003cString, String\u003e parameters) throws DukeException {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        if (parameters.get(\"0\").isBlank()) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throw new DukeException(\"missing name\");"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseMultipleCommandsExceptions(Hashtable\u003cString, String\u003e parameters, String action)"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throws DukeException {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "homingjun": 18
     }
   },
   {
@@ -10458,119 +10260,119 @@
         "author": {
           "gitId": "homingjun"
         },
-        "content": "            } else {"
+        "content": "                for (int i \u003d 0; i \u003c arguments.length; i++) {"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                parameters.clear();"
+        "content": "                    parameters.put(\"\" + i, arguments[i]);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                while (parameterMatcher.find()) { //go through each occurrence of options"
+        "content": "                }"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "homingjun"
         },
-        "content": "                    //put the options into the hashtable (similar to dictionary)"
+        "content": "            } else {"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "gmit22"
+          "gitId": "chocomango"
         },
-        "content": "                    parameters.put(parameterMatcher.group(1), parameterMatcher.group(2));"
+        "content": "                parameters.clear();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                }"
+        "content": "                while (parameterMatcher.find()) { //go through each occurrence of options"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "gmit22"
         },
-        "content": "            }"
+        "content": "                    //put the options into the hashtable (similar to dictionary)"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "gmit22"
         },
-        "content": ""
+        "content": "                    parameters.put(parameterMatcher.group(1), parameterMatcher.group(2));"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "            switch (command.toLowerCase()) {"
+        "content": "                }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "            case PROJECT:"
+        "content": "            }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                switch (action.toLowerCase()) {"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                case CREATE:"
+        "content": "            switch (command.toLowerCase()) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                    try {"
+        "content": "            case PROJECT:"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                        new ProjectCommand().createProjectCommand(parameters, projectList);"
+        "content": "                try {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                    } catch (DukeException e) {"
+        "content": "                    new ProjectParser().parseSingleCommandsExceptions(parameters);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                        e.printExceptionMessage();"
+        "content": "                } catch (DukeException e) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                    }"
+        "content": "                    e.printExceptionMessage();"
       },
       {
         "lineNumber": 82,
@@ -10582,457 +10384,457 @@
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                case VIEW:"
+        "content": "                }"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                    new ProjectCommand().viewProjectCommand(projectList);"
+        "content": "                switch (action.toLowerCase()) {"
       },
       {
         "lineNumber": 85,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                default:"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    try {"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        throw new DukeException(\"Invalid action\");"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        e.printExceptionMessage();"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "            case MEMBER:"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                switch (action.toLowerCase()) {"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case ADD:"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new MemberCommand().addMemberCommand(params, projectList);"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case DELETE:"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new MemberCommand().deleteMemberCommand(params, projectList);"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                default:"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    try {"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        throw new DukeException(\"Invalid action\");"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        e.printExceptionMessage();"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "            case TASK:"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                switch (action.toLowerCase()) {"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case ADD:"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    try {"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                        new TaskCommand().addTaskCommand(parameters, projectList);"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        e.printExceptionMessage();"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case DELETE:"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new TaskCommand().deleteTaskCommand(params, projectList);"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case VIEW:"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new TaskCommand().viewTaskCommand(params, projectList);"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case PRIORITY:"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    try {"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                        new TaskCommand().changeTaskPriorityCommand(parameters, projectList);"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        e.printExceptionMessage();"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case DONE:"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "gmit22"
-        },
-        "content": "                    new TaskCommand().doneTaskCommand(params, projectList);"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                default:"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    try {"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "e0426051"
-        },
-        "content": "                        throw new DukeException(\"Invalid action!\");"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                        e.printExceptionMessage();"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "            case SPRINT:"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                switch (action.toLowerCase()) {"
-      },
-      {
-        "lineNumber": 146,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                case CREATE:"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 86,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    new ProjectCommand().createProjectCommand(parameters, projectList);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 88,
         "author": {
           "gitId": "chocomango"
         },
-        "content": "                    new CreateSprintCommand(parameters, projectList).execute();"
+        "content": "                case VIEW:"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new ProjectCommand().viewProjectCommand(projectList);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    try {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        throw new DukeException(\"Invalid action\");"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            case MEMBER:"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    new MemberParser().parseSingleCommandsExceptions(parameters);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                switch (action.toLowerCase()) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case ADD:"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    new MemberCommand().addMemberCommand(params, projectList);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case DELETE:"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new MemberCommand().deleteMemberCommand(params, projectList);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    try {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        throw new DukeException(\"Invalid action\");"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            case TASK:"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    new TaskParser().parseMultipleCommandsExceptions(parameters, action);"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                switch (action.toLowerCase()) {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case ADD:"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    try {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                        new TaskCommand().addTaskCommand(parameters, projectList);"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        e.printStackTrace();"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case DELETE:"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new TaskCommand().deleteTaskCommand(params, projectList);"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case VIEW:"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new TaskCommand().viewTaskCommand(params, projectList);"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case PRIORITY:"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    try {"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                        new TaskCommand().changeTaskPriorityCommand(parameters, projectList);"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    }"
       },
       {
         "lineNumber": 148,
@@ -11044,16 +10846,16 @@
       {
         "lineNumber": 149,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "homingjun"
         },
-        "content": "                case ADDTASK:"
+        "content": "                case DONE:"
       },
       {
         "lineNumber": 150,
         "author": {
-          "gitId": "chocomango"
+          "gitId": "gmit22"
         },
-        "content": "                    new AddSprintTaskCommand(params, projectList).execute();"
+        "content": "                    new TaskCommand().doneTaskCommand(params, projectList);"
       },
       {
         "lineNumber": 151,
@@ -11065,208 +10867,390 @@
       {
         "lineNumber": 152,
         "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                case DELETETASK:"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new DeleteSprintTaskCommand(params, projectList).execute();"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case VIEW:"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new ViewSprintCommand(parameters, projectList).execute();"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                case ASSIGN:"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "chocomango"
-        },
-        "content": "                    new AllocateSprintTaskCommand(parameters, projectList).execute();"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "homingjun"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
           "gitId": "homingjun"
         },
         "content": "                default:"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 153,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                    try {"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 154,
         "author": {
           "gitId": "e0426051"
         },
         "content": "                        throw new DukeException(\"Invalid action!\");"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 155,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                    } catch (DukeException e) {"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 156,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                        e.printExceptionMessage();"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 157,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                    }"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 158,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 159,
         "author": {
           "gitId": "homingjun"
         },
         "content": "                break;"
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 160,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "            default:"
+        "content": "            case SPRINT:"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    new SprintParser().parseMultipleCommandsExceptions(parameters, action);"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                switch (action.toLowerCase()) {"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case CREATE:"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new CreateSprintCommand(parameters, projectList).execute();"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "                return \"Invalid command!\";"
+        "content": "                    break;"
       },
       {
         "lineNumber": 171,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "chocomango"
         },
-        "content": "            }"
+        "content": "                case ADDTASK:"
       },
       {
         "lineNumber": 172,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "chocomango"
         },
-        "content": "        } else {"
+        "content": "                    new AddSprintTaskCommand(params, projectList).execute();"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "            return \"Invalid command!\";"
+        "content": "                    break;"
       },
       {
         "lineNumber": 174,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "chocomango"
         },
-        "content": "        }"
+        "content": "                case DELETETASK:"
       },
       {
         "lineNumber": 175,
         "author": {
-          "gitId": "homingjun"
+          "gitId": "chocomango"
         },
-        "content": "        return null;"
+        "content": "                    new DeleteSprintTaskCommand(params, projectList).execute();"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "homingjun"
         },
-        "content": "    }"
+        "content": "                    break;"
       },
       {
         "lineNumber": 177,
         "author": {
-          "gitId": "keke101"
+          "gitId": "homingjun"
         },
-        "content": "    "
+        "content": "                case VIEW:"
       },
       {
         "lineNumber": 178,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new ViewSprintCommand(parameters, projectList).execute();"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                case ASSIGN:"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "chocomango"
+        },
+        "content": "                    new AllocateSprintTaskCommand(parameters, projectList).execute();"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    try {"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "e0426051"
+        },
+        "content": "                        throw new DukeException(\"Invalid action!\");"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                        e.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                return \"Invalid command!\";"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            return \"Invalid command!\";"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "keke101"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public static boolean stringContainsNumber(String s) {"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        return Pattern.compile(\"[0-9]\").matcher(s).find();"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 204,
         "author": {
           "gitId": "keke101"
         },
         "content": "    public boolean isExit() {"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 205,
         "author": {
           "gitId": "keke101"
         },
         "content": "        return exit;"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 206,
         "author": {
           "gitId": "keke101"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 207,
         "author": {
           "gitId": "homingjun"
         },
@@ -11274,11 +11258,983 @@
       }
     ],
     "authorContributionMap": {
-      "homingjun": 122,
+      "homingjun": 151,
       "gmit22": 15,
       "keke101": 8,
       "e0426051": 2,
-      "chocomango": 34
+      "chocomango": 31
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/ProjectParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import java.util.Hashtable;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.TITLE;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.DESCRIPTION;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.DURATION;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.SPRINT_DURATION;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "public class ProjectParser implements ExceptionsParser {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseSingleCommandsExceptions(Hashtable\u003cString, String\u003e parameters) throws DukeException {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        if (!parameters.containsKey(TITLE) || !parameters.containsKey(DESCRIPTION)"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                || !parameters.containsKey(DURATION) || !parameters.containsKey(SPRINT_DURATION)) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throw new DukeException(\"Missing parameters.\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        if (parameters.get(TITLE).isBlank()) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throw new DukeException(\"no title\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        if (parameters.get(DESCRIPTION).isBlank()) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throw new DukeException(\"no description\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        if (parameters.get(DURATION).isBlank() || !Parser.stringContainsNumber(parameters.get(DURATION))) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throw new DukeException(\"please give a number for duration\");"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        if (parameters.get(SPRINT_DURATION).isBlank()"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                || !Parser.stringContainsNumber(parameters.get(SPRINT_DURATION))) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throw new DukeException(\"please give a number for sprint duration\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseMultipleCommandsExceptions(Hashtable\u003cString, String\u003e parameters, String action)"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throws DukeException {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "homingjun": 39
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/SprintParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import java.util.Hashtable;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.CREATE;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.ADDTASK;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.DELETETASK;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.ASSIGN;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "public class SprintParser implements ExceptionsParser {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseSingleCommandsExceptions(Hashtable\u003cString, String\u003e parameters) throws DukeException {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseMultipleCommandsExceptions(Hashtable\u003cString, String\u003e parameters, String action)"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throws DukeException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        switch (action.toLowerCase()) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case CREATE:"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case ADDTASK:"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case DELETETASK:"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(\"0\").isBlank() || !Parser.stringContainsNumber(parameters.get(\"0\"))) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"please give a task number\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case ASSIGN:"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "homingjun": 35
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/parser/TaskParser.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import java.util.Hashtable;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.TITLE;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.DESCRIPTION;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.PRIORITY;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.TASK_ID;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.ADD;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.DELETE;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "import static seedu.duke.command.CommandSummary.DONE;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "public class TaskParser implements ExceptionsParser {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseSingleCommandsExceptions(Hashtable\u003cString, String\u003e parameters) throws DukeException {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    public void parseMultipleCommandsExceptions(Hashtable\u003cString, String\u003e parameters, String action)"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            throws DukeException {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        switch (action.toLowerCase()) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case ADD:"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (!parameters.containsKey(TITLE) || !parameters.containsKey(DESCRIPTION)"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                    || !parameters.containsKey(PRIORITY)) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Missing parameters.\");"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(TITLE).isBlank()) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Please enter a title!\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(DESCRIPTION).isBlank()) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Please enter a description!\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(PRIORITY).isBlank()) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Please enter a priority!\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case DELETE:"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case DONE:"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(\"0\").isBlank() || !Parser.stringContainsNumber(parameters.get(\"0\"))) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"please give a task number\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        case PRIORITY:"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (!parameters.containsKey(TASK_ID) || !parameters.containsKey(PRIORITY)) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Missing parameters.\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(TASK_ID).isBlank() || !Parser.stringContainsNumber(parameters.get(TASK_ID))) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Task ID entered is invalid!\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            if (parameters.get(PRIORITY).isBlank()) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "                throw new DukeException(\"Please enter a priority!\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "homingjun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "homingjun": 61
     }
   },
   {
