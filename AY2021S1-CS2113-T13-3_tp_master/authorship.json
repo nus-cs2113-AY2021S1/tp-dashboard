@@ -11828,6 +11828,617 @@
     }
   },
   {
+    "path": "src/test/java/seedu/duke/parser/ParserTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.Command;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.AddCommand;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.ByeCommand;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.CompareCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.ClearCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.DeleteCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.EditCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.ListCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.command.LogInCommand;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import seedu.duke.exception.DukeException;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "//import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "public class ParserTest {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_unknownCommand_throwDukeException() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"hello, testing\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        assertThrows(DukeException.class, () -\u003e Parser.parse(input));"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_addCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"add CS2113 Lecture /fri /1600-1800 /LT15\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, AddCommand.class);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_byeCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, ByeCommand.class);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_clearCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"clear /sun\";"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, ClearCommand.class);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_compareCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"compare /Alex /mon\";"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, CompareCommand.class);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_deleteCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"delete /tue /2\";"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, DeleteCommand.class);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_editCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"edit /mon /2 /1000-1200\";"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, EditCommand.class);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_listCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"list /all\";"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, ListCommand.class);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    public void parse_loginCommand_parsedCorrectly() throws DukeException {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final String input \u003d \"login John /1324\";"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        parseAndAssertCommandType(input, LogInCommand.class);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "     * Parses input and asserts the class/type of the returned command object."
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "     * @param input to be parsed"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "     * @param expectedCommandClass expected class of returned command"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    private \u003cT extends Command\u003e void parseAndAssertCommandType(String input, Class\u003cT\u003e expectedCommandClass)"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "            throws DukeException {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        final Command result \u003d Parser.parse(input);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "        assertTrue(result.getClass().isAssignableFrom(expectedCommandClass));"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "tammykoh"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tammykoh": 86
+    }
+  },
+  {
     "path": "src/test/java/seedu/duke/user/UserListTest.java",
     "fileType": "test-code",
     "lines": [

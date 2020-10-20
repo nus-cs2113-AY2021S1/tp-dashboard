@@ -408,6 +408,597 @@
     }
   },
   {
+    "path": "docs/DeveloperGuide.md",
+    "fileType": "docs",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "# CCA Manager Developer Guide"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "CCA Manager is a revolutionary all-in-one management tool that changes the way you can manage interest groups with unrivaled efficiency and simplicity. Its lightweight Command Line Interface (CLI) allows administrators to breeze through tasks quickly and easily while offering powerful features to advanced users."
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "This developer guide is written to document the implementation of CCA Manager. This document is intended for people who"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "are interested in learning more about the technical details of the various features and the organization of the application."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Design \u0026 implementation"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "### Input Parsing"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "**Current Implementation**  "
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "The `Parser` class in `seedu.duke.backend` handles most of the input parsing. The `Parser` is a standalone class. Its purpose is to handle the conversion of read Strings from the `Ui` to UserInput objects"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "safely for the rest of the program to handle. It implements the following operations:"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* `Parser#parse()` - Converts the supplied input `String` to a `UserInput` object"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* `Parser#checkCategory()` - Convert the supplied `String` to a `String` category. This function implements Shorthand category detection."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* `Parser#sanitize()` - Check for unsupported, illegal or potentially malicious input and remove it from the `String`."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Given below is an explanation on the logical flow of the `parse()` function."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "1. The supplied `String` is sent to `sanitize()` to remove any potentially unwanted input that may cause undefined application behavior."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "2. `sanitize()` will analyze the `String` and run a set list of checks to verify that the input is safe for the rest of the routine to handle."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "3. `parse()` will split the `String` to a `String[]` to identify the number of arguments."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "4. `checkCategory()` is invoked to identify if the command belongs to a specific category."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "5. A `HashMap\u003cString,String\u003e` is created to store all the arguments supplied by the user."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "6. A new `UserInput` object is created with the arguments in the HashMap, the category of the command and the command."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "7. The function returns the `UserInput` to the `Ui` for further execution."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "**Design Considerations**  "
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Aspect: Statefulness of Parser object"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* Alternative 1 (Current Choice): Parser does not preserve state between parses."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Pros: Easy to implement. Easy to test. Promotes use of single commands over multi-step commands."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Cons: Unable to implement intelligent functionality where previous input influences the behavior of the next."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Reason for choice: Our focus for this application is simplicity and efficiency. Having stateful commands runs counter to this design philosophy."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* Alternative 2: Parser preserves stateful information"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Pros: Able to implement multi-step commands. Can easily implement confirmation step for commands that manipulate large volume of data."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Cons: More complicated to implement. Harder to ensure the behaviour of the parser is consistent. Harder to debug."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Aspect: Design of parser"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* Alternative 1 (Current Choice): Dedicated parser class creates an object to be passed into all other Command objects"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Pros: Allows other classes to check for the required arguments without having to do low level string handling. Enforces consistent parsing across all commands. Enables `/` arguments to be added and read in any order."
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Cons: Incurs additional overhead from adding an extra step between the input operation and the command invocation."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "* Alternative 2: Each Command handles its own input independently"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Pros: Command classes are free to simplify the parsing step depending on the required complexity of the command. No intermediate step and overhead."
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "    * Cons: More difficult to enforce parsing standards across Commands. String manipulation becomes required in every command."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Product scope"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Target user profile"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Our product targets people who manage interest groups and CCAs. "
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "However, our software solution allows us to easily expand the target audience to target schools and corporate enterprise clients in the future."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Value proposition"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Management software is expensive and complex, training employees to use it is time-consuming. CCA Manager aims to solve these"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "problems by offering an all-in-one solution focused on simplicity and efficiency. "
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Our use of industry standard csv format ensures compatibility with leading industry tools. "
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "Shorthand Commands and Relative Time allow advanced users to enter up to 70% more commands per minute. "
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## User Stories"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|Version| As a ... | I want to ... | So that I can ...|"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|--------|----------|---------------|------------------|"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Non-Functional Requirements"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "1. Should work on any mainstream OS as long as it has Java 11 or above installed."
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "2. Should be able to hold hundreds of thousands of data entries without losing the data."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "3. A user with average typing speed should be able to accomplish most of the tasks faster using commands than using the mouse."
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "4. The program should support writing to a universally supported and easy to edit non-proprietary file format such as RFC 4180 .csv files."
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Glossary"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "* *glossary item* - Definition"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Instructions for manual testing"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}"
+      }
+    ],
+    "authorContributionMap": {
+      "JohnNub": 53,
+      "-": 30
+    }
+  },
+  {
     "path": "docs/UserGuide.md",
     "fileType": "docs",
     "lines": [
@@ -6139,201 +6730,285 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": ""
+        "content": "    private Event cachedEvent;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    public String execute() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        Event m \u003d new Event(userInput.getArg(\"n\"), userInput.getArg(\"d\"), userInput.getArg(\"t\"));"
+        "content": "    public String execute() {"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        String output \u003d EventList.addEvent(m);"
+        "content": "        if (cachedEvent \u003d\u003d null) {"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        return output;"
+        "content": "            return \"Unable to create event! Please check your inputs again!\";"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": ""
+        "content": "        String output \u003d EventList.addEvent(cachedEvent);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    @Override"
+        "content": "        return output;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    public int validate(UserInput ui) {"
+        "content": "    }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        userInput \u003d ui;"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        if (userInput.getCategory().equals(\"event\") \u0026\u0026 userInput.getCommand().equalsIgnoreCase(\"addEvent\")) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "            if (ui.getNumArgs() \u003d\u003d 3) {"
+        "content": "    public int validate(UserInput ui) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "                if ((ui.getArg(\"n\") !\u003d null) \u0026\u0026 (ui.getArg(\"d\") !\u003d null) \u0026\u0026 (ui.getArg(\"t\") !\u003d null)) {"
+        "content": "        userInput \u003d ui;"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "                    return ACCEPT;"
+        "content": "        if (userInput.getCategory().equals(\"event\") \u0026\u0026 (userInput.getCommand().equalsIgnoreCase(\"addEvent\")"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "                }"
+        "content": "                || userInput.getCommand().equalsIgnoreCase(\"add\")"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "            }"
+        "content": "                || userInput.getCommand().equalsIgnoreCase(\"a\"))) {"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "            return ARGUMENT_ERR;"
+        "content": "            if (ui.getNumArgs() \u003e\u003d 3) {"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        } else {"
+        "content": "                if ((ui.getArg(\"n\") \u003d\u003d null) || (ui.getArg(\"d\") \u003d\u003d null) || (ui.getArg(\"t\") \u003d\u003d null)) {"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "            return NO_MATCH;"
+        "content": "                    return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        }"
+        "content": "                }"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "    }"
+        "content": "                if ((ui.getArg(\"n\").equals(\"\")) || (ui.getArg(\"d\").equals(\"\")) || (ui.getArg(\"t\").equals(\"\"))) {"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": ""
+        "content": "                    return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "    @Override"
+        "content": "                cachedEvent \u003d new Event(userInput.getArg(\"n\"), userInput.getArg(\"d\"), userInput.getArg(\"t\"));"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "    public String help() {"
+        "content": "                if (cachedEvent.date !\u003d null) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        return null;"
+        "content": "                    return ACCEPT;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    }"
+        "content": "                }"
       },
       {
         "lineNumber": 37,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "            return ARGUMENT_ERR;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "            return NO_MATCH;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "    public String help() {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "        return \"Syntax: event addEvent /n \u003cName\u003e /d \u003cDate YYYY-MM-DD\u003e /t \u003cTime\u003e\";"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
         "author": {
           "gitId": "Varsha3006"
         },
@@ -6341,7 +7016,8 @@
       }
     ],
     "authorContributionMap": {
-      "Varsha3006": 37
+      "Varsha3006": 31,
+      "JohnNub": 18
     }
   },
   {
@@ -6477,9 +7153,9 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        return null;"
+        "content": "        return \"Syntax: event addEvent \u003cIndex\u003e\";"
       },
       {
         "lineNumber": 20,
@@ -6519,89 +7195,103 @@
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        if (ui.getCategory().equals(\"event\") \u0026\u0026 ui.getCommand().equalsIgnoreCase(\"delEvent\")) {"
+        "content": "        if (ui.getCategory().equals(\"event\") \u0026\u0026 (ui.getCommand().equalsIgnoreCase(\"delEvent\")"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "            if (ui.getNumArgs() \u003d\u003d 1) {"
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"del\")"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "                if ((ui.getArg(\"\") !\u003d null)) {"
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"d\"))) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "                    return ACCEPT;"
+        "content": "            if (ui.getNumArgs() \u003d\u003d 1) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "                }"
+        "content": "                if ((ui.getArg(\"\") !\u003d null)) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "            }"
+        "content": "                    return ACCEPT;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "            return ARGUMENT_ERR;"
+        "content": "                }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        } else {"
+        "content": "            }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "            return NO_MATCH;"
+        "content": "            return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    }"
+        "content": "            return NO_MATCH;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "}"
+        "content": "        }"
       },
       {
         "lineNumber": 37,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 39,
         "author": {
           "gitId": "Varsha3006"
         },
@@ -6609,7 +7299,8 @@
       }
     ],
     "authorContributionMap": {
-      "Varsha3006": 37
+      "Varsha3006": 35,
+      "JohnNub": 4
     }
   },
   {
@@ -6738,82 +7429,96 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        if (input.getCategory().equals(\"event\") \u0026\u0026 input.getCommand().equalsIgnoreCase(\"listEvent\")) {"
+        "content": "        if (input.getCategory().equals(\"event\") \u0026\u0026 (input.getCommand().equalsIgnoreCase(\"listEvent\")"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "            return ACCEPT;"
+        "content": "            || input.getCommand().equalsIgnoreCase(\"list\")"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "Varsha3006"
+          "gitId": "JohnNub"
         },
-        "content": "        } else {"
+        "content": "            || input.getCommand().equalsIgnoreCase(\"l\"))) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "            return NO_MATCH;"
+        "content": "            return ACCEPT;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    }"
+        "content": "            return NO_MATCH;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    public String help() {"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "        return null;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Varsha3006"
         },
-        "content": "    }"
+        "content": "    public String help() {"
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Varsha3006"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "Varsha3006"
         },
@@ -6821,7 +7526,8 @@
       }
     ],
     "authorContributionMap": {
-      "Varsha3006": 29
+      "Varsha3006": 28,
+      "JohnNub": 3
     }
   },
   {
@@ -8159,299 +8865,355 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": ""
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "public class CommandFinanceAdd extends Command {"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    private UserInput userinput;"
+        "content": "public class CommandFinanceAdd extends Command {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    private Logger logger \u003d Logger.getGlobal();"
+        "content": "    private UserInput userinput;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": ""
+        "content": "    private Logger logger \u003d Logger.getGlobal();"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    public String execute() throws DukeFinanceAddDescriptionLostException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        logger.info(\"Start adding finance log...\\n\");"
+        "content": "    public String execute() throws DukeFinanceAddDescriptionLostException {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        String input \u003d userinput.getArg(\"\");"
+        "content": "        logger.info(\"Start adding finance log...\\n\");"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        if (input \u003d\u003d null) {"
+        "content": "        String input \u003d userinput.getArg(\"\");"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "            logger.warning(\"The input format is wrong.\\n\");"
+        "content": "        if (input \u003d\u003d null) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "            throw new DukeFinanceAddDescriptionLostException();"
+        "content": "            logger.warning(\"The input format is wrong.\\n\");"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        }"
+        "content": "            throw new DukeFinanceAddDescriptionLostException();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        String[] contents \u003d input.trim().split(\" \");"
+        "content": "        }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        int length \u003d contents.length;"
+        "content": "        String[] contents \u003d input.trim().split(\" \");"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        String item \u003d \"\";"
+        "content": "        int length \u003d contents.length;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        for (int i \u003d 0;i \u003c length - 1;i++) {"
+        "content": "        String item \u003d \"\";"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "            if (i \u003d\u003d length - 2) {"
+        "content": "        for (int i \u003d 0; i \u003c length - 1; i++) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "                item \u003d item + contents[i];"
+        "content": "            if (i \u003d\u003d length - 2) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "            } else {"
+        "content": "                item \u003d item + contents[i];"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "                item \u003d item + contents[i] + \" \";"
+        "content": "            } else {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "            }"
+        "content": "                item \u003d item + contents[i] + \" \";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        FinanceLog fl \u003d new FinanceLog(item,Double.parseDouble(contents[length - 1]));"
+        "content": "        }"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "        String output \u003d FinanceList.addLog(fl);"
+        "content": "        try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        logger.info(\"End adding...\\n\");"
+        "content": "            FinanceLog fl \u003d new FinanceLog(item, Double.parseDouble(contents[length - 1]));"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        return output;"
+        "content": "            String output \u003d FinanceList.addLog(fl);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    }"
+        "content": "            logger.info(\"End adding...\\n\");"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": ""
+        "content": "            return output;"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "    @Override"
+        "content": "        } catch (NumberFormatException nfe) {"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "    public String help() {"
+        "content": "            logger.warning(\"The input format is wrong.\\n\");"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "        return \"The format input to add a finance log is: hr addLog title value\";"
+        "content": "            throw new DukeFinanceAddDescriptionLostException();"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    public int validate(UserInput ui) {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        if (ui.getCategory().equals(\"finance\") \u0026\u0026 ui.getCommand().equalsIgnoreCase(\"addlog\")) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "            userinput \u003d ui;"
+        "content": "    public String help() {"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "            return ACCEPT;"
+        "content": "        return \"Syntax: hr addLog title value\";"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        return NO_MATCH;"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    }"
+        "content": "    public int validate(UserInput ui) {"
       },
       {
         "lineNumber": 48,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "        if (ui.getCategory().equals(\"finance\") \u0026\u0026 (ui.getCommand().equalsIgnoreCase(\"addlog\")"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"add\")"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"a\"))) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "            userinput \u003d ui;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "            return ACCEPT;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "        return NO_MATCH;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
         "author": {
           "gitId": "WangZixin67"
         },
@@ -8459,7 +9221,8 @@
       }
     ],
     "authorContributionMap": {
-      "WangZixin67": 48
+      "WangZixin67": 46,
+      "JohnNub": 10
     }
   },
   {
@@ -8595,9 +9358,9 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "        return \"The format of input to delete a log is: finance delLog index\";"
+        "content": "        return \"Syntax: finance delLog \u003cindex\u003e\";"
       },
       {
         "lineNumber": 20,
@@ -8623,47 +9386,96 @@
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "        if (ui.getCategory().equals(\"finance\") \u0026\u0026 ui.getCommand().equalsIgnoreCase(\"dellog\")) {"
+        "content": "        if (ui.getCategory().equals(\"finance\") \u0026\u0026 ui.getCommand().equalsIgnoreCase(\"dellog\")"
       },
       {
         "lineNumber": 24,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"del\")"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"d\")) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                Integer.parseInt(ui.getArg(\"\"));"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "            } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                return ARGUMENT_ERR;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "WangZixin67"
         },
         "content": "            userinput \u003d ui;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 32,
         "author": {
           "gitId": "WangZixin67"
         },
         "content": "            return ACCEPT;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 33,
         "author": {
           "gitId": "WangZixin67"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 34,
         "author": {
           "gitId": "WangZixin67"
         },
         "content": "        return NO_MATCH;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 35,
         "author": {
           "gitId": "WangZixin67"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 36,
         "author": {
           "gitId": "WangZixin67"
         },
@@ -8671,7 +9483,8 @@
       }
     ],
     "authorContributionMap": {
-      "WangZixin67": 29
+      "WangZixin67": 27,
+      "JohnNub": 9
     }
   },
   {
@@ -8821,47 +9634,68 @@
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "        if (ui.getCategory().equals(\"finance\") \u0026\u0026 ui.getCommand().equalsIgnoreCase(\"summary\")) {"
+        "content": "        if (ui.getCategory().equals(\"finance\") \u0026\u0026 (ui.getCommand().equalsIgnoreCase(\"summary\")"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "            userinput \u003d ui;"
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"list\")"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "            return ACCEPT;"
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"s\")"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "WangZixin67"
+          "gitId": "JohnNub"
         },
-        "content": "        }"
+        "content": "                || ui.getCommand().equalsIgnoreCase(\"l\"))) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "        return NO_MATCH;"
+        "content": "            userinput \u003d ui;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "WangZixin67"
         },
-        "content": "    }"
+        "content": "            return ACCEPT;"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "        return NO_MATCH;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "WangZixin67"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
         "author": {
           "gitId": "WangZixin67"
         },
@@ -8869,7 +9703,8 @@
       }
     ],
     "authorContributionMap": {
-      "WangZixin67": 27
+      "WangZixin67": 26,
+      "JohnNub": 4
     }
   },
   {
@@ -9870,275 +10705,275 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "import static seedu.duke.hr.MemberList.isInteger;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "import static seedu.duke.hr.MemberList.isInteger;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": " * Represents add member command."
+        "content": "/**"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": " */"
+        "content": " * Represents add member command."
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "public class CommandAddMember extends Command {"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "public class CommandAddMember extends Command {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    private UserInput savedInput;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    private UserInput savedInput;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public int validate(UserInput input) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        this.savedInput \u003d input;"
+        "content": "    public int validate(UserInput input) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        if (input.getCategory().equals(\"hr\") \u0026\u0026 input.getCommand().equalsIgnoreCase(\"add\")) {"
+        "content": "        this.savedInput \u003d input;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "            if (input.getNumArgs() \u003d\u003d 4) {"
+        "content": "        if (input.getCategory().equals(\"hr\") \u0026\u0026 (input.getCommand().equalsIgnoreCase(\"add\")"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "                if ((input.getArg(\"n\") !\u003d null) \u0026\u0026 (input.getArg(\"p\") !\u003d null) \u0026\u0026 (input.getArg(\"e\") !\u003d null)"
+        "content": "                || input.getCommand().equalsIgnoreCase(\"a\"))) {"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "                        \u0026\u0026 (input.getArg(\"r\") !\u003d null) \u0026\u0026 isInteger(input.getArg(\"p\"))) {"
+        "content": "            if (input.getNumArgs() \u003e\u003d 4) {"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "                    return ACCEPT;"
+        "content": "                if ((input.getArg(\"n\") \u003d\u003d null) || (input.getArg(\"p\") \u003d\u003d null) || (input.getArg(\"e\") \u003d\u003d null)"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "                }"
+        "content": "                        \u0026\u0026 (input.getArg(\"r\") \u003d\u003d null)) {"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "            }"
+        "content": "                    return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "            return ARGUMENT_ERR;"
+        "content": "                }"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "        } else {"
+        "content": "                if ((input.getArg(\"n\").equals(\"\")) || (input.getArg(\"p\").equals(\"\")) || (input.getArg(\"e\").equals(\"\"))"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "            return NO_MATCH;"
+        "content": "                        \u0026\u0026 (input.getArg(\"r\").equals(\"\")) || !isInteger(input.getArg(\"p\"))) {"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "        }"
+        "content": "                    return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "    }"
+        "content": "                }"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": ""
+        "content": "                return ACCEPT;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": "            }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public String execute() {"
+        "content": "            return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        int phone \u003d Integer.parseInt(savedInput.getArg(\"p\"));"
+        "content": "        } else {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        Member m \u003d new Member(savedInput.getArg(\"n\"), phone, savedInput.getArg(\"e\"), savedInput.getArg(\"r\"));"
+        "content": "            return NO_MATCH;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        String output \u003d MemberList.addToList(m);"
+        "content": "        }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        return output;"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": "    public String execute() {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public String help() {"
+        "content": "        int phone \u003d Integer.parseInt(savedInput.getArg(\"p\"));"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "        Member m \u003d new Member(savedInput.getArg(\"n\"), phone, savedInput.getArg(\"e\"), savedInput.getArg(\"r\"));"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "JohnNub"
+          "gitId": "yeyutong811"
         },
-        "content": "        return \"You can use \u0027hr add\u0027 command this way:\\n\""
+        "content": "        String output \u003d MemberList.addToList(m);"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "JohnNub"
+          "gitId": "yeyutong811"
         },
-        "content": "                + \"hr add /n NAME /p PHONE_NUMBER (INTEGER) /e EMAIL /r ROLE\\n\";"
+        "content": "        return output;"
       },
       {
         "lineNumber": 44,
@@ -10152,12 +10987,61 @@
         "author": {
           "gitId": "yeyutong811"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "yeyutong811"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "yeyutong811"
+        },
+        "content": "    public String help() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "yeyutong811"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "        return \"You can use \u0027hr add\u0027 command this way:\\n\""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JohnNub"
+        },
+        "content": "                + \"hr add /n NAME /p PHONE_NUMBER (INTEGER) /e EMAIL /r ROLE\\n\";"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "yeyutong811"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "yeyutong811"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "yeyutong811": 43,
-      "JohnNub": 2
+      "yeyutong811": 38,
+      "JohnNub": 14
     }
   },
   {
@@ -10293,180 +11177,187 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "        if (input.getCategory().equals(\"hr\") \u0026\u0026 input.getCommand().equalsIgnoreCase(\"delete\")) {"
+        "content": "        if (input.getCategory().equals(\"hr\") \u0026\u0026 input.getCommand().equalsIgnoreCase(\"delete\")"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "            if (input.getNumArgs() \u003d\u003d 1) {"
+        "content": "                || input.getCommand().equalsIgnoreCase(\"d\")) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "                if ((input.getArg(\"\") !\u003d null) \u0026\u0026 isInteger(input.getArg(\"\"))) {"
+        "content": "            if (input.getNumArgs() \u003d\u003d 1) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "                if ((input.getArg(\"\") !\u003d null) \u0026\u0026 isInteger(input.getArg(\"\"))) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "                    return ACCEPT;"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "                }"
+        "content": "                    return ACCEPT;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "            }"
+        "content": "                }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "            return ARGUMENT_ERR;"
+        "content": "            }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        } else {"
+        "content": "            return ARGUMENT_ERR;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "            return NO_MATCH;"
+        "content": "        } else {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        }"
+        "content": "            return NO_MATCH;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public String execute() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        index \u003d Integer.parseInt(savedInput.getArg(\"\"));"
+        "content": "    public String execute() {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        String output \u003d MemberList.deleteFromList(index - 1);"
+        "content": "        index \u003d Integer.parseInt(savedInput.getArg(\"\"));"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        return output;"
+        "content": "        String output \u003d MemberList.deleteFromList(index - 1);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": "        return output;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public String help() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        return \"You can use \u0027hr delete\u0027 command this way:\\n\" + \"hr delete MEMBER_INDEX (INTEGER)\\n\";"
+        "content": "    public String help() {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": "        return \"You can use \u0027hr delete\u0027 command this way:\\n\" + \"hr delete MEMBER_INDEX (INTEGER)\\n\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "yeyutong811"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "yeyutong811"
         },
@@ -10474,7 +11365,8 @@
       }
     ],
     "authorContributionMap": {
-      "yeyutong811": 44
+      "yeyutong811": 43,
+      "JohnNub": 2
     }
   },
   {
@@ -10589,131 +11481,138 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "        if (input.getCategory().equals(\"hr\") \u0026\u0026 input.getCommand().equalsIgnoreCase(\"list\")) {"
+        "content": "        if (input.getCategory().equals(\"hr\") \u0026\u0026 input.getCommand().equalsIgnoreCase(\"list\")"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "yeyutong811"
+          "gitId": "JohnNub"
         },
-        "content": "            return ACCEPT;"
+        "content": "            || input.getCommand().equalsIgnoreCase(\"l\")) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        } else {"
+        "content": "            return ACCEPT;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "            return NO_MATCH;"
+        "content": "        } else {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        }"
+        "content": "            return NO_MATCH;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public String execute() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        String output \u003d MemberList.listMembers();"
+        "content": "    public String execute() {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        return output;"
+        "content": "        String output \u003d MemberList.listMembers();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": "        return output;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    public String help() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": ""
+        "content": "    public String help() {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "        return \"You can use \u0027hr list\u0027 command this way:\\n\" + \"hr list\\n\";"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "yeyutong811"
         },
-        "content": "    }"
+        "content": "        return \"You can use \u0027hr list\u0027 command this way:\\n\" + \"hr list\\n\";"
       },
       {
         "lineNumber": 34,
+        "author": {
+          "gitId": "yeyutong811"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
         "author": {
           "gitId": "yeyutong811"
         },
@@ -10721,7 +11620,8 @@
       }
     ],
     "authorContributionMap": {
-      "yeyutong811": 34
+      "yeyutong811": 33,
+      "JohnNub": 2
     }
   },
   {
