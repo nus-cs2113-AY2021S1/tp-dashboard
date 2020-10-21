@@ -3325,170 +3325,6 @@
     }
   },
   {
-    "path": "src/main/java/seedu/ecardnomics/DeleteCommand.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "package seedu.ecardnomics;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "import seedu.ecardnomics.command.deck.DeckCommand;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "import seedu.ecardnomics.deck.Deck;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "public class DeleteCommand extends DeckCommand {"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    private int flashCardID;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    private boolean isFlashCardDeleted;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    public DeleteCommand(Deck deck, int flashCardID, boolean isFlashCardDeleted) {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        super(deck);"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        this.flashCardID \u003d flashCardID;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        this.isFlashCardDeleted \u003d isFlashCardDeleted;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    public void execute() {"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        if (isFlashCardDeleted) {"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            currentDeck.delete(flashCardID);"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "alwaysnacy": 1,
-      "zhixiangteoh": 21
-    }
-  },
-  {
     "path": "src/main/java/seedu/ecardnomics/Main.java",
     "fileType": "functional-code",
     "lines": [
@@ -5692,9 +5528,9 @@
       {
         "lineNumber": 195,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "        printMessage(LIST_FLASHCARDS_LINE + deck.getName());"
+        "content": "        String deckMessage \u003d \"\";"
       },
       {
         "lineNumber": 196,
@@ -5706,9 +5542,9 @@
       {
         "lineNumber": 197,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "            System.out.println(EMPTY_DECK_LINE);"
+        "content": "            deckMessage +\u003d EMPTY_DECK_LINE;"
       },
       {
         "lineNumber": 198,
@@ -5720,586 +5556,579 @@
       {
         "lineNumber": 199,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "            System.out.print(deck.toString(type));"
+        "content": "            deckMessage +\u003d LIST_FLASHCARDS_LINE + deck.getName() + \"\\n\""
       },
       {
         "lineNumber": 200,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "                    + deck.toString(type);"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        printDashLines();"
+        "content": "        }"
       },
       {
         "lineNumber": 202,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        printMessage(deckMessage);"
+      },
+      {
+        "lineNumber": 203,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 204,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * Displays the delete FlashCard line."
+        "content": "    /**"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     *"
+        "content": "     * Displays the delete FlashCard line."
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * @param flashCard FlashCard to delete"
+        "content": "     *"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     */"
+        "content": "     * @param flashCard FlashCard to delete"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public static void printDeleteFlashCardLine(FlashCard flashCard) {"
+        "content": "     */"
       },
       {
         "lineNumber": 210,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        System.out.print(DELETE_FLASHCARD_LINE + YN_LINE + \"\\n  \u0027\" + flashCard.getQuestion() + \"`\\n\");"
+        "content": "    public static void printDeleteFlashCardLine(FlashCard flashCard) {"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        printPrompt();"
+        "content": "        System.out.print(DELETE_FLASHCARD_LINE + YN_LINE + \"\\n  \u0027\" + flashCard.getQuestion() + \"`\\n\");"
       },
       {
         "lineNumber": 212,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "    }"
+        "content": "        printPrompt();"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * Displays the FlashCard deleted line."
+        "content": "    /**"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     *"
+        "content": "     * Displays the FlashCard deleted line."
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * @param flashCard deleted FlashCard"
+        "content": "     *"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     */"
+        "content": "     * @param flashCard deleted FlashCard"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public static void printFlashCardDeletedLine(FlashCard flashCard) {"
+        "content": "     */"
       },
       {
         "lineNumber": 220,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    public static void printFlashCardDeletedLine(FlashCard flashCard) {"
+      },
+      {
+        "lineNumber": 221,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        System.out.println(FLASHCARD_DELETED_LINE + flashCard.getQuestion() + \"\u0027\");"
       },
       {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 222,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * Displays the help page of commands."
+        "content": "    /**"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     *"
+        "content": "     * Displays the help page of commands."
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * \u003cp\u003eDisplays a different help page for Normal Mode and Deck Mode.\u003c/p\u003e"
+        "content": "     *"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     *"
+        "content": "     * \u003cp\u003eDisplays a different help page for Normal Mode and Deck Mode.\u003c/p\u003e"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     * @param helpDisplay help text to display"
+        "content": "     *"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "     */"
+        "content": "     * @param helpDisplay help text to display"
       },
       {
         "lineNumber": 230,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    public static void printHelp(String helpDisplay) {"
+        "content": "     */"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        printMessage(helpDisplay);"
+        "content": "    public static void printHelp(String helpDisplay) {"
       },
       {
         "lineNumber": 232,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "    }"
+        "content": "        printMessage(helpDisplay);"
       },
       {
         "lineNumber": 233,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * Prints new deck added in the Normal Mode."
+        "content": "    /**"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     *"
+        "content": "     * Prints new deck added in the Normal Mode."
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * @param deck in new Deck added"
+        "content": "     *"
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     */"
+        "content": "     * @param deck in new Deck added"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    public static void printNewDeck(Deck deck) {"
+        "content": "     */"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "        System.out.println(NEW_DECK_CREATED_LINE + deck.getName());"
+        "content": "    public static void printNewDeck(Deck deck) {"
       },
       {
         "lineNumber": 241,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "kaijiel24"
         },
-        "content": "    }"
+        "content": "        printMessage(NEW_DECK_CREATED_LINE + deck.getName());"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * Prints all decks available in the Normal Mode."
+        "content": "    /**"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     *"
+        "content": "     * Prints all decks available in the Normal Mode."
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * @param decks all decks in the list"
+        "content": "     *"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     */"
+        "content": "     * @param decks all decks in the list"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    public static void printDeckList(DeckList decks) {"
+        "content": "     */"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "        System.out.println(DECKS_AVAILABLE_LINE);"
+        "content": "    public static void printDeckList(DeckList decks) {"
       },
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "kaijiel24"
         },
-        "content": "        System.out.println(decks.toString());"
+        "content": "        printMessage(DECKS_AVAILABLE_LINE + decks.toString());"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    /**"
+        "content": "     * Confirms the deck the user wants to delete."
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * Confirms the deck the user wants to delete."
+        "content": "     *"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     *"
+        "content": "     * @param deletedDeckName name of the deleted deck"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * @param deletedDeckName name of the deleted deck"
+        "content": "     */"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 259,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
         "content": "    public static void printDeletedDeckQuestion(String deletedDeckName) {"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 259,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "        System.out.print(String.format(DELETED_DECK_QUESTION_LINE, deletedDeckName));"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 260,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": ""
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    /**"
+        "content": "     * Prints the name of the deleted deck."
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * Prints the name of the deleted deck."
+        "content": "     *"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     *"
+        "content": "     * @param deletedDeckName name of the deleted deck"
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "     * @param deletedDeckName name of the deleted deck"
-      },
-      {
-        "lineNumber": 267,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
         "content": "     */"
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 267,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "    public static void printDeckDeletedLine(String deletedDeckName) {"
       },
       {
-        "lineNumber": 269,
+        "lineNumber": 268,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        System.out.println(String.format(DELETED_DECK_LINE, deletedDeckName));"
       },
       {
-        "lineNumber": 270,
+        "lineNumber": 269,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 271,
+        "lineNumber": 270,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 271,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 273,
+        "lineNumber": 272,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "     * Prints a line prompting user to enter only \u0027y\u0027 or \u0027n\u0027."
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 273,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 274,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    public static void printInvalidYorNResponse() {"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 275,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        System.out.println(INVALID_YN_RESPONSE_LINE);"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 276,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 278,
+        "lineNumber": 277,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 279,
+        "lineNumber": 278,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    public static void printVersionNumber() {"
       },
       {
-        "lineNumber": 280,
+        "lineNumber": 279,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        printMessage(\"Version: \" + VERSION_NUMBER);"
       },
       {
-        "lineNumber": 281,
+        "lineNumber": 280,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 282,
+        "lineNumber": 281,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -6307,11 +6136,11 @@
       }
     ],
     "authorContributionMap": {
-      "alwaysnacy": 47,
-      "kaijiel24": 114,
+      "alwaysnacy": 43,
+      "kaijiel24": 121,
       "LiewWS": 4,
       "zhixiangteoh": 64,
-      "wangwaynesg": 53
+      "wangwaynesg": 49
     }
   },
   {
@@ -9434,9 +9263,9 @@
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        String output \u003d name + \":\";"
+        "content": "        String output \u003d name + \":\\n\";"
       },
       {
         "lineNumber": 81,
@@ -9448,138 +9277,152 @@
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "            output +\u003d \"\\n\" + (i + 1) + \". \" + deck.get(i).toString() + \"\\n\";"
+        "content": "            output +\u003d (i + 1) + \". \" + deck.get(i).toString();"
       },
       {
         "lineNumber": 83,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        return output;"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "    public String toString(String type) {"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        String output \u003d \"\";"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        if (this.deck.size() \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "            return output;"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        for (int i \u003d 0; i \u003c deck.size(); i++) {"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            output +\u003d (i + 1) + \". \" + deck.get(i).toString(type) + \"\\n\";"
-      },
-      {
-        "lineNumber": 94,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            if (i !\u003d deck.size() - 1) {"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 84,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                output +\u003d \"\\n\";"
+        "content": "                output +\u003d \"\\n\\n\";"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 85,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 86,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "wangwaynesg"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 87,
         "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        output \u003d output.replace(\"\\n$\", \"\");"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "wangwaynesg"
         },
         "content": "        return output;"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 88,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "    public String toString(String type) {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        String output \u003d \"\";"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        if (this.deck.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            return output;"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        for (int i \u003d 0; i \u003c deck.size(); i++) {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            output +\u003d (i + 1) + \". \" + deck.get(i).toString(type);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            if (i !\u003d deck.size() - 1) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "                output +\u003d \"\\n\\n\";"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
+      },
+      {
         "lineNumber": 101,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        return output;"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 103,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -9587,10 +9430,10 @@
       }
     ],
     "authorContributionMap": {
-      "kaijiel24": 5,
+      "kaijiel24": 9,
       "LiewWS": 40,
-      "zhixiangteoh": 46,
-      "wangwaynesg": 10
+      "zhixiangteoh": 45,
+      "wangwaynesg": 9
     }
   },
   {
@@ -10083,9 +9926,9 @@
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        String output \u003d \"Decks:\";"
+        "content": "        String output \u003d \"\";"
       },
       {
         "lineNumber": 71,
@@ -10097,40 +9940,61 @@
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "alwaysnacy"
+          "gitId": "kaijiel24"
         },
-        "content": "            output +\u003d \"\\n\" + (i + 1) + \". \" + deckList.get(i).getName();"
+        "content": "            output +\u003d (i + 1) + \". \" + deckList.get(i).getName();"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "            if (i !\u003d deckList.size() - 1) {"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "                output +\u003d \"\\n\";"
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        return output;"
+        "content": "            }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 77,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        return output;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -10138,10 +10002,10 @@
       }
     ],
     "authorContributionMap": {
-      "alwaysnacy": 5,
-      "kaijiel24": 28,
+      "alwaysnacy": 4,
+      "kaijiel24": 33,
       "LiewWS": 20,
-      "zhixiangteoh": 24
+      "zhixiangteoh": 23
     }
   },
   {
@@ -10167,493 +10031,829 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "/**"
+        "content": "import seedu.ecardnomics.Ui;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": " * Flashcards that contain a question and asnwer."
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "public class FlashCard {"
+        "content": " * Flashcards that contain a question and asnwer."
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "    private String question;"
+        "content": " */"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    private String answer;"
+        "content": "public class FlashCard {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    private String question;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    /** Constructor. */"
+        "content": "    private String answer;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public FlashCard(String question, String answer) {"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        assert (question !\u003d null \u0026\u0026 !question.isEmpty()) : \"Flashcard must have one question.\";"
+        "content": "    /** Constructor. */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        this.question \u003d question;"
+        "content": "    public FlashCard(String question, String answer) {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        assert (answer !\u003d null \u0026\u0026 !answer.isEmpty()) : \"Flashcard must have one answer\";"
+        "content": "        assert (question !\u003d null \u0026\u0026 !question.isEmpty()) : \"Flashcard must have one question.\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        this.answer \u003d answer;"
+        "content": "        this.question \u003d question;"
       },
       {
         "lineNumber": 16,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     * Get the answer of the flashcard."
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     * @return String representing the answer on the flashcard"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    public String getAnswer() {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        return answer;"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     * Get the question of the flashcard."
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     * @return String representing the question on the flashcard"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    public String getQuestion() {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        return question;"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     * Set the answer of the flashcard."
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     * @param answer new answer on the flashcard"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    public void setAnswer(String answer) {"
-      },
-      {
-        "lineNumber": 42,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "        assert (answer !\u003d null \u0026\u0026 !answer.isEmpty()) : \"Flashcard must have one answer\";"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 17,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        this.answer \u003d answer;"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 18,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 19,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 20,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 21,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * Set the question of the flashcard."
+        "content": "     * Get the answer of the flashcard."
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 22,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 23,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * @param question new answer on the flashcard"
+        "content": "     * @return String representing the answer on the flashcard"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 24,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 25,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public void setQuestion(String question) {"
+        "content": "    public String getAnswer() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        return answer;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * Get the question of the flashcard."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * @return String representing the question on the flashcard"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    public String getQuestion() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        return question;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * Set the answer of the flashcard."
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * @param answer new answer on the flashcard"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    public void setAnswer(String answer) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        assert (answer !\u003d null \u0026\u0026 !answer.isEmpty()) : \"Flashcard must have one answer\";"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        this.answer \u003d answer;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * Set the question of the flashcard."
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * @param question new answer on the flashcard"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        assert (question !\u003d null \u0026\u0026 !question.isEmpty()) : \"Flashcard must have one question.\";"
+        "content": "     */"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        this.question \u003d question;"
+        "content": "    public void setQuestion(String question) {"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "    }"
+        "content": "        assert (question !\u003d null \u0026\u0026 !question.isEmpty()) : \"Flashcard must have one question.\";"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        this.question \u003d question;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        return \"Question: \" + question + \"\\n\""
+        "content": "    @Override"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                + \"   Answer:   \" + answer;"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 60,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        return \"Question: \" + formatResponse(\"question\") + \"\\n\""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"   Answer:   \" + formatResponse(\"answer\");"
+      },
+      {
+        "lineNumber": 62,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 63,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": ""
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 64,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "    public String toString(String type) {"
       },
       {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        switch (type) {"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        case \"question\":"
-      },
-      {
         "lineNumber": 65,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "LiewWS"
         },
-        "content": "            return \"Question: \" + question;"
+        "content": "        assert type.equals(\"question\") || type.equals(\"answer\") : \"Only two cases here\";"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        case \"answer\":"
+        "content": "        switch (type) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "            return \"Question: \" + question + \"\\n\""
+        "content": "        case \"question\":"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "LiewWS"
         },
-        "content": "                    + \"   Answer:   \" + answer;"
+        "content": "            return \"Question: \" + formatResponse(\"question\");"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        default:"
+        "content": "        case \"answer\":"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "LiewWS"
         },
-        "content": "            return \"\";"
+        "content": "            return \"Question: \" + formatResponse(\"question\") + \"\\n\""
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "LiewWS"
         },
-        "content": "        }"
+        "content": "                    + \"   Answer:   \" + formatResponse(\"answer\");"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    }"
+        "content": "        default:"
       },
       {
         "lineNumber": 73,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            return \"\";"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * Format the question and answer response string to properly"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * wrap around the end of each line."
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * IMPORTANT: We assume the following format for printing"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * Questions: \"n. Question: [qn]\""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * Answers: \"   Answer:   [ans]\""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * @param type String that should only have value \"question\" or \"answer\""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     * @return String that stores the formatted question or answer"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    private String formatResponse(String type) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        assert type.equals(\"question\") || type.equals(\"answer\") : \"Only two cases here\";"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String result \u003d \"\";"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        int startLength;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String[] words;"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        int lineLength \u003d Ui.DASH_LINES.length();"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        // We rely on the printing format \"n. Question: [qn]\""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        // or \"   Answer:   [ans]\""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        if (type.equals(\"question\")) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            startLength \u003d \"n. Question: \".length();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            words \u003d question.split(\" \");;"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            startLength \u003d \"n. Answer:   \".length();"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            words \u003d answer.split(\" \");"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        int usableLength \u003d lineLength - startLength;"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        int currentLength \u003d 0;"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        for (String word : words) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            currentLength +\u003d word.length();"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            if (currentLength \u003e usableLength) {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                // Repeat enough spaces so that text is aligned to usable area."
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                result +\u003d System.lineSeparator() + \" \".repeat(startLength) + word;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                currentLength \u003d word.length();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                result +\u003d word;"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            result +\u003d \" \";"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            // Account for the \" \" after the word."
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            ++currentLength;"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        return result.trim();"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 121,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -10661,9 +10861,9 @@
       }
     ],
     "authorContributionMap": {
-      "LiewWS": 28,
-      "zhixiangteoh": 33,
-      "wangwaynesg": 12
+      "LiewWS": 81,
+      "zhixiangteoh": 31,
+      "wangwaynesg": 9
     }
   },
   {
@@ -11291,324 +11491,324 @@
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        String response \u003d getDeleteYorNResponse(flashCard);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        assert response.equals(Ui.Y) || response.equals(Ui.N) : \"response not \u0027Y\u0027 or \u0027N\u0027!\";"
+        "content": "        String response \u003d getDeleteYorNResponse(flashCard);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        switch (response) {"
+        "content": "        assert response.equals(Ui.Y) || response.equals(Ui.N) : \"response not \u0027Y\u0027 or \u0027N\u0027!\";"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        case Ui.Y:"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            Ui.printFlashCardDeletedLine(flashCard);"
+        "content": "        switch (response) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            Ui.printDashLines();"
+        "content": "        case Ui.Y:"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            return true;"
+        "content": "            Ui.printFlashCardDeletedLine(flashCard);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        case Ui.N:"
+        "content": "            Ui.printDashLines();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            //"
+        "content": "            return true;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            break;"
+        "content": "        case Ui.N:"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        default:"
+        "content": "            //"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            logger.log(Level.SEVERE, \"Response should only be either \u0027Y\u0027 or \u0027N\u0027 here\");"
+        "content": "            break;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            //"
+        "content": "        default:"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        }"
+        "content": "            logger.log(Level.SEVERE, \"Response should only be either \u0027Y\u0027 or \u0027N\u0027 here\");"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        return false;"
+        "content": "            //"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        return false;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    protected String[] prepareFlashCard() throws EmptyInputException {"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        String[] questionAndAnswer \u003d new String[2];"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        Ui.printAddFlashCardLine(deck);"
+        "content": "    protected String[] prepareFlashCard() throws EmptyInputException {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        Ui.printEnterQuestionLine();"
+        "content": "        String[] questionAndAnswer \u003d new String[2];"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        questionAndAnswer[0] \u003d Ui.readUserInput();"
+        "content": "        Ui.printAddFlashCardLine(deck);"
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "wangwaynesg"
         },
-        "content": "        logger.log(Level.INFO, \"Reading user input for question\");"
+        "content": "        Ui.printEnterQuestionLine();"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        if (questionAndAnswer[0].trim().length() \u003d\u003d 0) {"
+        "content": "        questionAndAnswer[0] \u003d Ui.readUserInput();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            logger.log(Level.WARNING, \"User entered nothing or a series of blank spaces for question\");"
+        "content": "        logger.log(Level.INFO, \"Reading user input for question\");"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "            throw new EmptyInputException();"
+        "content": "        if (questionAndAnswer[0].trim().length() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        }"
+        "content": "            logger.log(Level.WARNING, \"User entered nothing or a series of blank spaces for question\");"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        Ui.printEnterAnswerLine();"
+        "content": "            throw new EmptyInputException();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        questionAndAnswer[1] \u003d Ui.readUserInput();"
+        "content": "        }"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "wangwaynesg"
         },
-        "content": "        logger.log(Level.INFO, \"Reading user input for answer\");"
+        "content": "        Ui.printEnterAnswerLine();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        if (questionAndAnswer[1].trim().length() \u003d\u003d 0) {"
+        "content": "        questionAndAnswer[1] \u003d Ui.readUserInput();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            logger.log(Level.WARNING, \"User entered nothing or a series of blank spaces for answer\");"
+        "content": "        logger.log(Level.INFO, \"Reading user input for answer\");"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "            throw new EmptyInputException();"
+        "content": "        if (questionAndAnswer[1].trim().length() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 73,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.WARNING, \"User entered nothing or a series of blank spaces for answer\");"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            throw new EmptyInputException();"
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 76,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        assert questionAndAnswer[0].length() \u003e 0 : \"question field empty!\";"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 77,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        assert questionAndAnswer[1].length() \u003e 0 : \"answer field empty!\";"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 78,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "        Ui.printFlashCardAddedLine();"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 79,
         "author": {
           "gitId": "wangwaynesg"
         },
         "content": "        Ui.printDashLines();"
       },
       {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        return questionAndAnswer;"
-      },
-      {
         "lineNumber": 80,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": ""
+        "content": "        return questionAndAnswer;"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "wangwaynesg"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "wangwaynesg"
         },
-        "content": "    protected int getIndex(String arguments) throws IndexFormatException, FlashCardRangeException {"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        arguments \u003d arguments.trim();"
+        "content": "    protected int getIndex(String arguments) throws IndexFormatException, FlashCardRangeException {"
       },
       {
         "lineNumber": 86,
@@ -11622,42 +11822,42 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (!arguments.matches(Ui.DIGITS_REGEX)) {"
+        "content": "        arguments \u003d arguments.trim();"
       },
       {
         "lineNumber": 88,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.WARNING, \"User did not enter valid integer\");"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            throw new IndexFormatException();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 91,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 89,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        if (!arguments.matches(Ui.DIGITS_REGEX)) {"
+      },
+      {
+        "lineNumber": 90,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        assert arguments.length() \u003e 0 : \"arguments empty!\";"
+        "content": "            logger.log(Level.WARNING, \"User did not enter valid integer\");"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            throw new IndexFormatException();"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 93,
@@ -11669,9 +11869,9 @@
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        int index \u003d Integer.parseInt(arguments) - INDEX_OFFSET;"
+        "content": "        assert arguments.length() \u003e 0 : \"arguments empty!\";"
       },
       {
         "lineNumber": 95,
@@ -11685,661 +11885,689 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (index \u003e\u003d deck.size() || index \u003c LOWEST_POSSIBLE_INDEX) {"
+        "content": "        int index \u003d Integer.parseInt(arguments) - INDEX_OFFSET;"
       },
       {
         "lineNumber": 97,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        if (index \u003e\u003d deck.size() || index \u003c LOWEST_POSSIBLE_INDEX) {"
+      },
+      {
+        "lineNumber": 99,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            logger.log(Level.WARNING, \"Flash card index larger than total number of cards\");"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 100,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            throw new FlashCardRangeException();"
       },
       {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        return index;"
-      },
-      {
         "lineNumber": 101,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "        return index;"
       },
       {
         "lineNumber": 103,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "    protected String getDeleteYorNResponse(FlashCard flashCard) {"
+        "content": "    }"
       },
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        logger.log(Level.INFO, \"Prompting user for \u0027Y\u0027 or \u0027N\u0027 response\");"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        String response \u003d \"\";"
+        "content": "    protected String getDeleteYorNResponse(FlashCard flashCard) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        do {"
+        "content": "        logger.log(Level.INFO, \"Prompting user for \u0027Y\u0027 or \u0027N\u0027 response\");"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            Ui.printDeleteFlashCardLine(flashCard);"
+        "content": "        String response \u003d \"\";"
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "            response \u003d Ui.readUserInput();"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "            switch (response.trim()) {"
+        "content": "        Ui.printDashLines();"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            case Ui.Y:"
+        "content": "        do {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                response \u003d Ui.Y;"
+        "content": "            Ui.printDeleteFlashCardLine(flashCard);"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                break;"
+        "content": "            response \u003d Ui.readUserInput();"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            case Ui.N:"
+        "content": "            switch (response.trim()) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                response \u003d Ui.N;"
+        "content": "            case Ui.Y:"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                break;"
+        "content": "                response \u003d Ui.Y;"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            default:"
+        "content": "                break;"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                logger.log(Level.INFO, \"User entered response other than \u0027Y\u0027 or \u0027N\u0027\");"
+        "content": "            case Ui.N:"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                Ui.printInvalidYorNResponse();"
+        "content": "                response \u003d Ui.N;"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "                logger.log(Level.INFO, \"Re-prompting...\");"
+        "content": "                break;"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            }"
+        "content": "            default:"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        } while (!response.trim().equals(Ui.Y) \u0026\u0026 !response.trim().equals(Ui.N));"
+        "content": "                logger.log(Level.INFO, \"User entered response other than \u0027Y\u0027 or \u0027N\u0027\");"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        assert response.length() \u003d\u003d 1 : \"response is not \u0027Y\u0027 or \u0027N\u0027!\";"
+        "content": "                Ui.printInvalidYorNResponse();"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        return response;"
+        "content": "                logger.log(Level.INFO, \"Re-prompting...\");"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        } while (!response.trim().equals(Ui.Y) \u0026\u0026 !response.trim().equals(Ui.N));"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    @Override"
+        "content": "        assert response.length() \u003d\u003d 1 : \"response is not \u0027Y\u0027 or \u0027N\u0027!\";"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    protected Command parseCommand(String commandWord, String arguments)"
+        "content": "        return response;"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        switch (commandWord) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        // Version"
+        "content": "    protected Command parseCommand(String commandWord, String arguments)"
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        case Ui.VERSION_CMD:"
+        "content": "            throws Exception {"
       },
       {
         "lineNumber": 133,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            return new VersionCommand();"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        // Exit"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        case Ui.EXIT:"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"returning ExitCommand object\");"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return new ExitCommand();"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        // Done with Edit Mode"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        case Ui.DONE:"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"returning DoneEditCommand object\");"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return new DoneEditCommand(deck);"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        // Add a FlashCard"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        case Ui.ADD:"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"Preparing FlashCard to add\");"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "            String[] questionAndAnswer \u003d prepareFlashCard();"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"returning AddCommand object\");"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "            return new AddCommand(deck, questionAndAnswer[0], questionAndAnswer[1]);"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        // List all FlashCards"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        case Ui.LIST:"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"returning ListCommand object\");"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "            return new ListCommand(deck, arguments);"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        // Delete a FlashCard"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        case Ui.DELETE:"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"Preparing FlashCard to delete\");"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            int flashCardID \u003d getIndex(arguments);"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            assert flashCardID \u003e\u003d LOWEST_POSSIBLE_INDEX : \"flash card ID less than lowest possible flash card index!\";"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            boolean isFlashCardDeleted \u003d prepareDeletedFlashCard(flashCardID);"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"returning DeleteCommand object\");"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            return new DeleteCommand(deck, flashCardID, isFlashCardDeleted);"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        // Help"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        case Ui.HELP:"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.INFO, \"returning HelpCommand object\");"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            return new HelpCommand();"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "        default:"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "            logger.log(Level.WARNING, \"returning VoidCommand object\");"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return new VoidCommand();"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 169,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 134,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Override"
+        "content": "        switch (commandWord) {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        // Version"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.VERSION_CMD:"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            return new VersionCommand();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        // Exit"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.EXIT:"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"returning ExitCommand object\");"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new ExitCommand();"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        // Done with Edit Mode"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.DONE:"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"returning DoneEditCommand object\");"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new DoneEditCommand(deck);"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        // Add a FlashCard"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.ADD:"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"Preparing FlashCard to add\");"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            String[] questionAndAnswer \u003d prepareFlashCard();"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"returning AddCommand object\");"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            return new AddCommand(deck, questionAndAnswer[0], questionAndAnswer[1]);"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "        // List all FlashCards"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.LIST:"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"returning ListCommand object\");"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "wangwaynesg"
+        },
+        "content": "            return new ListCommand(deck, arguments);"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        // Delete a FlashCard"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.DELETE:"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"Preparing FlashCard to delete\");"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            int flashCardID \u003d getIndex(arguments);"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            assert flashCardID \u003e\u003d LOWEST_POSSIBLE_INDEX : \"flash card ID less than lowest possible flash card index!\";"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            boolean isFlashCardDeleted \u003d prepareDeletedFlashCard(flashCardID);"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"returning DeleteCommand object\");"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            return new DeleteCommand(deck, flashCardID, isFlashCardDeleted);"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        // Help"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        case Ui.HELP:"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.INFO, \"returning HelpCommand object\");"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            return new HelpCommand();"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.WARNING, \"returning VoidCommand object\");"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new VoidCommand();"
       },
       {
         "lineNumber": 171,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "    public Command parse(String userInput) {"
+        "content": "        }"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        logger.log(Level.INFO, \"Parsing user input string\");"
+        "content": "    }"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
+        "content": ""
       },
       {
         "lineNumber": 174,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        String commandWord \u003d splitString[0];"
+        "content": "    @Override"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        logger.log(Level.INFO, \"Parsed commandWord\");"
+        "content": "    public Command parse(String userInput) {"
       },
       {
         "lineNumber": 176,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "        String arguments \u003d \"\";"
+        "content": "        logger.log(Level.INFO, \"Parsing user input string\");"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        boolean argumentsExist \u003d splitString.length \u003e 1;"
+        "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        if (argumentsExist) {"
+        "content": "        String commandWord \u003d splitString[0];"
       },
       {
         "lineNumber": 179,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            arguments \u003d splitString[1];"
+        "content": "        logger.log(Level.INFO, \"Parsed commandWord\");"
       },
       {
         "lineNumber": 180,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "            logger.log(Level.INFO, \"Parsed arguments\");"
+        "content": "        String arguments \u003d \"\";"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "        boolean argumentsExist \u003d splitString.length \u003e 1;"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        try {"
+        "content": "        if (argumentsExist) {"
       },
       {
         "lineNumber": 183,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "            logger.log(Level.INFO, \"Parsing command\");"
+        "content": "            arguments \u003d splitString[1];"
       },
       {
         "lineNumber": 184,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            return parseCommand(commandWord, arguments);"
+        "content": "            logger.log(Level.INFO, \"Parsed arguments\");"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 186,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "            logger.log(Level.WARNING, \"Parsed void or invalid command\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 187,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "zhixiangteoh"
         },
-        "content": "            return new VoidCommand(e.getMessage());"
+        "content": "            logger.log(Level.INFO, \"Parsing command\");"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "            return parseCommand(commandWord, arguments);"
       },
       {
         "lineNumber": 189,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "            logger.log(Level.WARNING, \"Parsed void or invalid command\");"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new VoidCommand(e.getMessage());"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 193,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 194,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -12348,7 +12576,7 @@
     ],
     "authorContributionMap": {
       "alwaysnacy": 3,
-      "kaijiel24": 51,
+      "kaijiel24": 55,
       "LiewWS": 3,
       "zhixiangteoh": 107,
       "wangwaynesg": 26
@@ -12900,359 +13128,359 @@
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
-        "content": "        String response \u003d getDeleteYorNResponse(deck);"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        assert (response.equals(Ui.Y) || response.equals(Ui.N)) : \"response should be y/n\";"
+        "content": "        String response \u003d getDeleteYorNResponse(deck);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        switch (response) {"
+        "content": "        assert (response.equals(Ui.Y) || response.equals(Ui.N)) : \"response should be y/n\";"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
-        "content": "        case Ui.Y:"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            Ui.printDeckDeletedLine(deck.getName());"
+        "content": "        switch (response) {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            Ui.printDashLines();"
+        "content": "        case Ui.Y:"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            return true;"
+        "content": "            Ui.printDeckDeletedLine(deck.getName());"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        case Ui.N:"
+        "content": "            Ui.printDashLines();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            //"
+        "content": "            return true;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            break;"
+        "content": "        case Ui.N:"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        default:"
+        "content": "            //"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            logger.log(Level.SEVERE, \"Response should only be either \u0027Y\u0027 or \u0027N\u0027 here\");"
+        "content": "            break;"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            //"
+        "content": "        default:"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        }"
+        "content": "            logger.log(Level.SEVERE, \"Response should only be either \u0027Y\u0027 or \u0027N\u0027 here\");"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        return false;"
+        "content": "            //"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": ""
+        "content": "        return false;"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * Create a new deck for adding to deckList."
+        "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * @param arguments String that represents the nae of deck to be created"
+        "content": "     * Create a new deck for adding to deckList."
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * @return Reference to the deck created"
+        "content": "     *"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * @throws EmptyInputException if no name is supplied for the deck"
+        "content": "     * @param arguments String that represents the nae of deck to be created"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     */"
+        "content": "     * @return Reference to the deck created"
       },
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "    protected Deck prepareNewDeck(String arguments) throws EmptyInputException {"
+        "content": "     * @throws EmptyInputException if no name is supplied for the deck"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        logger.log(Level.INFO, \"Logging method prepareNewDeck() in NormalParser.\");"
+        "content": "     */"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        if (arguments.trim().isEmpty()) {"
+        "content": "    protected Deck prepareNewDeck(String arguments) throws EmptyInputException {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            logger.log(Level.WARNING, \"User did not supply name when creating a new deck.\");"
+        "content": "        logger.log(Level.INFO, \"Logging method prepareNewDeck() in NormalParser.\");"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "            throw new EmptyInputException();"
+        "content": "        if (arguments.trim().isEmpty()) {"
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
-        "content": "        }"
+        "content": "            logger.log(Level.WARNING, \"User did not supply name when creating a new deck.\");"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "        return new Deck(arguments);"
+        "content": "            throw new EmptyInputException();"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "        return new Deck(arguments);"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "zhixiangteoh"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 112,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "zhixiangteoh"
         },
-        "content": "     * Uses Ui to get y or n response from user."
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * @param deck Reference to Deck that is being checked"
+        "content": "    /**"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     * @return Ui.Y if user enters confirms, otherwise Ui.N"
+        "content": "     * Uses Ui to get y or n response from user."
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "     */"
+        "content": "     * @param deck Reference to Deck that is being checked"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "    private String getDeleteYorNResponse(Deck deck) {"
+        "content": "     * @return Ui.Y if user enters confirms, otherwise Ui.N"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        logger.log(Level.INFO, \"Logging method getDeleteYorNResponse() in NormalParser.\");"
+        "content": "     */"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        String response \u003d \"\";"
+        "content": "    private String getDeleteYorNResponse(Deck deck) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        do {"
+        "content": "        logger.log(Level.INFO, \"Logging method getDeleteYorNResponse() in NormalParser.\");"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            Ui.printDeletedDeckQuestion(deck.getName());"
+        "content": "        String response \u003d \"\";"
       },
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
-        "content": "            response \u003d Ui.readUserInput();"
+        "content": "        Ui.printDashLines();"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            assert response !\u003d null : \"response should not be null\";"
+        "content": "        do {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            switch (response.trim()) {"
+        "content": "            Ui.printDeletedDeckQuestion(deck.getName());"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            case Ui.Y:"
+        "content": "            response \u003d Ui.readUserInput();"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "                response \u003d Ui.Y;"
+        "content": "            assert response !\u003d null : \"response should not be null\";"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "                break;"
+        "content": "            switch (response.trim()) {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            case Ui.N:"
+        "content": "            case Ui.Y:"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "                response \u003d Ui.N;"
+        "content": "                response \u003d Ui.Y;"
       },
       {
         "lineNumber": 129,
@@ -13266,117 +13494,117 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            default:"
+        "content": "            case Ui.N:"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "                logger.log(Level.INFO, \"User entered response other than \u0027y\u0027 or \u0027n\u0027\");"
+        "content": "                response \u003d Ui.N;"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "                Ui.printInvalidYorNResponse();"
+        "content": "                break;"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "                logger.log(Level.INFO, \"Re-prompting...\");"
+        "content": "            default:"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "            }"
+        "content": "                logger.log(Level.INFO, \"User entered response other than \u0027y\u0027 or \u0027n\u0027\");"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        } while (!response.trim().equals(Ui.Y) \u0026\u0026 !response.trim().equals(Ui.N));"
+        "content": "                Ui.printInvalidYorNResponse();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        assert (response.equals(Ui.Y) || response.equals(Ui.N)) : \"Response should be y/n\";"
+        "content": "                logger.log(Level.INFO, \"Re-prompting...\");"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        return response;"
+        "content": "            }"
       },
       {
         "lineNumber": 138,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        } while (!response.trim().equals(Ui.Y) \u0026\u0026 !response.trim().equals(Ui.N));"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        assert (response.equals(Ui.Y) || response.equals(Ui.N)) : \"Response should be y/n\";"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        return response;"
+      },
+      {
+        "lineNumber": 141,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 142,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": ""
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 143,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 144,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "    protected Command parseCommand(String commandWord, String arguments)"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 145,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            throws Exception {"
       },
       {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "        assert (commandWord !\u003d null \u0026\u0026 arguments !\u003d null) :"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "                \"commandWord and arguments should not be null\";"
-      },
-      {
         "lineNumber": 146,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
         "content": ""
       },
@@ -13385,444 +13613,465 @@
         "author": {
           "gitId": "LiewWS"
         },
-        "content": "        logger.log(Level.INFO, \"Logging method parseCommand() in NormalParser.\");"
+        "content": "        assert (commandWord !\u003d null \u0026\u0026 arguments !\u003d null) :"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "LiewWS"
         },
-        "content": ""
+        "content": "                \"commandWord and arguments should not be null\";"
       },
       {
         "lineNumber": 149,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        logger.log(Level.INFO, \"Logging method parseCommand() in NormalParser.\");"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        switch (commandWord) {"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 153,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        // Version"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 154,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        case Ui.VERSION_CMD:"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 155,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            return new VersionCommand();"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 156,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        // Exit"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 157,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        case Ui.EXIT:"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 158,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued command to terminate program.\");"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 159,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            return new ExitCommand();"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 160,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        // Edit"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 161,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.EDIT:"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 162,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            Deck deck \u003d prepareDeck(arguments);"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 163,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued command to edit deck \" + deck.getName() + \".\");"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 164,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            return new EditCommand(deckList, deck);"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 165,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        // Create"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 166,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.CREATE:"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 167,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "            Deck newDeck \u003d prepareNewDeck(arguments);"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 168,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued command to create deck \" + newDeck.getName() + \".\");"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 169,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            return new CreateCommand(deckList, newDeck);"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 170,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        // Decks"
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 171,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.DECKS:"
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 172,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued command to list decks.\");"
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 173,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "            return new DecksCommand(deckList);"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 174,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        // Delete"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 175,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        case Ui.DELETE:"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 176,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            int deckID \u003d getIndex(arguments);"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 177,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued command to delete deck at index \" + deckID);"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 178,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            boolean isDeckDeleted \u003d prepareDeletedDeck(deckID);"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 179,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            return new DeleteDeckCommand(deckList, deckID, isDeckDeleted);"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 180,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        // Help"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 181,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        case Ui.HELP:"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 182,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued command to view help.\");"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 183,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            return new HelpCommand();"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 184,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        default:"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 185,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "            logger.log(Level.INFO, \"User issued an invalid command.\");"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 186,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "            return new VoidCommand();"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 187,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 188,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 189,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 190,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 188,
+        "lineNumber": 191,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    public Command parse(String userInput) {"
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 192,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "        logger.log(Level.INFO, \"Logging method parse() in NormalParser.\");"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 193,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String[] splitString \u003d userInput.split(\" \", 2);"
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 194,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String commandWord \u003d splitString[0];"
       },
       {
-        "lineNumber": 192,
+        "lineNumber": 195,
         "author": {
           "gitId": "LiewWS"
         },
         "content": "        logger.log(Level.INFO, \"Parsed commandWord\");"
       },
       {
-        "lineNumber": 193,
+        "lineNumber": 196,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        boolean argumentsExist \u003d  splitString.length \u003e 1;"
       },
       {
-        "lineNumber": 194,
+        "lineNumber": 197,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        String arguments \u003d \"\";"
       },
       {
-        "lineNumber": 195,
+        "lineNumber": 198,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        if (argumentsExist) {"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            arguments \u003d splitString[1];"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "            logger.log(Level.INFO, \"Parsed arguments\");"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        }"
+        "content": "        if (argumentsExist) {"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": ""
+        "content": "            arguments \u003d splitString[1];"
       },
       {
         "lineNumber": 201,
         "author": {
-          "gitId": "kaijiel24"
+          "gitId": "LiewWS"
         },
-        "content": "        try {"
+        "content": "            logger.log(Level.INFO, \"Parsed arguments\");"
       },
       {
         "lineNumber": 202,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "            logger.log(Level.INFO, \"Parsing command\");"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return parseCommand(commandWord, arguments);"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "        } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "LiewWS"
-        },
-        "content": "            logger.log(Level.WARNING, \"Parsed void or invalid command\");"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "kaijiel24"
-        },
-        "content": "            return new VoidCommand(e.getMessage());"
-      },
-      {
-        "lineNumber": 207,
         "author": {
           "gitId": "kaijiel24"
         },
         "content": "        }"
       },
       {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            logger.log(Level.INFO, \"Parsing command\");"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return parseCommand(commandWord, arguments);"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
         "lineNumber": 208,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "            logger.log(Level.WARNING, \"Parsed void or invalid command\");"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "            return new VoidCommand(e.getMessage());"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 211,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 209,
+        "lineNumber": 212,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": ""
       },
       {
-        "lineNumber": 210,
+        "lineNumber": 213,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -13831,7 +14080,7 @@
     ],
     "authorContributionMap": {
       "alwaysnacy": 27,
-      "kaijiel24": 57,
+      "kaijiel24": 60,
       "LiewWS": 101,
       "zhixiangteoh": 25
     }
@@ -14977,159 +15226,173 @@
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "kaijiel24"
         },
-        "content": "        String expectedOutput \u003d \"New deck created: Pokemon\" + System.lineSeparator();"
+        "content": "        String expectedOutput \u003d  \"------------------------------------------------------------\" + System.lineSeparator()"
       },
       {
         "lineNumber": 110,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "                + \"New deck created: Pokemon\" + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "kaijiel24"
+        },
+        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
+      },
+      {
+        "lineNumber": 112,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        printNewDeck(new Deck(\"Pokemon\"));"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 113,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        assertEquals(expectedOutput, outContent.toString());"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
-        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    void printDeckList() {"
+        "content": ""
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": ""
+        "content": "    void printDeckList() {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "zhixiangteoh"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "    void printDeletedDeckQuestion_deletedDeckName_questionLine() {"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        String expectedOutput \u003d \"Do you want to delete Pokemon deck? [y/n]\";"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        printDeletedDeckQuestion(\"Pokemon\");"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "alwaysnacy"
-        },
-        "content": "        assertEquals(expectedOutput, outContent.toString());"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "zhixiangteoh"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 119,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 120,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 121,
         "author": {
           "gitId": "alwaysnacy"
         },
-        "content": "    void printDeletedDeck_deletedDeckName_confirmation() {"
+        "content": "    void printDeletedDeckQuestion_deletedDeckName_questionLine() {"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 122,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "alwaysnacy"
         },
-        "content": "        String expectedOutput \u003d \"Pokemon has been deleted.\" + System.lineSeparator();"
+        "content": "        String expectedOutput \u003d \"Do you want to delete Pokemon deck? [y/n]\";"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 123,
         "author": {
-          "gitId": "LiewWS"
+          "gitId": "alwaysnacy"
         },
-        "content": "        printDeckDeletedLine(\"Pokemon\");"
+        "content": "        printDeletedDeckQuestion(\"Pokemon\");"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 124,
         "author": {
           "gitId": "alwaysnacy"
         },
         "content": "        assertEquals(expectedOutput, outContent.toString());"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 125,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": "    void printDeletedDeck_deletedDeckName_confirmation() {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String expectedOutput \u003d \"Pokemon has been deleted.\" + System.lineSeparator();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        printDeckDeletedLine(\"Pokemon\");"
+      },
+      {
         "lineNumber": 131,
+        "author": {
+          "gitId": "alwaysnacy"
+        },
+        "content": "        assertEquals(expectedOutput, outContent.toString());"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -15138,7 +15401,8 @@
     ],
     "authorContributionMap": {
       "alwaysnacy": 10,
-      "LiewWS": 6,
+      "kaijiel24": 3,
+      "LiewWS": 5,
       "zhixiangteoh": 115
     }
   },
@@ -15524,304 +15788,276 @@
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"You are now viewing deck: Test\" + System.lineSeparator()"
+        "content": "                + \"Deck is currently empty!\" + System.lineSeparator()"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator()"
+        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"Deck is currently empty!\" + System.lineSeparator()"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
+        "content": "        Deck deck \u003d new Deck(\"Test\");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": ""
+        "content": "        ListCommand cmd \u003d new ListCommand(deck, \"/ans\");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        Deck deck \u003d new Deck(\"Test\");"
+        "content": "        cmd.execute();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        ListCommand cmd \u003d new ListCommand(deck, \"/ans\");"
+        "content": "        assertEquals(expectedOutput, outContent.toString());"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        cmd.execute();"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        assertEquals(expectedOutput, outContent.toString());"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": ""
+        "content": "    void execute_nonEmptyDeck_ansArgument_listCommand() {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    @Test"
+        "content": "        String expectedOutput \u003d"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    void execute_nonEmptyDeck_ansArgument_listCommand() {"
+        "content": "                \"------------------------------------------------------------\" + System.lineSeparator()"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "        String expectedOutput \u003d"
+        "content": "                + \"You are now viewing deck: Test\\n\""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                \"------------------------------------------------------------\" + System.lineSeparator()"
+        "content": "                + \"1. Question: Test Question\\n\""
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "                + \"You are now viewing deck: Test\" + System.lineSeparator()"
+        "content": "                + \"   Answer:   Test Answer\" + System.lineSeparator()"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator()"
+        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"1. Question: Test Question\\n\""
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"   Answer:   Test Answer\\n\""
+        "content": "        Deck deck \u003d new Deck(\"Test\");"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
+        "content": "        deck.add(new FlashCard(\"Test Question\", \"Test Answer\"));"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": ""
+        "content": "        ListCommand cmd \u003d new ListCommand(deck, \"/ans\");"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        Deck deck \u003d new Deck(\"Test\");"
+        "content": "        cmd.execute();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        deck.add(new FlashCard(\"Test Question\", \"Test Answer\"));"
+        "content": "        assertEquals(expectedOutput, outContent.toString());"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        ListCommand cmd \u003d new ListCommand(deck, \"/ans\");"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        cmd.execute();"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        assertEquals(expectedOutput, outContent.toString());"
+        "content": "    @Test"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    }"
+        "content": "    void execute_nonEmptyDeck_noAnsArgument_listCommand() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": ""
+        "content": "        String expectedOutput \u003d"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "    @Test"
+        "content": "                \"------------------------------------------------------------\" + System.lineSeparator()"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "    void execute_nonEmptyDeck_noAnsArgument_listCommand() {"
+        "content": "                + \"You are now viewing deck: Test\\n\""
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "wangwaynesg"
+          "gitId": "kaijiel24"
         },
-        "content": "        String expectedOutput \u003d"
+        "content": "                + \"1. Question: Test Question\" + System.lineSeparator()"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                \"------------------------------------------------------------\" + System.lineSeparator()"
+        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"You are now viewing deck: Test\" + System.lineSeparator()"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator()"
+        "content": "        Deck deck \u003d new Deck(\"Test\");"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"1. Question: Test Question\\n\""
+        "content": "        deck.add(new FlashCard(\"Test Question\", \"Test Answer\"));"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "                + \"------------------------------------------------------------\" + System.lineSeparator();"
+        "content": "        ListCommand cmd \u003d new ListCommand(deck, \"\");"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": ""
+        "content": "        cmd.execute();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        Deck deck \u003d new Deck(\"Test\");"
+        "content": "        assertEquals(expectedOutput, outContent.toString());"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "wangwaynesg"
         },
-        "content": "        deck.add(new FlashCard(\"Test Question\", \"Test Answer\"));"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        ListCommand cmd \u003d new ListCommand(deck, \"\");"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        cmd.execute();"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
-        "content": "        assertEquals(expectedOutput, outContent.toString());"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "wangwaynesg"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 75,
         "author": {
           "gitId": "wangwaynesg"
         },
@@ -15829,7 +16065,8 @@
       }
     ],
     "authorContributionMap": {
-      "wangwaynesg": 79
+      "kaijiel24": 4,
+      "wangwaynesg": 71
     }
   },
   {
@@ -16354,9 +16591,9 @@
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        String deckListString \u003d \"Decks:\\n1. deck 1\\n2. deck 2\";"
+        "content": "        String deckListString \u003d \"1. deck 1\\n2. deck 2\";"
       },
       {
         "lineNumber": 24,
@@ -16444,7 +16681,8 @@
       }
     ],
     "authorContributionMap": {
-      "zhixiangteoh": 35
+      "kaijiel24": 1,
+      "zhixiangteoh": 34
     }
   },
   {
@@ -17189,9 +17427,9 @@
       {
         "lineNumber": 106,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "kaijiel24"
         },
-        "content": "        String deckString \u003d \"Pokemon:\\n1. Question: q 1\\n   Answer:   a 1\\n\\n2. Question: q 2\\n   Answer:   a 2\\n\";"
+        "content": "        String deckString \u003d \"Pokemon:\\n1. Question: q 1\\n   Answer:   a 1\\n\\n2. Question: q 2\\n   Answer:   a 2\";"
       },
       {
         "lineNumber": 107,
@@ -17240,7 +17478,7 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "        String deckString \u003d \"1. Question: q 1\\n\\n\" + \"2. Question: q 2\\n\";"
+        "content": "        String deckString \u003d \"1. Question: q 1\\n\\n\" + \"2. Question: q 2\";"
       },
       {
         "lineNumber": 114,
@@ -17254,7 +17492,7 @@
         "author": {
           "gitId": "kaijiel24"
         },
-        "content": "                + \"2. Question: q 2\\n   Answer:   a 2\\n\";"
+        "content": "                + \"2. Question: q 2\\n   Answer:   a 2\";"
       },
       {
         "lineNumber": 116,
@@ -17349,8 +17587,8 @@
       }
     ],
     "authorContributionMap": {
-      "kaijiel24": 3,
-      "zhixiangteoh": 125
+      "kaijiel24": 4,
+      "zhixiangteoh": 124
     }
   },
   {
@@ -17472,89 +17710,453 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "zhixiangteoh"
+          "gitId": "LiewWS"
         },
         "content": "    @Test"
       },
       {
         "lineNumber": 18,
         "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    void testToString_default_wrappedLine() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String question \u003d \"Ok, long question let\u0027s goooooooo! Ahhhhhhhhhhhhh.\""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \" Make this question veryyyyyy longggg!\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String answer \u003d \"Ahhhhhhhhhhhhhhhhhhhhhhhh!!!!!!!!!!!!!! \""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Get an even longer answer. How many lines will this answer span? \""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"I do not know. Maybe we can get it to three lines? Perhaps. \""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Anyway span reminds me of linear algebra.\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        FlashCard longFlashCard \u003d new FlashCard(question, answer);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String flashCardString \u003d \"Question: \""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Ok, long question let\u0027s goooooooo! \" + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"Ahhhhhhhhhhhhh. Make this question veryyyyyy \""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"longggg!\" + \"\\n\" + \"   Answer:   \""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Ahhhhhhhhhhhhhhhhhhhhhhhh!!!!!!!!!!!!!! Get an \" + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"even longer answer. How many lines will this \""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"answer span? I do not know. Maybe we can get it \""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"to three lines? Perhaps. Anyway span reminds me \""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"of linear algebra.\";"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        assertEquals(flashCardString, longFlashCard.toString());"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "zhixiangteoh"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    void testToString_withType_goodFormat() {"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 44,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        String flashCardString \u003d \"Question: Who\u0027s that Pokemon?\";"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 45,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        String flashCardStringWithAns \u003d \"Question: Who\u0027s that Pokemon?\\n   Answer:   It\u0027s Pikachu!\";"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 46,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        assertEquals(flashCardString, flashCard.toString(\"question\"));"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 47,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        assertEquals(flashCardStringWithAns, flashCard.toString(\"answer\"));"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 48,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 49,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 50,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    void testToString_withType_wrappedLine() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String question \u003d \"Ok, long question let\u0027s goooooooo! Ahhhhhhhhhhhhh.\""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \" Make this question veryyyyyy longggg!\";"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String answer \u003d \"Ahhhhhhhhhhhhhhhhhhhhhhhh!!!!!!!!!!!!!! \""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Get an even longer answer. How many lines will this answer span? \""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"I do not know. Maybe we can get it to three lines? Perhaps. \""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Anyway span reminds me of linear algebra.\";"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        FlashCard longFlashCard \u003d new FlashCard(question, answer);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String flashCardString \u003d \"Question: \""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Ok, long question let\u0027s goooooooo! \" + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"Ahhhhhhhhhhhhh. Make this question veryyyyyy \""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"longggg!\";"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        String flashCardStringWithAns \u003d flashCardString + \"\\n\" + \"   Answer:   \""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"Ahhhhhhhhhhhhhhhhhhhhhhhh!!!!!!!!!!!!!! Get an \" + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"even longer answer. How many lines will this \""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"answer span? I do not know. Maybe we can get it \""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"to three lines? Perhaps. Anyway span reminds me \""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "                + \"             \" + \"of linear algebra.\";"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        assertEquals(flashCardString, longFlashCard.toString(\"question\"));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "        assertEquals(flashCardStringWithAns, longFlashCard.toString(\"answer\"));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "LiewWS"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    @BeforeAll"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 78,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    public static void createFlashCard() {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 79,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "        flashCard \u003d new FlashCard(\"Who\u0027s that Pokemon?\", \"It\u0027s Pikachu!\");"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 80,
         "author": {
           "gitId": "zhixiangteoh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 81,
         "author": {
           "gitId": "zhixiangteoh"
         },
@@ -17562,6 +18164,7 @@
       }
     ],
     "authorContributionMap": {
+      "LiewWS": 52,
       "zhixiangteoh": 29
     }
   },

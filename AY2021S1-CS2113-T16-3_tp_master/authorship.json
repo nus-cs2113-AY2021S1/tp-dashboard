@@ -1288,7 +1288,7 @@
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "-"
+          "gitId": "yokemin"
         },
         "content": ""
       },
@@ -1316,194 +1316,593 @@
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "## Product scope"
+        "content": "### View Portfolio feature"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "### Target user profile"
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "#### Current implementation"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "{Describe the target user profile}"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "View portfolio command is executed by `Controller`. It allows users to access, retrieve and view array list of stocks "
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "### Value proposition"
+        "content": "owned and their historical transactions. This is done by instantiating a new `PortfolioManager` which is able to "
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "access `Portfolio`. The `Portfolio` object encapsulates `Stock` and `Transaction`."
       },
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "{Describe the value proposition: what problem does it solve?}"
+        "content": ""
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "Addtionally, `Stock` object is able to retrieve latest live prices by instantiating `StockPriceFetcher` to call "
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "## User Stories"
+        "content": "AlphaVantage API. This allows users to view not only their stocks historial transactions, but to see their profit/loss  "
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": ""
+        "content": "based on current latest price. "
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "|Version| As a ... | I want to ... | So that I can ...|"
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "|--------|----------|---------------|------------------|"
+        "content": "Given below is an example usage scenario and how view portfolio command behaves at each step."
       },
       {
         "lineNumber": 139,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|"
+        "content": ""
       },
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|"
+        "content": "![](./diagrams/ViewPortfolioState0.png)"
       },
       {
         "lineNumber": 141,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
         "content": ""
       },
       {
         "lineNumber": 142,
         "author": {
-          "gitId": "-"
+          "gitId": "JunxianAng"
         },
-        "content": "## Non-Functional Requirements"
+        "content": "**Step 1**: `Parser` will initialise `ViewCommand` and call `viewPortfolio()` command from the `Controller`. `Ui` is initialised to call `view()`. The method "
       },
       {
         "lineNumber": 143,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "takes in an parameter of an array list of stock to be displayed."
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|Parameter|Corresponds to"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|:---:|:---:"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`Stock`| Stock objects"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "**Step 2**: To obtain an array list of stock to be used as an arugment in `Ui` `view()` method, `PortfolioManager` is initialised to call `getAllStocks()` method."
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "The method returns an array list of `Stock` by initialising `Portfolio` which is keeps a HashMap of `Stock` objects. Below is a table of what each attribute in"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "`Stock`corresponds to in the program."
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|Attribute|Corresponds to"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|:---:|:---:"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`Symbol`| Ticker Symbol of Stock in possession"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`totalQuantity`| Integer number of shares currently owned"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`transactions`| An array list of `Transaction` object "
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "![](./diagrams/ViewPortfolioState1.png)"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "**Step 3**: For each of the `Stock` object to be displayed, `getTransaction()` method is called to obtained historial"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "records of user\u0027s stock transactions."
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "Below is a table of what each attribute in `Transaction` corresponds to in the program. "
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|Attribute|Corresponds to"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|:---:|:---:"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`TransactionType`| Buy or Sell stock"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`Quantity`| Integer number of shares to be bought"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`BuyPrice`| Cost price of a stock at a specific time "
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "|`LocalDateTime`| the time when the command is called "
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "**Step 4**: For each of the `Stock` object to be displayed, `getLatestPrice()` method is called by instantiating a new `StockPriceFetcher`"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "which calls out to AlphaVantage API to obtain latest stock price. "
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "User\u0027s latest profit/loss will be displayed through calculation of latest stock price"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "against historical buy price. "
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "![](./diagrams/ViewPortfolioState2.png)"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "JunxianAng"
+        },
+        "content": "**Step 5**: `Parser`, `ViewCommand`, `Stock`, `Transaction`, `StockPriceFetcher` are terminated. "
+      },
+      {
+        "lineNumber": 181,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 182,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Product scope"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Target user profile"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Describe the target user profile}"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Value proposition"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Describe the value proposition: what problem does it solve?}"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## User Stories"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|Version| As a ... | I want to ... | So that I can ...|"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|--------|----------|---------------|------------------|"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Non-Functional Requirements"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
         "content": "{Give non-functional requirements}"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 202,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 203,
         "author": {
           "gitId": "-"
         },
         "content": "## Glossary"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 204,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 205,
         "author": {
           "gitId": "-"
         },
         "content": "* *glossary item* - Definition"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 206,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 207,
         "author": {
           "gitId": "-"
         },
         "content": "## Instructions for manual testing"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 208,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 209,
         "author": {
           "gitId": "-"
         },
@@ -1511,9 +1910,10 @@
       }
     ],
     "authorContributionMap": {
+      "JunxianAng": 56,
       "trolommonm": 39,
       "-": 35,
-      "yokemin": 78
+      "yokemin": 79
     }
   },
   {
