@@ -2336,9 +2336,9 @@
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "    private String accessLevel;"
+        "content": "    private final String accessLevel;"
       },
       {
         "lineNumber": 54,
@@ -2350,9 +2350,9 @@
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "    public AddCommand(String moduleOrChapter) {"
+        "content": "    public AddCommand(String moduleOrChapter, String accessLevel) {"
       },
       {
         "lineNumber": 56,
@@ -2364,184 +2364,184 @@
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "        this.accessLevel \u003d accessLevel;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    public AddCommand(String question, String answer, String accessLevel) {"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        this.card \u003d new Card(question, answer);"
+        "content": "    public AddCommand(String question, String answer, String accessLevel) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        this.accessLevel \u003d accessLevel;"
+        "content": "        this.card \u003d new Card(question, answer);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "        this.accessLevel \u003d accessLevel;"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "gua-guargia"
         },
-        "content": "    public void execute(Ui ui, Access access, Storage storage)"
+        "content": "    @Override"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "            throws IncorrectAccessLevelException, IOException {"
+        "content": "    public void execute(Ui ui, Access access, Storage storage) throws IncorrectAccessLevelException, IOException {"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "        if (access.isChapterLevel()) {"
+        "content": "        if (!access.isAdminLevel() \u0026\u0026 !access.isModuleLevel() \u0026\u0026 !access.isChapterLevel()) {"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            String result \u003d addCard(access, storage);"
+        "content": "            throw new IncorrectAccessLevelException(String.format(MESSAGE_INVALID_ACCESS,"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            ui.showToUser(result);"
+        "content": "                    access.getLevel(), accessLevel));"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "        } else if (access.isAdminLevel()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "            Module module \u003d new Module(moduleOrChapter);"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            String result \u003d addModule(access, storage, module);"
+        "content": "        String result \u003d \"\";"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            ui.showToUser(result);"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        } else if (access.isModuleLevel()) {"
+        "content": "        if (access.isChapterLevel()) {"
       },
       {
         "lineNumber": 75,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result \u003d addCard(access, storage);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "        } else if (access.isAdminLevel()) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "            Module module \u003d new Module(moduleOrChapter);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result \u003d addModule(access, storage, module);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "        } else if (access.isModuleLevel()) {"
+      },
+      {
+        "lineNumber": 80,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            Chapter chapter \u003d new Chapter(moduleOrChapter, Chapter.rateChapter(), storage, access);"
       },
       {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            String result \u003d addChapter(access, storage, chapter);"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            ui.showToUser(result);"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            throw new IncorrectAccessLevelException(String.format(MESSAGE_INVALID_ACCESS,"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                    access.getLevel(), accessLevel));"
-      },
-      {
         "lineNumber": 81,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "            result \u003d addChapter(access, storage, chapter);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 83,
@@ -2553,306 +2553,313 @@
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "    @Override"
+        "content": "        ui.showToUser(result);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    public boolean isExit() {"
+        "content": "    }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        return false;"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": ""
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 87,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    private String addChapter(Access access, Storage storage, Chapter chapter) throws IOException {"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 88,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        Module newModule \u003d access.getModule();"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 89,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        ChapterList chapters \u003d newModule.getChapters();"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 90,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        chapters.addChapter(chapter);"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 91,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        int chapterCount \u003d chapters.getChapterCount();"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 92,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        access.setModule(newModule);"
       },
       {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        String result \u003d storage.createChapter(chapter.getChapterName(), access.getModuleLevel());"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        return result + prepareResult(CHAPTER, chapter.toString(), chapterCount);"
+      },
+      {
         "lineNumber": 95,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "gua-guargia"
         },
-        "content": "        StringBuilder result \u003d new StringBuilder();"
+        "content": "    }"
       },
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "gua-guargia"
         },
-        "content": "        result.append(storage.createChapter(chapter.getChapterName(), access.getModuleLevel()));"
+        "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        result.append(String.format(MESSAGE_SUCCESS, CHAPTER) + chapter.toString() + \"\\n\""
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                + String.format(MESSAGE_COUNT, chapterCount, CHAPTER));"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        return result.toString();"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "gua-guargia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "neojiaern"
-        },
         "content": "    private String addCard(Access access, Storage storage) throws IOException {"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 98,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 99,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        CardList cards \u003d access.getChapter().getCards();"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 100,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        cards.addCard(card);"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 101,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        int cardCount \u003d cards.getCardCount();"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 102,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        storage.saveCards(cards, access.getModule().getModuleName(), access.getChapter().getChapterName());"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 103,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        String result \u003d String.format(MESSAGE_SUCCESS, CARD) + cards.getCard(cardCount - 1).toString()"
+        "content": "        return prepareResult(CARD, card.toString(), cardCount);"
       },
       {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                + \"\\n\" + String.format(MESSAGE_COUNT, cardCount, CARD);"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        return result;"
-      },
-      {
-        "lineNumber": 111,
+        "lineNumber": 104,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 105,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 106,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    private String addModule(Access access, Storage storage, Module module) {"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 107,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        Admin newAdmin \u003d access.getAdmin();"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 108,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        ModuleList modules \u003d newAdmin.getModules();"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 109,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        modules.addModule(module);"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 110,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        int moduleCount \u003d modules.getModuleCount();"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 111,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        access.setAdmin(newAdmin);"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 112,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        String result \u003d storage.createModule(module.getModuleName());"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        return result + prepareResult(MODULE, module.toString(), moduleCount);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    private String prepareResult(String type, String content, int count) {"
+      },
+      {
+        "lineNumber": 117,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        StringBuilder result \u003d new StringBuilder();"
       },
       {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        result.append(String.format(MESSAGE_SUCCESS, type));"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        result.append(content).append(\"\\n\");"
+      },
+      {
         "lineNumber": 120,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        result.append(storage.createModule(module.getModuleName()));"
+        "content": "        result.append(String.format(MESSAGE_COUNT, count, type));"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        result.append(String.format(MESSAGE_SUCCESS, MODULE) + module.toString() + \"\\n\""
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                + String.format(MESSAGE_COUNT, moduleCount, MODULE));"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "neojiaern"
-        },
         "content": "        return result.toString();"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 122,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 123,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    public boolean isExit() {"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "        return false;"
       },
       {
         "lineNumber": 127,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 128,
         "author": {
           "gitId": "Jane-Ng"
         },
@@ -2861,9 +2868,9 @@
     ],
     "authorContributionMap": {
       "Zhu-Ze-Yu": 1,
-      "gua-guargia": 84,
-      "neojiaern": 34,
-      "Jane-Ng": 7,
+      "gua-guargia": 75,
+      "neojiaern": 15,
+      "Jane-Ng": 36,
       "Darticune": 1
     }
   },
@@ -3766,98 +3773,98 @@
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        if (access.isChapterLevel()) {"
+        "content": "        if (!access.isAdminLevel() \u0026\u0026 !access.isModuleLevel() \u0026\u0026 !access.isChapterLevel()) {"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            String result \u003d editCard(access, storage);"
+        "content": "            throw new IncorrectAccessLevelException(String.format(MESSAGE_INVALID_ACCESS,"
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            ui.showToUser(result);"
+        "content": "                    access.getLevel(), accessLevel));"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        } else if (access.isAdminLevel()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            String result \u003d editModule(access, storage);"
+        "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            ui.showToUser(result);"
+        "content": "        String result \u003d \"\";"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        } else if (access.isModuleLevel()) {"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            String result \u003d editChapter(ui, access, storage);"
+        "content": "        if (access.isChapterLevel()) {"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            ui.showToUser(result);"
+        "content": "            result \u003d editCard(access, storage);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        } else {"
+        "content": "        } else if (access.isAdminLevel()) {"
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            throw new IncorrectAccessLevelException(String.format(MESSAGE_INVALID_ACCESS,"
+        "content": "            result \u003d editModule(access, storage);"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                    access.getLevel(), accessLevel));"
+        "content": "        } else if (access.isModuleLevel()) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "            result \u003d editChapter(access, storage);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 89,
@@ -3869,254 +3876,254 @@
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "    private String editCard(Access access, Storage storage) throws InvalidInputException, IOException {"
+        "content": "        ui.showToUser(result);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        //assert question.isEmpty() \u0026\u0026 answer.isEmpty() : \"The content for question and answer are both empty.\";"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "        CardList cards \u003d access.getChapter().getCards();"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            Card card \u003d cards.getCard(editIndex);"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            StringBuilder result \u003d new StringBuilder();"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            result.append(String.format(MESSAGE_BEFORE_EDIT, CARD));"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            result.append(card.toString()).append(\"\\n\");"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            if (!(question.isEmpty())) {"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "                card.setQuestion(question);"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            if (!(answer.isEmpty())) {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "                card.setAnswer(answer);"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            result.append(String.format(MESSAGE_AFTER_EDIT, CARD));"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            result.append(card.toString());"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            storage.saveCards(cards, access.getModule().getModuleName(), access.getChapter().getChapterName());"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            return result.toString();"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "        } catch (IndexOutOfBoundsException | NullPointerException e) {"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "            throw new InvalidInputException(\"The flashcard number needs to be within the range \""
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "                    + \"of the total number of flashcards\\n\");"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "Jane-Ng"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 92,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 93,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    private String editModule(Access access, Storage storage) throws InvalidInputException {"
+        "content": "    private String editCard(Access access, Storage storage) throws InvalidInputException, IOException {"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 94,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        assert access.isAdminLevel() : \"Not admin level\";"
+        "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
       },
       {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        //assert moduleOrChapter.isEmpty() : \"The module name is missing.\";"
-      },
-      {
-        "lineNumber": 118,
+        "lineNumber": 95,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        ModuleList modules \u003d access.getAdmin().getModules();"
+        "content": "        assert !question.isEmpty() || !answer.isEmpty() : \"The content for question and answer are both empty.\";"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        CardList cards \u003d access.getChapter().getCards();"
+      },
+      {
+        "lineNumber": 97,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 98,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            Module module \u003d modules.getModule(editIndex);"
+        "content": "            Card card \u003d cards.getCard(editIndex);"
       },
       {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "            boolean success \u003d storage.renameModule(moduleOrChapter, module);"
-      },
-      {
-        "lineNumber": 122,
+        "lineNumber": 99,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            StringBuilder result \u003d new StringBuilder();"
       },
       {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result.append(prepareBeforeEdit(CARD, card.toString()));"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            if (!(question.isEmpty())) {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "                card.setQuestion(question);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            if (!(answer.isEmpty())) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "                card.setAnswer(answer);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result.append(prepareAfterEdit(CARD, card.toString()));"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            storage.saveCards(cards, access.getModule().getModuleName(), access.getChapter().getChapterName());"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            return result.toString();"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        } catch (IndexOutOfBoundsException | NullPointerException e) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            throw new InvalidInputException(\"The flashcard number needs to be within the range \""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "                    + \"of the total number of flashcards\\n\");"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    private String editModule(Access access, Storage storage) throws InvalidInputException {"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        assert access.isAdminLevel() : \"Not admin level\";"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        assert !moduleOrChapter.isEmpty() : \"The module name is missing.\";"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        ModuleList modules \u003d access.getAdmin().getModules();"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            Module module \u003d modules.getModule(editIndex);"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "            boolean success \u003d storage.renameModule(moduleOrChapter, module);"
+      },
+      {
         "lineNumber": 123,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "            StringBuilder result \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 124,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            if (success) {"
       },
       {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                result.append(String.format(MESSAGE_BEFORE_EDIT, MODULE));"
-      },
-      {
         "lineNumber": 125,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                result.append(module.toString()).append(\"\\n\");"
+        "content": "                result.append(prepareBeforeEdit(MODULE, module.toString()));"
       },
       {
         "lineNumber": 126,
@@ -4128,257 +4135,334 @@
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                result.append(String.format(MESSAGE_AFTER_EDIT, MODULE));"
+        "content": "                result.append(prepareAfterEdit(MODULE, module.toString()));"
       },
       {
         "lineNumber": 128,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                result.append(module.toString());"
-      },
-      {
-        "lineNumber": 129,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 129,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            return result.toString();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        } catch (IndexOutOfBoundsException | NullPointerException e) {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        } catch (IndexOutOfBoundsException | NullPointerException e) {"
+        "content": "            throw new InvalidInputException(\"The module number needs to be within the range \""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "            throw new InvalidInputException(\"The module number needs to be within the range \""
+        "content": "                    + \"of the total number of modules\\n\");"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "                    + \"of the total number of modules\\n\");"
+        "content": "        }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": ""
+        "content": "    private String editChapter(Access access, Storage storage) throws InvalidInputException {"
       },
       {
         "lineNumber": 137,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "    private String editChapter(Ui ui, Access access, Storage storage) throws InvalidInputException {"
-      },
-      {
-        "lineNumber": 138,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        assert access.isModuleLevel() : \"Not module level\";"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 138,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        //assert moduleOrChapter.isEmpty() : \"The chapter name is missing.\";"
+        "content": "        assert !moduleOrChapter.isEmpty() : \"The chapter name is missing.\";"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 139,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        ChapterList chapters \u003d access.getModule().getChapters();"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 140,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 141,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            Chapter chapter \u003d chapters.getChapter(editIndex);"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 142,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            boolean success \u003d storage.renameChapter(moduleOrChapter, access, chapter);"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 143,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            StringBuilder result \u003d new StringBuilder();"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 144,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            if (success) {"
       },
       {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "                result.append(prepareBeforeEdit(CHAPTER, chapter.toString()));"
+      },
+      {
         "lineNumber": 146,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                result.append(String.format(MESSAGE_BEFORE_EDIT, CHAPTER));"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                result.append(chapter.toString()).append(\"\\n\");"
-      },
-      {
-        "lineNumber": 148,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "                chapter.setChapterName(moduleOrChapter);"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 147,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                result.append(String.format(MESSAGE_AFTER_EDIT, CHAPTER));"
+        "content": "                result.append(prepareAfterEdit(CHAPTER, chapter.toString()));"
       },
       {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                result.append(chapter.toString());"
-      },
-      {
-        "lineNumber": 151,
+        "lineNumber": 148,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 149,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            return result.toString();"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 150,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        } catch (IndexOutOfBoundsException | NullPointerException e) {"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 151,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            throw new InvalidInputException(\"The chapter number needs to be within the range \""
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 152,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "                    + \"of the total number of chapters\\n\");"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 153,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 154,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 155,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": ""
       },
       {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    private String prepareBeforeEdit(String type, String content) {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        StringBuilder result \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        result.append(String.format(MESSAGE_BEFORE_EDIT, type));"
+      },
+      {
         "lineNumber": 159,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    @Override"
+        "content": "        result.append(content).append(\"\\n\");"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    public boolean isExit() {"
+        "content": "        return result.toString();"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        return false;"
+        "content": "    }"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 163,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    private String prepareAfterEdit(String type, String content) {"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        StringBuilder result \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        result.append(String.format(MESSAGE_AFTER_EDIT, type));"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        result.append(content);"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        return result.toString();"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 174,
         "author": {
           "gitId": "Jane-Ng"
         },
@@ -4387,8 +4471,8 @@
     ],
     "authorContributionMap": {
       "Zhu-Ze-Yu": 6,
-      "neojiaern": 40,
-      "Jane-Ng": 117
+      "neojiaern": 16,
+      "Jane-Ng": 152
     }
   },
   {
@@ -6029,21 +6113,21 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
         "content": "import static common.Messages.CARD;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
         "content": "import static common.Messages.CHAPTER;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
         "content": "import static common.Messages.MODULE;"
       },
@@ -6106,9 +6190,9 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "    public static final String MESSAGE_EXIST \u003d \"Here are the %s(s) in your list:\\n\";"
+        "content": "    public static final String MESSAGE_EXIST \u003d \"Here are the %s(s) in your list:\";"
       },
       {
         "lineNumber": 28,
@@ -6143,98 +6227,98 @@
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        if (access.isChapterLevel()) {"
+        "content": "        if (!access.isAdminLevel() \u0026\u0026 !access.isModuleLevel() \u0026\u0026 !access.isChapterLevel()) {"
       },
       {
         "lineNumber": 33,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            String result \u003d listCards(access);"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            ui.showToUser(result);"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        } else if (access.isModuleLevel()) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            String result \u003d listChapters(access);"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            ui.showToUser(result);"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        } else if (access.isAdminLevel()) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            String result \u003d listModules(access);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "            ui.showToUser(result);"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 42,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "            throw new IncorrectAccessLevelException(\"List command can only be called at admin, \""
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 34,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "                    + \"module and chapter level.\\n\");"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 35,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        }"
       },
       {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        String result \u003d \"\";"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        if (access.isChapterLevel()) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result \u003d listCards(access);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        } else if (access.isModuleLevel()) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result \u003d listChapters(access);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        } else if (access.isAdminLevel()) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            result \u003d listModules(access);"
+      },
+      {
         "lineNumber": 45,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 46,
@@ -6246,121 +6330,121 @@
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "    private String listCards(Access access) {"
+        "content": "        ui.showToUser(result);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        CardList cards \u003d access.getChapter().getCards();"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "Jane-Ng"
+          "gitId": "neojiaern"
         },
-        "content": "        ArrayList\u003cCard\u003e allCards \u003d cards.getAllCards();"
+        "content": "    private String listCards(Access access) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Jane-Ng"
         },
-        "content": "        int cardCount \u003d cards.getCardCount();"
+        "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        StringBuilder result \u003d new StringBuilder();"
+        "content": "        CardList cards \u003d access.getChapter().getCards();"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        if (cardCount \u003d\u003d 0) {"
+        "content": "        ArrayList\u003cCard\u003e allCards \u003d cards.getAllCards();"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            result.append(String.format(MESSAGE_DOES_NOT_EXIST, CARD));"
+        "content": "        int cardCount \u003d cards.getCardCount();"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            return result.toString();"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        }"
+        "content": "        if (cardCount \u003d\u003d 0) {"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        result.append(String.format(MESSAGE_EXIST, CARD));"
+        "content": "            return String.format(MESSAGE_DOES_NOT_EXIST, CARD);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        for (Card c : allCards) {"
+        "content": "        }"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            if (allCards.indexOf(c) \u003d\u003d cardCount - 1) {"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                result.append(allCards.indexOf(c) + 1).append(\".\").append(c);"
+        "content": "        StringBuilder result \u003d new StringBuilder();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            } else {"
+        "content": "        result.append(String.format(MESSAGE_EXIST, CARD));"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "                result.append(allCards.indexOf(c) + 1).append(\".\").append(c).append(\"\\n\");"
+        "content": "        for (Card c : allCards) {"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            }"
+        "content": "            result.append(\"\\n\").append(allCards.indexOf(c) + 1).append(\".\").append(c);"
       },
       {
         "lineNumber": 64,
@@ -6421,9 +6505,9 @@
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        StringBuilder result \u003d new StringBuilder();"
+        "content": ""
       },
       {
         "lineNumber": 73,
@@ -6435,362 +6519,271 @@
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "            result.append(String.format(MESSAGE_DOES_NOT_EXIST, MODULE));"
+        "content": "            return String.format(MESSAGE_DOES_NOT_EXIST, MODULE);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            return result.toString();"
+        "content": "        }"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        result.append(String.format(MESSAGE_EXIST, MODULE));"
+        "content": "        StringBuilder result \u003d new StringBuilder();"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        for (Module m : allModules) {"
+        "content": "        result.append(String.format(MESSAGE_EXIST, MODULE));"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            if (allModules.indexOf(m) \u003d\u003d moduleCount - 1) {"
+        "content": "        for (Module m : allModules) {"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                result.append(allModules.indexOf(m) + 1).append(\".\").append(m);"
+        "content": "            result.append(\"\\n\").append(allModules.indexOf(m) + 1).append(\".\").append(m);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            } else {"
+        "content": "        }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "                result.append(allModules.indexOf(m) + 1).append(\".\").append(m).append(\"\\n\");"
+        "content": "        return result.toString();"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            }"
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        return result.toString();"
+        "content": "    private String listChapters(Access access) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": "        ChapterList chapters \u003d access.getModule().getChapters();"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "    private String listChapters(Access access) {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "        ChapterList chapters \u003d access.getModule().getChapters();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
         "content": "        ArrayList\u003cChapter\u003e allChapters \u003d chapters.getAllChapters();"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 88,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        int chapterCount \u003d chapters.getChapterCount();"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 89,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "        StringBuilder result \u003d new StringBuilder();"
+        "content": ""
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 90,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        if (chapterCount \u003d\u003d 0) {"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "            return String.format(MESSAGE_DOES_NOT_EXIST, CHAPTER);"
+      },
+      {
+        "lineNumber": 92,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            result.append(String.format(MESSAGE_DOES_NOT_EXIST, CHAPTER));"
+        "content": "        }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Jane-Ng"
+        },
+        "content": "        StringBuilder result \u003d new StringBuilder();"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            return result.toString();"
+        "content": "        result.append(String.format(MESSAGE_EXIST, CHAPTER));"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "        result.append(String.format(MESSAGE_EXIST, CHAPTER));"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "neojiaern"
-        },
         "content": "        for (Chapter c : allChapters) {"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 97,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            if (c.getDueBy() \u003d\u003d null) {"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 98,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
+          "gitId": "Jane-Ng"
         },
-        "content": "                if (allChapters.indexOf(c) \u003d\u003d chapterCount - 1) {"
+        "content": "                result.append(\"\\n\").append(allChapters.indexOf(c) + 1).append(\".\").append(c).append(\" (No due date)\");"
       },
       {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                    result.append(allChapters.indexOf(c) + 1).append(\".\")"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                            .append(c).append(\" (No due date)\");"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                    result.append(allChapters.indexOf(c) + 1).append(\".\")"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                            .append(c).append(\" (No due date)\\n\");"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 107,
+        "lineNumber": 99,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            } else {"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 100,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Jane-Ng"
         },
-        "content": "                if (allChapters.indexOf(c) \u003d\u003d chapterCount - 1) {"
+        "content": "                result.append(\"\\n\").append(allChapters.indexOf(c) + 1).append(\".\")"
       },
       {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                    result.append(allChapters.indexOf(c) + 1).append(\".\")"
-      },
-      {
-        "lineNumber": 110,
+        "lineNumber": 101,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                            .append(c).append(\" (due by \").append(c.getDueBy()).append(\")\");"
+        "content": "                        .append(c).append(\" (due by \").append(c.getDueBy()).append(\")\");"
       },
       {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                    result.append(allChapters.indexOf(c) + 1).append(\".\")"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "                            .append(c).append(\" (due by \").append(c.getDueBy()).append(\")\\n\");"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "neojiaern"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 115,
+        "lineNumber": 102,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 103,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 104,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return result.toString();"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 105,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 106,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 107,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 108,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 109,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    public boolean isExit() {"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 110,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "        return false;"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 111,
         "author": {
           "gitId": "Jane-Ng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 112,
         "author": {
           "gitId": "Jane-Ng"
         },
@@ -6798,10 +6791,10 @@
       }
     ],
     "authorContributionMap": {
-      "Zhu-Ze-Yu": 33,
+      "Zhu-Ze-Yu": 22,
       "gua-guargia": 2,
-      "neojiaern": 56,
-      "Jane-Ng": 33,
+      "neojiaern": 24,
+      "Jane-Ng": 63,
       "Darticune": 1
     }
   },
@@ -8289,779 +8282,779 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
-        "content": "import manager.history.HistoryList;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
           "gitId": "neojiaern"
         },
         "content": "import scheduler.Scheduler;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 8,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "import storage.Storage;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 9,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "import ui.Ui;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "import java.io.FileNotFoundException;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.io.IOException;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.time.LocalDate;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Darticune"
         },
         "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "Darticune"
+          "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "/**"
+        "content": " * Starts revision for a particular chapter."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": " * Starts revision for a particular chapter."
+        "content": " */"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": " */"
+        "content": "public class ReviseCommand extends Command {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "public class ReviseCommand extends Command {"
+        "content": "    public static final String COMMAND_WORD \u003d \"revise\";"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"revise\";"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Starts revision based on a particular chapter. \\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Starts revision based on a particular chapter. \\n\""
+        "content": "            + \"Parameters: INDEX_OF_CHAPTER\\n\" + \"Example: \" + COMMAND_WORD + \" 2\\n\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            + \"Parameters: INDEX_OF_CHAPTER\\n\" + \"Example: \" + COMMAND_WORD + \" 2\\n\";"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"You have completed revision for %1$s.\\n\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"You have completed revision for %1$s.\";"
+        "content": "    public static final String MESSAGE_NO_CARDS_IN_CHAPTER \u003d \"You currently have no cards in %1$s.\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_NO_CARDS_IN_CHAPTER \u003d \"You currently have no cards in %1$s.\";"
+        "content": "    public static final String MESSAGE_CHAPTER_NOT_DUE \u003d \"The chapter %1$s is not due for revision today.\\n\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_CHAPTER_NOT_DUE \u003d \"The chapter %1$s is not due for revision today.\\n\";"
+        "content": "    public static final String MESSAGE_SHOW_ANSWER_PROMPT \u003d \"\\n[enter s to show answer]\";"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_SHOW_ANSWER_PROMPT \u003d \"\\n[enter s to show answer]\";"
+        "content": "    public static final String MESSAGE_SHOW_RATING_PROMPT \u003d \"How well did you do for this card?\\n\""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_SHOW_RATING_PROMPT \u003d \"How well did you do for this card?\\n\""
+        "content": "            + \"[enter e(easy), m(medium), h(hard), c(cannot answer)]\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            + \"[enter e(easy), m(medium), h(hard), c(cannot answer)]\";"
+        "content": "    public static final String MESSAGE_SHOW_REVISE_PROMPT \u003d \"Are you sure you want to revise this? (Y/N)\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_SHOW_REVISE_PROMPT \u003d \"Are you sure you want to revise this? (Y/N)\";"
+        "content": "    public static final String MESSAGE_START_REVISION \u003d \"The revision for %s will start now:\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MESSAGE_START_REVISION \u003d \"The revision for %s will start now:\";"
+        "content": "    public static final String EASY \u003d \"e\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String EASY \u003d \"e\";"
+        "content": "    public static final String MEDIUM \u003d \"m\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String MEDIUM \u003d \"m\";"
+        "content": "    public static final String HARD \u003d \"h\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String HARD \u003d \"h\";"
+        "content": "    public static final String CANNOT_ANSWER \u003d \"c\";"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public static final String CANNOT_ANSWER \u003d \"c\";"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "    private final int reviseIndex;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    private final int reviseIndex;"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "    public ReviseCommand(int reviseIndex) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public ReviseCommand(int reviseIndex) {"
+        "content": "        this.reviseIndex \u003d reviseIndex;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        this.reviseIndex \u003d reviseIndex;"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "    public Chapter getChapter(int reviseIndex, Access access) throws IndexOutOfBoundsException {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public Chapter getChapter(int reviseIndex, Access access) throws IndexOutOfBoundsException {"
+        "content": "        Chapter chapter;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        Chapter chapter;"
+        "content": "        try {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        try {"
+        "content": "            chapter \u003d access.getModule().getChapters().getChapter(reviseIndex);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            chapter \u003d access.getModule().getChapters().getChapter(reviseIndex);"
+        "content": "            return chapter;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            return chapter;"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            throw new IndexOutOfBoundsException(\"The chapter is not found.\\n\");"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            throw new IndexOutOfBoundsException(\"The chapter is not found.\\n\");"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "neojiaern"
-        },
         "content": "    private ArrayList\u003cCard\u003e getCards(Access access, Storage storage, Chapter toRevise)"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            throws FileNotFoundException {"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ArrayList\u003cCard\u003e allCards;"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            allCards \u003d storage.loadCard(access.getModuleLevel(), toRevise.getChapterName());"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            toRevise.setCards(allCards);"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        } catch (FileNotFoundException e) {"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            throw new FileNotFoundException(\"File is not found.\\n\");"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return allCards;"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 67,
         "author": {
           "gitId": "Darticune"
         },
         "content": "    private int reviseCard(int count, Card c, Ui ui, ArrayList\u003cCard\u003e repeatCards) {"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 68,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        ui.showToUser(\"\\nQuestion \" + count + \":\");"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 69,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        ui.showCardRevision(c);"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 70,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        String input \u003d ui.getInput(MESSAGE_SHOW_RATING_PROMPT);"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        rateCard(ui, repeatCards, c, input);"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return ++count;"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "Darticune"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 74,
         "author": {
           "gitId": "Darticune"
         },
         "content": ""
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    public void execute(Ui ui, Access access, Storage storage) throws IOException {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        Chapter toRevise \u003d getChapter(reviseIndex, access);"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 78,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        if (!Scheduler.isDeadlineDue(toRevise.getDueBy())) {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 79,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            StringBuilder prompt \u003d new StringBuilder();"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 80,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            prompt.append(String.format(MESSAGE_CHAPTER_NOT_DUE, toRevise));"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 81,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            prompt.append(MESSAGE_SHOW_REVISE_PROMPT);"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 82,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            String input \u003d ui.getInput(prompt.toString()).trim().toUpperCase();"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 83,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            boolean isInvalid \u003d true;"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 84,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            while (isInvalid) {"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 85,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                switch (input) {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 86,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                case \"Y\":"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 87,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                    isInvalid \u003d false;"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 88,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                    break;"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 89,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                case \"N\":"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 90,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                    return;"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 91,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                default:"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 92,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                    input \u003d ui.getInput(\"You have entered an invalid input, please try again.\")"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 93,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                            .trim().toUpperCase();"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 94,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 95,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 96,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 97,
         "author": {
           "gitId": "Darticune"
         },
         "content": ""
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 98,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ArrayList\u003cCard\u003e allCards \u003d getCards(access, storage, toRevise);"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 99,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ArrayList\u003cCard\u003e repeatCards \u003d new ArrayList\u003c\u003e();"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 100,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        int cardCount \u003d allCards.size();"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 101,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ui.showToUser(\"\\nCard count: \" + cardCount);"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 102,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        if (cardCount \u003d\u003d 0) {"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 103,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(String.format(MESSAGE_NO_CARDS_IN_CHAPTER, toRevise));"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 104,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            return;"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 105,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 106,
         "author": {
           "gitId": "Darticune"
         },
         "content": ""
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 107,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ui.showToUser(String.format(MESSAGE_START_REVISION, toRevise));"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 108,
         "author": {
           "gitId": "Darticune"
         },
         "content": ""
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 109,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        int count \u003d 1;"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 110,
         "author": {
           "gitId": "Darticune"
         },
         "content": ""
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 111,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        for (Card c : allCards) {"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 112,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            count \u003d reviseCard(count, c, ui, repeatCards);"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 113,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 114,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        repeatRevision(ui, repeatCards, count);"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 115,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ui.showToUser(String.format(MESSAGE_SUCCESS, toRevise));"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 116,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        toRevise.setDueBy(Scheduler.computeDeckDeadline(toRevise.getCards()), storage, access);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": ""
       },
       {
         "lineNumber": 118,
@@ -9117,7 +9110,7 @@
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        String chapterName \u003d access.getChapter().getChapterName();"
+        "content": "        String chapterName \u003d access.getModule().getChapters().getChapter(reviseIndex).getChapterName();"
       },
       {
         "lineNumber": 126,
@@ -9131,14 +9124,14 @@
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        HistoryList histories \u003d access.getAdmin().getHistories();"
+        "content": "        ArrayList\u003cHistory\u003e histories \u003d storage.loadHistory(date.toString());;"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        histories.addHistory(history);"
+        "content": "        histories.add(history);"
       },
       {
         "lineNumber": 129,
@@ -9464,9 +9457,9 @@
       }
     ],
     "authorContributionMap": {
-      "Zhu-Ze-Yu": 17,
+      "Zhu-Ze-Yu": 18,
       "gua-guargia": 2,
-      "neojiaern": 133,
+      "neojiaern": 132,
       "Darticune": 22
     }
   },
@@ -13809,9 +13802,9 @@
       {
         "lineNumber": 169,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "        return new AddCommand(commandArgs);"
+        "content": "        return new AddCommand(commandArgs, MODULE_LEVEL);"
       },
       {
         "lineNumber": 170,
@@ -13837,9 +13830,9 @@
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "gua-guargia"
+          "gitId": "Jane-Ng"
         },
-        "content": "        return new AddCommand(commandArgs);"
+        "content": "        return new AddCommand(commandArgs, ADMIN_LEVEL);"
       },
       {
         "lineNumber": 174,
@@ -15615,9 +15608,9 @@
     ],
     "authorContributionMap": {
       "Zhu-Ze-Yu": 88,
-      "gua-guargia": 49,
+      "gua-guargia": 47,
       "neojiaern": 54,
-      "Jane-Ng": 221,
+      "Jane-Ng": 223,
       "Darticune": 14
     }
   },
@@ -16602,2579 +16595,2600 @@
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "import manager.history.HistoryList;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
         "content": "import parser.Parser;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "import manager.module.Module;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "Darticune"
         },
         "content": "import scheduler.Scheduler;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import ui.Ui;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.io.File;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.io.FileNotFoundException;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.io.FileWriter;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.io.IOException;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "import java.util.Scanner;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "public class Storage {"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    public static final String DELIMITER \u003d \" \\\\| \";"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    public static final String QUESTION_PREFIX \u003d \"[Q]\";"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    public static final String ANSWER_PREFIX \u003d \"[A]\";"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    public static final String PREVIOUS_INTERVAL_PREFIX \u003d \"[P]\";"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public static final String MESSAGE_CREATED \u003d \"Successfully created new %1$s %2$s\\n\";"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public static final String MESSAGE_EXISTS \u003d \"%1$s %2$s already exists\\n\";"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public static final String MESSAGE_MODULE_CHAPTER \u003d \"Module: %1$s ; Chapter: %2$s\";"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public static final String FILE \u003d \"file\";"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public static final String DIR \u003d \"directory\";"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    protected String filePath;"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    public Storage(String filePath) {"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        this.filePath \u003d filePath;"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public String getFilePath() {"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return filePath;"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    //create the folder --\u003e \u0027data/admin\u0027"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public void createAdmin(Ui ui) {"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        File f \u003d new File(filePath);"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 48,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ui.showToUser(\"Filepath: \" + filePath);"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 49,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean dataDirExists \u003d f.getParentFile().exists();"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean dataDirCreated \u003d false;"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (!dataDirExists) {"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            dataDirCreated \u003d f.getParentFile().mkdir();"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(String.format(MESSAGE_EXISTS, DIR.substring(0,1).toUpperCase(),"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                    f.getParentFile().getName()));"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (dataDirCreated) {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(String.format(MESSAGE_CREATED, DIR, f.getParentFile().getName()));"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        createHistoryDir();"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean adminDirExists \u003d f.exists();"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean adminDirCreated \u003d false;"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (!adminDirExists) {"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            adminDirCreated \u003d f.mkdir();"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 67,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 68,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(String.format(MESSAGE_EXISTS, DIR.substring(0,1).toUpperCase(), f));"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 69,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 70,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (adminDirCreated) {"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(String.format(MESSAGE_CREATED, DIR, f));"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": ""
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public String createModule(String moduleName) {"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        File f \u003d new File(filePath + \"/\" + moduleName);"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean moduleDirExists \u003d f.exists();"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 78,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean moduleDirCreated \u003d false;"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 79,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        String result \u003d \"\";"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 80,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (!moduleDirExists) {"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 81,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            moduleDirCreated \u003d f.mkdir();"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 82,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 83,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            result \u003d String.format(MESSAGE_EXISTS, DIR.substring(0,1).toUpperCase(), f);"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 84,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 85,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (moduleDirCreated) {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 86,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            result \u003d String.format(MESSAGE_CREATED, DIR, f);"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 87,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 88,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return result;"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": ""
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 91,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public String createChapter(String chapterName, String moduleName) throws IOException {"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 92,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        String result \u003d \"\";"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 93,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "        File f \u003d new File(filePath + \"/\" + moduleName + \"/\" + chapterName + \".txt\");"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        File f \u003d new File(filePath + \"/\" + moduleName + \"/\" + chapterName + \".txt\");"
+        "content": "        boolean chapterFileExists \u003d f.exists();"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        boolean chapterFileExists \u003d f.exists();"
+        "content": "        boolean chapterFileCreated \u003d false;"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        boolean chapterFileCreated \u003d false;"
+        "content": "        if (!chapterFileExists) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (!chapterFileExists) {"
+        "content": "            chapterFileCreated \u003d f.createNewFile();"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            chapterFileCreated \u003d f.createNewFile();"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": "        } else {"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 100,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            result \u003d String.format(MESSAGE_EXISTS, FILE.substring(0,1).toUpperCase(), f);"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 101,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 102,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (chapterFileCreated) {"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 103,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            result \u003d String.format(MESSAGE_CREATED, FILE, f);"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 104,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 105,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        return result;"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 106,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 107,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 108,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public ArrayList\u003cModule\u003e loadModule(Ui ui) throws FileNotFoundException {"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 109,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        File f \u003d new File(filePath);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "        boolean dirExists \u003d f.exists();"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        boolean dirExists \u003d f.exists();"
+        "content": "        if (!dirExists) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (!dirExists) {"
+        "content": "            throw new FileNotFoundException();"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new FileNotFoundException();"
+        "content": "        }"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        ArrayList\u003cModule\u003e modules \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        ArrayList\u003cModule\u003e modules \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": "        String[] contents \u003d f.list();"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 117,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ui.showToUser(\"List of files and directories in the specified directory:\");"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 118,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        for (String content : contents) {"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 119,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(content);"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 120,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            modules.add(new Module(content));"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 121,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 122,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        return modules;"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 123,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 124,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 125,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public ArrayList\u003cChapter\u003e loadChapter(String module, Ui ui) throws FileNotFoundException {"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 126,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        File f \u003d new File(filePath + \"/\" + module);"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 127,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean dirExists \u003d f.exists();"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 128,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        if (!dirExists) {"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 129,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            throw new FileNotFoundException();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        ArrayList\u003cChapter\u003e chapters \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        ArrayList\u003cChapter\u003e chapters \u003d new ArrayList\u003c\u003e();"
+        "content": "        String[] contents \u003d f.list();"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        String[] contents \u003d f.list();"
+        "content": "        if (contents.length \u003d\u003d 0) {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (contents.length \u003d\u003d 0) {"
+        "content": "            return chapters;"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            return chapters;"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": "        }"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 137,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        ui.showToUser(\"List of files and directories in the specified directory:\");"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 138,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        for (String content : contents) {"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 139,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            if (content.equals(\"dues\")) {"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 140,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "                continue;"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 141,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 142,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            String target \u003d content.replace(\".txt\", \"\");"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 143,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            ui.showToUser(content);"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 144,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "            chapters.add(new Chapter(target));"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 145,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 146,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        return chapters;"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 147,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 148,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": ""
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 149,
         "author": {
           "gitId": "Darticune"
         },
         "content": "    private String retrieveChapterDeadline(String moduleName, String chapterName) {"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 150,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        File f \u003d new File(filePath + \"/\" + moduleName + \"/\" + \"dues\" + \"/\" + chapterName + \"due\" + \".txt\");"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 151,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 152,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            Scanner s \u003d new Scanner(f);"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 153,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            if (s.hasNext()) {"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 154,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                String deadline \u003d s.nextLine();"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 155,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                s.close();"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 156,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                return deadline;"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 157,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            } else {"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 158,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                s.close();"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 159,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                return \"Invalid Date\";"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 160,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 161,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        } catch (FileNotFoundException e) {"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 162,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            return \"Does not exist\";"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 163,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "Darticune"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "Darticune"
         },
-        "content": ""
+        "content": "    private boolean missingDueFileCheck(String moduleName, String chapterName) {"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    private boolean missingDueFileCheck(String moduleName, String chapterName) {"
+        "content": "        File f \u003d new File(filePath + \"/\" + moduleName + \"/\" + chapterName + \".txt\");"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        File f \u003d new File(filePath + \"/\" + moduleName + \"/\" + chapterName + \".txt\");"
+        "content": "        return f.exists();"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        return f.exists();"
+        "content": "    }"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "Darticune"
-        },
         "content": ""
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 171,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public ArrayList\u003cDueChapter\u003e loadAllDueChapters(Ui ui) throws FileNotFoundException {"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 172,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        //Loading in Modules"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 173,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        File f \u003d new File(filePath);"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 174,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        boolean moduleExists \u003d f.exists();"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 175,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        if (!moduleExists) {"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 176,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            throw new FileNotFoundException();"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "Darticune"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "Darticune"
         },
-        "content": ""
+        "content": "        String[] modules \u003d f.list();"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        String[] modules \u003d f.list();"
+        "content": "        ArrayList\u003cDueChapter\u003e dueChapters \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        ArrayList\u003cDueChapter\u003e dueChapters \u003d new ArrayList\u003c\u003e();"
+        "content": "        for (String module : modules) {"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        for (String module : modules) {"
+        "content": ""
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "Darticune"
         },
-        "content": ""
+        "content": "            //Loading in Chapters for each module"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            //Loading in Chapters for each module"
+        "content": "            File f2 \u003d new File(filePath + \"/\" + module);"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            File f2 \u003d new File(filePath + \"/\" + module);"
+        "content": "            boolean chapterExists \u003d f2.exists();"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            boolean chapterExists \u003d f2.exists();"
+        "content": "            if (!chapterExists) {"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            if (!chapterExists) {"
+        "content": "                throw new FileNotFoundException();"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                throw new FileNotFoundException();"
+        "content": "            }"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            }"
+        "content": "            String[] chapters \u003d f2.list();"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            String[] chapters \u003d f2.list();"
+        "content": "            if (chapters.length \u003d\u003d 0) {"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            if (chapters.length \u003d\u003d 0) {"
+        "content": "                return dueChapters;"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                return dueChapters;"
+        "content": "            }"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            }"
+        "content": "            for (String chapter : chapters) {"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            for (String chapter : chapters) {"
+        "content": "                String target \u003d chapter.replace(\".txt\", \"\");"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                String target \u003d chapter.replace(\".txt\", \"\");"
+        "content": "                String deadline \u003d retrieveChapterDeadline(module, target);"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                String deadline \u003d retrieveChapterDeadline(module, target);"
+        "content": "                assert !deadline.equals(null) : \"Invalid deadline retrieved\";"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                assert !deadline.equals(null) : \"Invalid deadline retrieved\";"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "Darticune"
-        },
         "content": "                if (deadline.equals(\"Invalid Date\")) {"
       },
       {
-        "lineNumber": 199,
+        "lineNumber": 198,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                    ui.showToUser(\"\\nThe chapter:\");"
       },
       {
-        "lineNumber": 200,
+        "lineNumber": 199,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                    ui.showToUser(String.format(MESSAGE_MODULE_CHAPTER, module, target)"
       },
       {
-        "lineNumber": 201,
+        "lineNumber": 200,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                            + \" has a corrupted deadline. Please revise it ASAP! It will be considered due!\\n\");"
       },
       {
-        "lineNumber": 202,
+        "lineNumber": 201,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                    dueChapters.add(new DueChapter(module, new Chapter(target, Scheduler.parseDate(deadline))));"
       },
       {
-        "lineNumber": 203,
+        "lineNumber": 202,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                } else if (deadline.equals(\"Does not exist\")) {"
       },
       {
-        "lineNumber": 204,
+        "lineNumber": 203,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                    if (missingDueFileCheck(module, target)) {"
       },
       {
-        "lineNumber": 205,
+        "lineNumber": 204,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                        deadline \u003d \"Invalid Date\";"
       },
       {
-        "lineNumber": 206,
+        "lineNumber": 205,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                        ui.showToUser(\"\\nThe chapter:\");"
       },
       {
-        "lineNumber": 207,
+        "lineNumber": 206,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                        ui.showToUser(String.format(MESSAGE_MODULE_CHAPTER, module, target)"
       },
       {
-        "lineNumber": 208,
+        "lineNumber": 207,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                                + \" has a corrupted deadline. Please revise it ASAP! It will be considered due!\\n\");"
       },
       {
-        "lineNumber": 209,
+        "lineNumber": 208,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                        dueChapters.add(new DueChapter(module, new Chapter(target, Scheduler.parseDate(deadline))));"
       },
       {
-        "lineNumber": 210,
+        "lineNumber": 209,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                    }"
       },
       {
-        "lineNumber": 211,
+        "lineNumber": 210,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                } else {"
       },
       {
-        "lineNumber": 212,
+        "lineNumber": 211,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                    dueChapters.add(new DueChapter(module, new Chapter(target, Scheduler.parseDate(deadline))));"
       },
       {
-        "lineNumber": 213,
+        "lineNumber": 212,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 214,
+        "lineNumber": 213,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            }"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "Darticune"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        }"
+        "content": "        return dueChapters;"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        return dueChapters;"
+        "content": "    }"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "Darticune"
-        },
         "content": ""
       },
       {
-        "lineNumber": 219,
+        "lineNumber": 218,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "    public ArrayList\u003cCard\u003e loadCard(String module, String chapter) throws FileNotFoundException {"
       },
       {
-        "lineNumber": 220,
+        "lineNumber": 219,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        File f \u003d new File(filePath + \"/\" + module + \"/\" + chapter + \".txt\");"
       },
       {
-        "lineNumber": 221,
+        "lineNumber": 220,
         "author": {
           "gitId": "gua-guargia"
         },
         "content": "        boolean fileExists \u003d f.exists();"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "gua-guargia"
+        },
+        "content": "        if (!fileExists) {"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        if (!fileExists) {"
+        "content": "            throw new FileNotFoundException();"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "            throw new FileNotFoundException();"
+        "content": "        }"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": ""
+        "content": "        ArrayList\u003cCard\u003e cards \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        ArrayList\u003cCard\u003e cards \u003d new ArrayList\u003c\u003e();"
+        "content": "        Scanner s \u003d new Scanner(f);"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        Scanner s \u003d new Scanner(f);"
+        "content": "        while (s.hasNext()) {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "gua-guargia"
         },
-        "content": "        while (s.hasNext()) {"
-      },
-      {
-        "lineNumber": 229,
-        "author": {
-          "gitId": "gua-guargia"
-        },
         "content": "            //to read the card"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 229,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            String fileCommand \u003d s.nextLine();"
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 230,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "            String[] args \u003d fileCommand.split(DELIMITER, 3);"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 231,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            try {"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 232,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                String question \u003d Parser.parseQuestionInFile(args[0]);"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 233,
         "author": {
           "gitId": "Darticune"
         },
         "content": "                String answer \u003d Parser.parseAnswerInFile(args[1]);"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 234,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "                String interval \u003d Parser.parsePreIntervalInFile(args[2]);"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 235,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "                int preInterval \u003d Integer.parseInt(interval);"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 236,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": ""
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 237,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "                Card card \u003d new Card(question, answer, preInterval);"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 238,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "                cards.add(card);"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 239,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            } catch (InvalidFileFormatException e) {"
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "Darticune"
+        },
+        "content": "                return null;"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                return null;"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "Darticune"
-        },
         "content": "            }"
       },
       {
-        "lineNumber": 243,
+        "lineNumber": 242,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 243,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        s.close();"
       },
       {
-        "lineNumber": 245,
+        "lineNumber": 244,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "        return cards;"
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 245,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": ""
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    public void saveCards(CardList cards, String module, String chapter) throws IOException {"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public void saveCards(CardList cards, String module, String chapter) throws IOException {"
+        "content": "        FileWriter fw \u003d new FileWriter(getFilePath() + \"/\" + module + \"/\" + chapter + \".txt\");"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        FileWriter fw \u003d new FileWriter(getFilePath() + \"/\" + module + \"/\" + chapter + \".txt\");"
+        "content": "        for (int i \u003d 0; i \u003c cards.getCardCount(); i++) {"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        for (int i \u003d 0; i \u003c cards.getCardCount(); i++) {"
+        "content": "            fw.write(cards.getCard(i).toString()"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            fw.write(cards.getCard(i).toString()"
+        "content": "                    + \" | [P] \" + cards.getCard(i).getPreviousInterval() + \"\\n\");"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                    + \" | [P] \" + cards.getCard(i).getPreviousInterval() + \"\\n\");"
+        "content": "        }"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "        fw.close();"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        fw.close();"
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "Zhu-Ze-Yu"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 256,
+        "lineNumber": 255,
         "author": {
           "gitId": "neojiaern"
         },
         "content": ""
       },
       {
-        "lineNumber": 257,
+        "lineNumber": 256,
         "author": {
           "gitId": "Darticune"
         },
         "content": "    private boolean createChapterDue(String duePath, String dirPath) throws IOException {"
       },
       {
-        "lineNumber": 258,
+        "lineNumber": 257,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        File due \u003d new File(duePath);"
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 258,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        File dir \u003d new File(dirPath);"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 259,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        boolean isDirValid \u003d dir.exists() \u0026\u0026 dir.isDirectory();"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 260,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        if (!isDirValid) {"
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 261,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            return dir.mkdir() \u0026\u0026 due.createNewFile();"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 262,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        } else if (!due.exists()) {"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 263,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            return due.createNewFile();"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 264,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 265,
         "author": {
           "gitId": "Darticune"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 266,
         "author": {
           "gitId": "Darticune"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "Darticune"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "Darticune"
         },
-        "content": ""
+        "content": "    private void writeDeadlineToChapterDue(String dueBy, String chapterPath) throws IOException {"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    private void writeDeadlineToChapterDue(String dueBy, String chapterPath) throws IOException {"
+        "content": "        FileWriter fw \u003d new FileWriter(chapterPath);"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        FileWriter fw \u003d new FileWriter(chapterPath);"
+        "content": "        fw.write(dueBy);"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        fw.write(dueBy);"
+        "content": "        fw.close();"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        fw.close();"
+        "content": "    }"
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "Darticune"
         },
-        "content": ""
+        "content": "    public void saveChapterDeadline(String dueBy, String moduleName, String chapterName) {"
       },
       {
         "lineNumber": 276,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    public void saveChapterDeadline(String dueBy, String moduleName, String chapterName) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 277,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        try {"
+        "content": "            String dirPath \u003d filePath + \"/\" + moduleName + \"/\" + \"dues\";"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            String dirPath \u003d filePath + \"/\" + moduleName + \"/\" + \"dues\";"
+        "content": "            String duePath \u003d filePath + \"/\" + moduleName + \"/\" + \"dues\" + \"/\" + chapterName + \"due\" + \".txt\";"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            String duePath \u003d filePath + \"/\" + moduleName + \"/\" + \"dues\" + \"/\" + chapterName + \"due\" + \".txt\";"
+        "content": "            if (createChapterDue(duePath, dirPath)) {"
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            if (createChapterDue(duePath, dirPath)) {"
+        "content": "                writeDeadlineToChapterDue(dueBy, duePath);"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                writeDeadlineToChapterDue(dueBy, duePath);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            } else {"
+        "content": "                System.out.println(\"Unable to produce ChapterDue\");"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "                System.out.println(\"Unable to produce ChapterDue\");"
+        "content": "            }"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            }"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "            System.out.println(\"Error in saving chapter deadline\");"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "            System.out.println(\"Error in saving chapter deadline\");"
+        "content": "        }"
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "Darticune"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 289,
-        "author": {
-          "gitId": "Darticune"
-        },
         "content": ""
       },
       {
-        "lineNumber": 290,
+        "lineNumber": 289,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "    public boolean deleteDirectory(File directoryToBeDeleted) {"
       },
       {
-        "lineNumber": 291,
+        "lineNumber": 290,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        File[] allContents \u003d directoryToBeDeleted.listFiles();"
       },
       {
-        "lineNumber": 292,
+        "lineNumber": 291,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "        if (allContents !\u003d null) {"
       },
       {
-        "lineNumber": 293,
+        "lineNumber": 292,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            for (File file : allContents) {"
       },
       {
-        "lineNumber": 294,
+        "lineNumber": 293,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "                deleteDirectory(file);"
       },
       {
-        "lineNumber": 295,
+        "lineNumber": 294,
         "author": {
           "gitId": "neojiaern"
         },
         "content": "            }"
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        }"
+        "content": "        return directoryToBeDeleted.delete();"
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        return directoryToBeDeleted.delete();"
+        "content": "    }"
       },
       {
         "lineNumber": 298,
         "author": {
-          "gitId": "neojiaern"
+          "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    public boolean renameChapter(String newChapterName, Access access, Chapter chapter) {"
       },
       {
         "lineNumber": 300,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public boolean renameChapter(String newChapterName, Access access, Chapter chapter) {"
+        "content": "        File file \u003d new File(getFilePath()"
       },
       {
         "lineNumber": 301,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        File file \u003d new File(getFilePath()"
+        "content": "                + \"/\" + access.getModule()"
       },
       {
         "lineNumber": 302,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                + \"/\" + access.getModule()"
+        "content": "                + \"/\" + chapter.toString() + \".txt\");"
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                + \"/\" + chapter.toString() + \".txt\");"
+        "content": "        boolean success \u003d file.renameTo(new File(getFilePath()"
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        boolean success \u003d file.renameTo(new File(getFilePath()"
+        "content": "                + \"/\" + access.getModule()"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                + \"/\" + access.getModule()"
+        "content": "                + \"/\" + newChapterName + \".txt\"));"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                + \"/\" + newChapterName + \".txt\"));"
+        "content": "        return success;"
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        return success;"
+        "content": "    }"
       },
       {
         "lineNumber": 308,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    public boolean renameModule(String newModuleName, Module module) {"
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public boolean renameModule(String newModuleName, Module module) {"
+        "content": "        File file \u003d new File(getFilePath() + \"/\" + module.toString());"
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        File file \u003d new File(getFilePath() + \"/\" + module.toString());"
+        "content": "        boolean success \u003d file.renameTo(new File(getFilePath() + \"/\" + newModuleName));"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        boolean success \u003d file.renameTo(new File(getFilePath() + \"/\" + newModuleName));"
+        "content": "        return success;"
       },
       {
         "lineNumber": 313,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        return success;"
+        "content": "    }"
       },
       {
         "lineNumber": 314,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 315,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    public void createHistoryDir() {"
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public void createHistoryDir() {"
+        "content": "        File f \u003d new File(\"data/history\");"
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        File f \u003d new File(filePath + \"/\" + \"history\");"
+        "content": "        boolean historyDirExists \u003d f.exists();"
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        boolean historyDirExists \u003d f.exists();"
+        "content": "        if (!historyDirExists) {"
       },
       {
         "lineNumber": 319,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        if (!historyDirExists) {"
+        "content": "            f.mkdir();"
       },
       {
         "lineNumber": 320,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            f.mkdir();"
+        "content": "        }"
       },
       {
         "lineNumber": 321,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "    public void createHistory(Ui ui, String date) {"
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public void createHistory(Ui ui, String date) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 325,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        try {"
+        "content": "            File f \u003d new File(\"data/history/\" + date + \".txt\");"
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            File f \u003d new File(filePath + \"/history/\" + date + \".txt\");"
+        "content": "            boolean historyFileExists \u003d f.exists();"
       },
       {
         "lineNumber": 327,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            boolean historyFileExists \u003d f.exists();"
+        "content": "            boolean historyFileCreated \u003d false;"
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            boolean historyFileCreated \u003d false;"
+        "content": "            if (!historyFileExists) {"
       },
       {
         "lineNumber": 329,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            if (!historyFileExists) {"
+        "content": "                historyFileCreated \u003d f.createNewFile();"
       },
       {
         "lineNumber": 330,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                historyFileCreated \u003d f.createNewFile();"
+        "content": "            } else {"
       },
       {
         "lineNumber": 331,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            }"
+        "content": "                ui.showToUser(\"the file \" + date + \".txt already exists in history folder\\n\""
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "                        + \"It stores the revision completed in the session/in a day\\n\");"
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            if (historyFileCreated) {"
+        "content": "            }"
       },
       {
         "lineNumber": 334,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                ui.showToUser(\"    Successfully created new history file \" + date + \".txt\");"
+        "content": ""
       },
       {
         "lineNumber": 335,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            }"
+        "content": "            if (historyFileCreated) {"
       },
       {
         "lineNumber": 336,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "                ui.showToUser(\"Successfully created new file \" + date + \".txt in history folder\\n\""
       },
       {
         "lineNumber": 337,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            ui.showError(\"Error creating the file.\");"
+        "content": "                        + \"It stores the revision completed in the session/in a day\\n\");"
       },
       {
         "lineNumber": 338,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 339,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 340,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "            ui.showError(\"Error creating the file.\");"
       },
       {
         "lineNumber": 341,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public void saveHistory(HistoryList histories, String date) throws IOException {"
+        "content": "        }"
       },
       {
         "lineNumber": 342,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        FileWriter fw \u003d new FileWriter(getFilePath() + \"/history/\" + date + \".txt\");"
+        "content": "    }"
       },
       {
         "lineNumber": 343,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        for (int i \u003d 0; i \u003c histories.getHistoryCount(); i++) {"
+        "content": ""
       },
       {
         "lineNumber": 344,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            fw.write(histories.getHistory(i).toString());"
+        "content": "    public void saveHistory(ArrayList\u003cHistory\u003e histories, String date) throws IOException {"
       },
       {
         "lineNumber": 345,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "        FileWriter fw \u003d new FileWriter(\"data/history/\" + date + \".txt\");"
       },
       {
         "lineNumber": 346,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        fw.close();"
+        "content": "        for (History h : histories) {"
       },
       {
         "lineNumber": 347,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": "            fw.write(h.toString());"
       },
       {
         "lineNumber": 348,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 349,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    public ArrayList\u003cHistory\u003e loadHistory(String date) throws FileNotFoundException {"
+        "content": "        fw.close();"
       },
       {
         "lineNumber": 350,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        File f \u003d new File(filePath + \"/history/\" + date + \".txt\");"
+        "content": "    }"
       },
       {
         "lineNumber": 351,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        boolean fileExists \u003d f.exists();"
+        "content": ""
       },
       {
         "lineNumber": 352,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        if (!fileExists) {"
+        "content": "    public ArrayList\u003cHistory\u003e loadHistory(String date) throws FileNotFoundException {"
       },
       {
         "lineNumber": 353,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            throw new FileNotFoundException();"
+        "content": "        File f \u003d new File(\"data/history/\" + date + \".txt\");"
       },
       {
         "lineNumber": 354,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "        boolean fileExists \u003d f.exists();"
       },
       {
         "lineNumber": 355,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "        if (!fileExists) {"
       },
       {
         "lineNumber": 356,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        ArrayList\u003cHistory\u003e histories \u003d new ArrayList\u003c\u003e();"
+        "content": "            throw new FileNotFoundException();"
       },
       {
         "lineNumber": 357,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        Scanner s \u003d new Scanner(f);"
+        "content": "        }"
       },
       {
         "lineNumber": 358,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        while (s.hasNext()) {"
+        "content": ""
       },
       {
         "lineNumber": 359,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            //to read the history"
+        "content": "        ArrayList\u003cHistory\u003e histories \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 360,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            String revision \u003d s.nextLine();"
+        "content": "        Scanner s \u003d new Scanner(f);"
       },
       {
         "lineNumber": 361,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            String[] args \u003d revision.split(\"\\\\(\", 2);"
+        "content": "        while (s.hasNext()) {"
       },
       {
         "lineNumber": 362,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            String[] name \u003d args[0].split(\"/\", 2);"
+        "content": "            //to read the history"
       },
       {
         "lineNumber": 363,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            try {"
+        "content": "            String revision \u003d s.nextLine();"
       },
       {
         "lineNumber": 364,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                String moduleName \u003d Parser.parseTaskNameInFile(name[0]);"
+        "content": "            String[] args \u003d revision.split(\"\\\\(\", 2);"
       },
       {
         "lineNumber": 365,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                String chapterName \u003d Parser.parseTaskNameInFile(name[1]);"
+        "content": "            String[] name \u003d args[0].split(\"/\", 2);"
       },
       {
         "lineNumber": 366,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                String percent \u003d Parser.parsePercentInFile(args[1]);"
+        "content": "            try {"
       },
       {
         "lineNumber": 367,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                int percentage \u003d Integer.parseInt(percent);"
+        "content": "                String moduleName \u003d Parser.parseTaskNameInFile(name[0]);"
       },
       {
         "lineNumber": 368,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": ""
+        "content": "                String chapterName \u003d Parser.parseTaskNameInFile(name[1]);"
       },
       {
         "lineNumber": 369,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                History history \u003d new History(moduleName, chapterName, percentage);"
+        "content": "                String percent \u003d Parser.parsePercentInFile(args[1]);"
       },
       {
         "lineNumber": 370,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                histories.add(history);"
+        "content": "                int percentage \u003d Integer.parseInt(percent);"
       },
       {
         "lineNumber": 371,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            } catch (InvalidFileFormatException e) {"
+        "content": ""
       },
       {
         "lineNumber": 372,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "                return null;"
+        "content": "                History history \u003d new History(moduleName, chapterName, percentage);"
       },
       {
         "lineNumber": 373,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "            }"
+        "content": "                histories.add(history);"
       },
       {
         "lineNumber": 374,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        }"
+        "content": "            } catch (InvalidFileFormatException e) {"
       },
       {
         "lineNumber": 375,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        s.close();"
+        "content": "                return null;"
       },
       {
         "lineNumber": 376,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "        return histories;"
+        "content": "            }"
       },
       {
         "lineNumber": 377,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 378,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        s.close();"
+      },
+      {
+        "lineNumber": 379,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "        return histories;"
+      },
+      {
+        "lineNumber": 380,
+        "author": {
+          "gitId": "Zhu-Ze-Yu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 381,
         "author": {
           "gitId": "Zhu-Ze-Yu"
         },
@@ -19182,7 +19196,7 @@
       }
     ],
     "authorContributionMap": {
-      "Zhu-Ze-Yu": 126,
+      "Zhu-Ze-Yu": 129,
       "gua-guargia": 93,
       "neojiaern": 52,
       "Darticune": 107

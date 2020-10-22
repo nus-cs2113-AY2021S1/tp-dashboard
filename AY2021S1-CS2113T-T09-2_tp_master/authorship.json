@@ -18312,7 +18312,7 @@
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "                    + \"(?\u003ctaskModule\u003e\\\\S+)\" + \"((?\u003cinvalid\u003e.*)?)\");"
+        "content": "                    + \"(?\u003ctaskModule\u003e\\\\s\\\\S+)\" + \"((?\u003cinvalid\u003e.*)?)\");"
       },
       {
         "lineNumber": 24,
@@ -18410,122 +18410,115 @@
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "        int taskIndex \u003d Integer.parseInt(stringTaskIndex) - 1;"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": ""
+        "content": "        // Checks for any string after the module or index given"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "        // Checks for any string after the module or index given"
+        "content": "        String invalid \u003d matcher.group(INVALID_GROUP).trim();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "        String invalid \u003d matcher.group(INVALID_GROUP).trim();"
+        "content": "        if (!invalid.isEmpty()) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "        if (!invalid.isEmpty()) {"
+        "content": "            return new IncorrectCommand(String.format(\"%s%s\\n\\n%s%s\\n\","
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "            return new IncorrectCommand(String.format(\"%s%s\\n\\n%s%s\\n\","
+        "content": "                    MESSAGE_INVALID_COMMAND_FORMAT, invalid, MESSAGE_CHECK_COMMAND_FORMAT, DeleteCommand.FORMAT));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "                    MESSAGE_INVALID_COMMAND_FORMAT, invalid, MESSAGE_CHECK_COMMAND_FORMAT, DeleteCommand.FORMAT));"
+        "content": "        }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "tobiasceg"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "tobiasceg"
-        },
         "content": "        if (commandFlag.equals(MODULE_PREFIX)) {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "Aseanseen"
         },
         "content": "            return new DeleteModuleCommand(stringTaskIndex); //parameter is module code"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "tobiasceg"
         },
         "content": "        } else if (commandFlag.equals(TASK_PREFIX)) {"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 48,
         "author": {
-          "gitId": "Aseanseen"
+          "gitId": "tobiasceg"
         },
-        "content": "            return new DeleteTaskCommand(taskIndex);//parameters is the index"
+        "content": "            return new DeleteTaskCommand(Integer.parseInt(stringTaskIndex) - 1);//parameters is the index"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 49,
         "author": {
           "gitId": "tobiasceg"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
           "gitId": "tobiasceg"
         },
         "content": "            throw new InvalidParameterException();"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
           "gitId": "tobiasceg"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
           "gitId": "tobiasceg"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "tobiasceg"
         },
@@ -18534,7 +18527,7 @@
     ],
     "authorContributionMap": {
       "tobiasceg": 50,
-      "Aseanseen": 4
+      "Aseanseen": 3
     }
   },
   {
