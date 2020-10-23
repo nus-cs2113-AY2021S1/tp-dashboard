@@ -423,6 +423,2697 @@
     }
   },
   {
+    "path": "docs/DeveloperGuide.md",
+    "fileType": "docs",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "# Developer Guide"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [Design \u0026 implementation](#design--implementation)"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Architecture](#architecture)  "
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Ui component](#ui-component)  "
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Logic component](#logic-component)  "
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Model component](#model-component)  "
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Storage component](#storage-component)"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [Product scope](#product-scope)"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Target user profile](#target-user-profile)"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - [Value proposition](#value-proposition)"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [User stories](#user-stories)"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [Use cases](#use-cases)"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [Non-functional requirements](#non-functional-requirements) "
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [Glossary](#glossary)"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "- [Instruction for manual testing](#instructions-for-manual-testing)"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Design \u0026 implementation"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Architecture"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "![Architecture](diagrams/Architecture.png)"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "The Architecture Diagram above gives an overview of how different components interacts "
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "with each other in the app. "
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "As the app starts, the main program initialises the Ui, Logic and Storage components."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Then, the Storage component reads existing data file if it is available, else a fresh copy of "
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "data file is created. This step also initialises the content of runtime storage which is store "
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "in a TaskMap object."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Now the Ui component is ready to take inputs from the User, and the input is processed and executed"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "in the Logic component, the execution result is passed back to Ui component and displayed to the User."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Just before the main program exits, Storage component saves the content in the TaskMap to the data file."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Commons provide utility functions and messages to be used by other components."
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "The sequence diagram below shows a typical workflow the program."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "![ComponentsSeq](diagrams/ComponentsSeq.png)"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "In the example above, after the programs starts, User inputs \"delete 2173\","
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "the input is captured by the Ui component, then it calls the processRaw "
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "function from the Logic component, to extract useful information from the input. "
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Logic component verified the command is valid and calls the remove function "
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "from the TaskMap, then TaskMap carries out the operation, and a message is"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "return to the Ui from the Logic component."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "The next input provide by the User is \"bye\", it follows a similar process."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "After the message is shown to the User, the main program calls the"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "writeTasksToFile() function in Storage and saves the data."
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Ui component"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "![UiComponent](diagrams/UiClass.png)"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "The diagram above is a class diagram of the Ui component."
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Other than the usual InputStream and OutputStream, the Ui component has a"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "DisplayDateStructure. This abstract class prepares the content to be "
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "printed when the DisplayMode is WEEK or MONTH. The content is generated"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "using generateScreen function, which writes the intended content into"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "the 2-D array of characters. After that, the array will be shown to the user"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "by Ui class via the OutputStream. "
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Moreover, WeekStructure and MonthStructure extends the DisplayDateStructure."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "These classes will generate a different size of the 2-D array mentioned"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "in the previous paragraph due the difference in number of days displayed."
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Logic component"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "![LogicComponent](diagrams/LogicClass.png)"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "From the Ui component, the raw input from the User is passed to the Parser class."
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Parser class will process and validate the input, then it generates a specific"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "command accordingly.  Specific commands extends from the abstract Command class."
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Command operates on the TaskMap and execution of Command generates a "
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "CommandResult. This CommandResult is passed back to the Ui component and "
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "respective content will be displayed to User based on the CommandResult. "
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Model component"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "![ModelComponent](diagrams/TaskMapClass.png)"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Task class consists of attributes like description, date, start time, end time,"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "priority that are important to users. Whereas other attributes like "
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "HASH_VALUE_DIGITS, taskID and internal values of Priority enum class matters"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "more to developers. For example, the HASH_VALUE_DIGITS and the color code of "
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Priority could affect the content displayed to User, and the reason why the"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "constant 4 is used will be explained in the next paragraph. "
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "TaskMap is the container used for runtime storage, it stores up to 10000 Task"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "objects. The number 10000 is chosen such that the unique identifier of each"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Task is kept within 4 digits. Keeping it to 4 digits allows the app to have a"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "better displaying effect."
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "The underlying data structure used for TaskMap is the Java LinkedHashMap."
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "It is chosen because it allows efficient access to an element (Task) using the"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "unique identifier (Integer). Another reason of using LinkedHashMap is because "
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "it is ordered, this allows the container to be sorted. DateSorter and "
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "PrioritySorter implements the Task comparator, they are used in the TaskMap"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "functions sortByDate() and sortByPriority()."
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Storage component"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "![StorageComponent](diagrams/StorageClass.png)"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "At the initiating and closing stage of the program, the Storage component"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "will read and write to the data file respectively. As shown in the diagram"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "above, the data file is named as \"data.json\" and placed under a folder called"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "\"data\". The Storage component also uses the Google Gson library to convert Task"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "object to and from json format. For example, in the process of saving to file,"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "each Task object is convert to json string and then writes to file via FileWriter. "
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Common classes"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Common classes provide utility functions and string messages used by multiple components,"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "and these classes are stored in the seedu.commons package."
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Product scope"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Target user profile"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Students in general"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Owns a personal laptop/PC"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Willing to use command line app for planning"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Value proposition"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    PlaNUS is a one stop location for students to be able to view all their "
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    commitments and assignments, and prioritize their work and commitment "
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    with a user-friendly text interface."
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## User Stories"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|Version| As a ... | I want to ... | So that I can ...|"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|--------|----------|---------------|------------------|"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Forgetful student|add tasks to list|keep track of them and not forget it|"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Busy student|modify existing tasks|don\u0027t waste time deleting and adding it all over again|"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|New user|see instructions|have quick access to the instruction w/o having to access the user guide|"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Student with many different tasks \u0026 due dates|set task priority|focus on more urgent tasks |"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Student with many different tasks \u0026 due dates|sort tasks by priority|clearly view of tasks urgency|"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Student with many tasks|search for tasks|find what i want quickly|"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Student with many tasks|delete tasks|old tasks don’t clutter up the display|"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v1.0|Busy student|clear all tasks|don’t waste time deleting one by one|"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "|v2.0|Busy student|View tasks in a weekly and monthly view|I know what i have due for that time period|"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "## Use cases"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: Add task"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User adds a task"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus adds task"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. PLANus shows the task added message"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends. "
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Extensions  "
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1a. User adds task without any date  "
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Date is set to the current date  "
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1b. User adds tasks without any priority  "
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Priority is set to low  "
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1c. User adds task without start and end time  "
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Time is set to empty  "
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1d. User inputs wrong details format  "
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "PLANus shows invalid command message  "
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: List task"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User requests to list tasks"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus shows tasks"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends."
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Extensions"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 2a. List is empty - PLANus displays empty list"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: Edit task"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User inputs the task index, and what user wants to change"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus changes the task details"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. PLANus shows the task edited message. "
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends."
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Extensions"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1a. User inputs an invalid index"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Shows invalid command message"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1b. User inputs wrong details format"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Shows invalid command message"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: Help"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User inputs help command"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus displays help message"
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends."
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: Search"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User inputs search command with keyword"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus searches the task list for keyword"
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. PLANus displays results"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends."
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Extensions"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 2a. PLANus is unable to find any matches"
+      },
+      {
+        "lineNumber": 242,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Shows no tasks found message"
+      },
+      {
+        "lineNumber": 243,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: Delete"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User inputs delete command with index"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus deletes the task"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. PLANus shows task deleted message"
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends."
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Extensions "
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "   - 1a. User inputs invalid index"
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "PLANus shows invalid task number message"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Use case: Clear "
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Main success scenario"
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. User inputs clear command"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. PLANus clears all tasks"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. PLANus shows tasks cleared message"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Use case ends. "
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 271,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Non-Functional Requirements"
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 274,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - The system should respond within two seconds."
+      },
+      {
+        "lineNumber": 275,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - The system should be easy to use, do not require much effort to learn."
+      },
+      {
+        "lineNumber": 276,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Features should be able to be implemented before project deadline."
+      },
+      {
+        "lineNumber": 277,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 278,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Glossary"
+      },
+      {
+        "lineNumber": 279,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 280,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 281,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Instructions for manual testing"
+      },
+      {
+        "lineNumber": 282,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 283,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Launch and Shutdown"
+      },
+      {
+        "lineNumber": 284,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. Initial launch"
+      },
+      {
+        "lineNumber": 286,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "\t"
+      },
+      {
+        "lineNumber": 287,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Download the jar file and copy into an empty folder. Type `java -jar planus.jar`"
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    int the command line window and press enter, welcome message will be displayed."
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. Shutdown"
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Type “bye” into the command line and the program should exit."
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Adding a task"
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 296,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. Add a task into the list by using add command using only description"
+      },
+      {
+        "lineNumber": 297,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 298,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework  "
+      },
+      {
+        "lineNumber": 299,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: homework task should be added to the list with default date being set "
+      },
+      {
+        "lineNumber": 300,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    to the current date."
+      },
+      {
+        "lineNumber": 301,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 302,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. Add a task into the lists using add command with description and date."
+      },
+      {
+        "lineNumber": 303,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 304,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework d/25-12-2020  "
+      },
+      {
+        "lineNumber": 305,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: homework task should be added to the list with the date set as 25-12-2020."
+      },
+      {
+        "lineNumber": 306,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 307,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework d/25-13-2020  "
+      },
+      {
+        "lineNumber": 308,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: Since there is no 13th month, the task is not added to the list, "
+      },
+      {
+        "lineNumber": 309,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and an error message is shown."
+      },
+      {
+        "lineNumber": 310,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 311,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. Add a task into the lists using add command with description, date and start and end times."
+      },
+      {
+        "lineNumber": 312,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 313,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework d/25-12-2020 st/1900 et/2000  "
+      },
+      {
+        "lineNumber": 314,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: homework task should be added to the list with date set as 25-12-2020 "
+      },
+      {
+        "lineNumber": 315,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and start time 19:00 and end time 20:00."
+      },
+      {
+        "lineNumber": 316,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 317,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework d/25-12-2020 st/1900 et/2500"
+      },
+      {
+        "lineNumber": 318,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: Since there is only 24 hours in a day, the task is not added to the list, "
+      },
+      {
+        "lineNumber": 319,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and an error message is shown."
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "4. Add a task into the lists using add command with description, date, start "
+      },
+      {
+        "lineNumber": 322,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and end times and priority."
+      },
+      {
+        "lineNumber": 323,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "\t"
+      },
+      {
+        "lineNumber": 324,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework d/25-12-2020 st/1900 et/2000 p/3  "
+      },
+      {
+        "lineNumber": 325,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: homework task should be added to the list with date set as 25-12-2020 "
+      },
+      {
+        "lineNumber": 326,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and start time 19:00 and end time 20:00 and with a HIGH priority."
+      },
+      {
+        "lineNumber": 327,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: add homework d/25-12-2020 st/1900 et/2000 p/4  "
+      },
+      {
+        "lineNumber": 329,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected:  Since the highest priority is HIGH, the task is not added to the list, "
+      },
+      {
+        "lineNumber": 330,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and an error message is shown."
+      },
+      {
+        "lineNumber": 331,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 332,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Deleting a task"
+      },
+      {
+        "lineNumber": 333,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 334,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Prerequisites: Add some tasks to the list. List all tasks using the list command. "
+      },
+      {
+        "lineNumber": 335,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "All indexes are less than or equal to four-digit numbers."
+      },
+      {
+        "lineNumber": 336,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 337,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. Deleting a task"
+      },
+      {
+        "lineNumber": 338,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 339,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: delete 3542  "
+      },
+      {
+        "lineNumber": 340,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: Task with the index of 3542 is deleted from the list. "
+      },
+      {
+        "lineNumber": 341,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 342,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: delete 12378"
+      },
+      {
+        "lineNumber": 343,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: No task is deleted, and an Invalid index error is shown."
+      },
+      {
+        "lineNumber": 344,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 345,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Editing a task"
+      },
+      {
+        "lineNumber": 346,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 347,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Prerequisites: Add some tasks to the list. List all tasks using the list command."
+      },
+      {
+        "lineNumber": 348,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "All indexes are less than or equal to four-digit numbers."
+      },
+      {
+        "lineNumber": 349,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 350,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "1. Editing the description of a task"
+      },
+      {
+        "lineNumber": 351,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 352,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: edit 3542 des/homework   "
+      },
+      {
+        "lineNumber": 353,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: The task with index 3542 will have its description changed to “homework” "
+      },
+      {
+        "lineNumber": 354,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    while the other components will remain the same."
+      },
+      {
+        "lineNumber": 355,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 356,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "2. Editing the date of a task"
+      },
+      {
+        "lineNumber": 357,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 358,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: edit 3542 d/21-10-2020  "
+      },
+      {
+        "lineNumber": 359,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: The task with index 3542 will have its date changed to “21-10-2020” "
+      },
+      {
+        "lineNumber": 360,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    while the other components will remain the same."
+      },
+      {
+        "lineNumber": 361,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 362,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "3. Editing the start and end time of a task"
+      },
+      {
+        "lineNumber": 363,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 364,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: edit 3542 st/1500 et/1600  "
+      },
+      {
+        "lineNumber": 365,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: The task with index 3542 will have its start time changed to 15:00 "
+      },
+      {
+        "lineNumber": 366,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    and end time changed to 16:00  while the other components will remain the same."
+      },
+      {
+        "lineNumber": 367,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 368,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "4. Editing the priority of a task"
+      },
+      {
+        "lineNumber": 369,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 370,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    - Test case: edit 3542 p/3  "
+      },
+      {
+        "lineNumber": 371,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    Expected: The task with index 3542 will have its priority changed to “HIGH” "
+      },
+      {
+        "lineNumber": 372,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "    while the other components will remain the same."
+      },
+      {
+        "lineNumber": 373,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 374,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "### Saving data"
+      },
+      {
+        "lineNumber": 375,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 376,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Prerequisites: Add some tasks to the list. "
+      },
+      {
+        "lineNumber": 377,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 378,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Ensure that data is saved during exit of the program"
+      },
+      {
+        "lineNumber": 379,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 380,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "After adding some tasks to the list, exit the program using the “bye” command."
+      },
+      {
+        "lineNumber": 381,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Reopen the program using the jar file and list all tasks using the list command."
+      },
+      {
+        "lineNumber": 382,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "Expected: All pre-existing tasks before the most recent program exit "
+      },
+      {
+        "lineNumber": 383,
+        "author": {
+          "gitId": "QX-CHEN"
+        },
+        "content": "should be displayed in the list."
+      }
+    ],
+    "authorContributionMap": {
+      "QX-CHEN": 356,
+      "-": 27
+    }
+  },
+  {
     "path": "docs/README.md",
     "fileType": "docs",
     "lines": [
@@ -13636,7 +16327,7 @@
         "author": {
           "gitId": "QX-CHEN"
         },
-        "content": "        assertEquals(currentSize, taskMap.searchByDate(LocalDate.now()).size());"
+        "content": "        assertEquals(currentSize, taskMap.searchByDate(LocalDate.of(2020,10,20)).size());"
       },
       {
         "lineNumber": 67,
