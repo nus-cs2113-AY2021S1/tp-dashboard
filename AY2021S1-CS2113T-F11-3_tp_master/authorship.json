@@ -11961,262 +11961,276 @@
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            if (!isRemoved) {"
+        "content": "            boolean isRemovedFromDue \u003d storage.removeChapterFromDue("
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "                //logger.log(Level.WARNING, \"problem deleting chapter\");"
+        "content": "                    access.getModule().toString(), chapter.toString());"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "                throw new IOException(\"There was a problem deleting chapter in directory.\");"
+        "content": "            if (!isRemoved \u0026\u0026 !isRemovedFromDue) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            }"
+        "content": "                //logger.log(Level.WARNING, \"problem deleting chapter\");"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            result.append(String.format(MESSAGE_SUCCESS_CHAPTER, chapter.toString()));"
+        "content": "                throw new IOException(\"There was a problem deleting chapter in directory.\");"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            allChapters.remove(removeIndex);"
+        "content": "            }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            result.append(String.format(MESSAGE_REMAINING_CHAPTER, allChapters.size()));"
+        "content": "            result.append(String.format(MESSAGE_SUCCESS_CHAPTER, chapter.toString()));"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            //logger.log(Level.INFO, \"Chapter successfully deleted.\");"
+        "content": "            allChapters.remove(removeIndex);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            result.append(String.format(MESSAGE_REMAINING_CHAPTER, allChapters.size()));"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            result.append(MESSAGE_INVALID_INDEX_CHAPTER);"
+        "content": "            //logger.log(Level.INFO, \"Chapter successfully deleted.\");"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        return result.toString();"
+        "content": "            result.append(MESSAGE_INVALID_INDEX_CHAPTER);"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "        return result.toString();"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    private String removeCard(Access access, Storage storage) throws IOException {"
+        "content": "    }"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        StringBuilder result \u003d new StringBuilder();"
+        "content": "    private String removeCard(Access access, Storage storage) throws IOException {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        try {"
+        "content": "        assert access.isChapterLevel() : \"Not chapter level\";"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            CardList cards \u003d access.getChapter().getCards();"
+        "content": "        StringBuilder result \u003d new StringBuilder();"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            ArrayList\u003cCard\u003e allCards \u003d cards.getAllCards();"
+        "content": "        try {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            Card card \u003d allCards.get(removeIndex);"
+        "content": "            CardList cards \u003d access.getChapter().getCards();"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            //logger.log(Level.INFO, \"Deleting flashcard...\");"
+        "content": "            ArrayList\u003cCard\u003e allCards \u003d cards.getAllCards();"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            cards.removeCard(removeIndex);"
+        "content": "            Card card \u003d allCards.get(removeIndex);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            result.append(MESSAGE_SUCCESS_FLASHCARD + card.toString() + \"\\n\""
+        "content": "            //logger.log(Level.INFO, \"Deleting flashcard...\");"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "                    + String.format(MESSAGE_REMAINING_FLASHCARD, cards.getCardCount()));"
+        "content": "            cards.removeCard(removeIndex);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            storage.saveCards(cards, access.getModule().getModuleName(), access.getChapter().getChapterName());"
+        "content": "            result.append(MESSAGE_SUCCESS_FLASHCARD + card.toString() + \"\\n\""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            //logger.log(Level.INFO, \"Flashcard successfully deleted.\");"
+        "content": "                    + String.format(MESSAGE_REMAINING_FLASHCARD, cards.getCardCount()));"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            storage.saveCards(cards, access.getModule().getModuleName(), access.getChapter().getChapterName());"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "            result.append(MESSAGE_INVALID_INDEX_FLASHCARD);"
+        "content": "            //logger.log(Level.INFO, \"Flashcard successfully deleted.\");"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        return result.toString();"
+        "content": "            result.append(MESSAGE_INVALID_INDEX_FLASHCARD);"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": ""
+        "content": "        return result.toString();"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    public boolean isExit() {"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "        return false;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "neojiaern"
         },
-        "content": "    }"
+        "content": "    public boolean isExit() {"
       },
       {
         "lineNumber": 134,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
         "author": {
           "gitId": "neojiaern"
         },
@@ -12224,7 +12238,7 @@
       }
     ],
     "authorContributionMap": {
-      "neojiaern": 133,
+      "neojiaern": 135,
       "Jane-Ng": 1
     }
   },
@@ -26094,6 +26108,48 @@
       {
         "lineNumber": 498,
         "author": {
+          "gitId": "neojiaern"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 499,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    public boolean removeChapterFromDue(String module, String chapter) {"
+      },
+      {
+        "lineNumber": 500,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        File fileToDelete \u003d new File(getFilePath() + \"/\" + module"
+      },
+      {
+        "lineNumber": 501,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "                + \"/dues/\" + chapter + \"due.txt\");"
+      },
+      {
+        "lineNumber": 502,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "        return deleteDirectory(fileToDelete);"
+      },
+      {
+        "lineNumber": 503,
+        "author": {
+          "gitId": "neojiaern"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 504,
+        "author": {
           "gitId": "Zhu-Ze-Yu"
         },
         "content": "}"
@@ -26102,7 +26158,7 @@
     "authorContributionMap": {
       "Zhu-Ze-Yu": 125,
       "gua-guargia": 104,
-      "neojiaern": 51,
+      "neojiaern": 57,
       "Darticune": 218
     }
   },

@@ -17294,70 +17294,70 @@
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import seedu.trippie.data.Expense;"
+        "content": "import seedu.trippie.Storage;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import seedu.trippie.exception.TrippieInvalidArgumentException;"
+        "content": "import seedu.trippie.Ui;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import seedu.trippie.data.Expense;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import seedu.trippie.data.Trip;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import java.util.List;"
+        "content": "import seedu.trippie.data.TrippieData;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import seedu.trippie.exception.TrippieInvalidArgumentException;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+        "content": "import java.text.ParseException;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import java.text.SimpleDateFormat;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "class AddExpenseCommandTest {"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 14,
@@ -17371,14 +17371,14 @@
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    private final String[] userInputs \u003d {\"buy /i ice-cream /c 3.00 /d 2\", \"buy /i chicken rice /c 5.00 /d 1\","
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        \"buy /i pants /c 30.00 /d 3\"};"
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
       },
       {
         "lineNumber": 17,
@@ -17392,262 +17392,402 @@
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    @Test"
+        "content": "class AddExpenseCommandTest {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    void addExpenseCommand_validUserInput_setsExpenseParameters() throws TrippieInvalidArgumentException {"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        String[] expenseNames \u003d {\"ice-cream\", \"chicken rice\", \"pants\"};"
+        "content": "    private final String[] validUserInputs \u003d {\"buy /i ice-cream /c 3.00 /d 2\", \"buy /i chicken rice /c 5.00 /d 1\","
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        Float[] expenseCosts  \u003d {Float.parseFloat(\"3.00\"), Float.parseFloat(\"5.00\"),"
+        "content": "        \"buy /i pants /c $30.00 /d 3\"};"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "                Float.parseFloat(\"30.00\"),};"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        int[] expenseDays \u003d {2,1,3};"
+        "content": "    private final String[] badUserInputs \u003d {\"buy /i /c /d\", \"buy /i ice-cream /c three dollars /d 2\","
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        for (int i \u003d 0; i \u003c userInputs.length; i++) {"
+        "content": "        \"buy /i ice-cream /c 3.00 /d two\", \"buy /i ice-cream /c /d\", \"buy /i /c /d 2\","
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "            AddExpenseCommand c \u003d new AddExpenseCommand(userInputs[i]);"
+        "content": "        \"buys /i ice-cream /c 3.00 /d 2\"};"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "            assertEquals(expenseNames[i], c.extractExpenseName(userInputs[i]));"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "            assertEquals(expenseCosts[i], c.extractExpenseCost(userInputs[i]));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "            assertEquals(expenseDays[i], c.extractDayBought(userInputs[i]));"
+        "content": "    void addExpenseCommand_invalidUserInput_throwsTrippieInvalidArgumentException() {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        }"
+        "content": "        for (String badUserInput : badUserInputs) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    }"
+        "content": "            assertThrows(TrippieInvalidArgumentException.class, () -\u003e new AddExpenseCommand(badUserInput));"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    void isExit_addExpenseCommandParsed_returnsFalse() throws TrippieInvalidArgumentException {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        String userInput \u003d \"buy /i ice-cream /c 3.00 /d 2\";"
+        "content": "    void addExpenseCommand_validUserInput_setsExpenseParameters() throws TrippieInvalidArgumentException {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        AddExpenseCommand c \u003d new AddExpenseCommand(userInput);"
+        "content": "        String[] expenseNames \u003d {\"ice-cream\", \"chicken rice\", \"pants\"};"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        assertFalse(c.isExit());"
+        "content": "        Float[] expenseCosts  \u003d {Float.parseFloat(\"3.00\"), Float.parseFloat(\"5.00\"),"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    }"
+        "content": "                Float.parseFloat(\"30.00\"),};"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "        int[] expenseDays \u003d {2,1,3};"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    @Test"
+        "content": "        for (int i \u003d 0; i \u003c validUserInputs.length; i++) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    void execute() {"
+        "content": "            AddExpenseCommand c \u003d new AddExpenseCommand(validUserInputs[i]);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    }"
+        "content": "            assertEquals(expenseNames[i], c.extractExpenseName(validUserInputs[i]));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "            assertEquals(expenseCosts[i], c.extractExpenseCost(validUserInputs[i]));"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    @Test"
+        "content": "            assertEquals(expenseDays[i], c.extractDayBought(validUserInputs[i]));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    void sortExpenseList_unsortedExpenseList_sortedExpenseList() throws TrippieInvalidArgumentException {"
+        "content": "        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        List\u003cExpense\u003e expenses \u003d new ArrayList\u003c\u003e();"
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        AddExpenseCommand c \u003d new AddExpenseCommand(userInputs[0]);"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        expenses.add(new Expense(\"ice-cream\", Float.parseFloat(\"3\"), 2));"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        expenses.add(new Expense(\"chicken rice\", Float.parseFloat(\"5\"), 1));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        c.sortExpenseList(expenses);"
+        "content": "    void addExpenseCommand_validUserInput_parsedCorrectly() throws TrippieInvalidArgumentException, ParseException {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        assertEquals(\"chicken rice\", expenses.get(0).getExpenseName());"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        assertEquals(\"ice-cream\", expenses.get(1).getExpenseName());"
+        "content": "        Ui ui \u003d new Ui();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "        Storage storage \u003d new Storage();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    }"
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
       },
       {
         "lineNumber": 55,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileSetup(storage, trippieData);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        for (String validUserInput : validUserInputs) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            AddExpenseCommand c \u003d new AddExpenseCommand(validUserInput);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            c.execute(ui,trippieData);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        List\u003cExpense\u003e expenses \u003d trippieData.getCurrentTrip().getExpenseListObject().getExpenseList();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        assertEquals(3,expenses.size());"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private void fileSetup(Storage storage, TrippieData trippieData) throws ParseException {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        storage.setupMasterFile(trippieData);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        SimpleDateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Trip newTrip \u003d new Trip(trippieData.getTripList().size(), \"Singapore\", df.parse(\"11-11-2020\"));"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setForExValue(Float.parseFloat(\"100\"));"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setCurrencyAbbreviation(\"SGD\");"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setBudgetValue(Float.parseFloat(\"1000\"));"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        trippieData.getTripList().add(newTrip);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "weishuangtan"
         },
@@ -17655,7 +17795,7 @@
       }
     ],
     "authorContributionMap": {
-      "weishuangtan": 55
+      "weishuangtan": 75
     }
   },
   {
@@ -18089,112 +18229,112 @@
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import seedu.trippie.exception.TrippieInvalidArgumentException;"
+        "content": "import seedu.trippie.Storage;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import seedu.trippie.Ui;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+        "content": "import seedu.trippie.data.Expense;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import seedu.trippie.data.Trip;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "class BudgetCommandTest {"
+        "content": "import seedu.trippie.data.TrippieData;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import seedu.trippie.exception.TrippieInvalidArgumentException;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    void isExit_budgetCommandParsed_returnsFalse() throws TrippieInvalidArgumentException {"
+        "content": "import java.text.ParseException;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        String userInput \u003d \"budget 1000\";"
+        "content": "import java.text.SimpleDateFormat;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        BudgetCommand c \u003d new BudgetCommand(userInput);"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "        assertFalse(c.isExit());"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    }"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    void execute() {"
+        "content": "class BudgetCommandTest {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "weishuangtan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 20,
@@ -18208,11 +18348,270 @@
         "author": {
           "gitId": "weishuangtan"
         },
+        "content": "    private final String[] badUserInputs \u003d {\"budgets 1000\", \"budget\", \"budget \", \"budget abc\"};"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final String[] validUserInputs \u003d {\"budget 1000\", \"budget 2000\", \"budget 3000\"};"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final String[] budgetValues \u003d {\"1000\", \"2000\", \"3000\"};"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    void budgetCommand_invalidUserInput_throwsTrippieInvalidArgumentException() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        for (String badUserInput : badUserInputs) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            assertThrows(TrippieInvalidArgumentException.class, () -\u003e new BudgetCommand(badUserInput));"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    void budgetCommand_validUserInput_parsedCorrectly() throws TrippieInvalidArgumentException, ParseException {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileSetup(storage, trippieData);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        for (int i \u003d 0; i \u003c validUserInputs.length; i++) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            BudgetCommand c \u003d new BudgetCommand(validUserInputs[i]);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            c.execute(ui,trippieData);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            assertEquals(Float.parseFloat(budgetValues[i]),trippieData.getCurrentTrip()"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "                    .getExpenseListObject().getBudgetValue());"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private void fileSetup(Storage storage, TrippieData trippieData) throws ParseException {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        storage.setupMasterFile(trippieData);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        SimpleDateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Trip newTrip \u003d new Trip(trippieData.getTripList().size(), \"Singapore\", df.parse(\"11-11-2020\"));"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setForExValue(Float.parseFloat(\"100\"));"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setCurrencyAbbreviation(\"SGD\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setBudgetValue(Float.parseFloat(\"1000\"));"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        trippieData.getTripList().add(newTrip);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "weishuangtan"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "weishuangtan": 21
+      "weishuangtan": 58
     }
   },
   {
@@ -18446,6 +18845,787 @@
     ],
     "authorContributionMap": {
       "ShawnTanzc": 32
+    }
+  },
+  {
+    "path": "src/test/java/seedu/trippie/command/DeleteExpenseCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "package seedu.trippie.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.data.Expense;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.data.Trip;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.data.TrippieData;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.exception.TrippieInvalidArgumentException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.text.ParseException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.text.SimpleDateFormat;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "class DeleteExpenseCommandTest {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final String[] validAddUserInputs \u003d {\"buy /i ice-cream /c 3.00 /d 2\", \"buy /i chicken rice /c 5.00 /d 1\","
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        \"buy /i pants /c $30.00 /d 3\"};"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final String[] validDeleteUserInputs \u003d {\"delete /e 4\", \"delete /e 1\", \"delete /e 1\", \"delete /e 1\"};"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final String[] badUserInputs \u003d {\"delete /e\", \"delete /e three\", \"delete \", \"delete\"};"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private final int[] expectedSize \u003d {3,2,1,0};"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    void deleteExpenseCommand_invalidUserInput_throwsTrippieInvalidArgumentException() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        for (String badUserInput : badUserInputs) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            assertThrows(TrippieInvalidArgumentException.class, () -\u003e new DeleteExpenseCommand(badUserInput));"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    void deleteExpenditureCommand_validUserInput_parsedCorrectly() throws TrippieInvalidArgumentException,"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            ParseException {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileSetup(storage, trippieData);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        for (String validAddUserInput : validAddUserInputs) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            AddExpenseCommand c \u003d new AddExpenseCommand(validAddUserInput);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            c.execute(ui,trippieData);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        for (int i \u003d 0; i \u003c validDeleteUserInputs.length; i++) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            DeleteExpenseCommand c \u003d new DeleteExpenseCommand(validDeleteUserInputs[i]);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            c.execute(ui,trippieData);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            List\u003cExpense\u003e expenses \u003d trippieData.getCurrentTrip().getExpenseListObject().getExpenseList();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "            assertEquals(expectedSize[i],expenses.size());"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private void fileSetup(Storage storage, TrippieData trippieData) throws ParseException {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        storage.setupMasterFile(trippieData);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        SimpleDateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Trip newTrip \u003d new Trip(trippieData.getTripList().size(), \"Singapore\", df.parse(\"11-11-2020\"));"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setForExValue(Float.parseFloat(\"100\"));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setCurrencyAbbreviation(\"SGD\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setBudgetValue(Float.parseFloat(\"1000\"));"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        trippieData.getTripList().add(newTrip);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "weishuangtan": 66
+    }
+  },
+  {
+    "path": "src/test/java/seedu/trippie/command/HelpCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "package seedu.trippie.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.data.Trip;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import seedu.trippie.data.TrippieData;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.text.ParseException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import java.text.SimpleDateFormat;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "class HelpCommandTest {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    void helpCommand_validUserInput_parsedCorrectly() throws ParseException {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        fileSetup(storage, trippieData);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        HelpCommand c \u003d new HelpCommand();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        c.execute(ui,trippieData);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        assertFalse(c.isExit());"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    private void fileSetup(Storage storage, TrippieData trippieData) throws ParseException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        storage.setupMasterFile(trippieData);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        SimpleDateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        Trip newTrip \u003d new Trip(trippieData.getTripList().size(), \"Singapore\", df.parse(\"11-11-2020\"));"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setForExValue(Float.parseFloat(\"100\"));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setCurrencyAbbreviation(\"SGD\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        newTrip.getExpenseListObject().setBudgetValue(Float.parseFloat(\"1000\"));"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "        trippieData.getTripList().add(newTrip);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    void printBorder() {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "weishuangtan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "weishuangtan": 43
     }
   },
   {
