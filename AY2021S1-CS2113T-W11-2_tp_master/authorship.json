@@ -19319,6 +19319,745 @@
     }
   },
   {
+    "path": "src/test/java/seedu/trippie/command/DeletePlaceCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "package seedu.trippie.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.data.Place;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.data.Trip;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.data.TrippieData;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.exception.TrippieInvalidArgumentException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import java.text.ParseException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import java.text.SimpleDateFormat;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "class DeletePlaceCommandTest {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    private final String[] validAddUserInputs \u003d {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        \"add /n Marina Bay Sands /d 2 /t 1000 to 1200\","
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        \"add /n Changi Airport /d 1 /t 1900 to 2000\","
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        \"add /n Bugis Junction /d 3 /t 1100 to 1400\""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    };"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    private final String[] validDeleteUserInputs \u003d {\"delete /p 3\", \"delete /p 2\", \"delete /p 1\"};"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    private final String[] badUserInputs \u003d {\"delete /p\", \"delete /p one\", \"delete \"};"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    private final int[] expectedSize \u003d {2, 1, 0};"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    void deletePlaceCommand_invalidUserInput_throwsTrippieInvalidArgumentException() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        for (String badUserInput : badUserInputs) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            assertThrows(TrippieInvalidArgumentException.class, () -\u003e new DeletePlaceCommand(badUserInput));"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    void deletePlaceCommand_validUserInput_parsedCorrectly() throws TrippieInvalidArgumentException, ParseException {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        fileSetup(storage, trippieData);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        for (String validAddUserInput : validAddUserInputs) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            AddPlaceCommand c \u003d new AddPlaceCommand(validAddUserInput);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            c.execute(ui, trippieData);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        for (int i \u003d 0; i \u003c validDeleteUserInputs.length; i++) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            DeletePlaceCommand c \u003d new DeletePlaceCommand(validDeleteUserInputs[i]);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            c.execute(ui, trippieData);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            List\u003cPlace\u003e places \u003d trippieData.getCurrentTrip().getPlaceListObject().getPlaceList();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "            assertEquals(expectedSize[i], places.size());"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    private void fileSetup(Storage storage, TrippieData trippieData) throws ParseException {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        storage.setupMasterFile(trippieData);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        SimpleDateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        Trip newTrip \u003d new Trip(trippieData.getTripList().size(), \"Singapore\", df.parse(\"11-11-2020\"));"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        newTrip.getExpenseListObject().setForExValue(Float.parseFloat(\"100\"));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        newTrip.getExpenseListObject().setCurrencyAbbreviation(\"SGD\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        newTrip.getExpenseListObject().setBudgetValue(Float.parseFloat(\"1000\"));"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        trippieData.getTripList().add(newTrip);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "felixhalim": 66
+    }
+  },
+  {
+    "path": "src/test/java/seedu/trippie/command/ExitCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "package seedu.trippie.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.data.Trip;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import seedu.trippie.data.TrippieData;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import java.text.ParseException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import java.text.SimpleDateFormat;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "class ExitCommandTest {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    void exitCommand_validUserInput_parsedCorrectly() throws ParseException {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        Ui ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        fileSetup(storage, trippieData);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        ExitCommand c \u003d new ExitCommand();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        c.execute(ui, trippieData);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        assertTrue(c.isExit());"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    private void fileSetup(Storage storage, TrippieData trippieData) throws ParseException {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        storage.setupMasterFile(trippieData);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        SimpleDateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        Trip newTrip \u003d new Trip(trippieData.getTripList().size(), \"Singapore\", df.parse(\"11-11-2020\"));"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        newTrip.getExpenseListObject().setForExValue(Float.parseFloat(\"100\"));"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        newTrip.getExpenseListObject().setCurrencyAbbreviation(\"SGD\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        newTrip.getExpenseListObject().setBudgetValue(Float.parseFloat(\"1000\"));"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "        trippieData.getTripList().add(newTrip);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "felixhalim"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "felixhalim": 37
+    }
+  },
+  {
     "path": "src/test/java/seedu/trippie/command/HelpCommandTest.java",
     "fileType": "test-code",
     "lines": [

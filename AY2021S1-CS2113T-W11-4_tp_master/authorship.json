@@ -770,6 +770,863 @@
     }
   },
   {
+    "path": "docs/DeveloperGuide.md",
+    "fileType": "docs",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "# Developer Guide"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## Introduction"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Purpose"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "This document specified architecture and software design decisions for the creative writing assistant, Fluffle. "
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Scope"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "This describes the software architecture and software design decisions for the implementation of Fluffle. The intended audience of this document is the developers, designers, and software testers of Fluffle."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Desgin Goals"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Creating an app which improves users’ ability of writing and creativity. Developers should work closely with CS2113T’s module instructors, who represent technical advisors and CS2101’s module instructors, who represent non-technical advisors. By adhering to these tutors’ specific requirements, which imitate industrial professional standards, beginner software engineers will be able to levitate their expertises and mindset in the process of developing and presenting a new product."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Maintainability"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "With the aim of increasing maintainability of Fluffle, separated packages and classes were implemented in strict compliance with Object-oriented Programming. Since it is important to be able to easily change functionality of one class without disturbing other dependent classes, each class only serves one purpose to reduce dependency on other classes. With low coupling and high cohesion, subsequent developers can make minimal effort in maintaining Fluffle."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## Definitions"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|Terminology|Explanation|"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|--------|----------|"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|Plot bunny|A story idea that refuses to go away until it is written down.|"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|Fluffle|A fluffle is a group of bunnies.| "
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|CLI|Command-line Interface. \u003c/br\u003e\u003c/br\u003eA command-line interface (CLI) processes command to a computer program in the form of lines of text. The program in the computer will read the command and start proceeding.|"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|Gradle|A build tool used for automated testing. It checks for code style violations and runs unit tests to ensure the code is functional between iterations.| "
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "|IntelliJ|An integrated development environment that used to write and test java code.|"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## Setting up the project in your computer"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "**Prerequisites:**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "* JDK 11"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "* IntelliJ IDE"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "\u003cdiv markdown\u003d\"span\" class\u003d\"alert alert-warning\"\u003e"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "⚠ **Caution:**"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "\u003c/div\u003e"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "First, **fork** this repo, and **clone** the fork into your computer."
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "If you plan to use Intellij IDEA (highly recommended):"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "1. **Configure the JDK**: Follow the guide [_[se-edu/guides] IDEA: Configuring the JDK_](https://se-education.org/guides/tutorials/intellijJdk.html) to to ensure Intellij is configured to use **JDK 11**."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "1. **Import the project as a Gradle project**: Follow the guide [_[se-edu/guides] IDEA: Importing a Gradle project_](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) to import the project into IDEA.\u003cbr\u003e"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "  :exclamation: Note: Importing a Gradle project is slightly different from importing a normal Java project."
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "1. **Verify the setup**:"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "   1. Run the `seedu.trippie.Trippie` and try a few commands."
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "   2. [Run the tests](Testing.md) to ensure they all pass. "
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "//Note: should ask team W11-02 the permission for the above part."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## System Overview"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Techonoligies views"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "The Integrated Development Environment, IntelliJ, is used to develop our program. The program is written in Java, and uses Gradle for building and testing purposes. Our source code is mostly original, with some functions imported from the java.util package. The remaining packages and classes which form the structure of our program are independently developed."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## Architecture"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Fluffle Documentation: This document contains all packages and classes that are used in developing Fluffle. "
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Project overview"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Fluffle is built using IntelliJ and all concepts for the user interfaces, as well as the backend data management of the application, was created by our team. Due to the restrictions of the project, the main file format used for storage is .txt. We opted to save the data in the text files in a user readable format as opposed to the comma separated format as it is easier for users to directly refer to and edit their saved files."
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## Writings class family"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Constitution (member classes)"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "WritingList: Represent the objects which are particular lists of Writings to be used in the application."
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Writings: Represent the objects of the writings, created from user’s input and stored in a database as text. This Writings class is also the parent of 2 subclasses which are Poem and Essay."
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Poem: Represents the Writings objects which have type is Poem."
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "Essay: Represents the Writings objects which have type is Essay."
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "User: Represents the Users registered to the System"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "![UML Class diagram for WritingList family]()"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "\u003ccenter\u003e\u003ci\u003eFigure 1:WritingList family UML diagram\u003c/i\u003e\u003c/center\u003e"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "The above class diagram describes the overall architecture of Writings class functionalities and associations within the scope of related classes. By checking “start”, “type” command with checkStartCommand() then checkTypeCommand() methods on that sequence respectively, the user should be able to access the process of creating and saving new writings into the database. During this process, the user has the ability of choosing their preferred type of writings(which are either poem or essay at this stage)"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "### Filter words"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "![UML Filter word class diagram]()"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "\u003ccenter\u003e\u003ci\u003eFigure 2: Filter word UML Class Diagram\u003c/i\u003e\u003c/center\u003e"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "The above class diagram describes the overall architecture of the filter words functionality. FilterExecutor class has the static void method executeFilterCommand that will be called first when the user enters a filter command. In the executeFilterCommand method, it will make use of the enumeration FilterType to get the filter type (by WORD_TYPE, STARTING STRING or INCLUDING_STRING). After that, the method will use the FilterCommandSlicer static methods isNewFilter to determine whether the user wants to continue on the last filtered list or start a new filter on an entire word bank. Subsequently, depending on the filter mode, getTargetedWordTypes or getTargetedStringTags will be called and the returned array of strings will be passed to WordsFilter’s static methods filterByType, filterByStartingString and filterByIncludedString."
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "The following sequence diagram shows how the components interact with each other for the scenario where the user issues the command `filter -continue by\\start limit\\10 -cs -cg.`"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "![UML Filter word sequence diagram]()"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "\u003ccenter\u003e\u003ci\u003eFigure 3: Interactions between components for the command filter -continue by\\start limit\\10 -cs -cg\u003c/i\u003e\u003c/center\u003e"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "   "
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "## Bunny class family"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "![UML Bunny class diagram]()"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "\u003ccenter\u003e\u003ci\u003eFigure 4:  Bunny ideas UML Class Diagram\u003c/i\u003e\u003c/center\u003e"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "The above class diagram describes the overall architecture of the bunny list functionalities. The BunnyList class has the public ArrayList of bunnies bunniesList that is accessed by the DeleteBunny class method deleteBunny which removes a selected bunny from the bunniesList ArrayList. Similarly, bunniesList is also accessed by the BunnyFilter class which contains the filterBunny function which can filter through the list and obtain bunnies with specified keywords in the idea or the genre using the command `filter bunny i\\IDEA g\\GENRE`, where the user may choose to omit either the `IDEA`or the `GENRE` when running the command"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "The BunnySaver class accesses the bunniesList and overwrites the current bunny.txt file in the data directory, saving all Bunny objects into the file using the saveAllBunny  method. Bunny objects saved in that file can then be read by the BunnyLoader class and saved into the bunniesList ArrayList using the loadBunnyFile method."
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Design \u0026 implementation"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Product scope"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Target user profile"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Describe the target user profile}"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "### Value proposition"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Describe the value proposition: what problem does it solve?}"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## User Stories"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|Version| As a ... | I want to ... | So that I can ...|"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|--------|----------|---------------|------------------|"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Non-Functional Requirements"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Give non-functional requirements}"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Glossary"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "* *glossary item* - Definition"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "## Instructions for manual testing"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}"
+      }
+    ],
+    "authorContributionMap": {
+      "Promethees": 87,
+      "-": 34
+    }
+  },
+  {
     "path": "src/main/java/seedu/duke/Duke.java",
     "fileType": "functional-code",
     "lines": [
@@ -5139,740 +5996,761 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    LIST_FILTER,"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    GEN_NAME,"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
-        "content": "    ADD_NAME,"
+        "content": "    GEN_NAME,"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "    DELETE_NAME,"
+        "content": "    ADD_NAME,"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "0xZ3RO"
         },
-        "content": "    LIST_NAMES,"
+        "content": "    DELETE_NAME,"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    FILTER_NAMES,"
+        "content": "    LIST_NAMES,"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": ""
+        "content": "    FILTER_NAMES,"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    BUNNY,"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    LIST_BUNNY,"
+        "content": "    BUNNY,"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    FILTER_BUNNY,"
+        "content": "    LIST_BUNNY,"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    SAVE_BUNNY,"
+        "content": "    FILTER_BUNNY,"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": ""
+        "content": "    SAVE_BUNNY,"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    CHARACTER,"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    LIST_CHARACTER,"
+        "content": "    CHARACTER,"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "    FILTER_CHARACTER,"
+        "content": "    LIST_CHARACTER,"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": ""
+        "content": "    FILTER_CHARACTER,"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "AmeliaTYR"
         },
-        "content": "    START,"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    TITLE,"
+        "content": "    START,"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    TYPE,"
+        "content": "    TITLE,"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    WRITE,"
+        "content": "    TYPE,"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    FINISH,"
+        "content": "    WRITE,"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    POEM,"
+        "content": "    FINISH,"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    ESSAY,"
+        "content": "    POEM,"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    COUNT_WRITINGS,"
+        "content": "    ESSAY,"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "    RESET_WRITINGS,"
+        "content": "    COUNT_WRITINGS,"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Promethees"
         },
-        "content": ""
+        "content": "    RESET_WRITINGS,"
       },
       {
         "lineNumber": 41,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "    STATS,"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 43,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "    DELETE,"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 44,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "    EXIT,"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 45,
         "author": {
           "gitId": "Promethees"
         },
         "content": "    SCENE,"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "Promethees"
         },
         "content": "    TOPIC,"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 47,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "    UNRECOGNISED;"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": ""
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 50,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "     * Figures out the command type from userInput."
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 51,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 52,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "     * @param userInput string containing user input command"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 53,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "     * @return the type of command detected"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 54,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 55,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "    public static CommandChecker extractCommandType(String userInput) {"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 56,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "        if (userInput.toLowerCase().trim().startsWith(\"help\")) {"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 57,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "            return CommandChecker.HELP;"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 58,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"username\")) {"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 59,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.USERNAME;"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 60,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"divider\")) {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 61,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.DIVIDER;"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 62,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"noun\")) {"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 63,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.NOUN;"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 64,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"verb\")) {"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 65,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.VERB;"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 66,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"adj\")) {"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 67,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.ADJ;"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 68,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"list words\")) {"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 69,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.LIST_WORDS;"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 70,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"bunny\")) {"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 71,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.BUNNY;"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 72,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"list bunny\")) {"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 73,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.LIST_BUNNY;"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 74,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"filter bunny\")) {"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 75,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.FILTER_BUNNY;"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 76,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"save bunny\")) {"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 77,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            return CommandChecker.SAVE_BUNNY;"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 78,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"exit\")) {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 79,
         "author": {
           "gitId": "hungvo0603"
         },
         "content": "            return CommandChecker.EXIT;"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 80,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"scene\")) {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 81,
         "author": {
           "gitId": "Promethees"
         },
         "content": "            return CommandChecker.SCENE;"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 82,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"topic\")) {"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 83,
         "author": {
           "gitId": "Promethees"
         },
         "content": "            return CommandChecker.TOPIC;"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 84,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"name\")) {"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 85,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "            return CommandChecker.GEN_NAME;"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 86,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"add name\")) {"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 87,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "            return CommandChecker.ADD_NAME;"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 88,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"delete name\")) {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 89,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "            return CommandChecker.DELETE_NAME;"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 90,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"list name\")) {"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 91,
         "author": {
           "gitId": "0xZ3RO"
         },
         "content": "            return CommandChecker.LIST_NAMES;"
       },
       {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "0xZ3RO"
-        },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"filter name\")) {"
-      },
-      {
         "lineNumber": 92,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "hungvo0603"
         },
-        "content": "            return CommandChecker.FILTER_NAMES;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"list filter\")) {"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "hungvo0603"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"filter\")) {"
+        "content": "            return CommandChecker.LIST_FILTER;"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            return CommandChecker.FILTER_WORDS;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"filter name\")) {"
       },
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"start\")) {"
+        "content": "            return CommandChecker.FILTER_NAMES;"
       },
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            return CommandChecker.START;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"filter\")) {"
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"title\")) {"
+        "content": "            return CommandChecker.FILTER_WORDS;"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.TITLE;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"start\")) {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"type\")) {"
+        "content": "            return CommandChecker.START;"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.TYPE;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"title\")) {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"write\")) {"
+        "content": "            return CommandChecker.TITLE;"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.WRITE;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"type\")) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"finish\")) {"
+        "content": "            return CommandChecker.TYPE;"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.FINISH;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"write\")) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"stats\")) {"
+        "content": "            return CommandChecker.WRITE;"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.STATS;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"finish\")) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"poem\")) {"
+        "content": "            return CommandChecker.FINISH;"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.POEM;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"stats\")) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"essay\")) {"
+        "content": "            return CommandChecker.STATS;"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.ESSAY;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"poem\")) {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"count writings\")) {"
+        "content": "            return CommandChecker.POEM;"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.COUNT_WRITINGS;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"essay\")) {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"reset writings\")) {"
+        "content": "            return CommandChecker.ESSAY;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.RESET_WRITINGS;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"count writings\")) {"
       },
       {
         "lineNumber": 115,
         "author": {
-          "gitId": "hungvo0603"
+          "gitId": "Promethees"
         },
-        "content": "        } else {"
+        "content": "            return CommandChecker.COUNT_WRITINGS;"
       },
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "hungvo0603"
+          "gitId": "Promethees"
         },
-        "content": "            return CommandChecker.UNRECOGNISED;"
+        "content": "        } else if (userInput.toLowerCase().trim().startsWith(\"reset writings\")) {"
       },
       {
         "lineNumber": 117,
         "author": {
-          "gitId": "hungvo0603"
+          "gitId": "Promethees"
         },
-        "content": "        }"
+        "content": "            return CommandChecker.RESET_WRITINGS;"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 119,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            return CommandChecker.UNRECOGNISED;"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 122,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": ""
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 123,
         "author": {
           "gitId": "hungvo0603"
         },
@@ -5881,7 +6759,7 @@
     ],
     "authorContributionMap": {
       "0xZ3RO": 14,
-      "hungvo0603": 21,
+      "hungvo0603": 24,
       "AmeliaTYR": 51,
       "Promethees": 34
     }
@@ -6921,31 +7799,87 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String FILTER_MESSAGE \u003d \"Words filtered by indicated type are: \";"
+        "content": "    public static final String FILTER_MESSAGE \u003d \"Printing all %d word(s) from your filtered list:\\n\";"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String FILTER_UNKNOWN_COMMAND \u003d \"Filter command error\";"
+        "content": "    public static final String FILTER_MESSAGE_LIMIT \u003d \"Printing the first %d out of %d word(s)\""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String FILTER_UNKNOWN_TYPE \u003d \"Filter type was not recognized in the command\";"
+        "content": "            + \"from your filtered list:\\n\";"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    public static final String PRINT_LIMIT_NOT_FOUND \u003d \"Print limit is not specified in your command.\";"
       },
       {
         "lineNumber": 10,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static final String FILTER_UNKNOWN_COMMAND \u003d \"Filter command error\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static final String FILTER_UNKNOWN_TYPE \u003d \"Filter type was not recognized in the command\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static final String LONG_FILTER_LIST_MESSAGE \u003d \"Your filtered list has more than %d word(s)\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            + \"Do you want to print all the filtered list? y/n\\n\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static final String INVALID_LIST_FILTER_ANSWER \u003d \"Your answer is not y/n. \""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            + \"The filtered list will not be printed.\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static final String INVALID_PRINT_LIMIT_MESSAGE \u003d \"Your limit is invalid.\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
         "author": {
           "gitId": "hungvo0603"
         },
@@ -6953,7 +7887,7 @@
       }
     ],
     "authorContributionMap": {
-      "hungvo0603": 10
+      "hungvo0603": 18
     }
   },
   {
@@ -7476,94 +8410,101 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String BLANK \u003d \"\";"
+        "content": "    public static final String LIMIT_WORD \u003d \" limit\\\\\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String TYPE_TAG \u003d \"type\";"
+        "content": "    public static final String BLANK \u003d \"\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String START_TAG \u003d \"start\";"
+        "content": "    public static final String TYPE_TAG \u003d \"type\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String INCLUDE_TAG \u003d \"include\";"
+        "content": "    public static final String START_TAG \u003d \"start\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    public static final String INCLUDE_TAG \u003d \"include\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /** Tags for filter slicer. */"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String DASH \u003d \"-\";"
+        "content": "    /** Tags for filter slicer. */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String NOUN \u003d \"noun\";"
+        "content": "    public static final String DASH \u003d \"-\";"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String VERB \u003d \"verb\";"
+        "content": "    public static final String NOUN \u003d \"noun\";"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String ADJECTIVE \u003d \"adjective\";"
+        "content": "    public static final String VERB \u003d \"verb\";"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String VERB_TAG \u003d \" -verb\";"
+        "content": "    public static final String ADJECTIVE \u003d \"adjective\";"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String NOUN_TAG \u003d \" -noun\";"
+        "content": "    public static final String VERB_TAG \u003d \" -verb\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static final String ADJECTIVE_TAG \u003d \" -adjective\";"
+        "content": "    public static final String NOUN_TAG \u003d \" -noun\";"
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static final String ADJECTIVE_TAG \u003d \" -adjective\";"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "AmeliaTYR"
         },
@@ -7572,7 +8513,7 @@
     ],
     "authorContributionMap": {
       "AmeliaTYR": 29,
-      "hungvo0603": 15
+      "hungvo0603": 16
     }
   },
   {
@@ -17157,486 +18098,920 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.constants.Tags;"
+        "content": "import seedu.duke.constants.FilterMessages;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.exceptions.FilterCommandException;"
+        "content": "import seedu.duke.constants.Tags;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "import seedu.duke.exceptions.FilterCommandException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "public class FilterCommandSlicer {"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "public class FilterCommandSlicer {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static boolean isNewFilter(String command) {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        return !command.toLowerCase().contains(\" -continue\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "     * Determines whether the program should continue on the previous filter."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /**"
+        "content": "     * @param command Filter command from user\u0027s input."
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Gets the word types need filtering (noun, verb, adjective)."
+        "content": "     * @return True if the user wants to continue with the last filtered list."
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Invalid word type will not be recognized for this version."
+        "content": "     * @throws FilterCommandException When the command is not a filter command."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     *"
+        "content": "     */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param command Contains the word types need filtering."
+        "content": "    public static boolean isNewFilter(String command) throws FilterCommandException {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @return Array of strings referring to word types."
+        "content": "        if (!command.startsWith(\"filter\")) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @throws FilterCommandException When no word type is found in the command."
+        "content": "            throw new FilterCommandException();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     */"
+        "content": "        }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static String[] getTargetedWordType(String command) throws FilterCommandException {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        ArrayList\u003cString\u003e types \u003d new ArrayList\u003c\u003e();"
+        "content": "        return !command.toLowerCase().startsWith(\"filter -continue\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (command.toLowerCase().contains(Tags.NOUN_TAG)) {"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            types.add(Tags.NOUN);"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (command.toLowerCase().contains(Tags.VERB_TAG)) {"
+        "content": "     * Gets the maximum number of words that the user wants to print after filtering."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            types.add(Tags.VERB);"
+        "content": "     * This parameter is optional."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "     *"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (command.toLowerCase().contains(Tags.ADJECTIVE_TAG)) {"
+        "content": "     * @param command Filter command from user\u0027s input."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            types.add(Tags.ADJECTIVE);"
+        "content": "     * @return An integer referring to the maximum number of words."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "     */"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    public static int getWordPrintLimitFromFilterCommand(String command) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (types.size() \u003d\u003d 0) {"
+        "content": "        if (command.toLowerCase().contains(Tags.LIMIT_WORD)) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            throw new FilterCommandException();"
+        "content": "            int limitIndex \u003d command.indexOf(Tags.LIMIT_WORD);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "            String cutCommand \u003d command.substring(limitIndex + 7).trim();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        return types.toArray(new String[0]);"
+        "content": "            int nextSpaceIndex \u003d cutCommand.indexOf(\" \");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "            String limitNumber;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "            if (nextSpaceIndex !\u003d -1) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /**"
+        "content": "                limitNumber \u003d cutCommand.substring(0, nextSpaceIndex).trim();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Gets string tags needs filtering in the word list."
+        "content": "            } else {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     *"
+        "content": "                // limit\\ tag is at the end of the line"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param command String that contains the strings need filtering."
+        "content": "                limitNumber \u003d cutCommand.trim();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @return Array of strings referring to the strings need filtering."
+        "content": "            }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @throws FilterCommandException When no string tag is found or when the command format is incorrect."
+        "content": "            try {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     */"
+        "content": "                return Integer.parseInt(limitNumber);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static String[] getTargetedStringTags(String command) throws FilterCommandException {"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        ArrayList\u003cString\u003e targetedStrings \u003d new ArrayList\u003c\u003e();"
+        "content": "                System.out.println(FilterMessages.INVALID_PRINT_LIMIT_MESSAGE);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        int index \u003d command.indexOf(Tags.DASH);"
+        "content": "            }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        while (index \u003e\u003d 0) {"
+        "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            int nextIndex \u003d command.indexOf(Tags.DASH, index + 1);"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            String stringToAdd;"
+        "content": "        // if the print limit is not specified"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            if (nextIndex !\u003d -1) {"
+        "content": "        return -1;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                stringToAdd \u003d command.substring(index + 1, nextIndex).trim();"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            } else {"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                stringToAdd \u003d command.substring(index + 1).trim();"
+        "content": "    /**"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            }"
+        "content": "     * Gets the maximum number of words that the user wants to print from his list filter command."
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            if (stringToAdd.length() !\u003d 0) {"
+        "content": "     *"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                targetedStrings.add(stringToAdd);"
+        "content": "     * @param command \"list filter\" command from user\u0027s input."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            } else {"
+        "content": "     * @return Number of words that the user wants to print from the filtered list."
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                throw new FilterCommandException();"
+        "content": "     */"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            }"
+        "content": "    public static int getWordPrintLimitFromListFilterCommand(String command) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            index \u003d command.indexOf(Tags.DASH, index + 1);"
+        "content": "        if (command.toLowerCase().contains(Tags.LIMIT_WORD)) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "            int limitIndex \u003d command.indexOf(Tags.LIMIT_WORD);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "            String cutCommand \u003d command.substring(limitIndex + 7).trim();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (targetedStrings.size() \u003d\u003d 0) {"
+        "content": "            try {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            throw new FilterCommandException();"
+        "content": "                return Integer.parseInt(cutCommand);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        return targetedStrings.toArray(new String[0]);"
+        "content": "                System.out.println(FilterMessages.INVALID_PRINT_LIMIT_MESSAGE);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 72,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        // if the print limit is not specified"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        return -1;"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * Gets the word types need filtering (noun, verb, adjective)."
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * Invalid word type will not be recognized for this version."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @param command Contains the word types need filtering."
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @return Array of strings referring to word types."
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @throws FilterCommandException When no word type is found in the command."
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static String[] getTargetedWordTypes(String command) throws FilterCommandException {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        ArrayList\u003cString\u003e types \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        if (command.toLowerCase().contains(Tags.NOUN_TAG)) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            types.add(Tags.NOUN);"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        if (command.toLowerCase().contains(Tags.VERB_TAG)) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            types.add(Tags.VERB);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        if (command.toLowerCase().contains(Tags.ADJECTIVE_TAG)) {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            types.add(Tags.ADJECTIVE);"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        if (types.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            throw new FilterCommandException();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        return types.toArray(new String[0]);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * Gets string tags needs filtering in the word list."
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @param command String that contains the strings need filtering."
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @return Array of strings referring to the strings need filtering."
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @throws FilterCommandException When no string tag is found or when the command format is incorrect."
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static String[] getTargetedStringTags(String command) throws FilterCommandException {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        ArrayList\u003cString\u003e targetedStrings \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        int index \u003d command.indexOf(Tags.DASH);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        while (index \u003e\u003d 0) {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            int nextIndex \u003d command.indexOf(Tags.DASH, index + 1);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            String stringToAdd;"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            if (nextIndex !\u003d -1) {"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                stringToAdd \u003d command.substring(index + 1, nextIndex).trim();"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                stringToAdd \u003d command.substring(index + 1).trim();"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            if (stringToAdd.length() !\u003d 0) {"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                targetedStrings.add(stringToAdd);"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                throw new FilterCommandException();"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            index \u003d command.indexOf(Tags.DASH, index + 1);"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        if (targetedStrings.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            throw new FilterCommandException();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        return targetedStrings.toArray(new String[0]);"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
         "author": {
           "gitId": "hungvo0603"
         },
@@ -17644,7 +19019,7 @@
       }
     ],
     "authorContributionMap": {
-      "hungvo0603": 72
+      "hungvo0603": 134
     }
   },
   {
@@ -17691,49 +19066,464 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static seedu.duke.filters.FilterCommandSlicer.isNewFilter;"
+        "content": "import static seedu.duke.filters.FilterCommandSlicer.getWordPrintLimitFromFilterCommand;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static seedu.duke.filters.FilterCommandSlicer.getTargetedStringTags;"
+        "content": "import static seedu.duke.filters.FilterCommandSlicer.isNewFilter;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static seedu.duke.filters.FilterCommandSlicer.getTargetedWordType;"
+        "content": "import static seedu.duke.filters.FilterCommandSlicer.getTargetedWordTypes;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static seedu.duke.filters.FilterType.getTypeOfFilter;"
+        "content": "import static seedu.duke.filters.FilterCommandSlicer.getTargetedStringTags;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static seedu.duke.filters.WordsFilter.filterByType;"
+        "content": "import static seedu.duke.filters.FilterList.printFilterList;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static seedu.duke.filters.WordsFilter.filterByStartingString;"
+        "content": "import static seedu.duke.filters.FilterType.getTypeOfFilter;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "hungvo0603"
         },
+        "content": "import static seedu.duke.filters.WordsFilter.filterByType;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import static seedu.duke.filters.WordsFilter.filterByStartingString;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "hungvo0603"
+        },
         "content": "import static seedu.duke.filters.WordsFilter.filterByIncludedString;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": " * A class to process filter commands."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": " * Sample command (must be in order): filter -continue by\\start limit\\10 -cs -cg"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "public class FilterExecutor {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * Executes filter functions depending on filter commands."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     * @param command String referring to the command the user enters."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public static void executeFilterCommand(String command) throws FilterCommandException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            FilterType filterType \u003d getTypeOfFilter(command);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            String[] tags;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            boolean isNewFilter \u003d isNewFilter(command);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            int printLimit \u003d getWordPrintLimitFromFilterCommand(command);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            switch (filterType) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            case WORD_TYPE:"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                tags \u003d getTargetedWordTypes(command);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                assert tags.length !\u003d 0;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                filterByType(isNewFilter, tags);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            case STARTING_STRING:"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                tags \u003d getTargetedStringTags(command);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                assert tags.length !\u003d 0;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                filterByStartingString(isNewFilter, tags);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            case INCLUDING_STRING:"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                tags \u003d getTargetedStringTags(command);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                assert tags.length !\u003d 0;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                filterByIncludedString(isNewFilter, tags);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                throw new FilterCommandException();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            printFilterList(printLimit);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        } catch (FilterCommandException e) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            System.out.println(FilterMessages.FILTER_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "hungvo0603": 58
+    }
+  },
+  {
+    "path": "src/main/java/seedu/duke/filters/FilterList.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "package seedu.duke.filters;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import seedu.duke.constants.FilterMessages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import seedu.duke.parsers.Parsers;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import seedu.duke.words.Words;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "import static seedu.duke.constants.FilterMessages.NO_FILTER_RESULT;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "public class FilterList {"
       },
       {
         "lineNumber": 13,
@@ -17747,276 +19537,325 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "/**"
+        "content": "    public static Scanner SCANNER \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": " * A class to process filter commands."
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": " */"
+        "content": "    public static void printFilterList(int printLimit) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "public class FilterExecutor {"
+        "content": "        ArrayList\u003cWords\u003e filteredWords \u003d new ArrayList\u003c\u003e(WordsFilter.filteredWords);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "        if (filteredWords.size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /**"
+        "content": "            System.out.println(NO_FILTER_RESULT);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Executes filter functions depending on filter commands."
+        "content": "            return;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     *"
+        "content": "        }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param command String referring to the command the user enters."
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     */"
+        "content": "        if (filteredWords.size() \u003c\u003d printLimit) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static void executeFilterCommand(String command) {"
+        "content": "            System.out.printf(FilterMessages.FILTER_MESSAGE, filteredWords.size());"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        try {"
+        "content": "            for (Words word : filteredWords) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            FilterType filterType \u003d getTypeOfFilter(command);"
+        "content": "                System.out.println(word.getDescription() + \": \" + word.getDefinition());"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            String[] tags;"
+        "content": "            }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            boolean isNewFilter \u003d isNewFilter(command);"
+        "content": "            return;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            switch (filterType) {"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            case WORD_TYPE:"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                tags \u003d getTargetedWordType(command);"
+        "content": "        if (printLimit !\u003d -1) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                assert tags.length !\u003d 0;"
+        "content": "            System.out.printf(FilterMessages.LONG_FILTER_LIST_MESSAGE, printLimit);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                filterByType(isNewFilter, tags);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                break;"
+        "content": "            System.out.println(FilterMessages.PRINT_LIMIT_NOT_FOUND);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            case STARTING_STRING:"
+        "content": "            System.out.printf(FilterMessages.FILTER_MESSAGE, filteredWords.size());"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                tags \u003d getTargetedStringTags(command);"
+        "content": "            for (Words word : filteredWords) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                assert tags.length !\u003d 0;"
+        "content": "                System.out.println(word.getDescription() + \": \" + word.getDefinition());"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                filterByStartingString(isNewFilter, tags);"
+        "content": "            }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                break;"
+        "content": "            return;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            case INCLUDING_STRING:"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                tags \u003d getTargetedStringTags(command);"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                assert tags.length !\u003d 0;"
+        "content": "        String userInput \u003d Parsers.getUserInput(SCANNER);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                filterByIncludedString(isNewFilter, tags);"
+        "content": "        if (userInput.trim().equalsIgnoreCase(\"y\")"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                break;"
+        "content": "                || userInput.trim().equalsIgnoreCase(\"yes\")) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            default:"
+        "content": "            System.out.printf(FilterMessages.FILTER_MESSAGE, filteredWords.size());"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                System.out.println(FilterMessages.FILTER_UNKNOWN_TYPE);"
+        "content": "            for (Words word : filteredWords) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            }"
+        "content": "                System.out.println(word.getDescription() + \": \" + word.getDefinition());"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        } catch (FilterCommandException e) {"
+        "content": "            }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            System.out.println(FilterMessages.FILTER_UNKNOWN_COMMAND);"
+        "content": "        } else if (userInput.trim().equalsIgnoreCase(\"n\")"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "                || userInput.trim().equalsIgnoreCase(\"no\")) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "            System.out.printf(FilterMessages.FILTER_MESSAGE_LIMIT, printLimit, filteredWords.size());"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "            for (int i \u003d 0; i \u003c printLimit; i++) {"
       },
       {
         "lineNumber": 53,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                Words word \u003d filteredWords.get(i);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "                System.out.println(word.getDescription() + \": \" + word.getDefinition());"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            System.out.println(FilterMessages.INVALID_LIST_FILTER_ANSWER);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
         "author": {
           "gitId": "hungvo0603"
         },
@@ -18024,7 +19863,7 @@
       }
     ],
     "authorContributionMap": {
-      "hungvo0603": 53
+      "hungvo0603": 60
     }
   },
   {
@@ -18337,11 +20176,18 @@
         "author": {
           "gitId": "hungvo0603"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "hungvo0603"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "hungvo0603": 44
+      "hungvo0603": 45
     }
   },
   {
@@ -18479,77 +20325,77 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    private static final Logger LOGGER \u003d Logger.getLogger(\"WordsFilter\");"
+        "content": "    private static final ArrayList\u003cWords\u003e WORD_LIST \u003d WordList.wordList;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    private static final Logger LOGGER \u003d Logger.getLogger(\"WordsFilter\");"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Prints word filtered by type."
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     *"
+        "content": "     * Prints word filtered by type."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param isNewFilter Clears last filter and creates new filter."
+        "content": "     *"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param types Types of words need filtering."
+        "content": "     * @param isNewFilter Clears last filter and creates new filter."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     */"
+        "content": "     * @param types Types of words need filtering."
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static void filterByType(boolean isNewFilter, String[] types) {"
+        "content": "     */"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (isNewFilter) {"
+        "content": "    public static void filterByType(boolean isNewFilter, String[] types) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            ArrayList\u003cWords\u003e words \u003d WordList.wordList;"
+        "content": "        if (isNewFilter) {"
       },
       {
         "lineNumber": 30,
@@ -18563,7 +20409,7 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            addTagsToFilteredList(FilterType.WORD_TYPE, types, words);"
+        "content": "            addTagsToFilteredList(FilterType.WORD_TYPE, types);"
       },
       {
         "lineNumber": 32,
@@ -18605,829 +20451,710 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        printFilterResult();"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "     * Filters words by starting strings and prints them."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /**"
+        "content": "     *"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Filters words by starting strings and prints them."
+        "content": "     * @param isNewFilter Clears last filter and creates new filter."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     *"
+        "content": "     * @param startStrings Array of strings that need filtering."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param isNewFilter Clears last filter and creates new filter."
+        "content": "     */"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param startStrings Array of strings that need filtering."
+        "content": "    public static void filterByStartingString(boolean isNewFilter, String[] startStrings) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     */"
+        "content": "        if (isNewFilter) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static void filterByStartingString(boolean isNewFilter, String[] startStrings) {"
+        "content": "            filteredWords.clear();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (isNewFilter) {"
+        "content": "            addTagsToFilteredList(FilterType.STARTING_STRING, startStrings);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            ArrayList\u003cWords\u003e words \u003d WordList.wordList;"
+        "content": "        } else {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            filteredWords.clear();"
+        "content": "            ArrayList\u003cWords\u003e wordsToRemove \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            addTagsToFilteredList(FilterType.STARTING_STRING, startStrings, words);"
+        "content": "            generateListOfRemoveWords(FilterType.STARTING_STRING, startStrings, wordsToRemove);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        } else {"
+        "content": "            removeRedundantWords(wordsToRemove);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            ArrayList\u003cWords\u003e wordsToRemove \u003d new ArrayList\u003c\u003e();"
+        "content": "        }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            generateListOfRemoveWords(FilterType.STARTING_STRING, startStrings, wordsToRemove);"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            removeRedundantWords(wordsToRemove);"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "     * Filters words by indicated including strings and prints them."
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        printFilterResult();"
+        "content": "     *"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "     * @param isNewFilter Clears last filter and creates new filter."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "     * @param includedStrings Array of strings that needs filtering."
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * Filters words by indicated including strings and prints them."
+        "content": "    public static void filterByIncludedString(boolean isNewFilter, String[] includedStrings) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     *"
+        "content": "        if (isNewFilter) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param isNewFilter Clears last filter and creates new filter."
+        "content": "            filteredWords.clear();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     * @param includedStrings Array of strings that needs filtering."
+        "content": "            addTagsToFilteredList(FilterType.INCLUDING_STRING, includedStrings);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "     */"
+        "content": "        } else {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public static void filterByIncludedString(boolean isNewFilter, String[] includedStrings) {"
+        "content": "            ArrayList\u003cWords\u003e wordsToRemove \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        if (isNewFilter) {"
+        "content": "            generateListOfRemoveWords(FilterType.INCLUDING_STRING, includedStrings, wordsToRemove);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            ArrayList\u003cWords\u003e words \u003d WordList.wordList;"
+        "content": "            removeRedundantWords(wordsToRemove);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            filteredWords.clear();"
+        "content": "        }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            addTagsToFilteredList(FilterType.INCLUDING_STRING, includedStrings, words);"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            ArrayList\u003cWords\u003e wordsToRemove \u003d new ArrayList\u003c\u003e();"
+        "content": "    private static void generateListOfRemoveWords(FilterType filterType, String[] patterns,"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            generateListOfRemoveWords(FilterType.INCLUDING_STRING, includedStrings, wordsToRemove);"
+        "content": "                                                  ArrayList\u003cWords\u003e wordsToRemove) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            removeRedundantWords(wordsToRemove);"
+        "content": "        for (Words word : filteredWords) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "            boolean keepsWord \u003d false;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "            for (String pattern : patterns) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        printFilterResult();"
+        "content": "                switch (filterType) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "                case STARTING_STRING:"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "                    if (word.getDescription().toLowerCase().startsWith(pattern.toLowerCase())) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    private static void generateListOfRemoveWords(FilterType filterType, String[] patterns,"
+        "content": "                        keepsWord \u003d true;"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                                                  ArrayList\u003cWords\u003e wordsToRemove) {"
+        "content": "                        break;"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        for (Words word : filteredWords) {"
+        "content": "                    }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            boolean keepsWord \u003d false;"
+        "content": "                    break;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            for (String pattern : patterns) {"
+        "content": "                case INCLUDING_STRING:"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                switch (filterType) {"
+        "content": "                    if (word.getDescription().toLowerCase().contains(pattern.toLowerCase())) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                case STARTING_STRING:"
+        "content": "                        keepsWord \u003d true;"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    if (word.getDescription().toLowerCase().startsWith(pattern.toLowerCase())) {"
+        "content": "                        break;"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        keepsWord \u003d true;"
+        "content": "                    }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        break;"
+        "content": "                    break;"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    }"
+        "content": "                default:"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    break;"
+        "content": "                    LOGGER.log(Level.WARNING, FilterMessages.INVALID_FILTER_CODE);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                case INCLUDING_STRING:"
+        "content": "                }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    if (word.getDescription().toLowerCase().contains(pattern.toLowerCase())) {"
+        "content": "            }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        keepsWord \u003d true;"
+        "content": "            if (!keepsWord) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        break;"
+        "content": "                wordsToRemove.add(word);"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    }"
+        "content": "            }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    break;"
+        "content": "        }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                default:"
+        "content": "    }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    LOGGER.log(Level.WARNING, FilterMessages.INVALID_FILTER_CODE);"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                }"
+        "content": "    private static void addTagsToFilteredList(FilterType filterType, String[] patterns) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            }"
+        "content": "        for (String pattern : patterns) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            if (!keepsWord) {"
+        "content": "            String string \u003d pattern.toLowerCase();"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                wordsToRemove.add(word);"
+        "content": "            for (int i \u003d 0; i \u003c WordList.getNumberOfWords(); i++) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            }"
+        "content": "                switch (filterType) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "                case WORD_TYPE:"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "                    if (WORD_LIST.get(i).getType().equalsIgnoreCase(string)) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "                        filteredWords.add(WORD_LIST.get(i));"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    private static void addTagsToFilteredList(FilterType filterType, String[] patterns, ArrayList\u003cWords\u003e words) {"
+        "content": "                    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        for (String pattern : patterns) {"
+        "content": "                    break;"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            String string \u003d pattern.toLowerCase();"
+        "content": "                case STARTING_STRING:"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            for (int i \u003d 0; i \u003c WordList.getNumberOfWords(); i++) {"
+        "content": "                    if (WORD_LIST.get(i).getDescription().startsWith(string)"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                switch (filterType) {"
+        "content": "                            \u0026\u0026 !filteredWords.contains(WORD_LIST.get(i))) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                case WORD_TYPE:"
+        "content": "                        filteredWords.add(WORD_LIST.get(i));"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    if (words.get(i).getType().equalsIgnoreCase(string)) {"
+        "content": "                    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        filteredWords.add(words.get(i));"
+        "content": "                    break;"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    }"
+        "content": "                case INCLUDING_STRING:"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    break;"
+        "content": "                    if (WORD_LIST.get(i).getDescription().contains(string)"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                case STARTING_STRING:"
+        "content": "                            \u0026\u0026 !filteredWords.contains(WORD_LIST.get(i))) {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    if (words.get(i).getDescription().startsWith(string) \u0026\u0026 !filteredWords.contains(words.get(i))) {"
+        "content": "                        filteredWords.add(WORD_LIST.get(i));"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        filteredWords.add(words.get(i));"
+        "content": "                    }"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    }"
+        "content": "                    break;"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    break;"
+        "content": "                default:"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                case INCLUDING_STRING:"
+        "content": "                    LOGGER.log(Level.WARNING, FilterMessages.INVALID_FILTER_CODE);"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    if (words.get(i).getDescription().contains(string) \u0026\u0026 !filteredWords.contains(words.get(i))) {"
+        "content": "                }"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                        filteredWords.add(words.get(i));"
+        "content": "            }"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    }"
+        "content": "        }"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    break;"
+        "content": "    }"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                default:"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                    LOGGER.log(Level.WARNING, FilterMessages.INVALID_FILTER_CODE);"
+        "content": "    private static void removeRedundantWords(ArrayList\u003cWords\u003e wordsToRemove) {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "                }"
+        "content": "        for (Words wordToRemove : wordsToRemove) {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            }"
+        "content": "            while (filteredWords.contains(wordToRemove)) {"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        }"
+        "content": "                filteredWords.remove(wordToRemove);"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    private static void removeRedundantWords(ArrayList\u003cWords\u003e wordsToRemove) {"
+        "content": "    }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        for (Words wordToRemove : wordsToRemove) {"
+        "content": ""
       },
       {
         "lineNumber": 138,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "            while (filteredWords.contains(wordToRemove)) {"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "                filteredWords.remove(wordToRemove);"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "    private static void printFilterResult() {"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "        if (filteredWords.size() \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "            System.out.println(FilterMessages.NO_FILTER_RESULT);"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "            System.out.println(FilterMessages.FILTER_MESSAGE);"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "            for (Words word : filteredWords) {"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "                System.out.println(word.getDescription() + \": \" + word.getDefinition());"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "hungvo0603"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 155,
         "author": {
           "gitId": "hungvo0603"
         },
@@ -19435,7 +21162,7 @@
       }
     ],
     "authorContributionMap": {
-      "hungvo0603": 155
+      "hungvo0603": 138
     }
   },
   {
@@ -19480,79 +21207,79 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.exceptions.BunnyIdeaMissingException;"
+        "content": "import seedu.duke.constants.FilterMessages;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.exceptions.CommandMissingArgumentsException;"
+        "content": "import seedu.duke.exceptions.BunnyIdeaMissingException;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.exceptions.MissingFilterOptionsException;"
+        "content": "import seedu.duke.exceptions.CommandMissingArgumentsException;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.exceptions.NameException;"
+        "content": "import seedu.duke.exceptions.FilterCommandException;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.exceptions.NoFilteredItemsException;"
+        "content": "import seedu.duke.exceptions.MissingFilterOptionsException;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.filters.FilterExecutor;"
+        "content": "import seedu.duke.exceptions.NameException;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.ui.UI;"
+        "content": "import seedu.duke.exceptions.NoFilteredItemsException;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "import seedu.duke.filters.FilterCommandSlicer;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.wordlist.WordList;"
+        "content": "import seedu.duke.filters.FilterExecutor;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.names.Names;"
+        "content": "import seedu.duke.filters.FilterList;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "AmeliaTYR"
         },
-        "content": "import seedu.duke.writing.WritingList;"
+        "content": "import seedu.duke.ui.UI;"
       },
       {
         "lineNumber": 17,
@@ -19566,327 +21293,327 @@
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": ""
+        "content": "import seedu.duke.wordlist.WordList;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "0xZ3RO"
         },
-        "content": "import java.io.IOException;"
+        "content": "import seedu.duke.names.Names;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "Promethees"
         },
-        "content": ""
+        "content": "import seedu.duke.writing.WritingList;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "import static seedu.duke.bunnylist.BunnyList.bunniesList;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "import static seedu.duke.database.BunnySaver.saveAllBunny;"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "import static seedu.duke.filters.BunnyFilter.filterBunny;"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "import static seedu.duke.ui.UI.printHelpMessage;"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": ""
+        "content": "import static seedu.duke.bunnylist.BunnyList.bunniesList;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "public class CommandExecutor {"
+        "content": "import static seedu.duke.database.BunnySaver.saveAllBunny;"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "AmeliaTYR"
         },
-        "content": "    public static void executeCommand(CommandChecker commandChecker, String userInput, WritingList writings) {"
+        "content": "import static seedu.duke.filters.BunnyFilter.filterBunny;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        switch (commandChecker) {"
+        "content": "import static seedu.duke.ui.UI.printHelpMessage;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case HELP:"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            printHelpMessage(userInput);"
+        "content": "public class CommandExecutor {"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "Promethees"
         },
-        "content": "            break;"
+        "content": "    public static void executeCommand(CommandChecker commandChecker, String userInput, WritingList writings) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        //case USERNAME:"
+        "content": "        switch (commandChecker) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        //    // change username"
+        "content": "        case HELP:"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        //    break;"
+        "content": "            printHelpMessage(userInput);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        //case DIVIDER:"
+        "content": "            break;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        //    // choose divider type"
+        "content": "        //case USERNAME:"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        //    break;"
+        "content": "        //    // change username"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case NOUN:"
+        "content": "        //    break;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            WordList.addNoun(userInput);"
+        "content": "        //case DIVIDER:"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            break;"
+        "content": "        //    // choose divider type"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case VERB:"
+        "content": "        //    break;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            WordList.addVerb(userInput);"
+        "content": "        case NOUN:"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            break;"
+        "content": "            WordList.addNoun(userInput);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case ADJ:"
+        "content": "            break;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            WordList.addAdjective(userInput);"
+        "content": "        case VERB:"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            break;"
+        "content": "            WordList.addVerb(userInput);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case LIST_WORDS:"
+        "content": "            break;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            WordList.listWords();"
+        "content": "        case ADJ:"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            break;"
+        "content": "            WordList.addAdjective(userInput);"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "hungvo0603"
+          "gitId": "AmeliaTYR"
         },
-        "content": "        case FILTER_WORDS:"
+        "content": "            break;"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "hungvo0603"
+          "gitId": "AmeliaTYR"
         },
-        "content": "            FilterExecutor.executeFilterCommand(userInput);"
+        "content": "        case LIST_WORDS:"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "hungvo0603"
+          "gitId": "AmeliaTYR"
         },
-        "content": "            break;"
+        "content": "            WordList.listWords();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case BUNNY:"
+        "content": "            break;"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "            try {"
+        "content": "        case FILTER_WORDS:"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "                BunnyList.addBunny(userInput);"
+        "content": "            try {"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "            } catch (CommandMissingArgumentsException e) {"
+        "content": "                FilterExecutor.executeFilterCommand(userInput);"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "                UI.bunnyWrongFormat();"
+        "content": "            } catch (FilterCommandException e) {"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "            } catch (BunnyIdeaMissingException e) {"
+        "content": "                System.out.println(FilterMessages.FILTER_UNKNOWN_TYPE);"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "AmeliaTYR"
-        },
-        "content": "                UI.bunnyMissingIdea();"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
         "content": "            break;"
       },
       {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        case LIST_FILTER:"
+      },
+      {
         "lineNumber": 62,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "        case LIST_BUNNY:"
+        "content": "            int printLimit \u003d FilterCommandSlicer.getWordPrintLimitFromListFilterCommand(userInput);"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "            BunnyList.listBunny();"
+        "content": "            FilterList.printFilterList(printLimit);"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
         "content": "            break;"
       },
@@ -19895,7 +21622,7 @@
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case FILTER_BUNNY:"
+        "content": "        case BUNNY:"
       },
       {
         "lineNumber": 66,
@@ -19909,35 +21636,35 @@
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "                filterBunny(userInput, bunniesList);"
+        "content": "                BunnyList.addBunny(userInput);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            } catch (MissingFilterOptionsException e) {"
+        "content": "            } catch (CommandMissingArgumentsException e) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "                UI.bunnyMissingFilterOption();"
+        "content": "                UI.bunnyWrongFormat();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            } catch (NoFilteredItemsException e) {"
+        "content": "            } catch (BunnyIdeaMissingException e) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "                UI.bunnyFilterNoneFound();"
+        "content": "                UI.bunnyMissingIdea();"
       },
       {
         "lineNumber": 72,
@@ -19958,453 +21685,453 @@
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "        case SAVE_BUNNY:"
+        "content": "        case LIST_BUNNY:"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            try {"
+        "content": "            BunnyList.listBunny();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "                saveAllBunny(bunniesList);"
+        "content": "            break;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "                UI.bunnySaved();"
+        "content": "        case FILTER_BUNNY:"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            } catch (IOException e) {"
+        "content": "            try {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "                UI.failedToSaveBunny();"
+        "content": "                filterBunny(userInput, bunniesList);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            }"
+        "content": "            } catch (MissingFilterOptionsException e) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "AmeliaTYR"
         },
-        "content": "            break;"
+        "content": "                UI.bunnyMissingFilterOption();"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
-        "content": "        case GEN_NAME:"
+        "content": "            } catch (NoFilteredItemsException e) {"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
-        "content": "            try {"
+        "content": "                UI.bunnyFilterNoneFound();"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "0xZ3RO"
-        },
-        "content": "                Names.getName();"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "0xZ3RO"
-        },
-        "content": "            } catch (NameException e) {"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "0xZ3RO"
-        },
-        "content": "                System.out.println(e.getMessage());"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "0xZ3RO"
-        },
-        "content": "            } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "0xZ3RO"
-        },
-        "content": "                System.out.println(e);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 85,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 86,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
-        "content": "        case ADD_NAME:"
+        "content": "        case SAVE_BUNNY:"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 87,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
         "content": "            try {"
       },
       {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AmeliaTYR"
+        },
+        "content": "                saveAllBunny(bunniesList);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "AmeliaTYR"
+        },
+        "content": "                UI.bunnySaved();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "AmeliaTYR"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "AmeliaTYR"
+        },
+        "content": "                UI.failedToSaveBunny();"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "AmeliaTYR"
+        },
+        "content": "            }"
+      },
+      {
         "lineNumber": 93,
         "author": {
-          "gitId": "0xZ3RO"
+          "gitId": "AmeliaTYR"
         },
-        "content": "                Names.addName(userInput);"
+        "content": "            break;"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (NameException e) {"
+        "content": "        case GEN_NAME:"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e.getMessage());"
+        "content": "            try {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (Exception e) {"
+        "content": "                Names.getName();"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e);"
+        "content": "            } catch (NameException e) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            }"
+        "content": "                System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            break;"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "        case DELETE_NAME:"
+        "content": "                System.out.println(e);"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            try {"
+        "content": "            }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                Names.deleteName(userInput);"
+        "content": "            break;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (NameException e) {"
+        "content": "        case ADD_NAME:"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e.getMessage());"
+        "content": "            try {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (Exception e) {"
+        "content": "                Names.addName(userInput);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e);"
+        "content": "            } catch (NameException e) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            }"
+        "content": "                System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            break;"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "        case FILTER_NAMES:"
+        "content": "                System.out.println(e);"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            try {"
+        "content": "            }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                Names.filterNames(userInput);"
+        "content": "            break;"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (NameException e) {"
+        "content": "        case DELETE_NAME:"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e.getMessage());"
+        "content": "            try {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (Exception e) {"
+        "content": "                Names.deleteName(userInput);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e);"
+        "content": "            } catch (NameException e) {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            }"
+        "content": "                System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            break;"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "        case LIST_NAMES:"
+        "content": "                System.out.println(e);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            try {"
+        "content": "            }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                Names.listNames();"
+        "content": "            break;"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (NameException e) {"
+        "content": "        case FILTER_NAMES:"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e.getMessage());"
+        "content": "            try {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            } catch (Exception e) {"
+        "content": "                Names.filterNames(userInput);"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "                System.out.println(e);"
+        "content": "            } catch (NameException e) {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            }"
+        "content": "                System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "0xZ3RO"
         },
-        "content": "            break;"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "        case STATS:"
+        "content": "                System.out.println(e);"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            WritingList.printWritings();"
+        "content": "            }"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
         "content": "            break;"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "        case START:"
+        "content": "        case LIST_NAMES:"
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            WritingList.checkStart(writings);"
+        "content": "            try {"
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            break;"
+        "content": "                Names.listNames();"
       },
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "        case TYPE:"
+        "content": "            } catch (NameException e) {"
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            WritingList.checkType(writings);"
+        "content": "                System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            break;"
+        "content": "            } catch (Exception e) {"
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "        case COUNT_WRITINGS:"
+        "content": "                System.out.println(e);"
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
-        "content": "            WritingList.printWritingSize();"
+        "content": "            }"
       },
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "Promethees"
+          "gitId": "0xZ3RO"
         },
         "content": "            break;"
       },
@@ -20413,14 +22140,14 @@
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        case RESET_WRITINGS:"
+        "content": "        case STATS:"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            WritingList.clearAll(writings);"
+        "content": "            WritingList.printWritings();"
       },
       {
         "lineNumber": 141,
@@ -20434,66 +22161,150 @@
         "author": {
           "gitId": "Promethees"
         },
-        "content": "        case DELETE:"
+        "content": "        case START:"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "Promethees"
         },
-        "content": "            break;"
+        "content": "            WritingList.checkStart(writings);"
       },
       {
         "lineNumber": 144,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "        case TYPE:"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            WritingList.checkType(writings);"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "        case COUNT_WRITINGS:"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            WritingList.printWritingSize();"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "        case RESET_WRITINGS:"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            WritingList.clearAll(writings);"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "        case DELETE:"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "Promethees"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 156,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        case EXIT:"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 157,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            //closes the program"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 158,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 159,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        default:"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 160,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "            UI.commandNotRecognisedMsg();"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 161,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 162,
         "author": {
           "gitId": "AmeliaTYR"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 163,
         "author": {
           "gitId": "AmeliaTYR"
         },
@@ -20501,9 +22312,9 @@
       }
     ],
     "authorContributionMap": {
-      "0xZ3RO": 47,
-      "AmeliaTYR": 80,
-      "hungvo0603": 5,
+      "0xZ3RO": 46,
+      "AmeliaTYR": 76,
+      "hungvo0603": 22,
       "Promethees": 19
     }
   },
@@ -29450,47 +31261,33 @@
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "    @Test"
+        "content": "    //@Test"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "    void filterBunny_filterIdeaTerm_getOneResult() {"
+        "content": "    //void filterBunny_filterIdeaTerm_getOneResult() {"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter bunny i\\\\ fun\");"
+        "content": "    //    FilterExecutor.executeFilterCommand(\"filter bunny i\\\\ fun\");"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "AmeliaTYR"
+          "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    //}"
       },
       {
         "lineNumber": 25,
-        "author": {
-          "gitId": "AmeliaTYR"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "AmeliaTYR"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 27,
         "author": {
           "gitId": "AmeliaTYR"
         },
@@ -29498,7 +31295,8 @@
       }
     ],
     "authorContributionMap": {
-      "AmeliaTYR": 27
+      "AmeliaTYR": 21,
+      "hungvo0603": 4
     }
   },
   {
@@ -29629,7 +31427,7 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        String[] actual \u003d FilterCommandSlicer.getTargetedWordType(\"filter by\\\\type -adjective\");"
+        "content": "        String[] actual \u003d FilterCommandSlicer.getTargetedWordTypes(\"filter by\\\\type -adjective\");"
       },
       {
         "lineNumber": 19,
@@ -29692,7 +31490,7 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        String[] actual \u003d FilterCommandSlicer.getTargetedWordType(\"filter by\\\\type -verb -noun\");"
+        "content": "        String[] actual \u003d FilterCommandSlicer.getTargetedWordTypes(\"filter by\\\\type -verb -noun\");"
       },
       {
         "lineNumber": 28,
@@ -29755,7 +31553,7 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        String[] actual \u003d FilterCommandSlicer.getTargetedWordType(\"filter by\\\\type -adjective -verb -noun\");"
+        "content": "        String[] actual \u003d FilterCommandSlicer.getTargetedWordTypes(\"filter by\\\\type -adjective -verb -noun\");"
       },
       {
         "lineNumber": 37,
@@ -29811,7 +31609,7 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "            () -\u003e FilterCommandSlicer.getTargetedWordType(\"filter by\\\\type -adverb -preposition\"));"
+        "content": "            () -\u003e FilterCommandSlicer.getTargetedWordTypes(\"filter by\\\\type -adverb -preposition\"));"
       },
       {
         "lineNumber": 45,
@@ -30403,252 +32201,252 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import seedu.duke.wordlist.WordList;"
+        "content": "import seedu.duke.exceptions.FilterCommandException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "import seedu.duke.wordlist.WordList;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "class WordsFilterTest {"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "class WordsFilterTest {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    private static void initializeTestDatabase() {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addNoun(\"noun house d/place to live\");"
+        "content": "    private static void initializeTestDatabase() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addVerb(\"verb eat d/put sth into your mouth\");"
+        "content": "        WordList.addNoun(\"noun house d/place to live\");"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addAdjective(\"adj beautiful d/nice to look at\");"
+        "content": "        WordList.addVerb(\"verb eat d/put sth into your mouth\");"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addNoun(\"noun grass d/green plant\");"
+        "content": "        WordList.addAdjective(\"adj beautiful d/nice to look at\");"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addNoun(\"noun computer d/hitech stuff\");"
+        "content": "        WordList.addNoun(\"noun grass d/green plant\");"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addAdjective(\"adj nice d/you\u0027re so nice\");"
+        "content": "        WordList.addNoun(\"noun computer d/hitech stuff\");"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addAdjective(\"adj meaningful d/something nice\");"
+        "content": "        WordList.addAdjective(\"adj nice d/you\u0027re so nice\");"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addVerb(\"verb sleep d/rest at night\");"
+        "content": "        WordList.addAdjective(\"adj meaningful d/something nice\");"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addNoun(\"noun class d/place to study\");"
+        "content": "        WordList.addVerb(\"verb sleep d/rest at night\");"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.addVerb(\"verb love d/fall for somebody\");"
+        "content": "        WordList.addNoun(\"noun class d/place to study\");"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "        WordList.addVerb(\"verb love d/fall for somebody\");"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public void filterByType_filterNounAtTheEnd_getFourNouns() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.wordList.clear();"
+        "content": "    public void filterByType_filterNounAtTheEnd_getFourNouns() {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        initializeTestDatabase();"
+        "content": "        WordList.wordList.clear();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(10, WordList.getNumberOfWords());"
+        "content": "        initializeTestDatabase();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter by\\\\type -noun -verb\");"
+        "content": "        assertEquals(10, WordList.getNumberOfWords());"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(7, WordsFilter.filteredWords.size());"
+        "content": "        try {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter -continue by\\\\type -noun\");"
+        "content": "            FilterExecutor.executeFilterCommand(\"filter by\\\\type -noun -verb\");"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(4, WordsFilter.filteredWords.size());"
+        "content": "        } catch (FilterCommandException e) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "            e.printStackTrace();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    @Test"
+        "content": "        assertEquals(7, WordsFilter.filteredWords.size());"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public void filterByStartingString_filterMultipleStartingStrings_getOneWord() {"
+        "content": "        try {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.wordList.clear();"
+        "content": "            FilterExecutor.executeFilterCommand(\"filter -continue by\\\\type -noun\");"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        initializeTestDatabase();"
+        "content": "        } catch (FilterCommandException e) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(10, WordList.getNumberOfWords());"
+        "content": "            e.printStackTrace();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter by\\\\start -gr -co -s -ho\");"
+        "content": "        }"
       },
       {
         "lineNumber": 40,
@@ -30662,115 +32460,318 @@
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter -continue by\\\\start -g\");"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(1, WordsFilter.filteredWords.size());"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": ""
+        "content": "    public void filterByStartingString_filterMultipleStartingStrings_getOneWord() {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    @Test"
+        "content": "        WordList.wordList.clear();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    public void filterByIncludedString_filterMultipleIncludedStrings_getOneWord() {"
+        "content": "        initializeTestDatabase();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        WordList.wordList.clear();"
+        "content": "        assertEquals(10, WordList.getNumberOfWords());"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        initializeTestDatabase();"
+        "content": "        try {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(10, WordList.getNumberOfWords());"
+        "content": "            FilterExecutor.executeFilterCommand(\"filter by\\\\start -gr -co -s -ho\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter by\\\\include -mp -pu -a -e\");"
+        "content": "        } catch (FilterCommandException e) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(10, WordsFilter.filteredWords.size());"
+        "content": "            e.printStackTrace();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter -continue by\\\\include -e\");"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(8, WordsFilter.filteredWords.size());"
+        "content": "        assertEquals(4, WordsFilter.filteredWords.size());"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        FilterExecutor.executeFilterCommand(\"filter -continue by\\\\include -lo\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "        assertEquals(1, WordsFilter.filteredWords.size());"
+        "content": "            FilterExecutor.executeFilterCommand(\"filter -continue by\\\\start -g\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "hungvo0603"
         },
-        "content": "    }"
+        "content": "        } catch (FilterCommandException e) {"
       },
       {
         "lineNumber": 57,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        assertEquals(1, WordsFilter.filteredWords.size());"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    public void filterByIncludedString_filterMultipleIncludedStrings_getOneWord() {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        WordList.wordList.clear();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        initializeTestDatabase();"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        assertEquals(10, WordList.getNumberOfWords());"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            FilterExecutor.executeFilterCommand(\"filter by\\\\include -mp -pu -a -e\");"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        } catch (FilterCommandException e) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        assertEquals(10, WordsFilter.filteredWords.size());"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            FilterExecutor.executeFilterCommand(\"filter -continue by\\\\include -e\");"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        } catch (FilterCommandException e) {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        assertEquals(8, WordsFilter.filteredWords.size());"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            FilterExecutor.executeFilterCommand(\"filter -continue by\\\\include -lo\");"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        } catch (FilterCommandException e) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "        assertEquals(1, WordsFilter.filteredWords.size());"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "hungvo0603"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
         "author": {
           "gitId": "hungvo0603"
         },
@@ -30778,7 +32779,7 @@
       }
     ],
     "authorContributionMap": {
-      "hungvo0603": 57
+      "hungvo0603": 86
     }
   },
   {
