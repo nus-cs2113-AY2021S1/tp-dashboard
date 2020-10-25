@@ -5670,9 +5670,9 @@
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        if (fullCommand.equals(\"list all\")) { //list everything"
+        "content": "        if (fullCommand.trim().toLowerCase().equals(\"list all\")) { //list everything"
       },
       {
         "lineNumber": 56,
@@ -5691,712 +5691,733 @@
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        switch (subRootCommand.toLowerCase()) {"
+        "content": "        if (fullCommand.trim().toLowerCase().equals(\"list tasks sorted\")) {"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        case \"tasks\":"
+        "content": "            return new ListCommand(true);"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            if (commandString.length() \u003d\u003d 0) {"
+        "content": "        }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                return new ListCommand();"
+        "content": "        switch (subRootCommand.toLowerCase()) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            }"
+        "content": "        case \"tasks\":"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            int priority;"
+        "content": "            if (commandString.length() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            String category;"
+        "content": "                return new ListCommand();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            if (commandString.contains(\"p/\")) {"
+        "content": "            }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                if (commandString.length() \u003d\u003d 2) {"
+        "content": "            int priority;"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_PRIORITY);"
+        "content": "            String category;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                }"
+        "content": "            if (commandString.contains(\"p/\")) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                try {"
+        "content": "                if (commandString.length() \u003d\u003d 2) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                    priority \u003d Integer.parseInt(commandString.substring(2));"
+        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_PRIORITY);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                } catch (NumberFormatException e) {"
+        "content": "                }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                    throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
+        "content": "                try {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                }"
+        "content": "                    priority \u003d Integer.parseInt(commandString.substring(2));"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                return new ListCommand(priority);"
+        "content": "                } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            } else if (commandString.contains(\"c/\")) {"
+        "content": "                    throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                if (commandString.length() \u003d\u003d 2) {"
+        "content": "                }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_CATEGORY);"
+        "content": "                return new ListCommand(priority);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                }"
+        "content": "            } else if (commandString.contains(\"c/\")) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                category \u003d commandString.substring(2);"
+        "content": "                if (commandString.length() \u003d\u003d 2) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                return new ListCommand(category);"
+        "content": "                    throw new DukeException(Messages.EXCEPTION_EMPTY_CATEGORY);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            } else {"
+        "content": "                }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_LIST_COMMAND);"
+        "content": "                category \u003d commandString.substring(2);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            }"
+        "content": "                return new ListCommand(category);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        case \"links\":"
+        "content": "            } else {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        case \"expenses\":"
+        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_LIST_COMMAND);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        case \"meals\":"
+        "content": "            }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        default:"
+        "content": "        case \"links\":"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            throw  new DukeException(Messages.EXCEPTION_INVALID_LIST_COMMAND);"
+        "content": "        case \"expenses\":"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        }"
+        "content": "        case \"meals\":"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    }"
+        "content": "        default:"
       },
       {
         "lineNumber": 91,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "Cao-Zeyu"
         },
-        "content": ""
+        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_LIST_COMMAND);"
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "     * Creates and returns a DeleteCommand with given arguments."
+        "content": "    }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "     * @param commandString Command parameters given by the user."
+        "content": "    /**"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "     * @return DeleteCommand with given arguments."
+        "content": "     * Creates and returns a DeleteCommand with given arguments."
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "     * @throws DukeException When invalid arguments are given."
+        "content": "     *"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "     */"
+        "content": "     * @param commandString Command parameters given by the user."
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "    public static Command createDeleteCommand(String commandString) throws DukeException {"
+        "content": "     * @return DeleteCommand with given arguments."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "        try {"
+        "content": "     * @throws DukeException When invalid arguments are given."
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "            if (commandString.contains(\"p\")) { // for priority"
+        "content": "     */"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "                return new DeleteCommand(commandString);"
+        "content": "    public static Command createDeleteCommand(String commandString) throws DukeException {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "            } else if (commandString.contains(\"c\")) { // for category"
+        "content": "        try {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "                return new DeleteCommand(commandString);"
+        "content": "            if (commandString.contains(\"p\")) { // for priority"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "            } else {"
+        "content": "                return new DeleteCommand(commandString);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "                return new DeleteCommand(Integer.parseInt(commandString));"
+        "content": "            } else if (commandString.contains(\"c\")) { // for category"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "            }"
+        "content": "                return new DeleteCommand(commandString);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
+        "content": "                return new DeleteCommand(Integer.parseInt(commandString));"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "            throw new DukeException(Messages.WARNING_NO_TASK);"
+        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "MuhammadHoze"
         },
-        "content": "    }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 115,
         "author": {
-          "gitId": "iamchenjiajun"
+          "gitId": "MuhammadHoze"
         },
-        "content": ""
+        "content": "            throw new DukeException(Messages.WARNING_NO_TASK);"
       },
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "iamchenjiajun"
+          "gitId": "MuhammadHoze"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 117,
         "author": {
-          "gitId": "iamchenjiajun"
+          "gitId": "MuhammadHoze"
         },
-        "content": "     * Creates and returns a DateCommand with given arguments."
+        "content": "    }"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * @param commandString Command parameters given by the user."
+        "content": "    /**"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * @return DateCommand with given arguments."
+        "content": "     * Creates and returns a DateCommand with given arguments."
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * @throws DukeException If invalid arguments are given."
+        "content": "     *"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     */"
+        "content": "     * @param commandString Command parameters given by the user."
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    public static Command createDateCommand(String commandString, HashMap\u003cString, String\u003e argumentsMap)"
+        "content": "     * @return DateCommand with given arguments."
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            throws DukeException {"
+        "content": "     * @throws DukeException If invalid arguments are given."
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        try {"
+        "content": "     */"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            int index \u003d Integer.parseInt(commandString.split(\" \")[0]);"
+        "content": "    public static Command createDateCommand(String commandString, HashMap\u003cString, String\u003e argumentsMap)"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            return new DateCommand(index, argumentsMap);"
+        "content": "            throws DukeException {"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_ARGUMENTS);"
+        "content": "            int index \u003d Integer.parseInt(commandString.split(\" \")[0]);"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            return new DateCommand(index, argumentsMap);"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        }"
+        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_ARGUMENTS);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    }"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": ""
+        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * Creates and returns a DoneCommand with given arguments."
+        "content": "    }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * @param commandString Command parameters given by the user."
+        "content": "    /**"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * @return DoneCommand with given arguments."
+        "content": "     * Creates and returns a DoneCommand with given arguments."
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     * @throws DukeException If invalid arguments are given."
+        "content": "     *"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "     */"
+        "content": "     * @param commandString Command parameters given by the user."
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    public static Command createDoneCommand(String commandString) throws DukeException {"
+        "content": "     * @return DoneCommand with given arguments."
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        try {"
+        "content": "     * @throws DukeException If invalid arguments are given."
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            return new DoneCommand(Integer.parseInt(commandString));"
+        "content": "     */"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "    public static Command createDoneCommand(String commandString) throws DukeException {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
+        "content": "        try {"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            return new DoneCommand(Integer.parseInt(commandString));"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            throw new DukeException(Messages.WARNING_NO_TASK);"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        }"
+        "content": "            throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": ""
+        "content": "            throw new DukeException(Messages.WARNING_NO_TASK);"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    public static Command createFindCommand(String commandString) throws DukeException {"
+        "content": "        }"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            return new FindCommand(commandString.trim());"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "    public static Command createFindCommand(String commandString) throws DukeException {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "            throw new DukeException(Messages.EXCEPTION_FIND);"
+        "content": "        try {"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "        }"
+        "content": "            return new FindCommand(commandString.trim());"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "iamchenjiajun"
         },
-        "content": "    }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 159,
+        "author": {
+          "gitId": "iamchenjiajun"
+        },
+        "content": "            throw new DukeException(Messages.EXCEPTION_FIND);"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "iamchenjiajun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "iamchenjiajun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 162,
         "author": {
           "gitId": "iamchenjiajun"
         },
@@ -6406,7 +6427,8 @@
     "authorContributionMap": {
       "iamchenjiajun": 87,
       "MuhammadHoze": 24,
-      "Cao-Zeyu": 48
+      "GuoAi": 4,
+      "Cao-Zeyu": 47
     }
   },
   {
@@ -8055,191 +8077,191 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": ""
+        "content": "import java.util.Collections;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "GuoAi"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": " * Lists all tasks in the task list to the user."
+        "content": "/**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": " */"
+        "content": " * Lists all tasks in the task list to the user."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": "public class ListCommand extends Command {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": ""
+        "content": "public class ListCommand extends Command {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "GuoAi"
         },
-        "content": "            + \": Displays all tasks in the task list as a list with index numbers.\\n\""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            + \"     Example: \" + COMMAND_WORD + \"\\n\""
+        "content": "            + \": Displays all items in the list with index numbers.\\n\""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            + \"          Optional parameter 1: tasks p/PRIORITY\\n\""
+        "content": "            + \"     Example: \" + COMMAND_WORD + \" all\\n\""
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            + \"          Displays all the tasks with PRIORITY as a list.\\n\""
+        "content": "            + \"     Displays all items in the list.\\n\""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            + \"          Example: \" + COMMAND_WORD + \" tasks p/1\\n\""
+        "content": "            + \"          Optional parameter 1: tasks p/PRIORITY\\n\""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            + \"          Optional parameter 2: tasks c/CATEGORY\\n\""
+        "content": "            + \"          Displays all the tasks with PRIORITY as a list.\\n\""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            + \"          Displays all the tasks with CATEGORY as a list.\\n\""
+        "content": "            + \"          Example: \" + COMMAND_WORD + \" tasks p/1\\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            + \"          Example: \" + COMMAND_WORD + \" tasks c/cs2113\";"
+        "content": "            + \"          Optional parameter 2: tasks c/CATEGORY\\n\""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    private final boolean hasPriority;"
+        "content": "            + \"          Displays all the tasks with CATEGORY as a list.\\n\""
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "    private final boolean hasCategory;"
+        "content": "            + \"          Example: \" + COMMAND_WORD + \" tasks c/cs2113\\n\""
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "    private int priority;"
+        "content": "            + \"          Optional parameter 3: tasks sorted\\n\""
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "    private String category;"
+        "content": "            + \"          Displays all the tasks sorted by priority\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public static int listSize;"
+        "content": "    private final boolean hasPriority;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public static int newListSize;"
+        "content": "    private final boolean hasCategory;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": ""
+        "content": "    private int priority;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public ListCommand() {"
+        "content": "    private String category;"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        this.hasPriority \u003d false;"
+        "content": "    private boolean isSorted;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        this.hasCategory \u003d false;"
+        "content": "    public static int listSize;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    }"
+        "content": "    public static int newListSize;"
       },
       {
         "lineNumber": 36,
@@ -8253,14 +8275,14 @@
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public ListCommand(int priority) {"
+        "content": "    public ListCommand() {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        this.hasPriority \u003d true;"
+        "content": "        this.hasPriority \u003d false;"
       },
       {
         "lineNumber": 39,
@@ -8274,49 +8296,49 @@
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        this.priority \u003d priority;"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "GuoAi"
+          "gitId": "Cao-Zeyu"
         },
-        "content": ""
+        "content": "    public ListCommand(int priority) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public ListCommand(String category) {"
+        "content": "        this.hasPriority \u003d true;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        this.hasPriority \u003d false;"
+        "content": "        this.hasCategory \u003d false;"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        this.hasCategory \u003d true;"
+        "content": "        this.isSorted \u003d false;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        this.category \u003d category;"
+        "content": "        this.priority \u003d priority;"
       },
       {
         "lineNumber": 47,
@@ -8328,348 +8350,446 @@
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
         "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "GuoAi"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "    @Override"
+        "content": "    public ListCommand(String category) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    /**"
+        "content": "        this.hasPriority \u003d false;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "     * Executes the command."
+        "content": "        this.hasCategory \u003d true;"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "     *"
+        "content": "        this.isSorted \u003d false;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "     * @param tasks a TaskList object containing all tasks"
+        "content": "        this.category \u003d category;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public void execute(TaskList tasks) throws DukeException {"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        ArrayList\u003cTask\u003e newTasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": "    public ListCommand(boolean isSorted) {"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        listSize \u003d tasks.size();"
+        "content": "        this.hasPriority \u003d false;"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "GuoAi"
         },
-        "content": "        if (hasPriority) {"
+        "content": "        this.hasCategory \u003d false;"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            if (priority \u003c 0) {"
+        "content": "        this.isSorted \u003d true;"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_PRIORITY);"
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "                if (tasks.get(i).getPriority() \u003d\u003d priority) { //if the task matches the same priority input by user"
+        "content": "    /**"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "                    newTasks.add(tasks.get(i)); // add the task into arraylist (newTasks)"
+        "content": "     * Executes the command."
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                }"
+        "content": "     *"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            }"
+        "content": "     * @param tasks a TaskList object containing all tasks"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "MuhammadHoze"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "            TaskList newTaskList \u003d new TaskList(newTasks); //created a new object called newTaskList"
+        "content": "     */"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            newTaskList.listTask(priority);"
+        "content": "    public void execute(TaskList tasks) throws DukeException {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        } else if (hasCategory) {"
+        "content": "        ArrayList\u003cTask\u003e newTasks \u003d new ArrayList\u003cTask\u003e();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+        "content": "        listSize \u003d tasks.size();"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "MuhammadHoze"
         },
-        "content": "                if (tasks.get(i).getCategory() \u003d\u003d null) {"
+        "content": "        if (hasPriority) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                    continue;"
+        "content": "            if (priority \u003c 0) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                }"
+        "content": "                throw new DukeException(Messages.EXCEPTION_INVALID_PRIORITY);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                if (tasks.get(i).getCategory().equals(category)) {"
+        "content": "            }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                    newTasks.add(tasks.get(i));"
+        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "MuhammadHoze"
         },
-        "content": "                }"
+        "content": "                if (tasks.get(i).getPriority() \u003d\u003d priority) { //if the task matches the same priority input by user"
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "MuhammadHoze"
         },
-        "content": "            }"
+        "content": "                    newTasks.add(tasks.get(i)); // add the task into arraylist (newTasks)"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            TaskList newTaskList \u003d new TaskList(newTasks);"
+        "content": "                }"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            newTaskList.listTask(category);"
+        "content": "            }"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "MuhammadHoze"
         },
-        "content": "        } else {"
+        "content": "            TaskList newTaskList \u003d new TaskList(newTasks); //created a new object called newTaskList"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+        "content": "            newTaskList.listTask(priority);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "                newTasks.add(tasks.get(i));"
+        "content": "        } else if (hasCategory) {"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "GuoAi"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "            }"
+        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            TaskList newTaskList \u003d new TaskList(newTasks);"
+        "content": "                if (tasks.get(i).getCategory() \u003d\u003d null) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            newTaskList.listTask();"
+        "content": "                    continue;"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        }"
+        "content": "                }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        newListSize \u003d newTasks.size();"
+        "content": "                if (tasks.get(i).getCategory().equals(category)) {"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "GuoAi"
+          "gitId": "Cao-Zeyu"
         },
-        "content": "    }"
+        "content": "                    newTasks.add(tasks.get(i));"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    public int getSize(Boolean isNew) {"
+        "content": "            }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "        if (isNew) {"
+        "content": "            TaskList newTaskList \u003d new TaskList(newTasks);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "            return newListSize;"
+        "content": "            newTaskList.listTask(category);"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        } else {"
+        "content": "        } else if (isSorted) {"
       },
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "            return listSize;"
+        "content": "            newTasks \u003d tasks.getTaskList();"
       },
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "Cao-Zeyu"
+          "gitId": "GuoAi"
         },
-        "content": "        }"
+        "content": "            Collections.sort(newTasks);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Cao-Zeyu"
         },
-        "content": "    }"
+        "content": "            TaskList newTaskList \u003d new TaskList(newTasks);"
       },
       {
         "lineNumber": 97,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "            newTaskList.listTask();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            tasks.listTask();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "        newListSize \u003d newTasks.size();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "    public int getSize(Boolean isNew) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "        if (isNew) {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "            return newListSize;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "            return listSize;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "Cao-Zeyu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
         "author": {
           "gitId": "GuoAi"
         },
@@ -8678,8 +8798,8 @@
     ],
     "authorContributionMap": {
       "MuhammadHoze": 4,
-      "GuoAi": 17,
-      "Cao-Zeyu": 76
+      "GuoAi": 36,
+      "Cao-Zeyu": 71
     }
   },
   {
@@ -11752,9 +11872,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "iamchenjiajun"
+          "gitId": "GuoAi"
         },
-        "content": "public class Task {"
+        "content": "public class Task implements Comparable\u003cTask\u003e {"
       },
       {
         "lineNumber": 14,
@@ -12776,13 +12896,167 @@
         "author": {
           "gitId": "GuoAi"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * Defines how tasks are sorted. First sort tasks based on priority in ascending order (priority 0, i.e. no"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * priority, is the last). If two tasks have the same priority, sort based on category lexicographically."
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @param otherTask The other task to compare to."
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     * @return negative integer if this task precedes the argument task,"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     *     positive integer if this task follows the argument task, 0 otherwise."
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    public int compareTo(Task otherTask) {"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (this.priority !\u003d otherTask.priority \u0026\u0026 this.priority \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return 1;"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (this.priority !\u003d otherTask.priority \u0026\u0026 otherTask.priority \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return -1;"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        if (this.priority !\u003d otherTask.priority) {"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "            return this.priority - otherTask.priority;"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "        return this.category.compareTo(otherTask.category);"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "GuoAi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "GuoAi"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "iamchenjiajun": 75,
+      "iamchenjiajun": 74,
       "MuhammadHoze": 1,
-      "GuoAi": 80,
+      "GuoAi": 103,
       "Cao-Zeyu": 3
     }
   },

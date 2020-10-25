@@ -12644,7 +12644,7 @@
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        Double cashbackEarned \u003d this.amount * (this.cashbackRate / 100);"
+        "content": "        Double cashbackEarned \u003d Math.round((this.amount * (this.cashbackRate / 100)) * 100.00) / 100.00;"
       },
       {
         "lineNumber": 44,
@@ -13326,255 +13326,248 @@
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * Updates text file whenever an operation is done on the task,"
+        "content": "     * Updates text file whenever an operation is done on the task."
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * for e.g. todo, event, deadline and delete."
+        "content": "     *"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     *"
+        "content": "     * @param infoText array that stores all tasks in text format."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * @param infoText array that stores all tasks in text format."
+        "content": "     * @param filePath file path that contains all the tasks in text format."
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * @param filePath file path that contains all the tasks in text format."
+        "content": "     * @throws FileNotFoundException if file that contains data of tasks is not found."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * @throws FileNotFoundException if file that contains data of tasks is not found."
+        "content": "     */"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     */"
+        "content": "    protected static void updateFile(ArrayList\u003cString\u003e infoText, String filePath) throws FileNotFoundException {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    protected static void updateFile(ArrayList\u003cString\u003e infoText, String filePath) throws FileNotFoundException {"
+        "content": "        PrintWriter pw \u003d new PrintWriter(filePath); // reset .txt file"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        PrintWriter pw \u003d new PrintWriter(filePath); // reset .txt file"
+        "content": "        int count \u003d 0;"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        int count \u003d 0;"
+        "content": "        for (int i \u003d 0; i \u003c infoText.size(); i++) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        for (int i \u003d 0; i \u003c infoText.size(); i++) {"
+        "content": "            try {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            try {"
+        "content": "                writeToFile(filePath, infoText.get(i));"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                writeToFile(filePath, infoText.get(i));"
+        "content": "            } catch (IOException e) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            } catch (IOException e) {"
+        "content": "                System.out.println(\"IO Error\");"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                System.out.println(\"IO Error\");"
+        "content": "            }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "bqxy"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    /**"
+        "content": "     * Creates file if existing file is not available."
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * Creates file if existing file is not available."
+        "content": "     *"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     *"
+        "content": "     * @param filePath file path that contains all the tasks in text format."
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * @param filePath file path that contains all the tasks in text format."
+        "content": "     * @throws IOException if there are issues with input or output operations."
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     * @throws IOException if there are issues with input or output operations."
+        "content": "     */"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "     */"
+        "content": "    protected static void createFile(String filePath) throws IOException {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    protected static void createFile(String filePath) throws IOException {"
+        "content": "        File storageFile \u003d new File(filePath);"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        File storageFile \u003d new File(filePath);"
+        "content": "        if (storageFile.exists()) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        if (storageFile.exists()) {"
+        "content": "            return;"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            return;"
+        "content": "        }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        }"
+        "content": "        if (!storageFile.getParentFile().exists()) {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        if (!storageFile.getParentFile().exists()) {"
+        "content": "            storageFile.getParentFile().mkdirs();"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            storageFile.getParentFile().mkdirs();"
+        "content": "        }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        }"
+        "content": "        storageFile.createNewFile();"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        storageFile.createNewFile();"
+        "content": "        System.out.println(storageFile.getAbsolutePath());"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        System.out.println(storageFile.getAbsolutePath());"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "bqxy"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 106,
         "author": {
           "gitId": "bqxy"
         },
@@ -13582,7 +13575,7 @@
       }
     ],
     "authorContributionMap": {
-      "bqxy": 107
+      "bqxy": 106
     }
   },
   {
@@ -14719,170 +14712,170 @@
       {
         "lineNumber": 162,
         "author": {
-          "gitId": "Artemis-Hunt"
+          "gitId": "bqxy"
         },
-        "content": "                System.out.print(\"Total Interest Earned: $\" + handleSimpleInterest(packet));"
+        "content": "                outputAmount \u003d Double.toString(Math.round(handleSimpleInterest(packet) * 100.00) / 100.00);"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "                System.out.println(\"Total Interest Earned: $\\n\\n\" + outputAmount);"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"cashbackcalc\":"
+        "content": "                break;"
       },
       {
         "lineNumber": 165,
         "author": {
-          "gitId": "Artemis-Hunt"
+          "gitId": "bqxy"
         },
-        "content": "                System.out.print(\"Total Cashback Earned: $\" + handleCashback(packet));"
+        "content": "            case \"cashbackcalc\":"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "                outputAmount \u003d Double.toString(Math.round(handleCashback(packet) * 100.00) / 100.00);"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"milescalc\":"
+        "content": "                System.out.println(\"Total Cashback Earned: $\\n\\n\" + outputAmount);"
       },
       {
         "lineNumber": 168,
         "author": {
-          "gitId": "Artemis-Hunt"
+          "gitId": "bqxy"
         },
-        "content": "                System.out.print(\"Total Miles Earned: \" + handleMilesCredit(packet));"
+        "content": "                break;"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "            case \"milescalc\":"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"cyearly\":"
+        "content": "                outputAmount \u003d Double.toString(Math.round(handleMilesCredit(packet) * 100.00) / 100.00);"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                outputAmount \u003d Double.toString(Math.round(handleYearlyCompoundInterest(packet) * 100.00) / 100.00);"
+        "content": "                System.out.println(\"Total Miles Earned: \\n\\n\" + outputAmount);"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                System.out.println(\"Total Interest Earned: $\\n\\n\" + outputAmount);"
+        "content": "                break;"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                //commands.add(\"Total Interest Earned: $\" + outputAmount);"
+        "content": "            case \"cyearly\":"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "                outputAmount \u003d Double.toString(Math.round(handleYearlyCompoundInterest(packet) * 100.00) / 100.00);"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"cmonthly\":"
+        "content": "                System.out.println(\"Total Interest Earned: $\\n\\n\" + outputAmount);"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                outputAmount \u003d Double.toString(Math.round(handleMonthlyCompoundInterest(packet) * 100.00) / 100.00);"
+        "content": "                //commands.add(\"Total Interest Earned: $\" + outputAmount);"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                System.out.println(\"Total Interest Earned: $\\n\\n\" + outputAmount);"
+        "content": "                break;"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                //commands.add(\"Total Interest Earned: $\" + outputAmount);"
+        "content": "            case \"cmonthly\":"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "                outputAmount \u003d Double.toString(Math.round(handleMonthlyCompoundInterest(packet) * 100.00) / 100.00);"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"store\":"
+        "content": "                System.out.println(\"Total Interest Earned: $\\n\\n\" + outputAmount);"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                handleStorage(packet, filePath, infoText);"
+        "content": "                //commands.add(\"Total Interest Earned: $\" + outputAmount);"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                System.out.println(\"Information Updated\\n\\n\");"
+        "content": "                break;"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "            case \"store\":"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"commands\":"
+        "content": "                handleStorage(packet, filePath, infoText);"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                printCommandList();"
+        "content": "                System.out.println(\"Information Updated\\n\\n\");"
       },
       {
         "lineNumber": 186,
@@ -14896,112 +14889,112 @@
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"info\":"
+        "content": "            case \"commands\":"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                if (infoText.size() \u003d\u003d 0) {"
+        "content": "                printCommandList();"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                    System.out.println(\"There is no account in the list\");"
+        "content": "                break;"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                }"
+        "content": "            case \"info\":"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                for (int i \u003d 0; i \u003c infoText.size(); i++) {"
+        "content": "                if (infoText.size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                    System.out.printf(\"\u003d\u003d\u003d\u003dAccount No.\" + \"%d\", i + 1);"
+        "content": "                    System.out.println(\"There is no account in the list\");"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                    System.out.println(\"\u003d\u003d\u003d\u003d\");"
+        "content": "                }"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                    System.out.println(infoText.get(i));"
+        "content": "                for (int i \u003d 0; i \u003c infoText.size(); i++) {"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                }"
+        "content": "                    System.out.printf(\"\u003d\u003d\u003d\u003dAccount No.\" + \"%d\", i + 1);"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "                    System.out.println(\"\u003d\u003d\u003d\u003d\");"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            case \"exit\":"
+        "content": "                    System.out.println(infoText.get(i));"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                System.out.println(\"Exiting Finance Tools ...\");"
+        "content": "                }"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                endTracker \u003d false;"
+        "content": "                break;"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                break;"
+        "content": "            case \"clearinfo\":"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            default:"
+        "content": "                infoText.removeAll(infoText);"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                System.out.println(\"Invalid Command\");"
+        "content": "                System.out.println(\"All account(s) cleared in list\");"
       },
       {
         "lineNumber": 203,
@@ -15015,108 +15008,157 @@
         "author": {
           "gitId": "bqxy"
         },
-        "content": "            }"
+        "content": "            case \"exit\":"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        }"
+        "content": "                System.out.println(\"Exiting Finance Tools ...\");"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    }"
+        "content": "                endTracker \u003d false;"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "bqxy"
         },
-        "content": ""
+        "content": "                break;"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    public static void printCommandList() {"
+        "content": "            default:"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.setTitle(\"List of Commands\");"
+        "content": "                System.out.println(\"Invalid Command\");"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.addRow(\"No; Finance Tool             ;Input Format                                          \");"
+        "content": "                break;"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.addRow(\"1; Simple Interest Calculator; simplecalc /amount {AMOUNT} /ir {INTEREST_RATE} \");"
+        "content": "            }"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.addRow(\"2; Compound Interest Calculator; compoundcalc /amount {AMOUNT} /ir {INTEREST_RATE} \""
+        "content": "        }"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                + \"/period {YEARS}\");"
+        "content": "    }"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.addRow(\"3; Cashback Calculator; milescalc /amount {AMOUNT} /miles {MILES RATE}\");"
+        "content": ""
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.addRow(\"4; Miles Credit Calculator; cashbackcalc /amount {AMOUNT} /cashback {CASHBACK_RATE} \""
+        "content": "    public static void printCommandList() {"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "                + \"/cap {CASHBACK_CAP}\");"
+        "content": "        TablePrinter.setTitle(\"List of Commands\");"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        TablePrinter.printList();"
+        "content": "        TablePrinter.addRow(\"No; Finance Tool             ;Input Format                                          \");"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "bqxy"
         },
-        "content": "    }"
+        "content": "        TablePrinter.addRow(\"1; Simple Interest Calculator; simplecalc /amount {AMOUNT} /ir {INTEREST_RATE} \");"
       },
       {
         "lineNumber": 219,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "        TablePrinter.addRow(\"2; Compound Interest Calculator; compoundcalc /amount {AMOUNT} /ir {INTEREST_RATE} \""
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "                + \"/period {YEARS}\");"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "        TablePrinter.addRow(\"3; Cashback Calculator; milescalc /amount {AMOUNT} /miles {MILES RATE}\");"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "        TablePrinter.addRow(\"4; Miles Credit Calculator; cashbackcalc /amount {AMOUNT} /cashback {CASHBACK_RATE} \""
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "                + \"/cap {CASHBACK_CAP}\");"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "        TablePrinter.printList();"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "bqxy"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 226,
         "author": {
           "gitId": "bqxy"
         },
@@ -15124,8 +15166,7 @@
       }
     ],
     "authorContributionMap": {
-      "bqxy": 179,
-      "Artemis-Hunt": 3,
+      "bqxy": 189,
       "kaiwen98": 37
     }
   },
@@ -15418,7 +15459,7 @@
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        return this.amount * this.milesRate;"
+        "content": "        return Math.round((this.amount * this.milesRate) * 100.00) / 100.00;"
       },
       {
         "lineNumber": 42,
@@ -16481,7 +16522,7 @@
         "author": {
           "gitId": "bqxy"
         },
-        "content": "        return this.amount * (this.interestRate / 100);"
+        "content": "        return Math.round((this.amount * (this.interestRate / 100)) * 100.00) / 100.00;"
       },
       {
         "lineNumber": 42,
