@@ -4571,6 +4571,358 @@
     }
   },
   {
+    "path": "src/main/java/command/LocateCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "package command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import event.Event;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import eventlist.EventList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import location.Location;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import locationlist.BusStopList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import locationlist.LocationList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import storage.Storage;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import ui.UI;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": " * Represents the command call when the user wants to locate an event."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "public class LocateCommand extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    private String input;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    public LocateCommand(String input) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "        this.input \u003d input;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     * Provides location information when user gives a number within size of EventList or name of a location."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     * @param events    the list of Events."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     * @param locations the list of Locations."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     * @param busStops  the list of BusStops."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     * @param ui        do outputs."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     * @param storage   store the data."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    public void execute(EventList events, LocationList locations, BusStopList busStops, UI ui, Storage storage) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "        int eventNum;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            eventNum \u003d Integer.parseInt(input) - 1;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            Event event \u003d events.get(eventNum);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            Location location \u003d event.getLocation();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            System.out.println(event.getDescription() + \" is located at:\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            System.out.println(location);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            if (locations.checkValidLocation(input)) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                Location location \u003d locations.findLocation(input);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                System.out.println(\"Location Information: \");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                System.out.println(location);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                System.out.println(\"Please input a valid location or event number.\");"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jiaaaqi": 49
+    }
+  },
+  {
     "path": "src/main/java/command/PrintFullListCommand.java",
     "fileType": "functional-code",
     "lines": [
@@ -12535,9 +12887,9 @@
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "        return \"location: (Building): \" + name + \"\\nNearest bus stop(s): \" + printNearestBusStops();"
+        "content": "        return \"(Building): \" + name + \"\\nNearest bus stop(s): \" + printNearestBusStops();"
       },
       {
         "lineNumber": 26,
@@ -12695,8 +13047,8 @@
       }
     ],
     "authorContributionMap": {
-      "jiaaaqi": 26,
-      "Lee-Juntong": 21
+      "jiaaaqi": 27,
+      "Lee-Juntong": 20
     }
   },
   {
@@ -13101,9 +13453,9 @@
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "        return \"location: (Hostel): \" + name + \"\\nNearest bus stop(s): \" + printNearestBusStops();"
+        "content": "        return \"(Hostel): \" + name + \"\\nNearest bus stop(s): \" + printNearestBusStops();"
       },
       {
         "lineNumber": 26,
@@ -13261,8 +13613,8 @@
       }
     ],
     "authorContributionMap": {
-      "jiaaaqi": 27,
-      "Lee-Juntong": 20
+      "jiaaaqi": 28,
+      "Lee-Juntong": 19
     }
   },
   {
@@ -13426,9 +13778,9 @@
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "        return \"location: (Lecture Theatre): \" + name + \"\\nNearest building: \" + nearestBuilding;"
+        "content": "        return \"(Lecture Theatre): \" + name + \"\\nNearest building: \" + nearestBuilding;"
       },
       {
         "lineNumber": 24,
@@ -13509,8 +13861,8 @@
       }
     ],
     "authorContributionMap": {
-      "jiaaaqi": 18,
-      "Lee-Juntong": 16
+      "jiaaaqi": 19,
+      "Lee-Juntong": 15
     }
   },
   {
@@ -14788,100 +15140,100 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
         "content": "import command.AddCommand;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
         "content": "import command.ClearCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.DeleteCommand;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.DoneCommand;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.EditCommand;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.ExitCommand;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.FindCommand;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.FindDateCommand;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.HelpCommand;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.PrintFullListCommand;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "import command.PrintLocationCommand;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
         "content": "import command.Command;"
       },
       {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.DeleteCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.DoneCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.EditCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.ExitCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.FindCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.FindDateCommand;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.HelpCommand;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.LocateCommand;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "import command.PrintFullListCommand;"
+      },
+      {
         "lineNumber": 16,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "jiaaaqi"
         },
-        "content": "import command.SortCommand;"
+        "content": "import command.PrintLocationCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": ""
+        "content": "import command.SortCommand;"
       },
       {
         "lineNumber": 18,
@@ -15516,667 +15868,667 @@
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "        //this block deals with find command"
+        "content": "        if (words[0].equals(LOCATE_EVENT)) {"
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "        if (words[0].equals(EVENT_FIND)) {"
+        "content": "            return new LocateCommand(words[1]);"
       },
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "            if (fullCommand.substring(4).isBlank()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
-        "content": "                throw new EmptyFindException();"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "        //this block deals with find command"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            return new FindCommand(fullCommand.substring(5));"
+        "content": "        if (words[0].equals(EVENT_FIND)) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            if (fullCommand.substring(4).isBlank()) {"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "                throw new EmptyFindException();"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //this block deals with find date command"
+        "content": "            }"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        if (words[0].equals(EVENT_FIND_DATE)) {"
+        "content": "            return new FindCommand(fullCommand.substring(5));"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(4).isBlank()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new EmptyFindDateException();"
+        "content": ""
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "        //this block deals with find date command"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            try {"
+        "content": "        if (words[0].equals(EVENT_FIND_DATE)) {"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                return new FindDateCommand(LocalDate.parse(fullCommand.substring(5)));"
+        "content": "            if (fullCommand.substring(4).isBlank()) {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            } catch (DateTimeParseException e) {"
+        "content": "                throw new EmptyFindDateException();"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new DateFormatException();"
+        "content": "            }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "            try {"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "                return new FindDateCommand(LocalDate.parse(fullCommand.substring(5)));"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "            } catch (DateTimeParseException e) {"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        int eventIndex;//to indicate what is the Event we are dealing with. may not be used."
+        "content": "                throw new DateFormatException();"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //this block deals with done command"
+        "content": "        }"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        if (words[0].equals(EVENT_DONE)) {"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(4).isBlank()) {"
+        "content": "        int eventIndex;//to indicate what is the Event we are dealing with. may not be used."
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new EmptyDoneException();"
+        "content": ""
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "        //this block deals with done command"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            try {"
+        "content": "        if (words[0].equals(EVENT_DONE)) {"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                eventIndex \u003d Integer.parseInt(fullCommand.substring(5)) - 1;"
+        "content": "            if (fullCommand.substring(4).isBlank()) {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "                throw new EmptyDoneException();"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new DoneNumberFormatException();"
+        "content": "            }"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "            try {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            return new DoneCommand(eventIndex);"
+        "content": "                eventIndex \u003d Integer.parseInt(fullCommand.substring(5)) - 1;"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "                throw new DoneNumberFormatException();"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //this block deals with delete command"
+        "content": "            }"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        if (words[0].equals(EVENT_DELETE)) {"
+        "content": "            return new DoneCommand(eventIndex);"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(6).isBlank()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new EmptyDeleteException();"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "        //this block deals with delete command"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            try {"
+        "content": "        if (words[0].equals(EVENT_DELETE)) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                eventIndex \u003d Integer.parseInt(fullCommand.substring(7)) - 1;"
+        "content": "            if (fullCommand.substring(6).isBlank()) {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "                throw new EmptyDeleteException();"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new DeleteNumberFormatException();"
+        "content": "            }"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "            try {"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            return new DeleteCommand(eventIndex);"
+        "content": "                eventIndex \u003d Integer.parseInt(fullCommand.substring(7)) - 1;"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "                throw new DeleteNumberFormatException();"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //this block deals with sorting"
+        "content": "            }"
       },
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "        if (words[0].equals(SORT)) {"
+        "content": "            return new DeleteCommand(eventIndex);"
       },
       {
         "lineNumber": 158,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.length() \u003d\u003d 4) {"
+        "content": "        }"
       },
       {
         "lineNumber": 159,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                throw new NoSortCriteriaException();"
+        "content": ""
       },
       {
         "lineNumber": 160,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "        //this block deals with sorting"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            String type \u003d words[1];"
+        "content": "        if (words[0].equals(SORT)) {"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            switch (type) {"
+        "content": "            if (fullCommand.length() \u003d\u003d 4) {"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            case \"description\":"
+        "content": "                throw new NoSortCriteriaException();"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            case \"time\":"
+        "content": "            }"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            case \"location\":"
+        "content": "            String type \u003d words[1];"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "                return new SortCommand(type);"
+        "content": "            switch (type) {"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            default:"
+        "content": "            case \"description\":"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "                throw new InvalidSortCriteriaException();"
+        "content": "            case \"time\":"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            }"
+        "content": "            case \"location\":"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "        }"
+        "content": "                return new SortCommand(type);"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "xuche123"
         },
-        "content": ""
+        "content": "            default:"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "xuche123"
         },
-        "content": ""
+        "content": "                throw new InvalidSortCriteriaException();"
       },
       {
         "lineNumber": 173,
+        "author": {
+          "gitId": "xuche123"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "xuche123"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "xuche123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "xuche123"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 177,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        //these variables are used by either Edit or Add"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 178,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        //the position of /t"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 179,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        int timeDividerPosition;"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 180,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        //the position of the space when the user enters a date time in the format yyyy-mm-dd HH:mm"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 181,
         "author": {
           "gitId": "madbeez"
         },
         "content": "        int timeDivider;"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 182,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        //the position of /l"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 183,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        int locationDividerPosition;"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 184,
         "author": {
           "gitId": "madbeez"
         },
         "content": "        String dateTime;"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 185,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "        Location location;"
       },
       {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "        //this block deals with edit command"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "        //this block will change fullCommand, but this does not affect the later block since"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "        //it either return an EditCommand, or throw an exception"
-      },
-      {
         "lineNumber": 186,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        if (words[0].equals(EDIT)) {"
+        "content": ""
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "        //this block deals with edit command"
       },
       {
         "lineNumber": 188,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "        //this block will change fullCommand, but this does not affect the later block since"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "        //it either return an EditCommand, or throw an exception"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "        if (words[0].equals(EDIT)) {"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 192,
         "author": {
           "gitId": "xuche123"
         },
         "content": "            if (fullCommand.length() \u003d\u003d 4) {"
       },
       {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "xuche123"
-        },
-        "content": "                throw new EmptyEventIndexException();"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "xuche123"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "xuche123"
-        },
-        "content": "            if (fullCommand.substring(5).isBlank()) {"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                throw new EmptyEventIndexException();"
-      },
-      {
         "lineNumber": 193,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            }"
+        "content": "                throw new EmptyEventIndexException();"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "xuche123"
         },
-        "content": "            try {"
+        "content": "            }"
       },
       {
         "lineNumber": 195,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "xuche123"
         },
-        "content": "                eventIndex \u003d Integer.parseInt(words[1]) - 1;"
+        "content": "            if (fullCommand.substring(5).isBlank()) {"
       },
       {
         "lineNumber": 196,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "                throw new EmptyEventIndexException();"
       },
       {
         "lineNumber": 197,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                throw new WrongEditFormatException();"
-      },
-      {
-        "lineNumber": 198,
         "author": {
           "gitId": "xuche123"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 199,
+        "lineNumber": 198,
         "author": {
           "gitId": "xuche123"
         },
-        "content": ""
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                eventIndex \u003d Integer.parseInt(words[1]) - 1;"
       },
       {
         "lineNumber": 200,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "xuche123"
         },
-        "content": "            //the following part is almost the same as AddCommand, but returns EditCommand"
+        "content": "            } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            timeDividerPosition \u003d fullCommand.indexOf(TIME_MARKER);"
+        "content": "                throw new WrongEditFormatException();"
       },
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "xuche123"
         },
-        "content": "            locationDividerPosition \u003d fullCommand.indexOf(LOCATION_MARKER);"
+        "content": "            }"
       },
       {
         "lineNumber": 203,
@@ -16190,117 +16542,117 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            switch (words[2]) {"
+        "content": "            //the following part is almost the same as AddCommand, but returns EditCommand"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            case ASSIGNMENT:"
+        "content": "            timeDividerPosition \u003d fullCommand.indexOf(TIME_MARKER);"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            case CLASS:"
+        "content": "            locationDividerPosition \u003d fullCommand.indexOf(LOCATION_MARKER);"
       },
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "xuche123"
         },
-        "content": "            case PERSONAL_EVENT:"
+        "content": ""
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                if (timeDividerPosition \u003d\u003d -1) {"
+        "content": "            switch (words[2]) {"
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                    throw new NoEventTimeMarkerException();"
+        "content": "            case ASSIGNMENT:"
       },
       {
         "lineNumber": 210,
         "author": {
-          "gitId": "xuche123"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                }"
+        "content": "            case CLASS:"
       },
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "            case PERSONAL_EVENT:"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                if (locationDividerPosition \u003d\u003d -1) {"
+        "content": "                if (timeDividerPosition \u003d\u003d -1) {"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "xuche123"
         },
-        "content": "                    throw new NoEventLocationException();"
+        "content": "                    throw new NoEventTimeMarkerException();"
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "xuche123"
         },
         "content": "                }"
       },
       {
         "lineNumber": 215,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "                int prefixLength \u003d words[0].length() + words[1].length() + words[2].length();"
+        "content": ""
       },
       {
         "lineNumber": 216,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "                if (locationDividerPosition \u003d\u003d -1) {"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                if (fullCommand.substring(prefixLength, timeDividerPosition).isBlank()) {"
+        "content": "                    throw new NoEventLocationException();"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                    throw new EmptyEventException();"
+        "content": "                }"
       },
       {
         "lineNumber": 219,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                }"
+        "content": "                int prefixLength \u003d words[0].length() + words[1].length() + words[2].length();"
       },
       {
         "lineNumber": 220,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
         "content": ""
       },
@@ -16309,14 +16661,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                if (fullCommand.substring(timeDividerPosition + 3, locationDividerPosition - 1).isBlank()) {"
+        "content": "                if (fullCommand.substring(prefixLength, timeDividerPosition).isBlank()) {"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                    throw new NoEventTimeException();"
+        "content": "                    throw new EmptyEventException();"
       },
       {
         "lineNumber": 223,
@@ -16328,7 +16680,7 @@
       {
         "lineNumber": 224,
         "author": {
-          "gitId": "jiaaaqi"
+          "gitId": "Lee-Juntong"
         },
         "content": ""
       },
@@ -16337,14 +16689,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                if (fullCommand.substring(locationDividerPosition + 3).isBlank()) {"
+        "content": "                if (fullCommand.substring(timeDividerPosition + 3, locationDividerPosition - 1).isBlank()) {"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                    throw new NoEventLocationException();"
+        "content": "                    throw new NoEventTimeException();"
       },
       {
         "lineNumber": 227,
@@ -16356,343 +16708,343 @@
       {
         "lineNumber": 228,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "jiaaaqi"
         },
         "content": ""
       },
       {
         "lineNumber": 229,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                try {"
+        "content": "                if (fullCommand.substring(locationDividerPosition + 3).isBlank()) {"
       },
       {
         "lineNumber": 230,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "                    timeDivider \u003d fullCommand.substring(timeDividerPosition + 3).indexOf(SINGLE_SPACE);"
+        "content": "                    throw new NoEventLocationException();"
       },
       {
         "lineNumber": 231,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    dateTime \u003d fullCommand.substring(timeDividerPosition + 3, timeDividerPosition + 3 + timeDivider)"
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "                            + \"T\""
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                            + fullCommand.substring(timeDividerPosition + 3 + timeDivider + 1,"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                            locationDividerPosition - 1);"
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "jiaaaqi"
-        },
-        "content": "                    location \u003d parseLocation(fullCommand.substring(locationDividerPosition + 3), locations);"
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    switch (words[2]) {"
-      },
-      {
-        "lineNumber": 238,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    case ASSIGNMENT:"
-      },
-      {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                        return new EditCommand(new Assignment(fullCommand.substring(prefixLength + 1,"
-      },
-      {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                                timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)), eventIndex);"
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    case CLASS:"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                        return new EditCommand(new Class(fullCommand.substring(prefixLength + 1,"
-      },
-      {
-        "lineNumber": 243,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                                timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)), eventIndex);"
-      },
-      {
-        "lineNumber": 244,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    case PERSONAL_EVENT:"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                        return new EditCommand(new PersonalEvent(fullCommand.substring(prefixLength + 1,"
-      },
-      {
-        "lineNumber": 246,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                                timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)), eventIndex);"
-      },
-      {
-        "lineNumber": 247,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    default:"
-      },
-      {
-        "lineNumber": 248,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                        break;"
-      },
-      {
-        "lineNumber": 249,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 250,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 251,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "                    throw new TimeFormatException();"
-      },
-      {
-        "lineNumber": 252,
         "author": {
           "gitId": "madbeez"
         },
         "content": "                }"
       },
       {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    timeDivider \u003d fullCommand.substring(timeDividerPosition + 3).indexOf(SINGLE_SPACE);"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    dateTime \u003d fullCommand.substring(timeDividerPosition + 3, timeDividerPosition + 3 + timeDivider)"
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "                            + \"T\""
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                            + fullCommand.substring(timeDividerPosition + 3 + timeDivider + 1,"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                            locationDividerPosition - 1);"
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                    location \u003d parseLocation(fullCommand.substring(locationDividerPosition + 3), locations);"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    switch (words[2]) {"
+      },
+      {
+        "lineNumber": 242,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    case ASSIGNMENT:"
+      },
+      {
+        "lineNumber": 243,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                        return new EditCommand(new Assignment(fullCommand.substring(prefixLength + 1,"
+      },
+      {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                                timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)), eventIndex);"
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    case CLASS:"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                        return new EditCommand(new Class(fullCommand.substring(prefixLength + 1,"
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                                timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)), eventIndex);"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    case PERSONAL_EVENT:"
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                        return new EditCommand(new PersonalEvent(fullCommand.substring(prefixLength + 1,"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                                timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)), eventIndex);"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    default:"
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                        break;"
+      },
+      {
         "lineNumber": 253,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                break;"
+        "content": "                    }"
       },
       {
         "lineNumber": 254,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "            default:"
+        "content": "                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 255,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "                throw new WrongCommandException();"
+        "content": "                    throw new TimeFormatException();"
       },
       {
         "lineNumber": 256,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "            }"
+        "content": "                }"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        }"
+        "content": "                break;"
       },
       {
         "lineNumber": 258,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "            default:"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //this block deals with add command"
+        "content": "                throw new WrongCommandException();"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //we shall check that the user input is not meant for any other command beforehand"
+        "content": "            }"
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        //because the default block will throw an exception."
+        "content": "        }"
       },
       {
         "lineNumber": 262,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "        // i.e. when this block is entered, the parser will not go to any other blocks"
+        "content": ""
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        switch (words[0]) {"
+        "content": "        //this block deals with add command"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        case ASSIGNMENT:"
+        "content": "        //we shall check that the user input is not meant for any other command beforehand"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        case CLASS:"
+        "content": "        //because the default block will throw an exception."
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        case PERSONAL_EVENT:"
+        "content": "        // i.e. when this block is entered, the parser will not go to any other blocks"
       },
       {
         "lineNumber": 267,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            timeDividerPosition \u003d fullCommand.indexOf(TIME_MARKER);"
+        "content": "        switch (words[0]) {"
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            locationDividerPosition \u003d fullCommand.indexOf(LOCATION_MARKER);"
+        "content": "        case ASSIGNMENT:"
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(words[0].length()).isBlank()) {"
+        "content": "        case CLASS:"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new EmptyEventException();"
+        "content": "        case PERSONAL_EVENT:"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            }"
+        "content": "            timeDividerPosition \u003d fullCommand.indexOf(TIME_MARKER);"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": ""
+        "content": "            locationDividerPosition \u003d fullCommand.indexOf(LOCATION_MARKER);"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (timeDividerPosition \u003d\u003d -1) {"
+        "content": "            if (fullCommand.substring(words[0].length()).isBlank()) {"
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new NoEventTimeMarkerException();"
+        "content": "                throw new EmptyEventException();"
       },
       {
         "lineNumber": 275,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
         "content": "            }"
       },
       {
         "lineNumber": 276,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
         "content": ""
       },
@@ -16701,14 +17053,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (locationDividerPosition \u003d\u003d -1) {"
+        "content": "            if (timeDividerPosition \u003d\u003d -1) {"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                throw new NoEventLocationMarkerException();"
+        "content": "                throw new NoEventTimeMarkerException();"
       },
       {
         "lineNumber": 279,
@@ -16729,14 +17081,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(words[0].length(), timeDividerPosition).isBlank()) {"
+        "content": "            if (locationDividerPosition \u003d\u003d -1) {"
       },
       {
         "lineNumber": 282,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                throw new EmptyEventException();"
+        "content": "                throw new NoEventLocationMarkerException();"
       },
       {
         "lineNumber": 283,
@@ -16748,7 +17100,7 @@
       {
         "lineNumber": 284,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
         "content": ""
       },
@@ -16757,14 +17109,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(timeDividerPosition + 3, locationDividerPosition - 1).isBlank()) {"
+        "content": "            if (fullCommand.substring(words[0].length(), timeDividerPosition).isBlank()) {"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                throw new NoEventTimeException();"
+        "content": "                throw new EmptyEventException();"
       },
       {
         "lineNumber": 287,
@@ -16785,14 +17137,14 @@
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "            if (fullCommand.substring(locationDividerPosition + 3).isBlank()) {"
+        "content": "            if (fullCommand.substring(timeDividerPosition + 3, locationDividerPosition - 1).isBlank()) {"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                throw new NoEventLocationException();"
+        "content": "                throw new NoEventTimeException();"
       },
       {
         "lineNumber": 291,
@@ -16811,219 +17163,219 @@
       {
         "lineNumber": 293,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "            try {"
+        "content": "            if (fullCommand.substring(locationDividerPosition + 3).isBlank()) {"
       },
       {
         "lineNumber": 294,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "                timeDivider \u003d fullCommand.substring(timeDividerPosition + 3).indexOf(SINGLE_SPACE);"
+        "content": "                throw new NoEventLocationException();"
       },
       {
         "lineNumber": 295,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                dateTime \u003d fullCommand.substring(timeDividerPosition + 3, timeDividerPosition + 3 + timeDivider)"
-      },
-      {
-        "lineNumber": 296,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "                        + \"T\""
-      },
-      {
-        "lineNumber": 297,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                        + fullCommand.substring(timeDividerPosition + 3 + timeDivider + 1,"
-      },
-      {
-        "lineNumber": 298,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                        locationDividerPosition - 1);"
-      },
-      {
-        "lineNumber": 299,
-        "author": {
-          "gitId": "jiaaaqi"
-        },
-        "content": "                location \u003d parseLocation(fullCommand.substring(locationDividerPosition + 3), locations);"
-      },
-      {
-        "lineNumber": 300,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                switch (words[0]) {"
-      },
-      {
-        "lineNumber": 301,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                case ASSIGNMENT:"
-      },
-      {
-        "lineNumber": 302,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    return new AddCommand(new Assignment(fullCommand.substring(words[0].length() + 1,"
-      },
-      {
-        "lineNumber": 303,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                            timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)));"
-      },
-      {
-        "lineNumber": 304,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                case CLASS:"
-      },
-      {
-        "lineNumber": 305,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    return new AddCommand(new Class(fullCommand.substring(words[0].length() + 1,"
-      },
-      {
-        "lineNumber": 306,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                            timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)));"
-      },
-      {
-        "lineNumber": 307,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                case PERSONAL_EVENT:"
-      },
-      {
-        "lineNumber": 308,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    return new AddCommand(new PersonalEvent(fullCommand.substring(words[0].length() + 1,"
-      },
-      {
-        "lineNumber": 309,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                            timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)));"
-      },
-      {
-        "lineNumber": 310,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                default:"
-      },
-      {
-        "lineNumber": 311,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 312,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 313,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "            } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 314,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "                throw new TimeFormatException();"
-      },
-      {
-        "lineNumber": 315,
         "author": {
           "gitId": "madbeez"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 316,
-        "author": {
-          "gitId": "Lee-Juntong"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 317,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "        default:"
-      },
-      {
-        "lineNumber": 318,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "            throw new WrongCommandException();"
-      },
-      {
-        "lineNumber": 319,
-        "author": {
-          "gitId": "madbeez"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 320,
+        "lineNumber": 296,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": ""
       },
       {
-        "lineNumber": 321,
+        "lineNumber": 297,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 298,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        assert false;//nothing should reach here"
+        "content": "                timeDivider \u003d fullCommand.substring(timeDividerPosition + 3).indexOf(SINGLE_SPACE);"
+      },
+      {
+        "lineNumber": 299,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                dateTime \u003d fullCommand.substring(timeDividerPosition + 3, timeDividerPosition + 3 + timeDivider)"
+      },
+      {
+        "lineNumber": 300,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "                        + \"T\""
+      },
+      {
+        "lineNumber": 301,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                        + fullCommand.substring(timeDividerPosition + 3 + timeDivider + 1,"
+      },
+      {
+        "lineNumber": 302,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                        locationDividerPosition - 1);"
+      },
+      {
+        "lineNumber": 303,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                location \u003d parseLocation(fullCommand.substring(locationDividerPosition + 3), locations);"
+      },
+      {
+        "lineNumber": 304,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                switch (words[0]) {"
+      },
+      {
+        "lineNumber": 305,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                case ASSIGNMENT:"
+      },
+      {
+        "lineNumber": 306,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    return new AddCommand(new Assignment(fullCommand.substring(words[0].length() + 1,"
+      },
+      {
+        "lineNumber": 307,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                            timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)));"
+      },
+      {
+        "lineNumber": 308,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                case CLASS:"
+      },
+      {
+        "lineNumber": 309,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    return new AddCommand(new Class(fullCommand.substring(words[0].length() + 1,"
+      },
+      {
+        "lineNumber": 310,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                            timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)));"
+      },
+      {
+        "lineNumber": 311,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                case PERSONAL_EVENT:"
+      },
+      {
+        "lineNumber": 312,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    return new AddCommand(new PersonalEvent(fullCommand.substring(words[0].length() + 1,"
+      },
+      {
+        "lineNumber": 313,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                            timeDividerPosition - 1), location, LocalDateTime.parse(dateTime)));"
+      },
+      {
+        "lineNumber": 314,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 315,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 316,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 317,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "            } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 318,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "                throw new TimeFormatException();"
+      },
+      {
+        "lineNumber": 319,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "Lee-Juntong"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "madbeez"
+        },
+        "content": "        default:"
       },
       {
         "lineNumber": 322,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "        throw new UnknownErrorException();"
+        "content": "            throw new WrongCommandException();"
       },
       {
         "lineNumber": 323,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 324,
@@ -17035,320 +17387,348 @@
       {
         "lineNumber": 325,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "    /**"
+        "content": "        assert false;//nothing should reach here"
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * This method parses the inputted location."
+        "content": "        throw new UnknownErrorException();"
       },
       {
         "lineNumber": 327,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "     * @param input the string inputted by the user."
+        "content": ""
       },
       {
         "lineNumber": 329,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "     * @return the parsed location."
+        "content": "    /**"
       },
       {
         "lineNumber": 330,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "     */"
+        "content": "     * This method parses the inputted location."
       },
       {
         "lineNumber": 331,
         "author": {
-          "gitId": "jiaaaqi"
+          "gitId": "madbeez"
         },
-        "content": "    public static Location parseLocation(String input, LocationList locations) {"
+        "content": "     *"
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        assert locations !\u003d null;"
+        "content": "     * @param input the string inputted by the user."
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "        Location location;"
+        "content": "     * @return the parsed location."
       },
       {
         "lineNumber": 334,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "        String[] info \u003d input.split(\"/\");"
+        "content": "     */"
       },
       {
         "lineNumber": 335,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "        // parse location from event.txt file"
+        "content": "    public static Location parseLocation(String input, LocationList locations) {"
       },
       {
         "lineNumber": 336,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "        try {"
+        "content": "        assert locations !\u003d null;"
       },
       {
         "lineNumber": 337,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "Lee-Juntong"
         },
-        "content": "            String[] additionalInfo \u003d info[2].split(\",\");"
+        "content": "        Location location;"
       },
       {
         "lineNumber": 338,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "            switch (info[0]) {"
+        "content": "        String[] info \u003d input.split(\"/\");"
       },
       {
         "lineNumber": 339,
         "author": {
-          "gitId": "madbeez"
+          "gitId": "jiaaaqi"
         },
-        "content": "            case \"BLK\":"
+        "content": "        // parse location from event.txt file"
       },
       {
         "lineNumber": 340,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                location \u003d new Building(info[1], additionalInfo);"
+        "content": "        try {"
       },
       {
         "lineNumber": 341,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                break;"
+        "content": "            String[] additionalInfo \u003d info[2].split(\",\");"
       },
       {
         "lineNumber": 342,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "            case \"H\":"
+        "content": "            switch (info[0]) {"
       },
       {
         "lineNumber": 343,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                location \u003d new Hostel(info[1], additionalInfo);"
+        "content": "            case \"BLK\":"
       },
       {
         "lineNumber": 344,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                break;"
+        "content": "                location \u003d new Building(info[1], additionalInfo);"
       },
       {
         "lineNumber": 345,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "            case \"L\":"
+        "content": "                break;"
       },
       {
         "lineNumber": 346,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                location \u003d new LectureTheatre(info[1], info[2]);"
+        "content": "            case \"H\":"
       },
       {
         "lineNumber": 347,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                break;"
+        "content": "                location \u003d new Hostel(info[1], additionalInfo);"
       },
       {
         "lineNumber": 348,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "            case \"OUT\":"
+        "content": "                break;"
       },
       {
         "lineNumber": 349,
         "author": {
-          "gitId": "Lee-Juntong"
+          "gitId": "madbeez"
         },
-        "content": "                location \u003d new OutOfNuS(info[1]);"
+        "content": "            case \"L\":"
       },
       {
         "lineNumber": 350,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                break;"
+        "content": "                location \u003d new LectureTheatre(info[1], info[2]);"
       },
       {
         "lineNumber": 351,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "            default:"
+        "content": "                break;"
       },
       {
         "lineNumber": 352,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "                location \u003d new OutOfNuS(info[0]);"
+        "content": "            case \"OUT\":"
       },
       {
         "lineNumber": 353,
         "author": {
           "gitId": "Lee-Juntong"
         },
-        "content": "                break;"
+        "content": "                location \u003d new OutOfNuS(info[1]);"
       },
       {
         "lineNumber": 354,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "            }"
+        "content": "                break;"
       },
       {
         "lineNumber": 355,
         "author": {
           "gitId": "madbeez"
         },
-        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
+        "content": "            default:"
       },
       {
         "lineNumber": 356,
         "author": {
-          "gitId": "jiaaaqi"
+          "gitId": "madbeez"
         },
-        "content": "            if (input.contains(\"/\")) {"
+        "content": "                location \u003d new OutOfNuS(info[0]);"
       },
       {
         "lineNumber": 357,
         "author": {
-          "gitId": "jiaaaqi"
+          "gitId": "Lee-Juntong"
         },
-        "content": "                location \u003d new OutOfNuS(info[1]);"
+        "content": "                break;"
       },
       {
         "lineNumber": 358,
         "author": {
-          "gitId": "jiaaaqi"
+          "gitId": "madbeez"
         },
-        "content": "                locations.getLocationList().add(location);"
+        "content": "            }"
       },
       {
         "lineNumber": 359,
         "author": {
-          "gitId": "jiaaaqi"
+          "gitId": "madbeez"
         },
-        "content": "            }"
+        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 360,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "            // parse location from user input"
+        "content": "            if (input.contains(\"/\")) {"
       },
       {
         "lineNumber": 361,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "            // System.out.print(\"Invalid Location Format.\");"
+        "content": "                location \u003d new OutOfNuS(info[1]);"
       },
       {
         "lineNumber": 362,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "            location \u003d locations.findLocation(input.trim());"
+        "content": "                locations.getLocationList().add(location);"
       },
       {
         "lineNumber": 363,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "            if (location \u003d\u003d null) {"
+        "content": "            }"
       },
       {
         "lineNumber": 364,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "                location \u003d new OutOfNuS(input.trim());"
+        "content": "            // parse location from user input"
       },
       {
         "lineNumber": 365,
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "            }"
+        "content": "            // System.out.print(\"Invalid Location Format.\");"
       },
       {
         "lineNumber": 366,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            location \u003d locations.findLocation(input.trim());"
+      },
+      {
+        "lineNumber": 367,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            if (location \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 368,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "                location \u003d new OutOfNuS(input.trim());"
+      },
+      {
+        "lineNumber": 369,
+        "author": {
+          "gitId": "jiaaaqi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 370,
         "author": {
           "gitId": "madbeez"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 367,
+        "lineNumber": 371,
         "author": {
           "gitId": "madbeez"
         },
         "content": "        return location;"
       },
       {
-        "lineNumber": 368,
+        "lineNumber": 372,
         "author": {
           "gitId": "madbeez"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 369,
+        "lineNumber": 373,
         "author": {
           "gitId": "Lee-Juntong"
         },
         "content": "}"
       },
       {
-        "lineNumber": 370,
+        "lineNumber": 374,
         "author": {
           "gitId": "Lee-Juntong"
         },
@@ -17356,10 +17736,10 @@
       }
     ],
     "authorContributionMap": {
-      "xuche123": 35,
+      "xuche123": 34,
       "madbeez": 75,
-      "Lee-Juntong": 240,
-      "jiaaaqi": 20
+      "Lee-Juntong": 227,
+      "jiaaaqi": 38
     }
   },
   {
@@ -18407,7 +18787,7 @@
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "        File f \u003d new File(\"data/bus_stops.txt\");"
+        "content": "        File f \u003d new File(\"./data/bus_stops.txt\");"
       },
       {
         "lineNumber": 150,
@@ -18582,7 +18962,7 @@
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "        File f \u003d new File(\"data/locations.txt\");"
+        "content": "        File f \u003d new File(\"./data/locations.txt\");"
       },
       {
         "lineNumber": 175,
@@ -18617,7 +18997,7 @@
         "author": {
           "gitId": "jiaaaqi"
         },
-        "content": "            System.out.println(f.getName() + \"not found: \" + e.getMessage());"
+        "content": "            System.out.println(f.getName() + \" not found: \" + e.getMessage());"
       },
       {
         "lineNumber": 180,
