@@ -2208,9 +2208,9 @@
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "riazaham"
+          "gitId": "samuellleow"
         },
-        "content": "            commandType \u003d new TeamMembersListCommand();"
+        "content": "            commandType \u003d new TeamMembersListCommand(isHomeView, projectIndex);"
       },
       {
         "lineNumber": 212,
@@ -2405,9 +2405,9 @@
     "authorContributionMap": {
       "thatseant": 70,
       "samuelchristopher": 10,
-      "samuellleow": 54,
+      "samuellleow": 55,
       "shreytheshreyas": 44,
-      "riazaham": 60
+      "riazaham": 59
     }
   },
   {
@@ -3214,9 +3214,9 @@
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "shreytheshreyas"
+          "gitId": "samuellleow"
         },
-        "content": "                projectIndex \u003d Integer.parseInt(getHashValue(paramsList,\"p\"));"
+        "content": "                projectIndex \u003d Integer.parseInt(getHashValue(paramsList,\"p\")) - 1;"
       },
       {
         "lineNumber": 30,
@@ -3354,47 +3354,54 @@
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "shreytheshreyas"
+          "gitId": "samuellleow"
         },
-        "content": "        return requiredMember + \" assigned to project \" + requiredMember.getAssignedProjectId();"
+        "content": "        projects.get(projectIndex).addTeamMemberToProject(requiredMember);"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "shreytheshreyas"
+          "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "        return requiredMember + \" assigned to Project \\\"\" + projects.get(projectIndex).getProjectName() + \"\\\"\";"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "shreytheshreyas"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "shreytheshreyas"
         },
-        "content": "    public Boolean isExit() {"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "shreytheshreyas"
         },
-        "content": "        return false;"
+        "content": "    public Boolean isExit() {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "shreytheshreyas"
         },
-        "content": "    }"
+        "content": "        return false;"
       },
       {
         "lineNumber": 55,
+        "author": {
+          "gitId": "shreytheshreyas"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
         "author": {
           "gitId": "shreytheshreyas"
         },
@@ -3402,7 +3409,8 @@
       }
     ],
     "authorContributionMap": {
-      "shreytheshreyas": 55
+      "samuellleow": 3,
+      "shreytheshreyas": 53
     }
   },
   {
@@ -4456,173 +4464,257 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "    private boolean isHomeView;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "riazaham"
+          "gitId": "samuellleow"
         },
-        "content": "    public TeamMembersListCommand() {"
+        "content": "    private int projectIndex;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "    public TeamMembersListCommand(boolean isHomeView, int projectIndex) {"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "riazaham"
+          "gitId": "samuellleow"
         },
-        "content": "    public String executeCommand(ArrayList\u003cProject\u003e projects, ArrayList\u003cTeamMember\u003e teamMembers) {"
+        "content": "        this.isHomeView \u003d isHomeView;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "riazaham"
+          "gitId": "samuellleow"
         },
-        "content": "        if (teamMembers.size() \u003d\u003d 0) {"
+        "content": "        this.projectIndex \u003d projectIndex;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": "            return \"No team members have been added.\";"
+        "content": "    }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "riazaham"
         },
-        "content": ""
+        "content": "    public String executeCommand(ArrayList\u003cProject\u003e projects, ArrayList\u003cTeamMember\u003e teamMembers) {"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "riazaham"
         },
-        "content": "        String listOfMembers \u003d \"\";"
+        "content": "        if (teamMembers.size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": "        int i \u003d 0;"
+        "content": "            return \"No team members have been added.\";"
       },
       {
         "lineNumber": 23,
-        "author": {
-          "gitId": "riazaham"
-        },
-        "content": "        for (TeamMember member : teamMembers) {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "shreytheshreyas"
-        },
-        "content": "            String assignmentStatus \u003d (member.getAssignedProjectId() \u003d\u003d 0) ? \"Not assigned to a project \""
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "shreytheshreyas"
-        },
-        "content": "                                    : \"assigned to project \" + member.getAssignedProjectId();"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "shreytheshreyas"
-        },
-        "content": "            String memberLine \u003d (i + 1) + \". \" + member.getName() + \": \\t\" + assignmentStatus + \"\\n\";"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "samuelchristopher"
-        },
-        "content": "            i++;"
-      },
-      {
-        "lineNumber": 28,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 24,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        String listOfMembers \u003d \"List of members:\";"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": ""
+        "content": "        int i \u003d 0;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        if (isHomeView) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "riazaham"
+        },
+        "content": "            for (TeamMember member : teamMembers) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "                String assignmentStatus \u003d (member.getAssignedProjectId() \u003d\u003d -1) ? \"Not assigned to a project \""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "                        : \"Assigned to Project \\\"\""
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "samuellleow"
         },
-        "content": "        return listOfMembers;"
+        "content": "                        + projects.get(member.getAssignedProjectId()).getProjectName() + \"\\\"\";"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "                listOfMembers +\u003d \"\\n\" + (i + 1) + \". \" + member.getName() + \": \\t\" + assignmentStatus;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": ""
+        "content": "                i++;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "samuelchristopher"
         },
-        "content": "    public Boolean isExit() {"
+        "content": "            }"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "samuelchristopher"
+          "gitId": "samuellleow"
         },
-        "content": "        return false;"
+        "content": "        } else {"
       },
       {
         "lineNumber": 35,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            // There is no need for catch statement here since I am already inside a project."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            ArrayList\u003cTeamMember\u003e teamMembersInSelectedProject \u003d projects.get(projectIndex).getTeamMembers();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            for (TeamMember member : teamMembersInSelectedProject) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "                listOfMembers +\u003d \"\\n\" + (i + 1) + \". \" + member.getName();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "                i++;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "samuelchristopher"
+        },
+        "content": "        return listOfMembers;"
+      },
+      {
+        "lineNumber": 43,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 44,
+        "author": {
+          "gitId": "samuelchristopher"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "samuelchristopher"
+        },
+        "content": "    public Boolean isExit() {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "samuelchristopher"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "samuelchristopher"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
         "author": {
           "gitId": "samuelchristopher"
         },
@@ -4630,9 +4722,9 @@
       }
     ],
     "authorContributionMap": {
-      "samuelchristopher": 25,
-      "shreytheshreyas": 3,
-      "riazaham": 8
+      "samuelchristopher": 22,
+      "samuellleow": 19,
+      "riazaham": 7
     }
   },
   {
@@ -9893,9 +9985,9 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "shreytheshreyas"
+          "gitId": "samuellleow"
         },
-        "content": "        assignedProjectId \u003d 0;"
+        "content": "        assignedProjectId \u003d -1;"
       },
       {
         "lineNumber": 10,
@@ -10033,7 +10125,8 @@
     ],
     "authorContributionMap": {
       "samuelchristopher": 13,
-      "shreytheshreyas": 10,
+      "samuellleow": 1,
+      "shreytheshreyas": 9,
       "riazaham": 5
     }
   },
@@ -10449,537 +10542,607 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "shreytheshreyas"
+          "gitId": "samuellleow"
         },
-        "content": "    //private static final String TICK_MARK \u003d \"\\u2713\";"
+        "content": "    private ArrayList\u003cTeamMember\u003e teamMembers;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "shreytheshreyas"
         },
-        "content": "    //private static final String CROSS_MARK \u003d \"\\u2718\";"
+        "content": "    //private static final String TICK_MARK \u003d \"\\u2713\";"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "shreytheshreyas"
         },
-        "content": ""
+        "content": "    //private static final String CROSS_MARK \u003d \"\\u2718\";"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "samuellleow"
+          "gitId": "shreytheshreyas"
         },
-        "content": "    public Project(String projectName) {"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        this.projectName \u003d projectName;"
+        "content": "    public Project(String projectName) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        this.isDone \u003d false;"
+        "content": "        this.projectName \u003d projectName;"
       },
       {
         "lineNumber": 23,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 24,
         "author": {
           "gitId": "thatseant"
         },
         "content": "        this.tasks \u003d new ArrayList\u003c\u003e();"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 25,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        this.teamMembers \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "riazaham"
         },
         "content": "        this.projectDescription \u003d \"\u003cproject description empty\u003e\";"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 27,
         "author": {
           "gitId": "samuellleow"
         },
         "content": "        this.projectDeadline \u003d null;"
       },
       {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "samuellleow"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "samuellleow"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 28,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    public int compareTo(Project project) {"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        if (getProjectDeadline() \u003d\u003d null || project.getProjectDeadline() \u003d\u003d null) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "            return 0;"
+        "content": "    public int compareTo(Project project) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        }"
+        "content": "        if (getProjectDeadline() \u003d\u003d null || project.getProjectDeadline() \u003d\u003d null) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        return getProjectDeadline().compareTo(project.getProjectDeadline());"
+        "content": "            return 0;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "        return getProjectDeadline().compareTo(project.getProjectDeadline());"
       },
       {
         "lineNumber": 36,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
         "author": {
           "gitId": "thatseant"
         },
         "content": "    public Task getTask(int taskIndex) {"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 39,
         "author": {
           "gitId": "thatseant"
         },
         "content": "        return tasks.get(taskIndex);"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 40,
         "author": {
           "gitId": "riazaham"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 41,
         "author": {
           "gitId": "riazaham"
         },
         "content": ""
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 42,
         "author": {
           "gitId": "riazaham"
         },
         "content": "    public void addTask(Task task) {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 43,
         "author": {
           "gitId": "thatseant"
         },
         "content": "        tasks.add(task);"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 44,
         "author": {
           "gitId": "shreytheshreyas"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "thatseant"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "thatseant"
-        },
-        "content": "    public void deleteTask(int taskIndex) {"
-      },
-      {
         "lineNumber": 45,
         "author": {
           "gitId": "thatseant"
         },
-        "content": "        tasks.remove(taskIndex);"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "thatseant"
         },
-        "content": "    }"
+        "content": "    public void deleteTask(int taskIndex) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "thatseant"
         },
-        "content": ""
+        "content": "        tasks.remove(taskIndex);"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "samuellleow"
+          "gitId": "thatseant"
         },
-        "content": "    public void addDescription(String projectDescription) {"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "samuellleow"
+          "gitId": "thatseant"
         },
-        "content": "        this.projectDescription \u003d projectDescription;"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "    public void addDescription(String projectDescription) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "        this.projectDescription \u003d projectDescription;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    public String getDescription() {"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        return projectDescription;"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "    public String getDescription() {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "        return projectDescription;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    public String getProjectName() {"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        return projectName;"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "    public String getProjectName() {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "        return projectName;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    public void addProjectDeadline(LocalDate date) {"
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        this.projectDeadline \u003d date;"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "    public void addProjectDeadline(LocalDate date) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "        this.projectDeadline \u003d date;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    public LocalDate getProjectDeadline() {"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        return this.projectDeadline;"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "    public LocalDate getProjectDeadline() {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": ""
+        "content": "        return this.projectDeadline;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "     * Returns details of the specified task."
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "     *"
+        "content": "    public ArrayList\u003cTeamMember\u003e getTeamMembers() {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "     * @return Details of Project"
+        "content": "        return this.teamMembers;"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    public String toString() {"
+        "content": "    public void addTeamMemberToProject(TeamMember addedMember) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        if (!projectDescription.equals(\"\") \u0026 projectDeadline !\u003d null) {"
+        "content": "        teamMembers.add(addedMember);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "            return \"Description: \" + projectDescription + \" | Deadline: \" + projectDeadline;"
+        "content": "    }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        } else if (!projectDescription.equals(\"\") \u0026 projectDeadline \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "            return \"Description: \" + projectDescription + \" | \u003cproject deadline empty\u003e\";"
+        "content": "    /**"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        } else if (projectDeadline !\u003d null) {"
+        "content": "     * Returns details of the specified task."
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "            return \"\u003cproject description empty\u003e | Deadline: \" + projectDeadline;"
+        "content": "     *"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        } else {"
+        "content": "     * @return Details of Project"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "            return \"\u003cproject description empty\u003e | \u003cproject deadline empty\u003e\";"
+        "content": "     */"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "        }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "samuellleow"
         },
-        "content": "    }"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 85,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        if (!projectDescription.equals(\"\") \u0026 projectDeadline !\u003d null) {"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            return \"Description: \" + projectDescription + \" | Deadline: \" + projectDeadline;"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        } else if (!projectDescription.equals(\"\") \u0026 projectDeadline \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            return \"Description: \" + projectDescription + \" | \u003cproject deadline empty\u003e\";"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        } else if (projectDeadline !\u003d null) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            return \"\u003cproject description empty\u003e | Deadline: \" + projectDeadline;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "            return \"\u003cproject description empty\u003e | \u003cproject deadline empty\u003e\";"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "samuellleow"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": ""
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 96,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "    public ArrayList\u003cTask\u003e getTaskList() {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 97,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "        return tasks;"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 98,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 99,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": ""
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 100,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "    public String selectTask(int taskId) {"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 101,
         "author": {
           "gitId": "riazaham"
         },
         "content": "        return tasks.get(taskId).toString();"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 102,
         "author": {
           "gitId": "samuelchristopher"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 103,
         "author": {
           "gitId": "samuellleow"
         },
@@ -10989,7 +11152,7 @@
     "authorContributionMap": {
       "samuelchristopher": 8,
       "thatseant": 12,
-      "samuellleow": 61,
+      "samuellleow": 71,
       "shreytheshreyas": 4,
       "riazaham": 8
     }
@@ -14362,9 +14525,9 @@
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "shreytheshreyas"
+          "gitId": "samuellleow"
         },
-        "content": "        String expectedOutput \u003d \"Member 2 assigned to project 1\";"
+        "content": "        String expectedOutput \u003d \"Member 2 assigned to Project \\\"Project 1\\\"\";"
       },
       {
         "lineNumber": 52,
@@ -14592,7 +14755,8 @@
       }
     ],
     "authorContributionMap": {
-      "shreytheshreyas": 83
+      "samuellleow": 1,
+      "shreytheshreyas": 82
     }
   },
   {
