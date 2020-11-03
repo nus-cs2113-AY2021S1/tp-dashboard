@@ -18738,9 +18738,9 @@
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "                ui.showToUser(\"You have cleared all diet sessions!\");"
+        "content": "                ui.showToUser(\"Alright, your diet sessions have been cleared.\");"
       },
       {
         "lineNumber": 30,
@@ -18814,9 +18814,9 @@
       }
     ],
     "authorContributionMap": {
-      "zsk612": 23,
+      "zsk612": 22,
       "tienkhoa16": 5,
-      "CFZeon": 11
+      "CFZeon": 12
     }
   },
   {
@@ -21947,170 +21947,170 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "CFZeon"
+          "gitId": "tienkhoa16"
         },
-        "content": "import exceptions.profile.InvalidCaloriesException;"
+        "content": "import storage.diet.DietStorage;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "tienkhoa16"
+          "gitId": "zsk612"
         },
-        "content": "import storage.diet.DietStorage;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "import ui.diet.dietsession.DietSessionUi;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "zsk612"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "zsk612"
-        },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 11,
         "author": {
           "gitId": "CFZeon"
         },
         "content": "import java.util.logging.Level;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 12,
         "author": {
           "gitId": "CFZeon"
         },
         "content": ""
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 13,
         "author": {
           "gitId": "wgzesg"
         },
         "content": "public class FoodItemAdd extends Command {"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 14,
         "author": {
           "gitId": "tienkhoa16"
         },
         "content": ""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "zsk612"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "zsk612"
         },
         "content": "     * Overrides execute for add command to add food items."
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "zsk612"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "     * @param input user input for command"
+        "content": "     * @param input    user input for command"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "zsk612"
         },
         "content": "     * @param foodList arraylist that stored all the food items"
       },
       {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "     * @param storage  storage for diet session"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "     * @param index    Integer variable that shows the index of the session"
+      },
+      {
         "lineNumber": 22,
-        "author": {
-          "gitId": "zsk612"
-        },
-        "content": "     * @param storage storage for diet session"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "zsk612"
-        },
-        "content": "     * @param index Integer variable that shows the index of the session"
-      },
-      {
-        "lineNumber": 24,
         "author": {
           "gitId": "zsk612"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "zsk612"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "zsk612"
         },
         "content": "    public void execute(String input, ArrayList\u003cFood\u003e foodList, DietStorage storage, Integer index) {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 25,
         "author": {
           "gitId": "zsk612"
         },
         "content": "        DietSessionParser parser \u003d new DietSessionParser();"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "tienkhoa16"
         },
         "content": ""
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 27,
         "author": {
           "gitId": "zsk612"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 28,
         "author": {
           "gitId": "zsk612"
         },
         "content": "            assert !input.isEmpty();"
       },
       {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "CFZeon"
+        },
+        "content": "            StringBuilder userOutput \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "CFZeon"
+        },
+        "content": "            Double calories \u003d parser.processFoodCalories(input);"
+      },
+      {
         "lineNumber": 31,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "            Food temp \u003d new Food(parser.processFoodName(input), parser.processFoodCalories(input));"
+        "content": "            Food temp \u003d new Food(parser.processFoodName(input), Math.min(calories, 200000));"
       },
       {
         "lineNumber": 32,
@@ -22122,124 +22122,159 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "            ui.showToUser(\"Yay! You have added \" + temp.toString());"
+        "content": "            if (calories \u003e 200000) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "CFZeon"
         },
-        "content": "            logger.log(Level.INFO, \"Added food to arraylist\");"
+        "content": "                userOutput.append(\"Your calories for this food item seems a little high, \""
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "                        + \"so I\u0027ve set it to 200,000.\\n\\t \");"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "            ui.showToUser(\"Wrong format, please enter in the format:\\n\\t \""
+        "content": "            }"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "                    + \"add [FOOD_NAME] /c [CALORIES]\");"
+        "content": "            userOutput.append(\"Yay! You have added \" + temp.toString());"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "            logger.log(Level.WARNING, \"Did not put food name or calories\");"
+        "content": "            ui.showToUser(userOutput.toString());"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            logger.log(Level.INFO, \"Added food to arraylist\");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "            ui.showToUser(\"Please input a number for calories.\");"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "            logger.log(Level.WARNING, \"Put calories in a wrong format\");"
+        "content": "            ui.showToUser(\"Wrong format, please enter in the format:\\n\\t \""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "CFZeon"
+          "gitId": "zsk612"
         },
-        "content": "        } catch (NegativeCaloriesException e) {"
+        "content": "                    + \"add [FOOD_NAME] /c [CALORIES]\");"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "CFZeon"
+          "gitId": "zsk612"
         },
-        "content": "            ui.showToUser(\"Please enter a positive number for calories!\");"
+        "content": "            logger.log(Level.WARNING, \"Did not put food name or calories\");"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "            logger.log(Level.WARNING, \"Put negative calories\");"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "        } catch (NoNameException e) {"
+        "content": "            ui.showToUser(\"Please input a number for calories.\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "            ui.showToUser(\"Please enter food name!\");"
+        "content": "            logger.log(Level.WARNING, \"Put calories in a wrong format\");"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "            logger.log(Level.WARNING, \"no food name\");"
+        "content": "        } catch (NegativeCaloriesException e) {"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "        }"
+        "content": "            ui.showToUser(\"Please enter a positive number for calories!\");"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "zsk612"
         },
-        "content": "    }"
+        "content": "            logger.log(Level.WARNING, \"Put negative calories\");"
       },
       {
         "lineNumber": 50,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "        } catch (NoNameException e) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "            ui.showToUser(\"Please enter food name!\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "            logger.log(Level.WARNING, \"no food name\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "zsk612"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
         "author": {
           "gitId": "zsk612"
         },
@@ -22247,10 +22282,10 @@
       }
     ],
     "authorContributionMap": {
-      "zsk612": 36,
+      "zsk612": 33,
       "tienkhoa16": 4,
       "wgzesg": 1,
-      "CFZeon": 9
+      "CFZeon": 17
     }
   },
   {
@@ -22463,9 +22498,9 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "zsk612"
+          "gitId": "CFZeon"
         },
-        "content": "            ui.showToUser(\"Oops you have cleared all the food items.\");"
+        "content": "            ui.showToUser(\"Alright, your food items have been cleared.\");"
       },
       {
         "lineNumber": 31,
@@ -22511,8 +22546,9 @@
       }
     ],
     "authorContributionMap": {
-      "zsk612": 33,
-      "tienkhoa16": 3
+      "zsk612": 32,
+      "tienkhoa16": 3,
+      "CFZeon": 1
     }
   },
   {
@@ -35923,7 +35959,7 @@
         "author": {
           "gitId": "CFZeon"
         },
-        "content": "        this.calories \u003d Math.min(calories, 200000);"
+        "content": "        this.calories \u003d calories;"
       },
       {
         "lineNumber": 10,
