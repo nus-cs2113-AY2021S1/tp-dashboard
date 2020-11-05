@@ -21203,63 +21203,63 @@
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            boolean plural \u003d trip.getMaxDay() !\u003d 1;"
+        "content": "            int maxDay \u003d trip.getMaxDay();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            String dayWord \u003d plural ? \"Days\" : \"Day\";"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            list \u003d list.concat("
+        "content": "            if (maxDay \u003d\u003d 0) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                    (trip.getIndex() + 1) + \". \" + trip.getMaxDay() + \" \" + dayWord + \" - \" + trip.getName() + \"\\n\""
+        "content": "                list \u003d list.concat("
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            );"
+        "content": "                        (trip.getIndex() + 1) + \". \" + trip.getName() + \" \" + \"[No places or expenses added yet]\" + \"\\n\""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        }"
+        "content": "                );"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": ""
+        "content": "            } else {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        return list;"
+        "content": "                boolean plural \u003d maxDay !\u003d 1;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    }"
+        "content": "                String dayWord \u003d plural ? \"Days\" : \"Day\";"
       },
       {
         "lineNumber": 41,
@@ -21273,199 +21273,262 @@
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    public void setDefaultTripIndex(int index) {"
+        "content": "                list \u003d list.concat("
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        this.defaultTripIndex \u003d index;"
+        "content": "                        (trip.getIndex() + 1) + \". \" + trip.getName() + \" [\" + trip.getMaxDay() + \" \" + dayWord + \"]\\n\""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    }"
+        "content": "                );"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    public Trip getCurrentTrip() {"
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        if (this.currentTrip \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            try {"
+        "content": "        return list;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                this.currentTrip \u003d tripList.get(this.defaultTripIndex);"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            } catch (IndexOutOfBoundsException | NullPointerException p) {"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                return null;"
+        "content": "    public void setDefaultTripIndex(int index) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            }"
+        "content": "        this.defaultTripIndex \u003d index;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        return this.currentTrip;"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    }"
+        "content": "    public Trip getCurrentTrip() {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": ""
+        "content": "        if (this.currentTrip \u003d\u003d null) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    public void setCurrentTripFromIndex(int index) {"
+        "content": "            try {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        this.currentTrip \u003d this.tripList.get(index);"
+        "content": "                this.currentTrip \u003d tripList.get(this.defaultTripIndex);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    }"
+        "content": "            } catch (IndexOutOfBoundsException | NullPointerException p) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": ""
+        "content": "                return null;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    public void loadCurrentTripFromFile() {"
+        "content": "            }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        if (currentTrip.getIndex() \u003c this.getTripList().size()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            currentTrip \u003d this.getTripList().get(currentTrip.getIndex());"
+        "content": "        return this.currentTrip;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            Trip tempTrip \u003d storage.loadTripFromFile(currentTrip);"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            assert tempTrip !\u003d null;"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            currentTrip.setPlaceList(tempTrip.getPlaceListObject());"
+        "content": "    public void setCurrentTripFromIndex(int index) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "            currentTrip.setExpenseList(tempTrip.getExpenseListObject());"
+        "content": "        this.currentTrip \u003d this.tripList.get(index);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 70,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    public void loadCurrentTripFromFile() {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        if (currentTrip.getIndex() \u003c this.getTripList().size()) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "            currentTrip \u003d this.getTripList().get(currentTrip.getIndex());"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "            Trip tempTrip \u003d storage.loadTripFromFile(currentTrip);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "            assert tempTrip !\u003d null;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "            currentTrip.setPlaceList(tempTrip.getPlaceListObject());"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "            currentTrip.setExpenseList(tempTrip.getExpenseListObject());"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
         "author": {
           "gitId": "ivanderjmw"
         },
@@ -21473,7 +21536,7 @@
       }
     ],
     "authorContributionMap": {
-      "ivanderjmw": 70
+      "ivanderjmw": 79
     }
   },
   {
@@ -23029,49 +23092,49 @@
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "        String expectedTripListString \u003d \"1. 1 Day - Chigago run\\n\""
+        "content": "        String expectedTripListString \u003d \"1. Chigago run [1 Day]\\n\""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                + \"2. 2 Days - Jakarta Fest\\n\""
+        "content": "                + \"2. Jakarta Fest [2 Days]\\n\""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                + \"3. 3 Days - Malaysia\\n\""
+        "content": "                + \"3. Malaysia [3 Days]\\n\""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                + \"4. 4 Days - Malaysia\\n\""
+        "content": "                + \"4. Malaysia [4 Days]\\n\""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                + \"5. 5 Days - Australia\\n\""
+        "content": "                + \"5. Australia [5 Days]\\n\""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                + \"6. 6 Days - America\\n\""
+        "content": "                + \"6. America [6 Days]\\n\""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "ivanderjmw"
         },
-        "content": "                + \"7. 7 Days - Africa\\n\";"
+        "content": "                + \"7. Africa [7 Days]\\n\";"
       },
       {
         "lineNumber": 65,
@@ -30166,11 +30229,874 @@
         "author": {
           "gitId": "ivanderjmw"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    void getMaxDay_emptyPlaceAndExpenses_zero() throws TrippieException, ParseException {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        DateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        Trip trip \u003d new Trip(1, \"Check\", df.parse(\"01-01-2020\"));"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        assertEquals(trip.getMaxDay(), 0);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    void getMaxDay_withPlaceList_correct() throws TrippieException, ParseException {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        DateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        PlaceList placeList \u003d new PlaceList();"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name\", 9999, 200, 300));"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name1\", 99999, 200, 300));"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name2\", 999999, 200, 300));"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name3\", 9999999, 200, 300));"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        Trip trip \u003d new Trip(1, \"Check0\", df.parse(\"01-01-2020\"));"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.setPlaceList(placeList);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.updateMaxDay();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        assertEquals(9999999, trip.getMaxDay());"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    void getMaxDay_withExpenseListOnly_correct() throws TrippieException, ParseException {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        DateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        ExpenseList expenseList \u003d new ExpenseList();"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something\","
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                9));"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something2\","
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                99));"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something3\","
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                999));"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something4\","
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                9999));"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        Trip trip \u003d new Trip(1, \"Check1\", df.parse(\"01-01-2020\"));"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.setExpenseList(expenseList);"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.updateMaxDay();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        assertEquals(9999, trip.getMaxDay());"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    void getMaxDay_withExpenseListAndPlaceList_correct() throws TrippieException, ParseException {"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        DateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        PlaceList placeList \u003d new PlaceList();"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name\", 9999, 200, 300));"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name1\", 99999, 200, 300));"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name2\", 999999, 200, 300));"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        placeList.getPlaceList().add(new Place(\"A name3\", 9999999, 200, 300));"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        ExpenseList expenseList \u003d new ExpenseList();"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something\","
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                9));"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something2\","
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                99));"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something3\","
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                999));"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        expenseList.getExpenseList().add(new Expense("
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                \"Something4\","
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                Float.valueOf(\"1.231\"),"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "                9999));"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        Trip trip \u003d new Trip(1, \"Check2\", df.parse(\"01-01-2020\"));"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.setPlaceList(placeList);"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.setExpenseList(expenseList);"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trip.updateMaxDay();"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        assertEquals(9999999, trip.getMaxDay());"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "ivanderjmw": 77
+      "ivanderjmw": 171
+    }
+  },
+  {
+    "path": "src/test/java/seedu/trippie/data/TrippieDataTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "package seedu.trippie.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import seedu.trippie.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import seedu.trippie.exception.TrippieException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import java.text.DateFormat;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import java.text.ParseException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import java.text.SimpleDateFormat;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "class TrippieDataTest {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    void list_singleTrip_success() throws TrippieException, ParseException {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        Storage storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        TrippieData trippieData \u003d new TrippieData(storage);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        DateFormat df \u003d new SimpleDateFormat(\"dd-MM-yyyy\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        Trip trip \u003d new Trip(0, \"TripName\", df.parse(\"01-01-2020\"));"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        trippieData.getTripList().add(trip);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "        assertEquals(\"1. TripName [No places or expenses added yet]\\n\", trippieData.list());"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "ivanderjmw"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "ivanderjmw": 28
     }
   },
   {
