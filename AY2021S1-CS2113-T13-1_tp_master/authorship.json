@@ -12192,14 +12192,14 @@
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        timetable.addEvent(event);"
+        "content": "        ArrayList\u003cEvent\u003e clashes \u003d timetable.getClashingEvents(event);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        ArrayList\u003cEvent\u003e clashes \u003d timetable.getClashingEvents(event);"
+        "content": "        timetable.addEvent(event);"
       },
       {
         "lineNumber": 57,
@@ -36062,77 +36062,77 @@
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        if (checkClash(event.startDateTime, event.endDateTime, startDateTime)) {"
+        "content": "        if (startDateTime.equals(endDateTime)"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "            return !startDateTime.equals(event.endDateTime);"
+        "content": "                \u0026\u0026 (startDateTime.equals(event.startDateTime) || startDateTime.equals(event.endDateTime))) {"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        if (checkClash(startDateTime, endDateTime, event.startDateTime)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "            return !event.startDateTime.equals(endDateTime);"
+        "content": "        if (checkClash(event.startDateTime, event.endDateTime, startDateTime)) {"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        }"
+        "content": "            return !startDateTime.equals(event.endDateTime);"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        return false;"
+        "content": "        }"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    }"
+        "content": "        if (checkClash(startDateTime, endDateTime, event.startDateTime)) {"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": ""
+        "content": "            return !event.startDateTime.equals(endDateTime);"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    private boolean checkClash(LocalDateTime startDateTime, LocalDateTime endDateTime, LocalDateTime timeToCheck) {"
+        "content": "        }"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        return (timeToCheck.compareTo(startDateTime) \u003e\u003d 0 \u0026\u0026 timeToCheck.compareTo(endDateTime) \u003c\u003d 0);"
+        "content": "        return false;"
       },
       {
         "lineNumber": 261,
@@ -36153,262 +36153,290 @@
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    /**"
+        "content": "    private boolean checkClash(LocalDateTime startDateTime, LocalDateTime endDateTime, LocalDateTime timeToCheck) {"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "     * Converts an Event to a format for a reminder."
+        "content": "        return (timeToCheck.compareTo(startDateTime) \u003e\u003d 0 \u0026\u0026 timeToCheck.compareTo(endDateTime) \u003c\u003d 0);"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "     * @return Reduced String representation of an Event."
+        "content": ""
       },
       {
         "lineNumber": 267,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    public String toReminderString() {"
+        "content": "     * Converts an Event to a format for a reminder."
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String titleString \u003d \"Event: \" + title;"
+        "content": "     *"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String dateString \u003d \"Date: \" + startDateTime.toLocalDate().toString()"
+        "content": "     * @return Reduced String representation of an Event."
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "                + \"\\tTime: \" + startDateTime.toLocalTime().toString();"
+        "content": "     */"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        return titleString + Formatter.LS + dateString;"
+        "content": "    public String toReminderString() {"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    }"
+        "content": "        String titleString \u003d \"Event: \" + title;"
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": ""
+        "content": "        String dateString \u003d \"Date: \" + startDateTime.toLocalDate().toString()"
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    @Override"
+        "content": "                + \"\\tTime: \" + startDateTime.toLocalTime().toString();"
       },
       {
         "lineNumber": 276,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    public String toString() {"
+        "content": "        return titleString + Formatter.LS + dateString;"
       },
       {
         "lineNumber": 277,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String titleString \u003d \"Event: \" + title;"
+        "content": "    }"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String dateString \u003d \"Date: \" + startDateTime.toLocalDate().toString()"
+        "content": ""
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "                + \"\\tTime: \" + startDateTime.toLocalTime().toString();"
+        "content": "    @Override"
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String remindString \u003d \"Reminder: \" + isToRemind;"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String repeatingString \u003d \"Repeating: \" + isRecurring;"
+        "content": "        String titleString \u003d \"Event: \" + title;"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        String lineSeparator \u003d Formatter.LS;"
+        "content": "        String dateString \u003d \"Date: \" + startDateTime.toLocalDate().toString()"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        return titleString + lineSeparator + dateString + lineSeparator + remindString"
+        "content": "                + \"\\tTime: \" + startDateTime.toLocalTime().toString();"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "                + lineSeparator + repeatingString;"
+        "content": "        String remindString \u003d \"Reminder: \" + isToRemind;"
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    }"
+        "content": "        String repeatingString \u003d \"Repeating: \" + isRecurring;"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": ""
+        "content": "        String lineSeparator \u003d Formatter.LS;"
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    @Override"
+        "content": "        return titleString + lineSeparator + dateString + lineSeparator + remindString"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    public int compareTo(Event o) {"
+        "content": "                + lineSeparator + repeatingString;"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        return startDateTime.compareTo(o.startDateTime);"
+        "content": "    }"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 292,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    @Override"
+        "content": "    public int compareTo(Event o) {"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    public boolean equals(Object o) {"
+        "content": "        return startDateTime.compareTo(o.startDateTime);"
       },
       {
         "lineNumber": 294,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        if (o instanceof Event) {"
+        "content": "    }"
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "            Event event \u003d (Event) o;"
+        "content": ""
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "            return (occursDuringEvent(event) \u0026\u0026 title.equalsIgnoreCase(event.title));"
+        "content": "    @Override"
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        }"
+        "content": "    public boolean equals(Object o) {"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "        return false;"
+        "content": "        if (o instanceof Event) {"
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "brandonywl"
         },
-        "content": "    }"
+        "content": "            Event event \u003d (Event) o;"
       },
       {
         "lineNumber": 300,
+        "author": {
+          "gitId": "brandonywl"
+        },
+        "content": "            return (occursDuringEvent(event) \u0026\u0026 title.equalsIgnoreCase(event.title));"
+      },
+      {
+        "lineNumber": 301,
+        "author": {
+          "gitId": "brandonywl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 302,
+        "author": {
+          "gitId": "brandonywl"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 303,
+        "author": {
+          "gitId": "brandonywl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 304,
         "author": {
           "gitId": "brandonywl"
         },
@@ -36417,7 +36445,7 @@
     ],
     "authorContributionMap": {
       "Chongjx": 6,
-      "brandonywl": 293,
+      "brandonywl": 297,
       "Nazryl": 1
     }
   },

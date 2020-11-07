@@ -9256,7 +9256,7 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "# Slightlyharp\u0027s Project Portgolio Page"
+        "content": "# Slightlyharp\u0027s Project Portfolio Page"
       },
       {
         "lineNumber": 2,
@@ -26711,7 +26711,7 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    + \"Please enter a valid Timetable Commaand or input \\\"help\\\" to find out the correct format!\\n\";"
+        "content": "                    + \"Please enter a valid Timetable Command or input \\\"help\\\" to find out the correct format!\\n\";"
       },
       {
         "lineNumber": 17,
@@ -27121,6 +27121,1499 @@
     }
   },
   {
+    "path": "src/main/java/timetable/TimeTableCommand.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "package timetable;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "import java.time.DayOfWeek;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "import java.time.LocalDateTime;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "public class TimeTableCommand {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static Lesson addClass() throws InvalidDayOfTheWeekException {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        System.out.println(\"Please enter module code: \");"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        boolean isInvalid \u003d true;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        String moduleCode \u003d null;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        while (isInvalid) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            moduleCode \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            if (moduleCode.length() \u003e 7) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"The code exceeded the maximum number of characters allowed. Please enter again: \");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        isInvalid \u003d true;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        System.out.println(\"Is the class online? (yes/no)\");"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        boolean isOnline \u003d false;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        while (isInvalid) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            String status \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            if (status.equals(\"yes\") || status.equals(\"online\")) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isOnline \u003d true;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Please enter zoom link: \");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } else if (status.equals(\"no\") || status.equals(\"offline\")) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Please enter the venue: \");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Invalid command command\\n Is the class online? (yes/no)\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        final String linkOrVenue \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        System.out.println(\"What are the days and time of the lesson?\\n(e.g. Monday 5-8pm, Tuesday 6-9pm)\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        final String [] periods \u003d in.nextLine().split(\", \");"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        System.out.println(\"How many weeks is the lesson?\");"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int repeat \u003d Integer.parseInt(in.nextLine());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        isInvalid \u003d true;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        LocalDateTime startDay \u003d null;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        while (isInvalid) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Which date does the lesson start? (eg. 26/10/2020)\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                startDay \u003d getDate(in.nextLine());"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"You have entered an invalid date format. Please try again\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        Lesson lesson \u003d new Lesson(moduleCode, linkOrVenue, isOnline, repeat);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        addClassPeriods(periods, repeat, startDay, lesson);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        return lesson;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static void addClassPeriods(String[] periods, int repeat, LocalDateTime startDay,"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                                       Lesson lesson) throws InvalidDayOfTheWeekException {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int startDayNum \u003d startDay.getDayOfWeek().getValue();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        for (int i \u003d 0; i \u003c repeat; i++) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            for (String period : periods) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                String [] dayAndTime \u003d period.split((\" \"));"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                String day \u003d dayAndTime[0].toUpperCase().replace(\" \", \"\");"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                String time \u003d dayAndTime[1];"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                int dayNum;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    dayNum \u003d DayOfWeek.valueOf(day).getValue();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                } catch (IllegalArgumentException e) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    throw new InvalidDayOfTheWeekException();"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                int startTime \u003d Integer.parseInt(time.split(\"-\")[0]);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                int endTime \u003d Integer.parseInt(time.split(\"-\")[1].replaceAll(\"[^0-9]\", \"\"));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                if (time.contains(\"pm\")) {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    startTime +\u003d 12;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    endTime +\u003d 12;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                int daysDifference \u003d dayNum - startDayNum;"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                if (daysDifference \u003c 0) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    daysDifference +\u003d 7;"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                LocalDateTime startDateTime \u003d startDay.plusDays(daysDifference).plusHours(startTime).plusDays(7 * i);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                LocalDateTime endDateTime \u003d startDateTime.withHour(endTime).plusDays(7 * i);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                Duration duration \u003d new Duration(startDateTime, endDateTime);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                lesson.addPeriod(duration);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static Activity addActivity() {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        System.out.println(\"Please enter the activity: \");"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        final String activityName \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        boolean isInvalid \u003d true;"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        System.out.println(\"Is the activity online? (yes/no)\");"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        boolean isOnline \u003d false;"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        while (isInvalid) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            String status \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            if (status.equals(\"yes\") || status.equals(\"online\")) {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isOnline \u003d true;"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Please enter zoom link: \");"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } else if (status.equals(\"no\") || status.equals(\"offline\")) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Please enter the venue: \");"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"Invalid command!\\n Is the class online? (yes/no)\");"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        final String linkOrVenue \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        isInvalid \u003d true;"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        LocalDateTime date \u003d null;"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        while (isInvalid) {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            System.out.println(\"Please enter the date of your activity (e.g. 28/10/2020): \");"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                date \u003d getDate(in.nextLine());"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"You have entered an invalid date format. Please try again\");"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        isInvalid \u003d true;"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        String start;"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        String end;"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int startTime \u003d 0;"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int endTime \u003d 0;"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        while (isInvalid) {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            System.out.println(\"Please enter the time of your activity (e.g. 6-9pm): \");"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            String time \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                start \u003d time.split(\"-\")[0];"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                end \u003d time.split(\"-\")[1];"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                startTime \u003d Integer.parseInt(start.replaceAll(\"[^0-9]\", \"\"));"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                endTime \u003d Integer.parseInt(end.replaceAll(\"[^0-9]\", \"\"));"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                if (start.contains(\"am\") || start.contains(\"pm\")) {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    if (start.contains(\"pm\") \u0026\u0026 startTime !\u003d 12) {"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        startTime +\u003d 12;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    } else if (start.contains(\"am\") \u0026\u0026 startTime \u003d\u003d 12) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        startTime \u003d 0;"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    if (end.contains(\"pm\") \u0026\u0026 startTime !\u003d 12) {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        endTime +\u003d 12;"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    } else if (end.contains(\"am\") \u0026\u0026 startTime \u003d\u003d 12) {"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        startTime \u003d 0;"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                } else if (end.contains(\"pm\")) {"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    endTime +\u003d 12;"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    if (startTime !\u003d 12) {"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        startTime +\u003d 12;"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                if (startTime \u003c endTime) {"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    isInvalid \u003d false;"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                System.out.println(\"You have entered an invalid time. Please try again\");"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        LocalDateTime startDateTime \u003d date.plusHours(startTime);"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        LocalDateTime endDateTime \u003d date.withHour(endTime);"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        Duration duration \u003d new Duration(startDateTime, endDateTime);"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        return new Activity(activityName, isOnline, linkOrVenue, duration);"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static void showLink(DateList dateList) {"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        LocalDate todayDate \u003d LocalDateTime.now().toLocalDate();"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int now \u003d LocalDateTime.now().toLocalTime().getHour() * 100;"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        for (EventList eventList: dateList.dateList) {"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            if (eventList.dateTag.equals(todayDate)) {"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                accessEventList(eventList, todayDate, now);"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                return;"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static void accessEventList(EventList eventList, LocalDate todayDate, int now) {"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        for (Event event: eventList.events) {"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            for (Duration period: event.periods) {"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                if ((period.timeSlot.contains(now) || period.timeSlot.contains(now + 100)"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        || period.timeSlot.contains(now + 200))"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                        \u0026\u0026 period.startDateTime.toLocalDate().equals(todayDate)) {"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                    System.out.print(event.linkOrVenue + \"|\" + event.name + \"\\n\");"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static void showActivities(DateList dateList) {"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        for (Event event: dateList.activities) {"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "            System.out.println(event.name + \"|\" + event.periods.get(0).startDateTime);"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static LocalDateTime getDate(String date) {"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        String [] dateArray \u003d date.split(\"/\");"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int day \u003d Integer.parseInt(dateArray[0]);"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int month \u003d Integer.parseInt(dateArray[1]);"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int year \u003d Integer.parseInt(dateArray[2]);"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        return LocalDateTime.of(year, month, day, 0, 0);"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    public static LocalDateTime getDateTime(String command)throws ArrayIndexOutOfBoundsException {"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        String[] dateTime;"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        String[] date;"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        int fromIndex \u003d command.indexOf(\"from\");"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        dateTime \u003d command.substring(fromIndex + 5).split(\" \");"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        date \u003d dateTime[0].split(\"/\");"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        return LocalDateTime.of(Integer.parseInt(date[2]),Integer.parseInt(date[1]), Integer.parseInt(date[0]),"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "                0,0);"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "slightlyharp": 212
+    }
+  },
+  {
     "path": "src/main/java/timetable/TimeTableParser.java",
     "fileType": "functional-code",
     "lines": [
@@ -27157,105 +28650,105 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.time.DayOfWeek;"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.time.LocalDate;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.time.LocalDateTime;"
+        "content": "public class TimeTableParser {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.util.Scanner;"
+        "content": "    public static void commandParser(String command, DateList dateList, TimeTableStorage storage) {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "        switch (command) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "public class TimeTableParser {"
+        "content": "        case \"show schedule\":"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    public static void commandParser(String command, DateList dateList, TimeTableStorage storage) {"
+        "content": "            System.out.println(Message.printShowSchedule);"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        switch (command) {"
+        "content": "            TablePrinter.printTable(dateList.dateList);"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        case \"show schedule\":"
+        "content": "            return;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            System.out.println(Message.printShowSchedule);"
+        "content": "        case \"show link\":"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            TablePrinter.printTable(dateList.dateList);"
+        "content": "            System.out.println(Message.printShowLink);"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            return;"
+        "content": "            TimeTableCommand.showLink(dateList);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        case \"show link\":"
+        "content": "            return;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            System.out.println(Message.printShowLink);"
+        "content": "        case \"show activity\":"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            showLink(dateList);"
+        "content": "            TimeTableCommand.showActivities(dateList);"
       },
       {
         "lineNumber": 20,
@@ -27269,1739 +28762,584 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        case \"show activity\":"
+        "content": "        default:"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            showActivities(dateList);"
+        "content": "            String[] words \u003d command.split(\" \");"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            return;"
+        "content": "            if (words.length \u003d\u003d 2) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        default:"
+        "content": "                try {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            try {"
+        "content": "                    String action \u003d words[0];"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                String[] words \u003d command.split(\" \");"
+        "content": "                    String type \u003d words[1];"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                String action \u003d words[0];"
+        "content": "                    if (action.equals(\"add\")) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                String type \u003d words[1];"
+        "content": "                        switch (type) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                if (action.equals(\"add\")) {"
+        "content": "                        case \"activity\": {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    switch (type) {"
+        "content": "                            Activity activity \u003d TimeTableCommand.addActivity();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    case \"activity\": {"
+        "content": "                            dateList.addEvent(activity);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        Activity activity \u003d addActivity();"
+        "content": "                            storage.writeFile(activity);"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "slightlyharp"
+          "gitId": "hailqueenflo"
         },
-        "content": "                        dateList.addEvent(activity);"
+        "content": "                            System.out.println(Message.printSuccessfulActivityAddition);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        storage.writeFile(activity);"
+        "content": "                        }"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "hailqueenflo"
+          "gitId": "slightlyharp"
         },
-        "content": "                        System.out.println(Message.printSuccessfulActivityAddition);"
+        "content": "                        break;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    }"
+        "content": "                        case \"class\": {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    break;"
+        "content": "                            Lesson lesson \u003d TimeTableCommand.addClass();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    case \"class\": {"
+        "content": "                            dateList.addEvent(lesson);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        Lesson lesson \u003d addClass();"
+        "content": "                            storage.writeFile(lesson);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        dateList.addEvent(lesson);"
+        "content": "                            System.out.println(Message.printSuccessfulClassAddition);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        storage.writeFile(lesson);"
+        "content": "                        }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        System.out.println(Message.printSuccessfulClassAddition);"
+        "content": "                        break;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    }"
+        "content": "                        default:"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    break;"
+        "content": "                            System.out.print((Message.printInvalidEvent));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    default:"
+        "content": "                        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        System.out.println((Message.printInvalidEvent));"
+        "content": "                    } else {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    }"
+        "content": "                        System.out.print(Message.printInvalidEvent);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                } else {"
+        "content": "                    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                    System.out.println(Message.printInvalidEvent);"
+        "content": "                } catch (ArrayIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                }"
+        "content": "                    System.out.println(\"Input for days and time of the lesson is invalid Please add class again\");"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "slightlyharp"
+          "gitId": "farice9"
         },
-        "content": "            } catch (ArrayIndexOutOfBoundsException e) {"
+        "content": "                    StudyItLog.logger.warning(\"Invalid timetable command: Invalid event input\");"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                System.out.println(Message.printInvalidEvent);"
+        "content": "                } catch (InvalidDayOfTheWeekException e) {"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "farice9"
+          "gitId": "hailqueenflo"
         },
-        "content": "                StudyItLog.logger.warning(\"Invalid timetable command: Invalid event input\");"
+        "content": "                    System.out.println(\"Day of the week input is invalid. Please add the class again.\");"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "slightlyharp"
+          "gitId": "farice9"
         },
-        "content": "            } catch (InvalidDayOfTheWeekException e) {"
+        "content": "                    StudyItLog.logger.warning(\"Invalid timetable command: Invalid day of the week input\");"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "hailqueenflo"
+          "gitId": "slightlyharp"
         },
-        "content": "                System.out.println(\"Day of the week input is invalid. Please add the class again.\");"
+        "content": "                } catch (ClashScheduleException e) {"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "farice9"
+          "gitId": "hailqueenflo"
         },
-        "content": "                StudyItLog.logger.warning(\"Invalid timetable command: Invalid day of the week input\");"
+        "content": "                    System.out.println(\"There is a clash in schedule!\");"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            } catch (ClashScheduleException e) {"
+        "content": "                }"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "hailqueenflo"
+          "gitId": "slightlyharp"
         },
-        "content": "                System.out.println(\"There is a clash in schedule!\");"
+        "content": "            } else {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            }"
+        "content": "                System.out.print(Message.printInvalidEvent);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    public static Lesson addClass() throws InvalidDayOfTheWeekException {"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": ""
       },
       {
         "lineNumber": 65,
-        "author": {
-          "gitId": "farice9"
-        },
-        "content": "        System.out.println(\"Please enter module code: \");"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        boolean isInvalid \u003d true;"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        String moduleCode \u003d null;"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        while (isInvalid) {"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            moduleCode \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            if (moduleCode.length() \u003e 7) {"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"The code exceeded the maximum number of characters allowed. Please enter again: \");"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isInvalid \u003d false;"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        isInvalid \u003d true;"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        System.out.println(\"Is the class online? (yes/no)\");"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        boolean isOnline \u003d false;"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        while (isInvalid) {"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            String status \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            if (status.equals(\"yes\") || status.equals(\"online\")) {"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isOnline \u003d true;"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"Please enter zoom link: \");"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isInvalid \u003d false;"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            } else if (status.equals(\"no\") || status.equals(\"offline\")) {"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"Please enter the venue: \");"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isInvalid \u003d false;"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"Invalid command command\\n Is the class online? (yes/no)\");"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        final String linkOrVenue \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "        System.out.println(\"What are the days and time of the lesson?\\n(e.g. Monday 5-8pm, Tuesday 6-9pm)\");"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        final String [] periods \u003d in.nextLine().split(\", \");"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        System.out.println(\"How many weeks is the lesson?\");"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int repeat \u003d Integer.parseInt(in.nextLine());"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        isInvalid \u003d true;"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        LocalDateTime startDay \u003d null;"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        while (isInvalid) {"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                System.out.println(\"Which date does the lesson start? (eg. 26/10/2020)\");"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                startDay \u003d getDate(in.nextLine());"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isInvalid \u003d false;"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            } catch (NumberFormatException e) {"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                System.out.println(\"You have entered an invalid date format. Please try again\");"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        Lesson lesson \u003d new Lesson(moduleCode, linkOrVenue, isOnline, repeat);"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        addClassPeriods(periods, repeat, startDay, lesson);"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        return lesson;"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static void addClassPeriods(String[] periods, int repeat, LocalDateTime startDay,"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                                Lesson lesson) throws InvalidDayOfTheWeekException {"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int startDayNum \u003d startDay.getDayOfWeek().getValue();"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        for (int i \u003d 0; i \u003c repeat; i++) {"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            for (String period : periods) {"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                String [] dayAndTime \u003d period.split((\" \"));"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                String day \u003d dayAndTime[0].toUpperCase().replace(\" \", \"\");"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                String time \u003d dayAndTime[1];"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                int dayNum;"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                try {"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                    dayNum \u003d DayOfWeek.valueOf(day).getValue();"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                } catch (IllegalArgumentException e) {"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                    throw new InvalidDayOfTheWeekException();"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                int startTime \u003d Integer.parseInt(time.split(\"-\")[0]);"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                int endTime \u003d Integer.parseInt(time.split(\"-\")[1].replaceAll(\"[^0-9]\", \"\"));"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                if (time.contains(\"pm\")) {"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                    startTime +\u003d 12;"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                    endTime +\u003d 12;"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                int daysDifference \u003d dayNum - startDayNum;"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                if (daysDifference \u003c 0) {"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                    daysDifference +\u003d 7;"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                LocalDateTime startDateTime \u003d startDay.plusDays(daysDifference).plusHours(startTime).plusDays(7 * i);"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                LocalDateTime endDateTime \u003d startDateTime.withHour(endTime).plusDays(7 * i);"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                Duration duration \u003d new Duration(startDateTime, endDateTime);"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                lesson.addPeriod(duration);"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static Activity addActivity() {"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        System.out.println(\"Please enter the activity: \");"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        final String activityName \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        boolean isInvalid \u003d true;"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        System.out.println(\"Is the activity online? (yes/no)\");"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        boolean isOnline \u003d false;"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        while (isInvalid) {"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            String status \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            if (status.equals(\"yes\") || status.equals(\"online\")) {"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isOnline \u003d true;"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"Please enter zoom link: \");"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isInvalid \u003d false;"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            } else if (status.equals(\"no\") || status.equals(\"offline\")) {"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"Please enter the venue: \");"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                isInvalid \u003d false;"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "                System.out.println(\"Invalid command!\\n Is the class online? (yes/no)\");"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        final String linkOrVenue \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "        System.out.println(\"Please enter the date of your activity (e.g. 28/10/2020): \");"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        LocalDateTime date \u003d getDate(in.nextLine());"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "hailqueenflo"
-        },
-        "content": "        System.out.println(\"Please enter the time of your activity (e.g. 6-9pm): \");"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        String time \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int startTime \u003d Integer.parseInt(time.split(\"-\")[0]);"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int endTime \u003d Integer.parseInt(time.split(\"-\")[1].replaceAll(\"[^0-9]\", \"\"));"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        if (time.contains(\"pm\")) {"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            startTime +\u003d 12;"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            endTime +\u003d 12;"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        LocalDateTime startDateTime \u003d date.plusHours(startTime);"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        LocalDateTime endDateTime \u003d date.withHour(endTime);"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        Duration duration \u003d new Duration(startDateTime, endDateTime);"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        return new Activity(activityName, isOnline, linkOrVenue, duration);"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static void showLink(DateList dateList) {"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        LocalDate todayDate \u003d LocalDateTime.now().toLocalDate();"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int now \u003d LocalDateTime.now().toLocalTime().getHour() * 100;"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        for (EventList eventList: dateList.dateList) {"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            if (eventList.dateTag.equals(todayDate)) {"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                accessEventList(eventList, todayDate, now);"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                return;"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static void accessEventList(EventList eventList, LocalDate todayDate, int now) {"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        for (Event event: eventList.events) {"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            for (Duration period: event.periods) {"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                if ((period.timeSlot.contains(now) || period.timeSlot.contains(now + 100)"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                        || period.timeSlot.contains(now + 200))"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                        \u0026\u0026 period.startDateTime.toLocalDate().equals(todayDate)) {"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                    System.out.print(event.linkOrVenue + \"|\" + event.name + \"\\n\");"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static void showActivities(DateList dateList) {"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        for (Event event: dateList.activities) {"
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "            System.out.println(event.name + \"|\" + event.periods.get(0).startDateTime);"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 212,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "    public static void fileParser(String command, DateList dateList) {"
       },
       {
-        "lineNumber": 213,
+        "lineNumber": 66,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        String[] words \u003d command.split(\"\\\\|\");"
       },
       {
-        "lineNumber": 214,
+        "lineNumber": 67,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        EventType eventType \u003d EventType.valueOf(words[0]);"
       },
       {
-        "lineNumber": 215,
+        "lineNumber": 68,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        String name \u003d words[1];"
       },
       {
-        "lineNumber": 216,
+        "lineNumber": 69,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        String linkOrVenue \u003d words[2];"
       },
       {
-        "lineNumber": 217,
+        "lineNumber": 70,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        boolean isOnline \u003d Boolean.parseBoolean(words[3]);"
       },
       {
-        "lineNumber": 218,
+        "lineNumber": 71,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 219,
+        "lineNumber": 72,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            switch (eventType) {"
       },
       {
-        "lineNumber": 220,
+        "lineNumber": 73,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            case L: {"
       },
       {
-        "lineNumber": 221,
+        "lineNumber": 74,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                int numPerWeek \u003d Integer.parseInt(words[4]);"
       },
       {
-        "lineNumber": 222,
+        "lineNumber": 75,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                int durationNum \u003d Integer.parseInt(words[5]);"
       },
       {
-        "lineNumber": 223,
+        "lineNumber": 76,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                Lesson lesson \u003d new Lesson(name, linkOrVenue, isOnline, numPerWeek);"
       },
       {
-        "lineNumber": 224,
+        "lineNumber": 77,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                for (int i \u003d 0; i \u003c durationNum; i++) {"
       },
       {
-        "lineNumber": 225,
+        "lineNumber": 78,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                    assert words[5 + 2 * i + 1].contains(\"-\") : \"this word should be the datetime format\";"
       },
       {
-        "lineNumber": 226,
+        "lineNumber": 79,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                    LocalDateTime start \u003d LocalDateTime.parse(words[5 + 2 * i + 1]);"
       },
       {
-        "lineNumber": 227,
+        "lineNumber": 80,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                    assert words[5 + 2 * i + 2].contains(\"-\") : \"this word should be the datetime format\";"
       },
       {
-        "lineNumber": 228,
+        "lineNumber": 81,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                    LocalDateTime end \u003d LocalDateTime.parse(words[5 + 2 * i + 2]);"
       },
       {
-        "lineNumber": 229,
+        "lineNumber": 82,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                    Duration duration \u003d new Duration(start, end);"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 83,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                    lesson.addPeriod(duration);"
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 84,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 85,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                dateList.addEvent(lesson);"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 86,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 87,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 88,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            case A: {"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 89,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                LocalDateTime start \u003d LocalDateTime.parse(words[4]);"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 90,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                LocalDateTime end \u003d LocalDateTime.parse(words[5]);"
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 91,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                Duration duration \u003d new Duration(start, end);"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 92,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                Activity activity \u003d new Activity(name, isOnline, linkOrVenue, duration);"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 93,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                dateList.addEvent(activity);"
       },
       {
-        "lineNumber": 241,
+        "lineNumber": 94,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 242,
+        "lineNumber": 95,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 243,
+        "lineNumber": 96,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            default:"
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 97,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 245,
+        "lineNumber": 98,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        } catch (ClashScheduleException e) {"
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 99,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            System.out.println(\"There is a clash in schedule\");"
       },
       {
-        "lineNumber": 247,
+        "lineNumber": 100,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 248,
+        "lineNumber": 101,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 249,
+        "lineNumber": 102,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": ""
       },
       {
-        "lineNumber": 250,
+        "lineNumber": 103,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": ""
       },
       {
-        "lineNumber": 251,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static LocalDateTime getDate(String date)throws ArrayIndexOutOfBoundsException {"
-      },
-      {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        String [] dateArray \u003d date.split(\"/\");"
-      },
-      {
-        "lineNumber": 253,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int day \u003d Integer.parseInt(dateArray[0]);"
-      },
-      {
-        "lineNumber": 254,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int month \u003d Integer.parseInt(dateArray[1]);"
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int year \u003d Integer.parseInt(dateArray[2]);"
-      },
-      {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        return LocalDateTime.of(year, month, day, 0, 0);"
-      },
-      {
-        "lineNumber": 257,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 258,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 259,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    public static LocalDateTime getDateTime(String command)throws ArrayIndexOutOfBoundsException {"
-      },
-      {
-        "lineNumber": 260,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        String[] dateTime;"
-      },
-      {
-        "lineNumber": 261,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        String[] date;"
-      },
-      {
-        "lineNumber": 262,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        int fromIndex \u003d command.indexOf(\"from\");"
-      },
-      {
-        "lineNumber": 263,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        dateTime \u003d command.substring(fromIndex + 5).split(\" \");"
-      },
-      {
-        "lineNumber": 264,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        date \u003d dateTime[0].split(\"/\");"
-      },
-      {
-        "lineNumber": 265,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "        return LocalDateTime.of(Integer.parseInt(date[2]),Integer.parseInt(date[1]), Integer.parseInt(date[0]),"
-      },
-      {
-        "lineNumber": 266,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "                0,0);"
-      },
-      {
-        "lineNumber": 267,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 268,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 269,
+        "lineNumber": 104,
         "author": {
           "gitId": "slightlyharp"
         },
@@ -29009,9 +29347,9 @@
       }
     ],
     "authorContributionMap": {
-      "hailqueenflo": 13,
-      "slightlyharp": 251,
-      "farice9": 5
+      "hailqueenflo": 3,
+      "slightlyharp": 97,
+      "farice9": 4
     }
   },
   {
@@ -29236,591 +29574,584 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.text.ParseException;"
+        "content": "import java.time.format.DateTimeParseException;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.time.format.DateTimeParseException;"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.util.Scanner;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "public class TimeTableStorage {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "public class TimeTableStorage {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    private static File taskFile;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    private static File taskFile;"
+        "content": "    private final String filePath;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    private final String filePath;"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "slightlyharp"
-        },
         "content": "    public TimeTableStorage(String filePath, DateList dateList) {"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "farice9"
         },
         "content": "        // Creates data directory"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        String dirPath \u003d \"data\";"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "farice9"
         },
         "content": "        File fileDir \u003d new File(dirPath);"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "farice9"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "farice9"
         },
         "content": "        if (!fileDir.exists()) {"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "farice9"
         },
         "content": "            fileDir.mkdir();"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "farice9"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "farice9"
         },
         "content": ""
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        this.filePath \u003d filePath;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        taskFile \u003d new File(filePath);"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        checkFile(dateList);"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    public void checkFile(DateList dateList) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    public void checkFile(DateList dateList) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "slightlyharp"
-        },
         "content": "            if (taskFile.createNewFile()) {"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "farice9"
         },
         "content": "                System.out.println(\"data/timetable.txt is not found, creating a new file now!\");"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            } else {"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "                loadFile(dateList);"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "            }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        } catch (IOException e) {"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "slightlyharp"
-        },
         "content": "            System.out.println(\"An error occurred: \" + e.getMessage());"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "farice9"
         },
         "content": "            StudyItLog.logger.warning(\"Problem loading timetable storage file\\n\" + e);"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    private void loadFile(DateList dateList) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    private void loadFile(DateList dateList) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        try {"
+        "content": "            Scanner s \u003d new Scanner(taskFile);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            Scanner s \u003d new Scanner(taskFile);"
+        "content": "            while (s.hasNext()) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            while (s.hasNext()) {"
+        "content": "                String command \u003d s.nextLine();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                String command \u003d s.nextLine();"
+        "content": "                TimeTableParser.fileParser(command, dateList);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                TimeTableParser.fileParser(command, dateList);"
+        "content": "            }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            }"
+        "content": "        } catch (FileNotFoundException e) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        } catch (FileNotFoundException e) {"
+        "content": "            System.out.println(\"File not found\");"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            System.out.println(\"File not found\");"
+        "content": "        } catch (ArrayIndexOutOfBoundsException | DateTimeParseException | NumberFormatException e) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        } catch (ArrayIndexOutOfBoundsException | DateTimeParseException | NumberFormatException e) {"
+        "content": "            Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            Scanner in \u003d new Scanner(System.in);"
+        "content": "            System.out.println(\"Data file for timetable is corrupted do you want to format the file\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            System.out.println(\"Data file for timetable is corrupted do you want to format the file\");"
+        "content": "            if (in.nextLine().equals(\"yes\")) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            if (in.nextLine().equals(\"yes\")) {"
+        "content": "                wipeFile();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                wipeFile();"
+        "content": "                System.out.println(\"Data file for timetable have been formatted\");"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                System.out.println(\"Data file for timetable have been formatted\");"
+        "content": "            } else {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            } else {"
+        "content": "                System.out.println(\"Please exit the program and edit timetable.txt \""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                System.out.println(\"Please exit the program and edit timetable.txt \""
+        "content": "                        + \"manually before using this feature.\");"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        + \"manually before using this feature.\");"
+        "content": "            }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    public void writeFile(Event event) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    public void writeFile(Event event) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        try {"
+        "content": "            FileWriter fw \u003d new FileWriter(filePath, true);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            FileWriter fw \u003d new FileWriter(filePath, true);"
+        "content": "            if (event.eventType.equals(EventType.L)) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            if (event.eventType.equals(EventType.L)) {"
+        "content": "                fw.write(\"L|\" + event.name + \"|\" + event.linkOrVenue + \"|\" + event.isOnline"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                fw.write(\"L|\" + event.name + \"|\" + event.linkOrVenue + \"|\" + event.isOnline"
+        "content": "                        + event.getStorageString() + System.lineSeparator());"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        + event.getStorageString() + System.lineSeparator());"
+        "content": "            } else if (event.eventType.equals(EventType.A)) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            } else if (event.eventType.equals(EventType.A)) {"
+        "content": "                fw.write(\"A|\" + event.name + \"|\" + event.linkOrVenue + \"|\" + event.isOnline"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                fw.write(\"A|\" + event.name + \"|\" + event.linkOrVenue + \"|\" + event.isOnline"
+        "content": "                        + event.getStorageString() + System.lineSeparator());"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                        + event.getStorageString() + System.lineSeparator());"
+        "content": "            }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            }"
+        "content": "            fw.close();"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            fw.close();"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        } catch (IOException e) {"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "slightlyharp"
-        },
         "content": "            System.out.println(\"Something went wrong\" + e.getMessage());"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 79,
         "author": {
           "gitId": "farice9"
         },
         "content": "            StudyItLog.logger.warning(\"Problem writing to timetable storage file\\n\" + e);"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 80,
         "author": {
           "gitId": "slightlyharp"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "slightlyharp"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    public void wipeFile() {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    public void wipeFile() {"
+        "content": "        try {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        try {"
+        "content": "            FileWriter fw \u003d new FileWriter(filePath);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            FileWriter fw \u003d new FileWriter(filePath);"
+        "content": "            fw.write(\"\");"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            fw.write(\"\");"
+        "content": "            fw.close();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            fw.close();"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "            System.out.println(\"Something went wrong\" + e.getMessage());"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "            System.out.println(\"Something went wrong\" + e.getMessage());"
+        "content": "        }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "slightlyharp"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 92,
         "author": {
           "gitId": "slightlyharp"
         },
@@ -29828,7 +30159,7 @@
       }
     ],
     "authorContributionMap": {
-      "slightlyharp": 81,
+      "slightlyharp": 80,
       "farice9": 12
     }
   },
@@ -39495,63 +39826,63 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.io.ByteArrayOutputStream;"
+        "content": "import java.io.InputStream;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.io.InputStream;"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.io.PrintStream;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.time.LocalDateTime;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import java.util.List;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+        "content": "class TimeTableParserTest {"
       },
       {
         "lineNumber": 15,
@@ -39565,353 +39896,339 @@
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "class TimeTableParserTest {"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    void addClassTest() throws InvalidDayOfTheWeekException {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    @Test"
+        "content": "        String input \u003d \"CS1234\\n\" + \"yes\\n\" + \"www.zoom.com/asdf\\n\""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    void addClassTest() throws InvalidDayOfTheWeekException {"
+        "content": "                + \"Wednesday 2-4pm\\n\" + \"1\\n\" + \"20/10/2020\\n\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        String input \u003d \"CS1234\\n\" + \"yes\\n\" + \"www.zoom.com/asdf\\n\""
+        "content": "        InputStream in \u003d new ByteArrayInputStream(input.getBytes());"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                + \"Wednesday 2-4pm\\n\" + \"1\\n\" + \"20/10/2020\\n\";"
+        "content": "        System.setIn(in);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        InputStream in \u003d new ByteArrayInputStream(input.getBytes());"
+        "content": "        Lesson lesson \u003d TimeTableCommand.addClass();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        System.setIn(in);"
+        "content": "        Duration duration \u003d new Duration(LocalDateTime.of(2020,10,21,14,0),"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        Lesson lesson \u003d TimeTableParser.addClass();"
+        "content": "                LocalDateTime.of(2020,10,21,16,0));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        Duration duration \u003d new Duration(LocalDateTime.of(2020,10,21,14,0),"
+        "content": "        List\u003cDuration\u003e expectedPeriod \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                LocalDateTime.of(2020,10,21,16,0));"
+        "content": "        expectedPeriod.add(duration);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        List\u003cDuration\u003e expectedPeriod \u003d new ArrayList\u003c\u003e();"
+        "content": "        assertEquals(\"CS1234\", lesson.name);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        expectedPeriod.add(duration);"
+        "content": "        assertEquals(EventType.L, lesson.eventType);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        assertEquals(\"CS1234\", lesson.name);"
+        "content": "        assertEquals(expectedPeriod.get(0).timeSlot, lesson.periods.get(0).timeSlot);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        assertEquals(EventType.L, lesson.eventType);"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        assertEquals(expectedPeriod.get(0).timeSlot, lesson.periods.get(0).timeSlot);"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": ""
+        "content": "    void addClassTest_throwInvalidDayOfWeekException() {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    @Test"
+        "content": "        String input \u003d \"CS1234\\n\" + \"yes\\n\" + \"www.zoom.com/asdf\\n\""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    void addClassTest_throwInvalidDayOfWeekException() {"
+        "content": "                + \"Wednfesday 2-4pm\\n\" + \"1\\n\" + \"20/10/2020\\n\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        String input \u003d \"CS1234\\n\" + \"yes\\n\" + \"www.zoom.com/asdf\\n\""
+        "content": "        InputStream in \u003d new ByteArrayInputStream(input.getBytes());"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "                + \"Wednfesday 2-4pm\\n\" + \"1\\n\" + \"20/10/2020\\n\";"
+        "content": "        System.setIn(in);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        InputStream in \u003d new ByteArrayInputStream(input.getBytes());"
+        "content": "        assertThrows(InvalidDayOfTheWeekException.class, TimeTableCommand::addClass);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        System.setIn(in);"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "        assertThrows(InvalidDayOfTheWeekException.class, TimeTableParser::addClass);"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "slightlyharp"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 43,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "slightlyharp"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 45,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //    @Test"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 44,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //    void showLinkTest() throws InvalidDayOfTheWeekException, ClashScheduleException {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        DateList dateList \u003d new DateList();"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 46,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        int currentHour \u003d LocalDateTime.now().getHour();"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 47,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        String currentDay \u003d LocalDateTime.now().getDayOfWeek().toString();"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 48,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        Lesson lesson1 \u003d new Lesson(\"CS1234\", \"www.zoom.com/asdf\", true, 1);"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        Lesson lesson2 \u003d new Lesson(\"CS5678\", \"www.zoom.com/qwer\", true, 1);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 50,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        String periodText1 \u003d currentDay + \" \" + (currentHour) + \"-\" + (currentHour + 1);"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 51,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        String[] period1 \u003d periodText1.split(\", \");"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 52,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        String periodText2 \u003d currentDay + \" \" + (currentHour + 1) + \"-\" + (currentHour + 2);"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 53,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        String[] period2 \u003d periodText2.split(\", \");"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 54,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        TimeTableParser.addClassPeriods(period1, 1, LocalDateTime.now().toLocalDate().atTime(0,0), lesson1);"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 55,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        TimeTableParser.addClassPeriods(period2, 1, LocalDateTime.now().toLocalDate().atTime(0,0), lesson2);"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        dateList.addEvent(lesson1);"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 57,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        dateList.addEvent(lesson2);"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 58,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        ByteArrayOutputStream outContent \u003d new ByteArrayOutputStream();"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 59,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        System.setOut(new PrintStream(outContent));"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 60,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        TimeTableParser.showLink(dateList);"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 61,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        String expected \u003d \"www.zoom.com/asdf|CS1234\\nwww.zoom.com/qwer|CS5678\\n\";"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 62,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //        assertEquals(expected, outContent.toString());"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 63,
         "author": {
           "gitId": "farice9"
         },
         "content": "    //    }"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 64,
         "author": {
           "gitId": "slightlyharp"
         },
@@ -39919,7 +40236,7 @@
       }
     ],
     "authorContributionMap": {
-      "slightlyharp": 45,
+      "slightlyharp": 43,
       "farice9": 21
     }
   }

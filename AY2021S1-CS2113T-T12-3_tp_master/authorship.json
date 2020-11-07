@@ -27372,448 +27372,448 @@
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "    private void checkNameOfUser() {"
+        "content": "    private void printPrompt() {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        if (appState.getUserName().equals(\"\")) {"
+        "content": "        String modeString \u003d \"\";"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": "            messages.printFillInNameOfUserMessage();"
+        "content": "        String notebookTitle;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            String userName \u003d keyboardScanner.nextLine();"
+        "content": "        String sectionTitle;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            appState.setUserName(userName);"
+        "content": "        String pageTitle;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            msgGenerator \u003d new PersonalMessageGenerator(userName);"
+        "content": "        try {"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": "            msgGenerator.greetUser();"
+        "content": "            notebookTitle \u003d appState.getCurrentNotebook().getTitle();"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": "        }"
+        "content": "        } catch (NullPointerException e) {"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": "    }"
+        "content": "            notebookTitle \u003d \"\";"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 44,
-        "author": {
-          "gitId": "yAOwzers"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "neilbaner"
-        },
-        "content": "    public void run() {"
-      },
-      {
-        "lineNumber": 46,
         "author": {
           "gitId": "neilbaner"
         },
         "content": "        try {"
       },
       {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            sectionTitle \u003d appState.getCurrentSection().getTitle();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        } catch (NullPointerException e) {"
+      },
+      {
         "lineNumber": 47,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            loadState();"
+        "content": "            sectionTitle \u003d \"\";"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        } catch (CorruptFileException e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            e.printErrorMessage();"
+        "content": "        try {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        }"
+        "content": "            pageTitle \u003d appState.getCurrentPage().getTitle();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        startUI();"
+        "content": "        } catch (NullPointerException e) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        String userInput;"
+        "content": "            pageTitle \u003d \"\";"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        checkNameOfUser();"
+        "content": "        }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        msgGenerator \u003d new PersonalMessageGenerator(appState.getUserName());"
+        "content": "        if (notebookTitle.length() \u003e 10) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        while (!toQuit) {"
+        "content": "            notebookTitle \u003d notebookTitle.substring(0, 7) + \"...\";"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            userInput \u003d keyboardScanner.nextLine();"
+        "content": "        }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            try {"
+        "content": "        if (sectionTitle.length() \u003e 10) {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                if (userInput.equals(Exit.COMMAND_WORD)) {"
+        "content": "            sectionTitle \u003d sectionTitle.substring(0, 7) + \"...\";"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                    toQuit \u003d true;"
+        "content": "        }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                }"
+        "content": "        if (pageTitle.length() \u003e 10) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                messages.printLineSeparator();"
+        "content": "            pageTitle \u003d pageTitle.substring(0, 7) + \"...\";"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                executeCommand(userInput);"
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                messages.printLineSeparator();"
+        "content": "        switch (appState.getAppMode()) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            } catch (ZeroNoteException e) {"
+        "content": "        case TIMETABLE:"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                e.printErrorMessage();"
+        "content": "            modeString \u003d modeString + \"T\";"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "                messages.printLineSeparator();"
+        "content": "            break;"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            }"
+        "content": "        case NOTEBOOK_SHELF:"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "        }"
+        "content": "            modeString \u003d modeString + \"N\";"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "    }"
+        "content": "            break;"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": ""
+        "content": "        case NOTEBOOK_BOOK:"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "    private void executeCommand(String userInput) throws ZeroNoteException {"
+        "content": "            modeString \u003d modeString + \"N/\" + notebookTitle;"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "longngng"
+          "gitId": "neilbaner"
         },
-        "content": "        InputParser parser \u003d new InputParser();"
+        "content": "            break;"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "longngng"
+          "gitId": "neilbaner"
         },
-        "content": "        CliCommand command \u003d parser.getCommandFromInput(userInput, appState);"
+        "content": "        case NOTEBOOK_SECTION:"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        command.execute();"
+        "content": "            modeString \u003d modeString + \"N/\" + notebookTitle + \"/\" + sectionTitle;"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        messages.printLineSeparator();"
+        "content": "            break;"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        if (command.printsPersonalMessage()) {"
+        "content": "        case NOTEBOOK_PAGE:"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            String message \u003d msgGenerator.generatePersonalisedMessage();"
+        "content": "            modeString \u003d modeString + \"N/\" + notebookTitle + \"/\" + sectionTitle + \"/\" + pageTitle;"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "            System.out.println(message);"
+        "content": "            break;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "        }"
+        "content": "        default:"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": "        if (command.isTriggerAutoSave()) {"
+        "content": "            modeString \u003d \"\";"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
-        "content": "            saveState();"
+        "content": "            break;"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "yAOwzers"
+          "gitId": "neilbaner"
         },
         "content": "        }"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "    }"
+        "content": "        modeString \u003d modeString + \"~$ \";"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": ""
+        "content": "        System.out.print(modeString);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "neilbaner"
         },
-        "content": "    private void startUI() {"
+        "content": "        System.out.flush();"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "        System.out.println(\"Welcome to\");"
+        "content": "    }"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "        System.out.println(\" _ _ _                  _ _ _   _    _            _\");"
+        "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "        System.out.println(\"|_ _  |   _ _    _  _  |  _  | |  \\\\ | |   _ _   _| |_    _ _\");"
+        "content": "    private void checkNameOfUser() {"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "        System.out.println(\"  /  /  /  _  \\\\ | |/_\\\\ | | | | |   \\\\| |  /   \\\\ |_   _| /   _ \\\\\");"
+        "content": "        if (appState.getUserName().equals(\"\")) {"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "yAOwzers"
         },
-        "content": "        System.out.println(\" /  /_  |  _ _/ | |    | |_| | |  |\\\\  | |  [] |  | |_  |  _ _/\");"
+        "content": "            messages.printFillInNameOfUserMessage();"
       },
       {
         "lineNumber": 91,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "        System.out.println(\"|_ _ _|  \\\\ _ _| |_|    |_ _ _| | _| \\\\_|  \\\\ _ /   |_ _|  \\\\ _ _|\");"
+        "content": "            String userName \u003d keyboardScanner.nextLine();"
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "longngng"
+          "gitId": "neilbaner"
         },
-        "content": "        System.out.println(\"You are now in timetable mode\");"
+        "content": "            appState.setUserName(userName);"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "chuckiex3"
+          "gitId": "neilbaner"
         },
-        "content": "    }"
+        "content": "            msgGenerator \u003d new PersonalMessageGenerator(userName);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "yAOwzers"
         },
-        "content": ""
+        "content": "            msgGenerator.greetUser();"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "yAOwzers"
         },
-        "content": "    public String printExit() {"
+        "content": "        }"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "yAOwzers"
         },
-        "content": "        return \"GOODBYE HOPE TO SEE YOU AGAIN\";"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "yAOwzers"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 98,
@@ -27827,13 +27827,398 @@
         "author": {
           "gitId": "neilbaner"
         },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            loadState();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        } catch (CorruptFileException e) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            e.printErrorMessage();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        startUI();"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        String userInput;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        checkNameOfUser();"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        msgGenerator \u003d new PersonalMessageGenerator(appState.getUserName());"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        while (!toQuit) {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            printPrompt();"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            userInput \u003d keyboardScanner.nextLine();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                if (userInput.equals(Exit.COMMAND_WORD)) {"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                    toQuit \u003d true;"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                messages.printLineSeparator();"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                executeCommand(userInput);"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                messages.printLineSeparator();"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            } catch (ZeroNoteException e) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                e.printErrorMessage();"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "                messages.printLineSeparator();"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "    private void executeCommand(String userInput) throws ZeroNoteException {"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "longngng"
+        },
+        "content": "        InputParser parser \u003d new InputParser();"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "longngng"
+        },
+        "content": "        CliCommand command \u003d parser.getCommandFromInput(userInput, appState);"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        command.execute();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        messages.printLineSeparator();"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        if (command.printsPersonalMessage()) {"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            String message \u003d msgGenerator.generatePersonalisedMessage();"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "            System.out.println(message);"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": "        if (command.isTriggerAutoSave()) {"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": "            saveState();"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "neilbaner"
+        },
+        "content": "    private void startUI() {"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        System.out.println(\"Welcome to\");"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        System.out.println(\" _ _ _                  _ _ _   _    _            _\");"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        System.out.println(\"|_ _  |   _ _    _  _  |  _  | |  \\\\ | |   _ _   _| |_    _ _\");"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        System.out.println(\"  /  /  /  _  \\\\ | |/_\\\\ | | | | |   \\\\| |  /   \\\\ |_   _| /   _ \\\\\");"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        System.out.println(\" /  /_  |  _ _/ | |    | |_| | |  |\\\\  | |  [] |  | |_  |  _ _/\");"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "        System.out.println(\"|_ _ _|  \\\\ _ _| |_|    |_ _ _| | _| \\\\_|  \\\\ _ /   |_ _|  \\\\ _ _|\");"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "longngng"
+        },
+        "content": "        System.out.println(\"You are now in timetable mode\");"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "chuckiex3"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": "    public String printExit() {"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": "        return \"GOODBYE HOPE TO SEE YOU AGAIN\";"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "yAOwzers"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "neilbaner"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
       "chuckiex3": 22,
       "yAOwzers": 16,
-      "neilbaner": 58,
+      "neilbaner": 113,
       "longngng": 3
     }
   },

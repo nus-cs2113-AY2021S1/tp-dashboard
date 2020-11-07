@@ -760,7 +760,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![Architecture Diagram](DG_Diagrams/Architecture.png)"
+        "content": "![Architecture Diagram](DG_Diagrams/Architecture/Architecture.png)"
       },
       {
         "lineNumber": 48,
@@ -914,7 +914,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![uicomponent](DG_Diagrams/UiComponent.png)"
+        "content": "![uicomponent](DG_Diagrams/Components/UiComponent.png)"
       },
       {
         "lineNumber": 70,
@@ -1045,9 +1045,9 @@
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "wamikamalik"
         },
-        "content": "![modelcomponent](DG_Diagrams/ModelComponent.png)"
+        "content": "![modelcomponent](DG_Diagrams/Components/ModelComponent.png)"
       },
       {
         "lineNumber": 89,
@@ -1145,7 +1145,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![StorageComponent](DG_Diagrams/StorageComponent.png)"
+        "content": "![StorageComponent](DG_Diagrams/Components/StorageComponent.png)"
       },
       {
         "lineNumber": 103,
@@ -1180,392 +1180,392 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "### 3.1. Direct Route Finder (`/route` Feature)"
+        "content": "### 3.1. Finding a direct route (`/route` Feature)"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "`/route \u003clocation1\u003e /to \u003clocation2\u003e` is the command that has to entered by the user to see all direct bus routes "
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "`/route \u003clocation1\u003e /to \u003clocation2\u003e` is the command that has to entered by the user to see all direct bus routes "
+        "content": "available from **location1** to **location2**."
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "available from **location1** to **location2**."
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "The class diagram in the figure below shows how different classes used for implementation of the `/route` command "
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "The class diagram in the figure below shows how different classes used for implementation of the `/route` command "
+        "content": "are linked to each other. "
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "are linked to each other. "
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "![RouteCommandClass](DG_Diagrams/RouteCommand/RouteCommandClass.png)"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![RouteCommandClass](DG_Diagrams/RouteCommandClass.png)"
+        "content": ""
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "The `RouteCommand#executeCommand()` method of RouteCommand Class executes the command in the following steps:"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "The `RouteCommand#executeCommand()` method of RouteCommand Class executes the command in the following steps:"
+        "content": "1. Calls `RouteParser#getLocations()` to get the locations entered by the user in the order of starting location and "
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "1. Calls `RouteParser#getLocations()` to get the locations entered by the user in the order of starting location and "
+        "content": "destination."
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "destination."
+        "content": "    - The `RouteParser#getLocations()` method throws an exception if the locations or the delimiter `/to` is missing."
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    - The `RouteParser#getLocations()` method throws an exception if the locations or the delimiter `/to` is missing."
+        "content": "2. Calls `RouteCommand#checkLocations()` to make sure location strings are not empty or the same."
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "2. Calls `RouteCommand#checkLocations()` to make sure location strings are not empty or the same."
+        "content": "    - The `RouteCommand#checkLocation()` method throws an exception if locations are empty or the same."
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    - The `RouteCommand#checkLocation()` method throws an exception if locations are empty or the same."
+        "content": "3. Calls `RouteCommand#similarityCheck()` to check if the locations are not in the list of bus stops but "
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "3. Calls `RouteCommand#similarityCheck()` to check if the locations are not in the list of bus stops but "
+        "content": "are similar."
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "are similar."
+        "content": "    - The `RouteCommand#similarityCheck()` method calls the static `SimilarityCheck#similarLoc()` method and returns "
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    - The `RouteCommand#similarityCheck()` method calls the static `SimilarityCheck#similarLoc()` method and returns "
+        "content": "    a list of similar locations, if any."
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    a list of similar locations, if any."
+        "content": "    - If the list of similar locations is empty, `RouteCommand#executeCommand()` performs step 4 given below, "
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    - If the list of similar locations is empty, `RouteCommand#executeCommand()` performs step 4 given below, "
+        "content": "    else it calls the static method, `Ui#printPossibleLocsMessage()`, to print the list of similar locations. "
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    else it calls the static method, `Ui#printPossibleLocsMessage()`, to print the list of similar locations. "
+        "content": "4. Calls static `BusData#possibleBuses()` to get a list of buses with their routes from the starting location to "
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "4. Calls static `BusData#possibleBuses()` to get a list of buses with their routes from the starting location to "
+        "content": "the destination."
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "the destination."
+        "content": "   - `BusData#possibleBuses()` calls `Bus#getPossibleRoute()` to check for a possible route for the given bus number."
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "   - `BusData#possibleBuses()` calls `Bus#getPossibleRoute()` to check for a possible route for the given bus number."
+        "content": "   - `BusData#possibleBuses()` repeats this call for all bus numbers."
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "   - `BusData#possibleBuses()` repeats this call for all bus numbers."
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "The following sequence diagram explains the above steps when the user enters `/route loc1 /to loc2`."
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "The following sequence diagram explains the above steps when the user enters `/route loc1 /to loc2`."
+        "content": ""
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "![Overview](DG_Diagrams/RouteCommand/RouteCommand.png)"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![Overview](DG_Diagrams/RouteCommand.png)"
+        "content": ""
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "The following sequence diagrams explain the interactions omitted in the main diagram."
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "The following sequence diagrams explain the interactions omitted in the main diagram."
+        "content": ""
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "![executing command](DG_Diagrams/RouteCommand/RouteCommandInternal.png)"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![executing command](DG_Diagrams/RouteCommandInternal.png)"
+        "content": ""
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "![bus data](DG_Diagrams/RouteCommand/BusData.png)"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![bus data](DG_Diagrams/BusData.png)"
+        "content": ""
       },
       {
         "lineNumber": 143,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Design Considerations"
+      },
+      {
+        "lineNumber": 144,
         "author": {
           "gitId": "Johnson-Yee"
         },
         "content": ""
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 145,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "### 3.2. Full Route Display (`/routemap` Feature)"
       },
       {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "Johnson-Yee"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 146,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "The `/routemap \u003cbus code\u003e` is the command that has to entered by the user to see the full bus route of a user-specified"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "bus route."
+        "content": "The `/routemap \u003cbus code\u003e` is the command that has to entered by the user to see the full bus route of a user-specified"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "bus route."
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "The class diagram in the figure below shows how different classes used for implementation of the `/routemap` command "
+        "content": ""
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "are linked to each other."
+        "content": "The class diagram in the figure below shows how different classes used for implementation of the `/routemap` command "
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "are linked to each other."
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "![RouteCommandClass](DG_Diagrams/RouteMapCommandClass.png)"
+        "content": ""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "![RouteCommandClass](DG_Diagrams/RouteMapCommandClass.png)"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "The `RouteMapCommand#executeCommand()` method of RouteMapCommand Class executes the command in the following steps:"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "1. Calls `BusData#selectBus()` to find the user-specified bus in the bus data list. If found, the Bus object will be "
+        "content": "The `RouteMapCommand#executeCommand()` method of RouteMapCommand Class executes the command in the following steps:"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "returned. Else, null is returned."
+        "content": "1. Calls `BusData#selectBus()` to find the user-specified bus in the bus data list. If found, the Bus object will be "
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "2. Calls `Ui#printFullRoute()` to display full route of the specified bus."
+        "content": "returned. Else, null is returned."
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "2. Calls `Ui#printFullRoute()` to display full route of the specified bus."
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "The following sequence diagram explains the above steps when the user searches for the full route of a bus."
+        "content": ""
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "The following sequence diagram explains the above steps when the user searches for the full route of a bus."
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "![Overview](DG_Diagrams/RouteMapCommandSeq.png)"
+        "content": ""
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "![Overview](DG_Diagrams/RouteMapCommandSeq.png)"
       },
       {
         "lineNumber": 163,
@@ -1577,240 +1577,240 @@
       {
         "lineNumber": 164,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Johnson-Yee"
         },
-        "content": "### 3.3. Favourite command adder (`/addfav` Feature)"
+        "content": ""
       },
       {
         "lineNumber": 165,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "The `AddFavCommand#executeCommand()` method of AddFavCommand Class executes the command in the following steps:"
+        "content": "### 3.3. Favourite command adder (`/addfav` Feature)"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "1. The `RouteParser#executeCommand` method throws an exception if the command to be saved in FavList is missing."
+        "content": "The `AddFavCommand#executeCommand()` method of AddFavCommand Class executes the command in the following steps:"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "2. Calls `AddFavCommand#createFav()` to make a new Fav object to be saved in the FavList."
+        "content": "1. The `RouteParser#executeCommand` method throws an exception if the command to be saved in FavList is missing."
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "    - The `AddFavCommand#createFav()` method creates a Fav object with its command saved as its description if "
+        "content": "2. Calls `AddFavCommand#createFav()` to make a new Fav object to be saved in the FavList."
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "    the user left description empty."
+        "content": "    - The `AddFavCommand#createFav()` method creates a Fav object with its command saved as its description if "
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "3. Calls `AddFavCommand#addToFavList()` method to add the Fav object created to the Favlist."
+        "content": "    the user left description empty."
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "    - The `AddFavCommand#createFav()` method calls the contains method within Favlist to check for any duplicate"
+        "content": "3. Calls `AddFavCommand#addToFavList()` method to add the Fav object created to the Favlist."
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "    Fav objects within the list that contains the same command."
+        "content": "    - The `AddFavCommand#createFav()` method calls the contains method within Favlist to check for any duplicate"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "    - If the there are no duplicate Fav objects, Fav object created will be added to the FavList."
+        "content": "    Fav objects within the list that contains the same command."
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "    - If the there are no duplicate Fav objects, Fav object created will be added to the FavList."
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "`/addfav \u003cdescription\u003e` is the command that has to be entered by the user to add a previous valid command in to the user\u0027s"
+        "content": ""
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "list of favourites."
+        "content": "`/addfav \u003cdescription\u003e` is the command that has to be entered by the user to add a previous valid command in to the user\u0027s"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "list of favourites."
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/addfav` command."
+        "content": ""
       },
       {
         "lineNumber": 179,
+        "author": {
+          "gitId": "Lezn0"
+        },
+        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/addfav` command."
+      },
+      {
+        "lineNumber": 180,
         "author": {
           "gitId": "mrwsy1"
         },
         "content": "![add favourites](DG_Diagrams/AddFavSequence.png)"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 181,
         "author": {
           "gitId": "Lezn0"
         },
         "content": ""
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 182,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "### 3.4. Favourite command executor (`/execfav` Feature)"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 183,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "`/execfav \u003cindex\u003e` is a command to execute a command with the specific index in the list of fovourite commands. \u003cbr\u003e\u003cbr\u003e"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 184,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "The command is executed in the following steps:"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 185,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "1. The user calls `Parser#setUserInput(\u003cUserInput\u003e)` by typing in the command `/execfav \u003cindex\u003e`. The new user input is updated."
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 186,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "2. `Parser#extractType()` is called to instantiate `FavList#getFav(\u003cindex\u003e)` and run the user command."
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 187,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "3. `ExecFavParser` is instantiated and `ExecFavParser#setIndex()` is called to parse the `\u003cindex\u003e` input from the user."
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 188,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "    - `ExecFavParser#setIndex()` method throws an exception if `\u003cindex\u003e` cannot be parsed into an integer or if it is blank."
       },
       {
-        "lineNumber": 188,
+        "lineNumber": 189,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "4. `ExecFavCommand#executeCommand()` is called."
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 190,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "5. `ExecFavCommand#getFav()` is self invoked to obtain the required Fav object from Favlist."
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 191,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "    - An exception is thrown if there is no Fav object in the specified index in FavList."
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 192,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "6. A new `Parser` object is instantiated to run the command in the Fav object."
       },
       {
-        "lineNumber": 192,
+        "lineNumber": 193,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "\u003cbr\u003e\u003cbr\u003e"
       },
       {
-        "lineNumber": 193,
+        "lineNumber": 194,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/execfav` command."
       },
       {
-        "lineNumber": 194,
+        "lineNumber": 195,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "![ExecFav_Sequence_Diagram](DG_Diagrams/ExecFavCommand/ExecFavCommand.png)"
       },
       {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "EthanWong2212"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 196,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "####Design Considerations"
+        "content": ""
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "####Design Considerations"
       },
       {
         "lineNumber": 198,
@@ -1822,7 +1822,7 @@
       {
         "lineNumber": 199,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
         "content": ""
       },
@@ -1845,14 +1845,14 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "### 3.5. Favourite command description modifier (`/descfav` Feature)"
+        "content": ""
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "### 3.5. Modifying a favourite command\u0027s description (`/descfav` Feature)"
       },
       {
         "lineNumber": 204,
@@ -1922,7 +1922,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![DescFav class diagram](DG_Diagrams/descFavClass.png)"
+        "content": "![DescFav class diagram](DG_Diagrams/DescFavCommand/descFavClass.png)"
       },
       {
         "lineNumber": 214,
@@ -2062,7 +2062,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![Overview](DG_Diagrams/descFav.png)"
+        "content": "![Overview](DG_Diagrams/DescFavCommand/descFav.png)"
       },
       {
         "lineNumber": 234,
@@ -2090,7 +2090,7 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "![executing command](DG_Diagrams/descFavInternal.png)"
+        "content": "![executing command](DG_Diagrams/DescFavCommand/descFavInternal.png)"
       },
       {
         "lineNumber": 238,
@@ -2102,565 +2102,572 @@
       {
         "lineNumber": 239,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "#### Design Considerations"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "### 3.6. Find dining options within a faculty (`/dine` Feature)"
+        "content": ""
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "### 3.6. Find dining options within a faculty (`/dine` Feature)"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "`/dine \u003cfaculty\u003e` is the command that has to be entered by the user to see all the dining options available in the "
+        "content": ""
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "specified faculty."
+        "content": "`/dine \u003cfaculty\u003e` is the command that has to be entered by the user to see all the dining options available in the "
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "specified faculty."
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "The `DineCommand#executeCommand()` method of DineCommand Class executes the command in the following steps:"
+        "content": ""
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "1. Checks the user input and throws an exception if the input is empty."
+        "content": "The `DineCommand#executeCommand()` method of DineCommand Class executes the command in the following steps:"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "2. Calls `DineCommand#checkFaculty()` method to check for a match between the data and user input."
+        "content": "1. Checks the user input and throws an exception if the input is empty."
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    + Sets the `isFound` parameter to **false** if there is no match."
+        "content": "2. Calls `DineCommand#checkFaculty()` method to check for a match between the data and user input."
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    + Sets the `isFound` parameter to **true** if there is a match."
+        "content": "    + Sets the `isFound` parameter to **false** if there is no match."
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        + Calls `Ui#printDineResult()` method to print the matching results."
+        "content": "    + Sets the `isFound` parameter to **true** if there is a match."
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "        + Calls `Ui#printDineResult()` method to print the matching results."
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/dine` command."
+        "content": ""
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "![bus data](DG_Diagrams/DineSequence.png)"
+        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/dine` command."
       },
       {
         "lineNumber": 254,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "![bus data](DG_Diagrams/DineSequence.png)"
       },
       {
         "lineNumber": 255,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "Johnson-Yee"
         },
-        "content": "### 3.7. Find specific dining outlets (`/dineinfo` Feature)"
+        "content": ""
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "### 3.7. Find specific dining outlets (`/dineinfo` Feature)"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "`/dineinfo \u003coutlet\u003e` is the command that has to be entered by the user to see information of a specified dining outlet."
+        "content": ""
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "`/dineinfo \u003coutlet\u003e` is the command that has to be entered by the user to see information of a specified dining outlet."
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "The `DineInfoCommand#executeCommand()` method of DineInfoCommand Class executes the command in the following steps:"
+        "content": ""
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "1. Checks the user input and throws an exception if the input is empty."
+        "content": "The `DineInfoCommand#executeCommand()` method of DineInfoCommand Class executes the command in the following steps:"
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "2. Calls `DineInfoCommand#checkFoodPlace()` method to check for a match between the data and user input."
+        "content": "1. Checks the user input and throws an exception if the input is empty."
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    + Adds any matching data to an ArrayList `searchList`."
+        "content": "2. Calls `DineInfoCommand#checkFoodPlace()` method to check for a match between the data and user input."
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    + Calls `Ui#printDineInfoResult()` method to print the matching results if size of `searchList` is more than 0."
+        "content": "    + Adds any matching data to an ArrayList `searchList`."
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "    + Calls `Ui#printDineInfoResult()` method to print the matching results if size of `searchList` is more than 0."
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/dineinfo` command."
+        "content": ""
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "![bus data](DG_Diagrams/DineInfoSequence.png)"
+        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/dineinfo` command."
       },
       {
         "lineNumber": 267,
         "author": {
-          "gitId": "-"
+          "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "![bus data](DG_Diagrams/DineInfoSequence.png)"
       },
       {
         "lineNumber": 268,
         "author": {
-          "gitId": "EthanWong2212"
+          "gitId": "-"
         },
-        "content": "### 3.7. Bus at bus stop finder (`/bus` Feature)"
+        "content": ""
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/bus` command."
+        "content": "### 3.7. Bus at bus stop finder (`/bus` Feature)"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "![ExecFav_Sequence_Diagram](DG_Diagrams/BusCommand/BusCommand.png)"
+        "content": "The following sequence diagram illustrates the steps taken by the program when the user calls the `/bus` command."
       },
       {
         "lineNumber": 271,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "![ExecFav_Sequence_Diagram](DG_Diagrams/BusCommand/BusCommand.png)"
+      },
+      {
+        "lineNumber": 272,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 273,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "## 4. Appendix I: Requirements"
       },
       {
-        "lineNumber": 273,
+        "lineNumber": 274,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 275,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "### 4.1 Product scope"
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 276,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 277,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "#### 4.1.1 Target user profile"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 278,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 278,
-        "author": {
-          "gitId": "Johnson-Yee"
-        },
-        "content": "Nav@NUS targets people who are unfamiliar with the shuttle bus service in NUS Kent Ridge Campus "
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "including students, professors and visitors."
+        "content": "Nav@NUS targets people who are unfamiliar with the shuttle bus service in NUS Kent Ridge Campus "
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "These are people who:"
+        "content": "including students, professors and visitors."
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": " - needs to be punctual for events such tutorials"
+        "content": "These are people who:"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": " - prefer a desktop CLI app over other types"
+        "content": " - needs to be punctual for events such tutorials"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": " - are new to NUS Kent Ridge Campus"
+        "content": " - prefer a desktop CLI app over other types"
       },
       {
         "lineNumber": 284,
+        "author": {
+          "gitId": "Johnson-Yee"
+        },
+        "content": " - are new to NUS Kent Ridge Campus"
+      },
+      {
+        "lineNumber": 285,
         "author": {
           "gitId": "-"
         },
         "content": "  "
       },
       {
-        "lineNumber": 285,
+        "lineNumber": 286,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "#### 4.1.2 Value "
       },
       {
-        "lineNumber": 286,
+        "lineNumber": 287,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 287,
-        "author": {
-          "gitId": "Johnson-Yee"
-        },
-        "content": "Nav@NUS seeks to help the intended audience to achieve the following:"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": " - Efficient checking of bus routes in NUS"
+        "content": "Nav@NUS seeks to help the intended audience to achieve the following:"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": " - Fast viewing of dining options available at other locations"
+        "content": " - Efficient checking of bus routes in NUS"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": " - Personalised application suited to the user\u0027s needs"
+        "content": " - Fast viewing of dining options available at other locations"
       },
       {
         "lineNumber": 291,
+        "author": {
+          "gitId": "Johnson-Yee"
+        },
+        "content": " - Personalised application suited to the user\u0027s needs"
+      },
+      {
+        "lineNumber": 292,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 292,
+        "lineNumber": 293,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "### 4.2. User Stories"
       },
       {
-        "lineNumber": 293,
+        "lineNumber": 294,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 294,
+        "lineNumber": 295,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|Version| As a ... | I want to ... | So that ...|"
       },
       {
-        "lineNumber": 295,
+        "lineNumber": 296,
         "author": {
           "gitId": "-"
         },
         "content": "|--------|----------|---------------|------------------|"
       },
       {
-        "lineNumber": 296,
+        "lineNumber": 297,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v1.0|freshman/ anyone new to nus|know if there is any direct bus to my target destination|I do not need to change buses|"
       },
       {
-        "lineNumber": 297,
+        "lineNumber": 298,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v1.0|someone that is unfamiliar with the NUS campus|know the full routes of the buses|I could plan my route to my desired destination|"
       },
       {
-        "lineNumber": 298,
+        "lineNumber": 299,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v1.0|someone new to NUS|know all the available bus stops in the school|I can check the possible bus stops I can board/alight at to reach my destination|"
       },
       {
-        "lineNumber": 299,
+        "lineNumber": 300,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v1.0|curious person|know the full routes of all the buses in NUS|I can see where each bus is heading to|"
       },
       {
-        "lineNumber": 300,
+        "lineNumber": 301,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v1.0|freshman/ anyone new to NUS|know the buses available at specific bus stops|I can better plan my trip around the campus in advance|"
       },
       {
-        "lineNumber": 301,
+        "lineNumber": 302,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v2.0|frequent user|have a list of favourite commands|I can access my favourite commands quickly|"
       },
       {
-        "lineNumber": 302,
+        "lineNumber": 303,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v2.0|frequent user|be able to customise my list of favourite commands|I can change the list according to my needs|"
       },
       {
-        "lineNumber": 303,
+        "lineNumber": 304,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v2.0|frequent user|view my most searched bus stop|it can promptly remind me of the bus stop to key in|"
       },
       {
-        "lineNumber": 304,
+        "lineNumber": 305,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "|v2.0|frequent user|be able to change how I describe my favorite commands|I know when and why I usually use that command and so that I can use it accordingly later.|"
       },
       {
-        "lineNumber": 305,
+        "lineNumber": 306,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 306,
+        "lineNumber": 307,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "### 4.3. Non-Functional Requirements"
       },
       {
-        "lineNumber": 307,
+        "lineNumber": 308,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 308,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "1. Nav@NUS should be able to work on any _mainstream OS_ which has Java 11 or a higher version of Java installed."
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "2. The user is expected to have a basic idea about the places around NUS."
+        "content": "1. Nav@NUS should be able to work on any _mainstream OS_ which has Java 11 or a higher version of Java installed."
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "3. A user comfortable with typing english text should be able to find this application faster and more useful than those"
+        "content": "2. The user is expected to have a basic idea about the places around NUS."
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "that require mouse clicks."
+        "content": "3. A user comfortable with typing english text should be able to find this application faster and more useful than those"
       },
       {
         "lineNumber": 312,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "that require mouse clicks."
+      },
+      {
+        "lineNumber": 313,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 313,
+        "lineNumber": 314,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "### 4.4. Glossary"
       },
       {
-        "lineNumber": 314,
+        "lineNumber": 315,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 315,
+        "lineNumber": 316,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "* **Mainstream OS** - Windows, Linux, Unix, OS-X"
       },
       {
-        "lineNumber": 316,
+        "lineNumber": 317,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 317,
+        "lineNumber": 318,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "## 5. Appendix II: Instructions for manual testing"
       },
       {
-        "lineNumber": 318,
+        "lineNumber": 319,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 319,
+        "lineNumber": 320,
         "author": {
           "gitId": "-"
         },
@@ -2668,12 +2675,12 @@
       }
     ],
     "authorContributionMap": {
-      "Johnson-Yee": 33,
+      "Johnson-Yee": 32,
       "Lezn0": 15,
       "EthanWong2212": 21,
       "mrwsy1": 28,
       "-": 20,
-      "wamikamalik": 202
+      "wamikamalik": 204
     }
   },
   {
@@ -6244,25 +6251,543 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "#### Project: Nav@NUS"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "Nav@NUS is a desktop application that aids users in getting around NUS. The user interacts with it using a CLI and thus,"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "### Summary of Contributions"
+        "content": " this application is appropriate for users who can type fast."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "## Summary of Contributions"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "Given below are my contributions to the project."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### New Feature: Find a bus route between 2 locations "
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* What it does: it allows the user to find all direct bus routes between 2 locations."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Justification: This is one of the main features of the product as it aids navigation by allowing the user to find all "
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "buses that go from one bus stop to another. It further eases the user\u0027s travel by displaying intermediate stops for each"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " possible bus they can take."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " * Highlights: This feature forms the basis of the product and was challenging to implement as it required"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " careful analysis of the type of locations that can be input by the user."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " "
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### New Feature: Change description for your favourite commands"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " * What it does: it allows the user to change the description for an existing command in the list of favourite commands."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " * Justification: This feature improves the ease of usability of the product as it allows the user to change description"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": " in one step rather than deleting the command from the list and adding it again with the new description."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Code Contributed"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* [This is the RepoSense link](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#breakdown\u003dtrue\u0026search\u003dwamikamalik) to "
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "my code."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Enhancements implemented"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added food places data classes. (Pull request [#57](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/57))"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added a similarity check to existing features. This check recommends possible locations based on potential spelling "
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "errors. (Pull request [#73](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/73))"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    + Credits: The edit distance algorithm used was taken from "
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    [http://rosettacode.org/wiki/Levenshtein_distance#Java](http://rosettacode.org/wiki/Levenshtein_distance#Java)."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Refactored classes into packages. (Pull request [#96](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/96))"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Wrote tests for existing route and description change features and a few tests for Parser. (Pull requests "
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#11](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/11), "
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#33](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/33), "
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#104](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/104))    "
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Contributions to documentation"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added documentation for features `/route`and `/descfav`. (Pull request "
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#75](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/75), "
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#136](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/136))"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added documentation for `similarity check`. (Pull request [#80](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/80))"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Did cosmetic tweaks to images used. (Pull request [#90](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/90))"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Contributions to the DG"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added implementation details, class diagrams and sequence diagrams for `/route` and `/descfav` features. (Pull "
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "requests [#111](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/111), "
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#112](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/112), "
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#119](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/119)"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ") "
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added details for architecture, architecture diagram and class diagrams for all components. (Pull requests "
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#68](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/68), "
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#195](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/195)"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ")"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Contributions to team-based tasks "
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Managed releases v1.0 and v2.0"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Set up the GitHub team organisation and repo"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Added details about the different components in DG."
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Maintained the issue tracker for specific features and some common tasks."
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Review/mentoring contributions"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* PRs reviewed (with non-trivial review comments): [#19](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/19), "
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#28](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/28), "
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#29](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/29), "
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#31](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/31), "
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#37](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/37), "
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#59](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/59), "
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#74](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/74), "
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#78](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/78), "
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#100](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/100), "
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[#142](https://github.com/AY2021S1-CS2113T-F14-3/tp/pull/142)"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "#### Contributions beyond the project team"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Reported bugs and suggestions for other teams in the class (example: "
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[these issues](https://github.com/wamikamalik/ped/issues))"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "* Provided suggestions for the developer guide of another team ("
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "[this PR](https://github.com/nus-cs2113-AY2021S1/tp/pull/3#pullrequestreview-520397387))"
       }
     ],
     "authorContributionMap": {
-      "wamikamalik": 6
+      "wamikamalik": 80
     }
   },
   {
@@ -7106,82 +7631,103 @@
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "EthanWong2212"
         },
-        "content": "    EMPTY_INDEX(\"Oh no! I cannot detect the input index.\");"
+        "content": "    EMPTY_INDEX(\"Oh no! I cannot detect the input index.\"),"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "    LIST_INDEX_CORRUPTED(\"Oh no! it seems that this command has been corrupted.\\n\""
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
-        "content": "    private String message;"
+        "content": "            + \"Don\u0027t worry, I have deleted it from your favourites list!\"),"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "    POSSIBLE_LOCS_DUMMY(\"Possible Locs shown\");"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    ExceptionType(String message) {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        this.message \u003d message;"
+        "content": "    private String message;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    ExceptionType(String message) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public String getMessage() {"
+        "content": "        this.message \u003d message;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        return message;"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 50,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    public String getMessage() {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        return message;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -7190,8 +7736,8 @@
     ],
     "authorContributionMap": {
       "Johnson-Yee": 5,
-      "Lezn0": 5,
-      "EthanWong2212": 2,
+      "Lezn0": 4,
+      "EthanWong2212": 6,
       "mrwsy1": 2,
       "wamikamalik": 36
     }
@@ -7381,184 +7927,184 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
-        "content": "import seedu.duke.model.bus.Bus;"
+        "content": "import seedu.duke.exceptions.ExceptionType;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "import seedu.duke.model.bus.BusData;"
+        "content": "import seedu.duke.model.bus.Bus;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "import seedu.duke.model.bus.BusStops;"
+        "content": "import seedu.duke.model.bus.BusData;"
       },
       {
         "lineNumber": 6,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "import seedu.duke.model.bus.BusStops;"
+      },
+      {
+        "lineNumber": 7,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "import seedu.duke.exceptions.CustomException;"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 8,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "import seedu.duke.logic.similaritycheck.SimilarityCheck;"
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 9,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "import seedu.duke.logic.commands.commons.Command;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 10,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "import seedu.duke.ui.Ui;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 11,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": ""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 12,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 13,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "import java.util.EnumSet;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 14,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": ""
       },
       {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "Lezn0"
-        },
-        "content": "import static seedu.duke.ui.Ui.printLine;"
-      },
-      {
         "lineNumber": 15,
-        "author": {
-          "gitId": "Lezn0"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "public class BusCommand extends Command {"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": ""
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "    private String busStop;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": ""
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "    public BusCommand(String busStop) throws CustomException {"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "        ArrayList\u003cString\u003e possibleLocs \u003d new ArrayList\u003c\u003e(similarLocations(busStop));"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "        if (possibleLocs.isEmpty()) {"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "            this.busStop \u003d BusStops.formatName(busStop.trim());"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "Johnson-Yee"
         },
         "content": "            BusStops.findBusStop(busStop).incrementSearchCount();"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "            super.isValid \u003d true;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "            Ui.printPossibleLocsMessage(possibleLocs);"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "EthanWong2212"
         },
         "content": "            super.isValid \u003d false;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "            throw new CustomException(ExceptionType.POSSIBLE_LOCS_DUMMY);"
       },
       {
         "lineNumber": 29,
@@ -7600,84 +8146,84 @@
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        if (busStop !\u003d null) {"
+        "content": "        ArrayList\u003cBus\u003e busList \u003d BusData.getBusAtStop(busStop);"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "EthanWong2212"
         },
-        "content": "            printLine();"
+        "content": "        Ui.printBusAtBusStop(busList, busStop);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "            ArrayList\u003cBus\u003e busList \u003d BusData.getBusAtStop(busStop);"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "EthanWong2212"
-        },
-        "content": "            Ui.printBusAtBusStop(busList, busStop);"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "EthanWong2212"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "EthanWong2212"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 37,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": ""
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 38,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "    private ArrayList\u003cString\u003e similarLocations(String location) {"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 39,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "        ArrayList\u003cString\u003e possibleLocs \u003d new ArrayList\u003c\u003e();"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 40,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "        ArrayList\u003cString\u003e routeNames \u003d new ArrayList\u003c\u003e();"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 41,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "        for (BusStops info: EnumSet.allOf(BusStops.class)) {"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 42,
         "author": {
           "gitId": "wamikamalik"
         },
         "content": "            routeNames.add(info.getName().toLowerCase());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "        if (!routeNames.contains(location.trim().toLowerCase())) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": "            possibleLocs \u003d SimilarityCheck.similarLoc(location);"
       },
       {
         "lineNumber": 46,
@@ -7691,38 +8237,17 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        if (!routeNames.contains(location.trim().toLowerCase())) {"
+        "content": "        return possibleLocs;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            possibleLocs \u003d SimilarityCheck.similarLoc(location);"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "        return possibleLocs;"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "wamikamalik"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 49,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -7731,7 +8256,6 @@
     ],
     "authorContributionMap": {
       "Johnson-Yee": 1,
-      "Lezn0": 3,
       "EthanWong2212": 22,
       "wamikamalik": 26
     }
@@ -8239,306 +8763,313 @@
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
-        "content": "        }"
+        "content": "            throw new CustomException(ExceptionType.POSSIBLE_LOCS_DUMMY);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    private boolean areValidLocations(String[] locations) throws CustomException {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        if (isValidBusStop(locations[0].trim())) {"
+        "content": "    private boolean areValidLocations(String[] locations) throws CustomException {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            if (isValidBusStop(locations[1].trim())) {"
+        "content": "        if (isValidBusStop(locations[0].trim())) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                return true;"
+        "content": "            if (isValidBusStop(locations[1].trim())) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            } else {"
+        "content": "                return true;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                throw new CustomException(ExceptionType.INVALID_DEST);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            }"
+        "content": "                throw new CustomException(ExceptionType.INVALID_DEST);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        } else {"
+        "content": "            }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            if (isValidBusStop(locations[1].trim())) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                throw new CustomException(ExceptionType.INVALID_START_LOC);"
+        "content": "            if (isValidBusStop(locations[1].trim())) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            } else {"
+        "content": "                throw new CustomException(ExceptionType.INVALID_START_LOC);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                throw new CustomException(ExceptionType.INVALID_LOCATIONS);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            }"
+        "content": "                throw new CustomException(ExceptionType.INVALID_LOCATIONS);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    private void checkLocations(String[] locations) throws CustomException {"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        if (locations[0].trim().length() \u003d\u003d 0 || locations[1].trim().length() \u003d\u003d 0) {"
+        "content": "    private void checkLocations(String[] locations) throws CustomException {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            throw new CustomException(ExceptionType.NO_LOCATIONS);"
+        "content": "        if (locations[0].trim().length() \u003d\u003d 0 || locations[1].trim().length() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        } else if (locations[0].trim().equalsIgnoreCase(locations[1].trim())) {"
+        "content": "            throw new CustomException(ExceptionType.NO_LOCATIONS);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            assert !locations[0].isBlank() : \"Location 0 is empty.\";"
+        "content": "        } else if (locations[0].trim().equalsIgnoreCase(locations[1].trim())) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            assert !locations[1].isBlank() : \"Location 1 is empty.\";"
+        "content": "            assert !locations[0].isBlank() : \"Location 0 is empty.\";"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            throw new CustomException(ExceptionType.SAME_LOCATIONS);"
+        "content": "            assert !locations[1].isBlank() : \"Location 1 is empty.\";"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "            throw new CustomException(ExceptionType.SAME_LOCATIONS);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        assert !locations[0].isBlank() : \"Location 0 is empty.\";"
+        "content": "        }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        assert !locations[1].isBlank() : \"Location 1 is empty.\";"
+        "content": "        assert !locations[0].isBlank() : \"Location 0 is empty.\";"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        assert !(locations[0].trim().equalsIgnoreCase(locations[1].trim())) : \"Seems like the locations are still \""
+        "content": "        assert !locations[1].isBlank() : \"Location 1 is empty.\";"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                + \"the same.\";"
+        "content": "        assert !(locations[0].trim().equalsIgnoreCase(locations[1].trim())) : \"Seems like the locations are still \""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "                + \"the same.\";"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    private ArrayList\u003cString\u003e similarLocations(String[] locations) {"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        ArrayList\u003cString\u003e possibleLocs \u003d new ArrayList\u003c\u003e();"
+        "content": "    private ArrayList\u003cString\u003e similarLocations(String[] locations) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        if (!isValidBusStop(locations[0].trim())) {"
+        "content": "        ArrayList\u003cString\u003e possibleLocs \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            possibleLocs \u003d SimilarityCheck.similarLoc(locations[0]);"
+        "content": "        if (!isValidBusStop(locations[0].trim())) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        } else if (!isValidBusStop(locations[1].trim())) {"
+        "content": "            possibleLocs \u003d SimilarityCheck.similarLoc(locations[0]);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            possibleLocs \u003d SimilarityCheck.similarLoc(locations[1]);"
+        "content": "        } else if (!isValidBusStop(locations[1].trim())) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "            possibleLocs \u003d SimilarityCheck.similarLoc(locations[1]);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        return possibleLocs;"
+        "content": "        }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        return possibleLocs;"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 83,
+        "author": {
+          "gitId": "wamikamalik"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -8546,6 +9077,7 @@
       }
     ],
     "authorContributionMap": {
+      "EthanWong2212": 1,
       "wamikamalik": 83
     }
   },
@@ -11326,208 +11858,257 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "EthanWong2212"
         },
-        "content": "import seedu.duke.logic.commands.commons.Command;"
+        "content": "import seedu.duke.exceptions.ExceptionType;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "EthanWong2212"
+          "gitId": "wamikamalik"
         },
-        "content": "import seedu.duke.logic.parser.ExecFavParser;"
+        "content": "import seedu.duke.logic.commands.commons.Command;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "import seedu.duke.logic.parser.Parser;"
+        "content": "import seedu.duke.logic.parser.ExecFavParser;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "import seedu.duke.model.favorite.Fav;"
+        "content": "import seedu.duke.logic.parser.Parser;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "import seedu.duke.model.favorite.FavList;"
+        "content": "import seedu.duke.model.favorite.Fav;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "import seedu.duke.model.favorite.FavList;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "public class ExecFavCommand extends Command {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    private int index;"
+        "content": "public class ExecFavCommand extends Command {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    private ExecFavParser parser;"
+        "content": "    private int index;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    private Fav fav;"
+        "content": "    private ExecFavParser parser;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "    private Fav fav;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    public ExecFavCommand(String input) throws CustomException {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        this.parser \u003d new ExecFavParser(input);"
+        "content": "    public ExecFavCommand(String input) throws CustomException {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        super.isValid \u003d false;"
+        "content": "        this.parser \u003d new ExecFavParser(input);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    }"
+        "content": "        super.isValid \u003d false;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    private void getFav() throws CustomException {"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        assert ! (parser \u003d\u003d null) : \"parser not declared\";"
+        "content": "    private void getFav() throws CustomException {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        index \u003d parser.getIndex();"
+        "content": "        assert ! (parser \u003d\u003d null) : \"parser not declared\";"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        fav \u003d FavList.getFav(index);"
+        "content": "        index \u003d parser.getIndex();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    }"
+        "content": "        fav \u003d FavList.getFav(index);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    public void executeCommand() throws CustomException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        getFav();"
+        "content": "    public void executeCommand() throws CustomException {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        Parser parser \u003d new Parser(fav.getCommand());"
+        "content": "        getFav();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        System.out.println(fav.getCommand());"
+        "content": "        Parser parser \u003d new Parser(fav.getCommand());"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        boolean done \u003d !parser.extractType();"
+        "content": "        System.out.println(fav.getCommand());"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    }"
+        "content": "        try {"
       },
       {
         "lineNumber": 33,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "            boolean done \u003d !parser.extractType();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "        } catch (CustomException e) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "            FavList.deleteFav(index + 1);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "            throw new CustomException(ExceptionType.LIST_INDEX_CORRUPTED);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
         "author": {
           "gitId": "EthanWong2212"
         },
@@ -11535,7 +12116,7 @@
       }
     ],
     "authorContributionMap": {
-      "EthanWong2212": 32,
+      "EthanWong2212": 39,
       "wamikamalik": 1
     }
   },
@@ -21330,226 +21911,226 @@
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "EthanWong2212"
         },
-        "content": "        printLine();"
+        "content": "        if (error.toString() !\u003d \"Possible Locs shown\") {"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Lezn0"
         },
-        "content": "        System.out.println(error);"
+        "content": "            printLine();"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": "            System.out.println(error);"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Lezn0"
         },
-        "content": "    }"
+        "content": "            printLine();"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "EthanWong2212"
         },
-        "content": "    public static void printHelp() {"
+        "content": "    }"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        System.out.println(\"Here are the range of commands:\\n\""
+        "content": "    public static void printHelp() {"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "Lezn0"
         },
-        "content": "                + \"1. /route : Display possible direct bus from point to point\\n\""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "Johnson-Yee"
         },
-        "content": "                + \"2. /routemap: Display the route map with its intermediate bus stops\\n\""
+        "content": "        System.out.println(\"Here are the range of commands:\\n\""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"3. /bus: Display buses available at each bus stop\\n\""
+        "content": "                + \"1. /route : Display possible direct bus from point to point\\n\""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"4. /allbus: List all buses available in NUS Zone a\\n\""
+        "content": "                + \"2. /routemap: Display the route map with its intermediate bus stops\\n\""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"5. /liststops: List all bus stops in NUS\\n\""
+        "content": "                + \"3. /bus: Display buses available at each bus stop\\n\""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"6. /faculty: List all faculties in NUS\\n\""
+        "content": "                + \"4. /allbus: List all buses available in NUS Zone a\\n\""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"7. /dine: Search for dining options within a faculty\\n\""
+        "content": "                + \"5. /liststops: List all bus stops in NUS\\n\""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"8. /dineinfo: Search for a specific dining outlet\\n\""
+        "content": "                + \"6. /faculty: List all faculties in NUS\\n\""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"9. /addfav: Add a favourite command\\n\""
+        "content": "                + \"7. /dine: Search for dining options within a faculty\\n\""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"10. /deletefav: Delete a favourite command\\n\""
+        "content": "                + \"8. /dineinfo: Search for a specific dining outlet\\n\""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"11. /execfav: Execute a favourite command\\n\""
+        "content": "                + \"9. /addfav: Add a favourite command\\n\""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"12. /descfav: Change the description for a favourite command\\n\""
+        "content": "                + \"10. /deletefav: Delete a favourite command\\n\""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"13. /listfav: List all favourite commands\\n\""
+        "content": "                + \"11. /execfav: Execute a favourite command\\n\""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"14. /clearfav: Clear the list of favourite commands\\n\""
+        "content": "                + \"12. /descfav: Change the description for a favourite command\\n\""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"15. /exit: Exit program\\n\""
+        "content": "                + \"13. /listfav: List all favourite commands\\n\""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"16. /reset: Reset frequent search data\\n\""
+        "content": "                + \"14. /clearfav: Clear the list of favourite commands\\n\""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                + \"17. /help: List all available commands\");"
+        "content": "                + \"15. /exit: Exit program\\n\""
       },
       {
         "lineNumber": 71,
+        "author": {
+          "gitId": "mrwsy1"
+        },
+        "content": "                + \"16. /reset: Reset frequent search data\\n\""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "mrwsy1"
+        },
+        "content": "                + \"17. /help: List all available commands\");"
+      },
+      {
+        "lineNumber": 73,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "        System.out.println(\"https://ay2021s1-cs2113t-f14-3.github.io/tp/UserGuide.html#1-what-is-navnus\");"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 74,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "        printLine();"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "wamikamalik"
-        },
-        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public static void printExitMessage() {"
+        "content": "    }"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"So long buddy!\");"
+        "content": "    public static void printExitMessage() {"
       },
       {
         "lineNumber": 78,
@@ -21563,308 +22144,308 @@
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"So long buddy!\");"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    public static void printRouteMessage(ArrayList\u003cBus\u003e options) {"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "Johnson-Yee"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        int optionNo \u003d 1;"
+        "content": "    public static void printRouteMessage(ArrayList\u003cBus\u003e options) {"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Lezn0"
         },
-        "content": "        boolean isPossible \u003d false;"
+        "content": "        printLine();"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        int busCount \u003d 0;"
+        "content": "        int optionNo \u003d 1;"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"The buses you can take with their intermediate stops are: \");"
+        "content": "        boolean isPossible \u003d false;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        for (Bus option : options) {"
+        "content": "        int busCount \u003d 0;"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Lezn0"
         },
-        "content": "            if (option.toString() !\u003d null) {"
+        "content": "        System.out.println(\"The buses you can take with their intermediate stops are: \");"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                if (busCount !\u003d 0) {"
+        "content": "        for (Bus option : options) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                    System.out.println(\"\");"
+        "content": "            if (option.toString() !\u003d null) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                    busCount \u003d 0;"
+        "content": "                if (busCount !\u003d 0) {"
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "                }"
+        "content": "                    System.out.println(\"\");"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                System.out.println(optionNo + \". \" + option.toString());"
+        "content": "                    busCount \u003d 0;"
       },
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Lezn0"
         },
-        "content": "                optionNo++;"
+        "content": "                }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                busCount++;"
+        "content": "                System.out.println(optionNo + \". \" + option.toString());"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                isPossible \u003d true;"
+        "content": "                optionNo++;"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            }"
+        "content": "                busCount++;"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "                isPossible \u003d true;"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        if (!isPossible) {"
+        "content": "            }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            System.out.println(\"none. There are no direct bus routes. :(\");"
+        "content": "        }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "        if (!isPossible) {"
       },
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": "            System.out.println(\"none. There are no direct bus routes. :(\");"
       },
       {
         "lineNumber": 103,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "    public static void printFullRoute(Bus busCode) {"
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        if (busCode !\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "Johnson-Yee"
         },
-        "content": "            printLine();"
+        "content": "    public static void printFullRoute(Bus busCode) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        }"
+        "content": "        if (busCode !\u003d null) {"
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "Lezn0"
         },
-        "content": "        System.out.println(\"Here is the \" + busCode.getBusNumber() + \" route that you have requested:\\n\" + busCode);"
+        "content": "            printLine();"
       },
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "Johnson-Yee"
         },
-        "content": "        printLine();"
+        "content": "        }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Here is the \" + busCode.getBusNumber() + \" route that you have requested:\\n\" + busCode);"
       },
       {
         "lineNumber": 112,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 113,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "Johnson-Yee"
         },
-        "content": "    public static void printDupeMessage(int index, String desc, String command) {"
+        "content": "    }"
       },
       {
         "lineNumber": 114,
         "author": {
-          "gitId": "Lezn0"
+          "gitId": "Johnson-Yee"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "        System.out.println(\"You already saved something like this in your favourites list\");"
+        "content": "    public static void printDupeMessage(int index, String desc, String command) {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "        System.out.println(index + \". \" + desc + \"\\nCommand stored: \" + command);"
+        "content": "        printLine();"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "        printLine();"
+        "content": "        System.out.println(\"You already saved something like this in your favourites list\");"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "    }"
+        "content": "        System.out.println(index + \". \" + desc + \"\\nCommand stored: \" + command);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 120,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "Lezn0"
         },
-        "content": "    public static void printResetSearchFreqMessage() {"
+        "content": "    }"
       },
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "Lezn0"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        System.out.println(\"The search frequencies of all bus stops have been reset to 0!\");"
+        "content": "    public static void printResetSearchFreqMessage() {"
       },
       {
         "lineNumber": 123,
@@ -21878,560 +22459,560 @@
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"The search frequencies of all bus stops have been reset to 0!\");"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "    private static void printMostSearchedBusStop() {"
+        "content": "    }"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        if (BusStops.mostSearchedBusStop() !\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "            System.out.println(\"Your most searched bus stop is: \" + BusStops.mostSearchedBusStop().getName());"
+        "content": "    private static void printMostSearchedBusStop() {"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        } else {"
+        "content": "        if (BusStops.mostSearchedBusStop() !\u003d null) {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "            System.out.println(\"As you search more, your most frequently searched bus stop will appear here \""
+        "content": "            System.out.println(\"Your most searched bus stop is: \" + BusStops.mostSearchedBusStop().getName());"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "                    + \"each time\\nyou run this program!\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        }"
+        "content": "            System.out.println(\"As you search more, your most frequently searched bus stop will appear here \""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "    }"
+        "content": "                    + \"each time\\nyou run this program!\");"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 135,
+        "author": {
+          "gitId": "Johnson-Yee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "Johnson-Yee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
         "author": {
           "gitId": "mrwsy1"
         },
         "content": "    public static void printAllBusMessage(ArrayList\u003cBus\u003e allBuses) {"
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 138,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "        printLine();"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 139,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "        System.out.println(\"The buses available in NUS are: \");"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 140,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "        int count \u003d allBuses.size();"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 141,
         "author": {
           "gitId": "mrwsy1"
         },
         "content": "        for (Bus bus : allBuses) {"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 142,
         "author": {
           "gitId": "mrwsy1"
         },
         "content": "            System.out.println(bus.toString());"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 143,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "            count--;"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 144,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "            if (count !\u003d 0) {"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 145,
         "author": {
           "gitId": "Lezn0"
         },
         "content": "                System.out.println();"
       },
       {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "Lezn0"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "mrwsy1"
-        },
-        "content": "        }"
-      },
-      {
         "lineNumber": 146,
         "author": {
           "gitId": "Lezn0"
         },
-        "content": "        printLine();"
+        "content": "            }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 148,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "Lezn0"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 149,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "mrwsy1"
         },
-        "content": "    public static void printPossibleLocsMessage(ArrayList\u003cString\u003e possibleLocs) {"
+        "content": "    }"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"Hmm, did you mean any of these locations?\");"
+        "content": "    public static void printPossibleLocsMessage(ArrayList\u003cString\u003e possibleLocs) {"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        for (String location : possibleLocs) {"
+        "content": "        printLine();"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "            System.out.println(location);"
+        "content": "        System.out.println(\"Hmm, did you mean any of these locations?\");"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        }"
+        "content": "        for (String location : possibleLocs) {"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"Please type the command again with the correct location.\");"
+        "content": "            System.out.println(location);"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": "        }"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Please type the command again with the correct location.\");"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 159,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "wamikamalik"
         },
-        "content": "    public static void printFacultyResult(ArrayList\u003cFoodPlace\u003e foodPlaceList) {"
+        "content": "    }"
       },
       {
         "lineNumber": 160,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "wamikamalik"
         },
-        "content": "        int count \u003d 0;"
+        "content": ""
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        System.out.println(\"List of all faculties in NUS: \");"
+        "content": "    public static void printFacultyResult(ArrayList\u003cFoodPlace\u003e foodPlaceList) {"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        for (FoodPlace foodPlace : foodPlaceList) {"
+        "content": "        int count \u003d 0;"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            ArrayList\u003cString\u003e tempFacultyList \u003d foodPlace.getFaculty();"
+        "content": "        System.out.println(\"List of all faculties in NUS: \");"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            for (String faculty : tempFacultyList) {"
+        "content": "        for (FoodPlace foodPlace : foodPlaceList) {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                count++;"
+        "content": "            ArrayList\u003cString\u003e tempFacultyList \u003d foodPlace.getFaculty();"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                System.out.println(count + \". \" + faculty);"
+        "content": "            for (String faculty : tempFacultyList) {"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            }"
+        "content": "                count++;"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        }"
+        "content": "                System.out.println(count + \". \" + faculty);"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    public static void printDineResult(String tempFaculty, ArrayList\u003cDiningOptions\u003e foodPlaceInfo) {"
+        "content": "    }"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        int displayCount \u003d 0;"
+        "content": ""
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        System.out.println(\"The dining options available at \" + tempFaculty + \" are:\");"
+        "content": "    public static void printDineResult(String tempFaculty, ArrayList\u003cDiningOptions\u003e foodPlaceInfo) {"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        for (DiningOptions info : foodPlaceInfo) {"
+        "content": "        int displayCount \u003d 0;"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            displayCount++;"
+        "content": "        System.out.println(\"The dining options available at \" + tempFaculty + \" are:\");"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            System.out.println(displayCount + \". \" + info.getName());"
+        "content": "        for (DiningOptions info : foodPlaceInfo) {"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        }"
+        "content": "            displayCount++;"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    }"
+        "content": "            System.out.println(displayCount + \". \" + info.getName());"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    public static void printDineInfoResult(ArrayList\u003cDiningOptions\u003e searchList) {"
+        "content": "    }"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        if (searchList.size() \u003d\u003d 0) {"
+        "content": ""
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            System.out.println(\"No match found.\");"
+        "content": "    public static void printDineInfoResult(ArrayList\u003cDiningOptions\u003e searchList) {"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        } else {"
+        "content": "        if (searchList.size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            System.out.println(\"The stores that match your search:\");"
+        "content": "            System.out.println(\"No match found.\");"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            for (DiningOptions item : searchList) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "                System.out.println(\"\\n\" + item.toString());"
+        "content": "            System.out.println(\"The stores that match your search:\");"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            }"
+        "content": "            for (DiningOptions item : searchList) {"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        }"
+        "content": "                System.out.println(\"\\n\" + item.toString());"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    public static void printFavList(ArrayList\u003cFav\u003e favList) {"
+        "content": "    }"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        int index \u003d 0;"
+        "content": "    public static void printFavList(ArrayList\u003cFav\u003e favList) {"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        for (Fav item : favList) {"
+        "content": "        printLine();"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            index++;"
+        "content": "        int index \u003d 0;"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "            System.out.println(index + \". \" + item.toString());"
+        "content": "        for (Fav item : favList) {"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        }"
+        "content": "            index++;"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        printLine();"
+        "content": "            System.out.println(index + \". \" + item.toString());"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 200,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 201,
         "author": {
-          "gitId": "Johnson-Yee"
+          "gitId": "mrwsy1"
         },
-        "content": "    public static void printDeleteFavMessage(int favCommandIndex) throws CustomException {"
+        "content": "    }"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "        System.out.println(\"Got it! I\u0027ve removed the favourite command: \\n \" + FavList.getFav(favCommandIndex - 1));"
+        "content": "    public static void printDeleteFavMessage(int favCommandIndex) throws CustomException {"
       },
       {
         "lineNumber": 204,
@@ -22445,35 +23026,35 @@
         "author": {
           "gitId": "Johnson-Yee"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Got it! I\u0027ve removed the favourite command: \\n \" + FavList.getFav(favCommandIndex - 1));"
       },
       {
         "lineNumber": 206,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "Johnson-Yee"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "mrwsy1"
+          "gitId": "Johnson-Yee"
         },
-        "content": "    public static void printClearFavMessage() {"
+        "content": "    }"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "        System.out.println(\"Your favourites has been cleared.\");"
+        "content": "    public static void printClearFavMessage() {"
       },
       {
         "lineNumber": 210,
@@ -22487,164 +23068,185 @@
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Your favourites has been cleared.\");"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "mrwsy1"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "mrwsy1"
         },
-        "content": "    public static void printDescChangeMessage(String command, String oldDesc, String newDesc) {"
+        "content": "    }"
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "wamikamalik"
+          "gitId": "mrwsy1"
         },
-        "content": "        printLine();"
+        "content": ""
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"Your description for command \\\"\" + command + \"\\\"\\nhas been successfully changed from \\\"\""
+        "content": "    public static void printDescChangeMessage(String command, String oldDesc, String newDesc) {"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "                + oldDesc + \"\\\"\\nto \\\"\" + newDesc + \"\\\"\");"
+        "content": "        printLine();"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "        printLine();"
+        "content": "        System.out.println(\"Your description for command \\\"\" + command + \"\\\"\\nhas been successfully changed from \\\"\""
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": "    }"
+        "content": "                + oldDesc + \"\\\"\\nto \\\"\" + newDesc + \"\\\"\");"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "wamikamalik"
         },
-        "content": ""
+        "content": "        printLine();"
       },
       {
         "lineNumber": 220,
         "author": {
-          "gitId": "EthanWong2212"
+          "gitId": "wamikamalik"
         },
-        "content": "    public static void printCorruptedDataRead() {"
+        "content": "    }"
       },
       {
         "lineNumber": 221,
         "author": {
-          "gitId": "EthanWong2212"
+          "gitId": "wamikamalik"
         },
-        "content": "        System.out.println(\"Oh no! Some of the data in FavList.txt is corrupted.\\n\""
+        "content": ""
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "                + \"Most of the corrupted data has been removed :)\");"
+        "content": "    public static void printCorruptedDataRead() {"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Oh no! Some of the data in FavList.txt is corrupted.\\n\""
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "                + \"Most of the corrupted data has been removed :)\");"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    public static void printBusAtBusStop(ArrayList\u003cBus\u003e busList, String busStop) {"
+        "content": "    }"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        System.out.print(busStop + \":  \");"
+        "content": ""
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        for (Bus bus : busList) {"
+        "content": "    public static void printBusAtBusStop(ArrayList\u003cBus\u003e busList, String busStop) {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "            System.out.print(bus.getBusNumber() + \"   \");"
+        "content": "        printLine();"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        }"
+        "content": "        System.out.print(busStop + \":  \");"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        System.out.println();"
+        "content": "        for (Bus bus : busList) {"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "        printLine();"
+        "content": "            System.out.print(bus.getBusNumber() + \"   \");"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "EthanWong2212"
         },
-        "content": ""
+        "content": "        System.out.println();"
       },
       {
         "lineNumber": 234,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "        printLine();"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "EthanWong2212"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 237,
         "author": {
           "gitId": "wamikamalik"
         },
@@ -22654,7 +23256,7 @@
     "authorContributionMap": {
       "Johnson-Yee": 35,
       "Lezn0": 45,
-      "EthanWong2212": 14,
+      "EthanWong2212": 17,
       "mrwsy1": 73,
       "wamikamalik": 67
     }

@@ -9780,100 +9780,6 @@
     }
   },
   {
-    "path": "src/main/java/athena/AllocationFailedException.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "package athena;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "import athena.exceptions.InternalException;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "alstontham"
-        },
-        "content": "import athena.ui.AthenaUi;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "public class AllocationFailedException extends InternalException {"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    public void printErrorMessage() {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "alstontham"
-        },
-        "content": "        AthenaUi ui \u003d new AthenaUi();"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        ui.printAllocationFailed();"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "Kafcis": 10,
-      "alstontham": 2
-    }
-  },
-  {
     "path": "src/main/java/athena/Athena.java",
     "fileType": "functional-code",
     "lines": [
@@ -10491,6 +10397,841 @@
     "authorContributionMap": {
       "alstontham": 4,
       "wish2023": 4
+    }
+  },
+  {
+    "path": "src/main/java/athena/Log.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "package athena;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "import athena.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "import athena.task.Time;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "import java.util.Collections;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "public class Log {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private ArrayList\u003cInteger\u003e numberList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private Integer size;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private Integer start;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private Integer end;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private ArrayList\u003cTask\u003e carryOverTasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public Log(Integer start, Integer end) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.size \u003d end - start;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.numberList \u003d new ArrayList\u003cInteger\u003e((Collections.nCopies(size, -1)));"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.start \u003d start;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.end \u003d end;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void setNumber(int pos, int number) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        numberList.set(pos, number);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public ArrayList\u003cInteger\u003e getNumberList() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return this.numberList;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void setNumberList(ArrayList\u003cTask\u003e taskList) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        Integer space \u003d end - start;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        for (Task currTask : taskList) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            int span \u003d currTask.getTimeInfo().getDuration();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            if (span \u003c\u003d space) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                int taskNumber \u003d currTask.getNumber();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                for (int i \u003d 0; i \u003c span; i++) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                    int relativePos \u003d end - space - start;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                    numberList.set(i + relativePos, taskNumber);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                space -\u003d span;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            if (space \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void setFixedTasks(ArrayList\u003cTask\u003e fixedTaskList) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        for (Task currTask : fixedTaskList) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            int tag \u003d currTask.getNumber();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            Time timeInfo \u003d currTask.getTimeInfo();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            for (int i \u003d 0; i \u003c timeInfo.getDuration(); i++) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                this.setNumber(timeInfo.getStartTime().getHour() + i, tag);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public boolean hasSpace() {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return numberList.contains(-1);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public Integer getSpaceNumber() {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return numberList.indexOf(-1);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public int getStart(Integer start) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return numberList.get(start);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public ArrayList\u003cTask\u003e getCarryOverTasks() {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return carryOverTasks;"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public Log(TimeSlot currSlot, ArrayList\u003cTask\u003e undefinedTimeTasks) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.start \u003d currSlot.getStart();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.end \u003d currSlot.getEnd();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        Log currentLog \u003d new Log(currSlot.getStart(), currSlot.getEnd());"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        Log bestLog \u003d currentLog;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        boolean hasUsableVacancy \u003d true;"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        while (hasUsableVacancy) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            currentLog.setNumberList(undefinedTimeTasks);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            hasUsableVacancy \u003d currentLog.hasSpace();"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            if ((bestLog.getSpaceNumber() \u003c currentLog.getSpaceNumber()) | !hasUsableVacancy) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                bestLog \u003d currentLog;"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            if (!undefinedTimeTasks.isEmpty()) {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                carryOverTasks.add(undefinedTimeTasks.get(0));"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                undefinedTimeTasks.remove(0);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.numberList \u003d bestLog.getNumberList();"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void removeAssignedTasks() {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        for (int taskNumber : this.numberList) {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                this.carryOverTasks.remove(taskNumber);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                //do nothing"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void populateLog(Integer start, Log bestLog) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        int count \u003d 0;"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        for (int taskNumber : bestLog.getNumberList()) {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            this.getNumberList().set(count + start, taskNumber);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            count++;"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "Kafcis": 118
     }
   },
   {
@@ -14395,86 +15136,86 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "wish2023"
+          "gitId": "Kafcis"
         },
-        "content": "import athena.exceptions.DateHasPassedException;"
+        "content": "import athena.exceptions.NoNextSlotException;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "Kafcis"
+          "gitId": "wish2023"
         },
-        "content": "import athena.exceptions.TaskNotFoundException;"
+        "content": "import athena.exceptions.DateHasPassedException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import athena.task.Task;"
+        "content": "import athena.exceptions.TaskNotFoundException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import athena.task.Time;"
+        "content": "import athena.task.Task;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import athena.task.taskfilter.FlexibleTimeFilter;"
+        "content": "import athena.task.Time;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import athena.task.taskfilter.ForecastFilter;"
+        "content": "import athena.task.taskfilter.FlexibleTimeFilter;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": ""
+        "content": "import athena.task.taskfilter.ForecastFilter;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import java.time.LocalDate;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import java.time.LocalTime;"
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import java.time.format.DateTimeFormatter;"
+        "content": "import java.time.LocalTime;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.time.format.DateTimeFormatter;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "import java.util.Collections;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 15,
@@ -14677,1711 +15418,815 @@
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        ForecastFilter forecast \u003d new ForecastFilter(Forecast.DAY);"
+        "content": "        ArrayList\u003cTask\u003e undefinedTimeTasks \u003d getSortedFlexibleTasks(this.flexibleTaskList);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        ArrayList\u003cTask\u003e undefinedTimeTasks \u003d getSortedFlexibleTasks(this.flexibleTaskList);"
+        "content": "        for (int day \u003d 0; day \u003c 31; day++) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        for (int day \u003d 0; day \u003c 31; day++) {"
+        "content": "            Log dayLog \u003d new Log(0, 24);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            ArrayList\u003cInteger\u003e dayLog \u003d new ArrayList\u003cInteger\u003e(Collections.nCopies(24, -1));"
+        "content": "            ArrayList\u003cTask\u003e predefinedTimeTasks \u003d getSortedFixedTasks(getFixedDayTasks(currDay));"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            ArrayList\u003cTask\u003e predefinedTimeTasks \u003d getSortedFixedTasks(getFixedDayTasks(currDay));"
+        "content": "            dayLog.setFixedTasks(predefinedTimeTasks);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            for (Task currTask : predefinedTimeTasks) {"
+        "content": "            ArrayList\u003cTask\u003e carryOverTasks \u003d null;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                int tag \u003d currTask.getNumber();"
+        "content": "            TimeSlot currSlot \u003d new TimeSlot(dayLog);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                Time timeInfo \u003d currTask.getTimeInfo();"
+        "content": "            while (true) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                for (int i \u003d 0; i \u003c timeInfo.getDuration(); i++) {"
+        "content": "                try {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    dayLog.set(timeInfo.getStartTime().getHour() + i, tag);"
+        "content": "                    currSlot.findNextSlot();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                }"
+        "content": "                } catch (NoNextSlotException e) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "                    break;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            ArrayList\u003cTask\u003e carryOverTasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": "                }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": ""
+        "content": "                Log bestLog \u003d new Log(currSlot, undefinedTimeTasks);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            int start \u003d 8;"
+        "content": "                bestLog.removeAssignedTasks();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            int sleep \u003d 24;"
+        "content": "                dayLog.populateLog(currSlot.getStart(), bestLog);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            boolean done \u003d false;"
+        "content": "                assignTime(bestLog.getNumberList(), currSlot.getStart(), currDay);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            while (!done) {"
+        "content": "                carryOverTasks \u003d bestLog.getCarryOverTasks();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                int pos \u003d start;"
+        "content": "            }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                pos \u003d nextVacantSlotStart(dayLog, pos, sleep);"
+        "content": "            for (Task currTask : carryOverTasks) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                int end \u003d pos;"
+        "content": "                try {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                end \u003d nextVacantSlotEnd(dayLog, end, sleep);"
+        "content": "                    Time timeInfo \u003d taskList.getTaskFromNumber(currTask.getNumber()).getTimeInfo();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                carryOverTasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": "                    timeInfo.setStartTime(null);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                ArrayList\u003cInteger\u003e bestLog \u003d getBestLog(pos, end, undefinedTimeTasks, carryOverTasks);"
+        "content": "                } catch (TaskNotFoundException e) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                populateDayLog(pos, dayLog, bestLog);"
+        "content": "                    //do nothing"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                assignTime(bestLog, pos, currDay);"
+        "content": "                }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                undefinedTimeTasks \u003d carryOverTasks;"
+        "content": "            }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                start \u003d end;"
+        "content": "            currDay \u003d currDay.plusDays(1);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                if (end \u003d\u003d sleep) {"
+        "content": "        }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    done \u003d true;"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "    /**"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            for (Task currTask : carryOverTasks) {"
+        "content": "     * Assigns the best time to the Tasks."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                try {"
+        "content": "     *"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    Time timeInfo \u003d taskList.getTaskFromNumber(currTask.getNumber()).getTimeInfo();"
+        "content": "     * @param bestLog list of taskNumbers in the index corresponding to the hour they are assigned to"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    timeInfo.setStartTime(null);"
+        "content": "     * @param pos     starting position of the log"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                } catch (TaskNotFoundException e) {"
+        "content": "     * @param currDay date to assign tasks"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    //do nothing"
+        "content": "     */"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                }"
+        "content": "    private void assignTime(ArrayList\u003cInteger\u003e bestLog, int pos, LocalDate currDay) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "        int count \u003d 0;"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            currDay \u003d currDay.plusDays(1);"
+        "content": "        ArrayList\u003cInteger\u003e assignedNumbers \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        }"
+        "content": "        for (int taskNumber : bestLog) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    }"
+        "content": "            if (!assignedNumbers.contains(taskNumber)) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": ""
+        "content": "                try {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    /**"
+        "content": "                    Time timeInfo \u003d this.taskList.getTaskFromNumber(taskNumber)"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * Assigns the best time to the Tasks."
+        "content": "                            .getTimeInfo();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     *"
+        "content": "                    timeInfo.setStartTime(LocalTime.of(pos + count, 0));"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param bestLog list of taskNumbers in the index corresponding to the hour they are assigned to"
+        "content": "                    DateTimeFormatter formatter \u003d DateTimeFormatter.ofPattern(\"dd-MM\");"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param pos     starting position of the log"
+        "content": "                    timeInfo.resetRecurrence();"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param currDay date to assign tasks"
+        "content": "                    timeInfo.setRecurrence(currDay.format(formatter));"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     */"
+        "content": "                    assignedNumbers.add(taskNumber);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    private void assignTime(ArrayList\u003cInteger\u003e bestLog, int pos, LocalDate currDay) {"
+        "content": "                    this.flexibleTaskList.deleteTask(taskNumber);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        int count \u003d 0;"
+        "content": "                } catch (TaskNotFoundException e) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        ArrayList\u003cInteger\u003e assignedNumbers \u003d new ArrayList\u003c\u003e();"
+        "content": "                    //do nothing"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        for (int taskNumber : bestLog) {"
+        "content": "                }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            if (!assignedNumbers.contains(taskNumber)) {"
+        "content": "            }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                try {"
+        "content": "            count++;"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    Time timeInfo \u003d this.taskList.getTaskFromNumber(taskNumber)"
+        "content": "        }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                            .getTimeInfo();"
+        "content": "    }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    timeInfo.setStartTime(LocalTime.of(pos + count, 0));"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    DateTimeFormatter formatter \u003d DateTimeFormatter.ofPattern(\"dd-MM\");"
+        "content": ""
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    timeInfo.resetRecurrence();"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    timeInfo.setRecurrence(currDay.format(formatter));"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    assignedNumbers.add(taskNumber);"
+        "content": "    private ArrayList\u003cTask\u003e getSortedFixedTasks(TaskList taskList) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    this.flexibleTaskList.deleteTask(taskNumber);"
+        "content": "        TaskList fixedDayTasks \u003d taskList;"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                } catch (TaskNotFoundException e) {"
+        "content": "        ArrayList\u003cTask\u003e sortedTimeTasks \u003d fixedDayTasks.getTasks();"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                    //do nothing"
+        "content": "        sortedTimeTasks.sort(new TaskTimeComparator());"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                }"
+        "content": "        sortedTimeTasks.sort(new TaskImportanceComparator());"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "        return sortedTimeTasks;"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            count++;"
+        "content": "    }"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    }"
+        "content": "    private ArrayList\u003cTask\u003e getSortedFlexibleTasks(TaskList taskList) {"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": ""
+        "content": "        TaskList flexibleDayTasks \u003d taskList;"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    /**"
+        "content": "        ArrayList\u003cTask\u003e sortedTimeTasks \u003d flexibleDayTasks.getTasks();"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * Creates the arrangement that reduces the breaks in the timetable."
+        "content": "        sortedTimeTasks.sort(new TaskTimeComparator());"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * Iterates through the undefinedTimeTasks"
+        "content": "        sortedTimeTasks.sort(new TaskImportanceComparator());"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * Modifies the excess tasks left over"
+        "content": "        return sortedTimeTasks;"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param pos                staring position"
+        "content": ""
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param end                ending position"
+        "content": ""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param undefinedTimeTasks Tasks with undefined times"
+        "content": ""
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @param carryOverTasks     store tasks that did not get assigned yet"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     * @return"
+        "content": ""
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "     */"
+        "content": "    private TaskList getFixedDayTasks(LocalDate date) {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    private ArrayList\u003cInteger\u003e getBestLog(int pos, int end, ArrayList\u003cTask\u003e undefinedTimeTasks,"
+        "content": "        ForecastFilter forecast \u003d new ForecastFilter(date);"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                                          ArrayList\u003cTask\u003e carryOverTasks) {"
+        "content": "        TaskList fixedDayTask \u003d this.fixedTaskList.getFilteredList(forecast);"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        ArrayList\u003cInteger\u003e currentLog \u003d new ArrayList\u003cInteger\u003e();"
+        "content": "        return fixedDayTask;"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        ArrayList\u003cInteger\u003e bestLog \u003d new ArrayList\u003cInteger\u003e();"
+        "content": "    }"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        boolean hasUsableVacancy \u003d true;"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        while (hasUsableVacancy) {"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            currentLog \u003d getLog(undefinedTimeTasks, pos, end);"
+        "content": "    // Psuedocode for allocation runs might refactor into a command class"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            hasUsableVacancy \u003d currentLog.contains(-1);"
+        "content": "    //    public void runAllocate() {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            if ((bestLog.indexOf(-1) \u003c currentLog.indexOf(-1)) | !hasUsableVacancy) {"
+        "content": "    //        Collections.sort(fixedTask, earlier());"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                bestLog \u003d currentLog;"
+        "content": "    //        Collections.sort(flexibleTask,priority());"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "    //        //priority sorts according to importance(high to low) then duration(high to low)"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            if (!undefinedTimeTasks.isEmpty()) {"
+        "content": "    //        //might need toposort"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                carryOverTasks.add(undefinedTimeTasks.get(0));"
+        "content": "    //"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                undefinedTimeTasks.remove(0);"
+        "content": "    //        for (int i \u003d 0; i \u003c fixedTask.size() - 1; i++) {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": ""
+        "content": "    //            currentTime \u003d fixedTask.get(i).getStartTime() + fixedTask.get(i).getDuration();"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            } else {"
+        "content": "    //            nextTime \u003d fixedTask.get(i + 1).getStartTime();"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                break;"
+        "content": "    //            duration \u003d nextTime-currentTime;"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "    //"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": ""
+        "content": "    //            // select task with best fit into the time"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        }"
+        "content": "    //            // select important task then long tasks then check for space"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        for (int taskNumber : bestLog) {"
+        "content": "    //            // if there is no time left then continue"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            try {"
+        "content": "    //            // if not then choose another task that can go in"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                Task taskRemoved \u003d taskList.getTaskFromNumber(taskNumber);"
+        "content": "    //            // ?? not sure if want to go through the entire list to get 0 time wastage"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                undefinedTimeTasks.remove(taskRemoved);"
+        "content": "    //            // failure cases will be unable to meet deadline"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                carryOverTasks.remove(taskRemoved);"
+        "content": "    //            // set time for flexible tasks"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            } catch (TaskNotFoundException e) {"
+        "content": "    //            // repeat until all flexible tasks are assigned"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "                //do nothing"
+        "content": "    //"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "            }"
+        "content": "    //"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        }"
+        "content": "    //        }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        carryOverTasks.addAll(undefinedTimeTasks);"
+        "content": "    //    }"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        return bestLog;"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 159,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * Gets a filled vacant slots given undefinedTimeTasks."
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param undefinedTimeTasks Tasks to be slotted into the timetable"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param pos                starting position"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param end                ending position"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @return ArrayList containing taskNumbers"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private ArrayList\u003cInteger\u003e getLog(ArrayList\u003cTask\u003e undefinedTimeTasks, int pos, int end) {"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        int space \u003d end - pos;"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        ArrayList\u003cInteger\u003e log \u003d new ArrayList\u003cInteger\u003e(Collections.nCopies(space, -1));"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        for (Task currTask : undefinedTimeTasks) {"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            int span \u003d currTask.getTimeInfo().getDuration();"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            if (span \u003c\u003d space) {"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                int taskNumber \u003d currTask.getNumber();"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                for (int i \u003d 0; i \u003c span; i++) {"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                    int relativePos \u003d end - space - pos;"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                    log.set(i + relativePos, taskNumber);"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                space -\u003d span;"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            if (space \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return log;"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * Finds end of vacant time slot."
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param dayLog log of the day\u0027s tasks"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param end    ending position"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param sleep  sleep time"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @return valid end value"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private int nextVacantSlotEnd(ArrayList\u003cInteger\u003e dayLog, int end, int sleep) {"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        for (; end \u003c sleep; end++) {"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            if (dayLog.get(end) !\u003d -1) {"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return end;"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * Finds start of vacant time slot."
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param dayLog log of the day\u0027s tasks"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param pos    starting position"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @param sleep  sleep time"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     * @return valid pos value"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private int nextVacantSlotStart(ArrayList\u003cInteger\u003e dayLog, int pos, int sleep) {"
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        for (; pos \u003c sleep; pos++) {"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            if (dayLog.get(pos) \u003d\u003d -1) {"
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return pos;"
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private ArrayList\u003cTask\u003e getSortedFixedTasks(TaskList taskList) {"
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        TaskList fixedDayTasks \u003d taskList;"
-      },
-      {
-        "lineNumber": 225,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        ArrayList\u003cTask\u003e sortedTimeTasks \u003d fixedDayTasks.getTasks();"
-      },
-      {
-        "lineNumber": 226,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        sortedTimeTasks.sort(new TaskTimeComparator());"
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        sortedTimeTasks.sort(new TaskImportanceComparator());"
-      },
-      {
-        "lineNumber": 228,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return sortedTimeTasks;"
-      },
-      {
-        "lineNumber": 229,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 230,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 231,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private ArrayList\u003cTask\u003e getSortedFlexibleTasks(TaskList taskList) {"
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        TaskList flexibleDayTasks \u003d taskList;"
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        ArrayList\u003cTask\u003e sortedTimeTasks \u003d flexibleDayTasks.getTasks();"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        sortedTimeTasks.sort(new TaskTimeComparator());"
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        sortedTimeTasks.sort(new TaskImportanceComparator());"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return sortedTimeTasks;"
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 238,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private void populateDayLog(int pos, ArrayList\u003cInteger\u003e dayLog, ArrayList\u003cInteger\u003e bestLog) {"
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        int count \u003d 0;"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        for (int taskNumber : bestLog) {"
-      },
-      {
-        "lineNumber": 243,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            dayLog.set(count + pos, taskNumber);"
-      },
-      {
-        "lineNumber": 244,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "            count++;"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 246,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 247,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 248,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 249,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private TaskList getFixedDayTasks(LocalDate date) {"
-      },
-      {
-        "lineNumber": 250,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        ForecastFilter forecast \u003d new ForecastFilter(date);"
-      },
-      {
-        "lineNumber": 251,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        TaskList fixedDayTask \u003d this.fixedTaskList.getFilteredList(forecast);"
-      },
-      {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return fixedDayTask;"
-      },
-      {
-        "lineNumber": 253,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 254,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    private TaskList getFlexibleDayTasks(LocalDate date) {"
-      },
-      {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        ForecastFilter forecast \u003d new ForecastFilter(date);"
-      },
-      {
-        "lineNumber": 257,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        TaskList flexibleDayTask \u003d this.flexibleTaskList.getFilteredList(forecast);"
-      },
-      {
-        "lineNumber": 258,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "        return flexibleDayTask;"
-      },
-      {
-        "lineNumber": 259,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 260,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 261,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    // Psuedocode for allocation runs might refactor into a command class"
-      },
-      {
-        "lineNumber": 262,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //    public void runAllocate() {"
-      },
-      {
-        "lineNumber": 263,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //        Collections.sort(fixedTask, earlier());"
-      },
-      {
-        "lineNumber": 264,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //        Collections.sort(flexibleTask,priority());"
-      },
-      {
-        "lineNumber": 265,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //        //priority sorts according to importance(high to low) then duration(high to low)"
-      },
-      {
-        "lineNumber": 266,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //        //might need toposort"
-      },
-      {
-        "lineNumber": 267,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //"
-      },
-      {
-        "lineNumber": 268,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //        for (int i \u003d 0; i \u003c fixedTask.size() - 1; i++) {"
-      },
-      {
-        "lineNumber": 269,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            currentTime \u003d fixedTask.get(i).getStartTime() + fixedTask.get(i).getDuration();"
-      },
-      {
-        "lineNumber": 270,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            nextTime \u003d fixedTask.get(i + 1).getStartTime();"
-      },
-      {
-        "lineNumber": 271,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            duration \u003d nextTime-currentTime;"
-      },
-      {
-        "lineNumber": 272,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //"
-      },
-      {
-        "lineNumber": 273,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // select task with best fit into the time"
-      },
-      {
-        "lineNumber": 274,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // select important task then long tasks then check for space"
-      },
-      {
-        "lineNumber": 275,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // if there is no time left then continue"
-      },
-      {
-        "lineNumber": 276,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // if not then choose another task that can go in"
-      },
-      {
-        "lineNumber": 277,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // ?? not sure if want to go through the entire list to get 0 time wastage"
-      },
-      {
-        "lineNumber": 278,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // failure cases will be unable to meet deadline"
-      },
-      {
-        "lineNumber": 279,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // set time for flexible tasks"
-      },
-      {
-        "lineNumber": 280,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //            // repeat until all flexible tasks are assigned"
-      },
-      {
-        "lineNumber": 281,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //"
-      },
-      {
-        "lineNumber": 282,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //"
-      },
-      {
-        "lineNumber": 283,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //        }"
-      },
-      {
-        "lineNumber": 284,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": "    //    }"
-      },
-      {
-        "lineNumber": 285,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 286,
-        "author": {
-          "gitId": "Kafcis"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 287,
         "author": {
           "gitId": "Kafcis"
         },
@@ -16389,9 +16234,312 @@
       }
     ],
     "authorContributionMap": {
-      "Kafcis": 285,
+      "Kafcis": 157,
       "daniellimws": 1,
       "wish2023": 1
+    }
+  },
+  {
+    "path": "src/main/java/athena/TimeSlot.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "package athena;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "import athena.exceptions.NoNextSlotException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "public class TimeSlot {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private Log dayLog;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private final Integer wake \u003d 8;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private final Integer sleep \u003d 22;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private Integer start \u003d wake;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    private Integer end \u003d wake;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public TimeSlot(Log dayLog) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        this.dayLog \u003d dayLog;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void findNextSlot() throws NoNextSlotException {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        if (start \u003d\u003d sleep) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            throw new NoNextSlotException();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        start \u003d end;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        for (; start \u003c sleep; start++) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            if (dayLog.getStart(start) \u003d\u003d -1) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        end \u003d start;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        for (; end \u003c sleep; end++) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            if (dayLog.getStart(end) !\u003d -1) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public Integer getStart() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return start;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public Integer getEnd() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        return end;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Kafcis": 42
     }
   },
   {
@@ -17196,6 +17344,221 @@
     ],
     "authorContributionMap": {
       "alstontham": 21
+    }
+  },
+  {
+    "path": "src/main/java/athena/exceptions/AllocationFailedException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "package athena.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "import athena.exceptions.InternalException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alstontham"
+        },
+        "content": "import athena.ui.AthenaUi;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "public class AllocationFailedException extends AllocatorException {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void printErrorMessage() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alstontham"
+        },
+        "content": "        AthenaUi ui \u003d new AthenaUi();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "        ui.printAllocationFailed();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Kafcis": 10,
+      "alstontham": 2
+    }
+  },
+  {
+    "path": "src/main/java/athena/exceptions/AllocatorException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "package athena.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": " * Abstract class for all the command exceptions that are thrown."
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "public abstract class AllocatorException extends InternalException {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public AllocatorException() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "     * Abstract method for printing the error message to the user when an exception is thrown."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public abstract void printErrorMessage();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Kafcis": 16
     }
   },
   {
@@ -19320,6 +19683,85 @@
     ],
     "authorContributionMap": {
       "wish2023": 20
+    }
+  },
+  {
+    "path": "src/main/java/athena/exceptions/NoNextSlotException.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "package athena.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "public class NoNextSlotException extends AllocatorException {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    public void printErrorMessage() {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Kafcis"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Kafcis": 10
     }
   },
   {
@@ -44555,7 +44997,7 @@
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        taskList.addTask(4, \"Assignment 5\", \"2000\", \"3\", \"6pm\", \"today\","
+        "content": "        taskList.addTask(4, \"Assignment 5\", \"1500\", \"2\", \"6pm\", \"today\","
       },
       {
         "lineNumber": 18,
@@ -44583,7 +45025,7 @@
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        taskList.addTask(7, \"Assignment 8\", \"1500\", \"1\", \"6pm\", \"today\","
+        "content": "        taskList.addTask(7, \"Assignment 8\", \"2000\", \"1\", \"6pm\", \"today\","
       },
       {
         "lineNumber": 22,
@@ -44646,7 +45088,7 @@
         "author": {
           "gitId": "Kafcis"
         },
-        "content": "        messyTaskList.addTask(4, \"Assignment 5\", \"1600\", \"3\", \"6pm\", \"today\","
+        "content": "        messyTaskList.addTask(4, \"Assignment 5\", \"1600\", \"2\", \"6pm\", \"today\","
       },
       {
         "lineNumber": 31,

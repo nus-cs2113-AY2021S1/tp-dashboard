@@ -14355,168 +14355,168 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import java.io.FileOutputStream;"
+        "content": "import java.io.File;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import java.io.IOException;"
+        "content": "import java.io.FileOutputStream;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.ss.usermodel.Cell;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.ss.usermodel.CellStyle;"
+        "content": "import org.apache.poi.ss.usermodel.Cell;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.ss.usermodel.Font;"
+        "content": "import org.apache.poi.ss.usermodel.CellStyle;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.ss.usermodel.Row;"
+        "content": "import org.apache.poi.ss.usermodel.Font;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.ss.usermodel.Sheet;"
+        "content": "import org.apache.poi.ss.usermodel.Row;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.ss.usermodel.Workbook;"
+        "content": "import org.apache.poi.ss.usermodel.Sheet;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "import org.apache.poi.xssf.usermodel.XSSFWorkbook;"
+        "content": "import org.apache.poi.ss.usermodel.Workbook;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "import org.apache.poi.xssf.usermodel.XSSFWorkbook;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "//@@author Wu-Haitao"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "public class ExportCommand extends Command {"
+        "content": "//@@author Wu-Haitao"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private String filePath;"
+        "content": "public class ExportCommand extends Command {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private final FileExplorer fileExplorer;"
+        "content": "    private String filePath;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private boolean isOpening;"
+        "content": "    private final FileExplorer fileExplorer;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "    private boolean isOpening;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public ExportCommand(String filePath) {"
+        "content": "    private boolean isValidPath \u003d true;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        this.filePath \u003d filePath + \"Records.xlsx\";"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        fileExplorer \u003d new FileExplorer(this.filePath);"
+        "content": "    public ExportCommand(String filePath) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        this.isOpening \u003d true;"
+        "content": "        File folder \u003d new File(filePath);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        if (!folder.isDirectory()) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "            isValidPath \u003d false;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public ExportCommand(String filePath, boolean isOpening) {"
+        "content": "        }"
       },
       {
         "lineNumber": 33,
@@ -14537,7 +14537,7 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        this.isOpening \u003d isOpening;"
+        "content": "        this.isOpening \u003d true;"
       },
       {
         "lineNumber": 36,
@@ -14558,381 +14558,479 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    @Override"
+        "content": "    public ExportCommand(String filePath, boolean isOpening) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void execute(SpendingList spendingList, RepaymentList repaymentList, Ui ui) {"
+        "content": "        File folder \u003d new File(filePath);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        exportToExcel(spendingList);"
+        "content": "        if (!folder.isDirectory()) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        if (isOpening) {"
+        "content": "            isValidPath \u003d false;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            try {"
+        "content": "        }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "                fileExplorer.openFile();"
+        "content": "        this.filePath \u003d filePath + \"Records.xlsx\";"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            } catch (IOException e) {"
+        "content": "        fileExplorer \u003d new FileExplorer(this.filePath);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "                ui.printOpenFileFailedMessage();"
+        "content": "        this.isOpening \u003d isOpening;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            }"
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        ui.printExportMessage();"
+        "content": "    @Override"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "    public void execute(SpendingList spendingList, RepaymentList repaymentList, Ui ui) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "        if (!isValidPath) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private void exportToExcel(SpendingList list) {"
+        "content": "            ui.printExportMessage(false);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        Workbook workbook \u003d new XSSFWorkbook();"
+        "content": "            return;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        Sheet sheet \u003d workbook.createSheet(\"sheet0\");"
+        "content": "        }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        sheet.setDefaultColumnWidth(15);"
+        "content": "        exportToExcel(spendingList);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        Row row \u003d sheet.createRow(0);"
+        "content": "        if (isOpening) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        printHeaders(workbook, row);"
+        "content": "            try {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        for (int i \u003d 0; i \u003c list.getListSize(); i++) {"
+        "content": "                fileExplorer.openFile();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            row \u003d sheet.createRow(i + 1);"
+        "content": "            } catch (IOException e) {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            Item item \u003d list.getItem(i);"
+        "content": "                ui.printOpenFileFailedMessage();"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            row.createCell(0).setCellValue(item.getDescription());"
+        "content": "            }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            row.createCell(1).setCellValue(item.getSymbol());"
+        "content": "        }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            row.createCell(2).setCellValue(item.getAmount());"
+        "content": "        ui.printExportMessage(true);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            row.createCell(3).setCellValue(item.getDate());"
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            row.createCell(4).setCellValue(item.getCategory());"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "    private void exportToExcel(SpendingList list) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        try {"
+        "content": "        Workbook workbook \u003d new XSSFWorkbook();"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            FileOutputStream output \u003d new FileOutputStream(filePath);"
+        "content": "        Sheet sheet \u003d workbook.createSheet(\"sheet0\");"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            workbook.write(output);"
+        "content": "        sheet.setDefaultColumnWidth(15);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            output.flush();"
+        "content": "        Row row \u003d sheet.createRow(0);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            output.close();"
+        "content": "        printHeaders(workbook, row);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "        for (int i \u003d 0; i \u003c list.getListSize(); i++) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            assert false : \"Failed to create Excel file\";"
+        "content": "            row \u003d sheet.createRow(i + 1);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "            Item item \u003d list.getItem(i);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "            row.createCell(0).setCellValue(item.getDescription());"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "            row.createCell(1).setCellValue(item.getSymbol());"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    private void printHeaders(Workbook workbook, Row row) {"
+        "content": "            row.createCell(2).setCellValue(item.getAmount());"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        Cell[] cells \u003d new Cell[5];"
+        "content": "            row.createCell(3).setCellValue(item.getDate());"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        CellStyle cellStyle \u003d workbook.createCellStyle();"
+        "content": "            row.createCell(4).setCellValue(item.getCategory());"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        Font font \u003d workbook.createFont();"
+        "content": "        }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        font.setBold(true);"
+        "content": "        try {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        cellStyle.setFont(font);"
+        "content": "            FileOutputStream output \u003d new FileOutputStream(filePath);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        for (int i \u003d 0; i \u003c 5; i++) {"
+        "content": "            workbook.write(output);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            cells[i] \u003d row.createCell(i);"
+        "content": "            output.flush();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            cells[i].setCellStyle(cellStyle);"
+        "content": "            output.close();"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "        } catch (Exception e) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        cells[0].setCellValue(\"Description\");"
+        "content": "            assert false : \"Failed to create Excel file\";"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        cells[1].setCellValue(\"Currency\");"
+        "content": "        }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        cells[2].setCellValue(\"Amount\");"
+        "content": "    }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        cells[3].setCellValue(\"Date\");"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        cells[4].setCellValue(\"Category\");"
+        "content": "    private void printHeaders(Workbook workbook, Row row) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        Cell[] cells \u003d new Cell[5];"
       },
       {
         "lineNumber": 92,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        CellStyle cellStyle \u003d workbook.createCellStyle();"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        Font font \u003d workbook.createFont();"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        font.setBold(true);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        cellStyle.setFont(font);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        for (int i \u003d 0; i \u003c 5; i++) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "            cells[i] \u003d row.createCell(i);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "            cells[i].setCellStyle(cellStyle);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        cells[0].setCellValue(\"Description\");"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        cells[1].setCellValue(\"Currency\");"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        cells[2].setCellValue(\"Amount\");"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        cells[3].setCellValue(\"Date\");"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "        cells[4].setCellValue(\"Category\");"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Wu-Haitao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
         "author": {
           "gitId": "Wu-Haitao"
         },
@@ -14940,7 +15038,7 @@
       }
     ],
     "authorContributionMap": {
-      "Wu-Haitao": 92
+      "Wu-Haitao": 106
     }
   },
   {
@@ -29103,395 +29201,423 @@
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void printExportMessage() {"
+        "content": "    public void printExportMessage(boolean isSuccessful) {"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(\"The records have been exported to an Excel file successfully.\");"
+        "content": "        if (isSuccessful) {"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "            out.println(\"The records have been exported to an Excel file successfully.\");"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    "
+        "content": "            out.println(\"Exporting failed. Please check if you entered an invalid path.\");"
       },
       {
         "lineNumber": 274,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "    //@@author killingbear999"
+        "content": "        }"
       },
       {
         "lineNumber": 275,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "    public static void printCurrentBudgetLimit() {"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 276,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        System.out.println(\"The budget limit has been set to: \" + Budget.getCurrency() + \" \""
+        "content": "    }"
       },
       {
         "lineNumber": 277,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "                                   + String.format(\"%.2f\", Budget.getBudgetLimit()));"
+        "content": "    "
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        System.out.println(SEPARATE_LINE_CHAR.repeat(SEPARATE_LINE_LENGTH));"
+        "content": "    //@@author killingbear999"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    }"
+        "content": "    public static void printCurrentBudgetLimit() {"
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    "
+        "content": "        System.out.println(\"The budget limit has been set to: \" + Budget.getCurrency() + \" \""
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    //@@author killingbear999"
+        "content": "                                   + String.format(\"%.2f\", Budget.getBudgetLimit()));"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    public static void printNoBudget() {"
+        "content": "        System.out.println(SEPARATE_LINE_CHAR.repeat(SEPARATE_LINE_LENGTH));"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        System.out.println(\"No budget has been set yet.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        System.out.println(SEPARATE_LINE_CHAR.repeat(SEPARATE_LINE_LENGTH));"
+        "content": "    "
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    }"
+        "content": "    //@@author killingbear999"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    "
+        "content": "    public static void printNoBudget() {"
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    //@@author killingbear999"
+        "content": "        System.out.println(\"No budget has been set yet.\");"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    public void printRepaymentList(ArrayList\u003cRepay\u003e repaymentList) {"
+        "content": "        System.out.println(SEPARATE_LINE_CHAR.repeat(SEPARATE_LINE_LENGTH));"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        if (!repaymentList.isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "            for (int i \u003d 1; i \u003c repaymentList.size() + 1; i++) {"
+        "content": "    "
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "                out.println(i + \". \" + repaymentList.get(i - 1));"
+        "content": "    //@@author killingbear999"
       },
       {
         "lineNumber": 292,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "            }"
+        "content": "    public void printRepaymentList(ArrayList\u003cRepay\u003e repaymentList) {"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        } else {"
+        "content": "        if (!repaymentList.isEmpty()) {"
       },
       {
         "lineNumber": 294,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "            out.println(\"Nothing in the list.\");"
+        "content": "            for (int i \u003d 1; i \u003c repaymentList.size() + 1; i++) {"
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        }"
+        "content": "                out.println(i + \". \" + repaymentList.get(i - 1));"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        drawSeparateLine();"
+        "content": "            }"
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": ""
+        "content": "            out.println(\"Nothing in the list.\");"
       },
       {
         "lineNumber": 299,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "    //@@author Wu-Haitao"
+        "content": "        }"
       },
       {
         "lineNumber": 300,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "    public void printDrawMessage(boolean isSuccessful) {"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 301,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "        if (isSuccessful) {"
+        "content": "    }"
       },
       {
         "lineNumber": 302,
         "author": {
-          "gitId": "Wu-Haitao"
+          "gitId": "killingbear999"
         },
-        "content": "            out.println(\"The charts have been generated successfully!\");"
+        "content": ""
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            out.println(\"You can find the charts at this location:\");"
+        "content": "    //@@author Wu-Haitao"
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            out.println(System.getProperty(\"user.dir\") + \"\\\\Charts.xlsx\");"
+        "content": "    public void printDrawMessage(boolean isSuccessful) {"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        } else {"
+        "content": "        if (isSuccessful) {"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "            out.println(\"Sorry, generation failed.\");"
+        "content": "            out.println(\"The charts have been generated successfully!\");"
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        }"
+        "content": "            out.println(\"You can find the charts at this location:\");"
       },
       {
         "lineNumber": 308,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "            out.println(System.getProperty(\"user.dir\") + \"\\\\Charts.xlsx\");"
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": ""
+        "content": "            out.println(\"Sorry, generation failed.\");"
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    //@@author Wu-Haitao"
+        "content": "        }"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    public void printOpenFileFailedMessage() {"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 313,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(\"Sorry, the file couldn\u0027t be opened.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 314,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(\"Please try find the file in the application folder and open it manually.\");"
+        "content": ""
       },
       {
         "lineNumber": 315,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "        drawSeparateLine();"
+        "content": "    //@@author Wu-Haitao"
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    }"
+        "content": "    public void printOpenFileFailedMessage() {"
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "Wu-Haitao"
         },
-        "content": "    "
+        "content": "        out.println(\"Sorry, the file couldn\u0027t be opened.\");"
       },
       {
         "lineNumber": 318,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "    //@@author killingbear999"
+        "content": "        out.println(\"Please try find the file in the application folder and open it manually.\");"
       },
       {
         "lineNumber": 319,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "    public void printInvalidConversion(String defaultCurrency) {"
+        "content": "        drawSeparateLine();"
       },
       {
         "lineNumber": 320,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(\"Sorry, the input currency does not match with the current currency in the spending list.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 321,
         "author": {
-          "gitId": "killingbear999"
+          "gitId": "Wu-Haitao"
         },
-        "content": "        out.println(\"The current currency in the spending list is \" + defaultCurrency + \".\");"
+        "content": "    "
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "        drawSeparateLine();"
+        "content": "    //@@author killingbear999"
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "    }"
+        "content": "    public void printInvalidConversion(String defaultCurrency) {"
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "killingbear999"
         },
-        "content": "}"
+        "content": "        out.println(\"Sorry, the input currency does not match with the current currency in the spending list.\");"
       },
       {
         "lineNumber": 325,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "        out.println(\"The current currency in the spending list is \" + defaultCurrency + \".\");"
+      },
+      {
+        "lineNumber": 326,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "        drawSeparateLine();"
+      },
+      {
+        "lineNumber": 327,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "killingbear999"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 329,
         "author": {
           "gitId": "killingbear999"
         },
@@ -29499,7 +29625,7 @@
       }
     ],
     "authorContributionMap": {
-      "Wu-Haitao": 115,
+      "Wu-Haitao": 119,
       "k-walter": 2,
       "killingbear999": 98,
       "xieyaoyue": 81,
