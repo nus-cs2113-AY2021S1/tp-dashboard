@@ -75820,469 +75820,469 @@
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "import java.util.regex.Matcher;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "import java.util.regex.Pattern;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "public class SaveManager {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    public static final String fullPath \u003d \"./data/backup/names.txt\";"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    public static final String dirPath \u003d \"./data/backup\";"
+        "content": "public class SaveManager {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static String prompt \u003d \"\";"
+        "content": "    public static final String fullPath \u003d \"./data/backup/names.txt\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static boolean menu \u003d true;"
+        "content": "    public static final String dirPath \u003d \"./data/backup\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "    private static String prompt \u003d \"\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    public static void main() {"
+        "content": "    private static boolean menu \u003d true;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        while (true) {"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            if (menu \u003d\u003d true) {"
+        "content": "    public static void main() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "                helpMenu();"
+        "content": "        while (true) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            }"
+        "content": "            if (menu \u003d\u003d true) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            InputParser parser \u003d InputParser.getInstance();"
+        "content": "                helpMenu();"
       },
       {
         "lineNumber": 34,
-        "author": {
-          "gitId": "kaiwen98"
-        },
-        "content": "            CommandPacket packet \u003d parser.parseInput(UiManager.handleInput());"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            menu \u003d true;"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            switch (packet.getCommandString()) {"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"list\":"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                listSaves(packet);"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"add\":"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                if (checkValidity(packet) \u003d\u003d true) {"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    addSave(packet);"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"load\":"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                if (checkValidity(packet) \u003d\u003d true) {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    loadSave(packet);"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"reset\":"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                resetSave();"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"delete\":"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                if (checkValidity(packet) \u003d\u003d true) {"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    deleteSave(packet);"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"help\":"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "kaiwen98"
-        },
-        "content": "                menu \u003d true;"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            case \"exit\":"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                return;"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                prompt \u003d \"Invalid Command\";"
-      },
-      {
-        "lineNumber": 65,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "            }"
       },
       {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            InputParser parser \u003d InputParser.getInstance();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "            CommandPacket packet \u003d parser.parseInput(UiManager.handleInput());"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            menu \u003d true;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            switch (packet.getCommandString()) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"list\":"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                listSaves(packet);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"add\":"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                if (checkValidity(packet) \u003d\u003d true) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    addSave(packet);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"load\":"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                if (checkValidity(packet) \u003d\u003d true) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    loadSave(packet);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"reset\":"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                resetSave();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"delete\":"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                if (checkValidity(packet) \u003d\u003d true) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    deleteSave(packet);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"help\":"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "                menu \u003d true;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            case \"exit\":"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                return;"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            default:"
+      },
+      {
         "lineNumber": 66,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        }"
+        "content": "                prompt \u003d \"Invalid Command\";"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     * This method checks if the entered command is valid and adds the"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     * appropriate prompt to the status bar."
+        "content": "    /**"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     * @param packet packet containing parsed command from user"
+        "content": "     * This method checks if the entered command is valid and adds the"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     * @return If true, run the command, if false, report status to the user and don\u0027t run the command."
+        "content": "     * appropriate prompt to the status bar."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     */"
+        "content": "     * @param packet packet containing parsed command from user"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static boolean checkValidity(CommandPacket packet) {"
+        "content": "     * @return If true, run the command, if false, report status to the user and don\u0027t run the command."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        if (packet.getParam(\"/name\") \u003d\u003d null) {"
+        "content": "     */"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            prompt \u003d \"Invalid Command\";"
+        "content": "    private static boolean checkValidity(CommandPacket packet) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            return false;"
+        "content": "        if (packet.getParam(\"/name\") \u003d\u003d null) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        }"
+        "content": "            prompt \u003d \"Invalid Command\";"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "            return false;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        if (packet.getParam(\"/name\").trim().equals(\"\")) {"
+        "content": "        }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            prompt \u003d \"Name cannot be empty!\";"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            return false;"
+        "content": "        if (packet.getParam(\"/name\").trim().equals(\"\")) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        }"
+        "content": "            prompt \u003d \"Name cannot be empty!\";"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        return true;"
+        "content": "            return false;"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
@@ -76296,1382 +76296,1452 @@
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static void helpMenu() {"
+        "content": "        Pattern p \u003d Pattern.compile(\"[^A-Za-z0-9]\");"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        UiManager.refreshPage();"
+        "content": "        Matcher m \u003d p.matcher(packet.getParam(\"/name\"));"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        status();"
+        "content": "        if (m.find()) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.setTitle(\"Welcome to Save Manager\");"
+        "content": "            prompt \u003d \"No spaces or special characters allowed! Alphanumeric only!\";"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"No.; Commands                                           ; Syntax                    \");"
+        "content": "            return false;"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"[1]; List local saves; list\");"
+        "content": "        }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"[2]; Add/Overwrite save; add /name\");"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"[3]; Load save; load /name\");"
+        "content": "        return true;"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"[4]; Delete save; delete /name\");"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"[5]; Reset program; reset\");"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.addRow(\"[6]; Quit to main; exit\");"
+        "content": "    private static void helpMenu() {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        TablePrinter.printList();"
+        "content": "        UiManager.refreshPage();"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    }"
+        "content": "        status();"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "        TablePrinter.setTitle(\"Welcome to Save Manager\");"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static void status() {"
+        "content": "        TablePrinter.addRow(\"No.; Commands                                           ; Syntax                    \");"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        System.out.println(\"Status: \" + prompt);"
+        "content": "        TablePrinter.addRow(\"[1]; List local saves; list\");"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        prompt \u003d \"\";"
+        "content": "        TablePrinter.addRow(\"[2]; Add/Overwrite save; add /name\");"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    }"
+        "content": "        TablePrinter.addRow(\"[3]; Load save; load /name\");"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "        TablePrinter.addRow(\"[4]; Delete save; delete /name\");"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static void helpMsg() {"
+        "content": "        TablePrinter.addRow(\"[5]; Reset program; reset\");"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        System.out.println(\"Enter \u003chelp\u003e for a list of commands\");"
+        "content": "        TablePrinter.addRow(\"[6]; Quit to main; exit\");"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    }"
+        "content": "        TablePrinter.printList();"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    private static void resetSave() {"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        GoalTrackerSaver.clear();"
+        "content": "    private static void status() {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        RecurringTrackerSaver.clear();"
+        "content": "        System.out.println(\"Status: \" + prompt);"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        ManualTrackerSaver.clear();"
+        "content": "        prompt \u003d \"\";"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "        prompt \u003d \"Program has been reset\";"
+        "content": "    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": ""
+        "content": "    private static void helpMsg() {"
       },
       {
         "lineNumber": 118,
         "author": {
-          "gitId": "kaiwen98"
+          "gitId": "Feudalord"
         },
-        "content": "    public static void resetAllLists() {"
+        "content": "        System.out.println(\"Enter \u003chelp\u003e for a list of commands\");"
       },
       {
         "lineNumber": 119,
         "author": {
-          "gitId": "kaiwen98"
+          "gitId": "Feudalord"
         },
-        "content": "        System.out.println(ManualTracker.getLedgerList());"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
-          "gitId": "kaiwen98"
+          "gitId": "Feudalord"
         },
-        "content": "        ManualTracker.getLedgerList().removeAllItems();"
+        "content": ""
       },
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "kaiwen98"
+          "gitId": "Feudalord"
         },
-        "content": "        EntryTracker.getEntryList().removeAllItems();"
+        "content": "    private static void resetSave() {"
       },
       {
         "lineNumber": 122,
-        "author": {
-          "gitId": "Artemis-Hunt"
-        },
-        "content": "        RecurringTracker.getEntries().removeAllItems();"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "kaiwen98"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "kaiwen98"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * This method prints a list of backup saves using the names provided"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * in text file names.txt"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * @param packet packet containing parsed command from user"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    private static void listSaves(CommandPacket packet) {"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            menu \u003d false;"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            UiManager.refreshPage();"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            helpMsg();"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            TablePrinter.setTitle(\"List Saves\");"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            TablePrinter.addRow(\"No.; Names                                           \");"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            SaveHandler.buildFile(dirPath, fullPath);"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            File file \u003d new File(fullPath);"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            Scanner scanner \u003d new Scanner(file);"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            for (int i \u003d 1; scanner.hasNext(); ) {"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                String name \u003d scanner.nextLine();"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                if (!name.equals(\"\")) {"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    TablePrinter.addRow(\"[\" + i + \"]; \" + name);"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    i++;"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            TablePrinter.printList();"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            menu \u003d true;"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            prompt \u003d e.toString();"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * This method creates a backup save in data/backup directory. This save consists of"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * 3 text files ending with _gt, _mt, _at and an entry in the names.txt file. If entered"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * name already exist, then the function overwrites the existing save, otherwise, new"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * save will be created."
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * @param packet packet containing parsed command from user"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    public static void addSave(CommandPacket packet) {"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String name \u003d packet.getParam(\"/name\");"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String path \u003d dirPath + \"/\" + name;"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            GoalTrackerSaver.getInstance().save(dirPath, path + \"_gt.txt\");"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            ManualTrackerSaver.getInstance().save(dirPath, path + \"_mt.txt\");"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            RecurringTrackerSaver.getInstance().save(dirPath, path + \"_at.txt\");"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            SaveHandler.buildFile(dirPath, fullPath);"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            File file \u003d new File(fullPath);"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            Scanner scanner \u003d new Scanner(file);"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            while (scanner.hasNext()) {"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                String saveString \u003d scanner.nextLine();"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                if (saveString.equals(name)) {"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    prompt \u003d name + \" has been overwritten!\";"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    return;"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            FileWriter fileWriter \u003d new FileWriter(fullPath, true);"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            fileWriter.write(name + \"\\n\");"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            fileWriter.close();"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            prompt \u003d name + \" has been added!\";"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            prompt \u003d e.toString();"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * This method searches for a matching name entry in names.txt. Once found, it will"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * use this name to access contents of 3 text files containing saved data for Goal"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * Tracker, Manual Tracker and Auto Tracker respectively. The 3 text files in ./data/backup"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * directory is subsequently copied to the main save found in ./data directory where it"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * is then loaded using the load method."
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     * @param packet packet containing parsed command from user"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    public static void loadSave(CommandPacket packet) {"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String name \u003d packet.getParam(\"/name\");"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String path \u003d dirPath + \"/\" + name;"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String desAuto \u003d RecurringTrackerSaver.getInstance().fullPath;"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String desGoal \u003d GoalTrackerSaver.getInstance().fullPath;"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            String desManual \u003d ManualTrackerSaver.getInstance().fullPath;"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            RecurringTrackerSaver.getInstance().buildFile();"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            GoalTrackerSaver.getInstance().buildFile();"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            ManualTrackerSaver.getInstance().buildFile();"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            File file \u003d new File(fullPath);"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            Scanner scanner \u003d new Scanner(file);"
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            while (scanner.hasNext()) {"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                String saveString \u003d scanner.nextLine();"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                if (saveString.equals(name)) {"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileInputStream inGt \u003d new FileInputStream(path + \"_gt.txt\");"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileOutputStream outGt \u003d new FileOutputStream(desGoal);"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileChannel sourceChannel \u003d inGt.getChannel();"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileChannel destChannel \u003d outGt.getChannel();"
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileInputStream inMt \u003d new FileInputStream(path + \"_mt.txt\");"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileOutputStream outMt \u003d new FileOutputStream(desManual);"
-      },
-      {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    sourceChannel \u003d inMt.getChannel();"
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    destChannel \u003d outMt.getChannel();"
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());"
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileInputStream inAt \u003d new FileInputStream(path + \"_at.txt\");"
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    FileOutputStream outAt \u003d new FileOutputStream(desAuto);"
-      },
-      {
-        "lineNumber": 225,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    sourceChannel \u003d inAt.getChannel();"
-      },
-      {
-        "lineNumber": 226,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    destChannel \u003d outAt.getChannel();"
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());"
-      },
-      {
-        "lineNumber": 228,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 229,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    inGt.close();"
-      },
-      {
-        "lineNumber": 230,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    inMt.close();"
-      },
-      {
-        "lineNumber": 231,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    inAt.close();"
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    outMt.close();"
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    outGt.close();"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    outAt.close();"
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    clear();"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    Financeit.load();"
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    prompt \u003d name + \" has been loaded!\";"
-      },
-      {
-        "lineNumber": 238,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    return;"
-      },
-      {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            prompt \u003d name + \" cannot be found!\";"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        } catch (Exception e) {"
-      },
-      {
-        "lineNumber": 243,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            prompt \u003d e.toString();"
-      },
-      {
-        "lineNumber": 244,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 246,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 247,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "    public static void clear() {"
-      },
-      {
-        "lineNumber": 248,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "        GoalTrackerSaver.clear();"
       },
       {
-        "lineNumber": 249,
+        "lineNumber": 123,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "        RecurringTrackerSaver.clear();"
       },
       {
-        "lineNumber": 250,
+        "lineNumber": 124,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "        ManualTrackerSaver.clear();"
       },
       {
-        "lineNumber": 251,
+        "lineNumber": 125,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        prompt \u003d \"Program has been reset\";"
+      },
+      {
+        "lineNumber": 126,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 252,
+        "lineNumber": 127,
         "author": {
           "gitId": "Feudalord"
         },
         "content": ""
       },
       {
-        "lineNumber": 253,
+        "lineNumber": 128,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "    public static void resetAllLists() {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "        System.out.println(ManualTracker.getLedgerList());"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "        ManualTracker.getLedgerList().removeAllItems();"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "        EntryTracker.getEntryList().removeAllItems();"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "Artemis-Hunt"
+        },
+        "content": "        RecurringTracker.getEntries().removeAllItems();"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "kaiwen98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 135,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 254,
+        "lineNumber": 136,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     * This method deletes the given entry in names.txt as well as the save files"
+        "content": "     * This method prints a list of backup saves using the names provided"
       },
       {
-        "lineNumber": 255,
+        "lineNumber": 137,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "     * associated with that name."
+        "content": "     * in text file names.txt"
       },
       {
-        "lineNumber": 256,
+        "lineNumber": 138,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "     * @param packet packet containing parsed command from user"
       },
       {
-        "lineNumber": 257,
+        "lineNumber": 139,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 258,
+        "lineNumber": 140,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "    public static void deleteSave(CommandPacket packet) {"
+        "content": "    private static void listSaves(CommandPacket packet) {"
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 141,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 142,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            String name \u003d packet.getParam(\"/name\");"
+        "content": "            menu \u003d false;"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 143,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            StringBuilder nameList \u003d new StringBuilder();"
+        "content": "            UiManager.refreshPage();"
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 144,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            helpMsg();"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            TablePrinter.setTitle(\"List Saves\");"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            TablePrinter.addRow(\"No.; Names                                           \");"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            SaveHandler.buildFile(dirPath, fullPath);"
+      },
+      {
+        "lineNumber": 148,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "            File file \u003d new File(fullPath);"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 149,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "            Scanner scanner \u003d new Scanner(file);"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 150,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            prompt \u003d name + \" is not found!\";"
+        "content": "            for (int i \u003d 1; scanner.hasNext(); ) {"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 151,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            while (scanner.hasNext()) {"
+        "content": "                String name \u003d scanner.nextLine();"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 152,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "                String saveString \u003d scanner.nextLine();"
+        "content": "                if (!name.equals(\"\")) {"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 153,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "                if (!saveString.equals(name)) {"
+        "content": "                    TablePrinter.addRow(\"[\" + i + \"]; \" + name);"
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 154,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "                    nameList.append(saveString + \"\\n\");"
+        "content": "                    i++;"
       },
       {
-        "lineNumber": 269,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 270,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    String path \u003d dirPath + \"/\" + name;"
-      },
-      {
-        "lineNumber": 271,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    Files.deleteIfExists(Paths.get(path + \"_gt.txt\"));"
-      },
-      {
-        "lineNumber": 272,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    Files.deleteIfExists(Paths.get(path + \"_mt.txt\"));"
-      },
-      {
-        "lineNumber": 273,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    Files.deleteIfExists(Paths.get(path + \"_at.txt\"));"
-      },
-      {
-        "lineNumber": 274,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "                    prompt \u003d name + \" has been removed!\";"
-      },
-      {
-        "lineNumber": 275,
+        "lineNumber": 155,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 156,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 157,
         "author": {
           "gitId": "Feudalord"
         },
-        "content": "            FileWriter fileWriter \u003d new FileWriter(fullPath, false);"
+        "content": "            TablePrinter.printList();"
       },
       {
-        "lineNumber": 278,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            fileWriter.write(nameList.toString());"
-      },
-      {
-        "lineNumber": 279,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": "            fileWriter.close();"
-      },
-      {
-        "lineNumber": 280,
-        "author": {
-          "gitId": "Feudalord"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 281,
+        "lineNumber": 158,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "        } catch (Exception e) {"
       },
       {
-        "lineNumber": 282,
+        "lineNumber": 159,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            menu \u003d true;"
+      },
+      {
+        "lineNumber": 160,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "            prompt \u003d e.toString();"
       },
       {
-        "lineNumber": 283,
+        "lineNumber": 161,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 284,
+        "lineNumber": 162,
         "author": {
           "gitId": "Feudalord"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * This method creates a backup save in data/backup directory. This save consists of"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * 3 text files ending with _gt, _mt, _at and an entry in the names.txt file. If entered"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * name already exist, then the function overwrites the existing save, otherwise, new"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * save will be created."
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * @param packet packet containing parsed command from user"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    public static void addSave(CommandPacket packet) {"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String name \u003d packet.getParam(\"/name\");"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String path \u003d dirPath + \"/\" + name;"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            GoalTrackerSaver.getInstance().save(dirPath, path + \"_gt.txt\");"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            ManualTrackerSaver.getInstance().save(dirPath, path + \"_mt.txt\");"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            RecurringTrackerSaver.getInstance().save(dirPath, path + \"_at.txt\");"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            SaveHandler.buildFile(dirPath, fullPath);"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            File file \u003d new File(fullPath);"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            Scanner scanner \u003d new Scanner(file);"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            while (scanner.hasNext()) {"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                String saveString \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                if (saveString.equals(name)) {"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    prompt \u003d name + \" has been overwritten!\";"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    return;"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            FileWriter fileWriter \u003d new FileWriter(fullPath, true);"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            fileWriter.write(name + \"\\n\");"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            fileWriter.close();"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            prompt \u003d name + \" has been added!\";"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            prompt \u003d e.toString();"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * This method searches for a matching name entry in names.txt. Once found, it will"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * use this name to access contents of 3 text files containing saved data for Goal"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * Tracker, Manual Tracker and Auto Tracker respectively. The 3 text files in ./data/backup"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * directory is subsequently copied to the main save found in ./data directory where it"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * is then loaded using the load method."
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * @param packet packet containing parsed command from user"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    public static void loadSave(CommandPacket packet) {"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String name \u003d packet.getParam(\"/name\");"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String path \u003d dirPath + \"/\" + name;"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String desAuto \u003d RecurringTrackerSaver.getInstance().fullPath;"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String desGoal \u003d GoalTrackerSaver.getInstance().fullPath;"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String desManual \u003d ManualTrackerSaver.getInstance().fullPath;"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            RecurringTrackerSaver.getInstance().buildFile();"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            GoalTrackerSaver.getInstance().buildFile();"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            ManualTrackerSaver.getInstance().buildFile();"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            File file \u003d new File(fullPath);"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            Scanner scanner \u003d new Scanner(file);"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            while (scanner.hasNext()) {"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                String saveString \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                if (saveString.equals(name)) {"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileInputStream inGt \u003d new FileInputStream(path + \"_gt.txt\");"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileOutputStream outGt \u003d new FileOutputStream(desGoal);"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileChannel sourceChannel \u003d inGt.getChannel();"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileChannel destChannel \u003d outGt.getChannel();"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());"
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileInputStream inMt \u003d new FileInputStream(path + \"_mt.txt\");"
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileOutputStream outMt \u003d new FileOutputStream(desManual);"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    sourceChannel \u003d inMt.getChannel();"
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    destChannel \u003d outMt.getChannel();"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());"
+      },
+      {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileInputStream inAt \u003d new FileInputStream(path + \"_at.txt\");"
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    FileOutputStream outAt \u003d new FileOutputStream(desAuto);"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    sourceChannel \u003d inAt.getChannel();"
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    destChannel \u003d outAt.getChannel();"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    inGt.close();"
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    inMt.close();"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    inAt.close();"
+      },
+      {
+        "lineNumber": 242,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    outMt.close();"
+      },
+      {
+        "lineNumber": 243,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    outGt.close();"
+      },
+      {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    outAt.close();"
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    clear();"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    Financeit.load();"
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    prompt \u003d name + \" has been loaded!\";"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    return;"
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            prompt \u003d name + \" cannot be found!\";"
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            prompt \u003d e.toString();"
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    public static void clear() {"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        GoalTrackerSaver.clear();"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        RecurringTrackerSaver.clear();"
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        ManualTrackerSaver.clear();"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * This method deletes the given entry in names.txt as well as the save files"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * associated with that name."
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     * @param packet packet containing parsed command from user"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    public static void deleteSave(CommandPacket packet) {"
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            String name \u003d packet.getParam(\"/name\");"
+      },
+      {
+        "lineNumber": 271,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            StringBuilder nameList \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            File file \u003d new File(fullPath);"
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            Scanner scanner \u003d new Scanner(file);"
+      },
+      {
+        "lineNumber": 274,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            prompt \u003d name + \" is not found!\";"
+      },
+      {
+        "lineNumber": 275,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            while (scanner.hasNext()) {"
+      },
+      {
+        "lineNumber": 276,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                String saveString \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 277,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                if (!saveString.equals(name)) {"
+      },
+      {
+        "lineNumber": 278,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    nameList.append(saveString + \"\\n\");"
+      },
+      {
+        "lineNumber": 279,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 280,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    String path \u003d dirPath + \"/\" + name;"
+      },
+      {
+        "lineNumber": 281,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    Files.deleteIfExists(Paths.get(path + \"_gt.txt\"));"
+      },
+      {
+        "lineNumber": 282,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    Files.deleteIfExists(Paths.get(path + \"_mt.txt\"));"
+      },
+      {
+        "lineNumber": 283,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    Files.deleteIfExists(Paths.get(path + \"_at.txt\"));"
+      },
+      {
+        "lineNumber": 284,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                    prompt \u003d name + \" has been removed!\";"
+      },
+      {
         "lineNumber": 285,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 286,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 287,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            FileWriter fileWriter \u003d new FileWriter(fullPath, false);"
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            fileWriter.write(nameList.toString());"
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            fileWriter.close();"
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "            prompt \u003d e.toString();"
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "Feudalord"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 295,
         "author": {
           "gitId": "Feudalord"
         },
@@ -77679,7 +77749,7 @@
       }
     ],
     "authorContributionMap": {
-      "Feudalord": 271,
+      "Feudalord": 281,
       "bqxy": 2,
       "Artemis-Hunt": 1,
       "kaiwen98": 11
